@@ -1,0 +1,188 @@
+<ion-content
+#sobreContent
+class="ion-bg-gray-2"
+[forceOverscroll]="false"
+[fullscreen]="true">
+  <section class="sobre-nos-hero">
+    <ion-header mode="ios" class="ion-no-border">
+      <ion-toolbar mode="ios" class="ion-bg-transparent no-ion-padding">
+        <ion-grid [fixed]="true">
+          <ion-row>
+            <ion-col size="12">
+              <div class="header-container">
+                <div class="logo-container full-width ">
+                  <ion-button
+                  (click)="back()"
+                  class="back ion-color-white back-btn no-ion-padding font-baloo"
+                  [title]="'SHARED.BACK' | translate"
+                  fill="clear">
+                    <ion-icon name="chevron-back-outline"></ion-icon> <span class="font-w-thin mg-left-5">{{ 'ABOUT_PAGE.HEADER_TITLE.0' | translate }} <b>{{ 'ABOUT_PAGE.HEADER_TITLE.1' | translate }}</b></span>
+                  </ion-button>
+                </div>
+
+                <div class="language-container">
+                  <rgs-language-button [currentLanguage]="currentLanguage"></rgs-language-button>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-toolbar>
+    </ion-header>
+
+    <div class="sobre-nos-hero-content">
+      <ion-grid [fixed]="true">
+        <ion-row>
+          <ion-col size="12">
+            <div class="logo-wrapper">
+              <rgs-logo size="big" [currentLanguage]="currentLanguage"></rgs-logo>
+            </div>
+
+            <ion-text class="txt-center line-height-22 color-white font-w-thin ">
+              <p class="fs-16 mg-top-32">
+                {{ 'ABOUT_PAGE.TASTIEST_STREET.0' | translate }} <b>{{ 'ABOUT_PAGE.TASTIEST_STREET.1' | translate }}</b> {{ 'ABOUT_PAGE.TASTIEST_STREET.2' | translate }}
+              </p>
+            </ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <!-- FIXED BACKGROUND-->
+    <div class="sobre-nos-fixed-background animate__animated animate__fadeIn animate__slower">
+    </div>
+  </section>
+
+  <section class="sobre-nos-content pad-sides-16">
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col size="12">
+          <div class="mg-top-32 mg-bottom-32">
+            <ion-item mode="ios" class="title mg-bottom-32" lines="none">
+              <ion-icon name="extension-puzzle-outline"></ion-icon>
+
+              <ion-text mode="ios">
+                <h1 class="fs-24 font-baloo color-white">
+                  {{ 'ABOUT_PAGE.INTRODUCTION.TITLE.0' | translate }} <b>{{ 'ABOUT_PAGE.INTRODUCTION.TITLE.1' | translate }}</b>.
+                </h1>
+              </ion-text>
+            </ion-item>
+
+            <ion-text class="color-white fs-16 font-w-thin line-height-22">
+
+              <p class="fs-16 font-w-thin mg-bottom-16">
+                {{ 'ABOUT_PAGE.INTRODUCTION.TEXT.0.0' | translate }} <b>{{ 'ABOUT_PAGE.INTRODUCTION.TEXT.0.1' | translate }}</b>
+              </p>
+
+              <p class="fs-16 font-w-thin mg-bottom-16">
+                {{ 'ABOUT_PAGE.INTRODUCTION.TEXT.1' | translate }}
+              </p>
+
+              <p class="fs-16 font-w-thin">
+                {{ 'ABOUT_PAGE.INTRODUCTION.TEXT.2' | translate }}
+              </p>
+            </ion-text>
+          </div>
+        </ion-col>
+
+        <ion-col size="12">
+          <div class="mg-top-32 mg-bottom-32">
+            <ion-item mode="ios" class="title mg-bottom-32" lines="none">
+              <ion-icon name="bulb-outline"></ion-icon>
+
+              <ion-text mode="ios">
+                <h1 class="fs-24 font-baloo color-white">
+                  {{ 'ABOUT_PAGE.ACHE.TITLE.0' | translate }} <b>"{{ 'ABOUT_PAGE.ACHE.TITLE.1' | translate }}"</b> {{ 'ABOUT_PAGE.ACHE.TITLE.2' | translate }}.
+                </h1>
+              </ion-text>
+            </ion-item>
+
+            <ion-text class="color-white fs-16 font-w-thin line-height-22">
+              <p class="fs-16 font-w-thin mg-bottom-16">
+                {{ 'ABOUT_PAGE.ACHE.TEXT.0' | translate }}
+              </p>
+
+              <p class="fs-16 font-w-thin mg-bottom-16">
+                {{ 'ABOUT_PAGE.ACHE.TEXT.1' | translate }}
+              </p>
+
+              <p class="fs-16 font-w-thin mg-bottom-16">
+               <span class="highlighted-text mg-right-5 font-w-semibold">{{ 'ABOUT_PAGE.ACHE.TEXT.2.0' | translate }}</span> {{ 'ABOUT_PAGE.ACHE.TEXT.2.1' | translate }}
+              </p>
+            </ion-text>
+          </div>
+        </ion-col>
+
+        <ion-col size="12">
+          <div class="mg-top-32 mg-bottom-32">
+            <ion-item mode="ios" class="title mg-bottom-32" lines="none">
+              <ion-icon name="document-text-outline"></ion-icon>
+
+              <ion-text mode="ios">
+                <h1 class="fs-24 font-baloo color-white">
+                  <b>{{ 'ABOUT_PAGE.RESUME.TITLE.0' | translate }}</b> {{ 'ABOUT_PAGE.RESUME.TITLE.1' | translate }}
+                </h1>
+              </ion-text>
+            </ion-item>
+
+            <ion-text class="color-white fs-16 font-w-thin line-height-22">
+              <p class="fs-16 font-w-thin mg-bottom-16">
+                {{ 'ABOUT_PAGE.RESUME.TEXT.0.0' | translate }} <b>{{ 'ABOUT_PAGE.RESUME.TEXT.0.1' | translate }}</b> {{ 'ABOUT_PAGE.RESUME.TEXT.0.2' | translate }}
+              </p>
+
+              <p class="fs-16 font-w-thin mg-bottom-16">
+                {{ 'ABOUT_PAGE.RESUME.TEXT.1' | translate }}
+              </p>
+            </ion-text>
+          </div>
+        </ion-col>
+
+        <ion-col size="12">
+          <div class="mg-top-32 mg-bottom-32">
+            <ion-item mode="ios" class="title mg-bottom-32" lines="none">
+              <ion-icon name="checkmark-outline"></ion-icon>
+
+              <ion-text mode="ios">
+                <h1 class="fs-24 font-baloo color-white">
+                  {{ 'ABOUT_PAGE.CONCLUSION.TITLE.0' | translate }}
+                </h1>
+              </ion-text>
+            </ion-item>
+
+            <ion-text class="color-white fs-16 font-w-thin line-height-22">
+              <p class="fs-16 font-w-thin mg-bottom-16">
+                {{ 'ABOUT_PAGE.CONCLUSION.TEXT.0' | translate }}
+              </p>
+            </ion-text>
+          </div>
+        </ion-col>
+
+        <ion-col size="12">
+          <div class="scroll-to-top full-width">
+            <ion-button
+            (click)="scrollToTop()"
+            size="small"
+            shape="round"
+            title="Voltar para cima"
+            fill="solid"
+            class="rgs-gray-solid mg-bottom-16 mg-top-16 fs-14">
+              <span class="color-green mg-right-5">{{ 'SHARED.BACK_TO_TOP.0' | translate }}</span> <b>{{ 'SHARED.BACK_TO_TOP.1' | translate }}</b> <ion-icon name="chevron-up-outline" class="mg-left-5"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-col>
+
+        <ion-col size="12">
+          <rgs-made-w-love [centered]="true" color="white"></rgs-made-w-love>
+        </ion-col>
+
+        <ion-col size="12" class="no-pad-top">
+          <rgs-social-networks [centered]="true"></rgs-social-networks>
+        </ion-col>
+
+        <ion-col size="12" class="mg-bottom-16">
+          <rgs-copyright color="white"></rgs-copyright>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
+</ion-content>

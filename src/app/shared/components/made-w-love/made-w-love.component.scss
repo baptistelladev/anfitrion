@@ -1,0 +1,16 @@
+@import './../../../../assets/scss/utils/mixins.scss';
+
+ion-text {
+  p {
+    @include flexbox(center, flex-start, row);
+
+    &.centered {
+      @media only screen and (max-width: 991px) {
+        justify-content: center;
+      }
+    }
+
+    ion-icon { animation: heartbeat 1.5s infinite; }
+
+  }
+}

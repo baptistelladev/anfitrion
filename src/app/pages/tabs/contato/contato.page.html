@@ -1,0 +1,115 @@
+<ion-header mode="ios" class="ion-no-border">
+  <ion-toolbar mode="ios" class="ion-bg-white no-ion-padding">
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col size="12">
+          <div class="header-container">
+            <div class="back-btn-wrapper">
+              <ion-button
+              (click)="back()"
+              class="back ion-color-gray-text back-btn no-ion-padding font-baloo"
+              [title]="'SHARED.BACK' | translate"
+              fill="clear">
+                <ion-icon name="chevron-back-outline"></ion-icon> <span class="font-w-thin mg-left-5">{{ 'CONTACT_PAGE.HEADER_TITLE.0' | translate }} <b>{{ 'CONTACT_PAGE.HEADER_TITLE.1' | translate }}</b></span>
+              </ion-button>
+            </div>
+
+            <div class="language-container">
+              <rgs-language-button [currentLanguage]="currentLanguage"></rgs-language-button>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content
+[forceOverscroll]="false">
+  <section class="contato">
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col size="12">
+          <ion-text
+          class="txt-center color-gray-text full-width icon-title-text"
+          mode="ios">
+            <ion-icon
+            name="chatbubble-ellipses-outline"
+            class="full-width fs-32 animate__animated animate__fadeInUp">
+            </ion-icon>
+
+            <h2 class="font-baloo">
+              {{ 'CONTACT_PAGE.DESCRIPTION.TITLE.0' | translate }} <span class="font-w-bold txt-lowercase">{{ 'CONTACT_PAGE.DESCRIPTION.TITLE.1' | translate }}</span>
+            </h2>
+
+            <p class="fs-16">
+              {{ 'CONTACT_PAGE.DESCRIPTION.SUB_TITLE' | translate }}
+            </p>
+          </ion-text>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-segment
+          [(ngModel)]="selectedSegment"
+          (ionChange)="segmentChanged($event, selectedSegment)"
+          class="anf-segment full-width mg-top-16 mg-bottom-16"
+          mode="ios">
+            <ion-segment-button
+            *ngFor="let segment of segments"
+            [value]="segment.value">
+              <div class="text-wrapper">
+                <ng-container *ngIf="segment.value === 'comercial'">
+                  {{ 'CONTACT_PAGE.COMERCIAL' | translate }}
+                </ng-container>
+
+                <ng-container *ngIf="segment.value === 'others'">
+                  {{ 'CONTACT_PAGE.OTHER' | translate }}
+                </ng-container>
+              </div>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-col>
+
+        <ion-col size="12" class="txt-center">
+          <div class="contact-button-wrapper mg-bottom-16">
+            <ng-container *ngIf="selectedSegment === 'comercial'">
+              <a
+              (click)="showActionAlert('email')"
+              class="contact-zap-mail"
+              href="javascript:void(0)"
+              [title]="'CONTACT_PAGE.SEND_EMAIL' | translate">
+                <span class="color-linear font-baloo txt-no-decoration fs-14"><span class="fs-18"><b>{{ appInfoContact.email.text ? appInfoContact.email.text.split('@')[0] : 'email' }}</b>{{ appInfoContact.email.text ? '@' + appInfoContact.email.text.split('@')[1] : 'email' }}</span></span>
+                <span class="simulate-chip-as-btn txt-no-decoration fs-13">{{ 'CONTACT_PAGE.SEND_EMAIL' | translate }} <ion-icon name="mail-outline" class="mg-left-5"></ion-icon></span>
+              </a>
+            </ng-container>
+
+            <ng-container *ngIf="selectedSegment === 'others'">
+              <a
+              (click)="showActionAlert('whatsapp')"
+              class="contact-zap-mail"
+              href="javascript:void(0)"
+              [title]="'CONTACT_PAGE.SEND_MESSAGE' | translate">
+                <span class="color-linear font-baloo txt-no-decoration">+55 ({{ appInfoContact.phone.ddd ? appInfoContact.phone.ddd : '000' }}) <span class="fs-20"><b>{{ appInfoContact.phone.number ? appInfoContact.phone.number : '0 0000-0000' }}</b></span></span>
+                <span class="simulate-chip-as-btn txt-no-decoration fs-13">{{ 'CONTACT_PAGE.SEND_MESSAGE' | translate }}<ion-icon name="logo-whatsapp" class="mg-left-5"></ion-icon></span>
+              </a>
+            </ng-container>
+          </div>
+        </ion-col>
+
+        <ion-col size="12" class="txt-center">
+          <ion-text mode="ios">
+            <p class="color-gray-mid fs-13">
+              <ng-container *ngIf="selectedSegment === 'comercial'">
+                {{ 'CONTACT_PAGE.COMERCIAL_TEXT.0' | translate }} <span class="font-w-bold">{{ 'CONTACT_PAGE.COMERCIAL_TEXT.1' | translate }}</span>
+              </ng-container>
+
+              <ng-container *ngIf="selectedSegment === 'others'">
+                {{ 'CONTACT_PAGE.OTHER_TEXT.0' | translate }} <span class="font-w-bold">{{ 'CONTACT_PAGE.OTHER_TEXT.1' | translate }}</span>
+              </ng-container>
+            </p>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
+</ion-content>

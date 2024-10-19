@@ -1,0 +1,17 @@
+@import './../../../assets/scss/utils/mixins.scss';
+
+ion-content {
+  --background: linear-gradient(to top, var(--gray-ed) 15%, var(--white));
+
+  section {
+    &.pagina-nao-existe {
+      @include flexbox(center, center, row);
+      width: 100%;
+      height: 100%;
+
+      ion-grid {
+        flex: none;
+      }
+    }
+  }
+}

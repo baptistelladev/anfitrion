@@ -1,0 +1,23 @@
+@import './../../../../assets/scss/utils/mixins.scss';
+
+.social-network-wrapper {
+  @include flexbox(center, flex-start, row);
+
+  &.centered {
+    @media only screen and (max-width: 991px) {
+      justify-content: center;
+    }
+  }
+
+  ion-button:not(:first-child) {
+    margin-left: 8px;
+  }
+
+  ion-button {
+    &.social-network-button {
+      &:not(:first-child) {
+        margin: 0 0 0 12px;
+      }
+    }
+  }
+}

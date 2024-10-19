@@ -1,0 +1,10 @@
+ion-modal {
+  &.specific-list-modal {
+    --box-shadow: none;
+    --background: linear-gradient(to left, var(--white), var(--transparent));
+
+    @media only screen and (min-width: 768px) {
+      --border-radius: 12px;
+    }
+  }
+}

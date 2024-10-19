@@ -1,0 +1,73 @@
+ion-alert {
+
+  .alert-title.sc-ion-alert-ios {
+    color: var(--gray-text) !important;
+    font-size: 18px;
+    text-align: left;
+  }
+
+  .alert-radio-label.sc-ion-alert-ios {
+    color: var(--gray-text);
+  }
+
+  &.select-alert {
+    .alert-wrapper {
+      .alert-button-group.sc-ion-alert-ios {
+        .alert-button:not(.alert-button-role-cancel.sc-ion-alert-ios) {
+          color: var(--green);
+        }
+
+        .alert-button.alert-button-role-cancel.sc-ion-alert-ios {
+          color: var(--gray-text);
+        }
+      }
+    }
+  }
+
+  &.rgs-expanded {
+    .alert-radio-group.sc-ion-alert-ios {
+      max-height: 360px;
+      min-height: 360px;
+    }
+  }
+
+  &.rgs-alert {
+
+    .alert-title.sc-ion-alert-ios {
+      text-align: left;
+      margin: 4px 0 14px 0;
+      font-size: 14px;
+      color: var(--bkw-primary-color);
+    }
+
+    .alert-sub-title.sc-ion-alert-ios {
+      color: var(--gray-text);
+      font-size: 18px;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .alert-button.sc-ion-alert-ios {
+      color: var(--gray-text);
+    }
+
+    .alert-button.alert-button-role-confirm.sc-ion-alert-ios {
+      color: var(--green);
+    }
+
+    .alert-message.sc-ion-alert-ios, .alert-input-group.sc-ion-alert-ios {
+      color: var(--gray-text);
+      font-size: 14px;
+      text-align: left;
+    }
+
+    [aria-checked=true].sc-ion-alert-ios .alert-radio-inner.sc-ion-alert-ios {
+      border-color: var(--bkw-primary-color);
+    }
+
+    [aria-checked=true].sc-ion-alert-ios .alert-radio-label.sc-ion-alert-ios {
+      color: var(--bkw-primary-color);
+    }
+  }
+
+}

@@ -1,0 +1,401 @@
+
+<ion-header mode="ios" class="bg-white ion-no-border" id="estabelecimento-header">
+  <ion-toolbar mode="ios" class="ion-bg-white">
+    <div class="menu">
+      <ion-grid [fixed]="true">
+        <ion-row>
+          <ion-col size="9">
+            <ion-button
+            *ngIf="showBackButton"
+            mode="ios"
+            (click)="back()"
+            class="back ion-color-gray-text back-btn no-ion-padding font-baloo"
+            [title]="'SHARED.BACK' | translate"
+            fill="clear">
+              <ion-icon name="chevron-back-outline"></ion-icon> <span class="font-w-thin mg-left-5">{{ 'ESTABLISHMENT_PAGE.HEADER_TITLE.0' | translate }} <b>{{ 'ESTABLISHMENT_PAGE.HEADER_TITLE.1' | translate }}</b></span>
+            </ion-button>
+          </ion-col>
+
+          <ion-col size="3" class="txt-right">
+            <rgs-language-button [currentLanguage]="currentLanguage"></rgs-language-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content
+#establishmentContent
+[forceOverscroll]="false"
+[scrollEvents]="true"
+[fullscreen]="true"
+(ionScroll)="hideToolbar($event)">
+  <section class="estabelecimento-wrapper" *ngIf="establishment?.value">
+    <div class="hero-wrapper">
+      <div class="logo-wrapper" [ngClass]="{'logo-needs-gray-2' : establishment.value === 'galeteria-santista'}">
+        <ion-img [src]="'./../../../../assets/images/establishments/' + establishment.value + (establishment.value === 'bistro-14' || establishment.value === 'galeteria-santista' || establishment.value === 'guadalupe' || establishment.value === 'vixe' || establishment.value === 'vila-tolentino' ? '.png' : '.jpg')"></ion-img>
+      </div>
+    </div>
+
+    <div class="estabelecimento-content">
+      <ion-grid [fixed]="true">
+        <ion-row>
+          <ion-col size="12">
+            <ion-text mode="ios" class="txt-center">
+              <p class="fs-10 txt-uppercase color-gray-6">{{ establishment.mainType.text[currentLanguage.value] }}</p>
+              <h1 class="color-gray-text font-baloo fs-32 nome"><b>{{ establishment.name }}</b></h1>
+            </ion-text>
+
+            <div class="go-with-waze">
+              <ion-text mode="ios" class="txt-center">
+                <p class="color-gray-text fs-14">
+                  <ng-container *ngIf="currentLanguage.value !== 'en'">{{ establishment.adress.type[currentLanguage.value] }}</ng-container> {{ establishment.adress.street }}<ng-container *ngIf="currentLanguage.value === 'en'"> {{ establishment.adress.type[currentLanguage.value] }}</ng-container>, {{ establishment.adress.number }}
+                </p>
+                <p class="color-gray-text fs-14">{{ establishment.adress.zip_code }} - {{ establishment.adress.neighborhood }}</p>
+              </ion-text>
+
+              <ion-button
+              class="copy-btn"
+              [title]="'SHARED.COPY' | translate"
+              mode="ios"
+              fill="clear"
+              (click)="goWithWaze()">
+                <ion-icon name="copy-outline"></ion-icon>
+              </ion-button>
+            </div>
+          </ion-col>
+
+          <ion-col size="12">
+            <div class="buttons-wrapper" (click)="itIsntPremium()">
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="12" class="txt-center">
+                    <ion-button
+                    [disabled]="!establishment.isPremium"
+                    (click)="redirectToWhatsapp()"
+                    mode="md"
+                    shape="round"
+                    [title]="('SHARED.CALL_WHATSAPP.0' | translate) + ' ' + ('SHARED.CALL_WHATSAPP.1' | translate)"
+                    fill="solid"
+                    class="rgs-main-solid linkt-btn">
+                      <ion-icon name="logo-whatsapp" class="mg-right-5"></ion-icon>{{ 'SHARED.CALL_WHATSAPP.0' | translate }} <b class="mg-left-5">{{ 'SHARED.CALL_WHATSAPP.1' | translate }}</b>
+                    </ion-button>
+                  </ion-col>
+
+                  <!--
+                  <ion-col size="12" class="txt-center">
+                    <ion-button
+                    mode="md"
+                    shape="round"
+                    [title]="('SHARED.SEE_FOOD.0' | translate) + ' ' + ('SHARED.SEE_FOOD.1' | translate)"
+                    fill="solid"
+                    class="rgs-white-solid linkt-btn">
+                      <ion-icon name="receipt-outline" class="mg-right-8"></ion-icon>{{ 'SHARED.SEE_FOOD.0' | translate }} <b class="mg-left-5">{{ 'SHARED.SEE_FOOD.1' | translate }}</b>
+                    </ion-button>
+                  </ion-col>
+                  -->
+
+                  <ion-col size="12" class="txt-center">
+                    <ion-button
+                    [disabled]="!establishment.isPremium"
+                    (click)="redirectToInstagram()"
+                    mode="md"
+                    shape="round"
+                    [title]="('SHARED.SEE_ON_INSTAGRAM.0' | translate) + ' ' + ('SHARED.SEE_ON_INSTAGRAM.1' | translate)"
+                    fill="solid"
+                    class="rgs-white-solid linkt-btn">
+                      <ion-icon name="logo-instagram" class="mg-right-8"></ion-icon>{{ 'SHARED.SEE_ON_INSTAGRAM.0' | translate }} <b class="mg-left-5">{{ 'SHARED.SEE_ON_INSTAGRAM.1' | translate }}</b>
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+          </ion-col>
+
+          <ion-col size="12" *ngIf="establishment.isPremium">
+            <ion-item
+            lines="none"
+            mode="ios"
+            class="simulate-bootstrap-alert success mg-top-16 line-height-18">
+              <ion-icon src="./../../../../assets/icon/verified-check.svg" class="verified" slot="start"></ion-icon>
+
+              <ion-text mode="ios" class="color-bootstrap-success">
+                <p class="fs-12 mg-bottom-8">{{ 'ESTABLISHMENT_PAGE.IS_VERIFIED.TITLE' | translate }}</p>
+                <p class="fs-14"><b>{{ establishment.name }}</b> {{ 'ESTABLISHMENT_PAGE.IS_VERIFIED.TEXT' | translate }}</p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+
+          <!-- EXPERTISE (SÓ APARECE SE FOR RESTAURANTE )-->
+          <ng-container *ngIf="establishment.mainType.value === EstablishmentTypeEnum.RESTAURANTE">
+            <ion-col size="12" class="mg-top-32">
+              <ion-text mode="ios">
+                <hr class="rgs-divider">
+              </ion-text>
+            </ion-col>
+
+            <ion-col size="12">
+              <ion-item mode="ios" lines="none" class="establishment-item">
+                <ion-icon name="restaurant-outline" slot="start"></ion-icon>
+
+                <ion-text mode="ios" class="line-height-18">
+                  <p class="color-gray-text mg-left-16">
+                    <ng-container *ngFor="let specialty of establishment.specialty; let last = last">
+                      <b>{{ specialty.text[currentLanguage.value] }}</b><ng-container *ngIf="!last">, </ng-container></ng-container>.
+                  </p>
+                  <p class="color-gray-6 mg-left-16 fs-14 mg-top-8">{{ 'SHARED.SPECIALTY' | translate }}<ng-container *ngIf="establishment.specialty.length > 0">s</ng-container>.</p>
+                </ion-text>
+              </ion-item>
+            </ion-col>
+          </ng-container>
+
+          <ion-col size="12">
+            <ion-text mode="ios">
+              <hr class="rgs-divider">
+            </ion-text>
+          </ion-col>
+
+          <!-- TICKETS ALIMENTAÇÃO -->
+          <ng-container *ngIf="establishment.mainType.value === EstablishmentTypeEnum.EMPORIO || establishment.mainType.value === EstablishmentTypeEnum.MERCADO">
+            <ion-col size="12">
+              <ion-item mode="ios" lines="none" class="establishment-item">
+                <ion-icon name="card-outline" slot="start"></ion-icon>
+
+                <!-- SIM -->
+                <ion-text mode="ios" class="line-height-18" *ngIf="establishment.market_ticket_info">
+                  <p class="color-gray-text mg-left-16">{{ 'ESTABLISHMENT_PAGE.TICKETS.TEXT' | translate }} <b class="color-green">{{ 'ESTABLISHMENT_PAGE.MARKET_TICKETS.VA' | translate }}</b>.</p>
+                  <p class="color-gray-6 mg-left-16 fs-14 mg-top-8">
+                    <ng-container *ngFor="let ticket of establishment.market_ticket_info.tickets; let last = last">
+                      {{ ticket.text }}<ng-container *ngIf="!last">, </ng-container>
+                    </ng-container>.</p>
+                </ion-text>
+
+                <!-- NÃO -->
+                <ion-text mode="ios" class="line-height-18" *ngIf="!establishment.market_ticket_info">
+                  <p class="color-gray-text mg-left-16">{{ 'ESTABLISHMENT_PAGE.TICKETS_DONT' | translate }}.</p>
+                </ion-text>
+              </ion-item>
+            </ion-col>
+
+            <ion-col size="12">
+              <ion-text mode="ios">
+                <hr class="rgs-divider">
+              </ion-text>
+            </ion-col>
+          </ng-container>
+
+          <!-- SÓ APARECE CASO NÃO SEJA UM MERCADO OU EMPÓRIO, POR QUE NÃO INTERESSA -->
+          <ng-container *ngIf="establishment.mainType.value !== EstablishmentTypeEnum.EMPORIO && establishment.mainType.value !== EstablishmentTypeEnum.MERCADO">
+            <!-- TICKETS REFEIÇÃO -->
+            <ion-col size="12">
+              <ion-item mode="ios" lines="none" class="establishment-item">
+                <ion-icon name="card-outline" slot="start"></ion-icon>
+
+                <!-- SIM -->
+                <ion-text mode="ios" class="line-height-18" *ngIf="establishment.ticket_info.accept_ticket">
+                  <p class="color-gray-text mg-left-16">{{ 'ESTABLISHMENT_PAGE.TICKETS.TEXT' | translate }} <b class="color-green">{{ 'ESTABLISHMENT_PAGE.TICKETS.VR' | translate }}</b>.</p>
+                  <p class="color-gray-6 mg-left-16 fs-14 mg-top-8">
+                    <ng-container *ngFor="let ticket of establishment.ticket_info.tickets; let last = last">
+                      {{ ticket.text }}<ng-container *ngIf="!last">, </ng-container>
+                    </ng-container>.</p>
+                </ion-text>
+
+                <!-- NÃO -->
+                <ion-text mode="ios" class="line-height-18" *ngIf="!establishment.ticket_info.accept_ticket">
+                  <p class="color-gray-text mg-left-16">{{ 'ESTABLISHMENT_PAGE.TICKETS_DONT' | translate }}.</p>
+                </ion-text>
+              </ion-item>
+            </ion-col>
+
+            <ion-col size="12">
+              <ion-text mode="ios">
+                <hr class="rgs-divider">
+              </ion-text>
+            </ion-col>
+
+            <!-- PET FRIENDLY -->
+            <ion-col size="12">
+              <ion-item mode="ios" lines="none" class="establishment-item">
+                <ion-icon name="paw-outline" slot="start"></ion-icon>
+
+                <!-- SIM -->
+                <ion-text mode="ios" class="line-height-18" *ngIf="establishment.petfriendly_info.accept_petfriendly">
+                  <p class="color-gray-text mg-left-16">{{ 'PETFRIENDLY.BRING' | translate }} <b class="color-green">{{ 'PETFRIENDLY.YOUR_PET' | translate }}</b>.</p>
+                  <p class="color-gray-6 mg-left-16 fs-14 mg-top-8">Pet friendly.</p>
+                </ion-text>
+
+                <!-- NÃO -->
+                <ion-text mode="ios" class="line-height-18" *ngIf="!establishment.petfriendly_info.accept_petfriendly">
+                  <p class="color-gray-text mg-left-16">{{ 'PETFRIENDLY.DONT' | translate }}.</p>
+                </ion-text>
+              </ion-item>
+            </ion-col>
+
+            <ion-col size="12">
+              <ion-text mode="ios">
+                <hr class="rgs-divider">
+              </ion-text>
+            </ion-col>
+
+            <!-- LIVE MUSIC -->
+            <ion-col size="12">
+              <ion-item mode="ios" lines="none" class="establishment-item">
+                <ion-icon name="musical-notes-outline" slot="start"></ion-icon>
+
+                <!-- SIM -->
+                <ion-text mode="ios" *ngIf="establishment.livemusic_info.has_livemusic">
+                  <p class="color-gray-text mg-left-16">{{ 'LIVEMUSIC.HAS_SHOW' | translate }} <b class="color-green">{{ 'LIVEMUSIC.LIVE' | translate }}</b>.</p>
+                  <p class="color-gray-6 mg-left-16 fs-14 mg-top-8">{{ 'LIVEMUSIC.SEE_MORE' | translate }}</p>
+                </ion-text>
+
+                <!-- NÃO -->
+                <ion-text mode="ios" class="line-height-18" *ngIf="!establishment.livemusic_info.has_livemusic">
+                  <p class="color-gray-text mg-left-16">{{ 'LIVEMUSIC.DONT' | translate }}.</p>
+                </ion-text>
+              </ion-item>
+            </ion-col>
+
+            <ion-col size="12">
+              <ion-text mode="ios">
+                <hr class="rgs-divider">
+              </ion-text>
+            </ion-col>
+
+            <!-- LIVE MUSIC -->
+            <ion-col size="12">
+              <ion-item mode="ios" lines="none" class="establishment-item">
+                <ion-icon name="snow-outline" slot="start"></ion-icon>
+
+                <!-- SIM -->
+                <ion-text mode="ios" *ngIf="establishment.air_conditioned_info.has_air_conditioned">
+                  <p class="color-gray-text mg-left-16">{{ 'AIR_CONDITIONED.HAS' | translate }} <b class="color-green">{{ 'AIR_CONDITIONED.AIR_CONDITIONED_PLACE' | translate }}</b>.</p>
+                  <p class="color-gray-6 mg-left-16 fs-14 mg-top-8">{{ 'BOOKING.CONTACT_PLACE' | translate }}</p>
+                </ion-text>
+
+                <!-- NÃO -->
+                <ion-text mode="ios" class="line-height-18" *ngIf="!establishment.air_conditioned_info.has_air_conditioned">
+                  <p class="color-gray-text mg-left-16">{{ 'AIR_CONDITIONED.DONT' | translate }}.</p>
+                </ion-text>
+              </ion-item>
+            </ion-col>
+
+            <ion-col size="12">
+              <ion-text mode="ios">
+                <hr class="rgs-divider">
+              </ion-text>
+            </ion-col>
+
+            <!-- BOOKING -->
+            <ion-col size="12">
+              <ion-item mode="ios" lines="none" class="establishment-item">
+                <ion-icon name="book-outline" slot="start"></ion-icon>
+
+                <!-- SIM -->
+                <ion-text mode="ios" *ngIf="establishment.booking_info.accept_booking">
+                  <p class="color-gray-text mg-left-16">{{ 'BOOKING.SAVE_TIME' | translate }} <b class="color-green">{{ 'BOOKING.BOOKING' | translate }}</b>.</p>
+                  <p class="color-gray-6 mg-left-16 fs-14 mg-top-8">{{ 'BOOKING.CONTACT_PLACE' | translate }}</p>
+                </ion-text>
+
+                <!-- NÃO -->
+                <ion-text mode="ios" class="line-height-18" *ngIf="!establishment.booking_info.accept_booking">
+                  <p class="color-gray-text mg-left-16">{{ 'BOOKING.DONT' | translate }}.</p>
+                </ion-text>
+              </ion-item>
+            </ion-col>
+
+            <ion-col size="12">
+              <ion-text mode="ios">
+                <hr class="rgs-divider">
+              </ion-text>
+            </ion-col>
+          </ng-container>
+
+          <!-- WORKING TIME -->
+          <ion-col size="12">
+            <ion-item mode="ios" lines="none" class="establishment-item">
+              <ion-icon name="calendar-outline" slot="start"></ion-icon>
+
+              <ion-text mode="ios">
+                <p class="color-gray-text mg-left-16">{{ 'WORKING_TIME.TEXT' | translate }}</p>
+                <p class="color-gray-6 mg-left-16 fs-14 mg-top-8">{{ 'WORKING_TIME.ADVISE' | translate }}</p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-card mode="ios" class="working">
+              <ion-card-content>
+                <ion-item mode="ios" *ngFor="let time of establishment.working_time; let last = last" [lines]="last ? 'none' : 'full'">
+                  <ion-text mode="ios" [ngClass]="{'is-today font-w-bold': time.day_number === todayAsDayNumber}">
+                    <p class="fs-14 color-gray-16 day-name">
+                      {{ time.text[currentLanguage.value] }}
+                    </p>
+                    <!-- HOJE -->
+                    <ion-chip *ngIf="time.day_number === todayAsDayNumber" class="main-solid-gray fs-10 txt-uppercase small">
+                      {{ 'SHARED.TODAY' | translate }}
+                    </ion-chip>
+                  </ion-text>
+
+                  <ion-text mode="ios" slot="end" [ngClass]="{'is-today font-w-bold': time.day_number === todayAsDayNumber}">
+                    <p class="fs-18 color-gray-text" *ngFor="let hour of time.opening_time">
+                      {{ hour.open }} {{ 'SHARED.TO_HOUR' | translate }} {{hour.close }}
+                    </p>
+                  </ion-text>
+
+                  <ion-text mode="ios" slot="end" *ngIf="time.opening_time.length === 0">
+                    <p class="fs-18 color-gray-text">{{ 'SHARED.NO_OPEN' | translate }}</p>
+                  </ion-text>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+
+            <ion-item
+            lines="none"
+            mode="ios"
+            class="simulate-bootstrap-alert warning mg-top-16 line-height-18">
+              <ion-icon name="alert-circle-outline" slot="start" class="color-bootstrap-warning"></ion-icon>
+
+              <ion-text mode="ios" class="color-bootstrap-warning">
+                <p class="fs-12 mg-bottom-8">{{ 'COMPONENTS.ALERT_WORKING_TIME.TITLE' | translate }}</p>
+                <p class="fs-14">{{ 'COMPONENTS.ALERT_WORKING_TIME.TEXT.0' | translate }} <b>{{ 'COMPONENTS.ALERT_WORKING_TIME.TEXT.1' | translate }}</b>.</p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-text mode="ios">
+              <hr class="rgs-divider">
+            </ion-text>
+          </ion-col>
+
+          <ion-col size="12">
+            <div class="scroll-to-top full-width">
+              <ion-button
+              (click)="scrollToTop()"
+              size="small"
+              shape="round"
+              [title]="('SHARED.BACK_TO_TOP.0' | translate) + ' ' + ('SHARED.BACK_TO_TOP.1' | translate)"
+              fill="clear"
+              class="rgs-main-solid mg-bottom-16 fs-14">
+                {{ 'SHARED.BACK_TO_TOP.0' | translate }} <b class="mg-left-5">{{ 'SHARED.BACK_TO_TOP.1' | translate }}</b> <ion-icon name="chevron-up-outline" class="mg-left-5"></ion-icon>
+              </ion-button>
+            </div>
+          </ion-col>
+
+          <ion-col size="12">
+            <rgs-made-w-love [centered]="true"></rgs-made-w-love>
+          </ion-col>
+
+          <ion-col size="12" class="no-pad-top">
+            <rgs-social-networks [centered]="true"></rgs-social-networks>
+          </ion-col>
+
+          <ion-col size="12" class="mg-bottom-16">
+            <rgs-copyright></rgs-copyright>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </section>
+</ion-content>

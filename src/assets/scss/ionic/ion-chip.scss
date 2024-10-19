@@ -1,0 +1,22 @@
+ion-chip {
+  &.main-solid-green {
+    background: linear-gradient(.351turn,#769834 43.71%,#547D0E 58.8%);
+    border: .5px solid var(--green);
+    color: var(--white);
+    margin: 0;
+    transition: all ease 200ms;
+  }
+
+  &.main-solid-gray {
+    background: var(--gray-text);
+    color: var(--white);
+    margin: 0;
+    transition: all ease 200ms;
+  }
+
+  &.small {
+    padding: 6px 10px;
+    min-height: 0;
+  }
+
+}

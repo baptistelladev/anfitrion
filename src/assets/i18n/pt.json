@@ -1,0 +1,204 @@
+{
+  "CHANGE_LANG_PAGE" : {
+    "PAGE_TITLE" : "Troque o idioma que usa na Rua Gastronômica de Santos",
+    "DESCRIPTION" : {
+      "TITLE" : ["defina","um idioma"],
+      "SUB_TITLE": "como quer ver nosso app"
+    },
+    "CHANGE_WHEN_YOU_WANT" : "altere quando quiser",
+    "CURRENT_LANG" : "Idioma atual"
+  },
+  "SHARED" : {
+    "ADVERTISE" : "anuncie",
+    "YOUR_BRAND" : "sua marca",
+    "LOOKING_FOR" : "Procurando por",
+    "BACK_TO_TOP" : ["voltar","para cima"],
+    "ESTABLISHMENTS" : "estabelecimento",
+    "VERSION" : "versão",
+    "SEE_DETAILS" : ["Ver","detalhes"],
+    "CANCEL" : "Cancelar",
+    "DEFINE" : "Definir",
+    "TODAY" : "Hoje",
+    "DAYS" : {
+      "MONDAY": "Segunda-feira",
+      "TUESDAY": "Terça-feira",
+      "WEDNESDAY": "Quarta-feira",
+      "THURSDAY": "Quinta-feira",
+      "FRIDAY": "Sexta-feira",
+      "SATURDAY": "Sábado",
+      "SUNDAY": "Domingo"
+    },
+    "TO_HOUR" : "às",
+    "CALL_WHATSAPP" : ["chamar no","WhatsApp"],
+    "SEE_FOOD" : ["acessar","cardápio"],
+    "SEE_ON_INSTAGRAM" : ["ver no","instagram"],
+    "COPY" : "Copiar",
+    "GO_TO_WHATS" : "Ir para o WhatsApp",
+    "I_WILL_REDIRECT_YOU" : "Eu vou te direcionar para o whats do(a)",
+    "OK_QUESTION" : "tudo bem?",
+    "I_WILL_REDIRECT_YOU_INSTAGRAM" : "Eu vou te direcionar para o instagram do(a)",
+    "GO_TO_INSTA" : "Ir para o Instagram",
+    "UNDERSTOOD" : "Entendi",
+    "COPIED_ADRESS" : "Endereço copiado",
+    "PRIVATE_APP" : "Cole-o em um aplicativo de transporte privado de sua preferência: Uber, 99taxi, etc...",
+    "BACK" : "Voltar",
+    "FILTER" : "Filtro",
+    "TO_FILTER" : "Filtrar",
+    "ALRIGHT" : "Tudo bem",
+    "NO_RESULT_ESTABLISHMENTS" : "Nenhum estabelecimento por enquanto",
+    "NO_RESULT_PARKINGS" : "Nenhum estacionamento por enquanto",
+    "SPECIALTY" : "Culinária",
+    "NUMBER" : "Número",
+    "NO_OPEN" : "Não abre",
+    "COMING_SOON" : "Em breve",
+    "LIST_OF" : "Lista de",
+    "CLOSE_MODAL" : "Fechar modal",
+    "CONTACT" : "Contato",
+    "IS_NOT_PREMIUM" : "não possui o selo anfitrion e por isso não podemos liberar esta funcionalidade"
+  },
+  "INICIO_PAGE" : {
+    "PARAGRAPH_ONE" : ["Nosso próposito aqui é fazer com que voê economize o seu bem mais precioso:","o tempo"],
+    "PARAGRAPH_TWO" : ["Filtre os estabelecimentos conforme o teu gosto: comida japonesa, comida mexicana, hamburgueria, pizzaria, pet friendly, música ao vivo..."],
+    "LIST_OF_ESTABLISHMENTS" : ["Confira","os estabelecimentos"],
+    "PAGE_TITLE" : "Lista de estabelecimentos na Rua Gastronômica de Santos",
+    "FEEDBACK" : {
+      "GIVE_YOUR_FEEDBACK" : ["Dê o seu","feedback"],
+      "GIVE_YOUR_FEEDBACK_TEXT" : "Gostaríamos de saber se o site é ou foi útil de alguma forma para você, caso contrário, o que foi que você não encontrou por aqui, o que podemos melhorar?",
+      "SEND_FEEDBACK" : "enviar meu feedback"
+    },
+    "SAVING_TIME_TITLE" : ["Já","te adiantando"],
+    "SAVING_TIME_TEXT" : "Hoje nossa rua conta com",
+    "PARKING_TITLE" : ["Para quem vem","de carro"],
+    "PARKING_TEXT" : "Existem estacionamentos na rua e próximos a rua, confira",
+    "VERIFIED" : {
+      "TITLE" : "O que é isso?",
+      "TEXT" : ["O selo anfitrion significa que os dados do estabelecimento foram passados pelo próprio local","e que o estabelecimento colabora financeiramente"," com este projeto, para que vocë não perca tempo procurando em rede social"]
+    }
+  },
+  "COMPONENTS" : {
+    "MADE_W_LOVE" : ["feito com","em"],
+    "TABS" : {
+      "EXPLORE" : "Explorar",
+      "MENU" : "Menu"
+    },
+    "CHANGE_LANG" : "Trocar idioma",
+    "SEGMENT_VIEW" : {
+      "AS_SLIDE" : ["Você quer ver os estabelecimentos em forma de","slide"],
+      "AS_LIST" : ["Você quer ver os estabelecimentos em forma de","lista"],
+      "AS_LIST_TITLE" : "Modo lista",
+      "AS_SLIDE_TITLE" : "Modo slide"
+    },
+    "ALERT_WORKING_TIME" : {
+      "TITLE" : "Atenção",
+      "TEXT" : ["Estes horários são fornecidos pelo estabelecimento,","mas podem variar sem aviso prévio, principalmente em feriados e vésperas de feriados"]
+    }
+  },
+  "MENU_PAGE" : {
+    "HEADER_TITLE" : ["sessão","menu"],
+    "MENU_TITLE" : "Menu"
+  },
+  "CONTACT_PAGE" : {
+    "PAGE_TITLE" : "Fale comigo sobre a Rua Gastronômica de Santos",
+    "HEADER_TITLE" : ["sessão","contato"],
+    "DESCRIPTION" : {
+      "TITLE" : ["fale","comigo"],
+      "SUB_TITLE": "por e-mail, redes sociais ou whatsapp."
+    },
+    "COMERCIAL" : "comercial",
+    "OTHER" : "outros",
+    "SEND_EMAIL" : "enviar email",
+    "SEND_MESSAGE" : "enviar mensagem",
+    "COMERCIAL_TEXT" : ["para","parcerias e anúncios"],
+    "OTHER_TEXT" : ["para","sugestões ou críticas"],
+    "DIRECT_TO_WHATS" : "Iremos te direcionar para o WhatsApp, tudo bem?",
+    "DIRECT_TO_DEFAULT_EMAIL" : "Abriremos seu app padrão de e-mail, tudo bem?"
+  },
+  "ABOUT_PAGE" : {
+    "PAGE_TITLE": "Um pouco sobre nós",
+    "HEADER_TITLE" : ["sessão","sobre"],
+    "TASTIEST_STREET" : ["a rua","mais gostosa","da cidade."],
+    "INTRODUCTION" : {
+      "TITLE" : ["Uma breve","introdução"],
+      "TEXT" : [
+        ["Á essa altura você deve estar se questionando:","por que criaram uma página na web para a Rua Tolentino Filgueras?"],
+        ["Para algumas pessoas pode não fazer sentido e não ter utilidade mas para outras muitas pessoas será de grande ajuda. A Baixada Santista e principalmente a cidade de Santos recebe milhares de turistas todos os anos, seja em rezão do porto, do time, do centro histórico, orla da praia, gastronômia, etc."],
+        ["São turistas de todos os lugares, do próprio estado de São Paulo, do Brasil e de outras partes do mundo. Com base nisso nós gostaríamos de recepcionar essas pessoas com certo carinho. Mesmo que com um pequeno gesto, tentamos ajudar os próprios moradores e os visitantes, fornecendo informações relevantes sobre cada estabelecimento."]
+      ]
+    },
+    "ACHE" : {
+      "TITLE" : ["Qual","dor","resolvemos"],
+      "TEXT": [
+        ["Imagine a seguinte situação: você é um morador ou turista e está visitando pela primeira vez a Rua Gastronômica, só isso já seria um bom motivo, mostramos todos os estabelecimentos que existem na rua, o número para facilitar a localização e outras informações relevantes?"],
+        ["Agora imagina que esse turista pode ser ser um estrangeiro? Se você estivesse no lugar dele(a), aposto que gostaria de receber este tipo de atenção."],
+        ["A pessoa pode estar a pé ou de carro e ter que percorrer a rua inteira","para saber o que tem, onde tem, como é e se está aberto. Fora que se estiver de carro pode acontecer de ter que dar mais de uma voltar e vai por mim isso acontece bastante."]
+      ]
+    },
+    "RESUME" : {
+      "TITLE" : ["Se","eu tivesse que resumir"],
+      "TEXT": [
+        ["Diria que contruímos para tornar Santos uma cidade mais digital, o que beneficia você, os turistas, os estabelecimentos e a cidade como um todo. Desta forma conseguimos otimizar o bem mais precioso de cada um:","o tempo","e como consequência ajuda a fomentar o turismo na região."],
+        ["Isso é só o começo, temos outras idéias em mente para esse projeto e outros que ainda virão. Você pode contribuir com sugestões de melhoria, críticas, elogios, enfim, será um prazer receber uma mensagem sua."]
+      ]
+    },
+    "CONCLUSION" : {
+      "TITLE" : ["Conclusão"],
+      "TEXT" : ["Nosso projeto ainda não recebe apoio financeiro nem material por isso pode ser que você se depare com anúncios particulares ou até do próprio google."]
+    }
+  },
+  "ERRORS" : {
+    "REQUIRED_FIELD" : "campo obrigatório"
+  },
+  "ESTABLISHMENT_PAGE" : {
+    "HEADER_TITLE" : ["sobre o","estabelecimento"],
+    "TICKETS" : {
+      "TEXT" : "Além das formas tradicionais de pagamento, aceitam",
+      "VR" : "vale refeição"
+    },
+    "TICKETS_DONT" : "Não aceita vale refeição como pagamento",
+    "MARKET_TICKETS" : {
+      "TEXT" : "Além das formas tradicionais de pagamento, aceitam",
+      "VA" : "vale alimentação"
+    },
+    "MARKET_TICKETS_DONT" : "Não aceita vale alimentação como pagamento",
+    "IS_VERIFIED" : {
+      "TITLE" : "Verificado",
+      "TEXT" : "é um ótimo anfitrião pois além de manter os dados atualizados também colabora com este projeto financeiramente para que você economize tempo."
+    }
+  },
+  "PETFRIENDLY" : {
+    "BRING" : "Pode trazer",
+    "YOUR_PET" : "seu bichinho",
+    "DONT" : "Não é possível trazer seu pet"
+  },
+  "LIVEMUSIC" : {
+    "HAS_SHOW" : "Tem show",
+    "LIVE" : "ao vivo",
+    "SEE_MORE" : "Recomendamos que visite o insta do estabelecimento para ver a programação do dia.",
+    "DONT" : "Não possui música ao vivo"
+  },
+  "AIR_CONDITIONED" : {
+    "HAS" : "Possui",
+    "AIR_CONDITIONED_PLACE" : "ambiente climatizado",
+    "SEE_MORE" : "Consulte com o estabelecimento para mais detalhes.",
+    "DONT" : "Não possui ambiente climatizado"
+  },
+  "BOOKING" : {
+    "SAVE_TIME" : "Economize tempo, faça uma",
+    "BOOKING" : "reserva",
+    "CONTACT_PLACE" : "Entre em contato pelo botão do WhatsApp.",
+    "DONT" : "Não aceita reservas antecipadas"
+  },
+  "WORKING_TIME" : {
+    "TEXT" : "Horário de funcionamento",
+    "ADVISE" : "Dizemos que um restaurante está aberto ou fechado com base nos horários abaixo."
+  },
+  "MESSAGES" : {
+    "WELCOME_WHATSAPP" : "Olá eu vim do Rua Gastronômica de Santos e..."
+  },
+  "PAGE_NOT_FOUND" : {
+    "PAGE_TITLE" : "Não encontramos a página, volte para a tela principal",
+    "TITLE": ["página","não encontrada"],
+    "TEXT" : ["Você deve ter digitado algo errado, ","deve ser fome, sei lá..."],
+    "BUTTON" : ["Voltar","para tela principal"]
+  }
+}
