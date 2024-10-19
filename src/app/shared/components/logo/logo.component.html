@@ -1,0 +1,5 @@
+<ion-text mode="ios" [ngClass]="currentLanguage ? currentLanguage.value : ''">
+  <p *ngIf="currentLanguage?.value === 'pt'" class="font-baloo color-white" [ngClass]="{ 'big' : size === 'big' }">gastr<span class="color-linear font-w-bold">on</span>ômica</p>
+  <p *ngIf="currentLanguage?.value === 'en'" class="font-baloo color-white" [ngClass]="{ 'big' : size === 'big' }">gastr<span class="color-linear font-w-bold">on</span>omic</p>
+  <p *ngIf="currentLanguage?.value === 'es'" class="font-baloo color-white" [ngClass]="{ 'big' : size === 'big' }">gastr<span class="color-linear font-w-bold">on</span>ómica</p>
+</ion-text>

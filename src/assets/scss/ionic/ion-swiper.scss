@@ -1,0 +1,74 @@
+@import './../../../assets/scss/utils/mixins.scss';
+
+.places-swiper-wrapper {
+  padding: 32px 0;
+  position: relative;
+
+  .swiper-description {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 16px 16px 8px 16px;
+  }
+
+  .swiper-buttons {
+    @include flexbox(center, space-between, row);
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 314;
+    margin-top: 40px;
+
+    ion-button {
+      font-size: 38px;
+      --color: var(--white);
+
+      &.prev { left: 0; margin-left: -42px; }
+      &.next { right: 0; margin-right: -42px; }
+
+      ion-icon {
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, .4))
+      }
+    }
+  }
+
+  swiper-container {
+    swiper-slide {
+      width: auto !important;
+    }
+  }
+}
+
+.swiper-w-relative-pagination {
+  &::part(pagination) {
+    position: relative;
+    margin: 28px 0 0 0;
+  }
+
+  &::part(bullet) {
+    background: var(--gray-text);
+  }
+
+  &::part(bullet-active) {
+    background: var(--gray-text);
+  }
+}
+
+.inicio-swiper-wrapper {
+  swiper-container {
+    swiper-slide {
+      width: auto;
+    }
+
+    &::part(pagination) {
+      display: block !important;
+    }
+  }
+}
+
+.suggestions-swiper {
+  &::part(button-next) {
+    color: var(--white);
+  }
+}

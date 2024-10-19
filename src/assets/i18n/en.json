@@ -1,0 +1,204 @@
+{
+  "CHANGE_LANG_PAGE" : {
+    "PAGE_TITLE": "Change the language you see Santos Gastronomic Street",
+    "DESCRIPTION": {
+      "TITLE": ["define", "a language"],
+      "SUB_TITLE": "how do you want to see our app"
+    },
+    "CHANGE_WHEN_YOU_WANT" : "change when you want",
+    "CURRENT_LANG" : "Current language"
+  },
+  "SHARED" : {
+    "ADVERTISE" : "advertise",
+    "YOUR_BRAND" : "your brand",
+    "LOOKING_FOR" : "Looking for",
+    "BACK_TO_TOP" : ["scroll","to top"],
+    "ESTABLISHMENTS" : "establishment",
+    "VERSION" : "version",
+    "SEE_DETAILS" : ["see","details"],
+    "CANCEL" : "Cancel",
+    "DEFINE" : "Define",
+    "TODAY": "Today",
+    "DAYS": {
+      "MONDAY": "Monday",
+      "TUESDAY": "Tuesday",
+      "WEDNESDAY": "Wednesday",
+      "THURSDAY": "Thursday",
+      "FRIDAY": "Friday",
+      "SATURDAY": "Saturday",
+      "SUNDAY": "Sunday"
+    },
+    "TO_HOUR" : "to",
+    "CALL_WHATSAPP": ["call on", "WhatsApp"],
+    "SEE_FOOD": ["see", "menu"],
+    "SEE_ON_INSTAGRAM": ["see on", "Instagram"],
+    "COPY" : "Copy",
+    "GO_TO_WHATS" : "Go to WhatsApp",
+    "I_WILL_REDIRECT_YOU" : "I'll direct you to",
+    "OK_QUESTION" : "okay?",
+    "I_WILL_REDIRECT_YOU_INSTAGRAM" : "I'll direct you to",
+    "GO_TO_INSTA" : "Go to Instagram",
+    "UNDERSTOOD" : "I understood",
+    "COPIED_ADRESS" : "Adress has copied",
+    "PRIVATE_APP" : "Paste it into a private transport app of your choice: Uber, 99taxi, etc...",
+    "BACK" : "Back",
+    "FILTER" : "Filter",
+    "TO_FILTER" : "Filter now",
+    "ALRIGHT" : "Okay",
+    "NO_RESULT_ESTABLISHMENTS" : "No establishments for now",
+    "NO_RESULT_PARKINGS" : "No parking for now",
+    "SPECIALTY" : "Cooking",
+    "NUMBER" : "Number",
+    "NO_OPEN" : "Doesn't open",
+    "COMING_SOON" : "Coming soon",
+    "LIST_OF" : "list",
+    "CLOSE_MODAL" : "Close modal",
+    "CONTACT" : "Contact",
+    "IS_NOT_PREMIUM": "does not have the host badge, and therefore we cannot unlock this feature."
+  },
+  "INICIO_PAGE" : {
+    "PARAGRAPH_ONE" : ["Our purpose here is to help you save your most precious asset: ","time"],
+    "PARAGRAPH_TWO" : ["Filter the establishments based on your preferences: Japanese food, Mexican food, burger joint, pizzeria, pet-friendly, live music..."],
+    "LIST_OF_ESTABLISHMENTS" : ["List","of stablishments"],
+    "PAGE_TITLE" : "List of establishments in Gastronomic St. of Santos",
+    "FEEDBACK": {
+      "GIVE_YOUR_FEEDBACK": ["Give your", "feedback"],
+      "GIVE_YOUR_FEEDBACK_TEXT": "We would like to know if the website has been helpful to you in any way. If not, what did you not find here, and what can we improve?",
+      "SEND_FEEDBACK": "send my feedback"
+    },
+    "SAVING_TIME_TITLE": ["Already", "getting ahead"],
+    "SAVING_TIME_TEXT": "Today our street has",
+    "PARKING_TITLE": ["For those coming", "by car"],
+    "PARKING_TEXT": "There are parking lots on the street and nearby, see below",
+    "VERIFIED": {
+      "TITLE": "What is this?",
+      "TEXT" : ["The host seal means that the establishment's data was provided by the location itself","and that the establishment financially collaborates","with this project, so you don't waste time searching on social media or asking on the street"]
+    }
+  },
+  "COMPONENTS" : {
+    "MADE_W_LOVE" : ["made with","in"],
+    "TABS" : {
+      "EXPLORE" : "Explore",
+      "MENU" : "Menu"
+    },
+    "CHANGE_LANG" : "Change language",
+    "SEGMENT_VIEW": {
+      "AS_SLIDE": ["Do you want to see the establishments in the form of", "slide"],
+      "AS_LIST": ["Do you want to see the establishments in the form of", "list"],
+      "AS_LIST_TITLE" : "List mode",
+      "AS_SLIDE_TITLE" : "Slide mode"
+    },
+    "ALERT_WORKING_TIME": {
+      "TITLE": "Attention",
+      "TEXT": ["These hours are provided by the establishment,", "but they may vary without prior notice, especially on holidays and holiday eves"]
+    }
+  },
+  "MENU_PAGE" : {
+    "HEADER_TITLE" : ["section","menu"],
+    "MENU_TITLE" : "Menu"
+  },
+  "CONTACT_PAGE" : {
+    "PAGE_TITLE": "Talk to me about the Gastronomic Street of Santos",
+    "HEADER_TITLE" : ["contact", "section"],
+    "DESCRIPTION" : {
+      "TITLE" : ["talk", "to me"],
+      "SUB_TITLE" : "via email, social networks, or WhatsApp."
+    },
+    "COMERCIAL" : "comercial",
+    "OTHER" : "others",
+    "SEND_EMAIL" : "send email",
+    "SEND_MESSAGE" : "send message",
+    "COMERCIAL_TEXT" : ["for","partnerships and advertisements"],
+    "OTHER_TEXT" : ["for","suggestions and criticism"],
+    "DIRECT_TO_WHATS": "We will direct you to WhatsApp, is that okay?",
+    "DIRECT_TO_DEFAULT_EMAIL": "We will open your default email app, is that okay?"
+  },
+  "ABOUT_PAGE" : {
+    "PAGE_TITLE": "A little about us",
+    "HEADER_TITLE" : ["section","about"],
+    "TASTIEST_STREET" : ["the","tastiest street","in the city."],
+    "INTRODUCTION" : {
+      "TITLE" : ["A brief","introduction"],
+      "TEXT": [
+        ["At this point, you might be wondering:", "why a webpage was created for Tolentino Filgueras Street?"],
+        ["For some, it may not make sense or seem useful, but for many others, it will be a great help. The Baixada Santista, especially the city of Santos, receives thousands of tourists every year, whether for the port, the soccer team, the historic center, the beachfront, or the gastronomy, etc."],
+        ["Tourists come from all over, from within the state of São Paulo, from all over Brazil, and from other parts of the world. Based on this, we would like to warmly welcome these people. Even with a small gesture, we aim to assist both residents and visitors by providing relevant information about each establishment."]
+      ]
+    },
+    "ACHE" : {
+      "TITLE" : ["What","pain","do we resolve"],
+      "TEXT": [
+        ["Imagine the following situation: you are a resident or a tourist visiting Gastronômica Street for the first time. Just that would be a good reason for us to show you all the establishments on the street, along with their numbers to make location easier and other relevant information."],
+        ["Now, imagine that this tourist could be a foreigner. If you were in their shoes, I bet you would appreciate this kind of attention."],
+        ["The person might be on foot or driving and would have to walk the entire street", "to find out what’s there, where it is, what it’s like, and if it’s open. Plus, if they’re driving, they might have to go around more than once, and believe me, that happens quite often."]
+      ]
+    },
+    "RESUME" : {
+      "TITLE" : ["If","I had to summarize"],
+      "TEXT": [
+        ["I would say that we built this to make Santos a more digital city, which benefits you, the tourists, the establishments, and the city as a whole. In this way, we can optimize everyone's most precious asset:", "time", "and consequently help to promote tourism in the region."],
+        ["This is just the beginning; we have other ideas in mind for this project and others that will come. You can contribute with suggestions for improvement, feedback, compliments—anyway, it will be a pleasure to receive a message from you."]
+      ]
+    },
+    "CONCLUSION" : {
+      "TITLE" : ["Conclusion"],
+      "TEXT" : ["Our project does not yet receive financial or material support, so you may come across private ads or even from Google itself."]
+    }
+  },
+  "ERRORS" : {
+    "REQUIRED_FIELD" : "required field"
+  },
+  "ESTABLISHMENT_PAGE": {
+    "HEADER_TITLE": ["about the", "establishment"],
+    "TICKETS": {
+      "TEXT": "In addition to traditional payment methods, they accept",
+      "VR": "meal voucher"
+    },
+    "TICKETS_DONT": "Does not accept meal vouchers as payment",
+    "MARKET_TICKETS": {
+      "TEXT": "In addition to traditional payment methods, they accept",
+      "VA": "food vouchers"
+    },
+    "MARKET_TICKETS_DONT": "Does not accept food vouchers as a form of payment",
+    "IS_VERIFIED": {
+      "TITLE": "Verified",
+      "TEXT" : "is a great host because, in addition to keeping the data updated, it also collaborates financially with this project so you can save time."
+    }
+  },
+  "PETFRIENDLY": {
+    "BRING": "You can bring",
+    "YOUR_PET": "your pet",
+    "DONT": "It is not possible to bring your pet"
+  },
+  "LIVEMUSIC": {
+    "HAS_SHOW": "There is a show",
+    "LIVE": "live",
+    "SEE_MORE": "We recommend checking the establishment's Instagram for the day's schedule.",
+    "DONT": "Does not have live music"
+  },
+  "AIR_CONDITIONED": {
+    "HAS": "Has",
+    "AIR_CONDITIONED_PLACE": "air-conditioned environment",
+    "SEE_MORE": "Check with the establishment for more details.",
+    "DONT": "Does not have air conditioning"
+  },
+  "BOOKING": {
+    "SAVE_TIME": "Save time, make a",
+    "BOOKING": "reservation",
+    "CONTACT_PLACE": "Contact through the WhatsApp button.",
+    "DONT": "Does not accept advance reservations"
+  },
+  "WORKING_TIME": {
+    "TEXT": "Working hours",
+    "ADVISE": "We state whether a restaurant is open or closed based on the hours below."
+  },
+  "MESSAGES" : {
+    "WELCOME_WHATSAPP" : "Hello, I came from the Gastronomic Street of Santos and..."
+  },
+  "PAGE_NOT_FOUND": {
+  "PAGE_TITLE": "We couldn't find the page, return to the main screen",
+  "TITLE": ["page", "not found"],
+  "TEXT": ["You might have typed something wrong, ", "must be hunger, I don't know..."],
+  "BUTTON": ["Back", "to main screen"]
+}
+}

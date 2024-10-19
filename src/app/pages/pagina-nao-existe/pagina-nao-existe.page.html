@@ -1,0 +1,40 @@
+<ion-content
+[forceOverscroll]="false"
+[fullscreen]="true">
+  <section class="pagina-nao-existe">
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col size="12">
+          <ion-text
+          class="txt-center color-gray-text full-width icon-title-text"
+          mode="ios">
+            <ion-icon
+            name="newspaper-outline"
+            class="full-width fs-32 animate__animated animate__fadeInUp">
+            </ion-icon>
+
+            <h2 class="font-baloo">
+              {{ 'PAGE_NOT_FOUND.TITLE.0' | translate }} <span class="font-w-bold txt-lowercase">{{ 'PAGE_NOT_FOUND.TITLE.1' | translate }}</span>
+            </h2>
+
+            <p class="fs-16">
+              {{ 'PAGE_NOT_FOUND.TEXT.0' | translate }} {{ 'PAGE_NOT_FOUND.TEXT.1' | translate }}.
+            </p>
+          </ion-text>
+        </ion-col>
+
+        <ion-col size="12" class="txt-center">
+          <ion-button
+          [routerLink]="['/inicio']"
+          mode="md"
+          shape="round"
+          [title]="'Voltar para home'"
+          fill="solid"
+          class="rgs-main-solid fs-14 mg-top-16">
+            {{ 'PAGE_NOT_FOUND.BUTTON.0' | translate }} <b class="mg-left-5">{{ 'PAGE_NOT_FOUND.BUTTON.1' | translate }}</b>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
+</ion-content>

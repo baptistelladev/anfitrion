@@ -1,0 +1,7 @@
+<ion-button
+(click)="switchLanguage()"
+mode="md"
+fill="clear"
+[title]="'COMPONENTS.CHANGE_LANG' | translate">
+  <ion-img [src]="'./../../../../assets/images/flags/' +  currentLanguage?.value + '.svg'"></ion-img>
+</ion-button>

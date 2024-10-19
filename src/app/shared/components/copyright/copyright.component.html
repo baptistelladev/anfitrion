@@ -1,0 +1,10 @@
+<ion-text
+[ngClass]="{
+  'color-white' : color === 'white',
+  'color-gray-text' : color === 'gray-text'
+}"
+mode="ios"
+class="ion-text-center">
+  <p class="fs-13" *ngIf="currentYear !== yearOfCreation">&copy; copyright {{ yearOfCreation }} - {{ currentYear }}</p>
+  <p class="fs-13" *ngIf="currentYear === yearOfCreation">&copy; copyright {{ currentYear }}</p>
+</ion-text>

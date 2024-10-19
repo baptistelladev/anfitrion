@@ -1,0 +1,23 @@
+
+@import './../../../../assets/scss/utils/mixins.scss';
+ion-content {
+  --background: linear-gradient(to top, var(--gray-ed) 15%, var(--white));
+
+  section {
+    &.trocar-idioma {
+      width: 100%;
+      height: 100%;
+      @include flexbox(center, center, row);
+
+      ion-grid {
+        flex: none;
+      }
+
+      .trocar-idioma-content {
+        @include flexbox(center, center, column);
+        max-width: 320px;
+        margin: 0 auto;
+      }
+    }
+  }
+}

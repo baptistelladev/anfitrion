@@ -1,0 +1,205 @@
+{
+  "CHANGE_LANG_PAGE" : {
+    "PAGE_TITLE": "Cambia el idioma que ves en la Calle Gastronómica de Santos",
+    "DESCRIPTION": {
+      "TITLE": ["define", "un idioma"],
+      "SUB_TITLE": "cómo quieres ver nuestra app"
+    },
+    "CHANGE_WHEN_YOU_WANT" : "cambia cuando quieras",
+    "CURRENT_LANG" : "Idioma actual"
+  },
+  "SHARED" : {
+    "ADVERTISE" : "anunciar",
+    "YOUR_BRAND" : "tu marca",
+    "LOOKING_FOR" : "Buscando",
+    "BACK_TO_TOP" : ["desplazarse","hacia arriba"],
+    "ESTABLISHMENTS" : "estabelecimiento",
+    "VERSION" : "versión",
+    "SEE_DETAILS" : ["ver","detalles"],
+    "CANCEL" : "Cancelar",
+    "DEFINE" : "Definir",
+    "TODAY": "Hoy",
+    "DAYS": {
+      "MONDAY": "Lunes",
+      "TUESDAY": "Martes",
+      "WEDNESDAY": "Miércoles",
+      "THURSDAY": "Jueves",
+      "FRIDAY": "Viernes",
+      "SATURDAY": "Sábado",
+      "SUNDAY": "Domingo"
+    },
+    "TO_HOUR" : "a las",
+    "CALL_WHATSAPP": ["llamar por", "WhatsApp"],
+    "SEE_FOOD": ["acceder a", "menú"],
+    "SEE_ON_INSTAGRAM": ["ver en", "Instagram"],
+    "COPY" : "Copiar",
+    "GO_TO_WHATS" : "Ir a WhatsApp",
+    "I_WILL_REDIRECT_YOU" : "Te dirijo al whatsap",
+    "OK_QUESTION" : "¿vale?",
+    "I_WILL_REDIRECT_YOU_INSTAGRAM" : "Te dirijo al whatsap",
+    "GO_TO_INSTA" : "Ir a Instagram",
+    "UNDERSTOOD" : "Entendí",
+    "COPIED_ADRESS" : "Dirección copiada",
+    "PRIVATE_APP" : "Pégalo en una aplicación de transporte privado de tu elección: Uber, 99taxi, etc...",
+    "BACK" : "Voltar",
+    "FILTER" : "Filtro",
+    "TO_FILTER" : "Filtrar",
+    "ALRIGHT" : "Tudo bien",
+    "NO_RESULT_ESTABLISHMENTS" : "No hay establecimientos por ahora",
+    "NO_RESULT_PARKINGS" : "Ningún estacionamiento por ahora",
+    "TICKETS_DONT": "No acepta vales de comida como pago",
+    "SPECIALTY" : "Cocinando",
+    "NUMBER" : "Número",
+    "NO_OPEN" : "Doesn't open",
+    "COMING_SOON" : "Próximamente",
+    "LIST_OF" : "Lista de",
+    "CLOSE_MODAL" : "Cerrar modal",
+    "CONTACT" : "Contacto",
+    "IS_NOT_PREMIUM": "no tiene la insignia de anfitrión, por lo que no podemos desbloquear esta función."
+  },
+  "INICIO_PAGE" : {
+    "PARAGRAPH_ONE" : ["Nuestro propósito aquí es ayudarte a ahorrar tu bien más precioso:","el tiempo"],
+    "PARAGRAPH_TWO" : ["Filtra los establecimientos según tus gustos: comida japonesa, comida mexicana, hamburguesería, pizzería, pet friendly, música en vivo..."],
+    "LIST_OF_ESTABLISHMENTS" : ["Lista","de establecimientos"],
+    "PAGE_TITLE" : "Lista de establecimientos",
+    "FEEDBACK": {
+      "GIVE_YOUR_FEEDBACK": ["Dale tu", "feedback"],
+      "GIVE_YOUR_FEEDBACK_TEXT": "Nos gustaría saber si el sitio web te ha sido útil de alguna manera. Si no, ¿qué no encontraste aquí y qué podemos mejorar?",
+      "SEND_FEEDBACK": "enviar mi feedback"
+    },
+    "SAVING_TIME_TITLE": ["Ya", "adelantándote"],
+    "SAVING_TIME_TEXT": "Hoy nuestra calle cuenta con",
+    "PARKING_TITLE": ["Para quienes vienen", "en coche"],
+    "PARKING_TEXT": "Hay estacionamientos en la calle y cerca de la calle, veja",
+    "VERIFIED": {
+      "TITLE": "¿Qué es esto?",
+      "TEXT" : ["El sello de anfitrión significa que los datos del establecimiento fueron proporcionados por el propio lugar","y que el establecimiento colabora financieramente","con este proyecto, para que no pierdas tiempo buscando en redes sociales o preguntando en la calle"]
+   }
+  },
+  "COMPONENTS" : {
+    "MADE_W_LOVE" : ["hecho con","en"],
+    "TABS" : {
+      "EXPLORE" : "Explorar",
+      "MENU" : "Menú"
+    },
+    "CHANGE_LANG" : "Cambiar idioma",
+    "SEGMENT_VIEW": {
+      "AS_SLIDE": ["¿Quieres ver los establecimientos en forma de", "diapositiva"],
+      "AS_LIST": ["¿Quieres ver los establecimientos en forma de", "lista"],
+      "AS_LIST_TITLE" : "Modo lista",
+      "AS_SLIDE_TITLE" : "Modo presentación"
+    },
+    "ALERT_WORKING_TIME": {
+      "TITLE": "Atención",
+      "TEXT": ["Estos horarios son proporcionados por el establecimiento,", "pero pueden variar sin previo aviso, especialmente en días festivos y vísperas de días festivos"]
+    }
+  },
+  "MENU_PAGE" : {
+    "HEADER_TITLE" : ["sección","de menú"],
+    "MENU_TITLE" : "Menú"
+  },
+  "CONTACT_PAGE": {
+    "PAGE_TITLE": "Háblame sobre la Calle Gastronómica de Santos",
+    "HEADER_TITLE": ["sección", "contacto"],
+    "DESCRIPTION": {
+      "TITLE": ["habla", "conmigo"],
+      "SUB_TITLE": "por correo electrónico, redes sociales o WhatsApp."
+    },
+    "COMERCIAL" : "comercial",
+    "OTHER" : "otros",
+    "SEND_EMAIL" : "enviar correo electrónico",
+    "SEND_MESSAGE" : "enviar mensaje",
+    "COMERCIAL_TEXT" : ["para","asociaciones y anuncios"],
+    "OTHER_TEXT" : ["para","sugerencias y críticas"],
+    "DIRECT_TO_WHATS": "Te vamos a dirigir a WhatsApp, ¿está bien?",
+    "DIRECT_TO_DEFAULT_EMAIL": "Abriremos tu aplicación de correo electrónico predeterminada, ¿está bien?"
+  },
+  "ABOUT_PAGE" : {
+    "PAGE_TITLE": "Un poco sobre nosotros",
+    "HEADER_TITLE" : ["sección","sobre"],
+    "TASTIEST_STREET" : ["la calle","más sabrosa","de la ciudad."],
+    "INTRODUCTION" : {
+      "TITLE" : ["Una breve","introducción"],
+      "TEXT": [
+        ["A esta altura, seguramente te estarás preguntando:", "¿por qué se creó una página web para la Calle Tolentino Filgueras?"],
+        ["Para algunas personas puede no tener sentido o utilidad, pero para muchas otras será de gran ayuda. La Baixada Santista, y especialmente la ciudad de Santos, recibe miles de turistas cada año, ya sea por el puerto, el equipo de fútbol, el centro histórico, la playa o la gastronomía, etc."],
+        ["Los turistas vienen de todos lados, del propio estado de São Paulo, de Brasil y de otras partes del mundo. Con base en esto, nos gustaría dar la bienvenida a estas personas con cariño. Incluso con un pequeño gesto, intentamos ayudar tanto a los residentes como a los visitantes, proporcionando información relevante sobre cada establecimiento."]
+      ]
+    },
+    "ACHE" : {
+      "TITLE" : ["Que","dolor","solucionamos"],
+      "TEXT": [
+        ["Imagina la siguiente situación: eres un residente o un turista visitando la Calle Gastronómica por primera vez. Solo eso ya sería un buen motivo para que te mostremos todos los establecimientos que hay en la calle, junto con sus números para facilitar la ubicación y otra información relevante."],
+        ["Ahora imagina que este turista podría ser un extranjero. Si estuvieras en su lugar, apuesto a que apreciarías este tipo de atención."],
+        ["La persona puede estar a pie o en coche y tendría que recorrer toda la calle", "para saber qué hay, dónde está, cómo es y si está abierto. Además, si está en coche, podría tener que dar más de una vuelta, y créeme, eso pasa bastante a menudo."]
+      ]
+    },
+    "RESUME" : {
+      "TITLE" : ["Si","tuviera que resumir"],
+      "TEXT": [
+        ["Diría que construimos esto para hacer de Santos una ciudad más digital, lo que beneficia a usted, a los turistas, a los establecimientos y a la ciudad en su conjunto. De esta manera, logramos optimizar el bien más preciado de cada uno:", "el tiempo", "y como consecuencia, ayuda a fomentar el turismo en la región."],
+        ["Esto es solo el comienzo; tenemos otras ideas en mente para este proyecto y otros que vendrán. Puedes contribuir con sugerencias de mejora, críticas, elogios, en fin, será un placer recibir un mensaje tuyo."]
+      ]
+    },
+    "CONCLUSION" : {
+      "TITLE" : ["Conclusión"],
+      "TEXT" : ["Nuestro proyecto aún no recibe apoyo financiero ni material, por lo que es posible que te encuentres con anuncios privados o incluso del propio Google."]
+    },
+    "ERRORS" : {
+      "REQUIRED_FIELD" : "campo obligatorio"
+    }
+  },
+  "ESTABLISHMENT_PAGE": {
+    "HEADER_TITLE": ["sobre el", "establecimiento"],
+    "TICKETS": {
+      "TEXT": "Además de las formas tradicionales de pago, aceptan",
+      "VR": "vale de comida"
+    },
+    "TICKETS_DONT": "No acepta vales de comida como pago",
+    "MARKET_TICKETS": {
+      "TEXT": "Además de las formas tradicionales de pago, aceptan",
+      "VA": "vale de alimentación"
+    },
+    "MARKET_TICKETS_DONT": "No acepta vale de alimentación como forma de pago",
+    "IS_VERIFIED": {
+      "TITLE": "Verificado",
+      "TEXT" : "es un gran anfitrión porque, además de mantener los datos actualizados, también colabora financieramente con este proyecto para que puedas ahorrar tiempo."
+    }
+  },
+  "PETFRIENDLY": {
+    "BRING": "Puedes traer",
+    "YOUR_PET": "tu mascota",
+    "DONT": "No es posible traer a tu mascota"
+  },
+  "LIVEMUSIC": {
+    "HAS_SHOW": "Hay show",
+    "LIVE": "en vivo",
+    "SEE_MORE": "Recomendamos visitar el Instagram del establecimiento para ver la programación del día.",
+    "DONT": "No tiene música en vivo"
+  },
+  "AIR_CONDITIONED": {
+    "HAS": "Tiene",
+    "AIR_CONDITIONED_PLACE": "ambiente climatizado",
+    "SEE_MORE": "Consulta con el establecimiento para más detalles.",
+    "DONT": "No tiene ambiente climatizado"
+  },
+  "BOOKING": {
+    "SAVE_TIME": "Ahorra tiempo, haz una",
+    "BOOKING": "reserva",
+    "CONTACT_PLACE": "Contacta a través del botón de WhatsApp.",
+    "DONT": "No acepta reservas anticipadas"
+  },
+  "WORKING_TIME": {
+    "TEXT": "Horario de funcionamiento",
+    "ADVISE": "Decimos que un restaurante está abierto o cerrado con base en los horarios a continuación."
+  },
+  "MESSAGES" : {
+    "WELCOME_WHATSAPP" : "Hola, vengo de la Calle Gastronómica de Santos y..."
+  },
+  "PAGE_NOT_FOUND": {
+  "PAGE_TITLE": "No encontramos la página, vuelve a la pantalla principal",
+  "TITLE": ["página", "no encontrada"],
+  "TEXT": ["Puede que hayas escrito algo mal, ", "debe ser hambre, no sé..."],
+  "BUTTON": ["Volver", "a la pantalla principal"]
+}
+}

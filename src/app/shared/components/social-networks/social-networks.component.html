@@ -1,0 +1,27 @@
+<div class="social-network-wrapper full-width" [ngClass]="{ 'centered': centered }">
+  <ng-container *ngFor="let socialNetwork of socialNetworks">
+    <ion-button
+    *ngIf="socialNetwork.value === NetworksEnum.INSTAGRAM"
+    [href]="socialNetwork.baseUrl + socialNetwork.user"
+    [title]="socialNetwork.text"
+    class="social-network-button"
+    target="_self"
+    size="small"
+    fill="clear">
+      <ion-icon [name]="'logo-' + socialNetwork.value"></ion-icon>
+    </ion-button>
+  </ng-container>
+
+  <ng-container *ngFor="let socialNetwork of socialNetworks">
+    <ion-button
+    *ngIf="socialNetwork.value === NetworksEnum.WHATSAPP"
+    [routerLink]="[socialNetwork.baseUrl]"
+    [title]="socialNetwork.text"
+    class="social-network-button"
+    target="_self"
+    size="small"
+    fill="clear">
+      <ion-icon [name]="'logo-' + socialNetwork.value"></ion-icon>
+    </ion-button>
+  </ng-container>
+</div>

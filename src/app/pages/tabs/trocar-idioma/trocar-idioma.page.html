@@ -1,0 +1,100 @@
+<ion-header mode="ios" class="ion-no-border">
+  <ion-toolbar mode="ios" class="ion-bg-white no-ion-padding">
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col size="12">
+          <ion-button
+          (click)="back()"
+          class="back ion-color-gray-text back-btn no-ion-padding"
+          [title]="'SHARED.BACK' | translate"
+          fill="clear">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content
+[fullscreen]="true">
+  <section class="trocar-idioma">
+    <div class="trocar-idioma-content">
+      <ion-grid [fixed]="true">
+        <ion-row>
+          <ion-col size="12">
+            <ion-text
+              class="txt-center color-gray-text full-width icon-title-text"
+              mode="ios">
+                <ion-icon
+                name="language-outline"
+                class="full-width fs-32 animate__animated animate__fadeInUp">
+                </ion-icon>
+
+                <h2 class="font-baloo">
+                  <span class="font-w-bold">{{ 'CHANGE_LANG_PAGE.DESCRIPTION.TITLE.0' | translate }}</span> {{ 'CHANGE_LANG_PAGE.DESCRIPTION.TITLE.1' | translate }}
+                </h2>
+
+                <p class="fs-16">
+                  {{ 'CHANGE_LANG_PAGE.DESCRIPTION.SUB_TITLE' | translate }}
+                </p>
+              </ion-text>
+          </ion-col>
+
+          <ion-col size="12">
+            <form
+            [formGroup]="languageForm">
+              <div
+              [ngClass]="{'has-error' : (languageForm.get('language')?.invalid &&
+              (languageForm.get('language')?.touched ||
+              languageForm.get('language')?.dirty))}"
+              class="rgs-select-wrapper label-w-gray-fa full-width mg-top-26 white-background-item">
+                <ion-item
+                lines="none"
+                mode="ios">
+                  <ion-select
+                  (ionChange)="changeLang($event)"
+                  formControlName="language"
+                  [cancelText]="'SHARED.CANCEL' | translate"
+                  [okText]="'SHARED.DEFINE' | translate"
+                  [label]="'CHANGE_LANG_PAGE.CURRENT_LANG' | translate"
+                  toggleIcon="chevron-down-outline"
+                  label-placement="floating">
+                    <ion-select-option
+                    *ngFor="let lang of langs"
+                    [value]="lang.value">
+                      {{ lang.text[currentLanguage.value] }}
+                    </ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </div>
+
+              <ion-text
+              mode="ios"
+              class="mg-top-8 d-block"
+              *ngIf="
+              languageForm.get('language')?.invalid &&
+              (languageForm.get('language')?.touched || languageForm.get('language')?.dirty)">
+                <p
+                *ngIf="languageForm.get('language')?.hasError('required')"
+                class="fs-13 color-danger">
+                  {{ 'ERRORS.REQUIRED_FIELD' | translate }}
+                </p>
+              </ion-text>
+            </form>
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-text
+            mode="ios"
+            class="txt-center mg-top-16 d-block">
+              <p class="fs-13 color-gray-text">
+                {{ 'CHANGE_LANG_PAGE.CHANGE_WHEN_YOU_WANT' | translate }}
+              </p>
+            </ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </section>
+</ion-content>
