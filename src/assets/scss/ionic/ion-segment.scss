@@ -1,0 +1,21 @@
+ion-segment {
+  &.anf-main {
+    border-bottom: 1px solid var(--gray-ed);
+    height: 70px;
+    background: var(--gray-fa);
+    padding: 6px;
+    border-radius: 100px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+
+    ion-segment-button {
+      --color: var(--gray-text);
+      --indicator-color: var(--white);
+      --border-radius: 100px;
+      --indicator-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+
+      &.segment-button-checked {
+        --color: var(--green);
+      }
+    }
+  }
+}

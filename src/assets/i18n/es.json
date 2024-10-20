@@ -1,4 +1,28 @@
 {
+  "INPUTS" : {
+    "EMAIL" : "Correo electrónico",
+    "PASSWORD" : "Contraseña",
+    "CONFIRM_PASSWORD" : "Confirmar contraseña",
+    "SHOW_PW" : "Mostrar contraseña",
+    "HIDE_PW" : "Esconder contraseña"
+  },
+  "LOGIN_PAGE" : {
+    "CREATE" : "crear",
+    "ACCESS" : "acceder",
+    "ACCOUNT" : "cuenta",
+    "WHAT_YOU_WANT" : "¿Qué quieres hacer?",
+    "ACCESS_SLIDER" : {
+      "INSERT" : ["Inserta", "tu información"],
+      "BEST_OF" : "y conoce lo mejor de nuestra región.",
+      "LOGIN_BTN" : ["acceder", "mi cuenta"],
+      "FORGET_BTN": ["olvidé", "mi contraseña"]
+    },
+    "CREATE_SLIDER" : {
+      "TITLE" : ["Vamos","registrar tu cuenta"],
+      "SUBTITLE" : "para conocer la región.",
+      "BTN" : ["crear","una cuenta"]
+    }
+  },
   "CHANGE_LANG_PAGE" : {
     "PAGE_TITLE": "Cambia el idioma que ves en la Calle Gastronómica de Santos",
     "DESCRIPTION": {
@@ -77,7 +101,7 @@
    }
   },
   "COMPONENTS" : {
-    "MADE_W_LOVE" : ["hecho con","en"],
+    "MADE_W_LOVE" : ["hecho con","en la"],
     "TABS" : {
       "EXPLORE" : "Explorar",
       "MENU" : "Menú"
@@ -144,10 +168,12 @@
     "CONCLUSION" : {
       "TITLE" : ["Conclusión"],
       "TEXT" : ["Nuestro proyecto aún no recibe apoyo financiero ni material, por lo que es posible que te encuentres con anuncios privados o incluso del propio Google."]
-    },
-    "ERRORS" : {
-      "REQUIRED_FIELD" : "campo obligatorio"
     }
+  },
+  "ERRORS" : {
+    "REQUIRED_FIELD" : "campo obligatorio",
+    "MIN_CARACTERES" : ["mínimo", "caracteres"],
+    "EMAIL_INVALID" : "correo electrónico inválido"
   },
   "ESTABLISHMENT_PAGE": {
     "HEADER_TITLE": ["sobre el", "establecimiento"],

@@ -35,6 +35,7 @@
 @import './assets/scss/ionic/ion-chip.scss';
 @import './assets/scss/ionic/ion-fab.scss';
 @import './assets/scss/ionic/ion-modal.scss';
+@import './assets/scss/ionic/ion-segment.scss';
 
 /* GRID */
 ion-grid {
@@ -170,6 +171,23 @@ hr.rgs-divider {
             .label-text-wrapper.sc-ion-input-ios {
               .label-text.sc-ion-input-ios {
                 background: var(--gray-fa);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.label-w-gray-ef {
+    ion-item {
+      ion-input {
+        &.has-focus.input-label-placement-floating, &.has-value.input-label-placement-floating {
+
+          .input-wrapper.sc-ion-input-ios {
+            .label-text-wrapper.sc-ion-input-ios {
+              .label-text.sc-ion-input-ios {
+                background: var(--gray-ef);
               }
             }
           }

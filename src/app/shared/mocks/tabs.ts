@@ -3,9 +3,9 @@ import { ITab } from "../models/Tabs";
 
 export const TABS: ITab[] = [
   {
-    page: 'inicio',
-    icon: 'storefront',
-    value: 'home',
+    page: 'explorar',
+    icon: 'search',
+    value: 'explorar',
     text: {
       pt: 'Explorar',
       en: 'Explore',

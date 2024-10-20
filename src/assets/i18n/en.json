@@ -1,4 +1,28 @@
 {
+  "INPUTS" : {
+    "EMAIL" : "E-mail",
+    "PASSWORD" : "Password",
+    "CONFIRM_PASSWORD" : "Confirm password",
+    "SHOW_PW" : "Show password",
+    "HIDE_PW" : "Hide password"
+  },
+  "LOGIN_PAGE" : {
+    "CREATE" : "create",
+    "ACCESS" : "access",
+    "ACCOUNT" : "account",
+    "WHAT_YOU_WANT" : "What do you want to do?",
+    "ACCESS_SLIDER" : {
+      "INSERT" : ["Insert", "your information"],
+      "BEST_OF" : "and discover the best of our region.",
+      "LOGIN_BTN" : ["access", "my account"],
+      "FORGET_BTN": ["forgot", "my password"]
+    },
+    "CREATE_SLIDER" : {
+      "TITLE" : ["Let's","register your account"],
+      "SUBTITLE" : "to get to know the area.",
+      "BTN" : ["create","an account"]
+    }
+  },
   "CHANGE_LANG_PAGE" : {
     "PAGE_TITLE": "Change the language you see Santos Gastronomic Street",
     "DESCRIPTION": {
@@ -76,7 +100,7 @@
     }
   },
   "COMPONENTS" : {
-    "MADE_W_LOVE" : ["made with","in"],
+    "MADE_W_LOVE" : ["made with","at"],
     "TABS" : {
       "EXPLORE" : "Explore",
       "MENU" : "Menu"
@@ -146,7 +170,9 @@
     }
   },
   "ERRORS" : {
-    "REQUIRED_FIELD" : "required field"
+    "REQUIRED_FIELD" : "required field",
+    "MIN_CARACTERES" : ["minimum", "characters"],
+    "EMAIL_INVALID" : "invalid email"
   },
   "ESTABLISHMENT_PAGE": {
     "HEADER_TITLE": ["about the", "establishment"],

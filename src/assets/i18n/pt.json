@@ -1,4 +1,28 @@
 {
+  "INPUTS" : {
+    "EMAIL" : "E-mail",
+    "PASSWORD" : "Senha",
+    "CONFIRM_PASSWORD" : "Confirmar senha",
+    "SHOW_PW" : "Mostrar senha",
+    "HIDE_PW" : "Esconder senha"
+  },
+  "LOGIN_PAGE" : {
+    "CREATE" : "criar",
+    "ACCESS" : "acessar",
+    "ACCOUNT" : "conta",
+    "WHAT_YOU_WANT" : "O que você quer fazer?",
+    "ACCESS_SLIDER" : {
+      "INSERT" : ["Insira","suas informações"],
+      "BEST_OF" : "e conheça o melhor da nossa região.",
+      "LOGIN_BTN" : ["acessar","minha conta"],
+      "FORGET_BTN" : ["esqueci","minha senha"]
+    },
+    "CREATE_SLIDER" : {
+      "TITLE" : ["Vamos","cadastrar sua conta"],
+      "SUBTITLE" : "para conhecer a região.",
+      "BTN" : ["criar","uma conta"]
+    }
+  },
   "CHANGE_LANG_PAGE" : {
     "PAGE_TITLE" : "Troque o idioma que usa na Rua Gastronômica de Santos",
     "DESCRIPTION" : {
@@ -76,7 +100,7 @@
     }
   },
   "COMPONENTS" : {
-    "MADE_W_LOVE" : ["feito com","em"],
+    "MADE_W_LOVE" : ["feito com","na"],
     "TABS" : {
       "EXPLORE" : "Explorar",
       "MENU" : "Menu"
@@ -146,7 +170,9 @@
     }
   },
   "ERRORS" : {
-    "REQUIRED_FIELD" : "campo obrigatório"
+    "REQUIRED_FIELD" : "campo obrigatório",
+    "MIN_CARACTERES" : ["minimo","caracteres"],
+    "EMAIL_INVALID" : "e-mail inválido"
   },
   "ESTABLISHMENT_PAGE" : {
     "HEADER_TITLE" : ["sobre o","estabelecimento"],
