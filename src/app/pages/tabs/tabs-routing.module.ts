@@ -10,7 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'inicio',
+        redirectTo: 'explorar',
         pathMatch: 'full'
       },
       {
@@ -26,10 +26,6 @@ const routes: Routes = [
         loadChildren: () => import('./estabelecimento/estabelecimento.module').then( m => m.EstabelecimentoPageModule)
       },
       {
-        path: 'trocar-idioma',
-        loadChildren: () => import('./trocar-idioma/trocar-idioma.module').then( m => m.TrocarIdiomaPageModule)
-      },
-      {
         path: 'menu',
         loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule)
       },
@@ -40,6 +36,10 @@ const routes: Routes = [
       {
         path: 'sobre-nos',
         loadChildren: () => import('./sobre-nos/sobre-nos.module').then( m => m.SobreNosPageModule)
+      },
+      {
+        path: 'explorar',
+        loadChildren: () => import('./explorar/explorar.module').then( m => m.ExplorarPageModule)
       }
     ]
   }

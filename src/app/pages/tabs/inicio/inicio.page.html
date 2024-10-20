@@ -309,15 +309,15 @@ mode="ios">
 
               <div class="logo-wrapper">
                 <div class="logo-container"
-                  [ngClass]="{'has-image': !isLoadingLogo, 'logo-needs-gray-2' : establishment.value === 'galeteria-santista'}">
-                    <ion-spinner name="lines-sharp-small" *ngIf="isLoadingLogo"></ion-spinner>
+                [ngClass]="{'has-image': !isLoadingLogo, 'logo-needs-gray-2' : establishment.value === 'galeteria-santista'}">
+                  <ion-spinner name="lines-sharp-small" *ngIf="isLoadingLogo"></ion-spinner>
 
-                    <ion-img
-                    *ngIf="!isLoadingLogo"
-                    (ionImgDidLoad)="imageHasLoaded()"
-                    [src]="'./../../../../assets/images/establishments/' + establishment.value + (establishment.value === 'bistro-14' || establishment.value === 'galeteria-santista' || establishment.value === 'guadalupe' || establishment.value === 'vixe' || establishment.value === 'vila-tolentino'  ? '.png' : '.jpg')">
-                    </ion-img>
-                  </div>
+                  <ion-img
+                  *ngIf="!isLoadingLogo"
+                  (ionImgDidLoad)="imageHasLoaded()"
+                  [src]="'./../../../../assets/images/establishments/' + establishment.value + (establishment.value === 'bistro-14' || establishment.value === 'galeteria-santista' || establishment.value === 'guadalupe' || establishment.value === 'vixe' || establishment.value === 'vila-tolentino'  ? '.png' : '.jpg')">
+                  </ion-img>
+                </div>
               </div>
 
               <ion-text mode="ios" class="txt-left">
