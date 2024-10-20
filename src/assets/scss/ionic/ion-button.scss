@@ -64,4 +64,24 @@ ion-button {
       color: var(--green);
     }
   }
+
+
+  // REFATORAÇÃO
+  &.anf-main-solid {
+    --background: linear-gradient(.351turn,#769834 43.71%,#547D0E 58.8%);
+    --color: var(--white);
+    --padding-end: 12px;
+    --padding-start: 12px;
+    --border-width: 1px;
+    --border-style: solid;
+    --border-color: var(--green-dark);
+    text-transform: none;
+    font-weight: normal;
+  }
+
+  &.clear-gray-light {
+    --color: var(--gray-light);
+  }
+
+  &.height-44 { height: 44px; }
 }

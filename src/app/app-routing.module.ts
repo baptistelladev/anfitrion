@@ -4,12 +4,24 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
-    path: '',
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'logado',
     loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'trocar-idioma',
+    loadChildren: () => import('./pages/trocar-idioma/trocar-idioma.module').then( m => m.TrocarIdiomaPageModule)
+  },
+  {
+    path: 'esqueci-minha-senha',
+    loadChildren: () => import('./pages/esqueci-minha-senha/esqueci-minha-senha.module').then( m => m.EsqueciMinhaSenhaPageModule)
   },
   {
     path: '**',

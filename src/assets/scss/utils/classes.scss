@@ -118,3 +118,14 @@
   --padding-end: 0;
   --padding-bottom: 0;
 }
+
+
+
+// GLOBAL LINEAR
+.ion-content-w-linear-bg {
+  --background: linear-gradient(to top, var(--gray-ed) 15%, var(--white));
+}
+
+.bg-content-w-linear-bg {
+  background: linear-gradient(to top, var(--gray-ed) 15%, var(--white));
+}
