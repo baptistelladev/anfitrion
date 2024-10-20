@@ -1,6 +1,3 @@
-import { StorageService } from './../../../core/services/storage.service';
-
-
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
@@ -8,12 +5,13 @@ import { Store } from '@ngrx/store';
 import { Observable, Subscription, take } from 'rxjs';
 import { LANGS } from 'src/app/shared/mocks/langs';
 import { ILang } from 'src/app/shared/models/Lang';
-import * as AppStore from './../../../shared/store/app.state';
+import * as AppStore from './../../shared/store/app.state';
 import { TranslateService } from '@ngx-translate/core';
 import { APP_LANG_KEY } from 'src/app/shared/consts/keys';
 import { Title } from '@angular/platform-browser';
 import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
 import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
+import { StorageService } from 'src/app/core/services/storage.service';
 
 @Component({
   selector: 'rgs-trocar-idioma',

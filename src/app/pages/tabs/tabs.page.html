@@ -1,16 +1,20 @@
 <ion-tabs
 (ionTabsWillChange)="checkRoute()"
-class="ion-no-border"
-mode="ios">
+mode="ios"
+class="ion-no-border">
   <ion-tab-bar
-  slot="bottom"
-  [ngClass]="{ 'dark-tab' : applyDarkTabBar, 'light-tab' : !applyDarkTabBar }">
-
+  [ngClass]="{ 'dark-tab' : applyDarkTabBar, 'light-tab' : !applyDarkTabBar }"
+  slot="bottom">
     <ion-tab-button
     *ngFor="let tab of tabs"
-    [tab]="tab.page">
+    [tab]="tab.page"
+    [title]="
+      tab?.value === 'explorar' ? ('COMPONENTS.TABS.EXPLORE' | translate) :
+      tab?.value === 'menu' ? ('COMPONENTS.TABS.MENU' | translate) : ''
+    ">
       <ion-icon [name]="tab.icon + '-outline'"></ion-icon>
-      <ng-container *ngIf="tab?.value === 'home'">{{ 'COMPONENTS.TABS.EXPLORE' | translate }}</ng-container>
+
+      <ng-container *ngIf="tab?.value === 'explorar'">{{ 'COMPONENTS.TABS.EXPLORE' | translate }}</ng-container>
       <ng-container *ngIf="tab?.value === 'menu'">{{ 'COMPONENTS.TABS.MENU' | translate }}</ng-container>
     </ion-tab-button>
   </ion-tab-bar>

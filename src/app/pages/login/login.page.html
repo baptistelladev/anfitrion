@@ -1,0 +1,408 @@
+<ion-content
+class="ion-content-w-linear-bg"
+[fullscreen]="true">
+  <section class="login">
+    <div class="login-header-wrapper bg-gray-2">
+      <div class="fixed-header">
+        <ion-grid [fixed]="true">
+          <ion-row>
+            <ion-col size="12">
+              <ion-header
+              mode="ios"
+              class="ion-no-border">
+                <ion-toolbar
+                class="ion-bg-transparent ion-no-padding">
+                  <div class="header-container">
+                    <div class="header-logo">
+                      <rgs-logo
+                      [size]="'big'"
+                      [currentLanguage]="currentLanguage">
+                      </rgs-logo>
+                    </div>
+
+                    <div class="header-buttons">
+                      <rgs-language-button [currentLanguage]="currentLanguage"></rgs-language-button>
+                    </div>
+                  </div>
+                </ion-toolbar>
+              </ion-header>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+      <div class="fixed-segments">
+        <div class="segments-container">
+          <div class="segments">
+            <ion-text mode="ios">
+              <p class="fs-12 color-gray-mid mg-bottom-8 pad-left">{{ 'LOGIN_PAGE.WHAT_YOU_WANT' | translate }}</p>
+            </ion-text>
+
+            <ion-segment
+            class="anf-main"
+            mode="ios"
+            [(ngModel)]="selectedSegment"
+            (ionChange)="slideSwiperTo()">
+              <ion-segment-button
+              *ngFor="let segment of segments"
+              [value]="segment.value"
+              [title]="">
+                <ion-text mode="ios">
+                  <p class="font-baloo fs-14">
+                    <ng-container *ngIf="segment.value === 'criar'">
+                      <b>{{ 'LOGIN_PAGE.CREATE' | translate }}</b> {{ 'LOGIN_PAGE.ACCOUNT' | translate }}
+                    </ng-container>
+
+                    <ng-container *ngIf="segment.value === 'acessar'">
+                      <b>{{ 'LOGIN_PAGE.ACCESS' | translate }}</b> {{ 'LOGIN_PAGE.ACCOUNT' | translate }}
+                    </ng-container>
+                  </p>
+                </ion-text>
+              </ion-segment-button>
+            </ion-segment>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="login-content">
+      <swiper-container
+      [init]="true"
+      class="full-width swiper-w-relative-pagination"
+      #loginSwiper
+      allow-touch-move="false"
+      [freeMode]="true"
+      [autoHeight]="false"
+      initial-slide="0"
+      [slidesPerView]="1">
+        <ng-container>
+          <swiper-slide>
+            <form
+            (ngSubmit)="login(formLoginGroup.value)"
+            class="create-content"
+            [formGroup]="formLoginGroup">
+              <ion-grid [fixed]="true">
+                <ion-row>
+                  <ion-col size="12">
+                    <ion-text
+                    mode="ios"
+                    class="color-gray-text line-height-16">
+                      <h2 class="font-baloo fs-20">
+                        <b>{{ 'LOGIN_PAGE.ACCESS_SLIDER.INSERT.0' | translate }}</b> {{ 'LOGIN_PAGE.ACCESS_SLIDER.INSERT.1' | translate }}
+                      </h2>
+
+                      <p class="fs-12 color-gray-6 mg-bottom-16">
+                        {{ 'LOGIN_PAGE.ACCESS_SLIDER.BEST_OF' | translate }}
+                      </p>
+                    </ion-text>
+                  </ion-col>
+
+                  <ion-col size="12">
+                    <div
+                    [ngClass]="{
+                    'has-error' : (formLoginGroup.get('email')?.invalid &&
+                    (formLoginGroup.get('email')?.touched ||
+                    formLoginGroup.get('email')?.dirty))}"
+                    class="rgs-input-wrapper full-width white-background-item label-w-gray-ef">
+                      <ion-item
+                      lines="none"
+                      mode="ios">
+                        <ion-input
+                        enterkeyhint="next"
+                        mode="ios"
+                        [label]="'INPUTS.EMAIL' | translate"
+                        labelPlacement="floating"
+                        formControlName="email"
+                        type="email"
+                        inputmode="email">
+                        </ion-input>
+                      </ion-item>
+
+                      <ion-text
+                      mode="ios"
+                      class="mg-top-8 d-block"
+                      *ngIf="
+                      formLoginGroup.get('email')?.invalid &&
+                      (formLoginGroup.get('email')?.touched || formLoginGroup.get('email')?.dirty)">
+                        <p
+                        *ngIf="formLoginGroup.get('email')?.hasError('required')"
+                        class="fs-12 color-danger">
+                          {{ 'ERRORS.REQUIRED_FIELD' | translate }}
+                        </p>
+
+                        <p
+                        *ngIf="formLoginGroup.get('email')?.hasError('email')"
+                        class="fs-12 color-danger">
+                          {{ 'ERRORS.EMAIL_INVALID' | translate }}
+                        </p>
+                      </ion-text>
+                    </div>
+                  </ion-col>
+
+                  <ion-col size="12">
+                    <div
+                    [ngClass]="{
+                    'has-error' : (formLoginGroup.get('password')?.invalid &&
+                    (formLoginGroup.get('password')?.touched ||
+                    formLoginGroup.get('password')?.dirty))}"
+                    class="rgs-input-wrapper full-width white-background-item label-w-gray-ef item-has-button-at-end">
+                      <ion-item
+                      lines="none"
+                      mode="ios">
+                        <ion-input
+                        enterkeyhint="next"
+                        mode="ios"
+                        [label]="'INPUTS.PASSWORD' | translate"
+                        labelPlacement="floating"
+                        formControlName="password"
+                        [type]="showLoginPassword ? 'text' : 'password'"
+                        inputmode="text">
+                        </ion-input>
+
+                        <ion-button
+                        [title]="showLoginPassword ? ('INPUTS.HIDE_PW' | translate) : ('INPUTS.SHOW_PW' | translate)"
+                        (click)="toggleLoginPassword()"
+                        type="button"
+                        class="clear-gray-light"
+                        mode="ios"
+                        fill="clear">
+                          <ion-icon name="eye-off-outline" *ngIf="showLoginPassword"></ion-icon>
+                          <ion-icon name="eye-outline" *ngIf="!showLoginPassword"></ion-icon>
+                        </ion-button>
+                      </ion-item>
+
+                      <ion-text
+                      mode="ios"
+                      class="mg-top-8 d-block"
+                      *ngIf="
+                      formLoginGroup.get('password')?.invalid &&
+                      (formLoginGroup.get('password')?.touched || formLoginGroup.get('password')?.dirty)">
+                        <p
+                        *ngIf="formLoginGroup.get('password')?.hasError('required')"
+                        class="fs-12 color-danger">
+                          {{ 'ERRORS.REQUIRED_FIELD' | translate }}
+                        </p>
+
+                        <p
+                        *ngIf="formLoginGroup.get('password')?.hasError('minlength')"
+                        class="fs-12 color-danger">
+                        {{ 'ERRORS.MIN_CARACTERES.0' | translate }} 6 {{ 'ERRORS.MIN_CARACTERES.1' | translate }}
+                        </p>
+                      </ion-text>
+                    </div>
+                  </ion-col>
+
+                  <ion-col
+                  size="12"
+                  class="txt-right">
+                    <ion-button
+                    (click)="navTo('/esqueci-minha-senha')"
+                    class="txt-right forgot-password no-ion-padding fs-14 mg-bottom-16"
+                    fill="clear"
+                    title="Esqueci minha senha"
+                    mode="ios">
+                      <b class="mg-right-5">{{ 'LOGIN_PAGE.ACCESS_SLIDER.FORGET_BTN.0' | translate }}</b> {{ 'LOGIN_PAGE.ACCESS_SLIDER.FORGET_BTN.1' | translate }}
+                    </ion-button>
+                  </ion-col>
+
+                  <ion-col size="12">
+                    <ion-button
+                    type="submit"
+                    [disabled]="isDoingLogin"
+                    shape="round"
+                    class="anf-main-solid full-width fs-14 height-44"
+                    mode="md"
+                    title="acessar minha conta">
+                      <ng-container *ngIf="!isDoingLogin"><ion-icon name="log-in-outline" class="mg-right-5 fs-22"></ion-icon> <b class="mg-right-5">{{ 'LOGIN_PAGE.ACCESS_SLIDER.LOGIN_BTN.0' | translate }}</b> {{ 'LOGIN_PAGE.ACCESS_SLIDER.LOGIN_BTN.1' | translate }}</ng-container>
+                      <ng-cintainer *ngIf="isDoingLogin">
+                        <ion-spinner name="dots"></ion-spinner>
+                      </ng-cintainer>
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </form>
+          </swiper-slide>
+
+          <swiper-slide>
+            <form
+            (ngSubmit)="createAcc(formCreateAccGroup.value)"
+            class="access-content"
+            [formGroup]="formCreateAccGroup">
+              <ion-grid [fixed]="true">
+                <ion-row>
+                  <ion-col size="12">
+                    <ion-text
+                    mode="ios"
+                    class="color-gray-text line-height-16">
+                      <h2 class="font-baloo fs-20">
+                        <b>{{ 'LOGIN_PAGE.CREATE_SLIDER.TITLE.0' | translate }}</b> {{ 'LOGIN_PAGE.CREATE_SLIDER.TITLE.1' | translate }}
+                      </h2>
+
+                      <p class="fs-12 color-gray-6 mg-bottom-16">
+                        {{ 'LOGIN_PAGE.CREATE_SLIDER.SUBTITLE' | translate }}
+                      </p>
+                    </ion-text>
+                  </ion-col>
+
+                  <ion-col size="12">
+                    <div
+                    [ngClass]="{
+                    'has-error' : (formCreateAccGroup.get('email')?.invalid &&
+                    (formCreateAccGroup.get('email')?.touched ||
+                    formCreateAccGroup.get('email')?.dirty))}"
+                    class="rgs-input-wrapper full-width white-background-item label-w-gray-ef">
+                      <ion-item
+                      lines="none"
+                      mode="ios">
+                        <ion-input
+                        enterkeyhint="next"
+                        mode="ios"
+                        [label]="'INPUTS.EMAIL' | translate"
+                        labelPlacement="floating"
+                        formControlName="email"
+                        type="email"
+                        inputmode="email">
+                        </ion-input>
+                      </ion-item>
+
+                      <ion-text
+                      mode="ios"
+                      class="mg-top-8 d-block"
+                      *ngIf="
+                      formCreateAccGroup.get('email')?.invalid &&
+                      (formCreateAccGroup.get('email')?.touched || formCreateAccGroup.get('email')?.dirty)">
+                        <p
+                        *ngIf="formCreateAccGroup.get('email')?.hasError('required')"
+                        class="fs-12 color-danger">
+                          {{ 'ERRORS.REQUIRED_FIELD' | translate }}
+                        </p>
+
+                        <p
+                        *ngIf="formCreateAccGroup.get('email')?.hasError('email')"
+                        class="fs-12 color-danger">
+                          {{ 'ERRORS.EMAIL_INVALID' | translate }}
+                        </p>
+                      </ion-text>
+                    </div>
+                  </ion-col>
+
+                  <ion-col size="12">
+                    <div
+                    [ngClass]="{
+                    'has-error' : (formCreateAccGroup.get('password')?.invalid &&
+                    (formCreateAccGroup.get('password')?.touched ||
+                    formCreateAccGroup.get('password')?.dirty))}"
+                    class="rgs-input-wrapper full-width white-background-item label-w-gray-ef">
+                      <ion-item
+                      lines="none"
+                      mode="ios">
+                        <ion-input
+                        enterkeyhint="next"
+                        mode="ios"
+                        [label]="'INPUTS.PASSWORD' | translate"
+                        labelPlacement="floating"
+                        formControlName="password"
+                        type="text"
+                        inputmode="text">
+                        </ion-input>
+                      </ion-item>
+
+                      <ion-text
+                      mode="ios"
+                      class="mg-top-8 d-block"
+                      *ngIf="
+                      formCreateAccGroup.get('password')?.invalid &&
+                      (formCreateAccGroup.get('password')?.touched || formCreateAccGroup.get('password')?.dirty)">
+                        <p
+                        *ngIf="formCreateAccGroup.get('password')?.hasError('required')"
+                        class="fs-12 color-danger">
+                          {{ 'ERRORS.REQUIRED_FIELD' | translate }}
+                        </p>
+
+                        <p
+                        *ngIf="formCreateAccGroup.get('password')?.hasError('minlength')"
+                        class="fs-12 color-danger">
+                          No mínimo 2 caracteres
+                        </p>
+                      </ion-text>
+                    </div>
+                  </ion-col>
+
+                  <ion-col size="12">
+                    <div
+                    [ngClass]="{
+                    'has-error' : (formCreateAccGroup.get('confirmPassword')?.invalid &&
+                    (formCreateAccGroup.get('confirmPassword')?.touched ||
+                    formCreateAccGroup.get('confirmPassword')?.dirty))}"
+                    class="rgs-input-wrapper full-width white-background-item label-w-gray-ef mg-bottom-16">
+                      <ion-item
+                      lines="none"
+                      mode="ios">
+                        <ion-input
+                        enterkeyhint="next"
+                        mode="ios"
+                        [label]="'INPUTS.CONFIRM_PASSWORD' | translate"
+                        labelPlacement="floating"
+                        formControlName="confirmPassword"
+                        type="text"
+                        inputmode="text">
+                        </ion-input>
+                      </ion-item>
+
+                      <ion-text
+                      mode="ios"
+                      class="mg-top-8 d-block"
+                      *ngIf="
+                      formCreateAccGroup.get('confirmPassword')?.invalid &&
+                      (formCreateAccGroup.get('confirmPassword')?.touched || formCreateAccGroup.get('confirmPassword')?.dirty)">
+                        <p
+                        *ngIf="formCreateAccGroup.get('confirmPassword')?.hasError('required')"
+                        class="fs-12 color-danger">
+                          {{ 'ERRORS.REQUIRED_FIELD' | translate }}
+                        </p>
+
+                        <p
+                        *ngIf="formCreateAccGroup.get('confirmPassword')?.hasError('minlength')"
+                        class="fs-12 color-danger">
+                        {{ 'ERRORS.MIN_CARACTERES.0' | translate }} 6 {{ 'ERRORS.MIN_CARACTERES.1' | translate }}
+                        </p>
+                      </ion-text>
+                    </div>
+                  </ion-col>
+
+                  <ion-col size="12">
+                    <ion-button
+                    [disabled]="isCreating"
+                    type="submit"
+                    shape="round"
+                    class="anf-main-solid full-width fs-14 height-44"
+                    mode="md"
+                    [title]="('LOGIN_PAGE.CREATE_SLIDER.BTN.0' | translate) + ' ' + 'LOGIN_PAGE.CREATE_SLIDER.BTN.1' | translate">
+                      <ng-container *ngIf="!isCreating"><ion-icon name="person-add-outline" class="mg-right-5"></ion-icon> <b class="mg-right-5">{{ 'LOGIN_PAGE.CREATE_SLIDER.BTN.0' | translate }}</b> {{ 'LOGIN_PAGE.CREATE_SLIDER.BTN.1' | translate }}</ng-container>
+                      <ng-cintainer *ngIf="isCreating">
+                        <ion-spinner name="dots"></ion-spinner>
+                      </ng-cintainer>
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </form>
+          </swiper-slide>
+        </ng-container>
+      </swiper-container>
+    </div>
+
+    <div class="login-footer">
+      <ion-grid [fixed]="true">
+        <ion-row>
+          <ion-col size="12" class="txt-center">
+            <div class="footer-container color-gray-text fs-14">
+              <rgs-copyright></rgs-copyright>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </section>
+</ion-content>
