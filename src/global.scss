@@ -393,3 +393,45 @@ ion-item.item-title-w-icon {
 .header-container {
   @include flexbox(flex-start, space-between, row);
 }
+
+
+
+.password-wrapper {
+  margin: 0;
+
+  ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    transition: all 200ms ease;
+    line-height: 20px;
+
+    ion-text {
+      p {
+        display: flex;
+        align-items: center;
+        color: var(--gray-6);
+
+        ion-icon {
+          margin-right: 3px;
+          color: var(--negative);
+        }
+      }
+    }
+
+    &.has-rule {
+      transition: all 200ms ease;
+
+      ion-text {
+        p {
+          ion-icon {
+            color: var(--green);
+          }
+        }
+      }
+    }
+  }
+}
