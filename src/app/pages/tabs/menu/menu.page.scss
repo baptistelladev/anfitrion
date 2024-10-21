@@ -57,6 +57,8 @@ ion-content {
   }
 }
 
-.header-container {
-  @include flexbox(flex-start, space-between, row);
+.log-out-wrapper {
+  width: 100%;
+  margin: 0 auto;
+  @include flexbox(center, center, row);
 }

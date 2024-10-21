@@ -31,7 +31,7 @@ ion-alert {
     }
   }
 
-  &.rgs-alert {
+  &.rgs-alert, &.anf-alert {
 
     .alert-title.sc-ion-alert-ios {
       text-align: left;

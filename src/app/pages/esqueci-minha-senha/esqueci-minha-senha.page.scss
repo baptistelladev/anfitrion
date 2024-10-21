@@ -1,0 +1,21 @@
+@import './../../../assets/scss/utils/mixins.scss';
+
+ion-content {
+  section {
+    &.esqueci-minha-senha {
+      width: 100%;
+      height: 100%;
+      @include flexbox(center, center, row);
+
+      ion-grid {
+        flex: none;
+      }
+
+      .esqueci-minha-senha-wrapper {
+        width: 100%;
+        max-width: 360px;
+        margin: 0 auto;
+      }
+    }
+  }
+}

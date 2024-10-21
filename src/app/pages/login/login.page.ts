@@ -5,7 +5,10 @@ import { ILang } from 'src/app/shared/models/Lang';
 import * as AppStore from './../../shared/store/app.state';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swiper from 'swiper';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
+import { AuthService } from 'src/app/core/services/firebase/auth.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { OverlayService } from 'src/app/shared/services/overlay.service';
 
 @Component({
   selector: 'rgs-login',
@@ -44,10 +47,13 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
   constructor(
     private store : Store,
     private formBuilder : FormBuilder,
-    private navCtrl : NavController
+    private navCtrl : NavController,
+    private authService : AuthService,
+    private toastCtrl : ToastController,
+    private overlayService : OverlayService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.getCurrentLanguageFromNGRX();
     this.initLoginForm();
     this.initCreateAccForm();
@@ -69,26 +75,43 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
   public initLoginForm(): void {
     this.formLoginGroup = this.formBuilder.group({
       email: [ '', [ Validators.required, Validators.email ] ],
-      password: [ '', [ Validators.required, Validators.minLength(6) ] ]
+      password: [ '', [ Validators.required ] ]
     })
   }
 
-  public login(form: any): void {
-    console.log(form);
+  public async login() {
     this.isDoingLogin = true;
 
-    setTimeout(() => {
+    const toast = await this.overlayService.fireToast({
+      position: 'top',
+      cssClass: 'anf-toast anf-toast-danger',
+      icon: 'warning-outline',
+      duration: 222000
+    })
+
+    await this.authService.signInWithEmailAndPassword(this.formLoginGroup.value.email, this.formLoginGroup.value.password)
+    .then( async () => {
+      this.navCtrl.navigateForward(['/logado']);
       this.isDoingLogin = false;
-    }, 1000);
+
+    }).catch(async (error) => {
+      this.isDoingLogin = false;
+      //this.formLoginGroup.reset();
+      toast.message = error;
+      await toast.present();
+    })
   }
 
-  public createAcc(form: any): void {
-    console.log(form);
+  public async createAcc() {
     this.isCreating = true;
 
-    setTimeout(() => {
+    await this.authService.createUserWithEmailAndPassword(this.formCreateAccGroup.value.email, this.formCreateAccGroup.value.password)
+    .then(() => {
       this.isCreating = false;
-    }, 1000);
+    }).catch((error) => {
+      console.log(error);
+      this.isCreating = false;
+    })
   }
 
   public slideSwiperTo(): void {

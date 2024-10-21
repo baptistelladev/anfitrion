@@ -78,7 +78,7 @@ class="ion-content-w-linear-bg"
         <ng-container>
           <swiper-slide>
             <form
-            (ngSubmit)="login(formLoginGroup.value)"
+            (ngSubmit)="login()"
             class="create-content"
             [formGroup]="formLoginGroup">
               <ion-grid [fixed]="true">
@@ -199,7 +199,7 @@ class="ion-content-w-linear-bg"
                     (click)="navTo('/esqueci-minha-senha')"
                     class="txt-right forgot-password no-ion-padding fs-14 mg-bottom-16"
                     fill="clear"
-                    title="Esqueci minha senha"
+                    [title]="('LOGIN_PAGE.ACCESS_SLIDER.FORGET_BTN.0' | translate) + ' ' + ('LOGIN_PAGE.ACCESS_SLIDER.FORGET_BTN.1' | translate)"
                     mode="ios">
                       <b class="mg-right-5">{{ 'LOGIN_PAGE.ACCESS_SLIDER.FORGET_BTN.0' | translate }}</b> {{ 'LOGIN_PAGE.ACCESS_SLIDER.FORGET_BTN.1' | translate }}
                     </ion-button>
@@ -207,16 +207,20 @@ class="ion-content-w-linear-bg"
 
                   <ion-col size="12">
                     <ion-button
+                    [disabled]="formLoginGroup.invalid || isDoingLogin"
+                    (click)="login()"
                     type="submit"
-                    [disabled]="isDoingLogin"
                     shape="round"
                     class="anf-main-solid full-width fs-14 height-44"
                     mode="md"
-                    title="acessar minha conta">
-                      <ng-container *ngIf="!isDoingLogin"><ion-icon name="log-in-outline" class="mg-right-5 fs-22"></ion-icon> <b class="mg-right-5">{{ 'LOGIN_PAGE.ACCESS_SLIDER.LOGIN_BTN.0' | translate }}</b> {{ 'LOGIN_PAGE.ACCESS_SLIDER.LOGIN_BTN.1' | translate }}</ng-container>
-                      <ng-cintainer *ngIf="isDoingLogin">
+                    [title]="('LOGIN_PAGE.ACCESS_SLIDER.LOGIN_BTN.0' | translate) + ' ' + ('LOGIN_PAGE.ACCESS_SLIDER.LOGIN_BTN.1' | translate)">
+                      <ng-container *ngIf="!isDoingLogin">
+                        <ion-icon name="log-in-outline" class="mg-right-5 fs-22"></ion-icon> <b class="mg-right-5">{{ 'LOGIN_PAGE.ACCESS_SLIDER.LOGIN_BTN.0' | translate }}</b> {{ 'LOGIN_PAGE.ACCESS_SLIDER.LOGIN_BTN.1' | translate }}
+                      </ng-container>
+
+                      <ng-container *ngIf="isDoingLogin">
                         <ion-spinner name="dots"></ion-spinner>
-                      </ng-cintainer>
+                      </ng-container>
                     </ion-button>
                   </ion-col>
                 </ion-row>
@@ -226,7 +230,7 @@ class="ion-content-w-linear-bg"
 
           <swiper-slide>
             <form
-            (ngSubmit)="createAcc(formCreateAccGroup.value)"
+            (ngSubmit)="createAcc()"
             class="access-content"
             [formGroup]="formCreateAccGroup">
               <ion-grid [fixed]="true">
@@ -380,9 +384,9 @@ class="ion-content-w-linear-bg"
                     mode="md"
                     [title]="('LOGIN_PAGE.CREATE_SLIDER.BTN.0' | translate) + ' ' + 'LOGIN_PAGE.CREATE_SLIDER.BTN.1' | translate">
                       <ng-container *ngIf="!isCreating"><ion-icon name="person-add-outline" class="mg-right-5"></ion-icon> <b class="mg-right-5">{{ 'LOGIN_PAGE.CREATE_SLIDER.BTN.0' | translate }}</b> {{ 'LOGIN_PAGE.CREATE_SLIDER.BTN.1' | translate }}</ng-container>
-                      <ng-cintainer *ngIf="isCreating">
+                      <ng-container *ngIf="isCreating">
                         <ion-spinner name="dots"></ion-spinner>
-                      </ng-cintainer>
+                      </ng-container>
                     </ion-button>
                   </ion-col>
                 </ion-row>

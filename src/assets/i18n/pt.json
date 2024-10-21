@@ -1,4 +1,9 @@
 {
+  "FORGOT_PASSWORD_PAGE" : {
+    "BTN" : ["recuperar","minha senha"],
+    "TITLE" : ["insira","seu e-mail"],
+    "TEXT" : "e receba o link de redefinição"
+  },
   "INPUTS" : {
     "EMAIL" : "E-mail",
     "PASSWORD" : "Senha",

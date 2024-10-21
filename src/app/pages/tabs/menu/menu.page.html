@@ -66,8 +66,27 @@
 
 <ion-footer mode="ios" class="ion-no-border">
   <ion-toolbar mode="ios" class="ion-bg-gray-ed">
-    <ion-text mode="ios" class="ion-text-center line-height-16">
-      <p class="fs-12 color-gray-text mg-top-8 mg-bottom-16">{{ 'SHARED.VERSION' | translate }} 2.0.0.</p>
-    </ion-text>
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col size="12">
+          <div class="log-out-wrapper">
+            <ion-button
+            (click)="logoutAlert()"
+            shape="round"
+            class="anf-main-solid fs-14 height-44"
+            mode="md"
+            title="acessar minha conta">
+              <ion-icon name="log-out-outline" class="mg-right-5 fs-22"></ion-icon> <b class="mg-right-5">sair</b> da minha conta
+            </ion-button>
+          </div>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-text mode="ios" class="ion-text-center line-height-16">
+            <p class="fs-12 color-gray-text">{{ 'SHARED.VERSION' | translate }} 2.0.0.</p>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
 </ion-footer>

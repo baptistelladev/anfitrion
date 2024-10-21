@@ -36,6 +36,8 @@
 @import './assets/scss/ionic/ion-fab.scss';
 @import './assets/scss/ionic/ion-modal.scss';
 @import './assets/scss/ionic/ion-segment.scss';
+@import './assets/scss/ionic/ion-toast.scss';
+
 
 /* GRID */
 ion-grid {
@@ -157,6 +159,23 @@ hr.rgs-divider {
       ion-button {
         ion-icon {
           font-size: 23px;
+        }
+      }
+    }
+  }
+
+  &.label-w-white {
+    ion-item {
+      ion-input {
+        &.has-focus.input-label-placement-floating, &.has-value.input-label-placement-floating {
+
+          .input-wrapper.sc-ion-input-ios {
+            .label-text-wrapper.sc-ion-input-ios {
+              .label-text.sc-ion-input-ios {
+                background: var(--white);
+              }
+            }
+          }
         }
       }
     }
@@ -368,4 +387,9 @@ ion-item.item-title-w-icon {
       }
     }
   }
+}
+
+
+.header-container {
+  @include flexbox(flex-start, space-between, row);
 }

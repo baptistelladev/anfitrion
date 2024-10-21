@@ -1,4 +1,9 @@
 {
+  "FORGOT_PASSWORD_PAGE" : {
+    "BTN" : ["recover","my password"],
+    "TITLE" : ["enter","your email"],
+    "TEXT" : "and receive the reset link"
+  },
   "INPUTS" : {
     "EMAIL" : "E-mail",
     "PASSWORD" : "Password",
