@@ -1,0 +1,11 @@
+ion-toast {
+  &.anf-toast {
+    --box-shadow: none;
+    --color: var(--white);
+    font-size: 12px;
+
+    &.anf-toast-danger {
+      --background: var(--danger);
+    }
+  }
+}

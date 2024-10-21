@@ -21,6 +21,8 @@ import { getFirestore } from 'firebase/firestore';
 import { environment } from 'src/environments/environment';
 // SWIPER
 import {register} from 'swiper/element/bundle';
+import { provideAuth } from '@angular/fire/auth';
+import { getAuth } from 'firebase/auth';
 register();
 
 export function createTranslateLoader(http: HttpClient) {
@@ -83,7 +85,8 @@ export function createTranslateLoader(http: HttpClient) {
     provideFirebaseApp(() => initializeApp(environment.firebaseCfg)),
     provideAnalytics(() => getAnalytics()),
     ScreenTrackingService,
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth())
   ],
 })
 export class CoreModule { }
