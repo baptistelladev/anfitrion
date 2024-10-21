@@ -1,4 +1,7 @@
 {
+  "TOASTS" : {
+    "CREATED_ACC_SUCCESS" : ["Conta criada com sucesso","acesse agora"]
+  },
   "FORGOT_PASSWORD_PAGE" : {
     "BTN" : ["recuperar","minha senha"],
     "TITLE" : ["insira","seu e-mail"],
@@ -18,7 +21,7 @@
     "WHAT_YOU_WANT" : "O que você quer fazer?",
     "ACCESS_SLIDER" : {
       "INSERT" : ["Insira","suas informações"],
-      "BEST_OF" : "e conheça o melhor da nossa região.",
+      "BEST_OF" : "e conheça o melhor da",
       "LOGIN_BTN" : ["acessar","minha conta"],
       "FORGET_BTN" : ["esqueci","minha senha"]
     },

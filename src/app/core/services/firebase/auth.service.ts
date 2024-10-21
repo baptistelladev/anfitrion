@@ -59,20 +59,56 @@ export class AuthService {
     }
   }
 
-  private getFirebaseErrorMessage(error: any): string {
+  private getFirebaseErrorMessage(error: any): any {
+
+    let errorObj: { text: any, error: any } = { text: null, error: error };
 
     switch (error.code) {
       case 'auth/email-already-in-use':
-        return 'Este e-mail já está em uso.';
+        return errorObj = {
+          error: error,
+          text: {
+            pt: 'O e-mail informado já está sendo usado',
+            en: 'The email provided is already in use',
+            es: 'El correo electrónico proporcionado ya está en uso'
+          }
+        }
       case 'auth/invalid-email':
-        return 'O e-mail fornecido é inválido.';
+        return errorObj = {
+          error: error,
+          text: {
+            pt: 'O e-mail fornecido é inválido',
+            en: 'The provided email is invalid',
+            es: 'El correo electrónico proporcionado es inválido'
+          }
+        }
       case 'auth/weak-password':
-        return 'A senha deve ter pelo menos 6 caracteres.';
+        return errorObj = {
+          error: error,
+          text: {
+            pt: 'A senha deve ter pelo menos 6 caracteres',
+            en: 'The password must be at least 6 characters long',
+            es: 'La contraseña debe tener al menos 6 caracteres'
+          }
+        }
       case 'auth/invalid-credential':
-        return 'E-mail ou senha inválido.';
-      // Adicione outros casos conforme necessário
+        return errorObj = {
+          error: error,
+          text: {
+            pt: 'E-mail ou senha inválido',
+            en: 'Invalid email or password',
+            es: 'Correo electrónico o contraseña inválido'
+          }
+        }
       default:
-        return 'Erro desconhecido. Tente novamente mais tarde.';
+        return errorObj = {
+          error: error,
+          text: {
+            pt: 'Erro desconhecido. Tente novamente mais tarde',
+            en: 'Unknown error. Please try again later',
+            es: 'Error desconocido. Intente de nuevo más tarde'
+          }
+        }
     }
   }
 }

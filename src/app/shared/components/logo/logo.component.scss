@@ -3,6 +3,10 @@
   ion-text {
     display: block;
 
+    &.as-link {
+      cursor: pointer;
+    }
+
     p {
       position: relative;
       display: inline-block;
@@ -38,45 +42,6 @@
         font-size: 14px;
         right: 0;
         bottom: -12px;
-      }
-    }
-
-    &.pt {
-      p {
-        &::before {
-          content: 'Rua'
-        }
-
-        &::after {
-          content: 'de Santos'
-        }
-      }
-    }
-
-    &.en {
-      p {
-        margin-top: -10px;
-
-        &::before {
-          content: '';
-          display: none;
-        }
-
-        &::after {
-          content: 'street of Santos'
-        }
-      }
-    }
-
-    &.es {
-      p {
-        &::before {
-          content: 'Calle'
-        }
-
-        &::after {
-          content: 'de Santos'
-        }
       }
     }
   }

@@ -7,5 +7,9 @@ ion-toast {
     &.anf-toast-danger {
       --background: var(--danger);
     }
+
+    &.anf-toast-success {
+      --background: var(--green);
+    }
   }
 }

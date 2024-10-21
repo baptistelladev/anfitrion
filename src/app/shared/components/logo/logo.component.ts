@@ -8,6 +8,9 @@ import { ILang } from '../../models/Lang';
 })
 export class LogoComponent  implements OnInit {
 
+  @Input() asLink: boolean = false;
+  @Input() route: string | string[];
+
   @Input() size: string;
   @Input() currentLanguage: ILang;
 

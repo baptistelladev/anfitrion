@@ -15,6 +15,9 @@ class="ion-content-w-linear-bg"
                   <div class="header-container">
                     <div class="header-logo">
                       <rgs-logo
+                      (click)="slideSwiperToFirst()"
+                      [asLink]="true"
+                      [route]="['/login']"
                       [size]="'big'"
                       [currentLanguage]="currentLanguage">
                       </rgs-logo>
@@ -92,7 +95,7 @@ class="ion-content-w-linear-bg"
                       </h2>
 
                       <p class="fs-12 color-gray-6 mg-bottom-16">
-                        {{ 'LOGIN_PAGE.ACCESS_SLIDER.BEST_OF' | translate }}
+                        {{ 'LOGIN_PAGE.ACCESS_SLIDER.BEST_OF' | translate }} Baixada Santista
                       </p>
                     </ion-text>
                   </ion-col>
@@ -108,6 +111,7 @@ class="ion-content-w-linear-bg"
                       lines="none"
                       mode="ios">
                         <ion-input
+                        (keydown)="preventWhitespace($event)"
                         enterkeyhint="next"
                         mode="ios"
                         [label]="'INPUTS.EMAIL' | translate"
@@ -150,6 +154,7 @@ class="ion-content-w-linear-bg"
                       lines="none"
                       mode="ios">
                         <ion-input
+                        (keydown)="preventWhitespace($event)"
                         enterkeyhint="next"
                         mode="ios"
                         [label]="'INPUTS.PASSWORD' | translate"
@@ -186,7 +191,7 @@ class="ion-content-w-linear-bg"
                         <p
                         *ngIf="formLoginGroup.get('password')?.hasError('minlength')"
                         class="fs-12 color-danger">
-                        {{ 'ERRORS.MIN_CARACTERES.0' | translate }} 6 {{ 'ERRORS.MIN_CARACTERES.1' | translate }}
+                          {{ 'ERRORS.MIN_CARACTERES.0' | translate }} 6 {{ 'ERRORS.MIN_CARACTERES.1' | translate }}
                         </p>
                       </ion-text>
                     </div>
@@ -238,7 +243,7 @@ class="ion-content-w-linear-bg"
                   <ion-col size="12">
                     <ion-text
                     mode="ios"
-                    class="color-gray-text line-height-16">
+                    class="color-gray-text line-height-16 d-block mg-top-32">
                       <h2 class="font-baloo fs-20">
                         <b>{{ 'LOGIN_PAGE.CREATE_SLIDER.TITLE.0' | translate }}</b> {{ 'LOGIN_PAGE.CREATE_SLIDER.TITLE.1' | translate }}
                       </h2>
@@ -252,7 +257,7 @@ class="ion-content-w-linear-bg"
                   <ion-col size="12">
                     <div
                     [ngClass]="{
-                    'has-error' : (formCreateAccGroup.get('email')?.invalid &&
+                    'has-error' : inputErrors.emailAlreadyInUse.show || (formCreateAccGroup.get('email')?.invalid &&
                     (formCreateAccGroup.get('email')?.touched ||
                     formCreateAccGroup.get('email')?.dirty))}"
                     class="rgs-input-wrapper full-width white-background-item label-w-gray-ef">
@@ -260,6 +265,8 @@ class="ion-content-w-linear-bg"
                       lines="none"
                       mode="ios">
                         <ion-input
+                        (keyup)="clearErrorsIfExists('email-already-in-use')"
+                        (keydown)="preventWhitespace($event)"
                         enterkeyhint="next"
                         mode="ios"
                         [label]="'INPUTS.EMAIL' | translate"
@@ -269,6 +276,15 @@ class="ion-content-w-linear-bg"
                         inputmode="email">
                         </ion-input>
                       </ion-item>
+
+                      <ion-text
+                      *ngIf="inputErrors.emailAlreadyInUse.show"
+                      mode="ios"
+                      class="mg-top-8 d-block">
+                        <p class="fs-12 color-danger">
+                          {{ inputErrors.emailAlreadyInUse.text }}
+                        </p>
+                      </ion-text>
 
                       <ion-text
                       mode="ios"
@@ -297,19 +313,32 @@ class="ion-content-w-linear-bg"
                     'has-error' : (formCreateAccGroup.get('password')?.invalid &&
                     (formCreateAccGroup.get('password')?.touched ||
                     formCreateAccGroup.get('password')?.dirty))}"
-                    class="rgs-input-wrapper full-width white-background-item label-w-gray-ef">
+                    class="rgs-input-wrapper full-width white-background-item label-w-gray-ef item-has-button-at-end">
                       <ion-item
                       lines="none"
                       mode="ios">
                         <ion-input
+                        (keyup)="checkPasswordRules()"
+                        (keydown)="preventWhitespace($event)"
                         enterkeyhint="next"
                         mode="ios"
                         [label]="'INPUTS.PASSWORD' | translate"
                         labelPlacement="floating"
                         formControlName="password"
-                        type="text"
+                        [type]="showCreatePassword ? 'text' : 'password'"
                         inputmode="text">
                         </ion-input>
+
+                        <ion-button
+                        [title]="showCreatePassword ? ('INPUTS.HIDE_PW' | translate) : ('INPUTS.SHOW_PW' | translate)"
+                        (click)="toggleCreatePassword()"
+                        type="button"
+                        class="clear-gray-light"
+                        mode="ios"
+                        fill="clear">
+                          <ion-icon name="eye-off-outline" *ngIf="showCreatePassword"></ion-icon>
+                          <ion-icon name="eye-outline" *ngIf="!showCreatePassword"></ion-icon>
+                        </ion-button>
                       </ion-item>
 
                       <ion-text
@@ -327,7 +356,7 @@ class="ion-content-w-linear-bg"
                         <p
                         *ngIf="formCreateAccGroup.get('password')?.hasError('minlength')"
                         class="fs-12 color-danger">
-                          No mínimo 2 caracteres
+                          {{ 'ERRORS.MIN_CARACTERES.0' | translate }} 8 {{ 'ERRORS.MIN_CARACTERES.1' | translate }}
                         </p>
                       </ion-text>
                     </div>
@@ -339,19 +368,32 @@ class="ion-content-w-linear-bg"
                     'has-error' : (formCreateAccGroup.get('confirmPassword')?.invalid &&
                     (formCreateAccGroup.get('confirmPassword')?.touched ||
                     formCreateAccGroup.get('confirmPassword')?.dirty))}"
-                    class="rgs-input-wrapper full-width white-background-item label-w-gray-ef mg-bottom-16">
+                    class="rgs-input-wrapper full-width white-background-item label-w-gray-ef mg-bottom-16 item-has-button-at-end">
                       <ion-item
                       lines="none"
                       mode="ios">
                         <ion-input
+                        (keyup)="checkPasswordsMatch();"
+                        (keydown)="preventWhitespace($event)"
                         enterkeyhint="next"
                         mode="ios"
                         [label]="'INPUTS.CONFIRM_PASSWORD' | translate"
                         labelPlacement="floating"
                         formControlName="confirmPassword"
-                        type="text"
+                        [type]="showCreateConfirmPassword ? 'text' : 'password'"
                         inputmode="text">
                         </ion-input>
+
+                        <ion-button
+                        [title]="showCreateConfirmPassword ? ('INPUTS.HIDE_PW' | translate) : ('INPUTS.SHOW_PW' | translate)"
+                        (click)="toggleCreateConfirmPassword()"
+                        type="button"
+                        class="clear-gray-light"
+                        mode="ios"
+                        fill="clear">
+                          <ion-icon name="eye-off-outline" *ngIf="showCreateConfirmPassword"></ion-icon>
+                          <ion-icon name="eye-outline" *ngIf="!showCreateConfirmPassword"></ion-icon>
+                        </ion-button>
                       </ion-item>
 
                       <ion-text
@@ -369,18 +411,47 @@ class="ion-content-w-linear-bg"
                         <p
                         *ngIf="formCreateAccGroup.get('confirmPassword')?.hasError('minlength')"
                         class="fs-12 color-danger">
-                        {{ 'ERRORS.MIN_CARACTERES.0' | translate }} 6 {{ 'ERRORS.MIN_CARACTERES.1' | translate }}
+                        {{ 'ERRORS.MIN_CARACTERES.0' | translate }} 8 {{ 'ERRORS.MIN_CARACTERES.1' | translate }}
                         </p>
                       </ion-text>
                     </div>
                   </ion-col>
 
                   <ion-col size="12">
+                    <div class="password-wrapper">
+                      <ul>
+                        <li
+                        *ngFor="let rule of passwordRules"
+                        [ngClass]="{ 'has-rule' : rule.valid }"
+                        >
+                          <ion-text mode="ios">
+                            <p class="fs-14">
+                              <ion-icon [name]="rule.valid ? 'checkmark-circle' : 'close-circle'" class="fs-16"></ion-icon>
+                              {{ rule.text[currentLanguage.value] }}
+                            </p>
+                          </ion-text>
+                        </li>
+                        <li
+                        [ngClass]="{ 'has-rule' : passwordsMatch }"
+                        >
+                          <ion-text mode="ios">
+                            <p class="fs-14">
+                              <ion-icon [name]="passwordsMatch ? 'checkmark-circle' : 'close-circle'" class="fs-16"></ion-icon>
+                              {{ passwordMatch.text[currentLanguage.value] }}
+                            </p>
+                          </ion-text>
+                        </li>
+                      </ul>
+                    </div>
+                  </ion-col>
+
+                  <ion-col size="12">
                     <ion-button
-                    [disabled]="isCreating"
+                    (click)="createAcc()"
+                    [disabled]="isCreating || formCreateAccGroup.invalid || !passwordIsValid || !passwordsMatch"
                     type="submit"
                     shape="round"
-                    class="anf-main-solid full-width fs-14 height-44"
+                    class="anf-main-solid full-width fs-14 height-44 mg-top-16"
                     mode="md"
                     [title]="('LOGIN_PAGE.CREATE_SLIDER.BTN.0' | translate) + ' ' + 'LOGIN_PAGE.CREATE_SLIDER.BTN.1' | translate">
                       <ng-container *ngIf="!isCreating"><ion-icon name="person-add-outline" class="mg-right-5"></ion-icon> <b class="mg-right-5">{{ 'LOGIN_PAGE.CREATE_SLIDER.BTN.0' | translate }}</b> {{ 'LOGIN_PAGE.CREATE_SLIDER.BTN.1' | translate }}</ng-container>

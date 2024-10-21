@@ -1,4 +1,7 @@
 {
+  "TOASTS" : {
+    "CREATED_ACC_SUCCESS" : ["Account successfully created", "log in now"]
+  },
   "FORGOT_PASSWORD_PAGE" : {
     "BTN" : ["recover","my password"],
     "TITLE" : ["enter","your email"],
@@ -18,7 +21,7 @@
     "WHAT_YOU_WANT" : "What do you want to do?",
     "ACCESS_SLIDER" : {
       "INSERT" : ["Insert", "your information"],
-      "BEST_OF" : "and discover the best of our region.",
+      "BEST_OF" : "and discover the best of the",
       "LOGIN_BTN" : ["access", "my account"],
       "FORGET_BTN": ["forgot", "my password"]
     },

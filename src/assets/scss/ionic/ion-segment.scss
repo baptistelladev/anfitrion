@@ -16,6 +16,10 @@ ion-segment {
       &.segment-button-checked {
         --color: var(--green);
       }
+
+      &::before {
+        display: none;
+      }
     }
   }
 }
