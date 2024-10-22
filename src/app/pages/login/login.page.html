@@ -102,7 +102,7 @@ class="ion-content-w-linear-bg">
                     'has-error' : (formLoginGroup.get('email')?.invalid &&
                     (formLoginGroup.get('email')?.touched ||
                     formLoginGroup.get('email')?.dirty))}"
-                    class="rgs-input-wrapper full-width white-background-item label-w-gray-ef">
+                    class="rgs-input-wrapper full-width white-background-item label-w-white">
                       <ion-item
                       lines="none"
                       mode="ios">
@@ -145,7 +145,7 @@ class="ion-content-w-linear-bg">
                     'has-error' : (formLoginGroup.get('password')?.invalid &&
                     (formLoginGroup.get('password')?.touched ||
                     formLoginGroup.get('password')?.dirty))}"
-                    class="rgs-input-wrapper full-width white-background-item label-w-gray-ef item-has-button-at-end">
+                    class="rgs-input-wrapper full-width white-background-item label-w-white item-has-button-at-end">
                       <ion-item
                       lines="none"
                       mode="ios">
@@ -271,10 +271,54 @@ class="ion-content-w-linear-bg">
                   <ion-col size="12">
                     <div
                     [ngClass]="{
+                    'has-error' : (formCreateAccGroup.get('name')?.invalid &&
+                    (formCreateAccGroup.get('name')?.touched ||
+                    formCreateAccGroup.get('name')?.dirty))}"
+                    class="rgs-input-wrapper full-width white-background-item label-w-white">
+                      <ion-item
+                      lines="none"
+                      mode="ios">
+                        <ion-input
+                        (keyup)="clearFieldKeepJustName($event)"
+                        (keydown)="preventWhitespace($event)"
+                        [label]="'INPUTS.NAME' | translate"
+                        enterkeyhint="next"
+                        mode="ios"
+                        labelPlacement="floating"
+                        formControlName="name"
+                        type="text"
+                        inputmode="text">
+                        </ion-input>
+                      </ion-item>
+
+                      <ion-text
+                      mode="ios"
+                      class="mg-top-8 d-block"
+                      *ngIf="
+                      formCreateAccGroup.get('name')?.invalid &&
+                      (formCreateAccGroup.get('name')?.touched || formCreateAccGroup.get('name')?.dirty)">
+                        <p
+                        *ngIf="formCreateAccGroup.get('name')?.hasError('required')"
+                        class="fs-12 color-danger">
+                          {{ 'ERRORS.REQUIRED_FIELD' | translate }}
+                        </p>
+
+                        <p
+                        *ngIf="formCreateAccGroup.get('name')?.hasError('minlength')"
+                        class="fs-12 color-danger">
+                          {{ 'ERRORS.MIN_CARACTERES.0' | translate }} 3 {{ 'ERRORS.MIN_CARACTERES.1' | translate }}
+                        </p>
+                      </ion-text>
+                    </div>
+                  </ion-col>
+
+                  <ion-col size="12">
+                    <div
+                    [ngClass]="{
                     'has-error' : inputErrors.emailAlreadyInUse.show || (formCreateAccGroup.get('email')?.invalid &&
                     (formCreateAccGroup.get('email')?.touched ||
                     formCreateAccGroup.get('email')?.dirty))}"
-                    class="rgs-input-wrapper full-width white-background-item label-w-gray-ef">
+                    class="rgs-input-wrapper full-width white-background-item label-w-white">
                       <ion-item
                       lines="none"
                       mode="ios">
@@ -327,7 +371,7 @@ class="ion-content-w-linear-bg">
                     'has-error' : (formCreateAccGroup.get('password')?.invalid &&
                     (formCreateAccGroup.get('password')?.touched ||
                     formCreateAccGroup.get('password')?.dirty))}"
-                    class="rgs-input-wrapper full-width white-background-item label-w-gray-ef item-has-button-at-end">
+                    class="rgs-input-wrapper full-width white-background-item label-w-white item-has-button-at-end">
                       <ion-item
                       lines="none"
                       mode="ios">
