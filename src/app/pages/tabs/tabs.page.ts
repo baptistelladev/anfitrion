@@ -12,6 +12,7 @@ export class TabsPage implements OnInit {
 
   public tabs: ITab[] = TABS;
   public applyDarkTabBar: boolean = false;
+  public hideTabs: boolean = false;
   public currentUrlJustString: string;
 
   constructor(
@@ -22,7 +23,11 @@ export class TabsPage implements OnInit {
   }
 
   public checkRoute() {
-    if (this.router.url === '/sobre-nos') { this.applyDarkTabBar = true } else { this.applyDarkTabBar = false }
+    if (this.router.url === '/logado/sobre-nos') { this.applyDarkTabBar = true } else { this.applyDarkTabBar = false }
+    if (this.router.url === '/logado/bem-vindo-a-baixada-santista') { this.hideTabs = true } else { setTimeout(() => {
+      this.hideTabs = false
+    }, 100); }
+
 
     this.currentUrlJustString = this.router.url.split('/')[1];
 

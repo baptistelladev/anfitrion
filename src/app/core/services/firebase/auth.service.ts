@@ -1,8 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, UserCredential } from '@angular/fire/auth';
+import { collection, doc, Firestore, setDoc } from '@angular/fire/firestore';
 import { NavController } from '@ionic/angular';
+import { addDoc } from 'firebase/firestore';
 import { Observable, Subscription } from 'rxjs';
+import { CollectionsEnum } from 'src/app/shared/enums/Collection';
+import { IUSer } from 'src/app/shared/models/IUser';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +16,20 @@ export class AuthService {
   public authState$: Observable<any>;
   public authStateSubscription: Subscription;
 
-  constructor(private afAuth: Auth, private navCtrl : NavController) { }
+  constructor(private afAuth: Auth, private navCtrl : NavController, private firestore : Firestore) { }
 
-  public async createUserWithEmailAndPassword(email: string, password: string): Promise<any> {
+  public async createUserWithEmailAndPassword(email: string, password: string, userInfo: IUSer ): Promise<any> {
     try {
       const userCredential = await createUserWithEmailAndPassword(this.afAuth, email, password);
-      return userCredential;
+      const user = userCredential.user;
+
+      await setDoc(doc(this.firestore, CollectionsEnum.USERS, user.uid), {
+        uid: user.uid,
+        email: user.email,
+        ...userInfo
+      })
+
+      return user
     } catch (error) {
       console.log(error);
       const errorMessage = this.getFirebaseErrorMessage(error);

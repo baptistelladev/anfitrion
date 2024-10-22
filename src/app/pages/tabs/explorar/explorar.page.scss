@@ -4,22 +4,6 @@ ion-content {
   section {
     &.explorar {
       width: 100%;
-      min-height: 100%;
-      @include flexbox(flex-start, flex-start, column);
-
-      .explorar-swiper-wrapper {
-        width: 100%;
-        flex: 1;
-        @include flexbox(center, center, column);
-
-        ion-grid {
-          flex: none;
-        }
-      }
-
-      .explorar-orientation-wrapper {
-        width: 100%;
-      }
     }
   }
 }

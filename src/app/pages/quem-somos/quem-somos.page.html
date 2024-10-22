@@ -1,7 +1,6 @@
 <ion-content
 class="ion-content-w-linear-bg"
-[forceOverscroll]="false"
-[fullscreen]="true">
+[forceOverscroll]="false">
   <section class="about-us bg-gray-2">
     <header class="about-us-header">
       <ion-grid [fixed]="true">
@@ -10,10 +9,10 @@ class="ion-content-w-linear-bg"
             <div class="header-container">
               <div class="back-btn-wrapper">
                 <ion-button
-                mode="ios"
                 (click)="closeModal()"
-                class="back ion-color-white back-btn no-ion-padding font-baloo"
                 [title]="'SHARED.BACK' | translate"
+                mode="ios"
+                class="back ion-color-white back-btn no-ion-padding font-baloo"
                 fill="clear">
                   <ion-icon name="chevron-back-outline"></ion-icon> <span class="font-w-thin mg-left-5">{{ 'SHARED.BACK' | translate }}</span>
                 </ion-button>
@@ -27,10 +26,16 @@ class="ion-content-w-linear-bg"
     <div class="about-us-description">
       <ion-grid [fixed]="true">
         <ion-row>
-          <ion-col size="12" class="txt-left">
-            <ion-text mode="ios" class="d-block pad-sides-16 color-white line-height-20">
+          <ion-col
+          size="12"
+          class="txt-left">
+            <ion-text
+            mode="ios"
+            class="d-block pad-sides-16 color-white line-height-20">
               <p class="fs-14">{{ 'ABOUT_US_PAGE.FROM_NOW' | translate }}</p>
-              <p class="fs-18 mg-bottom-16 color-linear"><b>{{ 'ABOUT_US_PAGE.YOUR_TIME' | translate }}</b>.</p>
+              <p class="fs-18 mg-bottom-16 color-linear">
+                <b>{{ 'ABOUT_US_PAGE.YOUR_TIME' | translate }}</b>.
+              </p>
             </ion-text>
           </ion-col>
         </ion-row>
@@ -39,24 +44,20 @@ class="ion-content-w-linear-bg"
 
     <div class="about-us-swiper-wrapper">
       <swiper-container
-      [init]="true"
-      class="full-width swiper-w-relative-pagination"
       #aboutUsSwiper
       [loop]="true"
-      effect="slide"
-      speed="5000"
-      [allowTouchMove]="false"
+      [effect]="'slide'"
+      allow-touch-move="false"
       [autoplay]="{ delay: 0, disableOnInteraction: false }"
       [freeMode]="true"
+      class="full-width swiper-w-relative-pagination"
+      speed="5000"
       slides-offset-before="16"
       slides-offset-after="16"
       initial-slide="0"
       [slidesPerView]="'auto'"
       space-between="16"
-      [breakpoints]="{
-        '200' : { slidesPerView: 1.3 },
-        '1000' : { slidesPerView: 1.7 },
-      }">
+      [init]="true">
         <ng-container>
           <swiper-slide
           *ngFor="let tip of TIPS; let i = index"
@@ -66,13 +67,10 @@ class="ion-content-w-linear-bg"
               class="ion-bg-transparent tip-item"
               lines="none"
               mode="ios">
-
-              <ion-icon [name]="tip.icon" class="color-gray-c fs-32 mg-right-32"></ion-icon>
-
-              <ion-text mode="ios">
-                <p class="color-gray-c fs-14">{{ tip.title[currentLanguage.value] }}</p>
-                <p class="description fs-18 color-linear font-w-bold">{{ tip.text[currentLanguage.value] }}</p>
-              </ion-text>
+                <ion-text mode="ios">
+                  <p class="color-gray-c fs-14">{{ tip.title[currentLanguage.value] }}</p>
+                  <p class="description fs-18 color-linear font-w-bold">{{ tip.text[currentLanguage.value] }}</p>
+                </ion-text>
               </ion-item>
             </div>
           </swiper-slide>
@@ -82,12 +80,19 @@ class="ion-content-w-linear-bg"
   </section>
 </ion-content>
 
-<ion-footer mode="ios" class="ion-no-border bg-gray-ed">
-  <ion-toolbar mode="ios" class="ion-bg-gray-ed">
+<ion-footer
+mode="ios"
+class="ion-no-border bg-gray-ed">
+  <ion-toolbar
+  mode="ios"
+  class="ion-bg-gray-ed">
     <ion-grid [fixed]="true">
       <ion-row>
         <ion-col size="12">
-          <rgs-made-w-love [color]="'gray-text'" [alwaysCentered]="true"></rgs-made-w-love>
+          <rgs-made-w-love
+          [color]="'gray-text'"
+          [alwaysCentered]="true">
+          </rgs-made-w-love>
         </ion-col>
       </ion-row>
     </ion-grid>

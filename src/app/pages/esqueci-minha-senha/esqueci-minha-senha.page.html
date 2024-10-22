@@ -1,5 +1,9 @@
-<ion-header mode="ios" class="ion-no-border">
-  <ion-toolbar mode="ios" class="ion-bg-white no-ion-padding">
+<ion-header
+mode="ios"
+class="ion-no-border">
+  <ion-toolbar
+  mode="ios"
+  class="ion-bg-white no-ion-padding">
     <ion-grid [fixed]="true">
       <ion-row>
         <ion-col size="12">
@@ -7,15 +11,17 @@
             <div class="back-btn-wrapper">
               <ion-button
               (click)="back()"
-              class="back ion-color-gray-text back-btn no-ion-padding font-baloo"
               [title]="'SHARED.BACK' | translate"
+              class="back ion-color-gray-text back-btn no-ion-padding font-baloo"
               fill="clear">
                 <ion-icon name="chevron-back-outline"></ion-icon>
               </ion-button>
             </div>
 
             <div class="language-container">
-              <rgs-language-button [currentLanguage]="currentLanguage"></rgs-language-button>
+              <rgs-language-button
+              [currentLanguage]="currentLanguage">
+              </rgs-language-button>
             </div>
           </div>
         </ion-col>
@@ -28,9 +34,9 @@
 [forceOverscroll]="false">
   <section class="esqueci-minha-senha">
     <form
+    [formGroup]="formForgotPassword"
     (ngSubmit)="recover()"
-    class="esqueci-minha-senha-wrapper"
-    [formGroup]="formForgotPassword">
+    class="esqueci-minha-senha-wrapper">
       <ion-grid [fixed]="true">
         <ion-row>
           <ion-col size="12">
@@ -63,9 +69,9 @@
               lines="none"
               mode="ios">
                 <ion-input
-                enterkeyhint="next"
-                mode="ios"
                 [label]="'INPUTS.EMAIL' | translate"
+                enterkeyhint="send"
+                mode="ios"
                 labelPlacement="floating"
                 formControlName="email"
                 type="email"
@@ -97,13 +103,16 @@
           <ion-col size="12">
             <ion-button
             (click)="recover()"
-            type="submit"
             [disabled]="isRecovering || formForgotPassword.invalid"
+            [title]="('FORGOT_PASSWORD_PAGE.BTN.0' | translate) + ' ' + ('FORGOT_PASSWORD_PAGE.BTN.1' | translate)"
+            type="submit"
             shape="round"
             class="anf-main-solid full-width fs-14 height-44 mg-top-16"
-            mode="md"
-            [title]="('FORGOT_PASSWORD_PAGE.BTN.0' | translate) + ' ' + ('FORGOT_PASSWORD_PAGE.BTN.1' | translate)">
-              <ng-container *ngIf="!isRecovering"><b class="mg-right-5">{{ 'FORGOT_PASSWORD_PAGE.BTN.0' | translate }}</b> {{ 'FORGOT_PASSWORD_PAGE.BTN.1' | translate }}</ng-container>
+            mode="md">
+              <ng-container *ngIf="!isRecovering">
+                <b class="mg-right-5">{{ 'FORGOT_PASSWORD_PAGE.BTN.0' | translate }}</b> {{ 'FORGOT_PASSWORD_PAGE.BTN.1' | translate }}
+              </ng-container>
+
               <ng-container *ngIf="isRecovering">
                 <ion-spinner name="dots"></ion-spinner>
               </ng-container>
