@@ -26,6 +26,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/esqueci-minha-senha/esqueci-minha-senha.module').then( m => m.EsqueciMinhaSenhaPageModule)
   },
   {
+    path: 'quem-somos',
+    loadChildren: () => import('./pages/quem-somos/quem-somos.module').then( m => m.QuemSomosPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/pagina-nao-existe/pagina-nao-existe.module').then( m => m.PaginaNaoExistePageModule)
   }

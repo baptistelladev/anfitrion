@@ -1,8 +1,13 @@
 {
+  "ABOUT_US_PAGE" : {
+    "FROM_NOW" : "Starting today, I will save your most precious asset:",
+    "YOUR_TIME" : "Your time"
+  },
   "TOASTS" : {
     "CREATED_ACC_SUCCESS" : ["Account successfully created", "log in now"]
   },
   "FORGOT_PASSWORD_PAGE" : {
+    "PAGE_TITLE" : "Recover Your Password",
     "BTN" : ["recover","my password"],
     "TITLE" : ["enter","your email"],
     "TEXT" : "and receive the reset link"
@@ -15,21 +20,21 @@
     "HIDE_PW" : "Hide password"
   },
   "LOGIN_PAGE" : {
+    "PAGE_TITLE" : "The Host of Baixada Santista",
     "CREATE" : "create",
     "ACCESS" : "access",
     "ACCOUNT" : "account",
     "WHAT_YOU_WANT" : "What do you want to do?",
     "ACCESS_SLIDER" : {
-      "INSERT" : ["Insert", "your information"],
-      "BEST_OF" : "and discover the best of the",
+      "TITLE" : ["Insert", "your information"],
       "LOGIN_BTN" : ["access", "my account"],
       "FORGET_BTN": ["forgot", "my password"]
     },
     "CREATE_SLIDER" : {
-      "TITLE" : ["Let's","register your account"],
-      "SUBTITLE" : "to get to know the area.",
+      "TITLE" : ["Register", "your account"],
       "BTN" : ["create","an account"]
-    }
+    },
+    "WHAT_IS" : "what is the"
   },
   "CHANGE_LANG_PAGE" : {
     "PAGE_TITLE": "Change the language you see Santos Gastronomic Street",

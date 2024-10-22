@@ -26,6 +26,7 @@
 @import 'swiper/scss';
 @import '@ionic/angular/css/ionic-swiper';
 @import 'swiper/scss/pagination';
+@import 'swiper/scss/autoplay';
 
 /* SOBREPOR VISUAL DO IONIC */
 @import './assets/scss/ionic/ion-button.scss';
@@ -393,8 +394,6 @@ ion-item.item-title-w-icon {
 .header-container {
   @include flexbox(flex-start, space-between, row);
 }
-
-
 
 .password-wrapper {
   margin: 0;

@@ -53,6 +53,7 @@
                 lines="none"
                 mode="ios">
                   <ion-select
+                  (ionCancel)="back()"
                   (ionChange)="changeLang($event)"
                   formControlName="language"
                   [cancelText]="'SHARED.CANCEL' | translate"

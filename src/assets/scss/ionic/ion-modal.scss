@@ -7,4 +7,12 @@ ion-modal {
       --border-radius: 12px;
     }
   }
+
+  &.anf-about-us-modal {
+    --background: var(--gray-2);
+
+    &::part(handle) {
+      background: var(--white);
+    }
+  }
 }

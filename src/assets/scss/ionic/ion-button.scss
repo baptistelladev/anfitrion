@@ -79,9 +79,49 @@ ion-button {
     font-weight: normal;
   }
 
+  &.anf-main-outline {
+    --color: var(--green);
+    --padding-end: 12px;
+    --padding-start: 12px;
+    --border-width: .5px;
+    --border-style: solid;
+    --border-color: var(--green);
+    text-transform: none;
+    font-weight: normal;
+  }
+
+  &.anf-gray-solid {
+    --background: var(--gray-3);
+    --color: var(--white);
+    --padding-end: 16px;
+    --padding-start: 16px;
+    --border-width: 1px;
+    --border-style: solid;
+    --border-color: var(--gray-3);
+    text-transform: none;
+    font-weight: normal;
+    --box-shadow: none;
+
+    span {
+      color: var(--green);
+    }
+  }
+
+  &.whats-anf {
+    --color: var(--gray-text);
+    --padding-end: 16px;
+    --padding-start: 16px;
+    text-transform: none;
+    font-weight: normal;
+  }
+
   &.clear-gray-light {
     --color: var(--gray-light);
   }
 
   &.height-44 { height: 44px; }
+
+  &.anf-no-shadow-btn {
+    --box-shadow: none;
+  }
 }

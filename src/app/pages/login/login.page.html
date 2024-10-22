@@ -1,6 +1,5 @@
 <ion-content
-class="ion-content-w-linear-bg"
-[fullscreen]="true">
+class="ion-content-w-linear-bg">
   <section class="login">
     <div class="login-header-wrapper bg-gray-2">
       <div class="fixed-header">
@@ -75,7 +74,6 @@ class="ion-content-w-linear-bg"
       #loginSwiper
       allow-touch-move="false"
       [freeMode]="true"
-      [autoHeight]="false"
       initial-slide="0"
       [slidesPerView]="1">
         <ng-container>
@@ -89,13 +87,10 @@ class="ion-content-w-linear-bg"
                   <ion-col size="12">
                     <ion-text
                     mode="ios"
-                    class="color-gray-text line-height-16">
-                      <h2 class="font-baloo fs-20">
-                        <b>{{ 'LOGIN_PAGE.ACCESS_SLIDER.INSERT.0' | translate }}</b> {{ 'LOGIN_PAGE.ACCESS_SLIDER.INSERT.1' | translate }}
-                      </h2>
+                    class="color-gray-text line-height-16 d-block mg-top-32">
 
-                      <p class="fs-12 color-gray-6 mg-bottom-16">
-                        {{ 'LOGIN_PAGE.ACCESS_SLIDER.BEST_OF' | translate }} Baixada Santista
+                      <p class="fs-18 color-gray-text mg-bottom-8 font-baloo">
+                        {{ 'LOGIN_PAGE.ACCESS_SLIDER.TITLE.0' | translate }} <b>{{ 'LOGIN_PAGE.ACCESS_SLIDER.TITLE.1' | translate }}</b>.
                       </p>
                     </ion-text>
                   </ion-col>
@@ -212,6 +207,7 @@ class="ion-content-w-linear-bg"
 
                   <ion-col size="12">
                     <ion-button
+                    fill="solid"
                     [disabled]="formLoginGroup.invalid || isDoingLogin"
                     (click)="login()"
                     type="submit"
@@ -227,6 +223,25 @@ class="ion-content-w-linear-bg"
                         <ion-spinner name="dots"></ion-spinner>
                       </ng-container>
                     </ion-button>
+                  </ion-col>
+
+                  <ion-col
+                  size="12"
+                  class="txt-center">
+                    <ion-button
+                    (click)="openAboutUsModal()"
+                    class="txt-center forgot-password no-ion-padding fs-14"
+                    fill="clear"
+                    [title]="('LOGIN_PAGE.WHAT_IS' | translate) + ' ' + 'anfitrion'"
+                    mode="ios">
+                      {{ 'LOGIN_PAGE.WHAT_IS' | translate }} <b class="mg-left-5">anfitrion</b> <ion-icon name="help-circle-outline" class="mg-left-5 fs-22"></ion-icon>
+                    </ion-button>
+                  </ion-col>
+
+                  <ion-col size="12" class="txt-center">
+                    <div class="footer-container color-gray-text fs-14">
+                      <rgs-copyright class="d-block mg-top-16"></rgs-copyright>
+                    </div>
                   </ion-col>
                 </ion-row>
               </ion-grid>
@@ -244,12 +259,8 @@ class="ion-content-w-linear-bg"
                     <ion-text
                     mode="ios"
                     class="color-gray-text line-height-16 d-block mg-top-32">
-                      <h2 class="font-baloo fs-20">
-                        <b>{{ 'LOGIN_PAGE.CREATE_SLIDER.TITLE.0' | translate }}</b> {{ 'LOGIN_PAGE.CREATE_SLIDER.TITLE.1' | translate }}
-                      </h2>
-
-                      <p class="fs-12 color-gray-6 mg-bottom-16">
-                        {{ 'LOGIN_PAGE.CREATE_SLIDER.SUBTITLE' | translate }}
+                      <p class="fs-18 color-gray-text mg-bottom-8 font-baloo">
+                        {{ 'LOGIN_PAGE.CREATE_SLIDER.TITLE.0' | translate }} <b>{{ 'LOGIN_PAGE.CREATE_SLIDER.TITLE.1' | translate }}</b>.
                       </p>
                     </ion-text>
                   </ion-col>
@@ -447,6 +458,7 @@ class="ion-content-w-linear-bg"
 
                   <ion-col size="12">
                     <ion-button
+                    fill="solid"
                     (click)="createAcc()"
                     [disabled]="isCreating || formCreateAccGroup.invalid || !passwordIsValid || !passwordsMatch"
                     type="submit"
@@ -460,24 +472,18 @@ class="ion-content-w-linear-bg"
                       </ng-container>
                     </ion-button>
                   </ion-col>
+
+                  <ion-col size="12" class="txt-center">
+                    <div class="footer-container color-gray-text fs-14">
+                      <rgs-copyright class="d-block mg-top-16"></rgs-copyright>
+                    </div>
+                  </ion-col>
                 </ion-row>
               </ion-grid>
             </form>
           </swiper-slide>
         </ng-container>
       </swiper-container>
-    </div>
-
-    <div class="login-footer">
-      <ion-grid [fixed]="true">
-        <ion-row>
-          <ion-col size="12" class="txt-center">
-            <div class="footer-container color-gray-text fs-14">
-              <rgs-copyright></rgs-copyright>
-            </div>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
     </div>
   </section>
 </ion-content>

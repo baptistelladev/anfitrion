@@ -10,6 +10,10 @@ ion-text {
       }
     }
 
+    &.always-centered {
+      justify-content: center;
+    }
+
     ion-icon { animation: heartbeat 1.5s infinite; }
 
   }

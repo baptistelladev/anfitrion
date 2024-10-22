@@ -82,7 +82,7 @@ export function createTranslateLoader(http: HttpClient) {
       provide:  DEFAULT_CURRENCY_CODE,
       useValue: 'BRL'
     },
-    provideFirebaseApp(() => initializeApp(environment.firebaseCfg)),
+    provideFirebaseApp(() => initializeApp(environment.anfitrionFirebaseConfig)),
     provideAnalytics(() => getAnalytics()),
     ScreenTrackingService,
     provideFirestore(() => getFirestore()),

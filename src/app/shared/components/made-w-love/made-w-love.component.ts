@@ -10,6 +10,7 @@ export class MadeWLoveComponent  implements OnInit {
   @Input() color: string = 'gray-text';
 
   @Input() centered: boolean;
+  @Input() alwaysCentered: boolean;
 
   constructor() { }
 
