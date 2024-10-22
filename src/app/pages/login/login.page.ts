@@ -175,7 +175,7 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
     })
 
     let userInfo: IUSer = {
-      firstName: 'Felipe'
+      firstName: this.formCreateAccGroup.value.name
     }
 
     await this.authService.createUserWithEmailAndPassword(this.formCreateAccGroup.value.email, this.formCreateAccGroup.value.password, userInfo)
@@ -251,6 +251,7 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
 
   public clearFieldKeepJustName(event: any): void {
     let name: string = this.formCreateAccGroup.value.name.replace(/[^a-zA-ZÀ-ÿ]/g, '');
+    name = name.charAt(0).toUpperCase() + name.slice(1);
     this.formCreateAccGroup.patchValue({ name: name });
   }
 
