@@ -40,6 +40,10 @@ const routes: Routes = [
       {
         path: 'explorar',
         loadChildren: () => import('./explorar/explorar.module').then( m => m.ExplorarPageModule)
+      },
+      {
+        path: 'bem-vindo-a-baixada-santista',
+        loadChildren: () => import('./bem-vindo-a-baixada-santista/bem-vindo-a-baixada-santista.module').then( m => m.BemVindoABaixadaSantistaPageModule)
       }
     ]
   }

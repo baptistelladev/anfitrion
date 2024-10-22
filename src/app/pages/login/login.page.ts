@@ -13,6 +13,7 @@ import { UtilsService } from 'src/app/core/services/utils.service';
 import { TranslateService } from '@ngx-translate/core';
 import { QuemSomosPage } from '../quem-somos/quem-somos.page';
 import { Title } from '@angular/platform-browser';
+import { IUSer } from 'src/app/shared/models/IUser';
 
 @Component({
   selector: 'rgs-login',
@@ -145,7 +146,7 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
 
     await this.authService.signInWithEmailAndPassword(this.formLoginGroup.value.email, this.formLoginGroup.value.password)
     .then( async () => {
-      this.navCtrl.navigateForward(['/logado']);
+      this.navCtrl.navigateForward(['/logado/bem-vindo-a-baixada-santista']);
       this.isDoingLogin = false;
 
     }).catch(async (error) => {
@@ -173,7 +174,11 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
       duration: 3000
     })
 
-    await this.authService.createUserWithEmailAndPassword(this.formCreateAccGroup.value.email, this.formCreateAccGroup.value.password)
+    let userInfo: IUSer = {
+      firstName: 'Felipe'
+    }
+
+    await this.authService.createUserWithEmailAndPassword(this.formCreateAccGroup.value.email, this.formCreateAccGroup.value.password, userInfo)
     .then(async () => {
       this.isCreating = false;
       this.formLoginGroup.patchValue({ email: this.formCreateAccGroup.value.email });
