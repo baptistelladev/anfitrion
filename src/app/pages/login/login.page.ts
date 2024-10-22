@@ -249,8 +249,14 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
+  public clearFieldKeepJustName(event: any): void {
+    let name: string = this.formCreateAccGroup.value.name.replace(/[^a-zA-ZÀ-ÿ]/g, '');
+    this.formCreateAccGroup.patchValue({ name: name });
+  }
+
   public initCreateAccForm(): void {
     this.formCreateAccGroup = this.formBuilder.group({
+      name: [ '', [ Validators.required, Validators.minLength(3) ] ],
       email: [ '', [ Validators.required, Validators.email ] ],
       password: [ '', [ Validators.required, Validators.minLength(8) ] ],
       confirmPassword: [ '', [ Validators.required, Validators.minLength(8) ] ]
