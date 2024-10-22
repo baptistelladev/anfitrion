@@ -1,8 +1,14 @@
+
 {
+  "ABOUT_US_PAGE" : {
+    "FROM_NOW" : "A partir de hoy, ahorraré tu bien más precioso:",
+    "YOUR_TIME" : "Tu tiempo"
+  },
   "TOASTS" : {
     "CREATED_ACC_SUCCESS" : ["Cuenta creada con éxito", "accede ahora"]
   },
   "FORGOT_PASSWORD_PAGE" : {
+    "PAGE_TITLE" : "Recupera tu contraseña",
     "BTN" : ["recuperar","mi contraseña"],
     "TITLE" : ["ingresa","tu correo electrónico"],
     "TEXT" : "y recibe el enlace de restablecimiento"
@@ -15,21 +21,21 @@
     "HIDE_PW" : "Esconder contraseña"
   },
   "LOGIN_PAGE" : {
+    "PAGE_TITLE" : "El anfitrión de la Baixada Santista",
     "CREATE" : "crear",
     "ACCESS" : "acceder",
     "ACCOUNT" : "cuenta",
     "WHAT_YOU_WANT" : "¿Qué quieres hacer?",
     "ACCESS_SLIDER" : {
-      "INSERT" : ["Inserta", "tu información"],
-      "BEST_OF" : "y conoce lo mejor de la",
+      "TITLE" : ["Inserta", "tu información"],
       "LOGIN_BTN" : ["acceder", "mi cuenta"],
       "FORGET_BTN": ["olvidé", "mi contraseña"]
     },
     "CREATE_SLIDER" : {
-      "TITLE" : ["Vamos","registrar tu cuenta"],
-      "SUBTITLE" : "para conocer la región.",
+      "TITLE" : ["Regístrate", "tu cuenta"],
       "BTN" : ["crear","una cuenta"]
-    }
+    },
+    "WHAT_IS" : "¿qué es el"
   },
   "CHANGE_LANG_PAGE" : {
     "PAGE_TITLE": "Cambia el idioma que ves en la Calle Gastronómica de Santos",

@@ -1,0 +1,62 @@
+@import './../../../assets/scss/utils/mixins.scss';
+
+ion-content {
+  section {
+    &.about-us {
+      width: 100%;
+      height: 89%;
+      @include flexbox(flex-start, flex-end, column);
+      position: relative;
+      padding-bottom: 80px;
+
+      .about-us-header {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+
+      .about-us-swiper-wrapper {
+        width: 100%;
+        overflow: hidden;
+        position: absolute;
+        bottom: -65px;
+        left: 0;
+      }
+    }
+  }
+}
+
+.footer-wrapper {
+  padding-bottom: 5vh;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+
+.anf-tip-container {
+  height: 130px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 2px 5px;
+  background: var(--gray-2);
+  border: 1px solid #333;
+  overflow: hidden;
+  border-radius: 8px;
+  margin: 0 auto;
+
+  .tip-item {
+    --min-height: 130px;
+    height: 130px;
+    --padding-start: 32px;
+    --padding-end: 32px;
+    --padding-top: 0;
+    --padding-bottom: 0;
+    --inner-padding-end: 0;
+    --detail-icon-color: var(--white);
+    --detail-icon-font-size: 22px;
+  }
+}
+
+.about-us-description {
+  width: 100%;
+}

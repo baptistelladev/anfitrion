@@ -1,8 +1,13 @@
 {
+  "ABOUT_US_PAGE" : {
+    "FROM_NOW" : "A partir de hoje, pouparei o seu bem mais precioso:",
+    "YOUR_TIME" : "Seu tempo"
+  },
   "TOASTS" : {
     "CREATED_ACC_SUCCESS" : ["Conta criada com sucesso","acesse agora"]
   },
   "FORGOT_PASSWORD_PAGE" : {
+    "PAGE_TITLE" : "Recupere sua senha",
     "BTN" : ["recuperar","minha senha"],
     "TITLE" : ["insira","seu e-mail"],
     "TEXT" : "e receba o link de redefinição"
@@ -15,21 +20,21 @@
     "HIDE_PW" : "Esconder senha"
   },
   "LOGIN_PAGE" : {
+    "PAGE_TITLE" : "O anfitrião da Baixada Santista",
     "CREATE" : "criar",
     "ACCESS" : "acessar",
     "ACCOUNT" : "conta",
     "WHAT_YOU_WANT" : "O que você quer fazer?",
     "ACCESS_SLIDER" : {
-      "INSERT" : ["Insira","suas informações"],
-      "BEST_OF" : "e conheça o melhor da",
+      "TITLE" : ["Insira","suas informações"],
       "LOGIN_BTN" : ["acessar","minha conta"],
       "FORGET_BTN" : ["esqueci","minha senha"]
     },
     "CREATE_SLIDER" : {
-      "TITLE" : ["Vamos","cadastrar sua conta"],
-      "SUBTITLE" : "para conhecer a região.",
+      "TITLE" : ["Faça","seu cadastro"],
       "BTN" : ["criar","uma conta"]
-    }
+    },
+    "WHAT_IS" : "o que é o"
   },
   "CHANGE_LANG_PAGE" : {
     "PAGE_TITLE" : "Troque o idioma que usa na Rua Gastronômica de Santos",

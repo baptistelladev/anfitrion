@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, take } from 'rxjs';
 import { ILang } from 'src/app/shared/models/Lang';
 import * as AppStore from './../../shared/store/app.state';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -11,6 +11,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { OverlayService } from 'src/app/shared/services/overlay.service';
 import { UtilsService } from 'src/app/core/services/utils.service';
 import { TranslateService } from '@ngx-translate/core';
+import { QuemSomosPage } from '../quem-somos/quem-somos.page';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'rgs-login',
@@ -67,6 +69,9 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
     }
   ]
 
+  public translatedPage: any;
+  public translatedPage$: Observable<any>;
+
   constructor(
     private store : Store,
     private formBuilder : FormBuilder,
@@ -75,7 +80,8 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
     private toastCtrl : ToastController,
     private overlayService : OverlayService,
     private utilsService : UtilsService,
-    private translate : TranslateService
+    private translate : TranslateService,
+    private title : Title
   ) { }
 
   async ngOnInit() {
@@ -87,6 +93,21 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.swiper = this.swiperRef?.nativeElement.swiper;
+  }
+
+  ionViewWillEnter(): void {
+    this.getTranslatedPage();
+  }
+
+  public getTranslatedPage(): void {
+    this.translatedPage$ = this.translate.get('LOGIN_PAGE');
+
+    this.translatedPage$
+    .pipe(take(2))
+    .subscribe((resp: any) => {
+      this.translatedPage = resp;
+      this.title.setTitle('anfitrion | ' + this.translatedPage['PAGE_TITLE']);
+    })
   }
 
   /**
@@ -130,7 +151,7 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
     }).catch(async (error) => {
       this.isDoingLogin = false;
       //this.formLoginGroup.reset();
-      toast.message = error;
+      toast.message = error.text[this.currentLanguage.value];
       await toast.present();
     })
   }
@@ -164,7 +185,8 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
       this.passwordRules.forEach((rule) => rule.valid = false);
       this.passwordIsValid = false;
       this.passwordsMatch = false;
-      this.inputErrors.emailAlreadyInUse = false;
+      this.inputErrors.emailAlreadyInUse.show = false;
+      this.inputErrors.emailAlreadyInUse.text = null;
 
       toastSuccess.message = `${this.translate.instant('TOASTS.CREATED_ACC_SUCCESS.0')}, <b>${this.translate.instant('TOASTS.CREATED_ACC_SUCCESS.1')}</b>`;
       await toastSuccess.present();
@@ -181,12 +203,27 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
       await toastError.present();
 
       this.isCreating = false;
+
+      await toastError.onDidDismiss()
+      .then(() => {
+        toastError.message = '';
+      })
     })
   }
 
   public slideSwiperToFirst(): void {
-    this.swiper?.slideTo(0, 800);
+
     this.selectedSegment = 'acessar';
+    this.swiper?.slideTo(0, 800);
+
+    this.formCreateAccGroup.reset();
+    this.showCreatePassword = false;
+    this.showCreateConfirmPassword = false;
+    this.passwordRules.forEach((rule) => rule.valid = false);
+    this.passwordIsValid = false;
+    this.passwordsMatch = false;
+    this.inputErrors.emailAlreadyInUse.show = false;
+    this.inputErrors.emailAlreadyInUse.text = '';
   }
 
   public slideSwiperTo(): void {
@@ -199,7 +236,8 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
       this.passwordRules.forEach((rule) => rule.valid = false);
       this.passwordIsValid = false;
       this.passwordsMatch = false;
-      this.inputErrors.emailAlreadyInUse = false;
+      this.inputErrors.emailAlreadyInUse.show = false;
+      this.inputErrors.emailAlreadyInUse.text = '';
     } else {
       this.formLoginGroup.reset();
       this.showLoginPassword = false;
@@ -255,11 +293,28 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
   }
 
   public clearErrorsIfExists(error: string): void {
-    switch (error) {
-      case 'email-already-in-use':
-        this.inputErrors.emailAlreadyInUse.show = false;
-        break;
+    if (error === 'email-already-in-use' && this.inputErrors.emailAlreadyInUse.show) {
+      this.inputErrors.emailAlreadyInUse.show = false;
+      this.inputErrors.emailAlreadyInUse.text = null;
     }
+  }
+
+  public async openAboutUsModal() {
+    const modal = await this.overlayService.fireModal({
+      component: QuemSomosPage,
+      componentProps: {
+        currentLanguage: this.currentLanguage
+      },
+      breakpoints: [1],
+      initialBreakpoint: 1,
+      mode: 'md',
+      cssClass: 'anf-about-us-modal',
+      id: 'about-us-modal'
+    })
+
+    await modal.present();
+
+    return modal;
   }
 
   public ngOnDestroy(): void {

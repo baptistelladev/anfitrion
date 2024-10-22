@@ -1,18 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, take } from 'rxjs';
 import { ILang } from 'src/app/shared/models/Lang';
 import * as AppStore from './../../shared/store/app.state';
 import { Store } from '@ngrx/store';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/firebase/auth.service';
+import { OverlayService } from 'src/app/shared/services/overlay.service';
+import { TranslateService } from '@ngx-translate/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'rgs-esqueci-minha-senha',
   templateUrl: './esqueci-minha-senha.page.html',
   styleUrls: ['./esqueci-minha-senha.page.scss'],
 })
-export class EsqueciMinhaSenhaPage implements OnInit {
+export class EsqueciMinhaSenhaPage implements OnInit, OnDestroy {
 
   public currentLanguage: ILang;
   public currentLanguage$: Observable<ILang>;
@@ -22,16 +25,37 @@ export class EsqueciMinhaSenhaPage implements OnInit {
 
   public isRecovering: boolean;
 
+  public translatedPage: any;
+  public translatedPage$: Observable<any>;
+
   constructor(
     private navCtrl : NavController,
     private store : Store,
     private formBuilder : FormBuilder,
-    private authService : AuthService
+    private authService : AuthService,
+    private overlayService : OverlayService,
+    private translate : TranslateService,
+    private title : Title
   ) { }
 
   ngOnInit() {
     this.getCurrentLanguageFromNGRX();
     this.initFormForgotPassword();
+  }
+
+  ionViewWillEnter(): void {
+    this.getTranslatedPage();
+  }
+
+  public getTranslatedPage(): void {
+    this.translatedPage$ = this.translate.get('FORGOT_PASSWORD_PAGE');
+
+    this.translatedPage$
+    .pipe(take(2))
+    .subscribe((resp: any) => {
+      this.translatedPage = resp;
+      this.title.setTitle('anfitrion | ' + this.translatedPage['PAGE_TITLE']);
+    })
   }
 
   public back(): void {
@@ -56,13 +80,37 @@ export class EsqueciMinhaSenhaPage implements OnInit {
   public async recover() {
     this.isRecovering = true;
 
+    const alert = await this.overlayService.fireAlert({
+      backdropDismiss: false,
+      cssClass: 'anf-alert',
+      mode: 'ios',
+      subHeader: 'E-mail enviado',
+      message: `Enviamos um link de redefinição para <b>${this.formForgotPassword.value.email}</b>.`,
+      buttons: [
+        {
+          text: 'Entendi',
+          role: 'confirm',
+          handler: async () => {
+            this.formForgotPassword.reset();
+            this.back();
+          }
+        }
+      ]
+    })
+
     await this.authService.recoverPassword(this.formForgotPassword.value.email)
-    .then(() => {
+    .then(async () => {
+      await alert.present();
+
       this.isRecovering = false;
     }).catch((error) => {
       console.log(error);
       this.isRecovering = false;
     })
+  }
+
+  public ngOnDestroy(): void {
+    this.currentLanguageSubscription.unsubscribe();
   }
 
 }
