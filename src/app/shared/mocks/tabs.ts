@@ -13,9 +13,9 @@ export const TABS: ITab[] = [
     }
   },
   {
-    page: 'sugestoes-do-anfitrion',
+    page: 'sugestoes-do-anfitriao',
     icon: 'bulb',
-    value: 'sugestoes-do-anfitrion',
+    value: 'sugestoes-do-anfitriao',
     text: {
       pt: 'Sugestões',
       en: 'Suggestions',
