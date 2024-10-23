@@ -1,9 +1,11 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, take } from 'rxjs';
 import { ILang } from 'src/app/shared/models/Lang';
 import * as AppStore from './../../../shared/store/app.state';
 import Swiper from 'swiper';
+import { TranslateService } from '@ngx-translate/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'rgs-explorar',
@@ -78,8 +80,13 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     }
   ];
 
+  public translatedPage: any;
+  public translatedPage$: Observable<any>;
+
   constructor(
-    private store : Store
+    private store : Store,
+    private translate : TranslateService,
+    private title : Title
   ) { }
 
   ngOnInit() {
@@ -89,6 +96,21 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.swiper = this.swiperRef?.nativeElement.swiper;
+  }
+
+  ionViewDidEnter(): void {
+    this.getPageTranslated();
+  }
+
+  public getPageTranslated(): void {
+    this.translatedPage$ = this.translate.get('EXPLORE_PAGE')
+
+    this.translatedPage$
+    .pipe(take(2))
+    .subscribe((resp: any) => {
+      this.translatedPage = resp;
+      this.title.setTitle('anfitrion | ' + this.translatedPage['PAGE_TITLE'])
+    })
   }
 
   public getCurrentLanguageFromNGRX(): void {
