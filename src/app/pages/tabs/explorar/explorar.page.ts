@@ -31,6 +31,36 @@ export class ExplorarPage implements OnInit, AfterViewInit {
 
   public selectedSegment: string = 'CIDADE';
 
+  public cityFeatures: any[] = [
+    {
+      value: 'LUGARES',
+      icon: 'storefront',
+      text: {
+        pt: 'Lugares',
+        en: 'Places',
+        es: 'Lugares'
+      }
+    },
+    {
+      value: 'PESSOAS',
+      icon: 'people',
+      text: {
+        pt: 'Pessoas',
+        en: 'People',
+        es: 'Personas'
+      }
+    },
+    {
+      value: 'SERVIÇOS',
+      icon: 'construct',
+      text: {
+        pt: 'Serviços',
+        en: 'Services',
+        es: 'Servicios'
+      }
+    }
+  ];
+
   constructor(
     private store : Store
   ) { }

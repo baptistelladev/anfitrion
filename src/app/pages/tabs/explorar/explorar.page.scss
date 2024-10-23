@@ -1,51 +1,67 @@
+
 @import './../../../../assets/scss/utils/mixins.scss';
 
 ion-content {
   section {
     &.explorar {
       width: 100%;
-      min-height: 100%;
+      height: 100%;
+      position: relative;
       @include flexbox(flex-start, flex-start, column);
 
-      .explorar-header {
+      .explorar-header-wrapper {
         width: 100%;
+        height: auto;
+        min-height: 130px;
+        padding: 0 16px;
+        position: relative;
 
-        ion-item {
-          &.perfil-item {
-            --padding-end: 0;
-            --inner-padding-end: 0;
-            --padding-start: 0;
+        .fixed-header {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: auto;
 
-            ion-fab {
-              margin: 5px 15px 5px 5px;
+          .header-container {
+            @include flexbox(flex-start, space-between, row);
 
+            .header-buttons {
+              @include flexbox(flex-start, flex-start, row);
+            }
+          }
+        }
 
-              ion-fab-button {
-                --background: var(--white);
-                --background-hover: var(--white);
-                --background-focused: var(--white);
-                --background-activated: var(--white);
-                --color: var(--gray-6);
-                --box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-                font-size: 20px;
-              }
+        .fixed-segments {
+          width: 100%;
+          position: absolute;
+          left: 0;
+          bottom: -33px;
+          z-index: 10;
+
+          .segments-container {
+            max-width: 360px;
+            margin: 0 auto;
+            height: 100%;
+            width: 100%;
+            padding: 0 16px;
+
+            .pad-left {
+              padding-left: 27px;
             }
           }
         }
       }
 
       .explorar-content {
+        @include flexbox(center, center, column);
         width: 100%;
 
-        .features-wrapper {
+        .features-content {
           width: 100%;
-          padding: 16px;
           max-width: 360px;
           margin: 0 auto;
-        }
-
-        .swiper-wrapper {
-          width: 100%;
+          padding: 50px 0 0 0;
         }
       }
     }
@@ -59,7 +75,7 @@ ion-content {
   padding-bottom: 100%;
   height: 0;
   position: relative;
-  width: 103px;
+  max-width: 103px;
 
   ion-item {
     width: 100%;
