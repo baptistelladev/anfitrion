@@ -20,6 +20,8 @@ export class AuthGuard implements CanActivate {
       take(1),
       map(user => {
         if (user) {
+          console.log(user);
+
           return true;
         } else {
           this.navCtrl.navigateRoot(['/login']);
