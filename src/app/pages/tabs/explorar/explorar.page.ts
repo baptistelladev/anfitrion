@@ -76,7 +76,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
         en: 'People',
         es: 'Personas'
       },
-      isDisabled: false,
+      isDisabled: true,
       show: true,
       description: {
         pt: 'quer conhecer os artistas da região.',
@@ -93,7 +93,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
         en: 'Services',
         es: 'Servicios'
       },
-      isDisabled: false,
+      isDisabled: true,
       show: true,
       description: {
         pt: 'procura por tatuadores, body piercer, manicures...',
@@ -113,7 +113,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
         en: 'Kiosks',
         es: 'Quiscos'
       },
-      isDisabled: false,
+      isDisabled: true,
       show: true,
       description: {
         pt: 'quer comer ou beber na orla praia.',
@@ -130,7 +130,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
         en: 'Carts',
         es: 'Carritos'
       },
-      isDisabled: false,
+      isDisabled: true,
       show: true,
       description: {
         pt: 'quer comer, beber ou ficar em guarda-sol na faixa de areia.',
@@ -147,7 +147,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
         en: 'Vendors',
         es: 'Ambulantes'
       },
-      isDisabled: false,
+      isDisabled: true,
       show: true,
       description: {
         pt: 'para quem quer comer, beber ou comprar algum item.',
