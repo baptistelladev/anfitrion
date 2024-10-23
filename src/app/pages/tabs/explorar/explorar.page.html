@@ -68,58 +68,115 @@ class="ion-content-w-linear-bg">
     <div class="features-content">
       <ion-grid [fixed]="true">
         <ion-row>
-          <ion-col size="12" class="no-pad-bottom">
-            <ion-text mode="ios">
-              <p class="fs-12 color-gray-mid mg-bottom-8 pad-left">
-                <b>{{ 'EXPLORE_PAGE.WHAT.0' | translate }}</b> {{ 'EXPLORE_PAGE.WHAT.1' | translate }}
-              </p>
-            </ion-text>
-          </ion-col>
-
           <!-- FEATURES DA CIDADE -->
-          <ng-container *ngFor="let feature of cityFeatures; let i = index">
-            <ion-col size="4"
-            *ngIf="feature.show">
-              <div
-              class="feature-item-wrapper"
-              [ngClass]="{ 'is-selected' : feature.value === selectedCityFeature.value }">
-                <ion-item
-                (click)="selectCityFeature(feature.value)"
-                [disabled]="feature.isDisabled"
-                [title]="feature.text[currentLanguage.value]"
-                mode="ios"
-                [detail]="false"
-                [button]="true"
-                lines="none">
-                  <ion-text
-                    mode="ios">
-                    <ion-icon [name]="feature.icon + '-outline'"></ion-icon>
-                    <p class="fs-12 mg-top-5 color-gray-text">{{ feature.text[currentLanguage.value] }}</p>
-                  </ion-text>
-                </ion-item>
-              </div>
+          <ng-container *ngIf="selectedSegment === 'CIDADE'">
+            <ion-col size="12" class="no-pad-bottom">
+              <ion-text mode="ios">
+                <p class="fs-12 color-gray-mid mg-bottom-8 pad-left">
+                  <b>{{ 'EXPLORE_PAGE.WHAT.0' | translate }}</b> {{ 'EXPLORE_PAGE.WHAT.1' | translate }}
+                </p>
+              </ion-text>
+            </ion-col>
+
+            <ng-container *ngFor="let feature of cityFeatures; let i = index">
+              <ion-col size="4"
+              *ngIf="feature.show">
+                <div
+                class="feature-item-wrapper"
+                [ngClass]="{ 'is-selected' : feature.value === selectedCityFeature.value }">
+                  <ion-item
+                  (click)="selectCityFeature(feature.value)"
+                  [disabled]="feature.isDisabled"
+                  [title]="feature.text[currentLanguage.value]"
+                  mode="ios"
+                  [detail]="false"
+                  [button]="true"
+                  lines="none">
+                    <ion-text
+                      mode="ios">
+                      <ion-icon [name]="feature.icon + '-outline'"></ion-icon>
+                      <p class="fs-12 mg-top-5 color-gray-text">{{ feature.text[currentLanguage.value] }}</p>
+                    </ion-text>
+                  </ion-item>
+                </div>
+              </ion-col>
+            </ng-container>
+
+            <ion-col size="12">
+              <ion-item mode="ios" lines="none" class="ion-bg-transparent description">
+                <ion-text mode="ios" class="d-block mg-top-16 line-height-20">
+                  <p class="fs-14 color-gray-6"><b>{{ 'SHARED.FOR_WHO' | translate }}</b> {{ selectedCityFeature.description[currentLanguage.value] }}</p>
+                </ion-text>
+              </ion-item>
+            </ion-col>
+
+            <ion-col size="12">
+              <ion-button
+              [title]="('SHARED.SEARCH' | translate) + ' ' + selectedCityFeature.text[currentLanguage.value].toLowerCase()"
+              fill="solid"
+              type="button"
+              shape="round"
+              class="anf-main-solid full-width fs-14 height-44 mg-top-16"
+              mode="md">
+                <ion-icon name="search-outline" class="mg-right-8 fs-22"></ion-icon> {{ 'SHARED.SEARCH' | translate }} <b class="mg-left-5">{{ selectedCityFeature.text[currentLanguage.value].toLowerCase() }}</b>
+              </ion-button>
             </ion-col>
           </ng-container>
 
-          <ion-col size="12">
-            <ion-item mode="ios" lines="none" class="ion-bg-transparent description">
-              <ion-text mode="ios" class="d-block mg-top-16 line-height-20">
-                <p class="fs-14 color-gray-6">{{ 'SHARED.FOR_WHO' | translate }} <b>{{ selectedCityFeature.description[currentLanguage.value] }}</b></p>
+          <!-- FEATURES DA PRAIA -->
+          <ng-container *ngIf="selectedSegment === 'PRAIA'">
+            <ion-col size="12" class="no-pad-bottom">
+              <ion-text mode="ios">
+                <p class="fs-12 color-gray-mid mg-bottom-8 pad-left">
+                  <b>{{ 'EXPLORE_PAGE.WHAT.0' | translate }}</b> {{ 'EXPLORE_PAGE.WHAT.1' | translate }}
+                </p>
               </ion-text>
-            </ion-item>
-          </ion-col>
+            </ion-col>
 
-          <ion-col size="12">
-            <ion-button
-            [title]="('SHARED.SEARCH' | translate) + ' ' + selectedCityFeature.text[currentLanguage.value].toLowerCase()"
-            fill="solid"
-            type="button"
-            shape="round"
-            class="anf-main-solid full-width fs-14 height-44 mg-top-16"
-            mode="md">
-              <ion-icon name="search-outline" class="mg-right-8 fs-22"></ion-icon> {{ 'SHARED.SEARCH' | translate }} <b class="mg-left-5">{{ selectedCityFeature.text[currentLanguage.value].toLowerCase() }}</b>
-            </ion-button>
-          </ion-col>
+            <ng-container *ngFor="let beach of beachFeatures; let i = index">
+              <ion-col size="4"
+              *ngIf="beach.show">
+                <div
+                class="feature-item-wrapper"
+                [ngClass]="{ 'is-selected' : beach.value === selectedBeachFeature.value }">
+                  <ion-item
+                  (click)="selectBeachFeature(beach.value)"
+                  [disabled]="beach.isDisabled"
+                  [title]="beach.text[currentLanguage.value]"
+                  mode="ios"
+                  [detail]="false"
+                  [button]="true"
+                  lines="none">
+                    <ion-text
+                      mode="ios">
+                      <ion-icon [name]="beach.icon + '-outline'"></ion-icon>
+                      <p class="fs-12 mg-top-5 color-gray-text">{{ beach.text[currentLanguage.value] }}</p>
+                    </ion-text>
+                  </ion-item>
+                </div>
+              </ion-col>
+            </ng-container>
+
+            <ion-col size="12">
+              <ion-item mode="ios" lines="none" class="ion-bg-transparent description">
+                <ion-text mode="ios" class="d-block mg-top-16 line-height-20">
+                  <p class="fs-14 color-gray-6"><b>{{ 'SHARED.FOR_WHO' | translate }}</b> {{ selectedBeachFeature.description[currentLanguage.value] }}</p>
+                </ion-text>
+              </ion-item>
+            </ion-col>
+
+            <ion-col size="12">
+              <ion-button
+              [title]="('SHARED.SEARCH' | translate) + ' ' + selectedBeachFeature.text[currentLanguage.value].toLowerCase()"
+              fill="solid"
+              type="button"
+              shape="round"
+              class="anf-main-solid full-width fs-14 height-44 mg-top-16"
+              mode="md">
+                <ion-icon name="search-outline" class="mg-right-8 fs-22"></ion-icon> {{ 'SHARED.SEARCH' | translate }} <b class="mg-left-5">{{ selectedBeachFeature.text[currentLanguage.value].toLowerCase() }}</b>
+              </ion-button>
+            </ion-col>
+          </ng-container>
         </ion-row>
       </ion-grid>
     </div>
