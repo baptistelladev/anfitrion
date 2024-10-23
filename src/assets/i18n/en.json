@@ -119,7 +119,10 @@
     "PARKING_TEXT": "There are parking lots on the street and nearby, see below",
     "VERIFIED": {
       "TITLE": "What is this?",
-      "TEXT" : ["The host seal means that the establishment's data was provided by the location itself","and that the establishment financially collaborates","with this project, so you don't waste time searching on social media or asking on the street"]
+      "TEXT": [
+        "The host seal means that the establishment, person, or service financially supports the project",
+        "and keeps the information updated for residents and especially tourists"
+      ]
     }
   },
   "COMPONENTS" : {

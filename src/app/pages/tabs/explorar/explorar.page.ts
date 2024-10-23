@@ -6,7 +6,7 @@ import * as AppStore from './../../../shared/store/app.state';
 import Swiper from 'swiper';
 import { TranslateService } from '@ngx-translate/core';
 import { Title } from '@angular/platform-browser';
-import { IonContent } from '@ionic/angular';
+import { IonContent, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'rgs-explorar',
@@ -163,7 +163,8 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private store : Store,
     private translate : TranslateService,
-    private title : Title
+    private title : Title,
+    public navCtrl : NavController
   ) { }
 
   ngOnInit() {
@@ -224,6 +225,10 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
   public async scrollToTop() {
     this.explorarContent.scrollToTop(600);
+  }
+
+  public navToContactPage(): void {
+    this.navCtrl.navigateForward(['/logado/contato']);
   }
 
   ngOnDestroy() {
