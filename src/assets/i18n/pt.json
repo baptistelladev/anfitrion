@@ -1,4 +1,8 @@
 {
+  "EXPLORE_PAGE" : {
+    "SEGMENT_CITY" : ["na","cidade"],
+    "SEGMENT_BEACH" : ["na","praia"]
+  },
   "WELCOME_TO" : ["Conheça","a Baixada Santista"],
   "ABOUT_US_PAGE" : {
     "FROM_NOW" : "A partir de hoje, pouparei o seu bem mais precioso:",
