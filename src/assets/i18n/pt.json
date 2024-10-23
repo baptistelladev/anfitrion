@@ -1,5 +1,6 @@
 {
   "EXPLORE_PAGE" : {
+    "PAGE_TITLE" : "Explorar",
     "WHERE" : ["Onde","você procura?"],
     "WHAT" : ["O quê","você busca?"]
   },
