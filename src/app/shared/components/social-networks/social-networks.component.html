@@ -15,7 +15,7 @@
   <ng-container *ngFor="let socialNetwork of socialNetworks">
     <ion-button
     *ngIf="socialNetwork.value === NetworksEnum.WHATSAPP"
-    [routerLink]="[socialNetwork.baseUrl]"
+    [routerLink]="['/logado/' + socialNetwork.baseUrl]"
     [title]="socialNetwork.text"
     class="social-network-button"
     target="_self"

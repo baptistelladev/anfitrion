@@ -137,24 +137,38 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
   public async login() {
     this.isDoingLogin = true;
 
-    const toast = await this.overlayService.fireToast({
+    const toastError = await this.overlayService.fireToast({
       position: 'top',
       cssClass: 'anf-toast anf-toast-danger',
       icon: 'warning-outline',
       duration: 2000
     })
 
+    const toastSuccess = await this.overlayService.fireToast({
+      position: 'top',
+      cssClass: 'anf-toast anf-toast-success',
+      icon: 'finger-print-outline',
+      duration: 3000
+    })
+
     await this.authService.signInWithEmailAndPassword(this.formLoginGroup.value.email, this.formLoginGroup.value.password)
     .then( async () => {
-      this.formLoginGroup.reset();
-      this.navCtrl.navigateForward(['/logado/bem-vindo-a-baixada-santista']);
-      this.isDoingLogin = false;
+      toastSuccess.message = `${this.translate.instant('LOGIN_PAGE.ACC_IDENTIFIED')}`;
+
+      await toastSuccess.present();
+
+      await toastSuccess.onDidDismiss()
+      .then(() => {
+        this.formLoginGroup.reset();
+        this.isDoingLogin = false;
+        this.navCtrl.navigateForward(['/logado/bem-vindo-a-baixada-santista']);
+      })
 
     }).catch(async (error) => {
       this.isDoingLogin = false;
       //this.formLoginGroup.reset();
-      toast.message = error.text[this.currentLanguage.value];
-      await toast.present();
+      toastError.message = error.text[this.currentLanguage.value];
+      await toastError.present();
     })
   }
 

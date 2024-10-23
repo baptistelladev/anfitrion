@@ -42,7 +42,8 @@
       "TITLE" : ["Regístrate", "tu cuenta"],
       "BTN" : ["crear","una cuenta"]
     },
-    "WHAT_IS" : "¿qué es el"
+    "WHAT_IS" : "¿qué es el",
+    "ACC_IDENTIFIED" : "Hemos identificado su cuenta y lo redirigiremos"
   },
   "CHANGE_LANG_PAGE" : {
     "PAGE_TITLE": "Cambia el idioma que ves en la Calle Gastronómica de Santos",

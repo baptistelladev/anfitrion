@@ -41,7 +41,8 @@
       "TITLE" : ["Register", "your account"],
       "BTN" : ["create","an account"]
     },
-    "WHAT_IS" : "what is the"
+    "WHAT_IS" : "what is the",
+    "ACC_IDENTIFIED" : "We have identified your account and will redirect you"
   },
   "CHANGE_LANG_PAGE" : {
     "PAGE_TITLE": "Change the language you see Santos Gastronomic Street",

@@ -41,7 +41,8 @@
       "TITLE" : ["Faça","seu cadastro"],
       "BTN" : ["criar","uma conta"]
     },
-    "WHAT_IS" : "o que é o"
+    "WHAT_IS" : "o que é o",
+    "ACC_IDENTIFIED" : "Identificamos sua conta e vamos redireciona-lo"
   },
   "CHANGE_LANG_PAGE" : {
     "PAGE_TITLE" : "Troque o idioma que usa na Rua Gastronômica de Santos",
