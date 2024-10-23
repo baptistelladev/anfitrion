@@ -10,7 +10,9 @@ import Swiper from 'swiper';
   templateUrl: './explorar.page.html',
   styleUrls: ['./explorar.page.scss'],
 })
-export class ExplorarPage implements OnInit, AfterViewInit {
+export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
+
+  public selectedCityFeature: any;
 
   public currentLanguage: ILang;
   public currentLanguage$: Observable<ILang>;
@@ -33,30 +35,35 @@ export class ExplorarPage implements OnInit, AfterViewInit {
 
   public cityFeatures: any[] = [
     {
+      value: 'ANFITRION',
+      icon: 'bulb',
+      text: {
+        pt: 'Sugestões',
+        en: '',
+        es: ''
+      },
+      isDisabled: false,
+      show: true,
+      description: {
+        pt: 'está visitando a cidade ou quer conhecer lugares novos.',
+        en: '',
+        es: ''
+      }
+    },
+    {
       value: 'LUGARES',
-      icon: 'storefront',
+      icon: 'map',
       text: {
         pt: 'Lugares',
         en: 'Places',
         es: 'Lugares'
-      }
-    },
-    {
-      value: 'PESSOAS',
-      icon: 'people',
-      text: {
-        pt: 'Pessoas',
-        en: 'People',
-        es: 'Personas'
-      }
-    },
-    {
-      value: 'SERVIÇOS',
-      icon: 'construct',
-      text: {
-        pt: 'Serviços',
-        en: 'Services',
-        es: 'Servicios'
+      },
+      isDisabled: false,
+      show: true,
+      description: {
+        pt: 'procura por barzinhos, adegas, tabacarias...',
+        en: '',
+        es: ''
       }
     }
   ];
@@ -67,6 +74,7 @@ export class ExplorarPage implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.getCurrentLanguageFromNGRX();
+    this.selectCityFeature('LUGARES');
   }
 
   ngAfterViewInit(): void {
@@ -84,6 +92,19 @@ export class ExplorarPage implements OnInit, AfterViewInit {
 
   public segmentChanged(): void {
     console.log('dada');
+  }
+
+  public selectCityFeature(value: string) {
+    this.selectedCityFeature = this.cityFeatures.find((feature: any) => {
+      return feature.value === value;
+    })
+
+    console.log(this.selectedCityFeature);
+
+  }
+
+  ngOnDestroy() {
+    this.currentLanguageSubscription.unsubscribe();
   }
 
 }
