@@ -90,7 +90,7 @@ export class MenuPage implements OnInit, OnDestroy {
   }
 
   public goToPage(page: string): void {
-    this.navCtrl.navigateForward([page])
+    this.navCtrl.navigateForward(['/logado/' + page])
   }
 
   public async logoutAlert(): Promise<HTMLIonAlertElement> {

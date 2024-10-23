@@ -6,6 +6,7 @@ import * as AppStore from './../../../shared/store/app.state';
 import Swiper from 'swiper';
 import { TranslateService } from '@ngx-translate/core';
 import { Title } from '@angular/platform-browser';
+import { IonContent } from '@ionic/angular';
 
 @Component({
   selector: 'rgs-explorar',
@@ -13,6 +14,8 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./explorar.page.scss'],
 })
 export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
+
+  @ViewChild('explorarContent') explorarContent: IonContent;
 
   public selectedCityFeature: any;
   public selectedBeachFeature: any;
@@ -217,6 +220,10 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
     console.log(this.selectedBeachFeature);
 
+  }
+
+  public async scrollToTop() {
+    this.explorarContent.scrollToTop(600);
   }
 
   ngOnDestroy() {

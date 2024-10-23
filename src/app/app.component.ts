@@ -13,6 +13,7 @@ import { IAppInfo } from './shared/models/AppInfo';
 import { Analytics } from '@angular/fire/analytics';
 import { AnalyticsService } from './core/services/firebase/analytics.service';
 import { Router } from '@angular/router';
+import { CollectionsEnum } from './shared/enums/Collection';
 
 @Component({
   selector: 'rgs-root',
@@ -78,7 +79,7 @@ export class AppComponent implements OnInit {
   }
 
   public async getAppInfo() {
-    await this.appInfoService.getDocument('RGS_APP_INFO', 'Ni3MH95foTBjb8H5MKnz')
+    await this.appInfoService.getDocument(CollectionsEnum.APP_INFO, 'svHoTfx0UNjeFfJ1HPud')
     .then((appInfo: IAppInfo | undefined) => {
       if (appInfo) {
         // TIVE QUE FAZER ISSO PARA O TSLINT ACEITAR VÁRIOS DISPATCH

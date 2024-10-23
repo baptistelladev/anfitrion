@@ -1,5 +1,6 @@
 
 <ion-content
+#explorarContent
 class="ion-content-w-linear-bg">
   <section class="explorar">
     <div class="explorar-header-wrapper bg-gray-2">
@@ -116,7 +117,7 @@ class="ion-content-w-linear-bg">
               fill="solid"
               type="button"
               shape="round"
-              class="anf-main-solid full-width fs-14 height-44 mg-top-16"
+              class="anf-main-solid full-width fs-14 height-44 mg-top-16 mg-bottom-16"
               mode="md">
                 <ion-icon name="search-outline" class="mg-right-8 fs-22"></ion-icon> {{ 'SHARED.SEARCH' | translate }} <b class="mg-left-5">{{ selectedCityFeature.text[currentLanguage.value].toLowerCase() }}</b>
               </ion-button>
@@ -171,7 +172,7 @@ class="ion-content-w-linear-bg">
               fill="solid"
               type="button"
               shape="round"
-              class="anf-main-solid full-width fs-14 height-44 mg-top-16"
+              class="anf-main-solid full-width fs-14 height-44 mg-top-16 mg-bottom-16"
               mode="md">
                 <ion-icon name="search-outline" class="mg-right-8 fs-22"></ion-icon> {{ 'SHARED.SEARCH' | translate }} <b class="mg-left-5">{{ selectedBeachFeature.text[currentLanguage.value].toLowerCase() }}</b>
               </ion-button>
@@ -181,5 +182,57 @@ class="ion-content-w-linear-bg">
       </ion-grid>
     </div>
    </div>
+
+   <rgs-adsense>
+    <div adsense class="txt-center full-width full-height">
+      <script
+      async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1158629671776524"
+      crossorigin="anonymous">
+      </script>
+
+      <!--rgs-inicio-top -->
+      <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-1158629671776524"
+      data-ad-slot="7416407934"
+      data-ad-format="auto"
+      data-full-width-responsive="true">
+      </ins>
+
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </rgs-adsense>
+
+  <ion-grid [fixed]="true">
+    <ion-row>
+      <ion-col size="12">
+        <div class="scroll-to-top full-width">
+          <ion-button
+          (click)="scrollToTop()"
+          size="small"
+          shape="round"
+          [title]="('SHARED.BACK_TO_TOP.0' | translate) + ' ' + ('SHARED.BACK_TO_TOP.1' | translate)"
+          fill="solid"
+          class="rgs-main-solid mg-bottom-16 mg-top-16 fs-12">
+            {{ 'SHARED.BACK_TO_TOP.0' | translate }} <b class="mg-left-5">{{ 'SHARED.BACK_TO_TOP.1' | translate }}</b> <ion-icon name="chevron-up-outline" class="mg-left-5"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-col>
+
+      <ion-col size="12">
+        <rgs-made-w-love [centered]="true"></rgs-made-w-love>
+      </ion-col>
+
+      <ion-col size="12" class="no-pad-top">
+        <rgs-social-networks [centered]="true"></rgs-social-networks>
+      </ion-col>
+
+      <ion-col size="12" class="mg-bottom-16">
+        <rgs-copyright></rgs-copyright>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   </section>
 </ion-content>
