@@ -146,6 +146,7 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
 
     await this.authService.signInWithEmailAndPassword(this.formLoginGroup.value.email, this.formLoginGroup.value.password)
     .then( async () => {
+      this.formLoginGroup.reset();
       this.navCtrl.navigateForward(['/logado/bem-vindo-a-baixada-santista']);
       this.isDoingLogin = false;
 

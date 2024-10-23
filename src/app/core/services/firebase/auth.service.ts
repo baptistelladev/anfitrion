@@ -26,6 +26,8 @@ export class AuthService {
       await setDoc(doc(this.firestore, CollectionsEnum.USERS, user.uid), {
         uid: user.uid,
         email: user.email,
+        emailVerified: user.emailVerified,
+        createdAt: user.metadata.creationTime,
         ...userInfo
       })
 
