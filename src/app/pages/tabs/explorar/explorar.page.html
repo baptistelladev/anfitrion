@@ -30,6 +30,27 @@ class="ion-content-w-linear-bg">
                 </ion-toolbar>
               </ion-header>
             </ion-col>
+
+            <ion-col
+            class="no-pad-top no-pad-bottom"
+            size="12">
+              <div class="city-wrapper">
+                <ion-item
+                [button]="true"
+                mode="ios"
+                class="ion-bg-transparent ion-no-padding"
+                lines="none">
+                  <ion-text
+                  class="line-height-12"
+                  mode="ios">
+                    <p class="fs-12 color-gray-mid mg-bottom-8">
+                      Cidade <b>selecionada</b>
+                    </p>
+                    <p class="fs-22 color-white font-baloo font-w-bold city-name">São Vicente <ion-chip mode="ios" class="simulate-btn">trocar</ion-chip></p>
+                  </ion-text>
+                </ion-item>
+              </div>
+            </ion-col>
           </ion-row>
         </ion-grid>
       </div>
