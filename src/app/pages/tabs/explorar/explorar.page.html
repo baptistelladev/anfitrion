@@ -16,8 +16,6 @@ class="ion-content-w-linear-bg">
                   <div class="header-container">
                     <div class="header-logo">
                       <rgs-logo
-                      [asLink]="true"
-                      [route]="['/login']"
                       [size]="'big'"
                       [currentLanguage]="currentLanguage">
                       </rgs-logo>
@@ -52,7 +50,8 @@ class="ion-content-w-linear-bg">
             mode="ios">
               <ion-segment-button
               *ngFor="let segment of segments"
-              [value]="segment.value">
+              [value]="segment.value"
+              [disabled]="segment.value === 'PRAIA'">
                 <ion-text mode="ios">
                   <p class="font-baloo fs-14">
                     {{ segment.text[currentLanguage.value][0] }} <b>{{ segment.text[currentLanguage.value][1] }}</b>
@@ -158,7 +157,7 @@ class="ion-content-w-linear-bg">
               </ion-col>
             </ng-container>
 
-            <ion-col size="12">
+            <ion-col size="12" *ngIf="!selectedBeachFeature.isDisabled">
               <ion-item mode="ios" lines="none" class="ion-bg-transparent description">
                 <ion-text mode="ios" class="d-block mg-top-16 line-height-20">
                   <p class="fs-14 color-gray-6"><b>{{ 'SHARED.FOR_WHO' | translate }}</b> {{ selectedBeachFeature.description[currentLanguage.value] }}</p>
@@ -168,6 +167,7 @@ class="ion-content-w-linear-bg">
 
             <ion-col size="12">
               <ion-button
+              [disabled]="true"
               [title]="('SHARED.SEARCH' | translate) + ' ' + selectedBeachFeature.text[currentLanguage.value].toLowerCase()"
               fill="solid"
               type="button"
