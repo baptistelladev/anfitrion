@@ -338,6 +338,21 @@ ion-button {
   justify-content: center;
 }
 
+.simulate-btn {
+  padding: 2px 8px;
+  color: var(--white);
+  background: linear-gradient(.351turn,#769834 43.71%,#547D0E 58.8%);
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  margin: 0 0 0 8px;
+  font-size: 9px;
+  text-transform: uppercase;
+  border: 1px solid var(--green-solid);
+}
+
 // OTHERs
 .highlighted-text {
   background: linear-gradient(to right, transparent, var(--green), var(--green-dark) 40%, transparent);

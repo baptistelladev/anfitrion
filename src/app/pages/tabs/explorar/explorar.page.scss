@@ -9,10 +9,29 @@ ion-content {
       position: relative;
       @include flexbox(flex-start, flex-start, column);
 
+      .city-wrapper {
+        width: 100%;
+        max-width: 370px;
+        margin: 0 auto;
+
+        ion-item {
+          --min-height: 0;
+          --padding-start: 26px;
+
+          ion-text {
+            p {
+              &.city-name {
+                @include flexbox(center, flex-start, row);
+              }
+            }
+          }
+        }
+      }
+
       .explorar-header-wrapper {
         width: 100%;
         height: auto;
-        min-height: 130px;
+        min-height: 190px;
         padding: 0 16px;
         position: relative;
 
