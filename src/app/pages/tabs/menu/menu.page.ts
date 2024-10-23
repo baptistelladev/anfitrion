@@ -21,6 +21,24 @@ export class MenuPage implements OnInit, OnDestroy {
   public menuOptions: any[] = [
     {
       text: {
+        pt: 'Sua conta',
+        en: 'Your account',  // Alterado para refletir o significado correto
+        es: 'Su cuenta'
+      },
+      icon: 'id-card',
+      route: 'sua-conta'
+    },
+    {
+      text: {
+        pt: 'Seus dados',
+        en: 'Your data',
+        es: 'Sus datos'
+      },
+      icon: 'finger-print',
+      route: 'seus-dados'
+    },
+    {
+      text: {
         pt: 'Contato',
         en: 'Contact',
         es: 'Contacto'

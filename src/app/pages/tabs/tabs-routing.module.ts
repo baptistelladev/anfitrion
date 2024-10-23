@@ -44,6 +44,18 @@ const routes: Routes = [
       {
         path: 'bem-vindo-a-baixada-santista',
         loadChildren: () => import('./bem-vindo-a-baixada-santista/bem-vindo-a-baixada-santista.module').then( m => m.BemVindoABaixadaSantistaPageModule)
+      },
+      {
+        path: 'sua-conta',
+        loadChildren: () => import('./sua-conta/sua-conta.module').then( m => m.SuaContaPageModule)
+      },
+      {
+        path: 'seus-dados',
+        loadChildren: () => import('./seus-dados/seus-dados.module').then( m => m.SeusDadosPageModule)
+      },
+      {
+        path: 'sugestoes-do-anfitriao',
+        loadChildren: () => import('./sugestoes-do-anfitriao/sugestoes-do-anfitriao.module').then( m => m.SugestoesDoAnfitriaoPageModule)
       }
     ]
   }
