@@ -1,7 +1,7 @@
 {
   "EXPLORE_PAGE" : {
-    "SEGMENT_CITY" : ["na","cidade"],
-    "SEGMENT_BEACH" : ["na","praia"]
+    "WHERE" : ["Onde","você procura?"],
+    "WHAT" : ["O quê","você busca?"]
   },
   "WELCOME_TO" : ["Conheça","a Baixada Santista"],
   "ABOUT_US_PAGE" : {
@@ -97,7 +97,9 @@
     "LIST_OF" : "Lista de",
     "CLOSE_MODAL" : "Fechar modal",
     "CONTACT" : "Contato",
-    "IS_NOT_PREMIUM" : "não possui o selo anfitrion e por isso não podemos liberar esta funcionalidade"
+    "IS_NOT_PREMIUM" : "não possui o selo anfitrion e por isso não podemos liberar esta funcionalidade",
+    "SEARCH" : "buscar",
+    "FOR_WHO" : "para quem"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nosso próposito aqui é fazer com que voê economize o seu bem mais precioso:","o tempo"],
