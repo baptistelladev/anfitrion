@@ -121,7 +121,10 @@
     "PARKING_TEXT": "Hay estacionamientos en la calle y cerca de la calle, veja",
     "VERIFIED": {
       "TITLE": "¿Qué es esto?",
-      "TEXT" : ["El sello de anfitrión significa que los datos del establecimiento fueron proporcionados por el propio lugar","y que el establecimiento colabora financieramente","con este proyecto, para que no pierdas tiempo buscando en redes sociales o preguntando en la calle"]
+      "TEXT": [
+        "El sello de anfitrión significa que el establecimiento, persona o servicio apoya el proyecto financieramente",
+        "y mantiene los datos actualizados para los residentes y, especialmente, para los turistas"
+      ]
    }
   },
   "COMPONENTS" : {

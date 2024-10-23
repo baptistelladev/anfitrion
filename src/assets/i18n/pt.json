@@ -119,7 +119,7 @@
     "PARKING_TEXT" : "Existem estacionamentos na rua e próximos a rua, confira",
     "VERIFIED" : {
       "TITLE" : "O que é isso?",
-      "TEXT" : ["O selo anfitrion significa que os dados do estabelecimento foram passados pelo próprio local","e que o estabelecimento colabora financeiramente"," com este projeto, para que vocë não perca tempo procurando em rede social"]
+      "TEXT" : ["O selo anfitrion significa que o","estabelecimento, pessoa ou serviço apoia o projeto financeiramente","e mantém os dados atualizados para moradores e principalmente turistas"]
     }
   },
   "COMPONENTS" : {

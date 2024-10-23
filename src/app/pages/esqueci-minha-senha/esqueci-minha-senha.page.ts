@@ -91,6 +91,7 @@ export class EsqueciMinhaSenhaPage implements OnInit, OnDestroy {
           text: 'Entendi',
           role: 'confirm',
           handler: async () => {
+            this.isRecovering = false;
             this.formForgotPassword.reset();
             this.back();
           }
@@ -101,8 +102,6 @@ export class EsqueciMinhaSenhaPage implements OnInit, OnDestroy {
     await this.authService.recoverPassword(this.formForgotPassword.value.email)
     .then(async () => {
       await alert.present();
-
-      this.isRecovering = false;
     }).catch((error) => {
       console.log(error);
       this.isRecovering = false;
