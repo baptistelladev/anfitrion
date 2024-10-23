@@ -127,6 +127,7 @@
     "MADE_W_LOVE" : ["hecho con","en la"],
     "TABS" : {
       "EXPLORE" : "Explorar",
+      "SUGGESTIONS" : "Sugerencias",
       "MENU" : "Menú"
     },
     "CHANGE_LANG" : "Cambiar idioma",

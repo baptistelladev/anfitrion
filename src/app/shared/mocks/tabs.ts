@@ -13,6 +13,16 @@ export const TABS: ITab[] = [
     }
   },
   {
+    page: 'sugestoes-do-anfitrion',
+    icon: 'bulb',
+    value: 'sugestoes-do-anfitrion',
+    text: {
+      pt: 'Sugestões',
+      en: 'Suggestions',
+      es: 'Sugerencias'
+    }
+  },
+  {
     page: 'menu',
     icon: 'grid',
     value: 'menu',

@@ -15,6 +15,7 @@ import { Title } from '@angular/platform-browser';
 export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
   public selectedCityFeature: any;
+  public selectedBeachFeature: any;
 
   public currentLanguage: ILang;
   public currentLanguage$: Observable<ILang>;
@@ -47,22 +48,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
   public cityFeatures: any[] = [
     {
-      value: 'ANFITRION',
-      icon: 'bulb',
-      text: {
-        pt: 'Sugestões',
-        en: 'Suggestions',
-        es: 'Sugerencias'
-      },
-      isDisabled: false,
-      show: true,
-      description: {
-        pt: 'está visitando a cidade ou quer conhecer lugares novos.',
-        en: 'is visiting the city or wants to discover new places.',
-        es: 'está visitando la ciudad o quiere conocer lugares nuevos.'
-      }
-    },
-    {
+      loadIconsFromAssets: false,
       value: 'LUGARES',
       icon: 'map',
       text: {
@@ -76,6 +62,94 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
         pt: 'procura por barzinhos, adegas, tabacarias...',
         en: 'looking for bars, wineries, tobacco shops...',
         es: 'buscando bares, bodegas, tiendas de tabaco...'
+      }
+    },
+    {
+      loadIconsFromAssets: false,
+      value: 'Pessoas',
+      icon: 'people',
+      text: {
+        pt: 'Pessoas',
+        en: 'People',
+        es: 'Personas'
+      },
+      isDisabled: false,
+      show: true,
+      description: {
+        pt: 'quer conhecer os artistas da região.',
+        en: 'who want to meet the artists of the region.',
+        es: 'quieren conocer a los artistas de la región.'
+      }
+    },
+    {
+      loadIconsFromAssets: false,
+      value: 'SERVIÇOS',
+      icon: 'map',
+      text: {
+        pt: 'Serviços',
+        en: 'Services',
+        es: 'Servicios'
+      },
+      isDisabled: false,
+      show: true,
+      description: {
+        pt: 'procura por tatuadores, body piercer, manicures...',
+        en: 'looking for tattoo artists, body piercers, manicures...',
+        es: 'buscan tatuadores, piercers, manicuras...'
+      }
+    }
+  ];
+
+  public beachFeatures: any[] = [
+    {
+      loadIconsFromAssets: false,
+      value: 'QUIOSQUES',
+      icon: 'storefront',
+      text: {
+        pt: 'Quiosques',
+        en: 'Kiosks',
+        es: 'Quiscos'
+      },
+      isDisabled: false,
+      show: true,
+      description: {
+        pt: 'quer comer ou beber na orla praia.',
+        en: 'who want to eat or drink on the beach.',
+        es: 'quieren comer o beber en la orla de la playa.'
+      }
+    },
+    {
+      loadIconsFromAssets: false,
+      value: 'CARRINHOS',
+      icon: 'cart',
+      text: {
+        pt: 'Carrinhos',
+        en: 'Carts',
+        es: 'Carritos'
+      },
+      isDisabled: false,
+      show: true,
+      description: {
+        pt: 'quer comer, beber ou ficar em guarda-sol na faixa de areia.',
+        en: 'who want to eat, drink, or stay under a sunshade on the sand.',
+        es: 'quieren comer, beber o quedarse bajo una sombrilla en la arena.'
+      }
+    },
+    {
+      loadIconsFromAssets: false,
+      value: 'AMBULANTES',
+      icon: 'person',
+      text: {
+        pt: 'Ambulantes',
+        en: 'Vendors',
+        es: 'Ambulantes'
+      },
+      isDisabled: false,
+      show: true,
+      description: {
+        pt: 'para quem quer comer, beber ou comprar algum item.',
+        en: 'who want to eat, drink, or buy something.',
+        es: 'quieren comer, beber o comprar algo.'
       }
     }
   ];
@@ -91,7 +165,8 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.getCurrentLanguageFromNGRX();
-    this.selectCityFeature('ANFITRION');
+    this.selectCityFeature('LUGARES');
+    this.selectBeachFeature('QUIOSQUES');
   }
 
   ngAfterViewInit(): void {
@@ -132,6 +207,15 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     })
 
     console.log(this.selectedCityFeature);
+
+  }
+
+  public selectBeachFeature(value: string) {
+    this.selectedBeachFeature = this.beachFeatures.find((feature: any) => {
+      return feature.value === value;
+    })
+
+    console.log(this.selectedBeachFeature);
 
   }
 
