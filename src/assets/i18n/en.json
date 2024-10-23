@@ -1,7 +1,7 @@
 {
   "EXPLORE_PAGE" : {
-    "SEGMENT_CITY": ["in", "the city"],
-    "SEGMENT_BEACH": ["at", "the beach"]
+    "WHERE": ["Where", "are you looking?"],
+    "WHAT": ["What", "are you searching for?"]
   },
   "WELCOME_TO" : ["Welcome", "to Baixada Santista"],
   "ABOUT_US_PAGE" : {
@@ -97,7 +97,9 @@
     "LIST_OF" : "list",
     "CLOSE_MODAL" : "Close modal",
     "CONTACT" : "Contact",
-    "IS_NOT_PREMIUM": "does not have the host badge, and therefore we cannot unlock this feature."
+    "IS_NOT_PREMIUM": "does not have the host badge, and therefore we cannot unlock this feature.",
+    "SEARCH" : "search",
+    "FOR_WHO" : "for those"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Our purpose here is to help you save your most precious asset: ","time"],

@@ -40,7 +40,7 @@ ion-content {
           z-index: 10;
 
           .segments-container {
-            max-width: 360px;
+            max-width: 370px;
             margin: 0 auto;
             height: 100%;
             width: 100%;
@@ -79,7 +79,7 @@ ion-content {
   width: 100%;
   height: auto;
   @include flexbox(flex-start, flex-start, row);
-  max-width: 360px;
+  max-width: 370px;
   margin: 0 auto;
   padding: 16px 0 0 0;
 }

@@ -24,12 +24,22 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
   public segments: any[] = [
     {
-      value: 'CIDADE'
+      value: 'CIDADE',
+      text: {
+        pt: ["na", "cidade"],
+        en: ["in the", "city"],
+        es: ["en la", "ciudad"]
+      },
     },
     {
-      value: 'PRAIA'
+      value: 'PRAIA',
+      text: {
+        pt: ["na", "praia"],
+        en: ["at the", "beach"],
+        es: ["en la", "playa"]
+      },
     }
-  ]
+];
 
   public selectedSegment: string = 'CIDADE';
 
@@ -39,15 +49,15 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
       icon: 'bulb',
       text: {
         pt: 'Sugestões',
-        en: '',
-        es: ''
+        en: 'Suggestions',
+        es: 'Sugerencias'
       },
       isDisabled: false,
       show: true,
       description: {
         pt: 'está visitando a cidade ou quer conhecer lugares novos.',
-        en: '',
-        es: ''
+        en: 'is visiting the city or wants to discover new places.',
+        es: 'está visitando la ciudad o quiere conocer lugares nuevos.'
       }
     },
     {
@@ -62,8 +72,8 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
       show: true,
       description: {
         pt: 'procura por barzinhos, adegas, tabacarias...',
-        en: '',
-        es: ''
+        en: 'looking for bars, wineries, tobacco shops...',
+        es: 'buscando bares, bodegas, tiendas de tabaco...'
       }
     }
   ];
@@ -74,7 +84,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.getCurrentLanguageFromNGRX();
-    this.selectCityFeature('LUGARES');
+    this.selectCityFeature('ANFITRION');
   }
 
   ngAfterViewInit(): void {
