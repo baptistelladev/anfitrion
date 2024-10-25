@@ -70,15 +70,11 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
     }
   ]
 
-  public translatedPage: any;
-  public translatedPage$: Observable<any>;
-
   constructor(
     private store : Store,
     private formBuilder : FormBuilder,
     private navCtrl : NavController,
     private authService : AuthService,
-    private toastCtrl : ToastController,
     private overlayService : OverlayService,
     private utilsService : UtilsService,
     private translate : TranslateService,
@@ -97,18 +93,7 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ionViewWillEnter(): void {
-    this.getTranslatedPage();
-  }
-
-  public getTranslatedPage(): void {
-    this.translatedPage$ = this.translate.get('LOGIN_PAGE');
-
-    this.translatedPage$
-    .pipe(take(2))
-    .subscribe((resp: any) => {
-      this.translatedPage = resp;
-      this.title.setTitle('anfitrion | ' + this.translatedPage['PAGE_TITLE']);
-    })
+    this.title.setTitle('Login');
   }
 
   /**

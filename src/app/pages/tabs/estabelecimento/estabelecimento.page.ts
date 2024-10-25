@@ -130,22 +130,7 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
   }
 
   public defineTitleFromPage(establishment_name: string): void {
-    switch (this.currentLanguage.value) {
-      case 'pt':
-        this.title.setTitle(`${establishment_name} na Rua Gastronômica de Santos`);
-        break;
-
-      case 'en':
-        this.title.setTitle(`${establishment_name} on the Gastronomic Street of Santos`);
-        break;
-
-      case 'es':
-        this.title.setTitle(`${establishment_name} en la Calle Gastronómica de Santos`)
-        break;
-
-      default:
-        break;
-    }
+    this.title.setTitle(`${establishment_name} na Rua Gastronômica de Santos`);
   }
 
 

@@ -167,12 +167,8 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     }
   ];
 
-  public translatedPage: any;
-  public translatedPage$: Observable<any>;
-
   constructor(
     private store : Store,
-    private translate : TranslateService,
     private title : Title,
     public navCtrl : NavController,
     private overlayService : OverlayService
@@ -190,18 +186,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ionViewDidEnter(): void {
-    this.getPageTranslated();
-  }
-
-  public getPageTranslated(): void {
-    this.translatedPage$ = this.translate.get('EXPLORE_PAGE')
-
-    this.translatedPage$
-    .pipe(take(2))
-    .subscribe((resp: any) => {
-      this.translatedPage = resp;
-      this.title.setTitle('anfitrion | ' + this.translatedPage['PAGE_TITLE'])
-    })
+    this.title.setTitle('Explorar')
   }
 
   public getCurrentLanguageFromNGRX(): void {

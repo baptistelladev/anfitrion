@@ -1,5 +1,11 @@
 
 {
+  "SUGGESTIONS_PAGE" : {
+    "PAGE_TITLE" : "Sugerencias del anfitrión",
+    "TITLE" : "Sugerencias del anfitrión",
+    "IN_BAIXADA" : "en la",
+    "DESCRIPTION" : ["Esta sección fue creada", "para ahorrar tiempo a residentes y turistas", ". Creamos secciones basadas en lo que la gente más busca en la ciudad"]
+  },
   "EXPLORE_PAGE" : {
     "PAGE_TITLE": "Explorar",
     "WHERE": ["¿Dónde", "estás buscando?"],
@@ -109,7 +115,9 @@
     "SEARCH" : "buscar",
     "FOR_WHO" : "para quienes",
     "CHANGE" : "CAMBIAR",
-    "SELECTED" : "Seleccionado"
+    "SELECTED" : "Seleccionado",
+    "SUGGESTIONS" : "Sugerencias",
+    "SUGGESTION" : "Sugerencia"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nuestro propósito aquí es ayudarte a ahorrar tu bien más precioso:","el tiempo"],

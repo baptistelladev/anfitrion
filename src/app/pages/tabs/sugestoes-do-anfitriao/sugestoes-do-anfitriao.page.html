@@ -38,7 +38,7 @@ class="ion-content-w-linear-bg">
 
       <div class="sugestoes-baixada-santista-swiper">
         <swiper-container
-        #sugestoesCitySwiper
+        #baixadaSantistaSwiper
         free-mode="true"
         class="full-width swiper-w-relative-pagination"
         speed="5000"
@@ -82,7 +82,7 @@ class="ion-content-w-linear-bg">
         [init]="true">
           <ng-container>
             <swiper-slide
-            *ngFor="let tip of [1,2,3,4]; let i = index"
+            *ngFor="let tip of suggestionsBaixadaSantista; let i = index"
             class="unlock-shadow-from-swiper auto-width">
               <div class="anf-baixada-container">
                 <ion-item
@@ -103,12 +103,12 @@ class="ion-content-w-linear-bg">
       <ion-grid [fixed]="true">
         <ion-row>
           <ion-col size="12">
-            <ion-text mode="ios" class="line-height-24">
+            <ion-text mode="ios" class="line-height-22">
               <p class="color-gray-mid fs-12">
-                Sugestões do anfitrião
+                {{ 'SUGGESTIONS_PAGE.TITLE' | translate }}
               </p>
               <p class="color-white fs-20 font-baloo">
-                na <span><b>Baixada Santista</b></span>
+                {{ 'SUGGESTIONS_PAGE.IN_BAIXADA' | translate }} <span><b>Baixada Santista</b></span>
               </p>
             </ion-text>
           </ion-col>
@@ -120,15 +120,137 @@ class="ion-content-w-linear-bg">
   <section class="sugestoes-content">
     <ion-grid [fixed]="true">
       <ion-row>
-        <ion-col size="12">
-          <ion-text mode="ios" class="line-height-24">
-            <p class="color-gray-text fs-12">
-              Sugestões específicas
-            </p>
-            <p class="color-gray-text fs-20 font-baloo">
-              de <span><b>São Vicente</b></span>
+        <ng-container *ngIf="suggestionsBaixadaSantista && suggestionsBaixadaSantista.length > 0">
+          <ion-col size="6">
+            <div class="controls-wrapper">
+              <ion-button
+              [disabled]="hideLeftControl"
+              (click)="slideToPrev()"
+              mode="md"
+              class="anf-main-solid fs-14 mg-right-8"
+              shape="round"
+              title="">
+                <ion-icon name="arrow-back-outline"></ion-icon>
+              </ion-button>
+
+              <ion-button
+              [disabled]="hideRightControl"
+              (click)="slideToNext()"
+              mode="md"
+              class="anf-main-solid fs-14"
+              shape="round"
+              title="">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+              </ion-button>
+            </div>
+          </ion-col>
+
+          <ion-col size="6">
+            <ion-text
+            class="color-gray-text fs-13 line-height-20 txt-lowercase txt-right"
+            mode="ios">
+              <p><span class="fs-16 font-w-bold mg-right-5">{{ suggestionsBaixadaSantista.length }}</span> <ng-container *ngIf="suggestionsBaixadaSantista.length === 1">{{ 'SHARED.SUGGESTION' | translate }}</ng-container> <ng-container *ngIf="suggestionsBaixadaSantista.length > 1">{{ 'SHARED.SUGGESTIONS' | translate }}</ng-container></p>
+            </ion-text>
+          </ion-col>
+        </ng-container>
+
+        <ion-col size="12" class="mg-top-16">
+          <ion-text mode="ios" class="line-height-18">
+            <p class="color-gray-text fs-14">
+              {{ 'SUGGESTIONS_PAGE.DESCRIPTION.0' | translate }} <b>{{ 'SUGGESTIONS_PAGE.DESCRIPTION.1' | translate }}</b> {{ 'SUGGESTIONS_PAGE.DESCRIPTION.2' | translate }}.
             </p>
           </ion-text>
+        </ion-col>
+
+        <ion-col size="12" class="mg-top-16">
+          <hr class="rgs-divider">
+        </ion-col>
+
+        <ion-col size="12" size-md="6">
+          <ion-item lines="none" class="ion-bg-transparent item-title-w-icon">
+            <ion-text
+            class="txt-left color-gray-text full-width icon-title-text without-icon d-block mg-bottom-8 has-icon"
+            mode="ios">
+              <h2 class="font-baloo fs-20">
+                <ion-icon name="chatbubbles-outline"></ion-icon>
+                {{ 'INICIO_PAGE.FEEDBACK.GIVE_YOUR_FEEDBACK.0' | translate }} <span class="font-w-bold mg-left-5">{{ 'INICIO_PAGE.FEEDBACK.GIVE_YOUR_FEEDBACK.1' | translate }}</span>
+              </h2>
+
+              <p class="fs-14 font-w-thin">
+                {{ 'INICIO_PAGE.FEEDBACK.GIVE_YOUR_FEEDBACK_TEXT' | translate }}
+              </p>
+
+              <p class="fs-14 pad-top-16">
+                <a href="javascript:void(0)" (click)="navToContactPage()" [title]="'INICIO_PAGE.FEEDBACK.SEND_FEEDBACK' | translate" class="send-feedback">{{ 'INICIO_PAGE.FEEDBACK.SEND_FEEDBACK' | translate }} <ion-icon name="arrow-forward"></ion-icon></a>
+              </p>
+            </ion-text>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="12" size-md="6">
+          <ion-item
+          lines="none"
+          mode="ios"
+          class="simulate-bootstrap-alert warning line-height-18">
+            <ion-icon src="./../../../../assets/icon/verified-check.svg" class="verified" slot="start"></ion-icon>
+
+            <ion-text mode="ios" class="color-bootstrap-warning">
+              <p class="fs-12 mg-bottom-8">{{ 'INICIO_PAGE.VERIFIED.TITLE' | translate }}</p>
+              <p class="fs-14">{{ 'INICIO_PAGE.VERIFIED.TEXT.0' | translate }} <b>{{ 'INICIO_PAGE.VERIFIED.TEXT.1' | translate }}</b> {{ 'INICIO_PAGE.VERIFIED.TEXT.2' | translate }}.</p>
+            </ion-text>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <rgs-adsense>
+      <div adsense class="txt-center full-width full-height">
+        <script
+        async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1158629671776524"
+        crossorigin="anonymous">
+        </script>
+
+        <!--rgs-inicio-top -->
+        <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-1158629671776524"
+        data-ad-slot="7416407934"
+        data-ad-format="auto"
+        data-full-width-responsive="true">
+        </ins>
+
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
+    </rgs-adsense>
+
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col size="12">
+          <div class="scroll-to-top full-width">
+            <ion-button
+            (click)="scrollToTop()"
+            size="small"
+            shape="round"
+            [title]="('SHARED.BACK_TO_TOP.0' | translate) + ' ' + ('SHARED.BACK_TO_TOP.1' | translate)"
+            fill="solid"
+            class="rgs-main-solid mg-bottom-16 mg-top-16 fs-12">
+              {{ 'SHARED.BACK_TO_TOP.0' | translate }} <b class="mg-left-5">{{ 'SHARED.BACK_TO_TOP.1' | translate }}</b> <ion-icon name="chevron-up-outline" class="mg-left-5"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-col>
+
+        <ion-col size="12">
+          <rgs-made-w-love [centered]="true"></rgs-made-w-love>
+        </ion-col>
+
+        <ion-col size="12" class="no-pad-top">
+          <rgs-social-networks [centered]="true"></rgs-social-networks>
+        </ion-col>
+
+        <ion-col size="12" class="mg-bottom-16">
+          <rgs-copyright></rgs-copyright>
         </ion-col>
       </ion-row>
     </ion-grid>

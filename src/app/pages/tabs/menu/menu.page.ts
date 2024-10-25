@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import { Observable, Subscription, take } from 'rxjs';
 import { ILang } from 'src/app/shared/models/Lang';
 import * as AppStore from './../../../shared/store/app.state';
-import { TranslateService } from '@ngx-translate/core';
 import { Title } from '@angular/platform-browser';
 import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
 import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
@@ -61,13 +60,9 @@ export class MenuPage implements OnInit, OnDestroy {
   public currentLanguage$: Observable<ILang>;
   public currentLanguageSubscription: Subscription;
 
-  public translatedPage: any;
-  public translatedPage$: Observable<any>;
-
   constructor(
     private navCtrl : NavController,
     private store : Store,
-    private translate : TranslateService,
     private title : Title,
     private analyticsService : AnalyticsService,
     private alertCtrl : AlertController,
@@ -80,18 +75,7 @@ export class MenuPage implements OnInit, OnDestroy {
   }
 
   ionViewDidEnter(): void {
-    this.getTitleFromPage();
-  }
-
-  public getTitleFromPage(): void {
-    this.translatedPage$ = this.translate.get('COMPONENTS.TABS')
-
-    this.translatedPage$
-    .pipe(take(2))
-    .subscribe((resp: any) => {
-      this.translatedPage = resp;
-      this.title.setTitle(this.translatedPage['MENU']);
-    })
+    this.title.setTitle('Menu');
   }
 
   public getCurrentLanguageFromNGRX(): void {

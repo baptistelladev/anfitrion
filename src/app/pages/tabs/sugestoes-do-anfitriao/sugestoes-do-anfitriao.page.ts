@@ -5,6 +5,7 @@ import { Observable, Subscription } from 'rxjs';
 import { ILang } from 'src/app/shared/models/Lang';
 import * as AppStore from './../../../shared/store/app.state';
 import Swiper from 'swiper';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'rgs-sugestoes-do-anfitriao',
@@ -12,6 +13,9 @@ import Swiper from 'swiper';
   styleUrls: ['./sugestoes-do-anfitriao.page.scss'],
 })
 export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestroy {
+
+  public hideRightControl: boolean = false;
+  public hideLeftControl: boolean = false;
 
   @ViewChild('sugestoesCitySwiper')
   citySwiperRef: ElementRef | undefined;
@@ -27,17 +31,14 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
   public currentLanguage$: Observable<ILang>;
   public currentLanguageSubscription: Subscription;
 
-  public suggestionsCity: any;
-  public suggestionsCity$: Observable<any>
-  public suggestionsCitySubscription: Subscription;
-
-  public suggestionsBaixadaSantista: any;
+  public suggestionsBaixadaSantista: any = [1,2,3,4,5];
   public suggestionsBaixadaSantista$: Observable<any>
   public suggestionsBaixadaSantistaSubscription: Subscription;
 
   constructor(
     private store : Store,
-    private navCtrl : NavController
+    private navCtrl : NavController,
+    private title : Title
   ) { }
 
   ngOnInit() {
@@ -45,8 +46,28 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
   }
 
   ngAfterViewInit(): void {
-    this.citySwiper = this.citySwiperRef?.nativeElement.swiper;
     this.baixadaSantistaSwiper = this.baixadaSantistaSwiperRef?.nativeElement.swiper;
+  }
+
+  ionViewDidEnter(): void {
+    this.title.setTitle('Sugestões do anfitrião');
+  }
+
+  public slideToNext(): void {
+    this.baixadaSantistaSwiper?.slideNext(800);
+
+    if (this.hideLeftControl) {
+      this.hideLeftControl = false;
+    }
+
+  }
+
+  public slideToPrev(): void {
+    this.baixadaSantistaSwiper?.slidePrev(800);
+
+    if (this.hideRightControl) {
+      this.hideRightControl = false;
+    }
   }
 
   public getCurrentLanguageFromNGRX(): void {
@@ -60,6 +81,14 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
 
   public backToHome(): void {
     this.navCtrl.navigateBack(['/logado/explorar'])
+  }
+
+  public async scrollToTop() {
+    this.sugestoesContent.scrollToTop(600);
+  }
+
+  public navToContactPage(): void {
+    this.navCtrl.navigateForward(['/logado/contato']);
   }
 
   ngOnDestroy() {
