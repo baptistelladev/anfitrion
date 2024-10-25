@@ -6,6 +6,9 @@ import { ILang } from 'src/app/shared/models/Lang';
 import * as AppStore from './../../../shared/store/app.state';
 import Swiper from 'swiper';
 import { Title } from '@angular/platform-browser';
+import { SuggestionsService } from 'src/app/core/services/firebase/suggestions.service';
+import { CollectionsEnum } from 'src/app/shared/enums/Collection';
+import { SuggestionsEnum } from 'src/app/shared/enums/Suggestions';
 
 @Component({
   selector: 'rgs-sugestoes-do-anfitriao',
@@ -31,41 +34,20 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
   public currentLanguage$: Observable<ILang>;
   public currentLanguageSubscription: Subscription;
 
-  public suggestionsBaixadaSantista: any = [
-    {
-      icon: 'restaurant',
-      created_at: '',
-      updated_at: '',
-      name: {
-        title: {
-          pt: 'conheça a',
-          en: 'get to know',
-          es: 'conozca la'
-        },
-        text: {
-          pt: 'Rua Gastronômica de Santos',
-          en: 'Gastronomic Street of Santos',
-          es: 'Calle Gastronómica de Santos'
-        }
-      },
-      hashtag: {
-        pt: 'gastronomia',
-        en: 'gastronomic',
-        es: 'gastronomía'
-      }
-    }
-  ];
+  public suggestionsBaixadaSantista: any;
   public suggestionsBaixadaSantista$: Observable<any>
   public suggestionsBaixadaSantistaSubscription: Subscription;
 
   constructor(
     private store : Store,
     private navCtrl : NavController,
-    private title : Title
+    private title : Title,
+    private suggestionsService : SuggestionsService
   ) { }
 
   ngOnInit() {
     this.getCurrentLanguageFromNGRX();
+    this.getBaixadaSantistaSuggestions();
   }
 
   ngAfterViewInit(): void {
@@ -74,6 +56,28 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
 
   ionViewDidEnter(): void {
     this.title.setTitle('Sugestões do anfitrião');
+  }
+
+  public async getBaixadaSantistaSuggestions() {
+    this.suggestionsBaixadaSantista$ = this.suggestionsService
+    .getCollection(CollectionsEnum.SUGGESTIONS_BAIXADA_SANTISTA, [
+      { field: "filter", operator: "array-contains", value: SuggestionsEnum.BAIXADA_SANTISTA }
+    ])
+
+    this.suggestionsBaixadaSantistaSubscription = this.suggestionsBaixadaSantista$
+    .subscribe({
+      next: (suggestions: any) => {
+        this.suggestionsBaixadaSantista = suggestions;
+        console.log(this.suggestionsBaixadaSantista);
+
+      },
+      error: () => {
+
+      },
+      complete: () => {
+
+      }
+    })
   }
 
   public slideToNext(): void {
@@ -116,6 +120,7 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
 
   ngOnDestroy() {
     this.currentLanguageSubscription.unsubscribe();
+    this.suggestionsBaixadaSantistaSubscription.unsubscribe();
   }
 
 }

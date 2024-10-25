@@ -102,7 +102,7 @@ class="ion-content-w-linear-bg">
       <ion-grid [fixed]="true">
         <ion-row>
           <ion-col size="12">
-            <ion-text mode="ios" class="line-height-22" [ngClass]="{ 'txt-center': suggestionsBaixadaSantista.length === 1 }">
+            <ion-text mode="ios" class="line-height-22" [ngClass]="{ 'txt-center': suggestionsBaixadaSantista && suggestionsBaixadaSantista.length === 1 }">
               <p class="color-gray-mid fs-12">
                 {{ 'SUGGESTIONS_PAGE.TITLE' | translate }}
               </p>
@@ -122,7 +122,7 @@ class="ion-content-w-linear-bg">
         <ion-col size="6">
           <div class="controls-wrapper">
             <ion-button
-            [disabled]="hideLeftControl || suggestionsBaixadaSantista.length === 1"
+            [disabled]="hideLeftControl || (suggestionsBaixadaSantista && suggestionsBaixadaSantista.length === 1)"
             (click)="slideToPrev()"
             mode="md"
             class="anf-main-solid fs-14 mg-right-8"
@@ -132,7 +132,7 @@ class="ion-content-w-linear-bg">
             </ion-button>
 
             <ion-button
-            [disabled]="hideRightControl || suggestionsBaixadaSantista.length === 1"
+            [disabled]="hideRightControl || (suggestionsBaixadaSantista && suggestionsBaixadaSantista.length === 1)"
             (click)="slideToNext()"
             mode="md"
             class="anf-main-solid fs-14"
@@ -147,7 +147,7 @@ class="ion-content-w-linear-bg">
           <ion-text
           class="color-gray-text fs-13 line-height-20 txt-lowercase txt-right"
           mode="ios">
-            <p><span class="fs-16 font-w-bold mg-right-5">{{ suggestionsBaixadaSantista.length }}</span> <ng-container *ngIf="suggestionsBaixadaSantista.length === 1">{{ 'SHARED.SUGGESTION' | translate }}</ng-container> <ng-container *ngIf="suggestionsBaixadaSantista.length > 1">{{ 'SHARED.SUGGESTIONS' | translate }}</ng-container></p>
+            <p><span class="fs-16 font-w-bold mg-right-5">{{ suggestionsBaixadaSantista?.length }}</span> <ng-container *ngIf="suggestionsBaixadaSantista?.length === 1">{{ 'SHARED.SUGGESTION' | translate }}</ng-container> <ng-container *ngIf="suggestionsBaixadaSantista?.length > 1">{{ 'SHARED.SUGGESTIONS' | translate }}</ng-container></p>
           </ion-text>
         </ion-col>
 
