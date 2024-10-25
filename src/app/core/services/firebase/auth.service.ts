@@ -7,6 +7,8 @@ import { addDoc } from 'firebase/firestore';
 import { Observable, Subscription } from 'rxjs';
 import { CollectionsEnum } from 'src/app/shared/enums/Collection';
 import { IUSer } from 'src/app/shared/models/IUser';
+import { StorageService } from '../storage.service';
+import { USER_ID } from 'src/app/shared/consts/keys';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,12 @@ export class AuthService {
   public authState$: Observable<any>;
   public authStateSubscription: Subscription;
 
-  constructor(private afAuth: Auth, private navCtrl : NavController, private firestore : Firestore) { }
+  constructor(
+    private afAuth: Auth,
+    private navCtrl : NavController,
+    private firestore : Firestore,
+    private storageService : StorageService
+  ) { }
 
   public async createUserWithEmailAndPassword(email: string, password: string, userInfo: IUSer ): Promise<any> {
     try {
@@ -42,6 +49,7 @@ export class AuthService {
   public async signInWithEmailAndPassword(email: string, password: string): Promise<any> {
     try {
       const userCredential = await signInWithEmailAndPassword(this.afAuth, email, password);
+      await this.storageService.setStorageKey(USER_ID, userCredential.user.uid);
       return userCredential.user;
     } catch (error) {
       console.log(error);

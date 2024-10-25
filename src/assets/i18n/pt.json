@@ -2,7 +2,10 @@
   "EXPLORE_PAGE" : {
     "PAGE_TITLE" : "Explorar",
     "WHERE" : ["Onde","você procura?"],
-    "WHAT" : ["O quê","você busca?"]
+    "WHAT" : ["O quê","você busca?"],
+    "SELECTED_CITY" : ["Cidade","selecionada"],
+    "CHOOSE_TITLE" : ["escolha","uma cidade"],
+    "OF_BAIXADA" : ["da"]
   },
   "WELCOME_TO" : ["Conheça","a Baixada Santista"],
   "ABOUT_US_PAGE" : {
@@ -101,7 +104,9 @@
     "CONTACT" : "Contato",
     "IS_NOT_PREMIUM" : "não possui o selo anfitrion e por isso não podemos liberar esta funcionalidade",
     "SEARCH" : "buscar",
-    "FOR_WHO" : "para quem"
+    "FOR_WHO" : "para quem",
+    "CHANGE" : "Trocar",
+    "SELECTED" : "Selecionado"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nosso próposito aqui é fazer com que voê economize o seu bem mais precioso:","o tempo"],

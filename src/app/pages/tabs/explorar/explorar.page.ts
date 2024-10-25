@@ -6,7 +6,10 @@ import * as AppStore from './../../../shared/store/app.state';
 import Swiper from 'swiper';
 import { TranslateService } from '@ngx-translate/core';
 import { Title } from '@angular/platform-browser';
-import { IonContent, NavController } from '@ionic/angular';
+import { IonContent, ModalController, NavController } from '@ionic/angular';
+import { CidadesPage } from '../cidades/cidades.page';
+import { OverlayService } from 'src/app/shared/services/overlay.service';
+import { CityFeaturesEnum } from 'src/app/shared/enums/CityFeatures';
 
 @Component({
   selector: 'rgs-explorar',
@@ -14,6 +17,7 @@ import { IonContent, NavController } from '@ionic/angular';
   styleUrls: ['./explorar.page.scss'],
 })
 export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
+
 
   @ViewChild('explorarContent') explorarContent: IonContent;
 
@@ -69,7 +73,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     },
     {
       loadIconsFromAssets: false,
-      value: 'Pessoas',
+      value: 'PESSOAS',
       icon: 'people',
       text: {
         pt: 'Pessoas',
@@ -86,7 +90,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     },
     {
       loadIconsFromAssets: false,
-      value: 'SERVIÇOS',
+      value: 'SERVICOS',
       icon: 'map',
       text: {
         pt: 'Serviços',
@@ -164,7 +168,8 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     private store : Store,
     private translate : TranslateService,
     private title : Title,
-    public navCtrl : NavController
+    public navCtrl : NavController,
+    private overlayService : OverlayService
   ) { }
 
   ngOnInit() {
@@ -198,6 +203,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     this.currentLanguageSubscription = this.currentLanguage$
     .subscribe((language: ILang) => {
       this.currentLanguage = language;
+      console.log(this.currentLanguage, 'lingua');
     })
   }
 
@@ -209,18 +215,12 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     this.selectedCityFeature = this.cityFeatures.find((feature: any) => {
       return feature.value === value;
     })
-
-    console.log(this.selectedCityFeature);
-
   }
 
   public selectBeachFeature(value: string) {
     this.selectedBeachFeature = this.beachFeatures.find((feature: any) => {
       return feature.value === value;
     })
-
-    console.log(this.selectedBeachFeature);
-
   }
 
   public async scrollToTop() {
@@ -229,6 +229,32 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
   public navToContactPage(): void {
     this.navCtrl.navigateForward(['/logado/contato']);
+  }
+
+  public async openCityModal() {
+    const modal = await this.overlayService.fireModal({
+      component: CidadesPage,
+      componentProps: {
+        currentLanguage: this.currentLanguage
+      },
+      breakpoints: [1],
+      initialBreakpoint: 1,
+      mode: 'md',
+      cssClass: 'anf-about-us-modal',
+      id: 'cities-modal'
+    })
+
+    await modal.present();
+
+    return modal;
+  }
+
+  public searchInTheCity(): void {
+    switch (this.selectedCityFeature.value) {
+      case CityFeaturesEnum.LUGARES:
+        this.navCtrl.navigateForward(['/logado/explorar/lugares-na-cidade'])
+        break;
+    }
   }
 
   ngOnDestroy() {

@@ -39,7 +39,21 @@ const routes: Routes = [
       },
       {
         path: 'explorar',
-        loadChildren: () => import('./explorar/explorar.module').then( m => m.ExplorarPageModule)
+        children: [
+          {
+            path: '',
+            redirectTo: 'explorar',
+            pathMatch: 'full'
+          },
+          {
+            path: '',
+            loadChildren: () => import('./explorar/explorar.module').then( m => m.ExplorarPageModule),
+          },
+          {
+            path: 'lugares-na-cidade',
+            loadChildren: () => import('./features-cidade/lugares-na-cidade/lugares-na-cidade.module').then( m => m.LugaresNaCidadePageModule)
+          }
+        ]
       },
       {
         path: 'bem-vindo-a-baixada-santista',
@@ -56,6 +70,10 @@ const routes: Routes = [
       {
         path: 'sugestoes-do-anfitriao',
         loadChildren: () => import('./sugestoes-do-anfitriao/sugestoes-do-anfitriao.module').then( m => m.SugestoesDoAnfitriaoPageModule)
+      },
+      {
+        path: 'cidades',
+        loadChildren: () => import('./cidades/cidades.module').then( m => m.CidadesPageModule)
       }
     ]
   }
