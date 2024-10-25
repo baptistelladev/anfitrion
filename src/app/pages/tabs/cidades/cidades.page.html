@@ -55,8 +55,8 @@ class="ion-content-w-linear-bg">
             <ion-icon name="warning-outline" slot="start" class="color-bootstrap-warning"></ion-icon>
 
             <ion-text mode="ios" class="color-bootstrap-warning">
-              <p class="fs-12 mg-bottom-8">Felipe</p>
-              <p class="fs-14">A nossa meta é atuar em toda a baixada santista, mas é importante começar por um ponto específico. Atualmente, estamos focados em São Vicente <b>e, por isso, já estabelecemos a cidade para você. A expansão acontecerá de forma gradual  </b>.</p>
+              <p class="fs-12 mg-bottom-8">{{ user.firstName }}</p>
+              <p class="fs-14">{{ 'COMPONENTS.JUST_IN_CITY_ADVISE.0' | translate }} <b>{{ 'COMPONENTS.JUST_IN_CITY_ADVISE.1' | translate }}</b></p>
             </ion-text>
           </ion-item>
         </ion-col>
