@@ -1,20 +1,17 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
-import { IonicModule } from '@ionic/angular';
-
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { SugestoesDoAnfitriaoPageRoutingModule } from './sugestoes-do-anfitriao-routing.module';
 
 import { SugestoesDoAnfitriaoPage } from './sugestoes-do-anfitriao.page';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { ComponentsModule } from 'src/app/shared/components/components.module';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    SugestoesDoAnfitriaoPageRoutingModule
+    SharedModule,
+    SugestoesDoAnfitriaoPageRoutingModule,
+    ComponentsModule
   ],
-  declarations: [SugestoesDoAnfitriaoPage]
+  declarations: [SugestoesDoAnfitriaoPage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SugestoesDoAnfitriaoPageModule {}

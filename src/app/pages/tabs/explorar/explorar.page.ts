@@ -276,6 +276,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy() {
     this.currentLanguageSubscription.unsubscribe();
+    this.userSubscription.unsubscribe();
   }
 
 }
