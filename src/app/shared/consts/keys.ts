@@ -1,2 +1,3 @@
 export const IS_FIRST_ACCESS_KEY: string = 'IS_FIRST_ACCESS_KEY';
 export const APP_LANG_KEY: string = 'APP_LANG_KEY';
+export const USER_ID: string = 'USER_ID';

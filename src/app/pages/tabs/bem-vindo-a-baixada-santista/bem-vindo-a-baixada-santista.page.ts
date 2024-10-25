@@ -18,7 +18,7 @@ export class BemVindoABaixadaSantistaPage implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-      this.navCtrl.navigateForward(['/logado']);
+      this.navCtrl.navigateForward(['/logado/explorar']);
     }, 3000);
   }
 

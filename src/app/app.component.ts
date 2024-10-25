@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
     await this.storageService.createStorage();
 
     await this.storageService.getStorageKey(APP_LANG_KEY).then((res: string) => {
-      if (res === null) {
+      if (res === null || !res) {
 
         let foundLang = LANGS.find((lang: ILang) => {
           return lang.value === 'pt';
@@ -64,13 +64,14 @@ export class AppComponent implements OnInit {
       }
     })
 
-
+    /*
     console.info(
       `\n%c⚠️ Xô rapaliga ⚠️%c \n${'vai trabalhar,vai...'} \n\n%cFica inspecionando código alheio.\nJá que você é curioso, pelo menos segue no insta https://www.instagram.com/ruagastronomicadesantos/`,
       "color:#ceb73f; background: #ceb73f33; font-size:1.5rem; padding: 20px 20px 16px 20px; margin: 1rem auto; font-family: Rockwell, Tahoma, 'Trebuchet MS', Helvetica; border: 2px solid #ceb73f; border-radius: 4px; font-weight: bold; text-shadow: 1px 1px 1px #000000bf;",
       'font-weight: bold; font-size: 1rem;color: #ceb73f;',
       "color: #ceb73f; font-size: 0.75rem; font-family: Tahoma, 'Trebuchet MS', Helvetica;",
     );
+    */
   }
 
   public understood(): void {

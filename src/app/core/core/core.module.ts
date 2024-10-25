@@ -23,6 +23,7 @@ import { environment } from 'src/environments/environment';
 import {register} from 'swiper/element/bundle';
 import { provideAuth } from '@angular/fire/auth';
 import { getAuth } from 'firebase/auth';
+import { userReducer } from 'src/app/shared/store/user.state';
 register();
 
 export function createTranslateLoader(http: HttpClient) {
@@ -44,7 +45,8 @@ export function createTranslateLoader(http: HttpClient) {
       }
     ),
     StoreModule.forRoot({
-      app: appReducer
+      app: appReducer,
+      user: userReducer
     }),
     TranslateModule.forRoot({
       defaultLanguage: 'pt',
@@ -55,9 +57,9 @@ export function createTranslateLoader(http: HttpClient) {
       }
     }),
     IonicStorageModule.forRoot({
-      name: 'rgs-storage',
-      storeName: 'rgs-store',
-      dbKey: 'rgs-key'
+      name: 'anfitrion-storage',
+      storeName: 'anfitrion-store',
+      dbKey: 'anfitrion-key'
     }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

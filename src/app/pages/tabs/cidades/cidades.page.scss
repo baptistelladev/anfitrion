@@ -1,0 +1,50 @@
+ion-content {
+  section {
+    &.cidades-wrapper {
+      width: 100%;
+      height: auto;
+      padding: 0 16px 16px 16px;
+
+      ion-item.city-item {
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+        --padding-start: 32px;
+        --padding-end: 32px;
+        --min-height: 0;
+        border-radius: 12px;
+        --padding-top: 20px;
+        --padding-bottom: 16px;
+        --background: var(--white);
+        --inner-padding-end: 0;
+
+        ion-checkbox {
+          --checkbox-background-checked: linear-gradient(.351turn, #769834 43.71%, #547D0E 58.8%);
+          --border-color-checked: var(--green-dark);
+          --checkmark-color: var(--white);
+          --border-width: 1px;
+        }
+
+        ion-text {
+          p {
+            &.city-name {
+              font-weight: normal;
+              color: var(--gray-text);
+            }
+          }
+        }
+
+        &.is-selected {
+          pointer-events: none;
+
+          ion-text {
+            p {
+              &.city-name {
+                font-weight: bold;
+                color: var(--green);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -157,14 +157,19 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
 
       await toastSuccess.present();
 
+    })
+    .then( async () => {
+
+
+
       await toastSuccess.onDidDismiss()
       .then(() => {
         this.formLoginGroup.reset();
         this.isDoingLogin = false;
         this.navCtrl.navigateForward(['/logado/bem-vindo-a-baixada-santista']);
       })
-
-    }).catch(async (error) => {
+    })
+    .catch(async (error) => {
       this.isDoingLogin = false;
       //this.formLoginGroup.reset();
       toastError.message = error.text[this.currentLanguage.value];
