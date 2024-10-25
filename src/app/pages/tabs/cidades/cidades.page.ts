@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
 import { CITIES } from 'src/app/shared/mocks/cities';
+import { IUSer } from 'src/app/shared/models/IUser';
+import { ILang } from 'src/app/shared/models/Lang';
 
 @Component({
   selector: 'rgs-cidades',
@@ -9,7 +11,8 @@ import { CITIES } from 'src/app/shared/mocks/cities';
 })
 export class CidadesPage implements OnInit {
 
-  @Input() currentLanguage: any
+  @Input() currentLanguage: ILang;
+  @Input() user: IUSer
 
   public selectedCity: any = {
     value: 'SAO_VICENTE',
@@ -25,6 +28,8 @@ export class CidadesPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log(this.user);
+
   }
 
   public async selectCity(city: any) {

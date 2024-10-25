@@ -5,7 +5,8 @@
     "WHAT": ["What", "are you searching for?"],
     "SELECTED_CITY" : ["Selected","city"],
     "CHOOSE_TITLE" : ["choose","a city"],
-    "OF_BAIXADA" : ["from"]
+    "OF_BAIXADA" : ["from"],
+    "YOU_ARE_IN": "you are in"
   },
   "WELCOME_TO" : ["Welcome", "to Baixada Santista"],
   "ABOUT_US_PAGE" : {

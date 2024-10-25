@@ -24,7 +24,7 @@ export const userReducer = createReducer(
   userInitialState,
   on(
     setUser,
-    (state, { user }): IUserState => ({ ...state, ...user })
+    (state, { user }): IUserState => ({ ...state, user: user })
   )
 )
 

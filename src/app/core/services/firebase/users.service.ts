@@ -21,9 +21,7 @@ export class UsersService {
     try {
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
-        user = docSnap.data() as IUSer;
-
-        await this.dispatchUser(user);
+        await this.dispatchUser({ ...docSnap.data() as IUSer });
         return true;
       } else {
         return false;
