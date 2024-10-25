@@ -31,7 +31,30 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
   public currentLanguage$: Observable<ILang>;
   public currentLanguageSubscription: Subscription;
 
-  public suggestionsBaixadaSantista: any = [1,2,3,4,5];
+  public suggestionsBaixadaSantista: any = [
+    {
+      icon: 'restaurant',
+      created_at: '',
+      updated_at: '',
+      name: {
+        title: {
+          pt: 'conheça a',
+          en: 'get to know',
+          es: 'conozca la'
+        },
+        text: {
+          pt: 'Rua Gastronômica de Santos',
+          en: 'Gastronomic Street of Santos',
+          es: 'Calle Gastronómica de Santos'
+        }
+      },
+      hashtag: {
+        pt: 'gastronomia',
+        en: 'gastronomic',
+        es: 'gastronomía'
+      }
+    }
+  ];
   public suggestionsBaixadaSantista$: Observable<any>
   public suggestionsBaixadaSantistaSubscription: Subscription;
 

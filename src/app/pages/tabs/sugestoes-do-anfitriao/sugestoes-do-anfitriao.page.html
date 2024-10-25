@@ -42,68 +42,67 @@ class="ion-content-w-linear-bg">
         free-mode="true"
         class="full-width swiper-w-relative-pagination"
         speed="5000"
+        [attr.centered-slides]="false"
         slides-offset-before="16"
         slides-offset-after="16"
         initial-slide="0"
-        [slidesPerView]="1.2"
-        space-between="16"
-        [breakpoints]="{
-          '200' : {
-             slidesPerView: 1.7
-           },
-           '363' : {
-             slidesPerView: 1.6
-           },
-           '445' : {
-             slidesPerView: 1.6
-           },
-           '667' : {
-             slidesPerView: 2.3
-           },
-           '792' : {
-             slidesPerView: 3.3
-           },
-           '991' : {
-             slidesPerView: 4.1
-           },
-           '1200' : {
-             slidesPerView: 4.9
-           },
-           '1300' : {
-             slidesPerView: 5.1
-           },
-           '1600' : {
-             slidesPerView: 6.2
-           },
-           '2000' : {
-             slidesPerView: 8.1
-           }
-         }"
+        [attr.slides-per-view]="'auto'"
+        [attr.space-between]="16"
         [init]="true">
-          <ng-container>
+          <!-- SE EXISTIR MAIS DE UMA OPÇÃO -->
+          <ng-container *ngIf="suggestionsBaixadaSantista && suggestionsBaixadaSantista.length > 1">
             <swiper-slide
-            *ngFor="let tip of suggestionsBaixadaSantista; let i = index"
+            *ngFor="let suggestion of suggestionsBaixadaSantista; let i = index"
             class="unlock-shadow-from-swiper auto-width">
-              <div class="anf-baixada-container">
-                <ion-item
-                class="ion-bg-transparent tip-item"
-                lines="none"
-                mode="ios">
-                  <ion-text mode="ios">
-                    <p class="color-gray-c fs-14">dada</p>
-                    <p class="description fs-18 color-linear font-w-bold">dsds</p>
-                  </ion-text>
-                </ion-item>
+              <div class="anf-baixada-wrapper">
+                <div class="anf-baixada-container">
+                  <ion-item
+                  [button]="true"
+                  class="ion-bg-transparent tip-item"
+                  lines="none"
+                  mode="ios">
+                    <ion-text mode="ios">
+                      <p class="color-gray-c fs-14">{{ suggestion.name.title[currentLanguage.value] }}</p>
+                      <p class="description fs-18 color-linear font-w-bold">{{ suggestion.name.text[currentLanguage.value] }}</p>
+                    </ion-text>
+                  </ion-item>
+                </div>
+
+                <ion-text mode="ios">
+                  <p class="fs-12 indicated-text">{{ suggestion.hashtag[currentLanguage.value] }}</p>
+                </ion-text>
               </div>
             </swiper-slide>
           </ng-container>
         </swiper-container>
+
+        <!-- SE EXISTIR SÓ UMA OPÇÃO -->
+        <div class="one-tip-container" *ngIf="suggestionsBaixadaSantista && suggestionsBaixadaSantista.length === 1">
+          <div class="anf-baixada-wrapper">
+            <div class="anf-baixada-container">
+              <ion-item
+              [button]="true"
+              class="ion-bg-transparent tip-item"
+              lines="none"
+              mode="ios">
+                <ion-text mode="ios">
+                  <p class="color-gray-c fs-14">{{ suggestionsBaixadaSantista[0].name.title[currentLanguage.value] }}</p>
+                  <p class="description fs-18 color-linear font-w-bold">{{ suggestionsBaixadaSantista[0].name.text[currentLanguage.value] }}</p>
+                </ion-text>
+              </ion-item>
+            </div>
+
+            <ion-text mode="ios">
+              <p class="fs-12 indicated-text">{{ suggestionsBaixadaSantista[0].hashtag[currentLanguage.value] }}</p>
+            </ion-text>
+          </div>
+        </div>
       </div>
 
       <ion-grid [fixed]="true">
         <ion-row>
           <ion-col size="12">
-            <ion-text mode="ios" class="line-height-22">
+            <ion-text mode="ios" class="line-height-22" [ngClass]="{ 'txt-center': suggestionsBaixadaSantista.length === 1 }">
               <p class="color-gray-mid fs-12">
                 {{ 'SUGGESTIONS_PAGE.TITLE' | translate }}
               </p>
@@ -120,39 +119,37 @@ class="ion-content-w-linear-bg">
   <section class="sugestoes-content">
     <ion-grid [fixed]="true">
       <ion-row>
-        <ng-container *ngIf="suggestionsBaixadaSantista && suggestionsBaixadaSantista.length > 0">
-          <ion-col size="6">
-            <div class="controls-wrapper">
-              <ion-button
-              [disabled]="hideLeftControl"
-              (click)="slideToPrev()"
-              mode="md"
-              class="anf-main-solid fs-14 mg-right-8"
-              shape="round"
-              title="">
-                <ion-icon name="arrow-back-outline"></ion-icon>
-              </ion-button>
+        <ion-col size="6">
+          <div class="controls-wrapper">
+            <ion-button
+            [disabled]="hideLeftControl || suggestionsBaixadaSantista.length === 1"
+            (click)="slideToPrev()"
+            mode="md"
+            class="anf-main-solid fs-14 mg-right-8"
+            shape="round"
+            title="">
+              <ion-icon name="arrow-back-outline"></ion-icon>
+            </ion-button>
 
-              <ion-button
-              [disabled]="hideRightControl"
-              (click)="slideToNext()"
-              mode="md"
-              class="anf-main-solid fs-14"
-              shape="round"
-              title="">
-                <ion-icon name="arrow-forward-outline"></ion-icon>
-              </ion-button>
-            </div>
-          </ion-col>
+            <ion-button
+            [disabled]="hideRightControl || suggestionsBaixadaSantista.length === 1"
+            (click)="slideToNext()"
+            mode="md"
+            class="anf-main-solid fs-14"
+            shape="round"
+            title="">
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-col>
 
-          <ion-col size="6">
-            <ion-text
-            class="color-gray-text fs-13 line-height-20 txt-lowercase txt-right"
-            mode="ios">
-              <p><span class="fs-16 font-w-bold mg-right-5">{{ suggestionsBaixadaSantista.length }}</span> <ng-container *ngIf="suggestionsBaixadaSantista.length === 1">{{ 'SHARED.SUGGESTION' | translate }}</ng-container> <ng-container *ngIf="suggestionsBaixadaSantista.length > 1">{{ 'SHARED.SUGGESTIONS' | translate }}</ng-container></p>
-            </ion-text>
-          </ion-col>
-        </ng-container>
+        <ion-col size="6">
+          <ion-text
+          class="color-gray-text fs-13 line-height-20 txt-lowercase txt-right"
+          mode="ios">
+            <p><span class="fs-16 font-w-bold mg-right-5">{{ suggestionsBaixadaSantista.length }}</span> <ng-container *ngIf="suggestionsBaixadaSantista.length === 1">{{ 'SHARED.SUGGESTION' | translate }}</ng-container> <ng-container *ngIf="suggestionsBaixadaSantista.length > 1">{{ 'SHARED.SUGGESTIONS' | translate }}</ng-container></p>
+          </ion-text>
+        </ion-col>
 
         <ion-col size="12" class="mg-top-16">
           <ion-text mode="ios" class="line-height-18">
