@@ -1,0 +1,106 @@
+
+@import './../../../../assets/scss/utils/mixins.scss';
+
+ion-content {
+  section {
+    &.sugestoes {
+      width: 100%;
+      height: auto;
+      position: relative;
+      @include flexbox(flex-start, flex-start, column);
+
+      .sugestoes-header-wrapper {
+        width: 100%;
+        height: auto;
+        min-height: 430px;
+        padding: 0 16px;
+        position: relative;
+        @include flexbox(flex-start, flex-end, column);
+        padding: 0 0 76px 0;
+
+        ion-grid {
+          flex: none;
+        }
+
+        .fixed-header {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: auto;
+
+          .header-container {
+            @include flexbox(flex-start, space-between, row);
+
+            .header-buttons {
+              @include flexbox(flex-start, flex-start, row);
+            }
+          }
+        }
+
+        .sugestoes-baixada-santista-swiper {
+          width: 100%;
+          position: absolute;
+          left: 0;
+          bottom: -65px;
+          z-index: 10;
+        }
+      }
+    }
+
+    &.sugestoes-content {
+      width: 100%;
+      height: auto;
+      padding: 70px 0 0 0;
+
+      .sugestoes-city-swiper {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.anf-baixada-container {
+  height: 130px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 2px 5px;
+  background: var(--gray-2);
+  border: 1px solid #333;
+  overflow: hidden;
+  border-radius: 8px;
+  margin: 0 auto;
+
+  .tip-item {
+    --min-height: 130px;
+    height: 130px;
+    --padding-start: 32px;
+    --padding-end: 32px;
+    --padding-top: 0;
+    --padding-bottom: 0;
+    --inner-padding-end: 0;
+    --detail-icon-color: var(--white);
+    --detail-icon-font-size: 22px;
+  }
+}
+
+.anf-city-container {
+  height: 90px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  background: var(--white);
+  overflow: hidden;
+  border-radius: 8px;
+  margin: 0 auto;
+
+  .tip-item {
+    --min-height: 90px;
+    height: 90px;
+    --padding-start: 32px;
+    --padding-end: 32px;
+    --padding-top: 0;
+    --padding-bottom: 0;
+    --inner-padding-end: 0;
+    --detail-icon-color: var(--white);
+    --detail-icon-font-size: 22px;
+  }
+}

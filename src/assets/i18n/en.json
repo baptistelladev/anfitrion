@@ -148,7 +148,11 @@
     "ALERT_WORKING_TIME": {
       "TITLE": "Attention",
       "TEXT": ["These hours are provided by the establishment,", "but they may vary without prior notice, especially on holidays and holiday eves"]
-    }
+    },
+    "JUST_IN_CITY_ADVISE": [
+      "Our goal is to operate throughout the Baixada Santista, but it is important to start from a specific point. Currently, we are focused on São Vicente",
+      "and that is why we have already established the city for you. Expansion will happen gradually."
+    ]
   },
   "MENU_PAGE" : {
     "HEADER_TITLE" : ["section","menu"],
