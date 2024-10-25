@@ -1,4 +1,10 @@
 {
+  "SUGGESTIONS_PAGE" : {
+    "PAGE_TITLE" : "Sugestões do anfitrião",
+    "TITLE" : "Sugestões do anfitrião",
+    "IN_BAIXADA" : "na",
+    "DESCRIPTION" : ["Essa sessão foi criada","para poupar o tempo de moradores e turistas",". Nós criamos sessões com base no que as pessoas mais procuram na cidade"]
+  },
   "EXPLORE_PAGE" : {
     "PAGE_TITLE" : "Explorar",
     "WHERE" : ["Onde","você procura?"],
@@ -107,7 +113,9 @@
     "SEARCH" : "buscar",
     "FOR_WHO" : "para quem",
     "CHANGE" : "Trocar",
-    "SELECTED" : "Selecionado"
+    "SELECTED" : "Selecionado",
+    "SUGGESTIONS" : "Sugestões",
+    "SUGGESTION" : "Sugestão"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nosso próposito aqui é fazer com que voê economize o seu bem mais precioso:","o tempo"],

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ModalController, NavController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 import { CITIES } from 'src/app/shared/mocks/cities';
 import { IUSer } from 'src/app/shared/models/IUser';
 import { ILang } from 'src/app/shared/models/Lang';
@@ -23,7 +23,6 @@ export class CidadesPage implements OnInit {
   public CITIES: any[] = [...CITIES];
 
   constructor(
-    private navCtrl : NavController,
     private modalCtrl : ModalController
   ) { }
 

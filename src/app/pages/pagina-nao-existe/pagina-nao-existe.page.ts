@@ -11,12 +11,7 @@ import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
   styleUrls: ['./pagina-nao-existe.page.scss'],
 })
 export class PaginaNaoExistePage implements OnInit {
-
-  public translatedPage: any;
-  public translatedPage$: Observable<any>;
-
   constructor(
-    private translate : TranslateService,
     private title : Title,
     private analyticsService : AnalyticsService
   ) { }
@@ -26,18 +21,7 @@ export class PaginaNaoExistePage implements OnInit {
   }
 
   ionViewDidEnter(): void {
-    this.getTitleFromPage();
-  }
-
-  public getTitleFromPage(): void {
-    this.translatedPage$ = this.translate.get('PAGE_NOT_FOUND')
-
-    this.translatedPage$
-    .pipe(take(2))
-    .subscribe((resp: any) => {
-      this.translatedPage = resp;
-      this.title.setTitle(this.translatedPage['PAGE_TITLE'])
-    })
+    this.title.setTitle('Página não existe')
   }
 
 }

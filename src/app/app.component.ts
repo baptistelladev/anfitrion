@@ -1,18 +1,13 @@
 import { AppInfoService } from './core/services/firebase/app-info.service';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
 import { StorageService } from './core/services/storage.service';
 import { TranslateService } from '@ngx-translate/core';
-import { Store, StoreModule } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import * as AppStore from './shared/store/app.state'
-import { APP_LANG_KEY, IS_FIRST_ACCESS_KEY } from './shared/consts/keys';
+import { APP_LANG_KEY } from './shared/consts/keys';
 import { ILang } from './shared/models/Lang';
 import { LANGS } from './shared/mocks/langs';
-import { NavController } from '@ionic/angular';
-import { AppInfo } from '@capacitor/app';
 import { IAppInfo } from './shared/models/AppInfo';
-import { Analytics } from '@angular/fire/analytics';
-import { AnalyticsService } from './core/services/firebase/analytics.service';
-import { Router } from '@angular/router';
 import { CollectionsEnum } from './shared/enums/Collection';
 
 @Component({

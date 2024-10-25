@@ -12,8 +12,7 @@ ion-content {
       .sugestoes-header-wrapper {
         width: 100%;
         height: auto;
-        min-height: 430px;
-        padding: 0 16px;
+        min-height: 470px;
         position: relative;
         @include flexbox(flex-start, flex-end, column);
         padding: 0 0 76px 0;
@@ -51,7 +50,7 @@ ion-content {
     &.sugestoes-content {
       width: 100%;
       height: auto;
-      padding: 70px 0 0 0;
+      padding: 60px 0 0 0;
 
       .sugestoes-city-swiper {
         width: 100%;

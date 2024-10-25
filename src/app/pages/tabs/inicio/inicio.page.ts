@@ -297,9 +297,6 @@ export class InicioPage implements OnInit, OnDestroy, AfterViewInit {
   public parkings$: Observable<IShortParking[]>;
   public parkingsSubscription: Subscription;
 
-  public translatedPage: any;
-  public translatedPage$: Observable<any>;
-
   public isLoadingLogo: boolean;
 
   constructor(
@@ -331,7 +328,7 @@ export class InicioPage implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ionViewDidEnter(): void {
-    this.getTitleFromPage();
+    this.title.setTitle('Início')
   }
 
   public async orderBy(orderBy: string, fromAnotherPlace: boolean) {
@@ -366,17 +363,6 @@ export class InicioPage implements OnInit, OnDestroy, AfterViewInit {
 
   public initialFilter(value: string) {
     this.selectedFilter = value;
-  }
-
-  public getTitleFromPage(): void {
-    this.translatedPage$ = this.translate.get('INICIO_PAGE')
-
-    this.translatedPage$
-    .pipe(take(2))
-    .subscribe((resp: any) => {
-      this.translatedPage = resp;
-      this.title.setTitle(this.translatedPage['PAGE_TITLE'])
-    })
   }
 
   public getEstablishments() {

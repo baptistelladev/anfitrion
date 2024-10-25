@@ -1,4 +1,10 @@
 {
+  "SUGGESTIONS_PAGE" : {
+    "PAGE_TITLE" : "Host suggestions",
+    "TITLE" : "Host suggestions",
+    "IN_BAIXADA" : "in",
+    "DESCRIPTION" : ["This section was created", "to save time for locals and tourists", ". We created sections based on what people search for most in the city"]
+  },
   "EXPLORE_PAGE" : {
     "PAGE_TITLE": "Explore",
     "WHERE": ["Where", "are you looking?"],
@@ -107,7 +113,9 @@
     "SEARCH" : "search",
     "FOR_WHO" : "for those",
     "CHANGE" : "Change",
-    "SELECTED" : "Selected"
+    "SELECTED" : "Selected",
+    "SUGGESTIONS" : "Suggestions",
+    "SUGGESTION" : "Suggestion"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Our purpose here is to help you save your most precious asset: ","time"],

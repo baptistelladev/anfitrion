@@ -25,16 +25,12 @@ export class EsqueciMinhaSenhaPage implements OnInit, OnDestroy {
 
   public isRecovering: boolean;
 
-  public translatedPage: any;
-  public translatedPage$: Observable<any>;
-
   constructor(
     private navCtrl : NavController,
     private store : Store,
     private formBuilder : FormBuilder,
     private authService : AuthService,
     private overlayService : OverlayService,
-    private translate : TranslateService,
     private title : Title
   ) { }
 
@@ -44,18 +40,7 @@ export class EsqueciMinhaSenhaPage implements OnInit, OnDestroy {
   }
 
   ionViewWillEnter(): void {
-    this.getTranslatedPage();
-  }
-
-  public getTranslatedPage(): void {
-    this.translatedPage$ = this.translate.get('FORGOT_PASSWORD_PAGE');
-
-    this.translatedPage$
-    .pipe(take(2))
-    .subscribe((resp: any) => {
-      this.translatedPage = resp;
-      this.title.setTitle('anfitrion | ' + this.translatedPage['PAGE_TITLE']);
-    })
+    this.title.setTitle('Esquec minha senha');
   }
 
   public back(): void {
