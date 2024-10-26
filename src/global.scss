@@ -449,3 +449,8 @@ ion-item.item-title-w-icon {
     }
   }
 }
+
+ion-skeleton-text {
+  &.gray-mid { --background-rgb: 149, 150, 150; }
+  &.green { --background-rgb: 118,152,52; }
+}

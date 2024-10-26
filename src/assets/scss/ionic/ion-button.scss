@@ -79,6 +79,16 @@ ion-button {
     font-weight: normal;
   }
 
+  &.logoff-btn {
+    --color: var(--gray-text);
+    --padding-end: 12px;
+    --padding-start: 12px;
+    text-transform: none;
+    font-weight: normal;
+
+    ion-icon { color: var(--danger); }
+  }
+
   &.anf-main-outline {
     --color: var(--green);
     --padding-end: 12px;

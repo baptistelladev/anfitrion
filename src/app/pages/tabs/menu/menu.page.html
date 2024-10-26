@@ -33,8 +33,9 @@
             <ion-grid [fixed]="true">
               <ion-row>
                 <ion-col size="12">
-                  <ion-text mode="ios">
-                    <p class="fs-18 color-gray-6 font-baloo"><b>{{ 'MENU_PAGE.MENU_TITLE' | translate }}</b></p>
+                  <ion-text mode="ios" class="line-height-18">
+                    <p class="fs-18 color-gray-6 font-baloo"><b>{{ user.firstName }}</b>,</p>
+                    <p class="fs-12 color-gray-mid">{{ 'MENU_PAGE.HOW_CAN_I_HELP' | translate }}?</p>
                   </ion-text>
                 </ion-col>
 
@@ -71,12 +72,14 @@
         <ion-col size="12">
           <div class="log-out-wrapper">
             <ion-button
+            fill="clear"
+            size="small"
             (click)="logoutAlert()"
             shape="round"
-            class="anf-main-solid fs-14 height-44"
+            class="fs-12 logoff-btn"
             mode="md"
             title="acessar minha conta">
-              <ion-icon name="log-out-outline" class="mg-right-5 fs-22"></ion-icon> <b class="mg-right-5">sair</b> da minha conta
+              <ion-icon name="log-out-outline" class="mg-right-5 fs-20"></ion-icon> <b class="mg-right-5 color-danger">{{ 'MENU_PAGE.LOG_OFF_BTN.0' | translate }}</b> {{ 'MENU_PAGE.LOG_OFF_BTN.1' | translate }}
             </ion-button>
           </div>
         </ion-col>
