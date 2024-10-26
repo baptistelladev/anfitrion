@@ -3,7 +3,8 @@
     "PAGE_TITLE" : "Sugestões do anfitrião",
     "TITLE" : "Sugestões do anfitrião",
     "IN_BAIXADA" : "na",
-    "DESCRIPTION" : ["Essa sessão foi criada","para poupar o tempo de moradores e turistas",". Nós criamos sessões com base no que as pessoas mais procuram na cidade"]
+    "DESCRIPTION" : ["Essa sessão foi criada","para poupar o tempo de moradores e turistas",". Nós criamos sessões com base no que as pessoas mais procuram na cidade"],
+    "NO_RESULT" : "Não temos nenhuma sugestão ainda"
   },
   "EXPLORE_PAGE" : {
     "PAGE_TITLE" : "Explorar",
@@ -158,7 +159,11 @@
   },
   "MENU_PAGE" : {
     "HEADER_TITLE" : ["sessão","menu"],
-    "MENU_TITLE" : "Menu"
+    "MENU_TITLE" : "Menu",
+    "HOW_CAN_I_HELP" : "como posso te ajudar",
+    "LOG_OFF_BTN" : ["sair","da minha conta"],
+    "LOG_OFF_TITLE" : "Sair da conta",
+    "LOG_OFF_TEXT" : "Você quer mesmo sair da sua conta"
   },
   "CONTACT_PAGE" : {
     "PAGE_TITLE" : "Fale comigo sobre a Rua Gastronômica de Santos",

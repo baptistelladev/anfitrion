@@ -15,7 +15,11 @@ ion-content {
         min-height: 470px;
         position: relative;
         @include flexbox(flex-start, flex-end, column);
-        padding: 0 0 76px 0;
+        padding: 0 0 18px 0;
+
+        &.has-content {
+          padding: 0 0 76px 0;
+        }
 
         ion-grid {
           flex: none;
@@ -41,13 +45,14 @@ ion-content {
           width: 100%;
           position: absolute;
           left: 0;
-          bottom: -91px;
+          bottom: -85px;
           z-index: 10;
 
           .one-tip-container {
             width: 100%;
-            max-width: 370px;
+            max-width: 400px;
             margin: 0 auto;
+            padding: 0 16px;
           }
         }
       }
@@ -56,7 +61,10 @@ ion-content {
     &.sugestoes-content {
       width: 100%;
       height: auto;
-      padding: 90px 0 0 0;
+
+      &.has-content {
+        padding: 100px 0 0 0;
+      }
 
       .sugestoes-city-swiper {
         width: 100%;
@@ -98,24 +106,32 @@ ion-content {
   }
 }
 
-.anf-city-container {
-  height: 90px;
-  overflow: hidden;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-  background: var(--white);
-  overflow: hidden;
-  border-radius: 8px;
-  margin: 0 auto;
+.anf-tip-skeleton {
+  width: 210px;
 
-  .tip-item {
-    --min-height: 90px;
-    height: 90px;
-    --padding-start: 32px;
-    --padding-end: 32px;
-    --padding-top: 0;
-    --padding-bottom: 0;
-    --inner-padding-end: 0;
-    --detail-icon-color: var(--white);
-    --detail-icon-font-size: 22px;
+  .anf-tip-container {
+    width: 100%;
+    overflow: hidden;
+    height: 120px;
+    background: var(--gray-2);
+    border: 1px solid #333;
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 2px 5px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+
+    ion-item {
+      width: 100%;
+      --min-height: 120px;
+
+      ion-text {
+        width: 100%;
+      }
+    }
+  }
+
+  ion-skeleton-text {
+    &.like-label { height: 12px; width: 80px; border-radius: 50px; margin: 8px 0 0 0;}
+    &.like-title { height: 14px; width: 110px; border-radius: 50px; margin: 8px 0 0 0;}
+    &.like-desc { height: 18px; width: 80%; border-radius: 50px; margin: 8px 0 0 0;}
   }
 }

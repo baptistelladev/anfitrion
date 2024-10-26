@@ -4,7 +4,8 @@
     "PAGE_TITLE" : "Sugerencias del anfitrión",
     "TITLE" : "Sugerencias del anfitrión",
     "IN_BAIXADA" : "en la",
-    "DESCRIPTION" : ["Esta sección fue creada", "para ahorrar tiempo a residentes y turistas", ". Creamos secciones basadas en lo que la gente más busca en la ciudad"]
+    "DESCRIPTION" : ["Esta sección fue creada", "para ahorrar tiempo a residentes y turistas", ". Creamos secciones basadas en lo que la gente más busca en la ciudad"],
+    "NO_RESULT" : "Aún no tenemos sugerencias"
   },
   "EXPLORE_PAGE" : {
     "PAGE_TITLE": "Explorar",
@@ -166,7 +167,11 @@
   },
   "MENU_PAGE" : {
     "HEADER_TITLE" : ["sección","de menú"],
-    "MENU_TITLE" : "Menú"
+    "MENU_TITLE" : "Menú",
+    "HOW_CAN_I_HELP": "cómo puedo ayudarte",
+    "LOG_OFF_BTN": ["cerrar sesión", "de mi cuenta"],
+    "LOG_OFF_TITLE": "Cerrar sesión de la cuenta",
+    "LOG_OFF_TEXT": "¿Realmente quieres cerrar sesión en tu cuenta"
   },
   "CONTACT_PAGE": {
     "PAGE_TITLE": "Háblame sobre la Calle Gastronómica de Santos",

@@ -3,7 +3,8 @@
     "PAGE_TITLE" : "Host suggestions",
     "TITLE" : "Host suggestions",
     "IN_BAIXADA" : "in",
-    "DESCRIPTION" : ["This section was created", "to save time for locals and tourists", ". We created sections based on what people search for most in the city"]
+    "DESCRIPTION" : ["This section was created", "to save time for locals and tourists", ". We created sections based on what people search for most in the city"],
+    "NO_RESULT" : "We don't have any suggestions yet"
   },
   "EXPLORE_PAGE" : {
     "PAGE_TITLE": "Explore",
@@ -164,7 +165,11 @@
   },
   "MENU_PAGE" : {
     "HEADER_TITLE" : ["section","menu"],
-    "MENU_TITLE" : "Menu"
+    "MENU_TITLE" : "Menu",
+    "HOW_CAN_I_HELP": "how can I help you",
+    "LOG_OFF_BTN": ["log off", "from my account"],
+    "LOG_OFF_TITLE": "Log off account",
+    "LOG_OFF_TEXT": "Do you really want to log out of your account"
   },
   "CONTACT_PAGE" : {
     "PAGE_TITLE": "Talk to me about the Gastronomic Street of Santos",
