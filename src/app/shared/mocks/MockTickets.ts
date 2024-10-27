@@ -1,6 +1,6 @@
-import { IShortTicket } from "../models/ITicket";
+import { ITicket } from "../models/ITicket";
 
-export const TICKETS: IShortTicket[] = [
+export const MOCK_TICKETS: ITicket[] = [
   {
     text: 'Alelo',
     value: 'ALELO'

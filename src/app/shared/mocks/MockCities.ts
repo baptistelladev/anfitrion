@@ -1,6 +1,6 @@
 import { ICity } from "../models/ICity";
 
-export const CITIES: ICity[] = [
+export const MOCK_CITIES: ICity[] = [
   {
     value: 'SAO_VICENTE',
     name: 'São Vicente',

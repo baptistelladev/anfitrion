@@ -7,7 +7,7 @@ class="ion-no-border">
   [ngClass]="{ 'dark-tab' : applyDarkTabBar, 'light-tab' : !applyDarkTabBar }"
   slot="bottom">
     <ion-tab-button
-    *ngFor="let tab of tabs"
+    *ngFor="let tab of MOCK_TABS"
     [tab]="tab.page"
     [title]="
       tab?.value === 'explorar' ? ('COMPONENTS.TABS.EXPLORE' | translate) :

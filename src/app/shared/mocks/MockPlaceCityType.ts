@@ -1,7 +1,7 @@
 
 import { IPlaceType } from "../models/IPlaceType";
 
-export const ESTABLISHMENT_TYPES: IPlaceType[] = [
+export const MOCK_PLACE_CITY_TYPE: IPlaceType[] = [
   {
     text: {
       pt: 'Restaurante',

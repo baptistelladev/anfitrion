@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import * as AppStore from './shared/store/app.state'
 import { APP_LANG_KEY } from './shared/consts/keys';
 import { ILang } from './shared/models/ILang';
-import { LANGS } from './shared/mocks/langs';
+import { MOCK_LANGS } from './shared/mocks/MockLangs';
 import { IAppInfo } from './shared/models/IAppInfo';
 import { CollectionsEnum } from './shared/enums/Collection';
 
@@ -17,7 +17,7 @@ import { CollectionsEnum } from './shared/enums/Collection';
 })
 export class AppComponent implements OnInit {
   public openModalLanguage: boolean = false;
-  public langs: ILang[] = LANGS;
+  public MOCK_LANGS: ILang[] = MOCK_LANGS;
   public currentLanguage: ILang;
 
   constructor(
@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
     await this.storageService.getStorageKey(APP_LANG_KEY).then((res: string) => {
       if (res === null || !res) {
 
-        let foundLang = LANGS.find((lang: ILang) => {
+        let foundLang = MOCK_LANGS.find((lang: ILang) => {
           return lang.value === 'pt';
         })
 
@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
         this.translate.use(this.currentLanguage.value);
         this.store.dispatch(AppStore.setCurrentLanguage({ language: this.currentLanguage }));
       } else {
-        let foundLang = LANGS.find((lang: ILang) => {
+        let foundLang = MOCK_LANGS.find((lang: ILang) => {
           return lang.value === res;
         })
 

@@ -1,4 +1,4 @@
-import { ESTABLISHMENT_TYPES } from './../../../shared/mocks/establishmentTypes';
+import { MOCK_PLACE_CITY_TYPE } from '../../../shared/mocks/MockPlaceCityType';
 import { AfterContentInit, Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { AlertController, IonContent, NavController } from '@ionic/angular';
 import { Clipboard } from '@angular/cdk/clipboard';
@@ -16,7 +16,7 @@ import { Title } from '@angular/platform-browser';
 import { IPhone } from 'src/app/shared/models/IPhone';
 import { PhoneTypesEnum } from 'src/app/shared/enums/PhoneTypes';
 import { NetworksEnum } from 'src/app/shared/enums/Networks';
-import { EstablishmentTypeEnum } from 'src/app/shared/enums/EstablishmentType';
+import { PlaceTypeEnum } from 'src/app/shared/enums/PlaceType';
 import { ActivatedRoute } from '@angular/router';
 import { EstablishmentsService } from 'src/app/core/services/firebase/establishments.service';
 import { CollectionsEnum } from 'src/app/shared/enums/Collection';
@@ -52,7 +52,7 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
   public translatedPage: any;
   public translatedPage$: Observable<any>;
 
-  public EstablishmentTypeEnum = EstablishmentTypeEnum;
+  public PlaceTypeEnum = PlaceTypeEnum;
 
   public establishmentNameFromUrl: string | null;
 

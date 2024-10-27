@@ -1,6 +1,6 @@
+import { MOCK_TABS } from 'src/app/shared/mocks/MockTabs';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TABS } from 'src/app/shared/mocks/tabs';
 import { ITab } from 'src/app/shared/models/ITab';
 
 @Component({
@@ -10,7 +10,7 @@ import { ITab } from 'src/app/shared/models/ITab';
 })
 export class TabsPage implements OnInit {
 
-  public tabs: ITab[] = TABS;
+  public MOCK_TABS: ITab[] = MOCK_TABS;
   public applyDarkTabBar: boolean = false;
   public hideTabs: boolean = false;
   public currentUrlJustString: string;

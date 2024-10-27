@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-import { LANGS } from 'src/app/shared/mocks/langs';
+import { MOCK_LANGS } from 'src/app/shared/mocks/MockLangs';
 import { ILang } from 'src/app/shared/models/ILang';
 import * as AppStore from './../../shared/store/app.state';
 import { TranslateService } from '@ngx-translate/core';
@@ -26,7 +26,7 @@ export class TrocarIdiomaPage implements OnInit, OnDestroy {
 
   public languageForm: FormGroup;
 
-  public langs: ILang[] = LANGS;
+  public MOCK_LANGS: ILang[] = MOCK_LANGS;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -55,7 +55,7 @@ export class TrocarIdiomaPage implements OnInit, OnDestroy {
     .subscribe((language: ILang) => {
       this.currentLanguage = language;
 
-      let foundLang = this.langs.find((lang: ILang) => {
+      let foundLang = this.MOCK_LANGS.find((lang: ILang) => {
         return lang.value === language.value;
       })
 
@@ -70,7 +70,7 @@ export class TrocarIdiomaPage implements OnInit, OnDestroy {
   }
 
   public async changeLang(e: any) {
-    let foundLang = this.langs.find((lang: ILang) => {
+    let foundLang = this.MOCK_LANGS.find((lang: ILang) => {
       return lang.value === e.detail.value;
     })
 

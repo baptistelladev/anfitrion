@@ -1,5 +1,5 @@
 
-export enum EstablishmentTypeEnum {
+export enum PlaceTypeEnum {
   RESTAURANTE = 'RESTAURANTE',
   BAR = 'BAR',
   PIZZARIA = 'PIZZARIA',

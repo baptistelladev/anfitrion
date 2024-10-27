@@ -1,7 +1,7 @@
 import { ITab } from "../models/ITab";
 
 
-export const TABS: ITab[] = [
+export const MOCK_TABS: ITab[] = [
   {
     page: 'explorar',
     icon: 'search',

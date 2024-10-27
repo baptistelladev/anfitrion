@@ -62,7 +62,7 @@
                   toggleIcon="chevron-down-outline"
                   label-placement="floating">
                     <ion-select-option
-                    *ngFor="let lang of langs"
+                    *ngFor="let lang of MOCK_LANGS"
                     [value]="lang.value">
                       {{ lang.text[currentLanguage.value] }}
                     </ion-select-option>

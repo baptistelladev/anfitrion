@@ -35,13 +35,13 @@ class="ion-content-w-linear-bg"
         mode="ios">
 
           <ng-container [ngSwitch]="placeType">
-            <ng-container *ngSwitchCase="EstablishmentType.RESTAURANTE"><ion-icon name="restaurant-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="EstablishmentType.BAR"><ion-icon name="beer-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="EstablishmentType.CAFETERIA"><ion-icon name="cafe-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="EstablishmentType.ADEGA"><ion-icon name="wine-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="EstablishmentType.PIZZARIA"><ion-icon name="pizza-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="EstablishmentType.HAMBURGUERIA"><ion-icon name="fast-food-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="EstablishmentType.DOCERIA"><ion-icon name="pie-chart-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
+            <ng-container *ngSwitchCase="PlaceTypeEnum.RESTAURANTE"><ion-icon name="restaurant-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
+            <ng-container *ngSwitchCase="PlaceTypeEnum.BAR"><ion-icon name="beer-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
+            <ng-container *ngSwitchCase="PlaceTypeEnum.CAFETERIA"><ion-icon name="cafe-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
+            <ng-container *ngSwitchCase="PlaceTypeEnum.ADEGA"><ion-icon name="wine-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
+            <ng-container *ngSwitchCase="PlaceTypeEnum.PIZZARIA"><ion-icon name="pizza-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
+            <ng-container *ngSwitchCase="PlaceTypeEnum.HAMBURGUERIA"><ion-icon name="fast-food-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
+            <ng-container *ngSwitchCase="PlaceTypeEnum.DOCERIA"><ion-icon name="pie-chart-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
           </ng-container>
 
           <h2 class="font-baloo">
@@ -49,13 +49,13 @@ class="ion-content-w-linear-bg"
 
             <span class="font-w-bold txt-lowercase">
               <ng-container [ngSwitch]="placeType">
-                <ng-container *ngSwitchCase="EstablishmentType.RESTAURANTE">{{ 'SHARED.RESTAURANTS' | translate }}</ng-container>
-                <ng-container *ngSwitchCase="EstablishmentType.BAR">{{ 'SHARED.BARS' | translate }}</ng-container>
-                <ng-container *ngSwitchCase="EstablishmentType.CAFETERIA">{{ 'SHARED.COFFEE_SHOPS' | translate }}</ng-container>
-                <ng-container *ngSwitchCase="EstablishmentType.ADEGA">{{ 'SHARED.BEVERAGE_STORES' | translate }}</ng-container>
-                <ng-container *ngSwitchCase="EstablishmentType.PIZZARIA">{{ 'SHARED.PIZZERIAS' | translate }}</ng-container>
-                <ng-container *ngSwitchCase="EstablishmentType.HAMBURGUERIA">{{ 'SHARED.BURGER_JOINTS' | translate }}</ng-container>
-                <ng-container *ngSwitchCase="EstablishmentType.DOCERIA">{{ 'SHARED.SWEET_SHOPS' | translate }}</ng-container>
+                <ng-container *ngSwitchCase="PlaceTypeEnum.RESTAURANTE">{{ 'SHARED.RESTAURANTS' | translate }}</ng-container>
+                <ng-container *ngSwitchCase="PlaceTypeEnum.BAR">{{ 'SHARED.BARS' | translate }}</ng-container>
+                <ng-container *ngSwitchCase="PlaceTypeEnum.CAFETERIA">{{ 'SHARED.COFFEE_SHOPS' | translate }}</ng-container>
+                <ng-container *ngSwitchCase="PlaceTypeEnum.ADEGA">{{ 'SHARED.BEVERAGE_STORES' | translate }}</ng-container>
+                <ng-container *ngSwitchCase="PlaceTypeEnum.PIZZARIA">{{ 'SHARED.PIZZERIAS' | translate }}</ng-container>
+                <ng-container *ngSwitchCase="PlaceTypeEnum.HAMBURGUERIA">{{ 'SHARED.BURGER_JOINTS' | translate }}</ng-container>
+                <ng-container *ngSwitchCase="PlaceTypeEnum.DOCERIA">{{ 'SHARED.SWEET_SHOPS' | translate }}</ng-container>
               </ng-container>
             </span>
           </h2>
