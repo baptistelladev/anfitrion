@@ -80,21 +80,7 @@ class="ion-content-w-linear-bg">
             <swiper-slide
             *ngFor="let item of [1,2,3,4,5,6]; let i = index"
             class="unlock-shadow-from-swiper auto-width">
-              <div class="anf-tip-skeleton">
-                <div class="anf-tip-container">
-                  <ion-item
-                  lines="none"
-                  class="ion-bg-transparent"
-                  mode="ios">
-                    <ion-text mode="ios">
-                      <p><ion-skeleton-text [animated]="true" class="like-title gray-mid"></ion-skeleton-text></p>
-                      <p><ion-skeleton-text [animated]="true" class="like-desc green"></ion-skeleton-text></p>
-                    </ion-text>
-                  </ion-item>
-                </div>
 
-                <ion-skeleton-text class="like-label" [animated]="true"></ion-skeleton-text>
-              </div>
             </swiper-slide>
           </ng-container>
         </swiper-container>

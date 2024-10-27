@@ -13,7 +13,8 @@
     "SELECTED_CITY" : ["Selected","city"],
     "CHOOSE_TITLE" : ["choose","a city"],
     "OF_BAIXADA" : ["from"],
-    "YOU_ARE_IN": "you are in"
+    "YOU_ARE_IN": "you are in",
+    "EXPLORING" : "exploring"
   },
   "WELCOME_TO" : ["Welcome", "to Baixada Santista"],
   "ABOUT_US_PAGE" : {
@@ -116,7 +117,15 @@
     "CHANGE" : "Change",
     "SELECTED" : "Selected",
     "SUGGESTIONS" : "Suggestions",
-    "SUGGESTION" : "Suggestion"
+    "SUGGESTION" : "Suggestion",
+    "PLACES" : "Places",
+    "RESTAURANTS": "Restaurants",
+    "BARS": "Bars",
+    "COFFEE_SHOPS": "Coffee Shops",
+    "BEVERAGE_STORES": "Beverage Stores",
+    "PIZZERIAS": "Pizzerias",
+    "BURGER_JOINTS": "Burger Joints",
+    "SWEET_SHOPS": "Sweet Shops"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Our purpose here is to help you save your most precious asset: ","time"],
