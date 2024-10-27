@@ -23,9 +23,6 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('explorarContent') explorarContent: IonContent;
 
-  public selectedCityFeature: any;
-  public selectedBeachFeature: any;
-
   public currentLanguage: ILang;
   public currentLanguage$: Observable<ILang>;
   public currentLanguageSubscription: Subscription;
@@ -37,81 +34,6 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('explorarSwiper')
   swiperRef: ElementRef | undefined;
   swiper?: Swiper;
-
-  public segments: any[] = [
-    {
-      value: 'CIDADE',
-      text: {
-        pt: ["na", "cidade"],
-        en: ["in the", "city"],
-        es: ["en la", "ciudad"]
-      },
-    },
-    {
-      value: 'PRAIA',
-      text: {
-        pt: ["na", "praia"],
-        en: ["at the", "beach"],
-        es: ["en la", "playa"]
-      },
-    }
-];
-
-  public selectedSegment: string = 'CIDADE';
-
-  public cityFeatures: any[] = [
-    {
-      loadIconsFromAssets: false,
-      value: 'LUGARES',
-      icon: 'map',
-      text: {
-        pt: 'Lugares',
-        en: 'Places',
-        es: 'Lugares'
-      },
-      isDisabled: false,
-      show: true,
-      description: {
-        pt: 'procura por barzinhos, adegas, tabacarias...',
-        en: 'looking for bars, wineries, tobacco shops...',
-        es: 'buscando bares, bodegas, tiendas de tabaco...'
-      }
-    },
-    {
-      loadIconsFromAssets: false,
-      value: 'PESSOAS',
-      icon: 'people',
-      text: {
-        pt: 'Pessoas',
-        en: 'People',
-        es: 'Personas'
-      },
-      isDisabled: true,
-      show: true,
-      description: {
-        pt: 'quer conhecer os artistas da região.',
-        en: 'who want to meet the artists of the region.',
-        es: 'quieren conocer a los artistas de la región.'
-      }
-    },
-    {
-      loadIconsFromAssets: false,
-      value: 'SERVICOS',
-      icon: 'map',
-      text: {
-        pt: 'Serviços',
-        en: 'Services',
-        es: 'Servicios'
-      },
-      isDisabled: true,
-      show: true,
-      description: {
-        pt: 'procura por tatuadores, body piercer, manicures...',
-        en: 'looking for tattoo artists, body piercers, manicures...',
-        es: 'buscan tatuadores, piercers, manicuras...'
-      }
-    }
-  ];
 
   public beachFeatures: any[] = [
     {
@@ -165,7 +87,164 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
         es: 'quieren comer, beber o comprar algo.'
       }
     }
-  ];
+  ]
+
+  public cityFeatures: any = {
+    places: [
+      {
+        loadIconsFromAssets: false,
+        value: 'RESTAURANTES',
+        icon: 'restaurant',
+        text: {
+          pt: 'Restaurantes',
+          en: 'Restaurants',
+          es: 'Restaurantes'
+        },
+        isDisabled: false,
+        show: true,
+        description: {
+          pt: '',
+          en: '',
+          es: ''
+        },
+        route: 'restaurantes'
+      },
+      {
+        loadIconsFromAssets: false,
+        value: 'BARES',
+        icon: 'beer',
+        text: {
+          pt: 'Bares',
+          en: 'Bars',
+          es: 'Bares'
+        },
+        isDisabled: false,
+        show: true,
+        description: {
+          pt: '',
+          en: '',
+          es: ''
+        },
+        route: 'bares'
+      },
+      {
+        loadIconsFromAssets: false,
+        value: 'CAFETERIA',
+        icon: 'cafe',
+        text: {
+          pt: 'Cafeterias',
+          en: 'Coffee Shops',
+          es: 'Cafeterías'
+        },
+        isDisabled: false,
+        show: true,
+        description: {
+          pt: '',
+          en: '',
+          es: ''
+        },
+        route: 'cafeterias'
+      },
+      {
+        loadIconsFromAssets: false,
+        value: 'ADEGAS',
+        icon: 'wine',
+        text: {
+          pt: 'Adegas',
+          en: 'Beverage Stores',
+          es: 'Cafeterías'
+        },
+        isDisabled: false,
+        show: true,
+        description: {
+          pt: '',
+          en: '',
+          es: ''
+        },
+        route: 'adegas'
+      },
+      {
+        loadIconsFromAssets: false,
+        value: 'PIZZARIAS',
+        icon: 'pizza',
+        text: {
+          pt: 'Pizzarias',
+          en: 'Pizzerias',
+          es: 'Pizzerías'
+        },
+        isDisabled: false,
+        show: true,
+        description: {
+          pt: '',
+          en: '',
+          es: ''
+        },
+        route: 'pizzarias'
+      },
+      {
+        loadIconsFromAssets: false,
+        value: 'HAMBURGUERIA',
+        icon: 'fast-food',
+        text: {
+          pt: 'Hamburguerias',
+          en: 'Burger Joints',
+          es: 'Hamburgueserías'
+        },
+        isDisabled: false,
+        show: true,
+        description: {
+          pt: '',
+          en: '',
+          es: ''
+        },
+        route: 'hamburguerias'
+      },
+      {
+        loadIconsFromAssets: false,
+        value: 'DOCERIA',
+        icon: 'pie-chart',
+        text: {
+          pt: 'Docerias',
+          en: 'Sweet Shops',
+          es: 'Dulcería'
+        },
+        isDisabled: false,
+        show: true,
+        description: {
+          pt: '',
+          en: '',
+          es: ''
+        },
+        route: 'docerias'
+      }
+    ]
+  }
+
+  public segments: any[] = [
+    {
+      value: 'CIDADE',
+      text: {
+        pt: ["na", "cidade"],
+        en: ["in the", "city"],
+        es: ["en la", "ciudad"]
+      }
+    },
+    {
+      value: 'PRAIA',
+      text: {
+        pt: ["na", "praia"],
+        en: ["at the", "beach"],
+        es: ["en la", "playa"]
+      }
+    }
+];
+
+  public selectedSegment: string = '';
+  public selectedFeatures: any[];
+  public selectedFeature: any;
+
+  public selectSubFeatures: any[];
+  public selectedSubFeatures: any;
 
   constructor(
     private store : Store,
@@ -177,8 +256,11 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     this.getUserFromNGRX();
     this.getCurrentLanguageFromNGRX();
-    this.selectCityFeature('LUGARES');
-    this.selectBeachFeature('QUIOSQUES');
+    this.selectInitialSegment('CIDADE');
+  }
+
+  public selectInitialSegment(segmentValue: string) {
+    this.selectedSegment = segmentValue;
   }
 
   ngAfterViewInit(): void {
@@ -212,18 +294,6 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     console.log('dada');
   }
 
-  public selectCityFeature(value: string) {
-    this.selectedCityFeature = this.cityFeatures.find((feature: any) => {
-      return feature.value === value;
-    })
-  }
-
-  public selectBeachFeature(value: string) {
-    this.selectedBeachFeature = this.beachFeatures.find((feature: any) => {
-      return feature.value === value;
-    })
-  }
-
   public async scrollToTop() {
     this.explorarContent.scrollToTop(600);
   }
@@ -251,12 +321,12 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     return modal;
   }
 
-  public searchInTheCity(): void {
-    switch (this.selectedCityFeature.value) {
-      case CityFeaturesEnum.LUGARES:
-        this.navCtrl.navigateForward(['/logado/explorar/lugares-na-cidade'])
-        break;
-    }
+  public searchPlaceInTheCity(type: string): void {
+    this.navCtrl.navigateForward([`/logado/explorar/${type}`], {
+      queryParams: {
+        cidade: 'SAO_VICENTE'
+      }
+    })
   }
 
   ngOnDestroy() {

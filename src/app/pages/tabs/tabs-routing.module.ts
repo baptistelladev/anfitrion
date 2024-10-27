@@ -42,7 +42,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            redirectTo: 'explorar',
+            redirectTo: '',
             pathMatch: 'full'
           },
           {
@@ -50,8 +50,8 @@ const routes: Routes = [
             loadChildren: () => import('./explorar/explorar.module').then( m => m.ExplorarPageModule),
           },
           {
-            path: 'lugares-na-cidade',
-            loadChildren: () => import('./features-cidade/lugares-na-cidade/lugares-na-cidade.module').then( m => m.LugaresNaCidadePageModule)
+            path: ':places',
+            loadChildren: () => import('./features-cidade/lugar-na-cidade/lugar-na-cidade.module').then( m => m.LugarNaCidadePageModule)
           }
         ]
       },
