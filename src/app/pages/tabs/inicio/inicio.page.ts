@@ -4,8 +4,8 @@ import { Title } from '@angular/platform-browser';
 import { AlertController, IonContent, IonSelect, NavController, PopoverController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { map, Observable, Subscription, take } from 'rxjs';
-import { IShortEstablishment } from 'src/app/shared/models/Establishment';
-import { ILang } from 'src/app/shared/models/Lang';
+import { IPlace } from 'src/app/shared/models/IPlace';
+import { ILang } from 'src/app/shared/models/ILang';
 import * as AppStore from './../../../shared/store/app.state';
 import { Store } from '@ngrx/store';
 import { EstablishmentsService } from 'src/app/core/services/firebase/establishments.service';
@@ -15,7 +15,7 @@ import { UtilsService } from 'src/app/core/services/utils.service';
 import { Swiper } from 'swiper';
 import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
 import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
-import { IShortParking } from 'src/app/shared/models/IParking';
+import { IParking } from 'src/app/shared/models/IParking';
 import { ParkingsService } from 'src/app/core/services/firebase/parkings.service';
 
 @Component({
@@ -32,7 +32,7 @@ export class InicioPage implements OnInit, OnDestroy, AfterViewInit {
   public selectedInfo: any;
 
   public lenghts_to_save_time: {
-    list: IShortEstablishment[],
+    list: IPlace[],
     establishment_type: string,
     text: any,
     length: number,
@@ -289,12 +289,12 @@ export class InicioPage implements OnInit, OnDestroy, AfterViewInit {
   public currentLanguage$: Observable<ILang>;
   public currentLanguageSubscription: Subscription;
 
-  public short_establishments: IShortEstablishment[];
-  public establishments$: Observable<IShortEstablishment[]>;
+  public short_establishments: IPlace[];
+  public establishments$: Observable<IPlace[]>;
   public establishmentsSubscription: Subscription;
 
-  public short_parkings: IShortParking[];
-  public parkings$: Observable<IShortParking[]>;
+  public short_parkings: IParking[];
+  public parkings$: Observable<IParking[]>;
   public parkingsSubscription: Subscription;
 
   public isLoadingLogo: boolean;
@@ -370,7 +370,7 @@ export class InicioPage implements OnInit, OnDestroy, AfterViewInit {
 
     this.establishmentsSubscription = this.establishments$
     .pipe(
-      map((establishments: IShortEstablishment[]) => {
+      map((establishments: IPlace[]) => {
 
         if (this.selectedOrderOption === 'INC') {
           this.utilsService.orderByAdressNumberCrescent(establishments);
@@ -381,10 +381,10 @@ export class InicioPage implements OnInit, OnDestroy, AfterViewInit {
         return establishments
       })
     )
-    .subscribe((establishments: IShortEstablishment[]) => {
+    .subscribe((establishments: IPlace[]) => {
       this.short_establishments = establishments;
       this.lenghts_to_save_time = [...this.lenghts_to_save_time].map((option: any) => {
-        let list = this.short_establishments.filter((establishment: IShortEstablishment) => {
+        let list = this.short_establishments.filter((establishment: IPlace) => {
           return establishment.mainType.value === option['establishment_type'];
         })
 
@@ -401,7 +401,7 @@ export class InicioPage implements OnInit, OnDestroy, AfterViewInit {
     this.parkings$ = this.parkingsService.getCollection(CollectionsEnum.SHORT_PARKINGS);
 
     this.parkingsSubscription = this.parkings$
-    .subscribe((parkings: IShortParking[]) => {
+    .subscribe((parkings: IParking[]) => {
       this.short_parkings = parkings;
     })
   }
@@ -487,7 +487,7 @@ export class InicioPage implements OnInit, OnDestroy, AfterViewInit {
     this.homeContent.scrollToTop(600);
   }
 
-  public seeEstablishment(establishment: IShortEstablishment, e: any): void {
+  public seeEstablishment(establishment: IPlace, e: any): void {
     if (establishment.isBuilding) {
       e.preventDefault();
     } else {
@@ -496,7 +496,7 @@ export class InicioPage implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-  public seeEstablishmentFromModal(establishment: IShortEstablishment, e: any): void {
+  public seeEstablishmentFromModal(establishment: IPlace, e: any): void {
     if (establishment.isBuilding) {
       e.preventDefault();
     } else {
@@ -552,7 +552,7 @@ export class InicioPage implements OnInit, OnDestroy, AfterViewInit {
       case 'PET_FRIENDLY':
         this.establishmentsService
         .getCollectionFilteredBy(CollectionsEnum.SHORT_ESTABLISHMENTS, 'petfriendly_info.accept_petfriendly')
-        .then( async (short_establishments: IShortEstablishment[]) => {
+        .then( async (short_establishments: IPlace[]) => {
           this.short_establishments = short_establishments;
           this.short_establishments = await this.orderBy(this.selectedOrderOption, true);
         })
@@ -561,7 +561,7 @@ export class InicioPage implements OnInit, OnDestroy, AfterViewInit {
       case 'TICKET':
         this.establishmentsService
         .getCollectionFilteredBy(CollectionsEnum.SHORT_ESTABLISHMENTS, 'ticket_info.accept_ticket')
-        .then( async (short_establishments: IShortEstablishment[]) => {
+        .then( async (short_establishments: IPlace[]) => {
           this.short_establishments = short_establishments;
           this.short_establishments = await this.orderBy(this.selectedOrderOption, true);
         })
@@ -570,7 +570,7 @@ export class InicioPage implements OnInit, OnDestroy, AfterViewInit {
       case 'LIVEMUSIC':
         this.establishmentsService
         .getCollectionFilteredBy(CollectionsEnum.SHORT_ESTABLISHMENTS, 'livemusic_info.has_livemusic')
-        .then( async (short_establishments: IShortEstablishment[]) => {
+        .then( async (short_establishments: IPlace[]) => {
           this.short_establishments = short_establishments;
           this.short_establishments = await this.orderBy(this.selectedOrderOption, true);
         })

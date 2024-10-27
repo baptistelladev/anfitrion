@@ -1,4 +1,4 @@
-import { IShortTicket } from "../models/Ticket";
+import { IShortTicket } from "../models/ITicket";
 
 export const TICKETS: IShortTicket[] = [
   {

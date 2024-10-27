@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { map, Observable, Subscription, take } from 'rxjs';
-import { ILang } from 'src/app/shared/models/Lang';
+import { ILang } from 'src/app/shared/models/ILang';
 import * as AppStore from './../../../../shared/store/app.state';
 import { Store } from '@ngrx/store';
 import { Title } from '@angular/platform-browser';

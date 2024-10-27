@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ISocialNetwork } from '../../models/Network';
+import { ISocialNetwork } from '../../models/INetwork';
 import { NavController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { Observable, take } from 'rxjs';

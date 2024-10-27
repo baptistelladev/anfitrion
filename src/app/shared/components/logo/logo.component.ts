@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ILang } from '../../models/Lang';
+import { ILang } from '../../models/ILang';
 
 @Component({
   selector: 'rgs-logo',

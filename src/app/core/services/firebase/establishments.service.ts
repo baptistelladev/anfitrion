@@ -3,7 +3,7 @@ import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { doc, getDoc, getDocs, query, where } from 'firebase/firestore';
 import { Observable } from 'rxjs';
-import { IShortEstablishment } from 'src/app/shared/models/Establishment';
+import { IPlace } from 'src/app/shared/models/IPlace';
 
 @Injectable({
   providedIn: 'root'
@@ -14,34 +14,34 @@ export class EstablishmentsService {
     private firestore : Firestore
   ) { }
 
-  public getCollection(collectionName: string): Observable<IShortEstablishment[]> {
+  public getCollection(collectionName: string): Observable<IPlace[]> {
     const itemCollection = collection(this.firestore, collectionName);
     return collectionData<any>(itemCollection);
   }
 
-  public async getCollectionFilteredBy(collectionName: string, field: string): Promise<IShortEstablishment[]> {
+  public async getCollectionFilteredBy(collectionName: string, field: string): Promise<IPlace[]> {
     const itemCollection = collection(this.firestore, collectionName);
     const q = query(itemCollection, where(field, '==', true));
 
     const querySnapshot = await getDocs(q);
 
     // Aqui, você pode garantir que os dados estão no formato de IShortEstablishment
-    const items: IShortEstablishment[] = querySnapshot.docs.map(doc => ({
+    const items: IPlace[] = querySnapshot.docs.map(doc => ({
       id: doc.id,
-      ...doc.data() as IShortEstablishment // Asegure-se de que os dados correspondam à interface
+      ...doc.data() as IPlace // Asegure-se de que os dados correspondam à interface
     }));
 
     return items;
   }
 
-  public async getDocumentByValue(collectionName: string, fieldName: string, value: string): Promise<IShortEstablishment | null> {
+  public async getDocumentByValue(collectionName: string, fieldName: string, value: string): Promise<IPlace | null> {
     try {
         const q = query(collection(this.firestore, collectionName), where(fieldName, '==', value));
         const querySnapshot = await getDocs(q);
 
         if (!querySnapshot.empty) {
             const docSnap = querySnapshot.docs[0]; // Pega o primeiro documento encontrado
-            const data = docSnap.data() as IShortEstablishment; // Cast para IShortEstablishment
+            const data = docSnap.data() as IPlace; // Cast para IShortEstablishment
             return { id: docSnap.id, ...data }; // Retorna o documento com o ID
         } else {
             console.log("Documento não encontrado!");

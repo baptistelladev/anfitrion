@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TABS } from 'src/app/shared/mocks/tabs';
-import { ITab } from 'src/app/shared/models/Tabs';
+import { ITab } from 'src/app/shared/models/ITab';
 
 @Component({
   selector: 'rgs-tabs',
