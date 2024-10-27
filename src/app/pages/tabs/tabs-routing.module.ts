@@ -50,7 +50,7 @@ const routes: Routes = [
             loadChildren: () => import('./explorar/explorar.module').then( m => m.ExplorarPageModule),
           },
           {
-            path: ':places',
+            path: ':place_type',
             loadChildren: () => import('./features-cidade/lugar-na-cidade/lugar-na-cidade.module').then( m => m.LugarNaCidadePageModule)
           }
         ]

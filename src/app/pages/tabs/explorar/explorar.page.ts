@@ -107,7 +107,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
           en: '',
           es: ''
         },
-        route: 'restaurantes'
+        route: 'restaurante'
       },
       {
         loadIconsFromAssets: false,
@@ -125,7 +125,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
           en: '',
           es: ''
         },
-        route: 'bares'
+        route: 'bar'
       },
       {
         loadIconsFromAssets: false,
@@ -134,7 +134,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
         text: {
           pt: 'Cafeterias',
           en: 'Coffee Shops',
-          es: 'Cafeterías'
+          es: 'Cafetería'
         },
         isDisabled: false,
         show: true,
@@ -143,7 +143,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
           en: '',
           es: ''
         },
-        route: 'cafeterias'
+        route: 'cafeteria'
       },
       {
         loadIconsFromAssets: false,
@@ -152,7 +152,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
         text: {
           pt: 'Adegas',
           en: 'Beverage Stores',
-          es: 'Cafeterías'
+          es: 'Bodegas'
         },
         isDisabled: false,
         show: true,
@@ -161,7 +161,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
           en: '',
           es: ''
         },
-        route: 'adegas'
+        route: 'adega'
       },
       {
         loadIconsFromAssets: false,
@@ -179,7 +179,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
           en: '',
           es: ''
         },
-        route: 'pizzarias'
+        route: 'pizzaria'
       },
       {
         loadIconsFromAssets: false,
@@ -197,7 +197,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
           en: '',
           es: ''
         },
-        route: 'hamburguerias'
+        route: 'hamburgueria'
       },
       {
         loadIconsFromAssets: false,
@@ -215,7 +215,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
           en: '',
           es: ''
         },
-        route: 'docerias'
+        route: 'doceria'
       }
     ]
   }

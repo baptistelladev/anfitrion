@@ -1,13 +1,80 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>lugar-na-cidade</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content
+class="ion-content-w-linear-bg"
+[forceOverscroll]="false">
+  <ion-header mode="ios" class="ion-no-border">
+    <ion-toolbar mode="ios" class="ion-bg-white no-ion-padding">
+      <ion-grid [fixed]="true">
+        <ion-row>
+          <ion-col size="12">
+            <div class="header-container">
+              <div class="back-btn-wrapper">
+                <ion-button
+                (click)="back()"
+                class="back ion-color-gray-text back-btn no-ion-padding font-baloo"
+                [title]="'SHARED.BACK' | translate"
+                fill="clear">
+                  <ion-icon name="chevron-back-outline"></ion-icon> <span class="font-w-thin mg-left-5">{{ 'SHARED.BACK' | translate }}</span>
+                </ion-button>
+              </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">lugar-na-cidade</ion-title>
+              <div class="language-container">
+                <rgs-language-button [currentLanguage]="currentLanguage"></rgs-language-button>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-toolbar>
   </ion-header>
+
+  <ion-grid [fixed]="true">
+    <ion-row>
+      <ion-col size="12">
+        <ion-text
+        class="txt-center color-gray-text full-width icon-title-text"
+        mode="ios">
+
+          <ng-container [ngSwitch]="placeType">
+            <ng-container *ngSwitchCase="EstablishmentType.RESTAURANTE"><ion-icon name="restaurant-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
+            <ng-container *ngSwitchCase="EstablishmentType.BAR"><ion-icon name="beer-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
+            <ng-container *ngSwitchCase="EstablishmentType.CAFETERIA"><ion-icon name="cafe-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
+            <ng-container *ngSwitchCase="EstablishmentType.ADEGA"><ion-icon name="wine-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
+            <ng-container *ngSwitchCase="EstablishmentType.PIZZARIA"><ion-icon name="pizza-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
+            <ng-container *ngSwitchCase="EstablishmentType.HAMBURGUERIA"><ion-icon name="fast-food-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
+            <ng-container *ngSwitchCase="EstablishmentType.DOCERIA"><ion-icon name="pie-chart-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
+          </ng-container>
+
+          <h2 class="font-baloo">
+            {{ 'EXPLORE_PAGE.EXPLORING' | translate }}
+
+            <span class="font-w-bold txt-lowercase">
+              <ng-container [ngSwitch]="placeType">
+                <ng-container *ngSwitchCase="EstablishmentType.RESTAURANTE">{{ 'SHARED.RESTAURANTS' | translate }}</ng-container>
+                <ng-container *ngSwitchCase="EstablishmentType.BAR">{{ 'SHARED.BARS' | translate }}</ng-container>
+                <ng-container *ngSwitchCase="EstablishmentType.CAFETERIA">{{ 'SHARED.COFFEE_SHOPS' | translate }}</ng-container>
+                <ng-container *ngSwitchCase="EstablishmentType.ADEGA">{{ 'SHARED.BEVERAGE_STORES' | translate }}</ng-container>
+                <ng-container *ngSwitchCase="EstablishmentType.PIZZARIA">{{ 'SHARED.PIZZERIAS' | translate }}</ng-container>
+                <ng-container *ngSwitchCase="EstablishmentType.HAMBURGUERIA">{{ 'SHARED.BURGER_JOINTS' | translate }}</ng-container>
+                <ng-container *ngSwitchCase="EstablishmentType.DOCERIA">{{ 'SHARED.SWEET_SHOPS' | translate }}</ng-container>
+              </ng-container>
+            </span>
+          </h2>
+
+          <p class="fs-16">
+            <ng-container [ngSwitch]="city">
+              <ng-container *ngSwitchCase="CityEnum.SAO_VICENTE">São Vicente</ng-container>
+              <ng-container *ngSwitchCase="CityEnum.SANTOS">Santos</ng-container>
+              <ng-container *ngSwitchCase="CityEnum.PRAIA_GRANDE">Praia Grande</ng-container>
+              <ng-container *ngSwitchCase="CityEnum.GUARUJA">Guarujá</ng-container>
+              <ng-container *ngSwitchCase="CityEnum.PERUIBE">Peruíbe</ng-container>
+              <ng-container *ngSwitchCase="CityEnum.BERTIOGA">Bertioga</ng-container>
+              <ng-container *ngSwitchCase="CityEnum.CUBATAO">Cubatão</ng-container>
+              <ng-container *ngSwitchCase="CityEnum.ITANHAEM">Itanhaém</ng-container>
+              <ng-container *ngSwitchCase="CityEnum.MONGAGUA">Mongaguá</ng-container>
+            </ng-container>
+          </p>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
