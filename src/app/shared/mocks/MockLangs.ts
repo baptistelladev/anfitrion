@@ -1,6 +1,6 @@
 import { ILang } from "../models/ILang";
 
-export const LANGS: ILang[] = [
+export const MOCK_LANGS: ILang[] = [
   {
     text: {
       pt: 'Português',

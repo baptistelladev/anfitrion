@@ -8,7 +8,7 @@ import { Store } from '@ngrx/store';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CityEnum } from 'src/app/shared/enums/City';
-import { EstablishmentTypeEnum } from 'src/app/shared/enums/EstablishmentType';
+import { PlaceTypeEnum } from 'src/app/shared/enums/PlaceType';
 
 @Component({
   selector: 'rgs-lugar-na-cidade',
@@ -18,7 +18,7 @@ import { EstablishmentTypeEnum } from 'src/app/shared/enums/EstablishmentType';
 export class LugarNaCidadePage implements OnInit {
 
   public CityEnum = CityEnum;
-  public EstablishmentType = EstablishmentTypeEnum;
+  public PlaceTypeEnum = PlaceTypeEnum;
 
   public currentLanguage: ILang;
   public currentLanguage$: Observable<ILang>;

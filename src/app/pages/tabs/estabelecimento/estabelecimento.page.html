@@ -128,7 +128,7 @@
           </ion-col>
 
           <!-- EXPERTISE (SÓ APARECE SE FOR RESTAURANTE )-->
-          <ng-container *ngIf="establishment.mainType.value === EstablishmentTypeEnum.RESTAURANTE">
+          <ng-container *ngIf="establishment.mainType.value === PlaceTypeEnum.RESTAURANTE">
             <ion-col size="12" class="mg-top-32">
               <ion-text mode="ios">
                 <hr class="rgs-divider">
@@ -157,7 +157,7 @@
           </ion-col>
 
           <!-- TICKETS ALIMENTAÇÃO -->
-          <ng-container *ngIf="establishment.mainType.value === EstablishmentTypeEnum.EMPORIO || establishment.mainType.value === EstablishmentTypeEnum.MERCADO">
+          <ng-container *ngIf="establishment.mainType.value === PlaceTypeEnum.EMPORIO || establishment.mainType.value === PlaceTypeEnum.MERCADO">
             <ion-col size="12">
               <ion-item mode="ios" lines="none" class="establishment-item">
                 <ion-icon name="card-outline" slot="start"></ion-icon>
@@ -186,7 +186,7 @@
           </ng-container>
 
           <!-- SÓ APARECE CASO NÃO SEJA UM MERCADO OU EMPÓRIO, POR QUE NÃO INTERESSA -->
-          <ng-container *ngIf="establishment.mainType.value !== EstablishmentTypeEnum.EMPORIO && establishment.mainType.value !== EstablishmentTypeEnum.MERCADO">
+          <ng-container *ngIf="establishment.mainType.value !== PlaceTypeEnum.EMPORIO && establishment.mainType.value !== PlaceTypeEnum.MERCADO">
             <!-- TICKETS REFEIÇÃO -->
             <ion-col size="12">
               <ion-item mode="ios" lines="none" class="establishment-item">

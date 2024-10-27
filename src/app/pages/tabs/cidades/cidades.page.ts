@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { CITIES } from 'src/app/shared/mocks/cities';
+import { MOCK_CITIES } from 'src/app/shared/mocks/MockCities';
 import { IUSer } from 'src/app/shared/models/IUser';
 import { ILang } from 'src/app/shared/models/ILang';
 
@@ -20,7 +20,7 @@ export class CidadesPage implements OnInit {
     sigla: 'sv'
   }
 
-  public CITIES: any[] = [...CITIES];
+  public CITIES: any[] = [...MOCK_CITIES];
 
   constructor(
     private modalCtrl : ModalController
