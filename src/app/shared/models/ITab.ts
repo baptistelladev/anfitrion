@@ -1,4 +1,4 @@
-import { ITranslation } from "./Translation";
+import { ITranslation } from "./ITranslation";
 
 export interface ITab {
   page: string,

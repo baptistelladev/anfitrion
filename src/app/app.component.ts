@@ -5,9 +5,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
 import * as AppStore from './shared/store/app.state'
 import { APP_LANG_KEY } from './shared/consts/keys';
-import { ILang } from './shared/models/Lang';
+import { ILang } from './shared/models/ILang';
 import { LANGS } from './shared/mocks/langs';
-import { IAppInfo } from './shared/models/AppInfo';
+import { IAppInfo } from './shared/models/IAppInfo';
 import { CollectionsEnum } from './shared/enums/Collection';
 
 @Component({

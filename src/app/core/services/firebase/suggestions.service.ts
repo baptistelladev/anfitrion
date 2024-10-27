@@ -2,12 +2,7 @@ import { Injectable } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { collection, query, where, getDocs, QueryConstraint, getDoc, CollectionReference, WhereFilterOp } from 'firebase/firestore';
 import { from, Observable } from 'rxjs';
-
-interface Filter {
-  field: string;
-  operator: WhereFilterOp;
-  value: any;
-}
+import { IFIrebaseFilter } from 'src/app/shared/models/IFirebaseFilter';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +15,7 @@ export class SuggestionsService {
 
   public getCollection(
     collectionName: string,
-    filters: Filter[] = []
+    filters: IFIrebaseFilter[] = []
   ): Observable<any[]> {
     // Cria a referência da coleção
     const colRef = collection(this.firestore, collectionName) as CollectionReference;

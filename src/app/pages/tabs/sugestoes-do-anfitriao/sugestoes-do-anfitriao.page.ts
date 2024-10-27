@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } fr
 import { IonContent, NavController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-import { ILang } from 'src/app/shared/models/Lang';
+import { ILang } from 'src/app/shared/models/ILang';
 import * as AppStore from './../../../shared/store/app.state';
 import Swiper from 'swiper';
 import { Title } from '@angular/platform-browser';

@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription, take } from 'rxjs';
-import { ILang } from 'src/app/shared/models/Lang';
+import { ILang } from 'src/app/shared/models/ILang';
 import * as AppStore from './../../shared/store/app.state';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swiper from 'swiper';

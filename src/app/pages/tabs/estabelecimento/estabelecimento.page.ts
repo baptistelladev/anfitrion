@@ -4,16 +4,16 @@ import { AlertController, IonContent, NavController } from '@ionic/angular';
 import { Clipboard } from '@angular/cdk/clipboard';
 import * as moment from 'moment';
 import { getElement } from 'ionicons/dist/types/stencil-public-runtime';
-import { ISocialNetwork } from 'src/app/shared/models/Network';
+import { ISocialNetwork } from 'src/app/shared/models/INetwork';
 import { Store } from '@ngrx/store';
-import { IShortEstablishment } from 'src/app/shared/models/Establishment';
+import { IPlace } from 'src/app/shared/models/IPlace';
 import { map, Observable, Subscription, take } from 'rxjs';
 import * as AppStore from './../../../shared/store/app.state';
-import { ILang } from 'src/app/shared/models/Lang';
-import { ITime } from 'src/app/shared/models/Time';
+import { ILang } from 'src/app/shared/models/ILang';
+import { ITime } from 'src/app/shared/models/ITime';
 import { TranslateService } from '@ngx-translate/core';
 import { Title } from '@angular/platform-browser';
-import { IPhone } from 'src/app/shared/models/Phone';
+import { IPhone } from 'src/app/shared/models/IPhone';
 import { PhoneTypesEnum } from 'src/app/shared/enums/PhoneTypes';
 import { NetworksEnum } from 'src/app/shared/enums/Networks';
 import { EstablishmentTypeEnum } from 'src/app/shared/enums/EstablishmentType';
@@ -41,8 +41,8 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
 
   public initialMenuOffset: any;
 
-  public establishment: IShortEstablishment;
-  public establishment$: Observable<IShortEstablishment>;
+  public establishment: IPlace;
+  public establishment$: Observable<IPlace>;
   public establishmentSubscription: Subscription;
 
   public currentLanguage: ILang;
@@ -98,14 +98,14 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
     this.establishment$ = this.store.select(AppStore.selectCurrentEstablishment);
 
     this.establishmentSubscription = this.establishment$
-    .pipe(map((establishment: IShortEstablishment) => {
+    .pipe(map((establishment: IPlace) => {
       return {
         ...establishment,
         working_time: [...establishment.working_time].sort((a, b) => a.day_number - b.day_number)
       }
     }))
     .subscribe({
-      next: (establishment: IShortEstablishment) => {
+      next: (establishment: IPlace) => {
         if (establishment.value) {
           this.establishment = establishment;
           this.defineTitleFromPage(this.establishment.name);
@@ -117,7 +117,7 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
 
             this.establishmentService
             .getDocumentByValue(CollectionsEnum.SHORT_ESTABLISHMENTS, 'value', this.establishmentNameFromUrl)
-            .then((establishmentFromService: IShortEstablishment | null) => {
+            .then((establishmentFromService: IPlace | null) => {
               if (establishmentFromService) {
                 this.establishment = establishmentFromService;
                 this.defineTitleFromPage(this.establishment.name);

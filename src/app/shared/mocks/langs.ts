@@ -1,4 +1,4 @@
-import { ILang } from "../models/Lang";
+import { ILang } from "../models/ILang";
 
 export const LANGS: ILang[] = [
   {

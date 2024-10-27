@@ -1,15 +1,15 @@
-import { IShortParking } from 'src/app/shared/models/IParking';
+import { IParking } from 'src/app/shared/models/IParking';
 import { createAction, createReducer, createSelector, on, props, createFeatureSelector } from "@ngrx/store";
-import { ILang } from "../models/Lang";
-import { IShortEstablishment } from "../models/Establishment";
-import { IShortTicket } from "../models/Ticket";
-import { ISocialNetwork } from "../models/Network";
-import { IContact } from "../models/Contact";
+import { ILang } from "../models/ILang";
+import { IPlace } from "../models/IPlace";
+import { ITicket } from "../models/ITicket";
+import { ISocialNetwork } from "../models/INetwork";
+import { IContact } from "../models/IContact";
 
 export interface IAppState {
   currentLanguage: ILang,
-  currentEstablishment: IShortEstablishment,
-  parkings: IShortParking[],
+  currentEstablishment: IPlace,
+  parkings: IParking[],
   appInfoNetworks: ISocialNetwork[],
   appInfoContact: IContact
 }
@@ -176,7 +176,7 @@ export const setCurrentLanguage = createAction(
 
 export const setCurrentEstablishment = createAction(
   '[APP] Definir estabelecimento selecionado',
-  props<{ establishment: IShortEstablishment }>()
+  props<{ establishment: IPlace }>()
 )
 
 export const setAppInfoNetworks = createAction(
@@ -191,7 +191,7 @@ export const setAppInfoContact = createAction(
 
 export const setParkings = createAction(
   '[APP] Definir estacionamentos',
-  props<{ parkings: IShortParking[] }>()
+  props<{ parkings: IParking[] }>()
 )
 
 export const appReducer = createReducer(

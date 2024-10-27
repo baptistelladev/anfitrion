@@ -1,4 +1,4 @@
-export interface IShortParking {
+export interface IParking {
   name: string,
   value: string,
   adress: {

@@ -4,7 +4,7 @@ import { NavController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { LANGS } from 'src/app/shared/mocks/langs';
-import { ILang } from 'src/app/shared/models/Lang';
+import { ILang } from 'src/app/shared/models/ILang';
 import * as AppStore from './../../shared/store/app.state';
 import { TranslateService } from '@ngx-translate/core';
 import { APP_LANG_KEY } from 'src/app/shared/consts/keys';

@@ -1,7 +1,7 @@
-import { IShortEstablishment } from "../models/Establishment";
-import { IEstablishmentType } from "../models/EstablishmentType";
 
-export const ESTABLISHMENT_TYPES: IEstablishmentType[] = [
+import { IPlaceType } from "../models/IPlaceType";
+
+export const ESTABLISHMENT_TYPES: IPlaceType[] = [
   {
     text: {
       pt: 'Restaurante',

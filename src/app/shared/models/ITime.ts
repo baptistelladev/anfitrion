@@ -1,4 +1,4 @@
-import { IHour } from "./Hour";
+import { IHour } from "./IHour";
 
 export interface ITime {
   day_number: number,

@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { ILang } from 'src/app/shared/models/Lang';
+import { ILang } from 'src/app/shared/models/ILang';
 import Swiper from 'swiper';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IShortEstablishment } from 'src/app/shared/models/Establishment';
+import { IPlace } from 'src/app/shared/models/IPlace';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ export class UtilsService {
 
   constructor() { }
 
-  public async orderByAdressNumberCrescent(establishments: IShortEstablishment[]) {
+  public async orderByAdressNumberCrescent(establishments: IPlace[]) {
     return establishments.sort((a, b) => {
         // Converter o número do endereço para inteiro para comparação
         const numeroA = parseInt(a.adress.number);
@@ -18,7 +18,7 @@ export class UtilsService {
     })
   }
 
-  public async orderByAdressNumberDecrescent(establishments: IShortEstablishment[]) {
+  public async orderByAdressNumberDecrescent(establishments: IPlace[]) {
     return establishments.sort((a, b) => {
         // Converter o número do endereço para inteiro para comparação
         const numeroA = parseInt(a.adress.number);
