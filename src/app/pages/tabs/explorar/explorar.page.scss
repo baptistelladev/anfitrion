@@ -117,26 +117,13 @@ ion-content {
 
   @media (hover: hover) {
     &:hover {
-      ion-item {
+      ion-item:not(.is-disabled) {
         box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 
         ion-text {
           ion-icon {
             color: var(--green);
           }
-        }
-      }
-    }
-  }
-
-  &.is-selected {
-    ion-item {
-      --border-color: var(--green);
-      // box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
-
-      ion-text {
-        ion-icon {
-          color: var(--green);
         }
       }
     }

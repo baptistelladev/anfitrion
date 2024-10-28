@@ -28,28 +28,25 @@ class="ion-content-w-linear-bg"
     </ion-toolbar>
   </ion-header>
 
-  <ion-grid [fixed]="true">
+  <ion-grid [fixed]="true" class="no-pad-top">
     <ion-row>
-      <ion-col size="12">
-        <ion-text
-        class="txt-center color-gray-text full-width icon-title-text"
-        mode="ios">
-
-          <ng-container [ngSwitch]="placeType">
-            <ng-container *ngSwitchCase="PlaceTypeEnum.RESTAURANTE"><ion-icon name="restaurant-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="PlaceTypeEnum.BAR"><ion-icon name="beer-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="PlaceTypeEnum.CAFETERIA"><ion-icon name="cafe-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="PlaceTypeEnum.ADEGA"><ion-icon name="wine-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="PlaceTypeEnum.PIZZARIA"><ion-icon name="pizza-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="PlaceTypeEnum.HAMBURGUERIA"><ion-icon name="fast-food-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="PlaceTypeEnum.DOCERIA"><ion-icon name="pie-chart-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-          </ng-container>
-
-          <h2 class="font-baloo">
-            {{ 'EXPLORE_PAGE.EXPLORING' | translate }}
-
-            <span class="font-w-bold txt-lowercase">
+      <ion-col size="12" class="no-pad-top">
+        <ion-item lines="none" class="ion-bg-transparent item-title-w-icon">
+          <ion-text
+          class="txt-left color-gray-text full-width icon-title-text without-icon d-block mg-bottom-8 has-icon"
+          mode="ios">
+            <h2 class="font-baloo fs-20 mg-bottom-8">
               <ng-container [ngSwitch]="placeType">
+                <ng-container *ngSwitchCase="PlaceTypeEnum.RESTAURANTE"><ion-icon name="restaurant-outline"></ion-icon></ng-container>
+                <ng-container *ngSwitchCase="PlaceTypeEnum.BAR"><ion-icon name="beer-outline"></ion-icon></ng-container>
+                <ng-container *ngSwitchCase="PlaceTypeEnum.CAFETERIA"><ion-icon name="cafe-outline"></ion-icon></ng-container>
+                <ng-container *ngSwitchCase="PlaceTypeEnum.ADEGA"><ion-icon name="wine-outline"></ion-icon></ng-container>
+                <ng-container *ngSwitchCase="PlaceTypeEnum.PIZZARIA"><ion-icon name="pizza-outline"></ion-icon></ng-container>
+                <ng-container *ngSwitchCase="PlaceTypeEnum.HAMBURGUERIA"><ion-icon name="fast-food-outline"></ion-icon></ng-container>
+                <ng-container *ngSwitchCase="PlaceTypeEnum.DOCERIA"><ion-icon name="pie-chart-outline"></ion-icon></ng-container>
+              </ng-container>
+
+              {{ 'EXPLORE_PAGE.EXPLORING' | translate }} <span class="font-w-bold mg-left-5 txt-lowercase"><ng-container [ngSwitch]="placeType">
                 <ng-container *ngSwitchCase="PlaceTypeEnum.RESTAURANTE">{{ 'SHARED.RESTAURANTS' | translate }}</ng-container>
                 <ng-container *ngSwitchCase="PlaceTypeEnum.BAR">{{ 'SHARED.BARS' | translate }}</ng-container>
                 <ng-container *ngSwitchCase="PlaceTypeEnum.CAFETERIA">{{ 'SHARED.COFFEE_SHOPS' | translate }}</ng-container>
@@ -57,23 +54,59 @@ class="ion-content-w-linear-bg"
                 <ng-container *ngSwitchCase="PlaceTypeEnum.PIZZARIA">{{ 'SHARED.PIZZERIAS' | translate }}</ng-container>
                 <ng-container *ngSwitchCase="PlaceTypeEnum.HAMBURGUERIA">{{ 'SHARED.BURGER_JOINTS' | translate }}</ng-container>
                 <ng-container *ngSwitchCase="PlaceTypeEnum.DOCERIA">{{ 'SHARED.SWEET_SHOPS' | translate }}</ng-container>
-              </ng-container>
-            </span>
-          </h2>
+              </ng-container></span> <span class="mg-left-5">{{ currentCityAsParam?.in[currentLanguage.value] }} {{ currentCityAsParam?.name }}</span>
+            </h2>
 
-          <p class="fs-16">
-            <ng-container [ngSwitch]="city">
-              <ng-container *ngSwitchCase="CityEnum.SAO_VICENTE">São Vicente</ng-container>
-              <ng-container *ngSwitchCase="CityEnum.SANTOS">Santos</ng-container>
-              <ng-container *ngSwitchCase="CityEnum.PRAIA_GRANDE">Praia Grande</ng-container>
-              <ng-container *ngSwitchCase="CityEnum.GUARUJA">Guarujá</ng-container>
-              <ng-container *ngSwitchCase="CityEnum.PERUIBE">Peruíbe</ng-container>
-              <ng-container *ngSwitchCase="CityEnum.BERTIOGA">Bertioga</ng-container>
-              <ng-container *ngSwitchCase="CityEnum.CUBATAO">Cubatão</ng-container>
-              <ng-container *ngSwitchCase="CityEnum.ITANHAEM">Itanhaém</ng-container>
-              <ng-container *ngSwitchCase="CityEnum.MONGAGUA">Mongaguá</ng-container>
-            </ng-container>
-          </p>
+            <p class="color-gray-text fs-14 font-w-thin">
+              <ng-container [ngSwitch]="placeType">
+                <ng-container *ngSwitchCase="PlaceTypeEnum.RESTAURANTE">{{ 'PLACES_IN_THE_CITY.FILTER_RESTAURANT' | translate }}</ng-container>
+                <ng-container *ngSwitchCase="PlaceTypeEnum.BAR">{{ 'PLACES_IN_THE_CITY.FILTER_BAR' | translate }}</ng-container>
+                <ng-container *ngSwitchCase="PlaceTypeEnum.CAFETERIA">{{ 'PLACES_IN_THE_CITY.FILTER_COFFE_SHOP' | translate }}</ng-container>
+                <ng-container *ngSwitchCase="PlaceTypeEnum.ADEGA">{{ 'PLACES_IN_THE_CITY.FILTER_BEVERAGE' | translate }}</ng-container>
+                <ng-container *ngSwitchCase="PlaceTypeEnum.PIZZARIA">{{ 'PLACES_IN_THE_CITY.FILTER_PIZZERIA' | translate }}</ng-container>
+                <ng-container *ngSwitchCase="PlaceTypeEnum.HAMBURGUERIA">{{ 'PLACES_IN_THE_CITY.FILTER_BURGER_JOINT' | translate }}</ng-container>
+                <ng-container *ngSwitchCase="PlaceTypeEnum.DOCERIA">{{ 'PLACES_IN_THE_CITY.FILTER_SWEET_SHOP' | translate }}</ng-container> {{ 'PLACES_IN_THE_CITY.ACCORDING_YOUR_NEED' | translate }}.
+              </ng-container>
+            </p>
+          </ion-text>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12">
+        <div class="view-n-filter-wrapper">
+          <div class="buttons-wrapper">
+            <ion-button
+            (click)="openFilterSelect()"
+            shape="round"
+            class="anf-main-solid fs-12"
+            *ngFor="let button of filterButtons"
+            [title]="'filtrar'"
+            mode="md"
+            fill="solid">
+              <ion-icon [name]="button.icon + '-outline'" class="fs-20"></ion-icon>
+
+              <ion-select
+              mode="ios"
+              [okText]="'Filtrar'"
+              #filterSelector
+              [label]="'SHARED.FILTER' | translate"
+              class="hide-element rgs-selector min-height-0"
+              (ionChange)="filterByCharacteristic($event)"
+              [(ngModel)]="selectedFilter">
+                <ion-select-option
+                *ngFor="let filter of filters"
+                [value]="filter.value">
+                  {{ filter.text[currentLanguage.value] }}
+                </ion-select-option>
+              </ion-select>
+            </ion-button>
+          </div>
+        </div>
+      </ion-col>
+
+      <ion-col size="12" class="no-pad-bottom no-pad-top">
+        <ion-text mode="ios" class="line-height-18">
+          <p class="fs-14 color-gray-text">{{ 'SHARED.LOOKING_FOR' | translate }}: <span class="fs-14 color-green font-w-semibold txt-lowercase">{{ activeFilter.text[currentLanguage.value] }}</span></p>
         </ion-text>
       </ion-col>
     </ion-row>
@@ -302,7 +335,6 @@ class="ion-content-w-linear-bg"
         <div class="scroll-to-top full-width">
           <ion-button
           (click)="scrollToTop()"
-
           shape="round"
           [title]="('SHARED.BACK_TO_TOP.0' | translate) + ' ' + ('SHARED.BACK_TO_TOP.1' | translate)"
           fill="solid"

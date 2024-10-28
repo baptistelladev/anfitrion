@@ -1,5 +1,6 @@
+import { MOCK_CITIES } from 'src/app/shared/mocks/MockCities';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { IonContent, NavController } from '@ionic/angular';
+import { IonContent, IonSelect, NavController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { map, Observable, Subscription, take } from 'rxjs';
 import { ILang } from 'src/app/shared/models/ILang';
@@ -13,6 +14,7 @@ import { IPlace } from 'src/app/shared/models/IPlace';
 import { CollectionsEnum } from 'src/app/shared/enums/Collection';
 import { PlacesService } from 'src/app/core/services/firebase/places.service';
 import Swiper from 'swiper';
+import { ICity } from 'src/app/shared/models/ICity';
 
 @Component({
   selector: 'rgs-lugar-na-cidade',
@@ -20,6 +22,58 @@ import Swiper from 'swiper';
   styleUrls: ['./lugar-na-cidade.page.scss'],
 })
 export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
+
+  public selectedFilter: string;
+  public activeFilter: any;
+
+  public filters: any[] = [
+    {
+      value: 'ALL',
+      text: {
+        pt: 'Todos',
+        en: 'All',
+        es: 'Todos'
+      }
+    },
+    {
+      value: 'PET_FRIENDLY',
+      text: {
+        pt: 'Pode levar pet',
+        en: 'Pets allowed',
+        es: 'Se permiten mascotas'
+      }
+    },
+    {
+      value: 'TICKET',
+      text: {
+        pt: 'Aceita vale refeição',
+        en: 'Accept meal vouchers ',
+        es: 'Acepta vales de comida'
+      }
+    },
+    {
+      value: 'LIVEMUSIC',
+      text: {
+        pt: 'Tem música ao vivo',
+        en: 'Has live music',
+        es: 'Tiene música en vivo'
+      }
+    }
+  ]
+
+  @ViewChild('filterSelector') filterSelector: IonSelect;
+
+  public filterButtons: any[] = [
+    {
+      value: 'as-asc-desc',
+      text: {
+        pt: 'Visualizar modo ',
+        en: '',
+        es: ''
+      },
+      icon: 'options'
+    }
+  ]
 
   @ViewChild('placesContent') placesContent: IonContent;
 
@@ -38,13 +92,15 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
   public currentLanguageSubscription: Subscription;
 
   public placeType: string;
-  public city: string
+  public currentCityAsParam: ICity | undefined;
 
   public places: IPlace[] | null;
   public places$: Observable<IPlace[]>;
   public placesSubscription: Subscription;
 
   public isLoadingLogo: boolean;
+
+  public MOCK_CITIES: ICity[] = MOCK_CITIES;
 
   constructor(
     private navCtrl : NavController,
@@ -60,10 +116,16 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
     this.title.setTitle('Lugares')
     this.getRouter();
     this.getPlaces();
+    this.initialFilter('ALL');
+    this.defineActiveFilter('ALL');
   }
 
   ngAfterViewInit(): void {
     this.swiper = this.swiperRef?.nativeElement.swiper;
+  }
+
+  public initialFilter(value: string) {
+    this.selectedFilter = value;
   }
 
   public imageHasLoaded() {
@@ -91,7 +153,9 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
       return params
     }))
     .subscribe((res: any) => {
-      this.city = res.cidade;
+      this.currentCityAsParam = this.MOCK_CITIES.find((city: ICity) => {
+        return city.value === res.cidade;
+      })
     })
 
     this.route.paramMap
@@ -110,12 +174,12 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
   }
 
   public getPlaces() {
-    if (this.city && this.placeType) {
+    if (this.currentCityAsParam && this.placeType) {
       this.places$ = this.placesService
       .getCollection(
         CollectionsEnum.PLACES,
         [
-          { field: 'origin.value', operator: '==', value: this.city },
+          { field: 'origin.value', operator: '==', value: this.currentCityAsParam.value },
           { field: 'mainType.value', operator: '==', value: this.placeType }
         ]
       );
@@ -124,7 +188,7 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
       .subscribe((places: IPlace[]) => {
         this.places = places;
         console.log(this.places);
-        console.log(this.placeType, this.city);
+        console.log(this.placeType, this.currentCityAsParam?.value);
 
       })
     }
@@ -170,6 +234,51 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
   public async scrollToTop() {
     this.placesContent.scrollToTop(600);
   }
+
+  public openFilterSelect(): void {
+    this.filterSelector.open();
+  }
+
+  public filterByCharacteristic(e: any): void {
+
+
+    switch (e.detail.value) {
+      case 'PET_FRIENDLY':
+        console.log('pet');
+
+        break;
+
+      case 'TICKET':
+        console.log('ticket');
+        break;
+
+      case 'LIVEMUSIC':
+        console.log('live');
+        break;
+
+      case 'ALL':
+        console.log('all');
+
+        break;
+
+      default:
+        break;
+    }
+
+    this.defineActiveFilter(e.detail.value);
+  }
+
+  public defineActiveFilter(value: string) {
+    let filterFound = this.filters.find((filter: any) => {
+      return filter.value === value;
+    })
+
+    if (filterFound) {
+      this.activeFilter = filterFound;
+    }
+
+  }
+
 
   ngOnDestroy(): void {
     this.placesSubscription.unsubscribe();

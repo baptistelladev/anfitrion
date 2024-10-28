@@ -1,5 +1,15 @@
 
 {
+  "PLACES_IN_THE_CITY" : {
+    "FILTER_RESTAURANT": "Filtra los restaurantes",
+    "FILTER_BAR": "Filtra los bares",
+    "FILTER_COFFE_SHOP": "Filtra las cafeterías",
+    "FILTER_BEVERAGE": "Filtra las bodegas",
+    "FILTER_PIZZERIA": "Filtra las pizzerías",
+    "FILTER_BURGER_JOINT": "Filtra las hamburgueserías",
+    "FILTER_SWEET_SHOP": "Filtra las dulcerías",
+    "ACCORDING_YOUR_NEED": "de acuerdo a tus necesidades"
+  },
   "SUGGESTIONS_PAGE" : {
     "PAGE_TITLE" : "Sugerencias del anfitrión",
     "TITLE" : "Sugerencias del anfitrión",
@@ -15,7 +25,7 @@
     "CHOOSE_TITLE" : ["elige","una ciudad"],
     "OF_BAIXADA" : ["de la"],
     "YOU_ARE_IN": "estás en",
-    "EXPLORING" : "explorando"
+    "EXPLORING" : "Explorando"
   },
   "WELCOME_TO" : ["bienvenido", "a Baixada Santista"],
   "ABOUT_US_PAGE" : {
