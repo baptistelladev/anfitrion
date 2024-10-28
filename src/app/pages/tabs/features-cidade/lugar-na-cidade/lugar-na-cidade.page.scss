@@ -1,3 +1,14 @@
+@import './../../../../../assets/scss/utils/mixins.scss';
+
 .places-swiper-container {
   margin: 16px 0 0 0;
+}
+
+.view-n-filter-wrapper {
+  @include flexbox(center, space-between, row);
+
+  .buttons-wrapper {
+    width: 100%;
+    @include flexbox(center, flex-end, row);
+  }
 }

@@ -121,8 +121,6 @@
   --padding-bottom: 0;
 }
 
-
-
 // GLOBAL LINEAR
 .ion-content-w-linear-bg {
   --background: linear-gradient(to top, var(--gray-ed) 15%, var(--white));
@@ -131,3 +129,6 @@
 .bg-content-w-linear-bg {
   background: linear-gradient(to top, var(--gray-ed) 15%, var(--white));
 }
+
+.flex-none { flex: none; }
+.min-height-0 { min-height: 0; }

@@ -21,7 +21,17 @@ export const appInitialState: IAppState = {
     value: '',
     name: '',
     sigla: '',
-    isDisabled: false
+    isDisabled: false,
+    from: {
+      pt: '',
+      en: '',
+      es: ''
+    },
+    in: {
+      pt: '',
+      en: '',
+      es: ''
+    }
   },
   parkings: [
     {
@@ -75,7 +85,17 @@ export const appInitialState: IAppState = {
       value: '',
       name: '',
       sigla: '',
-      isDisabled: false
+      isDisabled: false,
+      from: {
+        pt: '',
+        en: '',
+        es: ''
+      },
+      in: {
+        pt: '',
+        en: '',
+        es: ''
+      }
     },
     specialty: [
       {

@@ -117,6 +117,7 @@ class="ion-content-w-linear-bg">
                 <ion-item
                 (click)="searchPlaceInTheCity(place.route)"
                 [disabled]="place.isDisabled || !place.atLeastOneLength"
+                [ngClass]="{ 'is-disabled': place.isDisabled || !place.atLeastOneLength }"
                 [title]="place.text[currentLanguage.value]"
                 mode="ios"
                 [detail]="false"
