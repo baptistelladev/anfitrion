@@ -57,6 +57,7 @@ class="ion-content-w-linear-bg">
               <div class="anf-baixada-wrapper">
                 <div class="anf-baixada-container">
                   <ion-item
+                  (click)="seeSuggestion(suggestion)"
                   [button]="true"
                   class="ion-bg-transparent tip-item"
                   lines="none"
@@ -78,7 +79,7 @@ class="ion-content-w-linear-bg">
           <!-- ENQUANTO NÃO EXISTIR OPÇÃO -->
           <ng-container *ngIf="!suggestionsBaixadaSantista">
             <swiper-slide
-            *ngFor="let item of [1,2,3,4,5,6]; let i = index"
+            *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,11]; let i = index"
             class="unlock-shadow-from-swiper auto-width">
 
             </swiper-slide>
