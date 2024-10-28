@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, Subscription, take } from 'rxjs';
+import { map, Observable, Subscription, take } from 'rxjs';
 import { ILang } from 'src/app/shared/models/ILang';
 import Swiper from 'swiper';
 import { TranslateService } from '@ngx-translate/core';
@@ -13,6 +13,9 @@ import * as AppStore from './../../../shared/store/app.state';
 import * as UserStore from './../../../shared/store/user.state';
 import { IUSer } from 'src/app/shared/models/IUser';
 import { ICity } from 'src/app/shared/models/ICity';
+import { PlacesService } from 'src/app/core/services/firebase/places.service';
+import { IPlace } from 'src/app/shared/models/IPlace';
+import { CollectionsEnum } from 'src/app/shared/enums/Collection';
 
 @Component({
   selector: 'rgs-explorar',
@@ -30,6 +33,10 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
   public currentCity: ICity;
   public currentCity$: Observable<ICity>;
   public currentCitySubscription: Subscription;
+
+  public places: IPlace[];
+  public places$: Observable<IPlace[]>;
+  public placesSubscription: Subscription;
 
   public user: IUSer;
   public user$: Observable<IUSer>;
@@ -97,7 +104,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     places: [
       {
         loadIconsFromAssets: false,
-        value: 'RESTAURANTES',
+        value: 'RESTAURANTE',
         icon: 'restaurant',
         text: {
           pt: 'Restaurantes',
@@ -111,11 +118,12 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
           en: '',
           es: ''
         },
-        route: 'restaurante'
+        route: 'restaurante',
+        atLeastOneLength: false
       },
       {
         loadIconsFromAssets: false,
-        value: 'BARES',
+        value: 'BAR',
         icon: 'beer',
         text: {
           pt: 'Bares',
@@ -129,7 +137,8 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
           en: '',
           es: ''
         },
-        route: 'bar'
+        route: 'bar',
+        atLeastOneLength: false
       },
       {
         loadIconsFromAssets: false,
@@ -147,11 +156,12 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
           en: '',
           es: ''
         },
-        route: 'cafeteria'
+        route: 'cafeteria',
+        atLeastOneLength: false
       },
       {
         loadIconsFromAssets: false,
-        value: 'ADEGAS',
+        value: 'ADEGA',
         icon: 'wine',
         text: {
           pt: 'Adegas',
@@ -165,11 +175,12 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
           en: '',
           es: ''
         },
-        route: 'adega'
+        route: 'adega',
+        atLeastOneLength: false
       },
       {
         loadIconsFromAssets: false,
-        value: 'PIZZARIAS',
+        value: 'PIZZARIA',
         icon: 'pizza',
         text: {
           pt: 'Pizzarias',
@@ -183,7 +194,8 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
           en: '',
           es: ''
         },
-        route: 'pizzaria'
+        route: 'pizzaria',
+        atLeastOneLength: false
       },
       {
         loadIconsFromAssets: false,
@@ -201,7 +213,8 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
           en: '',
           es: ''
         },
-        route: 'hamburgueria'
+        route: 'hamburgueria',
+        atLeastOneLength: false
       },
       {
         loadIconsFromAssets: false,
@@ -219,7 +232,8 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
           en: '',
           es: ''
         },
-        route: 'doceria'
+        route: 'doceria',
+        atLeastOneLength: false
       }
     ]
   }
@@ -254,7 +268,8 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     private store : Store,
     private title : Title,
     public navCtrl : NavController,
-    private overlayService : OverlayService
+    private overlayService : OverlayService,
+    private placesService : PlacesService
   ) { }
 
   ngOnInit() {
@@ -262,6 +277,32 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     this.getCurrentCityFromNGRX();
     this.getCurrentLanguageFromNGRX();
     this.selectInitialSegment('CIDADE');
+    this.getPlaces();
+  }
+
+  public getPlaces() {
+    this.places$ = this.placesService
+      .getCollection(
+        CollectionsEnum.PLACES,
+        [
+          { field: 'origin.value', operator: '==', value: this.currentCity.value }
+        ]
+      );
+
+      this.placesSubscription = this.places$
+      .subscribe((places: IPlace[]) => {
+        this.places = places;
+
+        let compressedInformation = this.places.reduce((acc: any, place) => {
+          const key = place.mainType.value.toUpperCase();
+          acc[key] = (acc[key] || 0) + 1;
+          return acc;
+        }, {});
+
+        this.cityFeatures.places.forEach((feature: any) => {
+          feature.atLeastOneLength = compressedInformation[feature.value] ? compressedInformation[feature.value] : 0
+        })
+      })
   }
 
   public selectInitialSegment(segmentValue: string) {
