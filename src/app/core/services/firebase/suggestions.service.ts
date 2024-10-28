@@ -13,7 +13,7 @@ export class SuggestionsService {
     public firestore : Firestore
   ) { }
 
-  public getCollection(
+  public getSuggestions(
     collectionName: string,
     filters: IFIrebaseFilter[] = []
   ): Observable<any[]> {

@@ -12,6 +12,7 @@ import { CityFeaturesEnum } from 'src/app/shared/enums/CityFeatures';
 import * as AppStore from './../../../shared/store/app.state';
 import * as UserStore from './../../../shared/store/user.state';
 import { IUSer } from 'src/app/shared/models/IUser';
+import { ICity } from 'src/app/shared/models/ICity';
 
 @Component({
   selector: 'rgs-explorar',
@@ -20,12 +21,15 @@ import { IUSer } from 'src/app/shared/models/IUser';
 })
 export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
-
   @ViewChild('explorarContent') explorarContent: IonContent;
 
   public currentLanguage: ILang;
   public currentLanguage$: Observable<ILang>;
   public currentLanguageSubscription: Subscription;
+
+  public currentCity: ICity;
+  public currentCity$: Observable<ICity>;
+  public currentCitySubscription: Subscription;
 
   public user: IUSer;
   public user$: Observable<IUSer>;
@@ -255,6 +259,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.getUserFromNGRX();
+    this.getCurrentCityFromNGRX();
     this.getCurrentLanguageFromNGRX();
     this.selectInitialSegment('CIDADE');
   }
@@ -277,6 +282,15 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     this.currentLanguageSubscription = this.currentLanguage$
     .subscribe((language: ILang) => {
       this.currentLanguage = language;
+    })
+  }
+
+  public getCurrentCityFromNGRX(): void {
+    this.currentCity$ = this.store.select(AppStore.selectAppCurrentCity);
+
+    this.currentCitySubscription = this.currentCity$
+    .subscribe((city: ICity) => {
+      this.currentCity = city;
     })
   }
 
@@ -307,7 +321,8 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
       component: CidadesPage,
       componentProps: {
         currentLanguage: this.currentLanguage,
-        user: this.user
+        user: this.user,
+        currentCity: this.currentCity
       },
       breakpoints: [1],
       initialBreakpoint: 1,
@@ -324,7 +339,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
   public searchPlaceInTheCity(type: string): void {
     this.navCtrl.navigateForward([`/logado/explorar/${type}`], {
       queryParams: {
-        cidade: 'SAO_VICENTE'
+        cidade: this.currentCity.value
       }
     })
   }
@@ -332,6 +347,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy() {
     this.currentLanguageSubscription.unsubscribe();
     this.userSubscription.unsubscribe();
+    this.currentCitySubscription.unsubscribe();
   }
 
 }

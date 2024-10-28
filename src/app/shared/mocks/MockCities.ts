@@ -11,7 +11,7 @@ export const MOCK_CITIES: ICity[] = [
     value: 'SANTOS',
     name: 'Santos',
     sigla: 'santos',
-    isDisabled: true
+    isDisabled: false
   },
   {
     value: 'PRAIA_GRANDE',

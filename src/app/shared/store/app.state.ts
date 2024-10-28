@@ -5,16 +5,24 @@ import { IPlace } from "../models/IPlace";
 import { ITicket } from "../models/ITicket";
 import { ISocialNetwork } from "../models/INetwork";
 import { IContact } from "../models/IContact";
+import { ICity } from '../models/ICity';
 
 export interface IAppState {
   currentLanguage: ILang,
-  currentEstablishment: IPlace,
+  currentCity: ICity,
+  currentPlace: IPlace,
   parkings: IParking[],
   appInfoNetworks: ISocialNetwork[],
   appInfoContact: IContact
 }
 
 export const appInitialState: IAppState = {
+  currentCity: {
+    value: '',
+    name: '',
+    sigla: '',
+    isDisabled: false
+  },
   parkings: [
     {
       name: '',
@@ -44,7 +52,9 @@ export const appInitialState: IAppState = {
     },
     value: ''
   },
-  currentEstablishment: {
+  currentPlace: {
+    created_at: '',
+    suggestions: [],
     isBuilding: false,
     isPremium: false,
     id: '',
@@ -60,6 +70,12 @@ export const appInitialState: IAppState = {
         en: '',
         es: ''
       }
+    },
+    origin: {
+      value: '',
+      name: '',
+      sigla: '',
+      isDisabled: false
     },
     specialty: [
       {
@@ -174,6 +190,11 @@ export const setCurrentLanguage = createAction(
   props<{ language: ILang }>()
 )
 
+export const setCurrentCity = createAction(
+  '[APP] Definir cidade selecionada',
+  props<{ city: ICity }>()
+)
+
 export const setCurrentEstablishment = createAction(
   '[APP] Definir estabelecimento selecionado',
   props<{ establishment: IPlace }>()
@@ -201,8 +222,12 @@ export const appReducer = createReducer(
     (state, { language }): IAppState => ({ ...state, currentLanguage: language })
   ),
   on(
+    setCurrentCity,
+    (state, { city }): IAppState => ({ ...state, currentCity: city })
+  ),
+  on(
     setCurrentEstablishment,
-    (state, { establishment }): IAppState => ({ ...state, currentEstablishment: establishment })
+    (state, { establishment }): IAppState => ({ ...state, currentPlace: establishment })
   ),
   on(
     setAppInfoNetworks,
@@ -226,9 +251,14 @@ export const selectAppCurrentLanguage = createSelector(
   (state: IAppState) => state.currentLanguage
 );
 
+export const selectAppCurrentCity = createSelector(
+  selectAppState,
+  (state: IAppState) => state.currentCity
+);
+
 export const selectCurrentEstablishment = createSelector(
   selectAppState,
-  (state: IAppState) => state.currentEstablishment
+  (state: IAppState) => state.currentPlace
 );
 
 export const selectAppInfoNetworks = createSelector(

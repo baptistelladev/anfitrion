@@ -62,12 +62,12 @@ class="ion-content-w-linear-bg">
         </ion-col>
 
         <ion-col
-        *ngFor="let city of CITIES"
+        *ngFor="let city of MOCK_CITIES"
         size="12">
           <ion-item
           class="city-item"
           (click)="selectCity(city)"
-          [ngClass]="{ 'is-selected' : selectedCity.value === city.value }"
+          [ngClass]="{ 'is-selected' : currentCity && currentCity.value === city.value }"
           [detail]="false"
           [button]="true"
           mode="ios"
@@ -77,11 +77,12 @@ class="ion-content-w-linear-bg">
             mode="ios"
             class="line-height-20">
               <p class="fs-20 font-baloo city-name">{{ city.name }}</p>
-              <p class="color-gray-6 fs-10 selected-text txt-uppercase" *ngIf="selectedCity.value === city.value">{{ 'SHARED.SELECTED' | translate }}</p>
-              <p class="color-gray-6 fs-10 selected-text txt-uppercase" *ngIf="selectedCity.value !== city.value">{{ 'SHARED.COMING_SOON' | translate }}</p>
+              <p class="color-gray-6 fs-10 selected-text txt-uppercase" *ngIf="currentCity && currentCity.value === city.value">{{ 'SHARED.SELECTED' | translate }}</p>
+              <p class="color-gray-6 fs-10 selected-text txt-uppercase" *ngIf="!city.isDisabled && currentCity.value !== city.value">{{ 'SHARED.TO_KNOW' | translate }}</p>
+              <p class="color-gray-6 fs-10 selected-text txt-uppercase" *ngIf="city.isDisabled && currentCity.value !== city.value">{{ 'SHARED.COMING_SOON' | translate }}</p>
             </ion-text>
 
-            <ion-checkbox [checked]="true" mode="md" slot="end" *ngIf="selectedCity.value === city.value"></ion-checkbox>
+            <ion-checkbox [checked]="true" mode="md" slot="end" *ngIf="currentCity && currentCity.value === city.value"></ion-checkbox>
           </ion-item>
         </ion-col>
       </ion-row>

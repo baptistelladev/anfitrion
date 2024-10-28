@@ -125,7 +125,8 @@
     "BEVERAGE_STORES" : "Adegas",
     "PIZZERIAS" : "Pizzarias",
     "BURGER_JOINTS" : "Hamburguerias",
-    "SWEET_SHOPS" : "Docerias"
+    "SWEET_SHOPS" : "Docerias",
+    "TO_KNOW" : "Conhecer"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nosso próposito aqui é fazer com que voê economize o seu bem mais precioso:","o tempo"],
