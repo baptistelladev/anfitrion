@@ -9,6 +9,7 @@ import { Title } from '@angular/platform-browser';
 import { SuggestionsService } from 'src/app/core/services/firebase/suggestions.service';
 import { CollectionsEnum } from 'src/app/shared/enums/Collection';
 import { SuggestionsEnum } from 'src/app/shared/enums/Suggestions';
+import { ISuggestion } from 'src/app/shared/models/ISuggestion';
 
 @Component({
   selector: 'rgs-sugestoes-do-anfitriao',
@@ -56,6 +57,13 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
 
   ionViewDidEnter(): void {
     this.title.setTitle('Sugestões do anfitrião');
+  }
+
+
+
+  public seeSuggestion(suggestion: ISuggestion) {
+    console.log(suggestion);
+    this.navCtrl.navigateForward([`/${suggestion.route}`])
   }
 
   public async getBaixadaSantistaSuggestions() {

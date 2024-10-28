@@ -69,7 +69,21 @@ const routes: Routes = [
       },
       {
         path: 'sugestoes-do-anfitriao',
-        loadChildren: () => import('./sugestoes-do-anfitriao/sugestoes-do-anfitriao.module').then( m => m.SugestoesDoAnfitriaoPageModule)
+        children: [
+          {
+            path: '',
+            redirectTo: '',
+            pathMatch: 'full'
+          },
+          {
+            path: '',
+            loadChildren: () => import('./sugestoes-do-anfitriao/sugestoes-do-anfitriao.module').then( m => m.SugestoesDoAnfitriaoPageModule)
+          },
+          {
+            path: ':suggestion',
+            loadChildren: () => import('./sugestao/sugestao.module').then( m => m.SugestaoPageModule)
+          }
+        ]
       },
       {
         path: 'cidades',
