@@ -4,11 +4,13 @@ import { StorageService } from './core/services/storage.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
 import * as AppStore from './shared/store/app.state'
-import { APP_LANG_KEY } from './shared/consts/keys';
+import { APP_LANG_KEY, CURRENT_CITY } from './shared/consts/keys';
 import { ILang } from './shared/models/ILang';
 import { MOCK_LANGS } from './shared/mocks/MockLangs';
 import { IAppInfo } from './shared/models/IAppInfo';
 import { CollectionsEnum } from './shared/enums/Collection';
+import { ICity } from './shared/models/ICity';
+import { MOCK_CITIES } from './shared/mocks/MockCities';
 
 @Component({
   selector: 'rgs-root',
@@ -18,7 +20,10 @@ import { CollectionsEnum } from './shared/enums/Collection';
 export class AppComponent implements OnInit {
   public openModalLanguage: boolean = false;
   public MOCK_LANGS: ILang[] = MOCK_LANGS;
+  public MOCK_CITIES: ICity[] = MOCK_CITIES;
+
   public currentLanguage: ILang;
+  public currentCity: ICity;
 
   constructor(
     private storageService : StorageService,
@@ -44,6 +49,7 @@ export class AppComponent implements OnInit {
         }
 
         this.translate.use(this.currentLanguage.value);
+        this.storageService.setStorageKey(APP_LANG_KEY, this.currentLanguage.value);
         this.store.dispatch(AppStore.setCurrentLanguage({ language: this.currentLanguage }));
       } else {
         let foundLang = MOCK_LANGS.find((lang: ILang) => {
@@ -55,7 +61,36 @@ export class AppComponent implements OnInit {
         }
 
         this.translate.use(this.currentLanguage.value);
+        this.storageService.setStorageKey(APP_LANG_KEY, this.currentLanguage.value);
         this.store.dispatch(AppStore.setCurrentLanguage({ language: this.currentLanguage }));
+      }
+    })
+
+    await this.storageService.getStorageKey(CURRENT_CITY).then((res: string) => {
+      if (res === null || !res) {
+
+        let foundCity = this.MOCK_CITIES.find((city: ICity) => {
+          return city.value === 'SANTOS';
+        })
+
+        if (foundCity) {
+          this.currentCity = foundCity;
+        }
+
+        this.storageService.setStorageKey(CURRENT_CITY, this.currentCity.value)
+        this.store.dispatch(AppStore.setCurrentCity({ city: this.currentCity }));
+
+      } else {
+        let foundCity = this.MOCK_CITIES.find((city: ICity) => {
+          return city.value === res;
+        })
+
+        if (foundCity) {
+          this.currentCity = foundCity;
+        }
+
+        this.storageService.setStorageKey(CURRENT_CITY, this.currentCity.value)
+        this.store.dispatch(AppStore.setCurrentCity({ city: this.currentCity }));
       }
     })
 

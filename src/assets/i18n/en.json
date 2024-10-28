@@ -125,7 +125,8 @@
     "BEVERAGE_STORES": "Beverage Stores",
     "PIZZERIAS": "Pizzerias",
     "BURGER_JOINTS": "Burger Joints",
-    "SWEET_SHOPS": "Sweet Shops"
+    "SWEET_SHOPS": "Sweet Shops",
+    "TO_KNOW" : "Get to know"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Our purpose here is to help you save your most precious asset: ","time"],

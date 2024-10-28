@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { LugarNaCidadePageRoutingModule } from './lugar-na-cidade-routing.module';
 
 import { LugarNaCidadePage } from './lugar-na-cidade.page';
@@ -11,6 +11,9 @@ import { ComponentsModule } from 'src/app/shared/components/components.module';
     LugarNaCidadePageRoutingModule,
     ComponentsModule
   ],
-  declarations: [LugarNaCidadePage]
+  declarations: [LugarNaCidadePage],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class LugarNaCidadePageModule {}
