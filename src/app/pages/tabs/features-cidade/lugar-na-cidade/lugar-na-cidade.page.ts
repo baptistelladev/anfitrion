@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { IonContent, NavController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { map, Observable, Subscription, take } from 'rxjs';
@@ -19,7 +19,7 @@ import Swiper from 'swiper';
   templateUrl: './lugar-na-cidade.page.html',
   styleUrls: ['./lugar-na-cidade.page.scss'],
 })
-export class LugarNaCidadePage implements OnInit, OnDestroy {
+export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
 
   @ViewChild('placesContent') placesContent: IonContent;
 
@@ -60,6 +60,10 @@ export class LugarNaCidadePage implements OnInit, OnDestroy {
     this.title.setTitle('Lugares')
     this.getRouter();
     this.getPlaces();
+  }
+
+  ngAfterViewInit(): void {
+    this.swiper = this.swiperRef?.nativeElement.swiper;
   }
 
   public imageHasLoaded() {
