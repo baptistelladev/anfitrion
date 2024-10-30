@@ -8,29 +8,22 @@ class="ion-content-w-linear-bg">
         <ion-grid [fixed]="true">
           <ion-row>
             <ion-col size="12">
-              <ion-header
-              mode="ios"
-              class="ion-no-border">
-                <ion-toolbar
-                class="ion-bg-transparent ion-no-padding">
-                  <div class="header-container">
-                    <div class="header-logo">
-                      <rgs-logo
-                      [asLink]="true"
-                      (click)="backToHome()"
-                      [size]="'big'"
-                      [currentLanguage]="currentLanguage">
-                      </rgs-logo>
-                    </div>
+              <div class="header-container">
+                <div class="back-btn-wrapper">
+                  <ion-button
+                  mode="ios"
+                  (click)="back()"
+                  class="back ion-color-white back-btn no-ion-padding font-baloo"
+                  [title]="'SHARED.BACK' | translate"
+                  fill="clear">
+                    <ion-icon name="chevron-back-outline"></ion-icon> <span class="font-w-thin mg-left-5">{{ 'SHARED.BACK' | translate }}</span>
+                  </ion-button>
+                </div>
 
-                    <div class="header-buttons">
-                      <rgs-language-button
-                      [currentLanguage]="currentLanguage">
-                      </rgs-language-button>
-                    </div>
-                  </div>
-                </ion-toolbar>
-              </ion-header>
+                <div class="language-container">
+                  <rgs-language-button [currentLanguage]="currentLanguage"></rgs-language-button>
+                </div>
+              </div>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -91,6 +84,7 @@ class="ion-content-w-linear-bg">
           <div class="anf-baixada-wrapper">
             <div class="anf-baixada-container">
               <ion-item
+              (click)="seeSuggestion(suggestionsBaixadaSantista[0])"
               [button]="true"
               class="ion-bg-transparent tip-item"
               lines="none"
