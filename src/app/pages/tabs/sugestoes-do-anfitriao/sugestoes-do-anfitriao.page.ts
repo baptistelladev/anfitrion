@@ -60,7 +60,7 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
   }
 
   public seeSuggestion(suggestion: ISuggestion) {
-    console.log(suggestion);
+    this.store.dispatch(AppStore.setCurrentSuggestion({ suggestion: suggestion }))
     this.navCtrl.navigateForward([`/logado/sugestoes-do-anfitriao/${suggestion.route}`]);
   }
 

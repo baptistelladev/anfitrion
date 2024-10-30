@@ -1,3 +1,4 @@
+import { ISuggestion } from 'src/app/shared/models/ISuggestion';
 import { IParking } from 'src/app/shared/models/IParking';
 import { createAction, createReducer, createSelector, on, props, createFeatureSelector } from "@ngrx/store";
 import { ILang } from "../models/ILang";
@@ -13,7 +14,8 @@ export interface IAppState {
   currentPlace: IPlace,
   parkings: IParking[],
   appInfoNetworks: ISocialNetwork[],
-  appInfoContact: IContact
+  appInfoContact: IContact,
+  currentSuggestion: ISuggestion
 }
 
 export const appInitialState: IAppState = {
@@ -201,6 +203,35 @@ export const appInitialState: IAppState = {
       text: '',
       value: ''
     }
+  },
+  currentSuggestion: {
+    id: '',
+    hashtag: {
+      pt: '',
+      en: '',
+      es: ''
+    },
+    name: {
+      text: {
+        pt: '',
+        en: '',
+        es: ''
+      },
+      title: {
+        pt: '',
+        en: '',
+        es: ''
+      }
+    },
+    value: '',
+    created_at: '',
+    updated_at: '',
+    route: '',
+    address: {
+      pt: '',
+      en: '',
+      es: ''
+    }
   }
 }
 
@@ -235,6 +266,11 @@ export const setParkings = createAction(
   props<{ parkings: IParking[] }>()
 )
 
+export const setCurrentSuggestion = createAction(
+  '[APP] Definir sugestão selecionada',
+  props<{ suggestion: ISuggestion }>()
+)
+
 export const appReducer = createReducer(
   appInitialState,
   on(
@@ -260,6 +296,10 @@ export const appReducer = createReducer(
   on(
     setParkings,
     (state, { parkings }): IAppState => ({ ...state, parkings: parkings })
+  ),
+  on(
+    setCurrentSuggestion,
+    (state, { suggestion }): IAppState => ({ ...state, currentSuggestion: suggestion })
   )
 )
 
@@ -294,4 +334,9 @@ export const selectAppInfoContact = createSelector(
 export const selectParkings = createSelector(
   selectAppState,
   (state: IAppState) => state.parkings
+);
+
+export const selectCurrentSuggestion = createSelector(
+  selectAppState,
+  (state: IAppState) => state.currentSuggestion
 );
