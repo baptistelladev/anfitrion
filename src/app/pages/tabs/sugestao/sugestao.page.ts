@@ -486,7 +486,7 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
   }
 
   public back(): void {
-    this.navCtrl.back()
+    this.navCtrl.navigateBack(['/logado/sugestoes-do-anfitriao'])
   }
 
   public getCurrentSuggestionFromNGRX(): void {
