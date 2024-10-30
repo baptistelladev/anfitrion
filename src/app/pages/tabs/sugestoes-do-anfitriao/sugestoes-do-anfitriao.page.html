@@ -8,22 +8,27 @@ class="ion-content-w-linear-bg">
         <ion-grid [fixed]="true">
           <ion-row>
             <ion-col size="12">
-              <div class="header-container">
-                <div class="back-btn-wrapper">
-                  <ion-button
-                  mode="ios"
-                  (click)="back()"
-                  class="back ion-color-white back-btn no-ion-padding font-baloo"
-                  [title]="'SHARED.BACK' | translate"
-                  fill="clear">
-                    <ion-icon name="chevron-back-outline"></ion-icon> <span class="font-w-thin mg-left-5">{{ 'SHARED.BACK' | translate }}</span>
-                  </ion-button>
-                </div>
+              <ion-header
+              mode="ios"
+              class="ion-no-border">
+                <ion-toolbar
+                class="ion-bg-transparent ion-no-padding">
+                  <div class="header-container">
+                    <div class="header-logo">
+                      <rgs-logo
+                      [size]="'big'"
+                      [currentLanguage]="currentLanguage">
+                      </rgs-logo>
+                    </div>
 
-                <div class="language-container">
-                  <rgs-language-button [currentLanguage]="currentLanguage"></rgs-language-button>
-                </div>
-              </div>
+                    <div class="header-buttons">
+                      <rgs-language-button
+                      [currentLanguage]="currentLanguage">
+                      </rgs-language-button>
+                    </div>
+                  </div>
+                </ion-toolbar>
+              </ion-header>
             </ion-col>
           </ion-row>
         </ion-grid>
