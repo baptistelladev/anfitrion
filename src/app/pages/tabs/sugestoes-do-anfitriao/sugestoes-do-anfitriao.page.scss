@@ -12,7 +12,7 @@ ion-content {
       .sugestoes-header-wrapper {
         width: 100%;
         height: auto;
-        min-height: 470px;
+        min-height: 500px;
         position: relative;
         @include flexbox(flex-start, flex-end, column);
         padding: 0 0 18px 0;
