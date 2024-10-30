@@ -30,13 +30,15 @@ mode="ios">
       </ion-grid>
     </header>
 
+    <div class="fixed-bg" [ngClass]="paramAsUrl"></div>
+
     <div class="suggestion-title">
       <ion-grid [fixed]="true">
         <ion-row>
           <ion-col size="12">
             <ion-text mode="ios" class="proportional-text">
-              <p class="color-gray-c title">{{ currentSuggestion.name.title[currentLanguage.value] }}</p>
-              <p class="color-linear font-baloo font-w-bold subtitle">{{ currentSuggestion.name.text[currentLanguage.value] }}</p>
+              <p class="color-white title animate__animated animate__fadeInUp">{{ currentSuggestion.name.title[currentLanguage.value] }}</p>
+              <p class="color-linear font-baloo font-w-bold subtitle animate__animated animate__fadeInUp">{{ currentSuggestion.name.text[currentLanguage.value] }}</p>
             </ion-text>
           </ion-col>
         </ion-row>

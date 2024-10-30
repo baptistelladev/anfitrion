@@ -37,11 +37,15 @@ export class CidadesPage implements OnInit {
     this.currentCity = city;
     this.store.dispatch(AppStore.setCurrentCity({ city: this.currentCity }))
     await this.storageService.setStorageKey(CURRENT_CITY, this.currentCity.value);
-    await this.closeModal();
+    await this.closeModalAndFireChange();
   }
 
   public async closeModal() {
-    await this.modalCtrl.dismiss(null, '', 'cities-modal');
+    await this.modalCtrl.dismiss('', '', 'cities-modal');
+  }
+
+  public async closeModalAndFireChange() {
+    await this.modalCtrl.dismiss(this.currentCity, 'change', 'cities-modal');
   }
 
 }
