@@ -1,10 +1,11 @@
+import { SuggestionsService } from 'src/app/core/services/firebase/suggestions.service';
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { AlertController, IonContent, IonSelect, NavController, PopoverController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import * as moment from 'moment';
-import { map, Observable, Subscription } from 'rxjs';
+import { map, Observable, Subscription, take } from 'rxjs';
 import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
 import { EstablishmentsService } from 'src/app/core/services/firebase/establishments.service';
 import { ParkingsService } from 'src/app/core/services/firebase/parkings.service';
@@ -17,6 +18,9 @@ import { IPlace } from 'src/app/shared/models/IPlace';
 import Swiper from 'swiper';
 import * as AppStore from './../../../shared/store/app.state';
 import { PlacesService } from 'src/app/core/services/firebase/places.service';
+import { ISuggestion } from 'src/app/shared/models/ISuggestion';
+import { ActivatedRoute } from '@angular/router';
+import { SuggestionsEnum } from 'src/app/shared/enums/Suggestions';
 
 @Component({
   selector: 'rgs-sugestao',
@@ -166,12 +170,6 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
   swiperRef: ElementRef | undefined;
   swiper?: Swiper;
 
-  public adress: any = {
-    pt: 'Rua Tolentino Filgueiras, Gonzaga.',
-    en: 'Tolentino Filgueiras Street, Gonzaga.',
-    es: 'Calle Tolentino Filgueiras, Gonzaga.'
-  }
-
   @ViewChild('filterSelector') filterSelector: IonSelect;
   @ViewChild('homeContent') homeContent: IonContent;
 
@@ -219,6 +217,10 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
   public currentLanguage$: Observable<ILang>;
   public currentLanguageSubscription: Subscription;
 
+  public currentSuggestion: ISuggestion;
+  public currentSuggestion$: Observable<ISuggestion>;
+  public currentSuggestionSubscription: Subscription;
+
   public short_establishments: IPlace[];
   public establishments$: Observable<IPlace[]>;
   public establishmentsSubscription: Subscription;
@@ -252,10 +254,13 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
     private popoverCtrl : PopoverController,
     private analyticsService : AnalyticsService,
     private parkingsService : ParkingsService,
-    private placesService : PlacesService
+    private placesService : PlacesService,
+    private route : ActivatedRoute,
+    private suggestionsService : SuggestionsService
   ) { }
 
   ngOnInit() {
+    this.getCurrentSuggestionFromNGRX();
     this.initialFilter('ALL');
     this.defineActiveFilter('ALL');
     this.getCurrentLanguageFromNGRX();
@@ -297,7 +302,30 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
 
         return option;
       })
+    })
+  }
 
+  public getSuggestionFromUrl() {
+    this.route.paramMap
+    .pipe(take(1))
+    .subscribe({
+      next: async (paramsAsMap: any) => {
+        switch (paramsAsMap.params['suggestion']) {
+          case 'rua-gastronomica-de-santos':
+            this.suggestionsService
+            .getSuggestionsFilteredByValue(CollectionsEnum.SUGGESTIONS_BAIXADA_SANTISTA, SuggestionsEnum.RUA_GASTRONOMICA_DE_SANTOS)
+            .then((suggestion: ISuggestion | null) => {
+              if (suggestion) {
+                this.currentSuggestion = suggestion;
+              }
+            })
+            break;
+
+          default:
+            this.navCtrl.navigateBack(['/logado/sugestoes-do-anfitriao'])
+            break;
+        }
+      }
     })
   }
 
@@ -461,10 +489,24 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
     this.navCtrl.back()
   }
 
+  public getCurrentSuggestionFromNGRX(): void {
+    this.currentSuggestion$ = this.store.select(AppStore.selectCurrentSuggestion);
+
+    this.currentSuggestionSubscription = this.currentSuggestion$
+    .subscribe((suggestion: ISuggestion) => {
+      if (suggestion.id) {
+        this.currentSuggestion = suggestion;
+      } else {
+        this.getSuggestionFromUrl();
+      }
+    })
+  }
+
   public ngOnDestroy(): void {
     this.currentLanguageSubscription.unsubscribe();
     this.establishmentsSubscription.unsubscribe();
     this.parkingsSubscription.unsubscribe();
+    this.currentSuggestionSubscription.unsubscribe();
   }
 
 }
