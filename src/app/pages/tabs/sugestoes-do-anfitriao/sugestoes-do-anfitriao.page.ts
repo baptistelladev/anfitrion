@@ -59,11 +59,9 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
     this.title.setTitle('Sugestões do anfitrião');
   }
 
-
-
   public seeSuggestion(suggestion: ISuggestion) {
     console.log(suggestion);
-    this.navCtrl.navigateForward([`/${suggestion.route}`])
+    this.navCtrl.navigateForward([`/logado/sugestoes-do-anfitriao/${suggestion.route}`]);
   }
 
   public async getBaixadaSantistaSuggestions() {
@@ -113,8 +111,8 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
     })
   }
 
-  public backToHome(): void {
-    this.navCtrl.navigateBack(['/logado/explorar'])
+  public back(): void {
+    this.navCtrl.back();
   }
 
   public async scrollToTop() {
