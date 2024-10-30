@@ -8,9 +8,9 @@
               <ion-button
               (click)="back()"
               class="back ion-color-gray-text back-btn no-ion-padding font-baloo"
-              title="Voltar"
+              [title]="'SHARED.BACK' | translate"
               fill="clear">
-                <ion-icon name="chevron-back-outline"></ion-icon> <span class="font-w-thin mg-left-5">{{ 'MENU_PAGE.HEADER_TITLE.0' | translate }} <b>{{ 'MENU_PAGE.HEADER_TITLE.1' | translate }}</b></span>
+                <ion-icon name="chevron-back-outline"></ion-icon> <span class="font-w-thin mg-left-5">{{ 'SHARED.BACK' | translate }}</span>
               </ion-button>
             </div>
 
