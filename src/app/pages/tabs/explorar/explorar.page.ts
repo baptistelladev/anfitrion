@@ -282,27 +282,30 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
   public getPlaces() {
     this.places$ = this.placesService
-      .getCollection(
-        CollectionsEnum.PLACES,
-        [
-          { field: 'origin.value', operator: '==', value: this.currentCity.value }
-        ]
-      );
+    .getCollection(
+      CollectionsEnum.PLACES,
+      [
+        { field: 'origin.value', operator: '==', value: this.currentCity.value }
+      ]
+    );
 
-      this.placesSubscription = this.places$
-      .subscribe((places: IPlace[]) => {
-        this.places = places;
+    this.placesSubscription = this.places$
+    .subscribe((places: IPlace[]) => {
+      this.places = places;
 
-        let compressedInformation = this.places.reduce((acc: any, place) => {
-          const key = place.mainType.value.toUpperCase();
-          acc[key] = (acc[key] || 0) + 1;
-          return acc;
-        }, {});
+      let compressedInformation = this.places.reduce((acc: any, place) => {
+        const key = place.mainType.value.toUpperCase();
+        acc[key] = (acc[key] || 0) + 1;
+        return acc;
+      }, {});
 
-        this.cityFeatures.places.forEach((feature: any) => {
-          feature.atLeastOneLength = compressedInformation[feature.value] ? compressedInformation[feature.value] : 0
-        })
+      this.cityFeatures.places.forEach((feature: any) => {
+        feature.atLeastOneLength = compressedInformation[feature.value] ? compressedInformation[feature.value] : 0
       })
+
+      console.log('disparado', this.places);
+
+    })
   }
 
   public selectInitialSegment(segmentValue: string) {
@@ -373,6 +376,12 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     })
 
     await modal.present();
+
+    await modal.onDidDismiss().then((resp: any) => {
+      if (resp.role === 'change') {
+        this.getPlaces();
+      }
+    })
 
     return modal;
   }

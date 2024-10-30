@@ -29,6 +29,8 @@ import { SuggestionsEnum } from 'src/app/shared/enums/Suggestions';
 })
 export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
 
+  public paramAsUrl: string;
+
   public establishmentActiveIndex: number | undefined = 1;
   public hideRightControl: boolean = false;
   public hideLeftControl: boolean = false;
@@ -310,6 +312,8 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
     .pipe(take(1))
     .subscribe({
       next: async (paramsAsMap: any) => {
+        this.paramAsUrl = paramsAsMap.params['suggestion'];
+
         switch (paramsAsMap.params['suggestion']) {
           case 'rua-gastronomica-de-santos':
             this.suggestionsService
@@ -496,6 +500,7 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
     .subscribe((suggestion: ISuggestion) => {
       if (suggestion.id) {
         this.currentSuggestion = suggestion;
+        this.paramAsUrl = this.currentSuggestion.route;
       } else {
         this.getSuggestionFromUrl();
       }
