@@ -17,3 +17,17 @@ ion-content {
 .animation-2s {
   --animation-delay: 5s !important
 }
+
+ion-text {
+  line-height: clamp(28px, 3.8vw, 38px);
+
+  p {
+    &.text {
+      font-size: clamp(18px, 2.5vw, 24px);
+    }
+
+    &.title {
+      font-size: clamp(32px, 4vw, 48px);
+    }
+  }
+}
