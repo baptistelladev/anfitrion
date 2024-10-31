@@ -51,6 +51,7 @@
   },
   "LOGIN_PAGE" : {
     "PAGE_TITLE" : "The Host of Baixada Santista",
+    "SUB_TITLE" : "the host of Baixada Santista",
     "CREATE" : "create",
     "ACCESS" : "access",
     "ACCOUNT" : "account",
