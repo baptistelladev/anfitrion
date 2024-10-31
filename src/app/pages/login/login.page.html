@@ -107,11 +107,10 @@ class="ion-content-w-linear-bg">
                       mode="ios">
                         <ion-input
                         (keydown)="preventWhitespace($event)"
-                        [label]="'INPUTS.EMAIL' | translate"
                         formControlName="email"
                         enterkeyhint="next"
+                        [placeholder]="'INPUTS.EMAIL' | translate"
                         mode="ios"
-                        labelPlacement="floating"
                         type="email"
                         inputmode="email">
                         </ion-input>
@@ -150,12 +149,11 @@ class="ion-content-w-linear-bg">
                       mode="ios">
                         <ion-input
                         (keydown)="preventWhitespace($event)"
-                        [label]="'INPUTS.PASSWORD' | translate"
+                        [placeholder]="'INPUTS.PASSWORD' | translate"
                         [type]="showLoginPassword ? 'text' : 'password'"
                         formControlName="password"
                         enterkeyhint="send"
                         mode="ios"
-                        labelPlacement="floating"
                         inputmode="text">
                         </ion-input>
 
@@ -280,10 +278,9 @@ class="ion-content-w-linear-bg">
                         <ion-input
                         (keyup)="clearFieldKeepJustName($event)"
                         (keydown)="preventWhitespace($event)"
-                        [label]="'INPUTS.NAME' | translate"
+                        [placeholder]="'INPUTS.NAME' | translate"
                         enterkeyhint="next"
                         mode="ios"
-                        labelPlacement="floating"
                         formControlName="name"
                         type="text"
                         inputmode="text">
@@ -324,10 +321,9 @@ class="ion-content-w-linear-bg">
                         <ion-input
                         (keyup)="clearErrorsIfExists('email-already-in-use')"
                         (keydown)="preventWhitespace($event)"
-                        [label]="'INPUTS.EMAIL' | translate"
+                        [placeholder]="'INPUTS.EMAIL' | translate"
                         enterkeyhint="next"
                         mode="ios"
-                        labelPlacement="floating"
                         formControlName="email"
                         type="email"
                         inputmode="email">
@@ -378,11 +374,10 @@ class="ion-content-w-linear-bg">
                         (keyup)="checkPasswordRules()"
                         (keydown)="preventWhitespace($event)"
                         [type]="showCreatePassword ? 'text' : 'password'"
-                        [label]="'INPUTS.PASSWORD' | translate"
+                        [placeholder]="'INPUTS.PASSWORD' | translate"
                         formControlName="password"
                         enterkeyhint="next"
                         mode="ios"
-                        labelPlacement="floating"
                         inputmode="text">
                         </ion-input>
 
@@ -432,12 +427,11 @@ class="ion-content-w-linear-bg">
                         <ion-input
                         (keyup)="checkPasswordsMatch();"
                         (keydown)="preventWhitespace($event)"
-                        [label]="'INPUTS.CONFIRM_PASSWORD' | translate"
+                        [placeholder]="'INPUTS.CONFIRM_PASSWORD' | translate"
                         [type]="showCreateConfirmPassword ? 'text' : 'password'"
                         formControlName="confirmPassword"
                         enterkeyhint="send"
                         mode="ios"
-                        labelPlacement="floating"
                         inputmode="text">
                         </ion-input>
 
