@@ -250,11 +250,11 @@ mode="ios">
             </div>
           </ion-col>
 
-          <ion-col size="6">
-            <ion-text
-            class="color-gray-text fs-13 line-height-20 txt-lowercase txt-right"
-            mode="ios">
-              <p><span class="fs-16 font-w-bold">{{ short_establishments.length }}</span> {{ 'SHARED.ESTABLISHMENTS' | translate }}<ng-container *ngIf="short_establishments.length > 1">s</ng-container></p>
+          <ion-col size="6" class="txt-right">
+            <ion-text mode="ios">
+              <p class="fs-12 color-gray-mid">
+                <b class="fs-14">{{ short_establishments.length }}</b> <span class="txt-lowercase mg-left-5"><ng-container *ngIf="short_establishments.length === 1">{{ 'SHARED.ESTABLISHMENT' | translate }}</ng-container><ng-container *ngIf="short_establishments.length > 1">{{ 'SHARED.ESTABLISHMENTS' | translate }}</ng-container></span>
+              </p>
             </ion-text>
           </ion-col>
         </ng-container>

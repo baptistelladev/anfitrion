@@ -156,11 +156,11 @@ class="ion-content-w-linear-bg">
             </div>
           </ion-col>
 
-          <ion-col size="6">
-            <ion-text
-            class="color-gray-text fs-13 line-height-20 txt-lowercase txt-right"
-            mode="ios">
-              <p><span class="fs-16 font-w-bold mg-right-5">{{ suggestionsBaixadaSantista?.length }}</span> <ng-container *ngIf="suggestionsBaixadaSantista?.length === 1">{{ 'SHARED.SUGGESTION' | translate }}</ng-container> <ng-container *ngIf="suggestionsBaixadaSantista?.length > 1">{{ 'SHARED.SUGGESTIONS' | translate }}</ng-container></p>
+          <ion-col size="6" class="txt-right">
+            <ion-text mode="ios">
+              <p class="fs-12 color-gray-mid">
+                <b class="fs-14">{{ suggestionsBaixadaSantista?.length }}</b> <span class="txt-lowercase mg-left-5"><ng-container *ngIf="suggestionsBaixadaSantista?.length === 1">{{ 'SHARED.SUGGESTION' | translate }}</ng-container> <ng-container *ngIf="suggestionsBaixadaSantista?.length > 1">{{ 'SHARED.SUGGESTIONS' | translate }}</ng-container></span>  {{ 'SUGGESTIONS_PAGE.IN_BAIXADA' | translate }} Baixada Santista.
+              </p>
             </ion-text>
           </ion-col>
         </ng-container>

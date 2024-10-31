@@ -280,7 +280,11 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     this.getPlaces();
   }
 
-  public getPlaces() {
+  public async getPlaces() {
+    const loading = await this.overlayService.fireLoading();
+
+    await loading.present();
+
     this.places$ = this.placesService
     .getCollection(
       CollectionsEnum.PLACES,
@@ -290,7 +294,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     );
 
     this.placesSubscription = this.places$
-    .subscribe((places: IPlace[]) => {
+    .subscribe( async (places: IPlace[]) => {
       this.places = places;
 
       let compressedInformation = this.places.reduce((acc: any, place) => {
@@ -303,8 +307,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
         feature.atLeastOneLength = compressedInformation[feature.value] ? compressedInformation[feature.value] : 0
       })
 
-      console.log('disparado', this.places);
-
+      await loading.dismiss();
     })
   }
 
