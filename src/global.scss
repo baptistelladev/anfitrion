@@ -226,7 +226,7 @@ hr.rgs-divider {
   }
 
   ion-item {
-    --min-height: 58px;
+    --min-height: 60px;
     overflow: visible;
     --background: transparent;
     --border-width: 1px;
@@ -250,34 +250,23 @@ hr.rgs-divider {
     }
 
     ion-input {
-      .input-wrapper.sc-ion-input-ios {
-        .label-text-wrapper.sc-ion-input-ios {
-          .label-text.sc-ion-input-ios {
-            color: var(--gray-c);
-            transition: all 200ms ease;
-          }
-        }
+      --placeholder-color: var(--gray-c);
+      --placeholder-opacity: 1;
+      --color: var(--gray-text);
+    }
 
-        .native-wrapper.sc-ion-input-ios.sc-ion-input-ios-s {
-          transform: translateY(-10px);
-        }
+    ion-select {
+      &::part(icon) {
+        margin: 0 0 0 10px;
       }
 
-      &.has-focus.input-label-placement-floating, &.has-value.input-label-placement-floating {
+      &::part(label) {
+        color: var(--gray-text)
+      }
 
-        .input-wrapper.sc-ion-input-ios {
-          .label-text-wrapper.sc-ion-input-ios {
-            .label-text.sc-ion-input-ios {
-              transform: translateY(-24px) !important;
-              padding: 0 6px;
-              color: var(--gray-text);
-            }
-          }
-
-          .native-wrapper.sc-ion-input-ios.sc-ion-input-ios-s {
-            transform: translateY(-10px);
-          }
-        }
+      &::part(text) {
+        color: var(--green);
+        font-weight: bold;
       }
     }
   }
