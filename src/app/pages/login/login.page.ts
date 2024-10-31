@@ -14,6 +14,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { QuemSomosPage } from '../quem-somos/quem-somos.page';
 import { Title } from '@angular/platform-browser';
 import { IUSer } from 'src/app/shared/models/IUser';
+import { DotLottie } from '@lottiefiles/dotlottie-web';
+import { AnimationOptions } from 'ngx-lottie';
+import { AnimationItem, LottiePlayer } from 'lottie-web';
 
 @Component({
   selector: 'rgs-login',
@@ -21,6 +24,11 @@ import { IUSer } from 'src/app/shared/models/IUser';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
+
+  public options: AnimationOptions = {
+    path: './../../../assets/movie/anfitrion-around-the-world.json',
+    autoplay: true
+  };
 
   public inputErrors: any = {
     emailAlreadyInUse: {
@@ -94,6 +102,10 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
 
   ionViewWillEnter(): void {
     this.title.setTitle('Login');
+  }
+
+  public animationCreated(animationItem: AnimationItem): void {
+    animationItem.setSpeed(0.8)
   }
 
   /**

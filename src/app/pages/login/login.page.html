@@ -14,6 +14,7 @@ class="ion-content-w-linear-bg">
                   <div class="header-container">
                     <div class="header-logo">
                       <rgs-logo
+                      class="ion-hide"
                       (click)="slideSwiperToFirst()"
                       [asLink]="true"
                       [size]="'big'"
@@ -32,6 +33,17 @@ class="ion-content-w-linear-bg">
             </ion-col>
           </ion-row>
         </ion-grid>
+      </div>
+
+      <div class="lottie-wrapper">
+        <ng-lottie [options]="options" (animationCreated)="animationCreated($event)" />
+
+        <rgs-logo
+        (click)="slideSwiperToFirst()"
+        [asLink]="true"
+        [size]="'big'"
+        [currentLanguage]="currentLanguage">
+        </rgs-logo>
       </div>
 
       <div class="fixed-segments">

@@ -20,12 +20,19 @@ import { provideFirestore } from '@angular/fire/firestore';
 import { getFirestore } from 'firebase/firestore';
 import { environment } from 'src/environments/environment';
 // SWIPER
-import {register} from 'swiper/element/bundle';
 import { provideAuth } from '@angular/fire/auth';
 import { getAuth } from 'firebase/auth';
 import { userReducer } from 'src/app/shared/store/user.state';
+
+// LOTTIE
+import { provideLottieOptions } from 'ngx-lottie';
+import player from 'lottie-web';
+
+// SWIPER JS
+import {register} from 'swiper/element/bundle';
 register();
 
+// NGX TRANSLATE
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -88,7 +95,10 @@ export function createTranslateLoader(http: HttpClient) {
     provideAnalytics(() => getAnalytics()),
     ScreenTrackingService,
     provideFirestore(() => getFirestore()),
-    provideAuth(() => getAuth())
+    provideAuth(() => getAuth()),
+    provideLottieOptions({
+      player: () => player
+    })
   ],
 })
 export class CoreModule { }
