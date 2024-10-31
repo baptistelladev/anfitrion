@@ -24,7 +24,8 @@
     "CHOOSE_TITLE" : ["escolha","uma cidade"],
     "OF_BAIXADA" : ["da"],
     "YOU_ARE_IN" : "você está em",
-    "EXPLORING" : "Explorando"
+    "EXPLORING" : "Explorando",
+    "PLACES_EXPLORING" : "Para quem procura por gastronomia, drinks, etc"
   },
   "WELCOME_TO" : ["Conheça","a Baixada Santista"],
   "ABOUT_US_PAGE" : {
@@ -80,7 +81,7 @@
     "YOUR_BRAND" : "sua marca",
     "LOOKING_FOR" : "Procurando por",
     "BACK_TO_TOP" : ["voltar","para cima"],
-    "ESTABLISHMENTS" : "estabelecimento",
+    "ESTABLISHMENTS" : "estabelecimentos",
     "VERSION" : "versão",
     "SEE_DETAILS" : ["Ver","detalhes"],
     "CANCEL" : "Cancelar",
@@ -136,7 +137,8 @@
     "PIZZERIAS" : "Pizzarias",
     "BURGER_JOINTS" : "Hamburguerias",
     "SWEET_SHOPS" : "Docerias",
-    "TO_KNOW" : "Conhecer"
+    "TO_KNOW" : "Conhecer",
+    "ESTABLISHMENT" : "estabelecimento"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nosso próposito aqui é fazer com que voê economize o seu bem mais precioso:","o tempo"],

@@ -24,7 +24,8 @@
     "CHOOSE_TITLE" : ["choose","a city"],
     "OF_BAIXADA" : ["from"],
     "YOU_ARE_IN": "you are in",
-    "EXPLORING" : "Exploring"
+    "EXPLORING" : "Exploring",
+    "PLACES_EXPLORING" : "For those looking for gastronomy, drinks, etc"
   },
   "WELCOME_TO" : ["Welcome", "to Baixada Santista"],
   "ABOUT_US_PAGE" : {
@@ -80,7 +81,7 @@
     "YOUR_BRAND" : "your brand",
     "LOOKING_FOR" : "Looking for",
     "BACK_TO_TOP" : ["scroll","to top"],
-    "ESTABLISHMENTS" : "establishment",
+    "ESTABLISHMENTS" : "establishments",
     "VERSION" : "version",
     "SEE_DETAILS" : ["see","details"],
     "CANCEL" : "Cancel",
@@ -136,7 +137,8 @@
     "PIZZERIAS": "Pizzerias",
     "BURGER_JOINTS": "Burger Joints",
     "SWEET_SHOPS": "Sweet Shops",
-    "TO_KNOW" : "Get to know"
+    "TO_KNOW" : "Get to know",
+    "ESTABLISHMENT" : "establishment"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Our purpose here is to help you save your most precious asset: ","time"],

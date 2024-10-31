@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AlertController, AlertOptions, ModalController, ModalOptions, ToastController, ToastOptions } from '@ionic/angular';
+import { AlertController, AlertOptions, LoadingController, LoadingOptions, ModalController, ModalOptions, ToastController, ToastOptions } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,7 @@ export class OverlayService {
     private toastCtrl : ToastController,
     private modalCtrl : ModalController,
     private alertCtrl : AlertController,
+    private loadingCtrl : LoadingController
   ) { }
 
   /**
@@ -52,5 +53,20 @@ export class OverlayService {
     })
 
     return alert;
+  }
+
+  /**
+   * @description Dispara o <ion-loading>.
+   * @param options obrigatório do tipo LoadingOptions.
+   * @returns HTMLIonLoading <ion-loading>.
+   */
+  public async fireLoading(options?: LoadingOptions): Promise<HTMLIonLoadingElement> {
+    const loading = await this.loadingCtrl.create({
+      mode: 'ios',
+      spinner: 'lines-sharp',
+      ...options
+    })
+
+    return loading;
   }
 }
