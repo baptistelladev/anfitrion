@@ -6,6 +6,7 @@ import { ILang } from 'src/app/shared/models/ILang';
 import * as AppStore from './../../../shared/store/app.state';
 import { Title } from '@angular/platform-browser';
 import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class SobreNosPage implements OnInit, OnDestroy {
     private navCtrl : NavController,
     private store : Store,
     private title : Title,
-    private analyticsService : AnalyticsService
+    private analyticsService : AnalyticsService,
+    private translateService : TranslateService
   ) { }
 
   ngOnInit() {

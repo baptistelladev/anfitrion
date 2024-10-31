@@ -52,6 +52,7 @@
   },
   "LOGIN_PAGE" : {
     "PAGE_TITLE" : "El anfitrión de la Baixada Santista",
+    "SUB_TITLE" : "el anfitrión de la Baixada Santista",
     "CREATE" : "crear",
     "ACCESS" : "acceder",
     "ACCOUNT" : "cuenta",

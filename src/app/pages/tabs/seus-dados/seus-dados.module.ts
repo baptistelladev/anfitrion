@@ -1,19 +1,15 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
-import { IonicModule } from '@ionic/angular';
-
 import { SeusDadosPageRoutingModule } from './seus-dados-routing.module';
 
 import { SeusDadosPage } from './seus-dados.page';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { ComponentsModule } from 'src/app/shared/components/components.module';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    SeusDadosPageRoutingModule
+    SharedModule,
+    SeusDadosPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [SeusDadosPage]
 })

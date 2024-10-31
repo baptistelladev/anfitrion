@@ -11,7 +11,7 @@ ion-content {
 
       .login-header-wrapper {
         width: 100%;
-        height: 130px;
+        height: 180px;
         position: relative;
 
         .lottie-wrapper {
@@ -28,19 +28,30 @@ ion-content {
             width: 100%;
           }
 
-          rgs-logo {
+          .logo-wrapper {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%,-50%);
+            @include flexbox(center, center, column);
+            padding: 0 0 50px 0;
+            width: 100%;
 
-            &::ng-deep {
-              ion-text {
-                p {
-                  &.big {
-                    font-size: clamp(26px, 3.3vw, 42px);
+            rgs-logo {
+              &::ng-deep {
+                ion-text {
+                  p {
+                    &.big {
+                      font-size: 26px;
+                    }
                   }
                 }
+              }
+            }
+
+            ion-text {
+              p {
+                margin-top: -5px;
               }
             }
           }

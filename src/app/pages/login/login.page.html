@@ -38,12 +38,18 @@ class="ion-content-w-linear-bg">
       <div class="lottie-wrapper">
         <ng-lottie [options]="options" (animationCreated)="animationCreated($event)" />
 
-        <rgs-logo
-        (click)="slideSwiperToFirst()"
-        [asLink]="true"
-        [size]="'big'"
-        [currentLanguage]="currentLanguage">
-        </rgs-logo>
+        <div class="logo-wrapper">
+          <rgs-logo
+          (click)="slideSwiperToFirst()"
+          [asLink]="true"
+          [size]="'big'"
+          [currentLanguage]="currentLanguage">
+          </rgs-logo>
+
+          <ion-text mode="ios">
+            <p class="fs-13 color-white">{{ 'LOGIN_PAGE.SUB_TITLE' | translate }}</p>
+          </ion-text>
+        </div>
       </div>
 
       <div class="fixed-segments">
