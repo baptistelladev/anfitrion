@@ -19,15 +19,15 @@ ion-content {
 }
 
 ion-text {
-  line-height: clamp(28px, 3.8vw, 38px);
+  line-height: clamp(28px, 3.8vw, 28px);
 
   p {
     &.text {
-      font-size: clamp(16px, 1.2vw, 22px);
+      font-size: clamp(16px, 1vw, 18px);
     }
 
     &.title {
-      font-size: clamp(32px, 4vw, 48px);
+      font-size: clamp(32px, 4vw, 34px);
     }
   }
 }

@@ -261,7 +261,8 @@ hr.rgs-divider {
       }
 
       &::part(label) {
-        color: var(--gray-text)
+        color: var(--gray-mid);
+        font-size: 14px;
       }
 
       &::part(text) {

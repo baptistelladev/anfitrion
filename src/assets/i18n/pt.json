@@ -177,7 +177,7 @@
       "TITLE" : "Atenção",
       "TEXT" : ["Estes horários são fornecidos pelo estabelecimento,","mas podem variar sem aviso prévio, principalmente em feriados e vésperas de feriados"]
     },
-    "JUST_IN_CITY_ADVISE" : ["A nossa meta é atuar em toda a baixada santista, mas é importante começar por um ponto específico. Atualmente, estamos focados em São Vicente","e, por isso, já estabelecemos a cidade para você. A expansão acontecerá de forma gradual"]
+    "JUST_IN_CITY_ADVISE" : ["Queremos atuar em toda a Baixada Santista e estamos trabalhando para que isso aconteça de forma gradual,","mas gostaríamos de ressaltar que neste momento liberamos somente para Santos e São Vicente"]
   },
   "MENU_PAGE" : {
     "HEADER_TITLE" : ["sessão","menu"],
