@@ -27,7 +27,8 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
 
   public options: AnimationOptions = {
     path: './../../../assets/movie/anfitrion-around-the-world.json',
-    autoplay: true
+    autoplay: true,
+    loop: true
   };
 
   public inputErrors: any = {
