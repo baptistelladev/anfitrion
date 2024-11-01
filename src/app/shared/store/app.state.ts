@@ -15,7 +15,8 @@ export interface IAppState {
   parkings: IParking[],
   appInfoNetworks: ISocialNetwork[],
   appInfoContact: IContact,
-  currentSuggestion: ISuggestion
+  currentSuggestion: ISuggestion,
+  hasConnection: boolean
 }
 
 export const appInitialState: IAppState = {
@@ -232,7 +233,8 @@ export const appInitialState: IAppState = {
       en: '',
       es: ''
     }
-  }
+  },
+  hasConnection: true
 }
 
 // ACTIONS
@@ -271,6 +273,11 @@ export const setCurrentSuggestion = createAction(
   props<{ suggestion: ISuggestion }>()
 )
 
+export const setHasConnection = createAction(
+  '[APP] Identificar se está com conexão á internet',
+  props<{ hasConnection: boolean }>()
+)
+
 export const appReducer = createReducer(
   appInitialState,
   on(
@@ -300,6 +307,10 @@ export const appReducer = createReducer(
   on(
     setCurrentSuggestion,
     (state, { suggestion }): IAppState => ({ ...state, currentSuggestion: suggestion })
+  ),
+  on(
+    setHasConnection,
+    (state, { hasConnection }): IAppState => ({ ...state, hasConnection: hasConnection })
   )
 )
 
@@ -339,4 +350,9 @@ export const selectParkings = createSelector(
 export const selectCurrentSuggestion = createSelector(
   selectAppState,
   (state: IAppState) => state.currentSuggestion
+);
+
+export const selectHasConnection = createSelector(
+  selectAppState,
+  (state: IAppState) => state.hasConnection
 );
