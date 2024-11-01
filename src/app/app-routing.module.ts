@@ -30,6 +30,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/quem-somos/quem-somos.module').then( m => m.QuemSomosPageModule)
   },
   {
+    path: 'sem-internet',
+    loadChildren: () => import('./pages/sem-internet/sem-internet.module').then( m => m.SemInternetPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/pagina-nao-existe/pagina-nao-existe.module').then( m => m.PaginaNaoExistePageModule)
   }

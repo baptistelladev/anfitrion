@@ -14,6 +14,7 @@ import { MOCK_CITIES } from './shared/mocks/MockCities';
 import { ActionPerformed, PushNotificationSchema, PushNotifications, Token } from '@capacitor/push-notifications';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { Platform } from '@ionic/angular';
+import { ConnectionService } from './core/services/connection.service';
 
 
 @Component({
@@ -34,7 +35,8 @@ export class AppComponent implements OnInit {
     private translate : TranslateService,
     private store : Store,
     private appInfoService : AppInfoService,
-    private platform : Platform
+    private platform : Platform,
+    private connectionService : ConnectionService
   ) {}
 
   async ngOnInit() {
