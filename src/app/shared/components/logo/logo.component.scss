@@ -14,34 +14,6 @@
 
       &.big {
         font-size: 26px;
-
-        &::before {
-          font-size: 16px;
-        }
-
-        &::after {
-          font-size: 16px;
-        }
-      }
-
-      &::before,
-      &::after {
-        content: '';
-        color: var(--white);
-        position: absolute;
-        content: '';
-      }
-
-      &::before {
-        font-size: 14px;
-        left: 0;
-        top: -12px;
-      }
-
-      &::after {
-        font-size: 14px;
-        right: 0;
-        bottom: -12px;
       }
     }
   }
