@@ -11,6 +11,8 @@ import { IAppInfo } from './shared/models/IAppInfo';
 import { CollectionsEnum } from './shared/enums/Collection';
 import { ICity } from './shared/models/ICity';
 import { MOCK_CITIES } from './shared/mocks/MockCities';
+import { ActionPerformed, PushNotificationSchema, PushNotifications, Token } from '@capacitor/push-notifications';
+
 
 @Component({
   selector: 'rgs-root',
@@ -94,6 +96,8 @@ export class AppComponent implements OnInit {
       }
     })
 
+    await this.initializePushNotifications();
+
     /*
     console.info(
       `\n%c⚠️ Xô rapaliga ⚠️%c \n${'vai trabalhar,vai...'} \n\n%cFica inspecionando código alheio.\nJá que você é curioso, pelo menos segue no insta https://www.instagram.com/ruagastronomicadesantos/`,
@@ -118,5 +122,44 @@ export class AppComponent implements OnInit {
         if (appInfo.contact) { this.store.dispatch(AppStore.setAppInfoContact({ contact: appInfo.contact })); }
       }
     })
+  }
+
+  private async initializePushNotifications() {
+    console.log('Initializing Push Notifications');
+
+    try {
+      const permissions = await PushNotifications.requestPermissions();
+      if (permissions.receive === 'granted') {
+        await PushNotifications.register();
+        this.setupPushListeners();
+        console.log('Push notifications registered successfully');
+      } else {
+        console.warn('Push notifications permission not granted');
+      }
+    } catch (error) {
+      console.error('Error requesting push notifications permissions:', error);
+    }
+  }
+
+  private setupPushListeners() {
+    // Listener for successful registration
+    PushNotifications.addListener('registration', (token: Token) => {
+      alert(token.value);
+    });
+
+    // Listener for registration errors
+    PushNotifications.addListener('registrationError', (error: any) => {
+      console.error('Error on push registration:', error);
+    });
+
+    // Listener for received notifications when app is open
+    PushNotifications.addListener('pushNotificationReceived', (notification: PushNotificationSchema) => {
+      console.log('Push notification received:', notification);
+    });
+
+    // Listener for action performed on notification
+    PushNotifications.addListener('pushNotificationActionPerformed', (notification: ActionPerformed) => {
+      console.log('Push notification action performed:', notification);
+    });
   }
 }
