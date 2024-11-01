@@ -25,7 +25,7 @@ import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 
 
 @Component({
-  selector: 'rgs-estabelecimento',
+  selector: 'anfitrion-estabelecimento',
   templateUrl: './estabelecimento.page.html',
   styleUrls: ['./estabelecimento.page.scss'],
 })
@@ -155,7 +155,7 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
       mode: 'ios',
       subHeader: `${this.translate.instant('SHARED.COPIED_ADRESS')}`,
       message: message,
-      cssClass: 'rgs-alert',
+      cssClass: 'anfitrion-alert',
       buttons: [
         {
           role: 'cancel',
@@ -186,7 +186,7 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
   public async redirectToWhatsapp(): Promise<HTMLIonAlertElement> {
     const alert = await this.alertCtrl.create({
       mode: 'ios',
-      cssClass: 'rgs-alert',
+      cssClass: 'anfitrion-alert',
       subHeader: 'WhatsApp',
       message: `${this.translate.instant('SHARED.I_WILL_REDIRECT_YOU')} <b>${this.establishment.name}${this.currentLanguage.value === 'en' ? "'s WhatsApp," : ","}</b> ${this.translate.instant('SHARED.OK_QUESTION')}`,
       buttons: [
@@ -229,7 +229,7 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
 
   public async redirectToInstagram(): Promise<HTMLIonAlertElement> {
     const alert = await this.alertCtrl.create({
-      cssClass: 'rgs-alert',
+      cssClass: 'anfitrion-alert',
       mode: 'ios',
       subHeader: 'Instagram',
       message: `${this.translate.instant('SHARED.I_WILL_REDIRECT_YOU_INSTAGRAM')} <b>${this.establishment.name}${this.currentLanguage.value === 'en' ? "'s Instagram," : ","}</b> ${this.translate.instant('SHARED.OK_QUESTION')}`,
@@ -261,7 +261,7 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
   public async itIsntPremium(): Promise<HTMLIonAlertElement | undefined> {
     if (!this.establishment.isPremium) {
       const alert = await this.alertCtrl.create({
-        cssClass: 'rgs-alert',
+        cssClass: 'anfitrion-alert',
         mode: 'ios',
         message: `<b>${this.establishment.name}</b> ${this.translate.instant('SHARED.IS_NOT_PREMIUM')}`,
         buttons: [

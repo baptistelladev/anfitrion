@@ -3,7 +3,7 @@ import { NavController } from '@ionic/angular';
 import { ILang } from '../../models/ILang';
 
 @Component({
-  selector: 'rgs-language-button',
+  selector: 'anfitrion-language-button',
   templateUrl: './language-button.component.html',
   styleUrls: ['./language-button.component.scss'],
 })

@@ -11,7 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'rgs-esqueci-minha-senha',
+  selector: 'anfitrion-esqueci-minha-senha',
   templateUrl: './esqueci-minha-senha.page.html',
   styleUrls: ['./esqueci-minha-senha.page.scss'],
 })

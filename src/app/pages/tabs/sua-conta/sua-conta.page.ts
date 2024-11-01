@@ -10,7 +10,7 @@ import * as UserStore from './../../../shared/store/user.state';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'rgs-sua-conta',
+  selector: 'anfitrion-sua-conta',
   templateUrl: './sua-conta.page.html',
   styleUrls: ['./sua-conta.page.scss'],
 })

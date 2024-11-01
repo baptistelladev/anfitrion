@@ -12,7 +12,7 @@ import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 
 
 @Component({
-  selector: 'rgs-contato',
+  selector: 'anfitrion-contato',
   templateUrl: './contato.page.html',
   styleUrls: ['./contato.page.scss'],
 })
@@ -89,7 +89,7 @@ export class ContatoPage implements OnInit, OnDestroy {
 
   public async showActionAlert(tipo: 'whatsapp' | 'email'): Promise<HTMLIonAlertElement> {
     const alert = await this.alertCtrl.create({
-      cssClass: 'rgs-alert',
+      cssClass: 'anfitrion-alert',
       mode: 'ios',
       subHeader: `${tipo === 'whatsapp' ? 'WhatsApp' : 'E-mail'}`,
       message: `

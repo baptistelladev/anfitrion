@@ -10,7 +10,7 @@ import * as UserStore from './../../../shared/store/user.state';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'rgs-seus-dados',
+  selector: 'anfitrion-seus-dados',
   templateUrl: './seus-dados.page.html',
   styleUrls: ['./seus-dados.page.scss'],
 })

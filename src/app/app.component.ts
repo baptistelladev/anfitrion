@@ -13,10 +13,11 @@ import { ICity } from './shared/models/ICity';
 import { MOCK_CITIES } from './shared/mocks/MockCities';
 import { ActionPerformed, PushNotificationSchema, PushNotifications, Token } from '@capacitor/push-notifications';
 import { StatusBar, Style } from '@capacitor/status-bar';
+import { Platform } from '@ionic/angular';
 
 
 @Component({
-  selector: 'rgs-root',
+  selector: 'anfitrion-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
@@ -32,73 +33,80 @@ export class AppComponent implements OnInit {
     private storageService : StorageService,
     private translate : TranslateService,
     private store : Store,
-    private appInfoService : AppInfoService
+    private appInfoService : AppInfoService,
+    private platform : Platform
   ) {}
 
   async ngOnInit() {
-    this.getAppInfo();
-    this.setStatusBarLook();
 
-    await this.storageService.createStorage();
+    await this.platform.ready()
+    .then(async (res: string) => {
+      this.getAppInfo();
 
-    await this.storageService.getStorageKey(APP_LANG_KEY).then((res: string) => {
-      if (res === null || !res) {
+      await this.storageService.createStorage();
 
-        let foundLang = MOCK_LANGS.find((lang: ILang) => {
-          return lang.value === 'pt';
-        })
+      await this.storageService.getStorageKey(APP_LANG_KEY).then((res: string) => {
+        if (res === null || !res) {
 
-        if (foundLang) {
-          this.currentLanguage = foundLang;
+          let foundLang = MOCK_LANGS.find((lang: ILang) => {
+            return lang.value === 'pt';
+          })
+
+          if (foundLang) {
+            this.currentLanguage = foundLang;
+          }
+
+          this.translate.use(this.currentLanguage.value);
+          this.storageService.setStorageKey(APP_LANG_KEY, this.currentLanguage.value);
+          this.store.dispatch(AppStore.setCurrentLanguage({ language: this.currentLanguage }));
+        } else {
+          let foundLang = MOCK_LANGS.find((lang: ILang) => {
+            return lang.value === res;
+          })
+
+          if (foundLang) {
+            this.currentLanguage = foundLang;
+          }
+
+          this.translate.use(this.currentLanguage.value);
+          this.storageService.setStorageKey(APP_LANG_KEY, this.currentLanguage.value);
+          this.store.dispatch(AppStore.setCurrentLanguage({ language: this.currentLanguage }));
         }
+      })
 
-        this.translate.use(this.currentLanguage.value);
-        this.storageService.setStorageKey(APP_LANG_KEY, this.currentLanguage.value);
-        this.store.dispatch(AppStore.setCurrentLanguage({ language: this.currentLanguage }));
-      } else {
-        let foundLang = MOCK_LANGS.find((lang: ILang) => {
-          return lang.value === res;
-        })
+      await this.storageService.getStorageKey(CURRENT_CITY).then((res: string) => {
+        if (res === null || !res) {
 
-        if (foundLang) {
-          this.currentLanguage = foundLang;
+          let foundCity = this.MOCK_CITIES.find((city: ICity) => {
+            return city.value === 'SANTOS';
+          })
+
+          if (foundCity) {
+            this.currentCity = foundCity;
+          }
+
+          this.storageService.setStorageKey(CURRENT_CITY, this.currentCity.value)
+          this.store.dispatch(AppStore.setCurrentCity({ city: this.currentCity }));
+
+        } else {
+          let foundCity = this.MOCK_CITIES.find((city: ICity) => {
+            return city.value === res;
+          })
+
+          if (foundCity) {
+            this.currentCity = foundCity;
+          }
+
+          this.storageService.setStorageKey(CURRENT_CITY, this.currentCity.value)
+          this.store.dispatch(AppStore.setCurrentCity({ city: this.currentCity }));
         }
+      })
 
-        this.translate.use(this.currentLanguage.value);
-        this.storageService.setStorageKey(APP_LANG_KEY, this.currentLanguage.value);
-        this.store.dispatch(AppStore.setCurrentLanguage({ language: this.currentLanguage }));
+      if (this.platform.is('mobile') ) {
+        await this.initializePushNotifications();
+        this.setStatusBarLook();
       }
     })
-
-    await this.storageService.getStorageKey(CURRENT_CITY).then((res: string) => {
-      if (res === null || !res) {
-
-        let foundCity = this.MOCK_CITIES.find((city: ICity) => {
-          return city.value === 'SANTOS';
-        })
-
-        if (foundCity) {
-          this.currentCity = foundCity;
-        }
-
-        this.storageService.setStorageKey(CURRENT_CITY, this.currentCity.value)
-        this.store.dispatch(AppStore.setCurrentCity({ city: this.currentCity }));
-
-      } else {
-        let foundCity = this.MOCK_CITIES.find((city: ICity) => {
-          return city.value === res;
-        })
-
-        if (foundCity) {
-          this.currentCity = foundCity;
-        }
-
-        this.storageService.setStorageKey(CURRENT_CITY, this.currentCity.value)
-        this.store.dispatch(AppStore.setCurrentCity({ city: this.currentCity }));
-      }
-    })
-
-    await this.initializePushNotifications();
   }
 
   public setStatusBarLook(): void {

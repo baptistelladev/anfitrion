@@ -17,7 +17,7 @@ import Swiper from 'swiper';
 import { ICity } from 'src/app/shared/models/ICity';
 
 @Component({
-  selector: 'rgs-lugar-na-cidade',
+  selector: 'anfitrion-lugar-na-cidade',
   templateUrl: './lugar-na-cidade.page.html',
   styleUrls: ['./lugar-na-cidade.page.scss'],
 })

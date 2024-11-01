@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 @Component({
-  selector: 'rgs-ajude-nosso-projeto',
+  selector: 'anfitrion-ajude-nosso-projeto',
   templateUrl: './ajude-nosso-projeto.page.html',
   styleUrls: ['./ajude-nosso-projeto.page.scss'],
 })

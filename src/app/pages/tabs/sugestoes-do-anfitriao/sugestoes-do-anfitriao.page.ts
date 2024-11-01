@@ -12,7 +12,7 @@ import { SuggestionsEnum } from 'src/app/shared/enums/Suggestions';
 import { ISuggestion } from 'src/app/shared/models/ISuggestion';
 
 @Component({
-  selector: 'rgs-sugestoes-do-anfitriao',
+  selector: 'anfitrion-sugestoes-do-anfitriao',
   templateUrl: './sugestoes-do-anfitriao.page.html',
   styleUrls: ['./sugestoes-do-anfitriao.page.scss'],
 })

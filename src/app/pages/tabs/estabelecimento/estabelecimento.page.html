@@ -17,7 +17,7 @@
           </ion-col>
 
           <ion-col size="3" class="txt-right">
-            <rgs-language-button [currentLanguage]="currentLanguage"></rgs-language-button>
+            <anfitrion-language-button [currentLanguage]="currentLanguage"></anfitrion-language-button>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -78,7 +78,7 @@
                     shape="round"
                     [title]="('SHARED.CALL_WHATSAPP.0' | translate) + ' ' + ('SHARED.CALL_WHATSAPP.1' | translate)"
                     fill="solid"
-                    class="rgs-main-solid linkt-btn">
+                    class="anfitrion-main-solid linkt-btn">
                       <ion-icon name="logo-whatsapp" class="mg-right-5"></ion-icon>{{ 'SHARED.CALL_WHATSAPP.0' | translate }} <b class="mg-left-5">{{ 'SHARED.CALL_WHATSAPP.1' | translate }}</b>
                     </ion-button>
                   </ion-col>
@@ -90,7 +90,7 @@
                     shape="round"
                     [title]="('SHARED.SEE_FOOD.0' | translate) + ' ' + ('SHARED.SEE_FOOD.1' | translate)"
                     fill="solid"
-                    class="rgs-white-solid linkt-btn">
+                    class="anfitrion-white-solid linkt-btn">
                       <ion-icon name="receipt-outline" class="mg-right-8"></ion-icon>{{ 'SHARED.SEE_FOOD.0' | translate }} <b class="mg-left-5">{{ 'SHARED.SEE_FOOD.1' | translate }}</b>
                     </ion-button>
                   </ion-col>
@@ -104,7 +104,7 @@
                     shape="round"
                     [title]="('SHARED.SEE_ON_INSTAGRAM.0' | translate) + ' ' + ('SHARED.SEE_ON_INSTAGRAM.1' | translate)"
                     fill="solid"
-                    class="rgs-white-solid linkt-btn">
+                    class="anfitrion-white-solid linkt-btn">
                       <ion-icon name="logo-instagram" class="mg-right-8"></ion-icon>{{ 'SHARED.SEE_ON_INSTAGRAM.0' | translate }} <b class="mg-left-5">{{ 'SHARED.SEE_ON_INSTAGRAM.1' | translate }}</b>
                     </ion-button>
                   </ion-col>
@@ -131,7 +131,7 @@
           <ng-container *ngIf="establishment.mainType.value === PlaceTypeEnum.RESTAURANTE">
             <ion-col size="12" class="mg-top-32">
               <ion-text mode="ios">
-                <hr class="rgs-divider">
+                <hr class="anfitrion-divider">
               </ion-text>
             </ion-col>
 
@@ -152,7 +152,7 @@
 
           <ion-col size="12">
             <ion-text mode="ios">
-              <hr class="rgs-divider">
+              <hr class="anfitrion-divider">
             </ion-text>
           </ion-col>
 
@@ -180,7 +180,7 @@
 
             <ion-col size="12">
               <ion-text mode="ios">
-                <hr class="rgs-divider">
+                <hr class="anfitrion-divider">
               </ion-text>
             </ion-col>
           </ng-container>
@@ -210,7 +210,7 @@
 
             <ion-col size="12">
               <ion-text mode="ios">
-                <hr class="rgs-divider">
+                <hr class="anfitrion-divider">
               </ion-text>
             </ion-col>
 
@@ -234,7 +234,7 @@
 
             <ion-col size="12">
               <ion-text mode="ios">
-                <hr class="rgs-divider">
+                <hr class="anfitrion-divider">
               </ion-text>
             </ion-col>
 
@@ -258,7 +258,7 @@
 
             <ion-col size="12">
               <ion-text mode="ios">
-                <hr class="rgs-divider">
+                <hr class="anfitrion-divider">
               </ion-text>
             </ion-col>
 
@@ -282,7 +282,7 @@
 
             <ion-col size="12">
               <ion-text mode="ios">
-                <hr class="rgs-divider">
+                <hr class="anfitrion-divider">
               </ion-text>
             </ion-col>
 
@@ -306,7 +306,7 @@
 
             <ion-col size="12">
               <ion-text mode="ios">
-                <hr class="rgs-divider">
+                <hr class="anfitrion-divider">
               </ion-text>
             </ion-col>
           </ng-container>
@@ -365,7 +365,7 @@
 
           <ion-col size="12">
             <ion-text mode="ios">
-              <hr class="rgs-divider">
+              <hr class="anfitrion-divider">
             </ion-text>
           </ion-col>
 
@@ -377,22 +377,22 @@
               shape="round"
               [title]="('SHARED.BACK_TO_TOP.0' | translate) + ' ' + ('SHARED.BACK_TO_TOP.1' | translate)"
               fill="clear"
-              class="rgs-main-solid mg-bottom-16 fs-14">
+              class="anfitrion-main-solid mg-bottom-16 fs-14">
                 {{ 'SHARED.BACK_TO_TOP.0' | translate }} <b class="mg-left-5">{{ 'SHARED.BACK_TO_TOP.1' | translate }}</b> <ion-icon name="chevron-up-outline" class="mg-left-5"></ion-icon>
               </ion-button>
             </div>
           </ion-col>
 
           <ion-col size="12">
-            <rgs-made-w-love [centered]="true"></rgs-made-w-love>
+            <anfitrion-made-w-love [centered]="true"></anfitrion-made-w-love>
           </ion-col>
 
           <ion-col size="12" class="no-pad-top">
-            <rgs-social-networks [centered]="true"></rgs-social-networks>
+            <anfitrion-social-networks [centered]="true"></anfitrion-social-networks>
           </ion-col>
 
           <ion-col size="12" class="mg-bottom-16">
-            <rgs-copyright></rgs-copyright>
+            <anfitrion-copyright></anfitrion-copyright>
           </ion-col>
         </ion-row>
       </ion-grid>

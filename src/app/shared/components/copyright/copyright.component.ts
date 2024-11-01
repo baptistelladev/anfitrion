@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'rgs-copyright',
+  selector: 'anfitrion-copyright',
   templateUrl: './copyright.component.html',
   styleUrls: ['./copyright.component.scss'],
 })

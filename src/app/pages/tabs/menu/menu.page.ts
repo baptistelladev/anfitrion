@@ -13,7 +13,7 @@ import * as AppStore from './../../../shared/store/app.state';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'rgs-menu',
+  selector: 'anfitrion-menu',
   templateUrl: './menu.page.html',
   styleUrls: ['./menu.page.scss'],
 })

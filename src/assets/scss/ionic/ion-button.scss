@@ -26,7 +26,7 @@ ion-button {
     --color: var(--green);
   }
 
-  &.rgs-main-solid {
+  &.anfitrion-main-solid {
     --background: linear-gradient(.351turn,#769834 43.71%,#547D0E 58.8%);
     --color: var(--white);
     --padding-end: 12px;
@@ -38,7 +38,7 @@ ion-button {
     font-weight: normal;
   }
 
-  &.rgs-white-solid {
+  &.anfitrion-white-solid {
     --background: var(--white);
     --color: var(--gray-text);
     --padding-end: 12px;
@@ -50,7 +50,7 @@ ion-button {
     font-weight: normal;
   }
 
-  &.rgs-gray-solid {
+  &.anfitrion-gray-solid {
     --background: var(--gray-2);
     --color: var(--white);
     --padding-end: 16px;
