@@ -139,7 +139,10 @@
     "BURGER_JOINTS": "Burger Joints",
     "SWEET_SHOPS": "Sweet Shops",
     "TO_KNOW" : "Get to know",
-    "ESTABLISHMENT" : "establishment"
+    "ESTABLISHMENT" : "establishment",
+    "WITHOUT_INTERNET" : "you are without an internet connection",
+    "NOT_FOUND" : "We couldn't find",
+    "TRY_ANOTHER_CITY" : "try another city"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Our purpose here is to help you save your most precious asset: ","time"],

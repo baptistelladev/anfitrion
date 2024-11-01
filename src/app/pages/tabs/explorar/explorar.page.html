@@ -107,7 +107,11 @@ class="ion-content-w-linear-bg">
           <ion-col size="12" *ngIf="places && places.length === 0">
             <ion-text mode="ios">
               <p class="fs-14 color-gray-text font-w-thin">
-                Não encontramos <span class="txt-lowercase">{{ 'SHARED.PLACES' | translate }}</span> {{ currentCity.in[currentLanguage.value] }} {{ currentCity.name }}.
+                {{ 'SHARED.NOT_FOUND' | translate }} <span class="txt-lowercase">{{ 'SHARED.PLACES' | translate }}</span> {{ currentCity.in[currentLanguage.value] }} {{ currentCity.name }}.
+              </p>
+
+              <p class="fs-14 pad-top-16">
+                <a href="javascript:void(0)" (click)="openCityModal()" [title]="'SHARED.TRY_ANOTHER_CITY' | translate" class="send-feedback">{{ 'SHARED.TRY_ANOTHER_CITY' | translate }}<ion-icon name="arrow-forward" class="mg-left-5"></ion-icon></a>
               </p>
             </ion-text>
           </ion-col>
@@ -163,7 +167,7 @@ class="ion-content-w-linear-bg">
       <ion-col size="12" size-md="6">
         <ion-item lines="none" class="ion-bg-transparent item-title-w-icon">
           <ion-text
-          class="txt-left color-gray-text full-width icon-title-text without-icon d-block mg-bottom-8 has-icon"
+          class="txt-left color-gray-text full-width without-icon d-block mg-bottom-8 has-icon"
           mode="ios">
             <h2 class="font-baloo fs-20">
               <ion-icon name="chatbubbles-outline"></ion-icon>
@@ -175,7 +179,7 @@ class="ion-content-w-linear-bg">
             </p>
 
             <p class="fs-14 pad-top-16">
-              <a href="javascript:void(0)" (click)="navToContactPage()" [title]="'INICIO_PAGE.FEEDBACK.SEND_FEEDBACK' | translate" class="send-feedback">{{ 'INICIO_PAGE.FEEDBACK.SEND_FEEDBACK' | translate }} <ion-icon name="arrow-forward"></ion-icon></a>
+              <a href="javascript:void(0)" (click)="navToContactPage()" [title]="'INICIO_PAGE.FEEDBACK.SEND_FEEDBACK' | translate" class="send-feedback">{{ 'INICIO_PAGE.FEEDBACK.SEND_FEEDBACK' | translate }}<ion-icon name="arrow-forward" class="mg-left-5"></ion-icon></a>
             </p>
           </ion-text>
         </ion-item>

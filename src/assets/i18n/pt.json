@@ -139,7 +139,10 @@
     "BURGER_JOINTS" : "Hamburguerias",
     "SWEET_SHOPS" : "Docerias",
     "TO_KNOW" : "Conhecer",
-    "ESTABLISHMENT" : "estabelecimento"
+    "ESTABLISHMENT" : "estabelecimento",
+    "WITHOUT_INTERNET" : "você está sem internet",
+    "NOT_FOUND" : "Não encontramos",
+    "TRY_ANOTHER_CITY" : "tente outra cidade"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nosso próposito aqui é fazer com que voê economize o seu bem mais precioso:","o tempo"],
