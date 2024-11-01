@@ -23,7 +23,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SuggestionsEnum } from 'src/app/shared/enums/Suggestions';
 
 @Component({
-  selector: 'rgs-sugestao',
+  selector: 'anfitrion-sugestao',
   templateUrl: './sugestao.page.html',
   styleUrls: ['./sugestao.page.scss'],
 })

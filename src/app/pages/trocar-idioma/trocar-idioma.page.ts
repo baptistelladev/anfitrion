@@ -14,7 +14,7 @@ import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 import { StorageService } from 'src/app/core/services/storage.service';
 
 @Component({
-  selector: 'rgs-trocar-idioma',
+  selector: 'anfitrion-trocar-idioma',
   templateUrl: './trocar-idioma.page.html',
   styleUrls: ['./trocar-idioma.page.scss'],
 })

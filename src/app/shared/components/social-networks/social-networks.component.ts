@@ -8,7 +8,7 @@ import { NetworksEnum } from '../../enums/Networks';
 
 
 @Component({
-  selector: 'rgs-social-networks',
+  selector: 'anfitrion-social-networks',
   templateUrl: './social-networks.component.html',
   styleUrls: ['./social-networks.component.scss'],
 })

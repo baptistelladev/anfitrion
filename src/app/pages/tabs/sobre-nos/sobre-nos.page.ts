@@ -10,7 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
-  selector: 'rgs-sobre-nos',
+  selector: 'anfitrion-sobre-nos',
   templateUrl: './sobre-nos.page.html',
   styleUrls: ['./sobre-nos.page.scss'],
 })

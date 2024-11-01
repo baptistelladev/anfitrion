@@ -11,7 +11,7 @@ import { CURRENT_CITY } from 'src/app/shared/consts/keys';
 
 
 @Component({
-  selector: 'rgs-cidades',
+  selector: 'anfitrion-cidades',
   templateUrl: './cidades.page.html',
   styleUrls: ['./cidades.page.scss'],
 })

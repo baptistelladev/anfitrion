@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'rgs-adsense',
+  selector: 'anfitrion-adsense',
   templateUrl: './adsense.component.html',
   styleUrls: ['./adsense.component.scss'],
 })

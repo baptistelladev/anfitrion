@@ -19,7 +19,7 @@ import { AnimationOptions } from 'ngx-lottie';
 import { AnimationItem, LottiePlayer } from 'lottie-web';
 
 @Component({
-  selector: 'rgs-login',
+  selector: 'anfitrion-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })

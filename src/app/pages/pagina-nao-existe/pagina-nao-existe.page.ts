@@ -6,7 +6,7 @@ import { AnalyticsService } from 'src/app/core/services/firebase/analytics.servi
 import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 
 @Component({
-  selector: 'rgs-pagina-nao-existe',
+  selector: 'anfitrion-pagina-nao-existe',
   templateUrl: './pagina-nao-existe.page.html',
   styleUrls: ['./pagina-nao-existe.page.scss'],
 })

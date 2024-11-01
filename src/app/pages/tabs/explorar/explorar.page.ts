@@ -18,7 +18,7 @@ import { IPlace } from 'src/app/shared/models/IPlace';
 import { CollectionsEnum } from 'src/app/shared/enums/Collection';
 
 @Component({
-  selector: 'rgs-explorar',
+  selector: 'anfitrion-explorar',
   templateUrl: './explorar.page.html',
   styleUrls: ['./explorar.page.scss'],
 })

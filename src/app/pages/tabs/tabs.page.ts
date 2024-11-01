@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ITab } from 'src/app/shared/models/ITab';
 
 @Component({
-  selector: 'rgs-tabs',
+  selector: 'anfitrion-tabs',
   templateUrl: './tabs.page.html',
   styleUrls: ['./tabs.page.scss'],
 })

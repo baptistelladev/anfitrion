@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ILang } from '../../models/ILang';
 
 @Component({
-  selector: 'rgs-logo',
+  selector: 'anfitrion-logo',
   templateUrl: './logo.component.html',
   styleUrls: ['./logo.component.scss'],
 })

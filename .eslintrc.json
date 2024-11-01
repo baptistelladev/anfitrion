@@ -32,7 +32,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "rgs",
+            "prefix": "anfitrion",
             "style": "kebab-case"
           }
         ],

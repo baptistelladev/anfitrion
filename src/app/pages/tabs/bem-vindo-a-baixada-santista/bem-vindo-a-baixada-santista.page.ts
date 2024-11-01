@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, Renderer2, AfterViewInit } from '@angular
 import { NavController } from '@ionic/angular';
 
 @Component({
-  selector: 'rgs-bem-vindo-a-baixada-santista',
+  selector: 'anfitrion-bem-vindo-a-baixada-santista',
   templateUrl: './bem-vindo-a-baixada-santista.page.html',
   styleUrls: ['./bem-vindo-a-baixada-santista.page.scss'],
 })

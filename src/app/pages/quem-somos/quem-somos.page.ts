@@ -4,7 +4,7 @@ import { ILang } from 'src/app/shared/models/ILang';
 import Swiper from 'swiper';
 
 @Component({
-  selector: 'rgs-quem-somos',
+  selector: 'anfitrion-quem-somos',
   templateUrl: './quem-somos.page.html',
   styleUrls: ['./quem-somos.page.scss'],
 })

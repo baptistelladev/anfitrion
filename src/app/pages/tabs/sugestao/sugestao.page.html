@@ -22,7 +22,7 @@ mode="ios">
               </div>
 
               <div class="language-container">
-                <rgs-language-button [currentLanguage]="currentLanguage"></rgs-language-button>
+                <anfitrion-language-button [currentLanguage]="currentLanguage"></anfitrion-language-button>
               </div>
             </div>
           </ion-col>
@@ -82,7 +82,7 @@ mode="ios">
                 [okText]="'Filtrar'"
                 #filterSelector
                 [label]="'SHARED.FILTER' | translate"
-                class="hide-element rgs-selector min-height-0"
+                class="hide-element anfitrion-selector min-height-0"
                 (ionChange)="filterByCharacteristic($event)"
                 [(ngModel)]="selectedFilter">
                   <ion-select-option
@@ -232,7 +232,7 @@ mode="ios">
               [disabled]="hideLeftControl"
               (click)="slideToPrev()"
               mode="md"
-              class="rgs-main-solid fs-14 mg-right-8"
+              class="anfitrion-main-solid fs-14 mg-right-8"
               shape="round"
               title="">
                 <ion-icon name="arrow-back-outline"></ion-icon>
@@ -242,7 +242,7 @@ mode="ios">
               [disabled]="hideRightControl"
               (click)="slideToNext()"
               mode="md"
-              class="rgs-main-solid fs-14"
+              class="anfitrion-main-solid fs-14"
               shape="round"
               title="">
                 <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -260,7 +260,7 @@ mode="ios">
         </ng-container>
 
         <ion-col size="12">
-          <hr class="rgs-divider">
+          <hr class="anfitrion-divider">
         </ion-col>
 
         <ion-col size="12">
@@ -296,7 +296,7 @@ mode="ios">
         </ion-col>
 
         <ion-col size="12">
-          <hr class="rgs-divider">
+          <hr class="anfitrion-divider">
         </ion-col>
 
         <ion-col size="12" size-md="6">
@@ -336,14 +336,14 @@ mode="ios">
       </ion-row>
     </ion-grid>
 
-    <rgs-adsense>
+    <anfitrion-adsense>
       <div adsense class="txt-center full-width full-height">
         <script
         async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1158629671776524"
         crossorigin="anonymous">
         </script>
 
-        <!--rgs-inicio-top -->
+        <!--anfitrion-inicio-top -->
         <ins class="adsbygoogle"
         style="display:block"
         data-ad-client="ca-pub-1158629671776524"
@@ -356,7 +356,7 @@ mode="ios">
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
       </div>
-    </rgs-adsense>
+    </anfitrion-adsense>
 
     <ion-grid [fixed]="true">
       <ion-row>
@@ -368,22 +368,22 @@ mode="ios">
             shape="round"
             [title]="('SHARED.BACK_TO_TOP.0' | translate) + ' ' + ('SHARED.BACK_TO_TOP.1' | translate)"
             fill="solid"
-            class="rgs-main-solid mg-bottom-16 mg-top-16 fs-14">
+            class="anfitrion-main-solid mg-bottom-16 mg-top-16 fs-14">
               {{ 'SHARED.BACK_TO_TOP.0' | translate }} <b class="mg-left-5">{{ 'SHARED.BACK_TO_TOP.1' | translate }}</b> <ion-icon name="chevron-up-outline" class="mg-left-5"></ion-icon>
             </ion-button>
           </div>
         </ion-col>
 
         <ion-col size="12">
-          <rgs-made-w-love [centered]="true"></rgs-made-w-love>
+          <anfitrion-made-w-love [centered]="true"></anfitrion-made-w-love>
         </ion-col>
 
         <ion-col size="12" class="no-pad-top">
-          <rgs-social-networks [centered]="true"></rgs-social-networks>
+          <anfitrion-social-networks [centered]="true"></anfitrion-social-networks>
         </ion-col>
 
         <ion-col size="12" class="mg-bottom-16">
-          <rgs-copyright></rgs-copyright>
+          <anfitrion-copyright></anfitrion-copyright>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -465,7 +465,7 @@ mode="md">
               mode="md"
               shape="round"
               (click)="closeModal()"
-              class="rgs-main-solid fs-14 txt-lowercase full-width close-modal-btn"
+              class="anfitrion-main-solid fs-14 txt-lowercase full-width close-modal-btn"
               [title]="'Fechar'"
               fill="solid">
                 <span class="mg-right-5">{{ 'SHARED.CLOSE_MODAL' | translate }}</span>

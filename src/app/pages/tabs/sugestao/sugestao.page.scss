@@ -57,7 +57,7 @@ ion-content {
       .language-container {
         @include flexbox(center, flex-end, row);
 
-        rgs-language-button {
+        anfitrion-language-button {
           z-index: 314;
         }
       }

@@ -24,14 +24,14 @@ ion-alert {
     }
   }
 
-  &.rgs-expanded {
+  &.anfitrion-expanded {
     .alert-radio-group.sc-ion-alert-ios {
       max-height: 360px;
       min-height: 360px;
     }
   }
 
-  &.rgs-alert, &.anf-alert {
+  &.anfitrion-alert, &.anf-alert {
 
     &.negative-btn {
       .alert-button.alert-button-role-confirm.sc-ion-alert-ios {
