@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "157295722273",
+    "project_id": "anfitrion-8c057",
+    "storage_bucket": "anfitrion-8c057.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:157295722273:android:34a0b0b13897c6042e8860",
+        "android_client_info": {
+          "package_name": "br.com.anfitrionapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAh8Mw7wZeHFrSyFmCJJ03yyG6C6N69C0U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
