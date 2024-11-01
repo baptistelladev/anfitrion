@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit, Renderer2, AfterViewInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -9,11 +10,16 @@ import { NavController } from '@ionic/angular';
 export class BemVindoABaixadaSantistaPage implements OnInit, AfterViewInit {
 
   constructor(
-    private navCtrl : NavController
+    private navCtrl : NavController,
+    private title : Title
   ) { }
 
   ngOnInit() {
 
+  }
+
+  ionViewDidEnter(): void {
+    this.title.setTitle('Bem vindo')
   }
 
   ngAfterViewInit(): void {

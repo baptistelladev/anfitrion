@@ -29,17 +29,204 @@
 [forceOverscroll]="false"
 class="ion-content-w-linear-bg">
   <section class="seus-dados">
-    <div class="seus-dados-container">
+    <form class="seus-dados-container" [formGroup]="personalDataForm">
       <ion-grid [fixed]="true">
         <ion-row>
           <ion-col size="12">
             <ion-text mode="ios" class="line-height-22">
               <p class="fs-18 color-gray-6 font-baloo"><b>{{ user.firstName }}</b>,</p>
-              <p class="fs-14 color-gray-text font-w-thin">Isso é o que sabemos sobre você.</p>
+              <p class="fs-14 color-gray-text font-w-thin">Estas são suas informações pessoais.</p>
             </ion-text>
+          </ion-col>
+
+          <ion-col size="12">
+            <hr class="anfitrion-divider">
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-text mode="ios">
+              <p class="fs-12 color-gray-mid mg-bottom-8">
+                Primeiro nome
+              </p>
+            </ion-text>
+
+            <div
+            [ngClass]="{
+            'has-error' : (personalDataForm.get('name')?.invalid &&
+            (personalDataForm.get('name')?.touched ||
+            personalDataForm.get('name')?.dirty))}"
+            class="anfitrion-input-wrapper full-width white-background-item label-w-white">
+              <ion-item
+              lines="none"
+              mode="ios">
+                <ion-input
+                (keyup)="clearFieldKeepJustName($event)"
+                (keydown)="preventWhitespace($event)"
+                [placeholder]="'Insira seu primeiro nome'"
+                enterkeyhint="next"
+                mode="ios"
+                formControlName="name"
+                type="text"
+                inputmode="text">
+                </ion-input>
+              </ion-item>
+
+              <ion-text
+              mode="ios"
+              class="mg-top-8 d-block"
+              *ngIf="
+              personalDataForm.get('name')?.invalid &&
+              (personalDataForm.get('name')?.touched || personalDataForm.get('name')?.dirty)">
+                <p
+                *ngIf="personalDataForm.get('name')?.hasError('required')"
+                class="fs-12 color-danger">
+                  {{ 'ERRORS.REQUIRED_FIELD' | translate }}
+                </p>
+
+                <p
+                *ngIf="personalDataForm.get('name')?.hasError('minlength')"
+                class="fs-12 color-danger">
+                  {{ 'ERRORS.MIN_CARACTERES.0' | translate }} 3 {{ 'ERRORS.MIN_CARACTERES.1' | translate }}
+                </p>
+              </ion-text>
+            </div>
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-text mode="ios">
+              <p class="fs-12 color-gray-mid mg-bottom-8">
+                Sobrenome
+              </p>
+            </ion-text>
+
+            <div
+            [ngClass]="{
+            'has-error' : (personalDataForm.get('secondName')?.invalid &&
+            (personalDataForm.get('secondName')?.touched ||
+            personalDataForm.get('secondName')?.dirty))}"
+            class="anfitrion-input-wrapper full-width white-background-item label-w-white">
+              <ion-item
+              lines="none"
+              mode="ios">
+                <ion-input
+                (keyup)="clearFieldKeepJustName($event)"
+                (keydown)="preventWhitespace($event)"
+                [placeholder]="'Insira seu sobrenome'"
+                enterkeyhint="next"
+                mode="ios"
+                formControlName="secondName"
+                type="text"
+                inputmode="text">
+                </ion-input>
+              </ion-item>
+
+              <ion-text
+              mode="ios"
+              class="mg-top-8 d-block"
+              *ngIf="
+              personalDataForm.get('secondName')?.invalid &&
+              (personalDataForm.get('secondName')?.touched || personalDataForm.get('secondName')?.dirty)">
+                <p
+                *ngIf="personalDataForm.get('secondName')?.hasError('required')"
+                class="fs-12 color-danger">
+                  {{ 'ERRORS.REQUIRED_FIELD' | translate }}
+                </p>
+
+                <p
+                *ngIf="personalDataForm.get('secondName')?.hasError('minlength')"
+                class="fs-12 color-danger">
+                  {{ 'ERRORS.MIN_CARACTERES.0' | translate }} 3 {{ 'ERRORS.MIN_CARACTERES.1' | translate }}
+                </p>
+              </ion-text>
+            </div>
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-text mode="ios">
+              <p class="fs-12 color-gray-mid mg-bottom-8">
+                Data de nascimento
+              </p>
+            </ion-text>
+
+            <div
+            [ngClass]="{
+            'has-error' : (personalDataForm.get('birthDate')?.invalid &&
+            (personalDataForm.get('birthDate')?.touched ||
+            personalDataForm.get('birthDate')?.dirty))}"
+            class="anfitrion-input-wrapper full-width white-background-item label-w-white item-has-button-at-end">
+              <ion-item
+              lines="none"
+              mode="ios">
+                <ion-input
+                (ionFocus)="toggleBirthDateModal(true)"
+                [placeholder]="'00/00/0000'"
+                enterkeyhint="next"
+                mode="ios"
+                formControlName="birthDateAsText"
+                type="text"
+                inputmode="text">
+                </ion-input>
+
+                <ion-button
+                (click)="toggleBirthDateModal(true)"
+                [title]="''"
+                type="button"
+                class="clear-gray-light"
+                mode="ios"
+                fill="clear">
+                  <ion-icon name="calendar-outline"></ion-icon>
+                </ion-button>
+
+                <ion-modal
+                (willDismiss)="toggleBirthDateModal(false)"
+                [keepContentsMounted]="true"
+                class="anf-adapt-datetime"
+                mode="md"
+                [isOpen]="showBirthDateModal">
+                  <ng-template>
+                    <ion-datetime
+                    displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD"
+                    #birthDate
+                    hourCycle="h24"
+                    (ionChange)="birthDateChanged($event)"
+                    class="bkw-datetime"
+                    [showDefaultButtons]="true"
+                    presentation="date"
+                    mode="ios"
+                    cancelText="Cancelar"
+                    doneText="Definir"
+                    formControlName="birthDateAsDate">
+                      <ion-buttons slot="buttons">
+                        <ion-button class="cancel fs-16" title="Cancelar">Cancelar</ion-button>
+                        <ion-button class="confirm fs-16" title="Definir">Definir</ion-button>
+                      </ion-buttons>
+                    </ion-datetime>
+                  </ng-template>
+                </ion-modal>
+              </ion-item>
+
+              <ion-text
+              mode="ios"
+              class="mg-top-8 d-block"
+              *ngIf="
+              personalDataForm.get('birthDate')?.invalid &&
+              (personalDataForm.get('birthDate')?.touched || personalDataForm.get('birthDate')?.dirty)">
+                <p
+                *ngIf="personalDataForm.get('birthDate')?.hasError('required')"
+                class="fs-12 color-danger">
+                  {{ 'ERRORS.REQUIRED_FIELD' | translate }}
+                </p>
+
+                <p
+                *ngIf="personalDataForm.get('birthDate')?.hasError('minlength')"
+                class="fs-12 color-danger">
+                  {{ 'ERRORS.MIN_CARACTERES.0' | translate }} 3 {{ 'ERRORS.MIN_CARACTERES.1' | translate }}
+                </p>
+              </ion-text>
+            </div>
           </ion-col>
         </ion-row>
       </ion-grid>
-    </div>
+    </form>
   </section>
 </ion-content>

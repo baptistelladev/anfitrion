@@ -166,57 +166,6 @@ hr.anfitrion-divider {
     }
   }
 
-  &.label-w-white {
-    ion-item {
-      ion-input {
-        &.has-focus.input-label-placement-floating, &.has-value.input-label-placement-floating {
-
-          .input-wrapper.sc-ion-input-ios {
-            .label-text-wrapper.sc-ion-input-ios {
-              .label-text.sc-ion-input-ios {
-                background: var(--white);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  &.label-w-gray-fa {
-    ion-item {
-      ion-input {
-        &.has-focus.input-label-placement-floating, &.has-value.input-label-placement-floating {
-
-          .input-wrapper.sc-ion-input-ios {
-            .label-text-wrapper.sc-ion-input-ios {
-              .label-text.sc-ion-input-ios {
-                background: var(--gray-fa);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  &.label-w-gray-ef {
-    ion-item {
-      ion-input {
-        &.has-focus.input-label-placement-floating, &.has-value.input-label-placement-floating {
-
-          .input-wrapper.sc-ion-input-ios {
-            .label-text-wrapper.sc-ion-input-ios {
-              .label-text.sc-ion-input-ios {
-                background: var(--gray-ef);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
 
   &.has-error {
     ion-item {
