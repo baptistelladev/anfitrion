@@ -37,7 +37,12 @@
               }
             ],
             "styles": ["src/global.scss", "src/theme/variables.scss"],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "localforage",
+              "lottie-web",
+              "moment"
+            ]
           },
           "configurations": {
             "production": {
