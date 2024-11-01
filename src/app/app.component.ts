@@ -12,6 +12,7 @@ import { CollectionsEnum } from './shared/enums/Collection';
 import { ICity } from './shared/models/ICity';
 import { MOCK_CITIES } from './shared/mocks/MockCities';
 import { ActionPerformed, PushNotificationSchema, PushNotifications, Token } from '@capacitor/push-notifications';
+import { StatusBar, Style } from '@capacitor/status-bar';
 
 
 @Component({
@@ -36,6 +37,7 @@ export class AppComponent implements OnInit {
 
   async ngOnInit() {
     this.getAppInfo();
+    this.setStatusBarLook();
 
     await this.storageService.createStorage();
 
@@ -97,15 +99,11 @@ export class AppComponent implements OnInit {
     })
 
     await this.initializePushNotifications();
+  }
 
-    /*
-    console.info(
-      `\n%c⚠️ Xô rapaliga ⚠️%c \n${'vai trabalhar,vai...'} \n\n%cFica inspecionando código alheio.\nJá que você é curioso, pelo menos segue no insta https://www.instagram.com/ruagastronomicadesantos/`,
-      "color:#ceb73f; background: #ceb73f33; font-size:1.5rem; padding: 20px 20px 16px 20px; margin: 1rem auto; font-family: Rockwell, Tahoma, 'Trebuchet MS', Helvetica; border: 2px solid #ceb73f; border-radius: 4px; font-weight: bold; text-shadow: 1px 1px 1px #000000bf;",
-      'font-weight: bold; font-size: 1rem;color: #ceb73f;',
-      "color: #ceb73f; font-size: 0.75rem; font-family: Tahoma, 'Trebuchet MS', Helvetica;",
-    );
-    */
+  public setStatusBarLook(): void {
+    StatusBar.setBackgroundColor({ color: '#222222' });
+    StatusBar.setStyle({ style: Style.Dark });
   }
 
   public understood(): void {
@@ -113,7 +111,7 @@ export class AppComponent implements OnInit {
     this.storageService.setStorageKey(APP_LANG_KEY, this.currentLanguage.value);
   }
 
-  public async getAppInfo() {
+  private async getAppInfo() {
     await this.appInfoService.getDocument(CollectionsEnum.APP_INFO, 'svHoTfx0UNjeFfJ1HPud')
     .then((appInfo: IAppInfo | undefined) => {
       if (appInfo) {
