@@ -1,0 +1,15 @@
+ion-datetime {
+  &.anf-datetime {
+    --ion-color-base: var(--green) !important;
+
+    // UNICA FORMA DE SOBREPOR O VISUAL DOS BOTOES DO DATETIME.
+    ion-buttons {
+      &.sc-ion-buttons-ios-h.sc-ion-buttons-ios-s {
+        ion-button {
+          &.cancel.button-clear { --color: var(--gray-text); }
+          &.confirm.button-clear { --color: var(--green); }
+        }
+      }
+    }
+  }
+}

@@ -134,4 +134,8 @@ ion-button {
   &.anf-no-shadow-btn {
     --box-shadow: none;
   }
+
+  &.btn-danger {
+    --color: var(--danger);
+  }
 }

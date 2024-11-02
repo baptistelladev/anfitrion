@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { IonDatetime, NavController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { ILang } from 'src/app/shared/models/ILang';
@@ -8,6 +8,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IUSer } from 'src/app/shared/models/IUser';
 import * as UserStore from './../../../shared/store/user.state';
 import { Title } from '@angular/platform-browser';
+import * as moment from 'moment';
 
 @Component({
   selector: 'anfitrion-seus-dados',
@@ -15,6 +16,12 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./seus-dados.page.scss'],
 })
 export class SeusDadosPage implements OnInit, OnDestroy {
+
+  public todayAsDatetime = moment().format('YYYY-MM-DD');
+  public maxDateAsDatetime = moment().subtract(16, 'years').format('YYYY-MM-DD');
+
+  @ViewChild('birthDateDatetime') birthDateDatetime: IonDatetime;
+
 
   public showBirthDateModal: boolean = false;
 
@@ -73,11 +80,7 @@ export class SeusDadosPage implements OnInit, OnDestroy {
     this.userSubscription = this.user$
     .subscribe((user: IUSer) => {
       this.user = user;
-      console.log(this.user);
-
-      this.personalDataForm.patchValue({
-        name: this.user.firstName
-      })
+      this.fillFormAndVariable(user);
     })
   }
 
@@ -98,8 +101,20 @@ export class SeusDadosPage implements OnInit, OnDestroy {
   }
 
   public birthDateChanged(e: any): void {
-    console.log(e);
+    console.log(moment(e.detail.value).format('L'));
+  }
 
+  public fillFormAndVariable(user: IUSer): void {
+
+
+    this.personalDataForm.patchValue({
+      birthDateAsDate: this.maxDateAsDatetime,
+      name: user.firstName
+    })
+  }
+
+  public defineBirthDate(): void {
+    this.birthDateDatetime.confirm(true);
   }
 
   public ngOnDestroy(): void {

@@ -1,33 +1,35 @@
-<ion-header mode="ios" class="ion-no-border">
-  <ion-toolbar mode="ios" class="ion-bg-white no-ion-padding">
-    <ion-grid [fixed]="true">
-      <ion-row>
-        <ion-col size="12">
-          <div class="header-container">
-            <div class="back-btn-wrapper">
-              <ion-button
-              mode="ios"
-              (click)="back()"
-              class="back ion-color-gray-text back-btn no-ion-padding font-baloo"
-              [title]="'SHARED.BACK' | translate"
-              fill="clear">
-                <ion-icon name="chevron-back-outline"></ion-icon> <span class="font-w-thin mg-left-5">{{ 'SHARED.BACK' | translate }}</span>
-              </ion-button>
-            </div>
 
-            <div class="language-container">
-              <anfitrion-language-button [currentLanguage]="currentLanguage"></anfitrion-language-button>
-            </div>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content
 [forceOverscroll]="false"
 class="ion-content-w-linear-bg">
+  <ion-header mode="ios" class="ion-no-border bg-transparent">
+    <ion-toolbar mode="ios" class="ion-bg-transparent no-ion-padding">
+      <ion-grid [fixed]="true">
+        <ion-row>
+          <ion-col size="12">
+            <div class="header-container">
+              <div class="back-btn-wrapper">
+                <ion-button
+                mode="ios"
+                (click)="back()"
+                class="back ion-color-gray-text back-btn no-ion-padding font-baloo"
+                [title]="'SHARED.BACK' | translate"
+                fill="clear">
+                  <ion-icon name="chevron-back-outline"></ion-icon> <span class="font-w-thin mg-left-5">{{ 'SHARED.BACK' | translate }}</span>
+                </ion-button>
+              </div>
+
+              <div class="language-container">
+                <anfitrion-language-button [currentLanguage]="currentLanguage"></anfitrion-language-button>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+  </ion-header>
+
   <section class="seus-dados">
     <form class="seus-dados-container" [formGroup]="personalDataForm">
       <ion-grid [fixed]="true">
@@ -35,7 +37,7 @@ class="ion-content-w-linear-bg">
           <ion-col size="12">
             <ion-text mode="ios" class="line-height-22">
               <p class="fs-18 color-gray-6 font-baloo"><b>{{ user.firstName }}</b>,</p>
-              <p class="fs-14 color-gray-text font-w-thin">Estas são suas informações pessoais.</p>
+              <p class="fs-14 color-gray-text font-w-thin">{{ 'YOUR_PERFIL_PAGE.YOUR_INFO' | translate }}.</p>
             </ion-text>
           </ion-col>
 
@@ -46,7 +48,7 @@ class="ion-content-w-linear-bg">
           <ion-col size="12">
             <ion-text mode="ios">
               <p class="fs-12 color-gray-mid mg-bottom-8">
-                Primeiro nome
+                {{ 'SHARED.FIRST_NAME' | translate }}
               </p>
             </ion-text>
 
@@ -95,7 +97,7 @@ class="ion-content-w-linear-bg">
           <ion-col size="12">
             <ion-text mode="ios">
               <p class="fs-12 color-gray-mid mg-bottom-8">
-                Sobrenome
+                {{ 'SHARED.SECOND_NAME' | translate }}
               </p>
             </ion-text>
 
@@ -144,7 +146,7 @@ class="ion-content-w-linear-bg">
           <ion-col size="12">
             <ion-text mode="ios">
               <p class="fs-12 color-gray-mid mg-bottom-8">
-                Data de nascimento
+                {{ 'SHARED.BIRTHDATE' | translate }}
               </p>
             </ion-text>
 
@@ -169,7 +171,7 @@ class="ion-content-w-linear-bg">
 
                 <ion-button
                 (click)="toggleBirthDateModal(true)"
-                [title]="''"
+                [title]="'SHARED.BIRTHDATE' | translate"
                 type="button"
                 class="clear-gray-light"
                 mode="ios"
@@ -185,11 +187,13 @@ class="ion-content-w-linear-bg">
                 [isOpen]="showBirthDateModal">
                   <ng-template>
                     <ion-datetime
+                    [locale]="currentLanguage.value === 'pt' ? 'pt-BR' : currentLanguage.value === 'en' ? 'en-US' : 'es-ES'"
                     displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD"
-                    #birthDate
+                    [max]="maxDateAsDatetime"
+                    #birthDateDatetime
                     hourCycle="h24"
                     (ionChange)="birthDateChanged($event)"
-                    class="bkw-datetime"
+                    class="anf-datetime"
                     [showDefaultButtons]="true"
                     presentation="date"
                     mode="ios"
@@ -197,8 +201,8 @@ class="ion-content-w-linear-bg">
                     doneText="Definir"
                     formControlName="birthDateAsDate">
                       <ion-buttons slot="buttons">
-                        <ion-button class="cancel fs-16" title="Cancelar">Cancelar</ion-button>
-                        <ion-button class="confirm fs-16" title="Definir">Definir</ion-button>
+                        <ion-button class="cancel fs-16" title="Cancelar" (click)="toggleBirthDateModal(false)">{{ 'SHARED.CANCEL' | translate }}</ion-button>
+                        <ion-button class="confirm fs-16" title="Definir" (click)="defineBirthDate()">{{ 'SHARED.DEFINE' | translate }}</ion-button>
                       </ion-buttons>
                     </ion-datetime>
                   </ng-template>
@@ -224,6 +228,32 @@ class="ion-content-w-linear-bg">
                 </p>
               </ion-text>
             </div>
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-item
+            lines="none"
+            mode="ios"
+            class="simulate-bootstrap-alert warning line-height-18">
+              <ion-icon name="warning-outline" slot="start" class="color-bootstrap-warning"></ion-icon>
+
+              <ion-text mode="ios" class="color-bootstrap-warning">
+                <p class="fs-12 mg-bottom-8">{{ 'YOUR_PERFIL_PAGE.INCOMPLETE' | translate }}</p>
+                <p class="fs-14">{{ user.firstName }}, {{ 'YOUR_PERFIL_PAGE.PERFIL_ADVISE' | translate }}.</p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-button
+            [disabled]="false"
+            mode="md"
+            shape="round"
+            class="anfitrion-main-solid fs-14 txt-lowercase full-width close-modal-btn height-44 mg-bottom-16"
+            [title]="'Fechar'"
+            fill="solid">
+              <ion-icon name="refresh-outline" class="mg-right-5"></ion-icon>{{ 'SHARED.UPDATE_MY_INFO_BTN.0' | translate }} <span class="font-w-bold mg-left-5">{{ 'SHARED.UPDATE_MY_INFO_BTN.1' | translate }}</span>
+            </ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
