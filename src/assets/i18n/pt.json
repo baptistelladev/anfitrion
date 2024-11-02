@@ -52,7 +52,9 @@
     "CONFIRM_PASSWORD" : "Confirmar senha",
     "SHOW_PW" : "Mostrar senha",
     "HIDE_PW" : "Esconder senha",
-    "NAME" : "Seu nome"
+    "NAME" : "Seu primeiro nome",
+    "INSERT_NAME" : "Insira seu primeiro nome",
+    "INSERT_SECOND_NAME" : "Insira seu segundo nome"
   },
   "LOGIN_PAGE" : {
     "PAGE_TITLE" : "O anfitrião da Baixada Santista",

@@ -64,7 +64,7 @@ class="ion-content-w-linear-bg">
                 <ion-input
                 (keyup)="clearFieldKeepJustName($event)"
                 (keydown)="preventWhitespace($event)"
-                [placeholder]="'Insira seu primeiro nome'"
+                [placeholder]="'INPUTS.INSERT_NAME' | translate"
                 enterkeyhint="next"
                 mode="ios"
                 formControlName="name"
@@ -113,7 +113,7 @@ class="ion-content-w-linear-bg">
                 <ion-input
                 (keyup)="clearFieldKeepJustName($event)"
                 (keydown)="preventWhitespace($event)"
-                [placeholder]="'Insira seu sobrenome'"
+                [placeholder]="'INPUTS.INSERT_SECOND_NAME' | translate"
                 enterkeyhint="next"
                 mode="ios"
                 formControlName="secondName"
