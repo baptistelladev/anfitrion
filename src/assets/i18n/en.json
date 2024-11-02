@@ -52,7 +52,9 @@
     "CONFIRM_PASSWORD" : "Confirm password",
     "SHOW_PW" : "Show password",
     "HIDE_PW" : "Hide password",
-    "NAME": "Your name"
+    "NAME": "Your name",
+    "INSERT_NAME": "Enter your first name",
+    "INSERT_SECOND_NAME": "Enter your second name"
   },
   "LOGIN_PAGE" : {
     "PAGE_TITLE" : "The Host of Baixada Santista",
