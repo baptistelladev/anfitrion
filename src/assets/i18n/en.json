@@ -1,4 +1,9 @@
 {
+  "YOUR_PERFIL_PAGE": {
+    "YOUR_INFO": "These are your personal information",
+    "INCOMPLETE": "Incomplete profile",
+    "PERFIL_ADVISE": "these data are not mandatory, but in the future, we will recommend content based on your age"
+  },
   "PLACES_IN_THE_CITY" : {
     "FILTER_RESTAURANT": "Filter restaurants",
     "FILTER_BAR": "Filter bars",
@@ -142,7 +147,11 @@
     "ESTABLISHMENT" : "establishment",
     "WITHOUT_INTERNET" : "you are without an internet connection",
     "NOT_FOUND" : "We couldn't find",
-    "TRY_ANOTHER_CITY" : "try another city"
+    "TRY_ANOTHER_CITY" : "try another city",
+    "FIRST_NAME": "First name",
+    "SECOND_NAME": "Last name",
+    "BIRTHDATE": "Date of birth",
+    "UPDATE_MY_INFO_BTN" : ["update","profile"]
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Our purpose here is to help you save your most precious asset: ","time"],

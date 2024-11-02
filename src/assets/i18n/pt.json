@@ -1,4 +1,9 @@
 {
+  "YOUR_PERFIL_PAGE" : {
+    "YOUR_INFO" : "Estas são suas informações pessoais",
+    "INCOMPLETE" : "Perfil incompleto",
+    "PERFIL_ADVISE" : "estes dados não são obrigatórios mas no futuro indicaremos conteúdos com base na sua idade"
+  },
   "PLACES_IN_THE_CITY" : {
     "FILTER_RESTAURANT" : "Filtre os restaurantes",
     "FILTER_BAR" : "Filtre os bares",
@@ -142,7 +147,11 @@
     "ESTABLISHMENT" : "estabelecimento",
     "WITHOUT_INTERNET" : "você está sem internet",
     "NOT_FOUND" : "Não encontramos",
-    "TRY_ANOTHER_CITY" : "tente outra cidade"
+    "TRY_ANOTHER_CITY" : "tente outra cidade",
+    "FIRST_NAME" : "Primeiro nome",
+    "SECOND_NAME" : "Sobrenome",
+    "BIRTHDATE" : "Data de nascimento",
+    "UPDATE_MY_INFO_BTN" : ["atualizar","meus dados"]
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nosso próposito aqui é fazer com que voê economize o seu bem mais precioso:","o tempo"],
