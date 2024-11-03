@@ -10,3 +10,9 @@ section {
     }
   }
 }
+
+ion-item {
+  &.item-disabled {
+    opacity: 1;
+  }
+}
