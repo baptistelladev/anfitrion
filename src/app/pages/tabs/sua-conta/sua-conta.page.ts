@@ -16,6 +16,8 @@ import { Title } from '@angular/platform-browser';
 })
 export class SuaContaPage implements OnInit, OnDestroy {
 
+  public emailFieldIsDisabled: boolean = true;
+
   public currentLanguage: ILang;
   public currentLanguage$: Observable<ILang>;
   public currentLanguageSubscription: Subscription;
@@ -24,7 +26,7 @@ export class SuaContaPage implements OnInit, OnDestroy {
   public user$: Observable<IUSer>;
   public userSubscription: Subscription;
 
-  public personalDataForm: FormGroup;
+  public accountForm: FormGroup;
 
   constructor(
     private navCtrl : NavController,
@@ -36,7 +38,8 @@ export class SuaContaPage implements OnInit, OnDestroy {
   ngOnInit() {
     this.getUserFromNGRX();
     this.getCurrentLanguageFromNGRX();
-    this.initPersonalDataForm();
+    this.initAccountForm();
+    this.fillAccountForm();
   }
 
   ionViewdidEnter(): void {
@@ -56,10 +59,16 @@ export class SuaContaPage implements OnInit, OnDestroy {
     })
   }
 
-  public initPersonalDataForm(): void {
-    this.personalDataForm = this.formBuilder.group({
-      firstName: null,
-      email: null
+  public initAccountForm(): void {
+    this.accountForm = this.formBuilder.group({
+      email: null,
+      fakePassword: '********'
+    })
+  }
+
+  public fillAccountForm(): void {
+    this.accountForm.patchValue({
+      email: this.user.email
     })
   }
 
@@ -71,6 +80,12 @@ export class SuaContaPage implements OnInit, OnDestroy {
       this.user = user;
       console.log(this.user);
     })
+  }
+
+  public preventWhitespace(event: KeyboardEvent) {
+    if (event.key === ' ') {
+      event.preventDefault();
+    }
   }
 
   public ngOnDestroy(): void {

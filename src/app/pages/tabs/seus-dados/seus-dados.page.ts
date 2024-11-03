@@ -48,7 +48,7 @@ export class SeusDadosPage implements OnInit, OnDestroy {
     this.getCurrentLanguageFromNGRX();
   }
 
-  ionViewdidEnter(): void {
+  ionViewDidEnter(): void {
     this.title.setTitle('Seus dados');
   }
 
