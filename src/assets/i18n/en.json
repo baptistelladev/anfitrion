@@ -174,7 +174,10 @@
     "FIRST_NAME": "First name",
     "SECOND_NAME": "Last name",
     "BIRTHDATE": "Date of birth",
-    "UPDATE_MY_INFO_BTN" : ["update","profile"]
+    "UPDATE_MY_INFO_BTN" : ["update","profile"],
+    "EXIT_APP_TITLE" : "Exit the application",
+    "EXIT_APP_TEXT" : "Do you want to exit the application now?",
+    "EXIT_APP_YES" : "Yes, I want to exit"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Our purpose here is to help you save your most precious asset: ","time"],

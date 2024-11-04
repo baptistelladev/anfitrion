@@ -174,7 +174,10 @@
     "FIRST_NAME": "Nombre",
     "SECOND_NAME": "Apellido",
     "BIRTHDATE": "Fecha de nacimiento",
-    "UPDATE_MY_INFO_BTN": ["actualizar", "mis datos"]
+    "UPDATE_MY_INFO_BTN": ["actualizar", "mis datos"],
+    "EXIT_APP_TITLE" : "Sair do aplicativo",
+    "EXIT_APP_TEXT" : "Você deseja sair do aplicativo agora?",
+    "EXIT_APP_YES" : "Sim, quero sair"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nuestro propósito aquí es ayudarte a ahorrar tu bien más precioso:","el tiempo"],

@@ -5,7 +5,7 @@ import { ILang } from 'src/app/shared/models/ILang';
 import * as AppStore from './../../shared/store/app.state';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swiper from 'swiper';
-import { NavController, ToastController } from '@ionic/angular';
+import { AlertController, NavController, Platform, ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/core/services/firebase/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { OverlayService } from 'src/app/shared/services/overlay.service';
@@ -17,6 +17,7 @@ import { IUSer } from 'src/app/shared/models/IUser';
 import { DotLottie } from '@lottiefiles/dotlottie-web';
 import { AnimationOptions } from 'ngx-lottie';
 import { AnimationItem, LottiePlayer } from 'lottie-web';
+import { App } from '@capacitor/app';
 
 @Component({
   selector: 'anfitrion-login',
@@ -65,8 +66,10 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
   public formCreateAccGroup: FormGroup;
 
   public currentLanguage: ILang;
-  public currentLanguage$: Observable<ILang>;
+  public currentLanguage$: Observable<any>;
   public currentLanguageSubscription: Subscription;
+
+  public backButtonSucription: Subscription;
 
   public selectedSegment: string = 'acessar';
 
@@ -87,7 +90,9 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
     private overlayService : OverlayService,
     private utilsService : UtilsService,
     private translate : TranslateService,
-    private title : Title
+    private title : Title,
+    private platform : Platform,
+    private alertCtrl : AlertController
   ) { }
 
   async ngOnInit() {
@@ -103,6 +108,37 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
 
   ionViewWillEnter(): void {
     this.title.setTitle('Login');
+    this.listenBackButton();
+  }
+
+  public async listenBackButton() {
+    const alert = await this.overlayService.fireAlert({
+      cssClass: 'anf-alert negative-btn',
+      subHeader: `${this.translate.instant('SHARED.EXIT_APP_TITLE')}`,
+      message: `${this.translate.instant('SHARED.EXIT_APP_TEXT')}`,
+      id: 'alert-exit-app',
+      buttons: [
+        {
+          role: 'cancel',
+          text: `${this.translate.instant('SHARED.CANCEL')}`,
+          handler: () => {
+            this.alertCtrl.dismiss(null, 'cancel', 'alert-exit-app');
+          }
+        },
+        {
+          role: 'confirm',
+          text: `${this.translate.instant('SHARED.EXIT_APP_YES')}`,
+          handler: async () => {
+            await App.exitApp();
+          }
+        }
+      ]
+    })
+
+    this.backButtonSucription = this.platform.backButton
+    .subscribeWithPriority(10, () => {
+      alert.present()
+    })
   }
 
   public animationCreated(animationItem: AnimationItem): void {
@@ -359,6 +395,7 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
 
   public ngOnDestroy(): void {
     this.currentLanguageSubscription.unsubscribe();
+    this.backButtonSucription.unsubscribe();
   }
 
 }
