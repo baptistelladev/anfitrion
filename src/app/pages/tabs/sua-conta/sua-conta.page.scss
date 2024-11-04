@@ -1,13 +1,28 @@
 section {
   &.sua-conta {
     width: 100%;
-    max-width: 470px;
+    max-width: 375px;
     margin: 0 auto;
+    padding: 0 8px;
 
     .sua-conta-container {
       width: 100%;
       height: auto;
     }
+  }
+
+  &.new-email-modal {
+    width: 100%;
+    padding: 16px 8px;
+    max-width: 375px;
+    margin: 0 auto;
+  }
+
+  &.new-password-modal {
+    width: 100%;
+    padding: 16px 8px;
+    max-width: 375px;
+    margin: 0 auto;
   }
 }
 
