@@ -35,7 +35,7 @@ class="ion-content-w-linear-bg">
           <ion-col size="12">
             <ion-text mode="ios" class="line-height-22">
               <p class="fs-18 color-gray-6 font-baloo"><b>{{ user.firstName }}</b>,</p>
-              <p class="fs-14 color-gray-text font-w-thin">Estas são as informações da sua conta anfitrion.</p>
+              <p class="fs-14 color-gray-text font-w-thin">{{ 'YOUR_ACCOUNT_PAGE.YOUR_INFO' | translate }}.</p>
             </ion-text>
           </ion-col>
 
@@ -46,7 +46,7 @@ class="ion-content-w-linear-bg">
           <ion-col size="12">
             <ion-text mode="ios">
               <p class="fs-12 color-gray-mid mg-bottom-8">
-                {{ 'INPUTS.EMAIL' | translate }}
+                {{ 'INPUTS.LABEL_CURRENT_EMAIL' | translate }}
               </p>
             </ion-text>
 
@@ -64,7 +64,7 @@ class="ion-content-w-linear-bg">
                 (keydown)="preventWhitespace($event)"
                 formControlName="email"
                 enterkeyhint="next"
-                [placeholder]="'INPUTS.EMAIL' | translate"
+                [placeholder]="'INPUTS.PLACEHOLDER_CURRENT_EMAIL' | translate"
                 mode="ios"
                 type="email"
                 inputmode="email">
@@ -95,11 +95,11 @@ class="ion-content-w-linear-bg">
           <ion-col size="12" class="txt-right">
             <ion-button
             (click)="toggleNewEmailModal(true)"
-            [title]=""
+            [title]="('YOUR_ACCOUNT_PAGE.REQUEST_EMAIL_CHANGE.0' | translate) + ' ' + ('YOUR_ACCOUNT_PAGE.REQUEST_EMAIL_CHANGE.1' | translate)"
             class="txt-right no-ion-padding fs-14 no-height"
             fill="clear"
             mode="ios">
-              <b class="mg-right-5">solicitar</b> alteração do e-mail
+              <b class="mg-right-5">{{ 'YOUR_ACCOUNT_PAGE.REQUEST_EMAIL_CHANGE.0' | translate }}</b> {{ 'YOUR_ACCOUNT_PAGE.REQUEST_EMAIL_CHANGE.1' | translate }}
             </ion-button>
           </ion-col>
 
@@ -107,7 +107,7 @@ class="ion-content-w-linear-bg">
             <div class="mg-top-16">
               <ion-text mode="ios" class="line-height-22">
                 <p class="fs-14 color-gray-text font-w-thin">
-                  Por questões de segurança não mostramos sua senha, mas você ainda pode troca-lá se for necessário.
+                  {{ 'YOUR_ACCOUNT_PAGE.PASSWORD_ADVISE' | translate }}.
                 </p>
               </ion-text>
             </div>
@@ -116,11 +116,11 @@ class="ion-content-w-linear-bg">
           <ion-col size="12" class="txt-right">
             <ion-button
             (click)="toggleNewPasswordModal(true)"
-            [title]=""
+            [title]="('YOUR_ACCOUNT_PAGE.REQUEST_PASSWORD_CHANGE.0' | translate) + ' ' + ('YOUR_ACCOUNT_PAGE.REQUEST_PASSWORD_CHANGE.1' | translate)"
             class="txt-right no-ion-padding fs-14 no-height"
             fill="clear"
             mode="ios">
-              <b class="mg-right-5">solicitar</b> alteração da senha
+             <b class="mg-right-5">{{ 'YOUR_ACCOUNT_PAGE.REQUEST_PASSWORD_CHANGE.0' | translate }}</b> {{ 'YOUR_ACCOUNT_PAGE.REQUEST_PASSWORD_CHANGE.1' | translate }}
             </ion-button>
           </ion-col>
         </ion-row>
@@ -171,10 +171,10 @@ id="new-email-modal">
               <ion-col size="12">
                 <ion-text mode="ios">
                   <p class="font-baloo fs-20 color-gray-text">
-                    Defina <span class="font-w-bold">seu novo e-mail</span>
+                    {{ 'YOUR_ACCOUNT_PAGE.MODAL_EMAIL_TITLE.0' | translate }} <span class="font-w-bold">{{ 'YOUR_ACCOUNT_PAGE.MODAL_EMAIL_TITLE.1' | translate }}</span>
                   </p>
                   <p class="fs-14 color-gray-text font-w-thin">
-                    Troque de e-mail.
+                    {{ 'YOUR_ACCOUNT_PAGE.MODAL_EMAIL_DESC' | translate }}.
                   </p>
                 </ion-text>
               </ion-col>
@@ -182,7 +182,7 @@ id="new-email-modal">
               <ion-col size="12" class="mg-top-16">
                 <ion-text mode="ios">
                   <p class="fs-12 color-gray-mid mg-bottom-8">
-                    Novo e-mail
+                    {{ 'INPUTS.LABEL_NEW_EMAIL' | translate }}
                   </p>
                 </ion-text>
 
@@ -200,7 +200,7 @@ id="new-email-modal">
                     (keydown)="preventWhitespace($event)"
                     formControlName="newEmail"
                     enterkeyhint="next"
-                    [placeholder]="'Inserir novo e-mail'"
+                    [placeholder]="'INPUTS.PLACEHOLDER_NEW_EMAIL' | translate"
                     mode="ios"
                     type="email"
                     inputmode="email">
@@ -236,7 +236,7 @@ id="new-email-modal">
                 class="anfitrion-main-solid fs-14 txt-lowercase full-width close-modal-btn height-44 mg-bottom-16 mg-top-16"
                 [title]="'Fechar'"
                 fill="solid">
-                  <ion-icon name="refresh-outline" class="mg-right-5"></ion-icon>atualizar <span class="font-w-bold mg-left-5">novo e-mail</span>
+                  <ion-icon name="refresh-outline" class="mg-right-5"></ion-icon>{{ 'YOUR_ACCOUNT_PAGE.UPDATE_MY_EMAIL_BTN.0' | translate }} <span class="font-w-bold mg-left-5">{{ 'YOUR_ACCOUNT_PAGE.UPDATE_MY_EMAIL_BTN.1' | translate }}</span>
                 </ion-button>
               </ion-col>
             </ion-row>
@@ -289,10 +289,10 @@ id="new-password-modal">
               <ion-col size="12">
                 <ion-text mode="ios">
                   <p class="font-baloo fs-20 color-gray-text">
-                    Defina <span class="font-w-bold">sua nova senha</span>
+                    {{ 'YOUR_ACCOUNT_PAGE.MODAL_PASSWORD_TITLE.0' | translate }} <span class="font-w-bold">{{ 'YOUR_ACCOUNT_PAGE.MODAL_PASSWORD_TITLE.1' | translate }}</span>
                   </p>
                   <p class="fs-14 color-gray-text font-w-thin">
-                    Altere sua senha atual respeitando as regras.
+                    {{ 'YOUR_ACCOUNT_PAGE.MODAL_PASSWORD_DESC' | translate }}.
                   </p>
                 </ion-text>
               </ion-col>
@@ -300,7 +300,7 @@ id="new-password-modal">
               <ion-col size="12">
                 <ion-text mode="ios">
                   <p class="fs-12 color-gray-mid mg-bottom-8 mg-top-16">
-                    Nova senha
+                    {{ 'INPUTS.LABEL_NEW_PASSWORD' | translate }}
                   </p>
                 </ion-text>
 
@@ -317,7 +317,7 @@ id="new-password-modal">
                     (keyup)="checkPasswordRules()"
                     (keydown)="preventWhitespace($event)"
                     [type]="showPassword ? 'text' : 'password'"
-                    [placeholder]="'INPUTS.PASSWORD' | translate"
+                    [placeholder]="'INPUTS.PLACEHOLDER_NEW_PASSWORD' | translate"
                     formControlName="password"
                     enterkeyhint="next"
                     mode="ios"
@@ -360,7 +360,7 @@ id="new-password-modal">
               <ion-col size="12">
                 <ion-text mode="ios">
                   <p class="fs-12 color-gray-mid mg-bottom-8">
-                    Confirmar nova senha
+                    {{ 'INPUTS.LABEL_CONFIRM_NEW_PASSWORD' | translate }}
                   </p>
                 </ion-text>
 
@@ -376,7 +376,7 @@ id="new-password-modal">
                     <ion-input
                     (keyup)="checkPasswordsMatch();"
                     (keydown)="preventWhitespace($event)"
-                    [placeholder]="'INPUTS.CONFIRM_PASSWORD' | translate"
+                    [placeholder]="'INPUTS.PLACEHOLDER_CONFIRM_NEW_PASSWORD' | translate"
                     [type]="showConfirmPassword ? 'text' : 'password'"
                     formControlName="confirmPassword"
                     enterkeyhint="send"
@@ -453,7 +453,7 @@ id="new-password-modal">
                 class="anfitrion-main-solid fs-14 txt-lowercase full-width close-modal-btn height-44 mg-bottom-16 mg-top-16"
                 [title]=""
                 fill="solid">
-                  <ion-icon name="refresh-outline" class="mg-right-5"></ion-icon>{{ 'SHARED.UPDATE_MY_INFO_BTN.0' | translate }} <span class="font-w-bold mg-left-5">minha senha</span>
+                  <ion-icon name="refresh-outline" class="mg-right-5"></ion-icon>{{ 'YOUR_ACCOUNT_PAGE.UPDATE_MY_PASSWORD_BTN.0' | translate }} <span class="font-w-bold mg-left-5">{{ 'YOUR_ACCOUNT_PAGE.UPDATE_MY_PASSWORD_BTN.1' | translate }}</span>
                 </ion-button>
               </ion-col>
             </ion-row>
