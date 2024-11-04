@@ -15,6 +15,7 @@ import { ActionPerformed, PushNotificationSchema, PushNotifications, Token } fro
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { Platform } from '@ionic/angular';
 import { ConnectionService } from './core/services/connection.service';
+import * as moment from 'moment';
 
 
 @Component({
@@ -103,6 +104,16 @@ export class AppComponent implements OnInit {
           this.store.dispatch(AppStore.setCurrentCity({ city: this.currentCity }));
         }
       })
+
+      switch (this.currentLanguage.value) {
+        case 'pt':
+          moment.locale('pt-BR')
+          break;
+
+        default:
+          moment.locale(this.currentLanguage.value)
+          break;
+      }
 
       if (this.platform.is('mobile') ) {
         await this.initializePushNotifications();

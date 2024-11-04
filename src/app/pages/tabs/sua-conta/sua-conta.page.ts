@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
-import { Observable, Subscription } from 'rxjs';
+import { map, Observable, Subscription } from 'rxjs';
 import { ILang } from 'src/app/shared/models/ILang';
 import * as AppStore from './../../../shared/store/app.state';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -9,6 +9,7 @@ import { IUSer } from 'src/app/shared/models/IUser';
 import * as UserStore from './../../../shared/store/user.state';
 import { Title } from '@angular/platform-browser';
 import { UtilsService } from 'src/app/core/services/utils.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'anfitrion-sua-conta',
@@ -116,6 +117,13 @@ export class SuaContaPage implements OnInit, OnDestroy {
     this.user$ = this.store.select(UserStore.selectUser);
 
     this.userSubscription = this.user$
+    .pipe(map((user: IUSer) => {
+
+      return {
+        ...user,
+        createdAt: moment(user.createdAt).format('LL')
+      }
+    }))
     .subscribe((user: IUSer) => {
       this.user = user;
       console.log(this.user);
