@@ -161,7 +161,7 @@ class="ion-content-w-linear-bg">
               mode="ios">
                 <ion-input
                 (ionFocus)="toggleBirthDateModal(true)"
-                [placeholder]="'00/00/0000'"
+                [placeholder]="currentLanguage.value === 'en' ? 'YYYY/MM/DD' : 'DD/MM/AAAA'"
                 enterkeyhint="next"
                 mode="ios"
                 formControlName="birthDateAsText"
@@ -189,7 +189,8 @@ class="ion-content-w-linear-bg">
                   <ng-template>
                     <ion-datetime
                     [locale]="currentLanguage.value === 'pt' ? 'pt-BR' : currentLanguage.value === 'en' ? 'en-US' : 'es-ES'"
-                    displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD"
+                    [attr.displayFormat]="currentLanguage.value === 'en' ? 'YYYY-MM-DD' : 'DD/MM/YYYY'"
+                    [attr.pickerFormat]="currentLanguage.value === 'en' ? 'YYYY-MM-DD' : 'DD/MM/YYYY'"
                     [max]="maxDateAsDatetime"
                     #birthDateDatetime
                     hourCycle="h24"

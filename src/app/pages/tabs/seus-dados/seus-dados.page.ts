@@ -62,6 +62,7 @@ export class SeusDadosPage implements OnInit, OnDestroy {
     this.currentLanguageSubscription = this.currentLanguage$
     .subscribe((language: ILang) => {
       this.currentLanguage = language;
+      this.initialBirthDateFormat();
     })
   }
 
@@ -102,8 +103,19 @@ export class SeusDadosPage implements OnInit, OnDestroy {
 
   public birthDateChanged(e: any): void {
     this.personalDataForm.patchValue({
-      birthDateAsText: moment(e.detail.value).format('L')
+      birthDateAsText: this.currentLanguage.value === 'en' ? moment(e.detail.value).format('YYYY/MM/DD') : moment(e.detail.value).format('DD/MM/YYYY')
     })
+  }
+
+  public initialBirthDateFormat(): void {
+    if (this.personalDataForm.value.birthDateAsText) {
+      this.personalDataForm.patchValue({
+        birthDateAsText: this.currentLanguage.value === 'en' ? moment(this.personalDataForm.value.birthDateAsText).format('YYYY/MM/DD') : moment(this.personalDataForm.value.birthDateAsText).format('DD/MM/YYYY')
+      })
+    }
+
+    console.log(this.personalDataForm.value.birthDateAsText);
+
   }
 
   public fillFormAndVariable(user: IUSer): void {

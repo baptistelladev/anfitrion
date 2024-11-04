@@ -12,6 +12,7 @@ import { Title } from '@angular/platform-browser';
 import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
 import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 import { StorageService } from 'src/app/core/services/storage.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'anfitrion-trocar-idioma',
@@ -44,7 +45,7 @@ export class TrocarIdiomaPage implements OnInit, OnDestroy {
     this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
-  ionViewDidEnter(): void {
+  ionViewWillEnter(): void {
     this.title.setTitle('Trocar idioma');
   }
 
@@ -80,6 +81,16 @@ export class TrocarIdiomaPage implements OnInit, OnDestroy {
 
     await this.storageService.setStorageKey(APP_LANG_KEY, this.currentLanguage.value);
 
+
+    switch (this.currentLanguage.value) {
+      case 'pt':
+        moment.locale('pt-br')
+        break;
+
+      default:
+        moment.locale(this.currentLanguage.value)
+        break;
+    }
     this.store.dispatch(AppStore.setCurrentLanguage({ language: this.currentLanguage }));
     this.translate.use(this.currentLanguage.value);
     this.navCtrl.back();
