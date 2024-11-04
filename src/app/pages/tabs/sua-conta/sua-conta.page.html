@@ -92,12 +92,15 @@ class="ion-content-w-linear-bg">
             </div>
           </ion-col>
 
-          <ion-col size="12">
-            <ion-text mode="ios" class="txt-right">
-              <p class="fs-14">
-                <a href="javascript:void(0)" [title]="''" (click)="toggleNewEmailModal(true)"><b>solicitar</b> alteração do e-mail</a>
-              </p>
-            </ion-text>
+          <ion-col size="12" class="txt-right">
+            <ion-button
+            (click)="toggleNewEmailModal(true)"
+            [title]=""
+            class="txt-right no-ion-padding fs-14 no-height"
+            fill="clear"
+            mode="ios">
+              <b class="mg-right-5">solicitar</b> alteração do e-mail
+            </ion-button>
           </ion-col>
 
           <ion-col size="12">
@@ -110,12 +113,15 @@ class="ion-content-w-linear-bg">
             </div>
           </ion-col>
 
-          <ion-col size="12">
-            <ion-text mode="ios" class="txt-right">
-              <p class="fs-14">
-                <a href="javascript:void(0)" [title]="''" (click)="toggleNewPasswordModal(true)"><b>solicitar</b> alteração da senha</a>
-              </p>
-            </ion-text>
+          <ion-col size="12" class="txt-right">
+            <ion-button
+            (click)="toggleNewEmailModal(true)"
+            [title]=""
+            class="txt-right no-ion-padding fs-14 no-height"
+            fill="clear"
+            mode="ios">
+              <b class="mg-right-5">solicitar</b> alteração da senha
+            </ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>

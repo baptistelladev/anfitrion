@@ -138,4 +138,8 @@ ion-button {
   &.btn-danger {
     --color: var(--danger);
   }
+
+  &.no-height {
+    min-height: 0;
+  }
 }
