@@ -53,19 +53,21 @@
                 lines="none"
                 mode="ios">
                   <ion-select
+                  class="change-lang"
                   (ionCancel)="back()"
                   (ionChange)="changeLang($event)"
                   formControlName="language"
                   [cancelText]="'SHARED.CANCEL' | translate"
                   [okText]="'SHARED.DEFINE' | translate"
-                  [label]="'CHANGE_LANG_PAGE.CURRENT_LANG' | translate"
-                  toggleIcon="chevron-down-outline">
+                  [label]="'CHANGE_LANG_PAGE.CURRENT_LANG' | translate">
                     <ion-select-option
                     *ngFor="let lang of MOCK_LANGS"
                     [value]="lang.value">
                       {{ lang.text[currentLanguage.value] }}
                     </ion-select-option>
                   </ion-select>
+
+                  <ion-icon name="chevron-down-outline" class="color-gray-light mg-left-8"></ion-icon>
                 </ion-item>
               </div>
 

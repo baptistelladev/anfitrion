@@ -233,6 +233,68 @@ class="ion-content-w-linear-bg">
           </ion-col>
 
           <ion-col size="12">
+            <ion-text mode="ios">
+              <p class="fs-12 color-gray-mid mg-bottom-8">
+                Tipo de usuário
+              </p>
+            </ion-text>
+
+            <div
+            [ngClass]="{
+            'has-error' : (personalDataForm.get('type')?.invalid &&
+            (personalDataForm.get('type')?.touched ||
+            personalDataForm.get('type')?.dirty))}"
+            class="anfitrion-input-wrapper select-on-form full-width white-background-item label-w-white item-has-button-at-end ">
+              <ion-item
+              class="has-select-on-form"
+              lines="none"
+              mode="ios">
+                <ion-select
+                toggleIcon="''"
+                interface="alert"
+                [interfaceOptions]="interfaceOptions"
+                placeholder="Selecione" mode="ios">
+                  <ion-select-option value="MORADOR">Morador</ion-select-option>
+                  <ion-select-option value="TURISTA">Turista</ion-select-option>
+                </ion-select>
+
+                <ion-icon name="chevron-down-outline" class="color-gray-light"></ion-icon>
+              </ion-item>
+            </div>
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-text mode="ios">
+              <p class="fs-12 color-gray-mid mg-bottom-8">
+                Sexo
+              </p>
+            </ion-text>
+
+            <div
+            [ngClass]="{
+            'has-error' : (personalDataForm.get('sex')?.invalid &&
+            (personalDataForm.get('sex')?.touched ||
+            personalDataForm.get('sex')?.dirty))}"
+            class="anfitrion-input-wrapper select-on-form full-width white-background-item label-w-white item-has-button-at-end ">
+              <ion-item
+              class="has-select-on-form"
+              lines="none"
+              mode="ios">
+                <ion-select
+                toggleIcon="''"
+                interface="alert"
+                [interfaceOptions]="interfaceOptions"
+                placeholder="Selecionar sexo" mode="ios">
+                  <ion-select-option value="MORADOR">Masculino</ion-select-option>
+                  <ion-select-option value="TURISTA">Feminino</ion-select-option>
+                </ion-select>
+
+                <ion-icon name="chevron-down-outline" class="color-gray-light mg-left-16"></ion-icon>
+              </ion-item>
+            </div>
+          </ion-col>
+
+          <ion-col size="12">
             <ion-item
             lines="none"
             mode="ios"
