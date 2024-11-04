@@ -41,7 +41,7 @@
 @import './assets/scss/ionic/ion-breadcrumb.scss';
 @import './assets/scss/ionic/ion-loading.scss';
 @import './assets/scss/ionic/ion-datetime.scss';
-
+@import './assets/scss/ionic/ion-popover.scss';
 
 /* GRID */
 ion-grid {
@@ -191,6 +191,15 @@ hr.anfitrion-divider {
     --inner-padding-end: 0;
     border-radius: 12px;
 
+    &.has-select-on-form {
+      --padding-end: 16px;
+      --inner-padding-end: 0;
+
+      ion-icon {
+        font-size: 22px;
+      }
+    }
+
     ion-button {
       margin: 0;
     }
@@ -206,9 +215,29 @@ hr.anfitrion-divider {
       --color: var(--gray-text);
     }
 
-    ion-select {
+    ion-select.select-on-form {
+      --placeholder-color: var(--gray-c);
+      --placeholder-opacity: 1;
+      --color-checked: var(--gray-text);
+      font-weight: normal;
+
+      &::part(label) {
+        color: var(--gray-mid);
+       font-size: 12px;
+      }
+
+      &::part(container) {
+        width: 100%;
+      }
+
       &::part(icon) {
-        margin: 0 0 0 10px;
+        display: none;
+      }
+    }
+
+    ion-select.change-lang {
+      &::part(icon) {
+        display: none;
       }
 
       &::part(label) {

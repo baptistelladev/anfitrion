@@ -1,0 +1,20 @@
+ion-popover {
+  &.anf-popover {
+    ion-select-popover {
+      ion-list {
+        ion-radio-group {
+          ion-item {
+            font-size: 16px;
+            --color: var(--gray-text);
+
+            &.item-radio-checked {
+              --background-focused-opacity: 0;
+              --color: var(--green);
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+}

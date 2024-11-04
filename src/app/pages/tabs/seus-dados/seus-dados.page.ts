@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { IonDatetime, NavController } from '@ionic/angular';
+import { IonDatetime, NavController, PopoverOptions } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { ILang } from 'src/app/shared/models/ILang';
@@ -16,6 +16,20 @@ import * as moment from 'moment';
   styleUrls: ['./seus-dados.page.scss'],
 })
 export class SeusDadosPage implements OnInit, OnDestroy {
+
+  public interfaceOptions: any = {
+    showBackdrop: true,
+    backdropDismiss: true,
+    cssClass: 'select-alert',
+    mode: 'ios',
+    keyboardClose: true,
+    id: 'select-user-type',
+    size: 'auto',
+    dismissOnSelect: true,
+    side: 'bottom',
+    alignment: '',
+    arrow: true,
+  }
 
   public todayAsDatetime = moment().format('YYYY-MM-DD');
   public maxDateAsDatetime = moment().subtract(16, 'years').format('YYYY-MM-DD');
@@ -69,9 +83,11 @@ export class SeusDadosPage implements OnInit, OnDestroy {
   public initPersonalDataForm(): void {
     this.personalDataForm = this.formBuilder.group({
       name: [ '', [ Validators.required, Validators.minLength(3) ] ],
-      birthDateAsDate: null,
-      birthDateAsText: null,
-      secondName: null
+      birthDateAsDate: [ '', [ Validators.required ] ],
+      birthDateAsText: [ '', [ Validators.required ] ],
+      secondName: [ '', [ Validators.required ] ],
+      type: [ '', [ Validators.required ] ],
+      sex: [ '', [ Validators.required ] ]
     })
   }
 
