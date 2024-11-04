@@ -130,10 +130,18 @@ export class SuaContaPage implements OnInit, OnDestroy {
 
   public toggleNewEmailModal(show: boolean): void {
     this.showNewEmailModal = show;
+
+    if (!show) {
+      this.clearNewEmailForm()
+    }
   }
 
   public toggleNewPasswordModal(show: boolean): void {
     this.showNewPasswordModal = show;
+
+    if (!show) {
+      this.clearNewPasswordForm()
+    }
   }
 
   public togglePassword(): void {
@@ -172,6 +180,14 @@ export class SuaContaPage implements OnInit, OnDestroy {
    */
   public getPasswordRules(): void {
     this.passwordRules = this.utilsService.getPasswordRules();
+  }
+
+  public clearNewPasswordForm(): void {
+    this.newPasswordFormGroup.reset();
+  }
+
+  public clearNewEmailForm(): void {
+    this.newEmailFormGroup.reset();
   }
 
   public ngOnDestroy(): void {

@@ -1,5 +1,17 @@
 
 {
+  "YOUR_ACCOUNT_PAGE": {
+    "YOUR_INFO": "Esta es la información de tu cuenta Anfitrion",
+    "PASSWORD_ADVISE": "Por razones de seguridad no mostramos tu contraseña, pero aún puedes cambiarla si es necesario",
+    "REQUEST_EMAIL_CHANGE": ["solicitar", "cambio de correo electrónico"],
+    "REQUEST_PASSWORD_CHANGE": ["solicitar", "cambio de contraseña"],
+    "MODAL_EMAIL_TITLE": ["Definir", "tu nuevo correo electrónico"],
+    "MODAL_EMAIL_DESC": "Cambiar correo electrónico",
+    "MODAL_PASSWORD_TITLE": ["Definir", "tu nueva contraseña"],
+    "MODAL_PASSWORD_DESC": "Cambiar contraseña",
+    "UPDATE_MY_EMAIL_BTN": ["actualizar", "mi correo electrónico"],
+    "UPDATE_MY_PASSWORD_BTN": ["actualizar", "mi contraseña"]
+  },
   "YOUR_PERFIL_PAGE": {
     "YOUR_INFO": "Estas son tus informaciones personales",
     "INCOMPLETE": "Perfil incompleto",
@@ -55,7 +67,15 @@
     "HIDE_PW" : "Esconder contraseña",
     "NAME": "Tu nombre",
     "INSERT_NAME": "Ingrese su primer nombre",
-    "INSERT_SECOND_NAME": "Ingrese su segundo nombre"
+    "INSERT_SECOND_NAME": "Ingrese su segundo nombre",
+    "LABEL_CURRENT_EMAIL": "Correo electrónico actual",
+    "PLACEHOLDER_CURRENT_EMAIL": "Tu correo electrónico actual",
+    "LABEL_NEW_PASSWORD": "Nueva contraseña",
+    "PLACEHOLDER_NEW_PASSWORD": "Ingresa tu nueva contraseña",
+    "LABEL_CONFIRM_NEW_PASSWORD": "Confirmar nueva contraseña",
+    "PLACEHOLDER_CONFIRM_NEW_PASSWORD": "Confirma tu nueva contraseña",
+    "LABEL_NEW_EMAIL": "Tu nuevo correo electrónico",
+    "PLACEHOLDER_NEW_EMAIL": "Ingresa tu nuevo correo electrónico"
   },
   "LOGIN_PAGE" : {
     "PAGE_TITLE" : "El anfitrión de la Baixada Santista",

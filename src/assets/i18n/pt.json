@@ -1,4 +1,16 @@
 {
+  "YOUR_ACCOUNT_PAGE" : {
+    "YOUR_INFO" : "Estas são as informações da sua conta anfitrion",
+    "PASSWORD_ADVISE" : "Por questões de segurança não mostramos sua senha, mas você ainda pode troca-lá se for necessário",
+    "REQUEST_EMAIL_CHANGE" : ["solicitar","alteração de e-mail"],
+    "REQUEST_PASSWORD_CHANGE" : ["solicitar","alteração de senha"],
+    "MODAL_EMAIL_TITLE" : ["Defina","seu novo e-mail"],
+    "MODAL_EMAIL_DESC" : "Troque de e-mail",
+    "MODAL_PASSWORD_TITLE" : ["Defina","sua nova senha"],
+    "MODAL_PASSWORD_DESC" : "Troque de senha",
+    "UPDATE_MY_EMAIL_BTN" : ["atualizar","meu e-mail"],
+    "UPDATE_MY_PASSWORD_BTN" : ["atualizar","minha senha"]
+  },
   "YOUR_PERFIL_PAGE" : {
     "YOUR_INFO" : "Estas são suas informações pessoais",
     "INCOMPLETE" : "Perfil incompleto",
@@ -54,7 +66,15 @@
     "HIDE_PW" : "Esconder senha",
     "NAME" : "Seu primeiro nome",
     "INSERT_NAME" : "Insira seu primeiro nome",
-    "INSERT_SECOND_NAME" : "Insira seu segundo nome"
+    "INSERT_SECOND_NAME" : "Insira seu segundo nome",
+    "LABEL_CURRENT_EMAIL" : "E-mail atual",
+    "PLACEHOLDER_CURRENT_EMAIL" : "Seu e-mail atual",
+    "LABEL_NEW_PASSWORD" : "Nova senha",
+    "PLACEHOLDER_NEW_PASSWORD" : "Insira sua nova senha",
+    "LABEL_CONFIRM_NEW_PASSWORD" : "Confirmar nova senha",
+    "PLACEHOLDER_CONFIRM_NEW_PASSWORD" : "Confirme sua nova senha",
+    "LABEL_NEW_EMAIL" : "Seu novo e-mail",
+    "PLACEHOLDER_NEW_EMAIL" : "Insira seu novo e-mail"
   },
   "LOGIN_PAGE" : {
     "PAGE_TITLE" : "O anfitrião da Baixada Santista",
@@ -153,7 +173,7 @@
     "FIRST_NAME" : "Primeiro nome",
     "SECOND_NAME" : "Sobrenome",
     "BIRTHDATE" : "Data de nascimento",
-    "UPDATE_MY_INFO_BTN" : ["atualizar","meus dados"]
+    "UPDATE_MY_INFO_BTN": ["update", "my profile"]
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nosso próposito aqui é fazer com que voê economize o seu bem mais precioso:","o tempo"],
