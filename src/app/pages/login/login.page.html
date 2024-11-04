@@ -124,6 +124,7 @@ class="ion-content-w-linear-bg">
                       lines="none"
                       mode="ios">
                         <ion-input
+                        (keyup)="justLowercase(formLoginGroup, 'email')"
                         (keydown)="preventWhitespace($event)"
                         formControlName="email"
                         enterkeyhint="next"
@@ -337,7 +338,7 @@ class="ion-content-w-linear-bg">
                       lines="none"
                       mode="ios">
                         <ion-input
-                        (keyup)="clearErrorsIfExists('email-already-in-use')"
+                        (keyup)="clearErrorsIfExists('email-already-in-use'); justLowercase(formCreateAccGroup, 'email')"
                         (keydown)="preventWhitespace($event)"
                         [placeholder]="'INPUTS.EMAIL' | translate"
                         enterkeyhint="next"

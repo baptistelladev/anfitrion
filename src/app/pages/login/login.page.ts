@@ -273,6 +273,11 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
     this.formCreateAccGroup.patchValue({ name: name });
   }
 
+  public justLowercase(form: FormGroup, field: string): void {
+    let value: string = form.value[field].toLowerCase();
+    form.patchValue({ [field]: value });
+  }
+
   public initCreateAccForm(): void {
     this.formCreateAccGroup = this.formBuilder.group({
       name: [ '', [ Validators.required, Validators.minLength(3) ] ],
@@ -313,6 +318,11 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
 
   public checkPasswordsMatch(): boolean {
     this.passwordsMatch = this.formCreateAccGroup.value.password === this.formCreateAccGroup.value.confirmPassword
+
+    if (this.formCreateAccGroup.value.password === '' && this.formCreateAccGroup.value.confirmPassword === '') {
+      this.passwordsMatch = false
+    }
+
     return this.passwordsMatch
   }
 

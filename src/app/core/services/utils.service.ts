@@ -59,9 +59,9 @@ export class UtilsService {
     {
       type: 'has-caractere',
       text: {
-        pt: 'pelo menos 1 caractere especial',
-        en: 'at least 1 special character',
-        es: 'al menos 1 carácter especial'
+        pt: 'pelo menos 1 caractere especial (@#%*)',
+        en: 'at least 1 special character (@#%*)',
+        es: 'al menos 1 carácter especial (@#%*)'
       },
       valid: false
     },
