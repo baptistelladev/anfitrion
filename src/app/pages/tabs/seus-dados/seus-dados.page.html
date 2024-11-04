@@ -180,6 +180,7 @@ class="ion-content-w-linear-bg">
                 </ion-button>
 
                 <ion-modal
+                [backdropDismiss]="false"
                 (willDismiss)="toggleBirthDateModal(false)"
                 [keepContentsMounted]="true"
                 class="anf-adapt-datetime"

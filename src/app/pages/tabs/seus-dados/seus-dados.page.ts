@@ -101,7 +101,9 @@ export class SeusDadosPage implements OnInit, OnDestroy {
   }
 
   public birthDateChanged(e: any): void {
-    console.log(moment(e.detail.value).format('L'));
+    this.personalDataForm.patchValue({
+      birthDateAsText: moment(e.detail.value).format('L')
+    })
   }
 
   public fillFormAndVariable(user: IUSer): void {
