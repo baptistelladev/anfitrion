@@ -17,6 +17,14 @@ import { UtilsService } from 'src/app/core/services/utils.service';
 })
 export class SuaContaPage implements OnInit, OnDestroy {
 
+  public passwordMatch: {text: any} = {
+    text: {
+      pt: 'senhas coincidem',
+      en: 'passwords match',
+      es: 'las contraseñas coinciden'
+    }
+  }
+
   public passwordIsValid: boolean = false;
   public passwordRules: any[];
   public passwordsMatch: boolean = false;
@@ -61,13 +69,13 @@ export class SuaContaPage implements OnInit, OnDestroy {
     this.initNewPasswordForm();
   }
 
-  ionViewdidEnter(): void {
+  ionViewDidEnter(): void {
     this.title.setTitle('Sua conta');
   }
 
   public initNewEmailForm(): void {
     this.newEmailFormGroup = this.formBuilder.group({
-      newEmail: [null, [ Validators.required ]]
+      newEmail: [ '', [ Validators.required ] ]
     })
   }
 
