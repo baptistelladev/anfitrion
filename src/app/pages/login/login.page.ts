@@ -113,6 +113,7 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
 
   public async listenBackButton() {
     const alert = await this.overlayService.fireAlert({
+      mode: 'ios',
       cssClass: 'anf-alert negative-btn',
       subHeader: `${this.translate.instant('SHARED.EXIT_APP_TITLE')}`,
       message: `${this.translate.instant('SHARED.EXIT_APP_TEXT')}`,
