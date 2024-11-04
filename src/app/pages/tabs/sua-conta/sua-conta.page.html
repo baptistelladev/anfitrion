@@ -35,7 +35,7 @@ class="ion-content-w-linear-bg">
           <ion-col size="12">
             <ion-text mode="ios" class="line-height-22">
               <p class="fs-18 color-gray-6 font-baloo"><b>{{ user.firstName }}</b>,</p>
-              <p class="fs-14 color-gray-text font-w-thin">Estas são as informações que você acessa nosso app.</p>
+              <p class="fs-14 color-gray-text font-w-thin">Estas são as informações da sua conta anfitrion.</p>
             </ion-text>
           </ion-col>
 
@@ -95,7 +95,7 @@ class="ion-content-w-linear-bg">
           <ion-col size="12">
             <ion-text mode="ios" class="txt-right">
               <p class="fs-14">
-                <a href="javascript:void(0)" [title]="''"><b>solicitar</b> alteração do e-mail<ion-icon name="arrow-forward" class="mg-left-5"></ion-icon></a>
+                <a href="javascript:void(0)" [title]="''" (click)="toggleNewEmailModal(true)"><b>solicitar</b> alteração do e-mail</a>
               </p>
             </ion-text>
           </ion-col>
@@ -121,7 +121,7 @@ class="ion-content-w-linear-bg">
                 (keydown)="preventWhitespace($event)"
                 formControlName="fakePassword"
                 enterkeyhint="next"
-                [placeholder]="'INPUTS.EMAIL' | translate"
+                [placeholder]="'INPUTS.PASSWORD' | translate"
                 mode="ios"
                 type="password"
                 inputmode="text">
@@ -133,7 +133,7 @@ class="ion-content-w-linear-bg">
           <ion-col size="12">
             <ion-text mode="ios" class="txt-right">
               <p class="fs-14">
-                <a href="javascript:void(0)" [title]="''"><b>solicitar</b> alteração da senha<ion-icon name="arrow-forward" class="mg-left-5"></ion-icon></a>
+                <a href="javascript:void(0)" [title]="''" (click)="toggleNewPasswordModal(true)"><b>solicitar</b> alteração da senha</a>
               </p>
             </ion-text>
           </ion-col>
@@ -142,3 +142,237 @@ class="ion-content-w-linear-bg">
     </form>
   </section>
 </ion-content>
+
+<!-- NOVO E-MAIL -->
+<ion-modal
+class="ion-content-w-linear-bg"
+(ionModalWillDismiss)="toggleNewEmailModal(false)"
+[breakpoints]="[.99]"
+[initialBreakpoint]=".99"
+[backdropDismiss]="true"
+[isOpen]="showNewEmailModal"
+mode="md"
+id="new-email-modal">
+  <ng-template>
+    <section class="new-email-modal full-width">
+      <form [formGroup]="newEmailFormGroup" class="full-width">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12">
+              <ion-text mode="ios">
+                <p class="fs-12 color-gray-mid mg-bottom-8">
+                  Novo e-mail
+                </p>
+              </ion-text>
+
+              <div
+              [ngClass]="{
+              'has-error' : (accountForm.get('newEmail')?.invalid &&
+              (accountForm.get('newEmail')?.touched ||
+              accountForm.get('newEmail')?.dirty))}"
+              class="anfitrion-input-wrapper full-width white-background-item label-w-white">
+                <ion-item
+                lines="none"
+                mode="ios">
+                  <ion-input
+                  (keydown)="preventWhitespace($event)"
+                  formControlName="newEmail"
+                  enterkeyhint="next"
+                  [placeholder]="'Inserir novo e-mail'"
+                  mode="ios"
+                  type="email"
+                  inputmode="email">
+                  </ion-input>
+                </ion-item>
+
+                <ion-text
+                mode="ios"
+                class="mg-top-8 d-block"
+                *ngIf="
+                accountForm.get('newEmail')?.invalid &&
+                (accountForm.get('newEmail')?.touched || accountForm.get('newEmail')?.dirty)">
+                  <p
+                  *ngIf="accountForm.get('newEmail')?.hasError('required')"
+                  class="fs-12 color-danger">
+                    {{ 'ERRORS.REQUIRED_FIELD' | translate }}
+                  </p>
+
+                  <p
+                  *ngIf="accountForm.get('newEmail')?.hasError('newEmail')"
+                  class="fs-12 color-danger">
+                    {{ 'ERRORS.EMAIL_INVALID' | translate }}
+                  </p>
+                </ion-text>
+              </div>
+            </ion-col>
+
+            <ion-col size="12">
+              <ion-button
+              [disabled]="false"
+              mode="md"
+              shape="round"
+              class="anfitrion-main-solid fs-14 txt-lowercase full-width close-modal-btn height-44 mg-bottom-16 mg-top-16"
+              [title]="'Fechar'"
+              fill="solid">
+                <ion-icon name="refresh-outline" class="mg-right-5"></ion-icon>atualizar <span class="font-w-bold mg-left-5">novo e-mail</span>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+    </section>
+  </ng-template>
+</ion-modal>
+
+<!-- NOVA SENHA -->
+<ion-modal
+class="ion-content-w-linear-bg"
+(ionModalWillDismiss)="toggleNewPasswordModal(false)"
+[breakpoints]="[.99]"
+[initialBreakpoint]=".99"
+[backdropDismiss]="true"
+[isOpen]="showNewPasswordModal"
+mode="md"
+id="new-password-modal">
+  <ng-template>
+    <section class="new-password-modal full-width">
+      <form [formGroup]="newPasswordFormGroup" class="full-width">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12">
+              <ion-text mode="ios">
+                <p class="fs-12 color-gray-mid mg-bottom-8">
+                  Nova senha
+                </p>
+              </ion-text>
+
+              <div
+              [ngClass]="{
+              'has-error' : (newPasswordFormGroup.get('password')?.invalid &&
+              (newPasswordFormGroup.get('password')?.touched ||
+              newPasswordFormGroup.get('password')?.dirty))}"
+              class="anfitrion-input-wrapper full-width white-background-item label-w-white item-has-button-at-end">
+                <ion-item
+                lines="none"
+                mode="ios">
+                  <ion-input
+                  (keyup)="checkPasswordRules()"
+                  (keydown)="preventWhitespace($event)"
+                  [type]="showPassword ? 'text' : 'password'"
+                  [placeholder]="'INPUTS.PASSWORD' | translate"
+                  formControlName="password"
+                  enterkeyhint="next"
+                  mode="ios"
+                  inputmode="text">
+                  </ion-input>
+
+                  <ion-button
+                  [title]="showPassword ? ('INPUTS.HIDE_PW' | translate) : ('INPUTS.SHOW_PW' | translate)"
+                  (click)="togglePassword()"
+                  type="button"
+                  class="clear-gray-light"
+                  mode="ios"
+                  fill="clear">
+                    <ion-icon name="eye-off-outline" *ngIf="showPassword"></ion-icon>
+                    <ion-icon name="eye-outline" *ngIf="!showPassword"></ion-icon>
+                  </ion-button>
+                </ion-item>
+
+                <ion-text
+                mode="ios"
+                class="mg-top-8 d-block"
+                *ngIf="
+                newPasswordFormGroup.get('password')?.invalid &&
+                (newPasswordFormGroup.get('password')?.touched || newPasswordFormGroup.get('password')?.dirty)">
+                  <p
+                  *ngIf="newPasswordFormGroup.get('password')?.hasError('required')"
+                  class="fs-12 color-danger">
+                    {{ 'ERRORS.REQUIRED_FIELD' | translate }}
+                  </p>
+
+                  <p
+                  *ngIf="newPasswordFormGroup.get('password')?.hasError('minlength')"
+                  class="fs-12 color-danger">
+                    {{ 'ERRORS.MIN_CARACTERES.0' | translate }} 8 {{ 'ERRORS.MIN_CARACTERES.1' | translate }}
+                  </p>
+                </ion-text>
+              </div>
+            </ion-col>
+
+            <ion-col size="12">
+              <ion-text mode="ios">
+                <p class="fs-12 color-gray-mid mg-bottom-8">
+                  Confirmar nova senha
+                </p>
+              </ion-text>
+
+              <div
+              [ngClass]="{
+              'has-error' : (newPasswordFormGroup.get('confirmPassword')?.invalid &&
+              (newPasswordFormGroup.get('confirmPassword')?.touched ||
+              newPasswordFormGroup.get('confirmPassword')?.dirty))}"
+              class="anfitrion-input-wrapper full-width white-background-item label-w-gray-ef item-has-button-at-end">
+                <ion-item
+                lines="none"
+                mode="ios">
+                  <ion-input
+                  (keyup)="checkPasswordsMatch();"
+                  (keydown)="preventWhitespace($event)"
+                  [placeholder]="'INPUTS.CONFIRM_PASSWORD' | translate"
+                  [type]="showConfirmPassword ? 'text' : 'password'"
+                  formControlName="confirmPassword"
+                  enterkeyhint="send"
+                  mode="ios"
+                  inputmode="text">
+                  </ion-input>
+
+                  <ion-button
+                  [title]="showConfirmPassword ? ('INPUTS.HIDE_PW' | translate) : ('INPUTS.SHOW_PW' | translate)"
+                  (click)="toggleConfirmPassword()"
+                  type="button"
+                  class="clear-gray-light"
+                  mode="ios"
+                  fill="clear">
+                    <ion-icon name="eye-off-outline" *ngIf="showConfirmPassword"></ion-icon>
+                    <ion-icon name="eye-outline" *ngIf="!showConfirmPassword"></ion-icon>
+                  </ion-button>
+                </ion-item>
+
+                <ion-text
+                mode="ios"
+                class="mg-top-8 d-block"
+                *ngIf="
+                newPasswordFormGroup.get('confirmPassword')?.invalid &&
+                (newPasswordFormGroup.get('confirmPassword')?.touched || newPasswordFormGroup.get('confirmPassword')?.dirty)">
+                  <p
+                  *ngIf="newPasswordFormGroup.get('confirmPassword')?.hasError('required')"
+                  class="fs-12 color-danger">
+                    {{ 'ERRORS.REQUIRED_FIELD' | translate }}
+                  </p>
+
+                  <p
+                  *ngIf="newPasswordFormGroup.get('confirmPassword')?.hasError('minlength')"
+                  class="fs-12 color-danger">
+                  {{ 'ERRORS.MIN_CARACTERES.0' | translate }} 8 {{ 'ERRORS.MIN_CARACTERES.1' | translate }}
+                  </p>
+                </ion-text>
+              </div>
+            </ion-col>
+
+            <ion-col size="12">
+              <ion-button
+              [disabled]="false"
+              mode="md"
+              shape="round"
+              class="anfitrion-main-solid fs-14 txt-lowercase full-width close-modal-btn height-44 mg-bottom-16 mg-top-16"
+              [title]=""
+              fill="solid">
+                <ion-icon name="refresh-outline" class="mg-right-5"></ion-icon>{{ 'SHARED.UPDATE_MY_INFO_BTN.0' | translate }} <span class="font-w-bold mg-left-5">minha senha</span>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+    </section>
+  </ng-template>
+</ion-modal>
