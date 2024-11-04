@@ -75,7 +75,7 @@ export class SuaContaPage implements OnInit, OnDestroy {
 
   public initNewEmailForm(): void {
     this.newEmailFormGroup = this.formBuilder.group({
-      newEmail: [ '', [ Validators.required ] ]
+      newEmail: [ '',  [ Validators.required, Validators.email ] ]
     })
   }
 
@@ -153,8 +153,18 @@ export class SuaContaPage implements OnInit, OnDestroy {
   }
 
   public checkPasswordsMatch(): boolean {
-    this.passwordsMatch = this.newPasswordFormGroup.value.password === this.newPasswordFormGroup.value.confirmPassword
+    this.passwordsMatch = this.newPasswordFormGroup.value.password === this.newPasswordFormGroup.value.confirmPassword;
+
+    if (this.newPasswordFormGroup.value.password === '' && this.newPasswordFormGroup.value.confirmPassword === '') {
+      this.passwordsMatch = false
+    }
+
     return this.passwordsMatch
+  }
+
+  public justLowercase(form: FormGroup, field: string): void {
+    let value: string = form.value[field].toLowerCase();
+    form.patchValue({ [field]: value });
   }
 
   /**

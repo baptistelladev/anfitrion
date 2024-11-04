@@ -159,14 +159,15 @@ id="new-email-modal">
 
                 <div
                 [ngClass]="{
-                'has-error' : (accountForm.get('newEmail')?.invalid &&
-                (accountForm.get('newEmail')?.touched ||
-                accountForm.get('newEmail')?.dirty))}"
+                'has-error' : (newEmailFormGroup.get('newEmail')?.invalid &&
+                (newEmailFormGroup.get('newEmail')?.touched ||
+                newEmailFormGroup.get('newEmail')?.dirty))}"
                 class="anfitrion-input-wrapper full-width white-background-item label-w-white">
                   <ion-item
                   lines="none"
                   mode="ios">
                     <ion-input
+                    (keyup)="justLowercase(newEmailFormGroup, 'newEmail')"
                     (keydown)="preventWhitespace($event)"
                     formControlName="newEmail"
                     enterkeyhint="next"
@@ -181,16 +182,16 @@ id="new-email-modal">
                   mode="ios"
                   class="mg-top-8 d-block"
                   *ngIf="
-                  accountForm.get('newEmail')?.invalid &&
-                  (accountForm.get('newEmail')?.touched || accountForm.get('newEmail')?.dirty)">
+                  newEmailFormGroup.get('newEmail')?.invalid &&
+                  (newEmailFormGroup.get('newEmail')?.touched || newEmailFormGroup.get('newEmail')?.dirty)">
                     <p
-                    *ngIf="accountForm.get('newEmail')?.hasError('required')"
+                    *ngIf="newEmailFormGroup.get('newEmail')?.hasError('required')"
                     class="fs-12 color-danger">
                       {{ 'ERRORS.REQUIRED_FIELD' | translate }}
                     </p>
 
                     <p
-                    *ngIf="accountForm.get('newEmail')?.hasError('newEmail')"
+                    *ngIf="newEmailFormGroup.get('newEmail')?.hasError('email')"
                     class="fs-12 color-danger">
                       {{ 'ERRORS.EMAIL_INVALID' | translate }}
                     </p>
@@ -200,7 +201,7 @@ id="new-email-modal">
 
               <ion-col size="12">
                 <ion-button
-                [disabled]="false"
+                [disabled]="newEmailFormGroup.invalid"
                 mode="md"
                 shape="round"
                 class="anfitrion-main-solid fs-14 txt-lowercase full-width close-modal-btn height-44 mg-bottom-16 mg-top-16"
@@ -395,7 +396,7 @@ id="new-password-modal">
 
               <ion-col size="12">
                 <ion-button
-                [disabled]="false"
+                [disabled]="newPasswordFormGroup.invalid || !passwordIsValid || !passwordsMatch"
                 mode="md"
                 shape="round"
                 class="anfitrion-main-solid fs-14 txt-lowercase full-width close-modal-btn height-44 mg-bottom-16 mg-top-16"
