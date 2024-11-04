@@ -1,6 +1,6 @@
 {
   "YOUR_ACCOUNT_PAGE" : {
-    "YOUR_INFO" : "Estas são as informações da sua conta anfitrion",
+    "YOUR_INFO" : "Estas são as informações da sua conta anfitrion criada em",
     "PASSWORD_ADVISE" : "Por questões de segurança não mostramos sua senha, mas você ainda pode troca-lá se for necessário",
     "REQUEST_EMAIL_CHANGE" : ["solicitar","alteração de e-mail"],
     "REQUEST_PASSWORD_CHANGE" : ["solicitar","alteração de senha"],

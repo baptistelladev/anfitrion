@@ -1,6 +1,6 @@
 {
   "YOUR_ACCOUNT_PAGE": {
-    "YOUR_INFO": "This is your anfitrion account information",
+    "YOUR_INFO": "This is your anfitrion account information created in",
     "PASSWORD_ADVISE": "For security reasons, we don't show your password, but you can still change it if necessary",
     "REQUEST_EMAIL_CHANGE": ["request", "email change"],
     "REQUEST_PASSWORD_CHANGE": ["request", "password change"],
@@ -10,8 +10,7 @@
     "MODAL_PASSWORD_DESC": "Change password",
     "UPDATE_MY_EMAIL_BTN": ["update", "my email"],
     "UPDATE_MY_PASSWORD_BTN": ["update", "my password"]
-  }
-  ,
+  },
   "YOUR_PERFIL_PAGE": {
     "YOUR_INFO": "These are your personal information",
     "INCOMPLETE": "Incomplete profile",
