@@ -1,3 +1,5 @@
+import { MOCK_USER_TYPES } from './../../../shared/mocks/MockUserTypes';
+import { MOCK_USER_SEX } from './../../../shared/mocks/MockUserSex';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { IonDatetime, NavController, PopoverOptions } from '@ionic/angular';
 import { Store } from '@ngrx/store';
@@ -9,6 +11,8 @@ import { IUSer } from 'src/app/shared/models/IUser';
 import * as UserStore from './../../../shared/store/user.state';
 import { Title } from '@angular/platform-browser';
 import * as moment from 'moment';
+import { IUserSex } from 'src/app/shared/models/IUserSex';
+import { IUserType } from 'src/app/shared/models/IUSerType';
 
 @Component({
   selector: 'anfitrion-seus-dados',
@@ -49,6 +53,9 @@ export class SeusDadosPage implements OnInit, OnDestroy {
 
   public personalDataForm: FormGroup;
 
+  public MOCK_USER_SEX: IUserSex[] = MOCK_USER_SEX;
+  public MOCK_USER_TYPES: IUserType[] = MOCK_USER_TYPES;
+
   constructor(
     private navCtrl : NavController,
     private store : Store,
@@ -83,7 +90,7 @@ export class SeusDadosPage implements OnInit, OnDestroy {
   public initPersonalDataForm(): void {
     this.personalDataForm = this.formBuilder.group({
       name: [ '', [ Validators.required, Validators.minLength(3) ] ],
-      birthDateAsDate: [ '', [ Validators.required ] ],
+      birthDateAsDate: [ '' ],
       birthDateAsText: [ '', [ Validators.required ] ],
       secondName: [ '', [ Validators.required ] ],
       type: [ '', [ Validators.required ] ],
