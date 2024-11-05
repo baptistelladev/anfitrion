@@ -74,7 +74,11 @@
     "LABEL_CONFIRM_NEW_PASSWORD" : "Confirmar nova senha",
     "PLACEHOLDER_CONFIRM_NEW_PASSWORD" : "Confirme sua nova senha",
     "LABEL_NEW_EMAIL" : "Seu novo e-mail",
-    "PLACEHOLDER_NEW_EMAIL" : "Insira seu novo e-mail"
+    "PLACEHOLDER_NEW_EMAIL" : "Insira seu novo e-mail",
+    "LABEL_BS_RELATIONSHIP" : "Qual é a sua relação com a Baixada Santista",
+    "PLACEHOLDER_BS_RELATIONSHIP" : "Selecionar tipo",
+    "LABEL_SEX" : "Sexo",
+    "PLACEHOLDER_SEX" : "Selecionar sexo"
   },
   "LOGIN_PAGE" : {
     "PAGE_TITLE" : "O anfitrião da Baixada Santista",
