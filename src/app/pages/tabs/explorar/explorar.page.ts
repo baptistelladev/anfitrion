@@ -5,7 +5,7 @@ import { ILang } from 'src/app/shared/models/ILang';
 import Swiper from 'swiper';
 import { TranslateService } from '@ngx-translate/core';
 import { Title } from '@angular/platform-browser';
-import { IonContent, NavController } from '@ionic/angular';
+import { IonContent, ModalController, NavController, Platform } from '@ionic/angular';
 import { CidadesPage } from '../cidades/cidades.page';
 import { OverlayService } from 'src/app/shared/services/overlay.service';
 import { CityFeaturesEnum } from 'src/app/shared/enums/CityFeatures';
@@ -16,6 +16,7 @@ import { ICity } from 'src/app/shared/models/ICity';
 import { PlacesService } from 'src/app/core/services/firebase/places.service';
 import { IPlace } from 'src/app/shared/models/IPlace';
 import { CollectionsEnum } from 'src/app/shared/enums/Collection';
+import { App } from '@capacitor/app';
 
 @Component({
   selector: 'anfitrion-explorar',
@@ -264,12 +265,17 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
   public selectSubFeatures: any[];
   public selectedSubFeatures: any;
 
+  public backButtonSubscription: Subscription;
+
   constructor(
     private store : Store,
     private title : Title,
     public navCtrl : NavController,
     private overlayService : OverlayService,
-    private placesService : PlacesService
+    private placesService : PlacesService,
+    private platform : Platform,
+    private modalCtrl : ModalController,
+    private translate : TranslateService
   ) { }
 
   ngOnInit() {
@@ -278,6 +284,27 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     this.getCurrentLanguageFromNGRX();
     this.selectInitialSegment('CIDADE');
     this.getPlaces();
+  }
+
+  ngAfterViewInit(): void {
+    this.swiper = this.swiperRef?.nativeElement.swiper;
+  }
+
+  ionViewWillEnter(): void {
+    this.title.setTitle('Explorar');
+    this.listeningBackButton();
+  }
+
+  public listeningBackButton(): void {
+    this.backButtonSubscription = this.platform.backButton.subscribeWithPriority(0, async () => {
+      const isModalOpen = !!await this.modalCtrl.getTop();
+
+      if (!isModalOpen) {
+        await App.minimizeApp();
+      } else {
+        this.modalCtrl.dismiss();
+      }
+    })
   }
 
   public async getPlaces() {
@@ -313,14 +340,6 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
   public selectInitialSegment(segmentValue: string) {
     this.selectedSegment = segmentValue;
-  }
-
-  ngAfterViewInit(): void {
-    this.swiper = this.swiperRef?.nativeElement.swiper;
-  }
-
-  ionViewDidEnter(): void {
-    this.title.setTitle('Explorar')
   }
 
   public getCurrentLanguageFromNGRX(): void {
@@ -395,6 +414,10 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
         cidade: this.currentCity.value
       }
     })
+  }
+
+  ionViewWillLeave(): void {
+    this.backButtonSubscription.unsubscribe();
   }
 
   ngOnDestroy() {

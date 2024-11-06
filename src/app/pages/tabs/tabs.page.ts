@@ -22,7 +22,7 @@ export class TabsPage implements OnInit {
   ngOnInit() {
   }
 
-  public checkRoute() {
+  public checkRoute(value: any) {
     if (this.router.url === '/logado/sobre-nos') { this.applyDarkTabBar = true } else { this.applyDarkTabBar = false }
     if (this.router.url === '/logado/bem-vindo-a-baixada-santista') { this.hideTabs = true } else { setTimeout(() => {
       this.hideTabs = false
@@ -30,6 +30,10 @@ export class TabsPage implements OnInit {
 
 
     this.currentUrlJustString = this.router.url.split('/')[1];
+
+
+    console.log(this.router.url);
+
 
   }
 
