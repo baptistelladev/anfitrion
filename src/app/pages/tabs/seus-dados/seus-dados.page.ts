@@ -56,14 +56,11 @@ export class SeusDadosPage implements OnInit, OnDestroy {
   public MOCK_USER_SEX: IUserSex[] = MOCK_USER_SEX;
   public MOCK_USER_TYPES: IUserType[] = MOCK_USER_TYPES;
 
-  public backButtonSubscription: Subscription;
-
   constructor(
     private navCtrl : NavController,
     private store : Store,
     private formBuilder : FormBuilder,
-    private title : Title,
-    private platform : Platform
+    private title : Title
   ) { }
 
   ngOnInit() {
@@ -74,13 +71,6 @@ export class SeusDadosPage implements OnInit, OnDestroy {
 
   ionViewWillEnter(): void {
     this.title.setTitle('Seus dados');
-    this.listeningBackButton();
-  }
-
-  public listeningBackButton(): void {
-    this.backButtonSubscription = this.platform.backButton.subscribeWithPriority(0, async () => {
-      this.back();
-    })
   }
 
   public back(): void {
@@ -160,10 +150,6 @@ export class SeusDadosPage implements OnInit, OnDestroy {
 
   public defineBirthDate(): void {
     this.birthDateDatetime.confirm(true);
-  }
-
-  public ionViewWillLeave(): void {
-    this.backButtonSubscription.unsubscribe();
   }
 
   public ngOnDestroy(): void {

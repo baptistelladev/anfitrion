@@ -51,15 +51,12 @@ export class SuaContaPage implements OnInit, OnDestroy {
   public newEmailFormGroup: FormGroup;
   public newPasswordFormGroup: FormGroup;
 
-  public backButtonSubscription: Subscription;
-
   constructor(
     private navCtrl : NavController,
     private store : Store,
     private formBuilder : FormBuilder,
     private title : Title,
-    private utilsService : UtilsService,
-    private platform : Platform
+    private utilsService : UtilsService
   ) { }
 
   ngOnInit() {
@@ -75,13 +72,6 @@ export class SuaContaPage implements OnInit, OnDestroy {
 
   ionViewWillEnter(): void {
     this.title.setTitle('Sua conta');
-    this.listeningBackButton();
-  }
-
-  public listeningBackButton(): void {
-    this.backButtonSubscription = this.platform.backButton.subscribeWithPriority(0, async () => {
-      this.back();
-    })
   }
 
   public initNewEmailForm(): void {
@@ -206,10 +196,6 @@ export class SuaContaPage implements OnInit, OnDestroy {
 
   public clearNewEmailForm(): void {
     this.newEmailFormGroup.reset();
-  }
-
-  public ionViewWillLeave(): void {
-    this.backButtonSubscription.unsubscribe();
   }
 
   public ngOnDestroy(): void {

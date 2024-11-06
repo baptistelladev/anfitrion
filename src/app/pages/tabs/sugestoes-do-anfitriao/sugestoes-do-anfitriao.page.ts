@@ -39,14 +39,11 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
   public suggestionsBaixadaSantista$: Observable<any>
   public suggestionsBaixadaSantistaSubscription: Subscription;
 
-  public backButtonSubscription: Subscription;
-
   constructor(
     private store : Store,
     private navCtrl : NavController,
     private title : Title,
-    private suggestionsService : SuggestionsService,
-    private platform : Platform
+    private suggestionsService : SuggestionsService
   ) { }
 
   ngOnInit() {
@@ -60,13 +57,6 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
 
   ionViewWillEnter(): void {
     this.title.setTitle('Sugestões do anfitrião');
-    this.listeningBackButton();
-  }
-
-  public listeningBackButton(): void {
-    this.backButtonSubscription = this.platform.backButton.subscribeWithPriority(0, async () => {
-      this.back();
-    })
   }
 
   public seeSuggestion(suggestion: ISuggestion) {
@@ -131,10 +121,6 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
 
   public navToContactPage(): void {
     this.navCtrl.navigateForward(['/logado/contato']);
-  }
-
-  public ionViewWillLeave(): void {
-    this.backButtonSubscription.unsubscribe();
   }
 
   ngOnDestroy() {

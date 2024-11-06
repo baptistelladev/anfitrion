@@ -28,10 +28,6 @@ export class SocialNetworksComponent  implements OnInit {
 
   ngOnInit() {
     this.getSocialNetworksFromNGRX();
-    console.log(this.platform.platforms());
-    console.log(this.platform.is('desktop'));
-
-
   }
 
   public getSocialNetworksFromNGRX(): void {

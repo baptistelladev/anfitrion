@@ -1,3 +1,4 @@
+import { BackButtonService } from './../../core/core/back-button.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavController, Platform } from '@ionic/angular';
 import { Observable, Subscription, take } from 'rxjs';
@@ -25,8 +26,6 @@ export class EsqueciMinhaSenhaPage implements OnInit, OnDestroy {
 
   public isRecovering: boolean;
 
-  public backButtonSubscription: Subscription;
-
   constructor(
     private navCtrl : NavController,
     private store : Store,
@@ -34,7 +33,7 @@ export class EsqueciMinhaSenhaPage implements OnInit, OnDestroy {
     private authService : AuthService,
     private overlayService : OverlayService,
     private title : Title,
-    private platform : Platform
+    private backButtonService : BackButtonService
   ) { }
 
   ngOnInit() {
@@ -44,13 +43,6 @@ export class EsqueciMinhaSenhaPage implements OnInit, OnDestroy {
 
   ionViewWillEnter(): void {
     this.title.setTitle('Esquec minha senha');
-    this.listeningBackButton();
-  }
-
-  public listeningBackButton(): void {
-    this.backButtonSubscription = this.platform.backButton.subscribeWithPriority(0, async () => {
-      this.back();
-    })
   }
 
   public back(): void {
@@ -105,10 +97,6 @@ export class EsqueciMinhaSenhaPage implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this.currentLanguageSubscription.unsubscribe();
-  }
-
-  public ionViewWillLeave(): void {
-    this.backButtonSubscription.unsubscribe();
   }
 
 }
