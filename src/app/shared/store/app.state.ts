@@ -183,7 +183,8 @@ export const appInitialState: IAppState = {
         text: '',
         value: '',
         baseUrl: '',
-        user: ''
+        user: '',
+        appBaseUrl: ''
       }
     ]
   },
@@ -192,6 +193,7 @@ export const appInitialState: IAppState = {
       text: '',
       value: '',
       baseUrl: '',
+      appBaseUrl: '',
       user: ''
     }
   ],

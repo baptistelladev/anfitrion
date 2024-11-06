@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ISocialNetwork } from '../../models/INetwork';
-import { NavController } from '@ionic/angular';
+import { NavController, Platform } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { Observable, take } from 'rxjs';
 import * as AppStore from './../../../shared/store/app.state';
@@ -21,11 +21,17 @@ export class SocialNetworksComponent  implements OnInit {
   public NetworksEnum = NetworksEnum;
 
   constructor(
-    private store : Store
+    private store : Store,
+    private navCtrl : NavController,
+    private platform : Platform
   ) { }
 
   ngOnInit() {
     this.getSocialNetworksFromNGRX();
+    console.log(this.platform.platforms());
+    console.log(this.platform.is('desktop'));
+
+
   }
 
   public getSocialNetworksFromNGRX(): void {
@@ -38,4 +44,27 @@ export class SocialNetworksComponent  implements OnInit {
     })
   }
 
+  public navToInsideApp(socialNetwork: ISocialNetwork): void {
+    this.navCtrl.navigateForward(['/logado/' + socialNetwork.baseUrl])
+  }
+
+  public navToAppOrApp(socialNetwork: ISocialNetwork): void {
+    if (this.platform.is('desktop')) {
+      this.openExternalUrl(socialNetwork.baseUrl + socialNetwork.user, '_blank');
+    }
+
+    if (this.platform.is('mobileweb')) {
+      this.openExternalUrl(socialNetwork.baseUrl + socialNetwork.user, '_self');
+    }
+
+    if (this.platform.is('capacitor')) {
+      this.openExternalUrl(socialNetwork.appBaseUrl + socialNetwork.user);
+    }
+  }
+
+  public openExternalUrl(url: string, target: string = '_system'): void {
+    if (typeof window !== 'undefined') {
+      window.open(url, target);
+    }
+  }
 }

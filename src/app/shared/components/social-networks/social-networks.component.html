@@ -2,10 +2,9 @@
   <ng-container *ngFor="let socialNetwork of socialNetworks">
     <ion-button
     *ngIf="socialNetwork.value === NetworksEnum.INSTAGRAM"
-    [href]="socialNetwork.baseUrl + socialNetwork.user"
+    (click)="navToAppOrApp(socialNetwork)"
     [title]="socialNetwork.text"
     class="social-network-button"
-    target="_self"
     size="small"
     fill="clear">
       <ion-icon [name]="'logo-' + socialNetwork.value"></ion-icon>
@@ -15,7 +14,7 @@
   <ng-container *ngFor="let socialNetwork of socialNetworks">
     <ion-button
     *ngIf="socialNetwork.value === NetworksEnum.WHATSAPP"
-    [routerLink]="['/logado/' + socialNetwork.baseUrl]"
+    (click)="navToInsideApp(socialNetwork)"
     [title]="socialNetwork.text"
     class="social-network-button"
     target="_self"
