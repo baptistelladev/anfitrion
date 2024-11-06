@@ -22,15 +22,11 @@ export class SobreNosPage implements OnInit, OnDestroy {
 
   @ViewChild('sobreContent') sobreContent: IonContent;
 
-  public backButtonSubscription: Subscription;
-
   constructor(
     private navCtrl : NavController,
     private store : Store,
     private title : Title,
-    private analyticsService : AnalyticsService,
-    private translateService : TranslateService,
-    private platform : Platform
+    private analyticsService : AnalyticsService
   ) { }
 
   ngOnInit() {
@@ -39,13 +35,6 @@ export class SobreNosPage implements OnInit, OnDestroy {
 
   ionViewWillEnter(): void {
     this.title.setTitle('Sobre nós');
-    this.listeningBackButton();
-  }
-
-  public listeningBackButton(): void {
-    this.backButtonSubscription = this.platform.backButton.subscribeWithPriority(0, async () => {
-      this.back();
-    })
   }
 
   public getCurrentLanguageFromNGRX(): void {
@@ -63,10 +52,6 @@ export class SobreNosPage implements OnInit, OnDestroy {
 
   public async scrollToTop() {
     this.sobreContent.scrollToTop(600);
-  }
-
-  public ionViewWillLeave(): void {
-    this.backButtonSubscription.unsubscribe();
   }
 
   public ngOnDestroy(): void {

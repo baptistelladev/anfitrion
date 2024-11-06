@@ -16,7 +16,6 @@ import { ICity } from 'src/app/shared/models/ICity';
 import { PlacesService } from 'src/app/core/services/firebase/places.service';
 import { IPlace } from 'src/app/shared/models/IPlace';
 import { CollectionsEnum } from 'src/app/shared/enums/Collection';
-import { App } from '@capacitor/app';
 
 @Component({
   selector: 'anfitrion-explorar',
@@ -265,17 +264,12 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
   public selectSubFeatures: any[];
   public selectedSubFeatures: any;
 
-  public backButtonSubscription: Subscription;
-
   constructor(
     private store : Store,
     private title : Title,
     public navCtrl : NavController,
     private overlayService : OverlayService,
-    private placesService : PlacesService,
-    private platform : Platform,
-    private modalCtrl : ModalController,
-    private translate : TranslateService
+    private placesService : PlacesService
   ) { }
 
   ngOnInit() {
@@ -292,19 +286,6 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
   ionViewWillEnter(): void {
     this.title.setTitle('Explorar');
-    this.listeningBackButton();
-  }
-
-  public listeningBackButton(): void {
-    this.backButtonSubscription = this.platform.backButton.subscribeWithPriority(0, async () => {
-      const isModalOpen = !!await this.modalCtrl.getTop();
-
-      if (!isModalOpen) {
-        await App.minimizeApp();
-      } else {
-        this.modalCtrl.dismiss();
-      }
-    })
   }
 
   public async getPlaces() {
@@ -414,10 +395,6 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
         cidade: this.currentCity.value
       }
     })
-  }
-
-  ionViewWillLeave(): void {
-    this.backButtonSubscription.unsubscribe();
   }
 
   ngOnDestroy() {

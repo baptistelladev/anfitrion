@@ -1,3 +1,4 @@
+import { BackButtonService } from './core/core/back-button.service';
 import { AppInfoService } from './core/services/firebase/app-info.service';
 import {  Component, OnInit } from '@angular/core';
 import { StorageService } from './core/services/storage.service';
@@ -37,7 +38,8 @@ export class AppComponent implements OnInit {
     private store : Store,
     private appInfoService : AppInfoService,
     private platform : Platform,
-    private connectionService : ConnectionService
+    private connectionService : ConnectionService,
+    private backButtonService : BackButtonService
   ) {}
 
   async ngOnInit() {

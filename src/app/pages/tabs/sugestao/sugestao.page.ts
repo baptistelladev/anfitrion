@@ -245,8 +245,6 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
     }
   ]
 
-  public backButtonSubscription: Subscription;
-
   constructor(
     private alertCtrl : AlertController,
     private title : Title,
@@ -260,8 +258,7 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
     private parkingsService : ParkingsService,
     private placesService : PlacesService,
     private route : ActivatedRoute,
-    private suggestionsService : SuggestionsService,
-    private platform : Platform
+    private suggestionsService : SuggestionsService
   ) { }
 
   ngOnInit() {
@@ -280,13 +277,6 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
 
   ionViewWillEnter(): void {
     this.title.setTitle('Início');
-    this.listeningBackButton();
-  }
-
-  public listeningBackButton(): void {
-    this.backButtonSubscription = this.platform.backButton.subscribeWithPriority(0, async () => {
-      this.back();
-    })
   }
 
   public initialFilter(value: string) {
@@ -515,10 +505,6 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
         this.getSuggestionFromUrl();
       }
     })
-  }
-
-  public ionViewWillLeave(): void {
-    this.backButtonSubscription.unsubscribe();
   }
 
   public ngOnDestroy(): void {

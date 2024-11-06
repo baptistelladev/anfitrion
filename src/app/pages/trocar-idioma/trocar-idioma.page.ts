@@ -1,3 +1,4 @@
+import { BackButtonService } from './../../core/core/back-button.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, Platform } from '@ionic/angular';
@@ -29,8 +30,6 @@ export class TrocarIdiomaPage implements OnInit, OnDestroy {
 
   public MOCK_LANGS: ILang[] = MOCK_LANGS;
 
-  public backButtonSubscription: Subscription;
-
   constructor(
     private formBuilder: FormBuilder,
     private navCtrl : NavController,
@@ -38,8 +37,7 @@ export class TrocarIdiomaPage implements OnInit, OnDestroy {
     private translate : TranslateService,
     private storageService : StorageService,
     private title : Title,
-    private analyticsService : AnalyticsService,
-    private platform : Platform
+    private analyticsService : AnalyticsService
   ) { }
 
   ngOnInit() {
@@ -50,13 +48,6 @@ export class TrocarIdiomaPage implements OnInit, OnDestroy {
 
   ionViewWillEnter(): void {
     this.title.setTitle('Trocar idioma');
-    this.listeningBackButton();
-  }
-
-  public listeningBackButton(): void {
-    this.backButtonSubscription = this.platform.backButton.subscribeWithPriority(0, async () => {
-      this.back();
-    })
   }
 
   public getCurrentLanguageFromNGRX(): void {
@@ -115,10 +106,6 @@ export class TrocarIdiomaPage implements OnInit, OnDestroy {
 
   public back(): void {
     this.navCtrl.back()
-  }
-
-  public ionViewWillLeave(): void {
-    this.backButtonSubscription.unsubscribe();
   }
 
   public ngOnDestroy(): void {

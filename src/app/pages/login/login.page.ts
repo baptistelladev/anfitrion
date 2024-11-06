@@ -1,3 +1,4 @@
+import { BackButtonService } from './../../core/core/back-button.service';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription, take } from 'rxjs';
@@ -69,8 +70,6 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
   public currentLanguage$: Observable<any>;
   public currentLanguageSubscription: Subscription;
 
-  public backButtonSubscription: Subscription;
-
   public selectedSegment: string = 'acessar';
 
   public segments: any[] = [
@@ -90,10 +89,7 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
     private overlayService : OverlayService,
     private utilsService : UtilsService,
     private translate : TranslateService,
-    private title : Title,
-    private platform : Platform,
-    private alertCtrl : AlertController,
-    private modalCtrl : ModalController
+    private title : Title
   ) { }
 
   async ngOnInit() {
@@ -109,42 +105,6 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
 
   ionViewWillEnter(): void {
     this.title.setTitle('Login');
-    this.listeningBackButton();
-  }
-
-  public listeningBackButton(): void {
-    this.backButtonSubscription = this.platform.backButton.subscribeWithPriority(0, async () => {
-      const isModalOpen = !!await this.modalCtrl.getTop();
-
-      if (!isModalOpen) {
-        const alert = await this.overlayService.fireAlert({
-          mode: 'ios',
-          cssClass: 'anf-alert negative-btn',
-          subHeader: `${this.translate.instant('SHARED.EXIT_APP_TITLE')}`,
-          message: `${this.translate.instant('SHARED.EXIT_APP_TEXT')}`,
-          buttons: [
-            {
-              role: 'cancel',
-              text: `${this.translate.instant('SHARED.CANCEL')}`,
-              handler: async () => {
-                await this.alertCtrl.dismiss(null, 'cancel', 'alert-exit-app');
-              }
-            },
-            {
-              role: 'confirm',
-              text: `${this.translate.instant('SHARED.EXIT_APP_YES')}`,
-              handler: async () => {
-                await App.exitApp();
-              }
-            }
-          ]
-        });
-
-        await alert.present();
-      } else {
-        this.modalCtrl.dismiss();
-      }
-    })
   }
 
   public animationCreated(animationItem: AnimationItem): void {
@@ -401,10 +361,6 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
 
   public ngOnDestroy(): void {
     this.currentLanguageSubscription.unsubscribe();
-  }
-
-  public ionViewWillLeave(): void {
-    this.backButtonSubscription.unsubscribe();
   }
 
 }
