@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, Platform } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { map, Observable, Subscription } from 'rxjs';
 import { ILang } from 'src/app/shared/models/ILang';
@@ -51,12 +51,15 @@ export class SuaContaPage implements OnInit, OnDestroy {
   public newEmailFormGroup: FormGroup;
   public newPasswordFormGroup: FormGroup;
 
+  public backButtonSubscription: Subscription;
+
   constructor(
     private navCtrl : NavController,
     private store : Store,
     private formBuilder : FormBuilder,
     private title : Title,
-    private utilsService : UtilsService
+    private utilsService : UtilsService,
+    private platform : Platform
   ) { }
 
   ngOnInit() {
@@ -70,8 +73,15 @@ export class SuaContaPage implements OnInit, OnDestroy {
     this.initNewPasswordForm();
   }
 
-  ionViewDidEnter(): void {
+  ionViewWillEnter(): void {
     this.title.setTitle('Sua conta');
+    this.listeningBackButton();
+  }
+
+  public listeningBackButton(): void {
+    this.backButtonSubscription = this.platform.backButton.subscribeWithPriority(0, async () => {
+      this.back();
+    })
   }
 
   public initNewEmailForm(): void {
@@ -196,6 +206,10 @@ export class SuaContaPage implements OnInit, OnDestroy {
 
   public clearNewEmailForm(): void {
     this.newEmailFormGroup.reset();
+  }
+
+  public ionViewWillLeave(): void {
+    this.backButtonSubscription.unsubscribe();
   }
 
   public ngOnDestroy(): void {

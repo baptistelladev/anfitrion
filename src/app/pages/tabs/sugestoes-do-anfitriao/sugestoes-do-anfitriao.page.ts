@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { IonContent, NavController } from '@ionic/angular';
+import { IonContent, NavController, Platform } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { ILang } from 'src/app/shared/models/ILang';
@@ -39,11 +39,14 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
   public suggestionsBaixadaSantista$: Observable<any>
   public suggestionsBaixadaSantistaSubscription: Subscription;
 
+  public backButtonSubscription: Subscription;
+
   constructor(
     private store : Store,
     private navCtrl : NavController,
     private title : Title,
-    private suggestionsService : SuggestionsService
+    private suggestionsService : SuggestionsService,
+    private platform : Platform
   ) { }
 
   ngOnInit() {
@@ -55,8 +58,15 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
     this.baixadaSantistaSwiper = this.baixadaSantistaSwiperRef?.nativeElement.swiper;
   }
 
-  ionViewDidEnter(): void {
+  ionViewWillEnter(): void {
     this.title.setTitle('Sugestões do anfitrião');
+    this.listeningBackButton();
+  }
+
+  public listeningBackButton(): void {
+    this.backButtonSubscription = this.platform.backButton.subscribeWithPriority(0, async () => {
+      this.back();
+    })
   }
 
   public seeSuggestion(suggestion: ISuggestion) {
@@ -112,7 +122,7 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
   }
 
   public back(): void {
-    this.navCtrl.back();
+    this.navCtrl.navigateBack(['/logado/explorar']);
   }
 
   public async scrollToTop() {
@@ -121,6 +131,10 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
 
   public navToContactPage(): void {
     this.navCtrl.navigateForward(['/logado/contato']);
+  }
+
+  public ionViewWillLeave(): void {
+    this.backButtonSubscription.unsubscribe();
   }
 
   ngOnDestroy() {

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AlertController, NavController } from '@ionic/angular';
+import { AlertController, NavController, Platform } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription, take } from 'rxjs';
 import { ILang } from 'src/app/shared/models/ILang';
@@ -66,6 +66,8 @@ export class MenuPage implements OnInit, OnDestroy {
   public user$: Observable<IUSer>;
   public userSubscription: Subscription;
 
+  public backButtonSubscription: Subscription;
+
   constructor(
     private navCtrl : NavController,
     private store : Store,
@@ -73,7 +75,8 @@ export class MenuPage implements OnInit, OnDestroy {
     private analyticsService : AnalyticsService,
     private alertCtrl : AlertController,
     private authService : AuthService,
-    private translate : TranslateService
+    private translate : TranslateService,
+    private platform : Platform
   ) { }
 
   ngOnInit() {
@@ -82,8 +85,15 @@ export class MenuPage implements OnInit, OnDestroy {
     this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
-  ionViewDidEnter(): void {
+  ionViewWillEnter(): void {
     this.title.setTitle('Menu');
+    this.listeningBackButton();
+  }
+
+  public listeningBackButton(): void {
+    this.backButtonSubscription = this.platform.backButton.subscribeWithPriority(0, async () => {
+      this.back();
+    })
   }
 
   public getUserFromNGRX(): void {
@@ -141,6 +151,10 @@ export class MenuPage implements OnInit, OnDestroy {
     await alert.present();
 
     return alert;
+  }
+
+  public ionViewWillLeave(): void {
+    this.backButtonSubscription.unsubscribe();
   }
 
   public ngOnDestroy(): void {
