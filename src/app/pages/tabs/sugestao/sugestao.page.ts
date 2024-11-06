@@ -1,7 +1,7 @@
 import { SuggestionsService } from 'src/app/core/services/firebase/suggestions.service';
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { AlertController, IonContent, IonSelect, NavController, PopoverController } from '@ionic/angular';
+import { AlertController, IonContent, IonSelect, NavController, Platform, PopoverController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import * as moment from 'moment';
@@ -245,6 +245,8 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
     }
   ]
 
+  public backButtonSubscription: Subscription;
+
   constructor(
     private alertCtrl : AlertController,
     private title : Title,
@@ -258,7 +260,8 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
     private parkingsService : ParkingsService,
     private placesService : PlacesService,
     private route : ActivatedRoute,
-    private suggestionsService : SuggestionsService
+    private suggestionsService : SuggestionsService,
+    private platform : Platform
   ) { }
 
   ngOnInit() {
@@ -275,8 +278,15 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
     this.swiper = this.swiperRef?.nativeElement.swiper;
   }
 
-  ionViewDidEnter(): void {
-    this.title.setTitle('Início')
+  ionViewWillEnter(): void {
+    this.title.setTitle('Início');
+    this.listeningBackButton();
+  }
+
+  public listeningBackButton(): void {
+    this.backButtonSubscription = this.platform.backButton.subscribeWithPriority(0, async () => {
+      this.back();
+    })
   }
 
   public initialFilter(value: string) {
@@ -505,6 +515,10 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
         this.getSuggestionFromUrl();
       }
     })
+  }
+
+  public ionViewWillLeave(): void {
+    this.backButtonSubscription.unsubscribe();
   }
 
   public ngOnDestroy(): void {
