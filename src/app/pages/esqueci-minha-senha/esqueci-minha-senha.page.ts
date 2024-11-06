@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, Platform } from '@ionic/angular';
 import { Observable, Subscription, take } from 'rxjs';
 import { ILang } from 'src/app/shared/models/ILang';
 import * as AppStore from './../../shared/store/app.state';
@@ -25,13 +25,16 @@ export class EsqueciMinhaSenhaPage implements OnInit, OnDestroy {
 
   public isRecovering: boolean;
 
+  public backButtonSubscription: Subscription;
+
   constructor(
     private navCtrl : NavController,
     private store : Store,
     private formBuilder : FormBuilder,
     private authService : AuthService,
     private overlayService : OverlayService,
-    private title : Title
+    private title : Title,
+    private platform : Platform
   ) { }
 
   ngOnInit() {
@@ -41,6 +44,13 @@ export class EsqueciMinhaSenhaPage implements OnInit, OnDestroy {
 
   ionViewWillEnter(): void {
     this.title.setTitle('Esquec minha senha');
+    this.listeningBackButton();
+  }
+
+  public listeningBackButton(): void {
+    this.backButtonSubscription = this.platform.backButton.subscribeWithPriority(0, async () => {
+      this.back();
+    })
   }
 
   public back(): void {
@@ -95,6 +105,10 @@ export class EsqueciMinhaSenhaPage implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this.currentLanguageSubscription.unsubscribe();
+  }
+
+  public ionViewWillLeave(): void {
+    this.backButtonSubscription.unsubscribe();
   }
 
 }

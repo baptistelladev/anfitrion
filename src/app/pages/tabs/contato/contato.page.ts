@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AlertController, NavController } from '@ionic/angular';
+import { AlertController, NavController, Platform } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription, take } from 'rxjs';
 import { ILang } from 'src/app/shared/models/ILang';
@@ -36,13 +36,16 @@ export class ContatoPage implements OnInit, OnDestroy {
     }
   ]
 
+  public backButtonSubscription: Subscription;
+
   constructor(
     private navCtrl : NavController,
     private alertCtrl : AlertController,
     private store : Store,
     private translate : TranslateService,
     private title : Title,
-    private analyticsService : AnalyticsService
+    private analyticsService : AnalyticsService,
+    private platform : Platform
   ) { }
 
   ngOnInit() {
@@ -54,6 +57,13 @@ export class ContatoPage implements OnInit, OnDestroy {
 
   ionViewDidEnter(): void {
     this.title.setTitle('Contato');
+    this.listeningBackButton();
+  }
+
+  public listeningBackButton(): void {
+    this.backButtonSubscription = this.platform.backButton.subscribeWithPriority(0, async () => {
+      this.back();
+    })
   }
 
   public getCurrentLanguageFromNGRX(): void {
@@ -136,6 +146,10 @@ export class ContatoPage implements OnInit, OnDestroy {
    */
   public openEmailApp(): void {
     window.location.href = `mailto:${this.appInfoContact.email.value}`;
+  }
+
+  public ionViewWillLeave(): void {
+    this.backButtonSubscription.unsubscribe();
   }
 
   public ngOnDestroy(): void {
