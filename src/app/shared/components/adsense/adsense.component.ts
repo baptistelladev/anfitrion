@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'anfitrion-adsense',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./adsense.component.scss'],
 })
 export class AdsenseComponent  implements OnInit {
+
+  @Input() color: string = 'gray-ec';
 
   constructor() { }
 

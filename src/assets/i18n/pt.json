@@ -247,35 +247,12 @@
   },
   "ABOUT_PAGE" : {
     "PAGE_TITLE": "Um pouco sobre nós",
-    "HEADER_TITLE" : ["sessão","sobre"],
-    "TASTIEST_STREET" : ["a rua","mais gostosa","da cidade."],
-    "INTRODUCTION" : {
-      "TITLE" : ["Uma breve","introdução"],
-      "TEXT" : [
-        ["Á essa altura você deve estar se questionando:","por que criaram uma página na web para a Rua Tolentino Filgueras?"],
-        ["Para algumas pessoas pode não fazer sentido e não ter utilidade mas para outras muitas pessoas será de grande ajuda. A Baixada Santista e principalmente a cidade de Santos recebe milhares de turistas todos os anos, seja em rezão do porto, do time, do centro histórico, orla da praia, gastronômia, etc."],
-        ["São turistas de todos os lugares, do próprio estado de São Paulo, do Brasil e de outras partes do mundo. Com base nisso nós gostaríamos de recepcionar essas pessoas com certo carinho. Mesmo que com um pequeno gesto, tentamos ajudar os próprios moradores e os visitantes, fornecendo informações relevantes sobre cada estabelecimento."]
-      ]
-    },
-    "ACHE" : {
-      "TITLE" : ["Qual","dor","resolvemos"],
-      "TEXT": [
-        ["Imagine a seguinte situação: você é um morador ou turista e está visitando pela primeira vez a Rua Gastronômica, só isso já seria um bom motivo, mostramos todos os estabelecimentos que existem na rua, o número para facilitar a localização e outras informações relevantes?"],
-        ["Agora imagina que esse turista pode ser ser um estrangeiro? Se você estivesse no lugar dele(a), aposto que gostaria de receber este tipo de atenção."],
-        ["A pessoa pode estar a pé ou de carro e ter que percorrer a rua inteira","para saber o que tem, onde tem, como é e se está aberto. Fora que se estiver de carro pode acontecer de ter que dar mais de uma voltar e vai por mim isso acontece bastante."]
-      ]
-    },
-    "RESUME" : {
-      "TITLE" : ["Se","eu tivesse que resumir"],
-      "TEXT": [
-        ["Diria que contruímos para tornar Santos uma cidade mais digital, o que beneficia você, os turistas, os estabelecimentos e a cidade como um todo. Desta forma conseguimos otimizar o bem mais precioso de cada um:","o tempo","e como consequência ajuda a fomentar o turismo na região."],
-        ["Isso é só o começo, temos outras idéias em mente para esse projeto e outros que ainda virão. Você pode contribuir com sugestões de melhoria, críticas, elogios, enfim, será um prazer receber uma mensagem sua."]
-      ]
-    },
-    "CONCLUSION" : {
-      "TITLE" : ["Conclusão"],
-      "TEXT" : ["Nosso projeto ainda não recebe apoio financeiro nem material por isso pode ser que você se depare com anúncios particulares ou até do próprio google."]
-    }
+    "HELLO" : "Olá",
+    "FIRST_P" : "O anfitrion começou a ser idealizado em meados de 2017 com a finalidade de mostrar apenas casas noturnas mas com o surgimento da pandemia de 2020 muitas casas tornaram-se bares e com isso foi necesário abrir a mente para mostrar mais lugares como bares, adegas, docerias, cafeterias. Dessa forma conseguimos alcançar mais perfis",
+    "SECOND_P" : "Nossa finalidade é ajudar moradores mas principalmente turistas, evitando que a pessoa procure estabelecimentos, pessoas ou serviços um a um nas redes sociais, muitas vezes precisando sanar alguma dúvida ou atrás de alguma informação",
+    "EXEMPLES" : "Exemplos",
+    "THIRD_P" : "A Rua Gastronômica de Santos possui 23 estabelecimentos e nós mostramos um resumo da rua de acordo com a necessidade da pessoa, lugares com música ao vivo, pet friendly, entre outros. Buscamos rodizios de comida japonesa na cidade e mostramos um resumo com os valores",
+    "FOURTH_P" : "Resumindo, poupamos o tempo do morador e do turista"
   },
   "ERRORS" : {
     "REQUIRED_FIELD" : "campo obrigatório",

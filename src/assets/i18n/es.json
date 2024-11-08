@@ -254,35 +254,12 @@
   },
   "ABOUT_PAGE" : {
     "PAGE_TITLE": "Un poco sobre nosotros",
-    "HEADER_TITLE" : ["sección","sobre"],
-    "TASTIEST_STREET" : ["la calle","más sabrosa","de la ciudad."],
-    "INTRODUCTION" : {
-      "TITLE" : ["Una breve","introducción"],
-      "TEXT": [
-        ["A esta altura, seguramente te estarás preguntando:", "¿por qué se creó una página web para la Calle Tolentino Filgueras?"],
-        ["Para algunas personas puede no tener sentido o utilidad, pero para muchas otras será de gran ayuda. La Baixada Santista, y especialmente la ciudad de Santos, recibe miles de turistas cada año, ya sea por el puerto, el equipo de fútbol, el centro histórico, la playa o la gastronomía, etc."],
-        ["Los turistas vienen de todos lados, del propio estado de São Paulo, de Brasil y de otras partes del mundo. Con base en esto, nos gustaría dar la bienvenida a estas personas con cariño. Incluso con un pequeño gesto, intentamos ayudar tanto a los residentes como a los visitantes, proporcionando información relevante sobre cada establecimiento."]
-      ]
-    },
-    "ACHE" : {
-      "TITLE" : ["Que","dolor","solucionamos"],
-      "TEXT": [
-        ["Imagina la siguiente situación: eres un residente o un turista visitando la Calle Gastronómica por primera vez. Solo eso ya sería un buen motivo para que te mostremos todos los establecimientos que hay en la calle, junto con sus números para facilitar la ubicación y otra información relevante."],
-        ["Ahora imagina que este turista podría ser un extranjero. Si estuvieras en su lugar, apuesto a que apreciarías este tipo de atención."],
-        ["La persona puede estar a pie o en coche y tendría que recorrer toda la calle", "para saber qué hay, dónde está, cómo es y si está abierto. Además, si está en coche, podría tener que dar más de una vuelta, y créeme, eso pasa bastante a menudo."]
-      ]
-    },
-    "RESUME" : {
-      "TITLE" : ["Si","tuviera que resumir"],
-      "TEXT": [
-        ["Diría que construimos esto para hacer de Santos una ciudad más digital, lo que beneficia a usted, a los turistas, a los establecimientos y a la ciudad en su conjunto. De esta manera, logramos optimizar el bien más preciado de cada uno:", "el tiempo", "y como consecuencia, ayuda a fomentar el turismo en la región."],
-        ["Esto es solo el comienzo; tenemos otras ideas en mente para este proyecto y otros que vendrán. Puedes contribuir con sugerencias de mejora, críticas, elogios, en fin, será un placer recibir un mensaje tuyo."]
-      ]
-    },
-    "CONCLUSION" : {
-      "TITLE" : ["Conclusión"],
-      "TEXT" : ["Nuestro proyecto aún no recibe apoyo financiero ni material, por lo que es posible que te encuentres con anuncios privados o incluso del propio Google."]
-    }
+    "HELLO": "Hola",
+    "FIRST_P": "El Anfitrión comenzó a ser idealizado alrededor de mediados de 2017 con el propósito de mostrar solo discotecas, pero con el inicio de la pandemia de 2020, muchas discotecas se convirtieron en bares. Así, fue necesario ampliar nuestra perspectiva para mostrar más lugares como bares, bodegas, dulcerías y cafeterías. De esta manera, logramos alcanzar más perfiles.",
+    "SECOND_P": "Nuestro objetivo es ayudar a los residentes, pero especialmente a los turistas, evitando que las personas tengan que buscar establecimientos, personas o servicios uno por uno en las redes sociales, a menudo necesitando resolver una duda o buscar alguna información.",
+    "EXEMPLES": "Ejemplos",
+    "THIRD_P": "La Calle Gastronómica de Santos cuenta con 23 establecimientos, y ofrecemos un resumen de la calle de acuerdo con las necesidades de la persona: lugares con música en vivo, espacios pet friendly, entre otros. También buscamos rodizios de comida japonesa en la ciudad y mostramos un resumen con los precios.",
+    "FOURTH_P": "En resumen, ahorramos tiempo a los residentes y turistas."
   },
   "ERRORS" : {
     "REQUIRED_FIELD" : "campo obligatorio",
