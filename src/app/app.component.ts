@@ -50,6 +50,11 @@ export class AppComponent implements OnInit {
 
       await this.storageService.createStorage();
 
+      if (this.platform.is('mobile') ) {
+        await this.initializePushNotifications();
+        this.setStatusBarLook();
+      }
+
       await this.storageService.getStorageKey(APP_LANG_KEY).then((res: string) => {
         if (res === null || !res) {
 
@@ -115,11 +120,6 @@ export class AppComponent implements OnInit {
         default:
           moment.locale(this.currentLanguage.value)
           break;
-      }
-
-      if (this.platform.is('mobile') ) {
-        await this.initializePushNotifications();
-        this.setStatusBarLook();
       }
     })
   }

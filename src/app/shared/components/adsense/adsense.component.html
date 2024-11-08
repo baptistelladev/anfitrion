@@ -1,4 +1,4 @@
-<div class="anfitrion-ad">
+<div class="anfitrion-ad" [ngClass]="{'gray-2': color === 'gray-2', 'gray-ec': color === 'gray-ec'}">
   <div class="anfitrion-ad-container">
     <ng-content select="[adsense]"></ng-content>
   </div>

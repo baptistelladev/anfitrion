@@ -7,6 +7,8 @@ import * as AppStore from './../../../shared/store/app.state';
 import { Title } from '@angular/platform-browser';
 import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
 import { TranslateService } from '@ngx-translate/core';
+import { IUSer } from 'src/app/shared/models/IUser';
+import * as UserStore from './../../../shared/store/user.state';
 
 
 @Component({
@@ -22,6 +24,10 @@ export class SobreNosPage implements OnInit, OnDestroy {
 
   @ViewChild('sobreContent') sobreContent: IonContent;
 
+  public user: IUSer;
+  public user$: Observable<IUSer>;
+  public userSubscription: Subscription;
+
   constructor(
     private navCtrl : NavController,
     private store : Store,
@@ -31,6 +37,7 @@ export class SobreNosPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getCurrentLanguageFromNGRX();
+    this.getUserFromNGRX();
   }
 
   ionViewWillEnter(): void {
@@ -54,8 +61,18 @@ export class SobreNosPage implements OnInit, OnDestroy {
     this.sobreContent.scrollToTop(600);
   }
 
+  public getUserFromNGRX(): void {
+    this.user$ = this.store.select(UserStore.selectUser);
+
+    this.userSubscription = this.user$
+    .subscribe((user: IUSer) => {
+      this.user = user;
+    })
+  }
+
   public ngOnDestroy(): void {
     this.currentLanguageSubscription.unsubscribe();
+    this.userSubscription.unsubscribe();
   }
 
 }
