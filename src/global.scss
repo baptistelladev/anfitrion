@@ -117,9 +117,13 @@ hr.anfitrion-divider {
 /* INPUT WRAPPER */
 .anfitrion-input-wrapper, .anfitrion-select-wrapper {
 
+  ion-item {
+    --background: var(--transparent);
+  }
+
   &.white-background-item {
     ion-item {
-      --background: var(--transparent);
+      --background: var(--white);
       --border-color: var(--gray-da);
     }
   }

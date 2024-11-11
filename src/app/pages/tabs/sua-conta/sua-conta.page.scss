@@ -31,3 +31,13 @@ ion-item {
     opacity: 1;
   }
 }
+
+.password-confirmation {
+  background: var(--gray-f7);
+  box-shadow: none;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 16px;
+  border-radius: 16px;
+}

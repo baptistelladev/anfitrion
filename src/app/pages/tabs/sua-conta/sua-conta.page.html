@@ -55,7 +55,7 @@ class="ion-content-w-linear-bg">
             'has-error' : (accountForm.get('email')?.invalid &&
             (accountForm.get('email')?.touched ||
             accountForm.get('email')?.dirty))}"
-            class="anfitrion-input-wrapper full-width white-background-item label-w-white">
+            class="anfitrion-input-wrapper full-width label-w-white">
               <ion-item
               [disabled]="emailFieldIsDisabled"
               lines="none"
@@ -167,7 +167,7 @@ id="new-email-modal">
       </ion-header>
 
       <section class="new-email-modal full-width">
-        <form [formGroup]="newEmailFormGroup" class="full-width">
+        <form [formGroup]="newEmailFormGroup" class="full-width" (ngSubmit)="updateEmail()">
           <ion-grid>
             <ion-row>
               <ion-col size="12">
@@ -176,7 +176,7 @@ id="new-email-modal">
                     {{ 'YOUR_ACCOUNT_PAGE.MODAL_EMAIL_TITLE.0' | translate }} <span class="font-w-bold">{{ 'YOUR_ACCOUNT_PAGE.MODAL_EMAIL_TITLE.1' | translate }}</span>
                   </p>
                   <p class="fs-14 color-gray-text font-w-thin">
-                    {{ 'YOUR_ACCOUNT_PAGE.MODAL_EMAIL_DESC' | translate }}.
+                    Você rebecerá uma notificação no seu novo e-mail para confirmar a alteração e terá que fazer login novamente.
                   </p>
                 </ion-text>
               </ion-col>
@@ -190,7 +190,7 @@ id="new-email-modal">
 
                 <div
                 [ngClass]="{
-                'has-error' : (newEmailFormGroup.get('newEmail')?.invalid &&
+                'has-error' : inputErrors.invalidNewEmail.show || (newEmailFormGroup.get('newEmail')?.invalid &&
                 (newEmailFormGroup.get('newEmail')?.touched ||
                 newEmailFormGroup.get('newEmail')?.dirty))}"
                 class="anfitrion-input-wrapper full-width white-background-item label-w-white">
@@ -199,7 +199,7 @@ id="new-email-modal">
                   mode="ios">
                     <ion-input
                     (keyup)="justLowercase(newEmailFormGroup, 'newEmail')"
-                    (keydown)="preventWhitespace($event)"
+                    (keydown)="clearErrorsIfExists('invalid-new-email'); preventWhitespace($event)"
                     formControlName="newEmail"
                     enterkeyhint="next"
                     [placeholder]="'INPUTS.PLACEHOLDER_NEW_EMAIL' | translate"
@@ -208,6 +208,15 @@ id="new-email-modal">
                     inputmode="email">
                     </ion-input>
                   </ion-item>
+
+                  <ion-text
+                  *ngIf="inputErrors.invalidNewEmail.show"
+                  mode="ios"
+                  class="mg-top-8 d-block">
+                    <p class="fs-12 color-danger">
+                      {{ inputErrors.invalidNewEmail.text[currentLanguage.value] }}
+                    </p>
+                  </ion-text>
 
                   <ion-text
                   mode="ios"
@@ -230,15 +239,114 @@ id="new-email-modal">
                 </div>
               </ion-col>
 
+              <ion-col size="12" *ngIf="sentEmailChangeNotification">
+                <ion-item
+                lines="none"
+                mode="ios"
+                class="simulate-bootstrap-alert warning line-height-18">
+                  <ion-icon name="mail-outline" slot="start" class="color-bootstrap-warning"></ion-icon>
+
+                  <ion-text mode="ios" class="color-bootstrap-warning">
+                    <p class="fs-12 mg-bottom-8">Verificação necessária</p>
+                    <p class="fs-14">Enviamos um email para <b>{{ newEmailWeSentNotification }}</b>. Por favor verfique a caixa de entrada ou spam do seu novo endereço de e-mail.</p>
+                  </ion-text>
+                </ion-item>
+              </ion-col>
+
+              <ion-col size="12">
+                <ion-text size="12">
+                  <p class="fs-14 color-gray-text mg-bottom-16 d-block font-w-thin mg-top-16">
+                    Por segurança voce deve inserir a senha da sua conta.
+                  </p>
+                </ion-text>
+
+                <div class="password-confirmation mg-top-16">
+                  <ion-text mode="ios">
+                    <p class="fs-12 color-gray-mid mg-bottom-8">
+                      {{ 'INPUTS.PASSWORD' | translate }}
+                    </p>
+                  </ion-text>
+
+                  <div
+                  [ngClass]="{
+                  'has-error' : inputErrors.invalidCredentials.show || (newPasswordFormGroup.get('currentPassword')?.invalid &&
+                  (newPasswordFormGroup.get('currentPassword')?.touched ||
+                  newPasswordFormGroup.get('currentPassword')?.dirty))}"
+                  class="anfitrion-input-wrapper full-width white-background-item label-w-white item-has-button-at-end">
+                    <ion-item
+                    lines="none"
+                    mode="ios">
+                      <ion-input
+                      (keydown)="clearErrorsIfExists('invalid-credentials'); preventWhitespace($event)"
+                      [type]="showPasswordFromNewPassword ? 'text' : 'password'"
+                      [placeholder]="'INPUTS.PASSWORD' | translate"
+                      formControlName="currentPassword"
+                      enterkeyhint="next"
+                      mode="ios"
+                      inputmode="text">
+                      </ion-input>
+
+                      <ion-button
+                      [title]="showPasswordFromNewPassword ? ('INPUTS.HIDE_PW' | translate) : ('INPUTS.SHOW_PW' | translate)"
+                      (click)="togglePasswordFromNewPassword()"
+                      type="button"
+                      class="clear-gray-light"
+                      mode="ios"
+                      fill="clear">
+                        <ion-icon name="eye-off-outline" *ngIf="showPasswordFromNewPassword"></ion-icon>
+                        <ion-icon name="eye-outline" *ngIf="!showPasswordFromNewPassword"></ion-icon>
+                      </ion-button>
+                    </ion-item>
+
+                    <ion-text
+                    *ngIf="inputErrors.invalidCredentials.show"
+                    mode="ios"
+                    class="mg-top-8 d-block">
+                      <p class="fs-12 color-danger">
+                        {{ inputErrors.invalidCredentials.text[currentLanguage.value] }}
+                      </p>
+                    </ion-text>
+
+                    <ion-text
+                    mode="ios"
+                    class="mg-top-8 d-block"
+                    *ngIf="
+                    newPasswordFormGroup.get('currentPassword')?.invalid &&
+                    (newPasswordFormGroup.get('currentPassword')?.touched || newPasswordFormGroup.get('currentPassword')?.dirty)">
+                      <p
+                      *ngIf="newPasswordFormGroup.get('currentPassword')?.hasError('required')"
+                      class="fs-12 color-danger">
+                        {{ 'ERRORS.REQUIRED_FIELD' | translate }}
+                      </p>
+
+                      <p
+                      *ngIf="newPasswordFormGroup.get('currentPassword')?.hasError('minlength')"
+                      class="fs-12 color-danger">
+                        {{ 'ERRORS.MIN_CARACTERES.0' | translate }} 8 {{ 'ERRORS.MIN_CARACTERES.1' | translate }}
+                      </p>
+                    </ion-text>
+                  </div>
+                </div>
+              </ion-col>
+
               <ion-col size="12">
                 <ion-button
-                [disabled]="newEmailFormGroup.invalid"
+                type="submit"
+                [disabled]="newEmailFormGroup.invalid || changingEmail"
                 mode="md"
                 shape="round"
                 class="anfitrion-main-solid fs-14 txt-lowercase full-width close-modal-btn height-44 mg-bottom-16 mg-top-16"
                 [title]="'Fechar'"
                 fill="solid">
-                  <ion-icon name="refresh-outline" class="mg-right-5"></ion-icon>{{ 'YOUR_ACCOUNT_PAGE.UPDATE_MY_EMAIL_BTN.0' | translate }} <span class="font-w-bold mg-left-5">{{ 'YOUR_ACCOUNT_PAGE.UPDATE_MY_EMAIL_BTN.1' | translate }}</span>
+                  <ng-container *ngIf="!changingEmail">
+                    <ion-icon name="refresh-outline" class="mg-right-5"></ion-icon>{{ 'YOUR_ACCOUNT_PAGE.UPDATE_MY_EMAIL_BTN.0' | translate }} <span class="font-w-bold mg-left-5">{{ 'YOUR_ACCOUNT_PAGE.UPDATE_MY_EMAIL_BTN.1' | translate }}</span>
+
+                  </ng-container>
+
+                  <ng-container *ngIf="changingEmail">
+                    <ion-spinner name="dots"></ion-spinner>
+                  </ng-container>
+
                 </ion-button>
               </ion-col>
             </ion-row>
@@ -311,7 +419,7 @@ id="new-password-modal">
                 'has-error' : (newPasswordFormGroup.get('password')?.invalid &&
                 (newPasswordFormGroup.get('password')?.touched ||
                 newPasswordFormGroup.get('password')?.dirty))}"
-                class="anfitrion-input-wrapper full-width white-background-item label-w-white item-has-button-at-end">
+                class="anfitrion-input-wrapper full-width label-w-white item-has-button-at-end">
                   <ion-item
                   lines="none"
                   mode="ios">
@@ -371,7 +479,7 @@ id="new-password-modal">
                 'has-error' : (newPasswordFormGroup.get('confirmPassword')?.invalid &&
                 (newPasswordFormGroup.get('confirmPassword')?.touched ||
                 newPasswordFormGroup.get('confirmPassword')?.dirty))}"
-                class="anfitrion-input-wrapper full-width white-background-item label-w-gray-ef item-has-button-at-end">
+                class="anfitrion-input-wrapper full-width label-w-gray-ef item-has-button-at-end">
                   <ion-item
                   lines="none"
                   mode="ios">
