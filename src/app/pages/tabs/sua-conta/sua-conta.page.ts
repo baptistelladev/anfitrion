@@ -10,6 +10,8 @@ import * as UserStore from './../../../shared/store/user.state';
 import { Title } from '@angular/platform-browser';
 import { UtilsService } from 'src/app/core/services/utils.service';
 import * as moment from 'moment';
+import { UsersService } from 'src/app/core/services/firebase/users.service';
+import { AuthService } from 'src/app/core/services/firebase/auth.service';
 
 @Component({
   selector: 'anfitrion-sua-conta',
@@ -17,6 +19,29 @@ import * as moment from 'moment';
   styleUrls: ['./sua-conta.page.scss'],
 })
 export class SuaContaPage implements OnInit, OnDestroy {
+  public inputErrors: any = {
+    invalidCredentials: {
+      show: false,
+      text: {
+        pt: 'Senha inválida, tente novamente',
+        en: 'Invalid password, try again',
+        es: 'Contraseña incorrecta, inténtalo de nuevo'
+      }
+    },
+    invalidNewEmail: {
+      show: false,
+      text: {
+        pt: 'Não é um e-mail válido',
+        en: 'This is not a valid email',
+        es: 'No es un correo electrónico válido'
+      }
+    }
+  }
+
+  public sentEmailChangeNotification: boolean = false;
+  public newEmailWeSentNotification: string;
+
+  public changingEmail: boolean = false;
 
   public passwordMatch: {text: any} = {
     text: {
@@ -32,6 +57,7 @@ export class SuaContaPage implements OnInit, OnDestroy {
 
   public showPassword: boolean = false;
   public showConfirmPassword: boolean = false;
+  public showPasswordFromNewPassword: boolean = false;
 
   public showNewEmailModal: boolean = false;
   public showNewPasswordModal: boolean = false;
@@ -56,7 +82,9 @@ export class SuaContaPage implements OnInit, OnDestroy {
     private store : Store,
     private formBuilder : FormBuilder,
     private title : Title,
-    private utilsService : UtilsService
+    private utilsService : UtilsService,
+    private userService : UsersService,
+    private authService : AuthService
   ) { }
 
   ngOnInit() {
@@ -76,7 +104,8 @@ export class SuaContaPage implements OnInit, OnDestroy {
 
   public initNewEmailForm(): void {
     this.newEmailFormGroup = this.formBuilder.group({
-      newEmail: [ '',  [ Validators.required, Validators.email ] ]
+      newEmail: [ '',  [ Validators.required, Validators.email ] ],
+      currentPassword: [ '', [ Validators.required, Validators.minLength(8) ] ]
     })
   }
 
@@ -136,11 +165,18 @@ export class SuaContaPage implements OnInit, OnDestroy {
     }
   }
 
-  public toggleNewEmailModal(show: boolean): void {
+  public async toggleNewEmailModal(show: boolean) {
     this.showNewEmailModal = show;
 
-    if (!show) {
-      this.clearNewEmailForm()
+    if (!show && !this.sentEmailChangeNotification) {
+      this.clearNewEmailForm();
+      this.clearErrorsIfExists('invalid-credentials');
+      this.clearErrorsIfExists('invalid-new-email');
+    } else if (!show && this.sentEmailChangeNotification) {
+      await this.authService.logout()
+      .then(() => {
+        this.navCtrl.navigateRoot(['/login'])
+      })
     }
   }
 
@@ -154,6 +190,10 @@ export class SuaContaPage implements OnInit, OnDestroy {
 
   public togglePassword(): void {
     this.showPassword = !this.showPassword;
+  }
+
+  public togglePasswordFromNewPassword(): void {
+    this.showPasswordFromNewPassword = !this.showPasswordFromNewPassword;
   }
 
   public toggleConfirmPassword(): void {
@@ -196,6 +236,42 @@ export class SuaContaPage implements OnInit, OnDestroy {
 
   public clearNewEmailForm(): void {
     this.newEmailFormGroup.reset();
+  }
+
+  public async updateEmail() {
+    this.changingEmail = true;
+
+    await this.userService.updateUserEmail(this.newEmailFormGroup.value.newEmail, this.newEmailFormGroup.value.currentPassword)
+    .then((res) => {
+      this.newEmailWeSentNotification = this.newEmailFormGroup.value.newEmail;
+      this.changingEmail = false;
+      this.sentEmailChangeNotification = true;
+      this.newEmailFormGroup.reset();
+
+    }).catch((error) => {
+      this.changingEmail = false;
+      this.sentEmailChangeNotification = false;
+      this.newEmailWeSentNotification = '';
+
+      switch (error.code) {
+        case 'auth/invalid-credential':
+        this.inputErrors.invalidCredentials.show = true;
+          break;
+
+        case 'auth/invalid-new-email':
+        this.inputErrors.invalidNewEmail.show = true;
+          break;
+
+        default:
+          break;
+      }
+    })
+  }
+
+  public clearErrorsIfExists(error: string): void {
+    if (error === 'invalid-credentials' && this.inputErrors.invalidCredentials.show) {
+      this.inputErrors.invalidCredentials.show = false;
+    }
   }
 
   public ngOnDestroy(): void {
