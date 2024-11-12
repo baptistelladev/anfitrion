@@ -34,8 +34,13 @@ const routes: Routes = [
     loadChildren: () => import('./pages/sem-internet/sem-internet.module').then( m => m.SemInternetPageModule)
   },
   {
-    path: 'verificar-alteracao-de-email',
-    loadChildren: () => import('./pages/verificacao/verificar-alteracao-de-email/verificar-alteracao-de-email.module').then( m => m.VerificarAlteracaoDeEmailPageModule)
+    path: 'acoes',
+    children: [
+      {
+        path: 'verificar-email',
+        loadChildren: () => import('./pages/acoes/email/verificar-email/verificar-email.module').then( m => m.VerificarEmailPageModule)
+      }
+    ]
   },
   {
     path: '**',

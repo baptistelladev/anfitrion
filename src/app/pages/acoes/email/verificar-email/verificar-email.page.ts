@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { applyActionCode, Auth } from '@angular/fire/auth';
+import { Auth } from '@angular/fire/auth';
 import { ActivatedRoute } from '@angular/router';
+import { applyActionCode } from 'firebase/auth';
 
 @Component({
-  selector: 'anfitrion-verificar-alteracao-de-email',
-  templateUrl: './verificar-alteracao-de-email.page.html',
-  styleUrls: ['./verificar-alteracao-de-email.page.scss'],
+  selector: 'anfitrion-verificar-email',
+  templateUrl: './verificar-email.page.html',
+  styleUrls: ['./verificar-email.page.scss'],
 })
-export class VerificarAlteracaoDeEmailPage implements OnInit {
+export class VerificarEmailPage implements OnInit {
 
   public status: string = 'Aguarde, estamos verificando seu e-mail...';
 
