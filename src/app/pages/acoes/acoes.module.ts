@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { VerificarEmailPageRoutingModule } from './verificar-email-routing.module';
+import { AcoesPageRoutingModule } from './acoes-routing.module';
 
-import { VerificarEmailPage } from './verificar-email.page';
+import { AcoesPage } from './acoes.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    VerificarEmailPageRoutingModule
+    AcoesPageRoutingModule
   ],
-  declarations: [VerificarEmailPage]
+  declarations: [AcoesPage]
 })
-export class VerificarEmailPageModule {}
+export class AcoesPageModule {}
