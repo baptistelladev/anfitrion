@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { ActivatedRoute } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { applyActionCode } from 'firebase/auth';
 
 @Component({
-  selector: 'anfitrion-verificar-email',
-  templateUrl: './verificar-email.page.html',
-  styleUrls: ['./verificar-email.page.scss'],
+  selector: 'anfitrion-acoes',
+  templateUrl: './acoes.page.html',
+  styleUrls: ['./acoes.page.scss'],
 })
-export class VerificarEmailPage implements OnInit {
+export class AcoesPage implements OnInit {
 
-  public status: string = 'Aguarde, estamos verificando seu e-mail...';
+  public status: string = 'Aguarde';
 
   constructor(
     private route: ActivatedRoute,
@@ -20,12 +21,10 @@ export class VerificarEmailPage implements OnInit {
   ngOnInit(): void {
     // Obtém o parâmetro 'oobCode' da URL
     const oobCode = this.route.snapshot.queryParamMap.get('oobCode');
+    const mode = this.route.snapshot.queryParamMap.get('mode');
 
-    if (oobCode) {
-      this.verifyEmail(oobCode);
-    } else {
-      this.status = 'Link de verificação inválido.';
-    }
+    console.log(mode);
+
   }
 
   private verifyEmail(oobCode: string): void {

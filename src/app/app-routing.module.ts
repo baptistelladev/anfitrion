@@ -35,12 +35,7 @@ const routes: Routes = [
   },
   {
     path: 'acoes',
-    children: [
-      {
-        path: 'verificar-email',
-        loadChildren: () => import('./pages/acoes/email/verificar-email/verificar-email.module').then( m => m.VerificarEmailPageModule)
-      }
-    ]
+    loadChildren: () => import('./pages/acoes/acoes.module').then( m => m.AcoesPageModule)
   },
   {
     path: '**',
