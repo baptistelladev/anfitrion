@@ -3,6 +3,7 @@ import { Auth } from '@angular/fire/auth';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { applyActionCode } from 'firebase/auth';
+import { ModeEnum } from 'src/app/shared/enums/Mode';
 
 @Component({
   selector: 'anfitrion-acoes',
@@ -11,7 +12,9 @@ import { applyActionCode } from 'firebase/auth';
 })
 export class AcoesPage implements OnInit {
 
-  public status: string = 'Aguarde';
+  public emailIsVerified: boolean = false;
+  public emailAndChangeHasVerified: boolean = false;
+  public passwordIsVerified: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,18 +26,27 @@ export class AcoesPage implements OnInit {
     const oobCode = this.route.snapshot.queryParamMap.get('oobCode');
     const mode = this.route.snapshot.queryParamMap.get('mode');
 
-    console.log(mode);
-
-  }
-
-  private verifyEmail(oobCode: string): void {
-    applyActionCode(this.auth, oobCode)
+    if (oobCode) {
+      applyActionCode(this.auth, oobCode)
       .then(() => {
-        this.status = 'E-mail verificado com sucesso!';
+        switch (mode) {
+          case ModeEnum.VERIFY_AND_CHANGE_EMAIL:
+            this.emailAndChangeHasVerified = true;
+            break;
+
+          case ModeEnum.VERIFY_EMAIL:
+            this.emailIsVerified = true;
+            break;
+
+          case ModeEnum.RESET_PASSWORD:
+            this.passwordIsVerified = true;
+            break;
+        }
       })
       .catch((error) => {
-        this.status = `Erro ao verificar e-mail: ${error.message}`;
+
       });
+    }
   }
 
 }

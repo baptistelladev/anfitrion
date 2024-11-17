@@ -1,0 +1,13 @@
+@import './../../../assets/scss/utils/mixins.scss';
+
+ion-content {
+  section {
+    &.acoes {
+      width: 100%;
+      height: 100%;
+      @include flexbox(center, center, row);
+
+      ion-grid { flex: none; }
+    }
+  }
+}
