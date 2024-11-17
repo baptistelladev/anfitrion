@@ -1,3 +1,45 @@
 <ion-content [fullscreen]="true">
-  {{ status }}
+  <section class="acoes bg-content-w-linear-bg">
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col size="12" *ngIf="emailIsVerified || emailAndChangeHasVerified">
+          <ion-text
+          class="txt-center color-gray-text full-width icon-title-text"
+          mode="ios">
+            <ion-icon
+            name="at-outline"
+            class="full-width fs-32 animate__animated animate__fadeInUp">
+            </ion-icon>
+
+            <h2 class="font-baloo">
+              e-mail <span class="font-w-bold txt-lowercase">verificado</span>
+            </h2>
+
+            <p class="fs-16">
+              com sucesso
+            </p>
+          </ion-text>
+        </ion-col>
+
+        <ion-col size="12" *ngIf="passwordIsVerified">
+          <ion-text
+          class="txt-center color-gray-text full-width icon-title-text"
+          mode="ios">
+            <ion-icon
+            name="key-outline"
+            class="full-width fs-32 animate__animated animate__fadeInUp">
+            </ion-icon>
+
+            <h2 class="font-baloo">
+              senha <span class="font-w-bold txt-lowercase">verificada</span>
+            </h2>
+
+            <p class="fs-16">
+              com sucesso
+            </p>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
  </ion-content>
