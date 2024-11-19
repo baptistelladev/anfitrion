@@ -30,7 +30,6 @@ export class CidadesPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.currentCity);
   }
 
   public async selectCity(city: any) {

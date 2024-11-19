@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable, Subscription, take } from 'rxjs';
 import { ILang } from 'src/app/shared/models/ILang';
 import * as AppStore from './../../shared/store/app.state';
+import * as UserStore from './../../shared/store/user.state';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swiper from 'swiper';
 import { AlertController, ModalController, NavController, Platform, ToastController } from '@ionic/angular';
@@ -19,6 +20,7 @@ import { DotLottie } from '@lottiefiles/dotlottie-web';
 import { AnimationOptions } from 'ngx-lottie';
 import { AnimationItem, LottiePlayer } from 'lottie-web';
 import { App } from '@capacitor/app';
+import { UserCredential } from 'firebase/auth';
 
 @Component({
   selector: 'anfitrion-login',
@@ -152,22 +154,23 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
     })
 
     await this.authService.signInWithEmailAndPassword(this.formLoginGroup.value.email, this.formLoginGroup.value.password)
-    .then( async () => {
-      toastSuccess.message = `${this.translate.instant('LOGIN_PAGE.ACC_IDENTIFIED')}`;
+    .then( async (user: any) => {
 
-      await toastSuccess.present();
+      if (user.emailVerified) {
+        toastSuccess.message = `${this.translate.instant('LOGIN_PAGE.ACC_IDENTIFIED')}`;
+        await toastSuccess.present();
 
-    })
-    .then( async () => {
-
-
-
-      await toastSuccess.onDidDismiss()
-      .then(() => {
-        this.formLoginGroup.reset();
+        await toastSuccess.onDidDismiss()
+        .then(() => {
+          this.formLoginGroup.reset();
+          this.isDoingLogin = false;
+          this.navCtrl.navigateForward(['/logado/bem-vindo-a-baixada-santista']);
+        })
+      } else {
+        toastError.message = `Você ainda não fez a verificação de e-mail obrigatória`;
+        await toastError.present();
         this.isDoingLogin = false;
-        this.navCtrl.navigateForward(['/logado/bem-vindo-a-baixada-santista']);
-      })
+      }
     })
     .catch(async (error) => {
       this.isDoingLogin = false;
@@ -276,8 +279,12 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
   }
 
   public justLowercase(form: FormGroup, field: string): void {
-    let value: string = form.value[field].toLowerCase();
-    form.patchValue({ [field]: value });
+    let value: string = form.value[field];
+
+    if (value && value.length) {
+      value = value.toLowerCase();
+      form.patchValue({ [field]: value });
+    }
   }
 
   public initCreateAccForm(): void {

@@ -12,6 +12,8 @@ import { UtilsService } from 'src/app/core/services/utils.service';
 import * as moment from 'moment';
 import { UsersService } from 'src/app/core/services/firebase/users.service';
 import { AuthService } from 'src/app/core/services/firebase/auth.service';
+import { OverlayService } from 'src/app/shared/services/overlay.service';
+import { Auth } from '@angular/fire/auth';
 
 @Component({
   selector: 'anfitrion-sua-conta',
@@ -84,7 +86,9 @@ export class SuaContaPage implements OnInit, OnDestroy {
     private title : Title,
     private utilsService : UtilsService,
     private userService : UsersService,
-    private authService : AuthService
+    private authService : AuthService,
+    private overlayService : OverlayService,
+    private auth: Auth
   ) { }
 
   ngOnInit() {
@@ -155,7 +159,6 @@ export class SuaContaPage implements OnInit, OnDestroy {
     }))
     .subscribe((user: IUSer) => {
       this.user = user;
-      console.log(this.user);
     })
   }
 
@@ -241,7 +244,7 @@ export class SuaContaPage implements OnInit, OnDestroy {
   public async updateEmail() {
     this.changingEmail = true;
 
-    await this.userService.updateUserEmail(this.newEmailFormGroup.value.newEmail, this.newEmailFormGroup.value.currentPassword)
+    await this.userService.updateUserEmail(this.newEmailFormGroup.value.newEmail, this.newEmailFormGroup.value.currentPassword, this.user.uid ? this.user.uid : '')
     .then((res) => {
       this.newEmailWeSentNotification = this.newEmailFormGroup.value.newEmail;
       this.changingEmail = false;
@@ -272,6 +275,32 @@ export class SuaContaPage implements OnInit, OnDestroy {
     if (error === 'invalid-credentials' && this.inputErrors.invalidCredentials.show) {
       this.inputErrors.invalidCredentials.show = false;
     }
+  }
+
+  public async recover() {
+    const alert = await this.overlayService.fireAlert({
+      backdropDismiss: false,
+      cssClass: 'anf-alert',
+      mode: 'ios',
+      subHeader: 'E-mail enviado',
+      message: `Enviamos um link de redefinição para <b>${this.accountForm.value.email}</b>.`,
+      buttons: [
+        {
+          text: 'Entendi',
+          role: 'confirm',
+          handler: async () => {
+            alert.dismiss();
+          }
+        }
+      ]
+    })
+
+    await this.authService.recoverPassword(this.accountForm.value.email)
+    .then(async () => {
+      await alert.present();
+    }).catch((error) => {
+      console.log(error);
+    })
   }
 
   public ngOnDestroy(): void {

@@ -90,7 +90,6 @@ export class EsqueciMinhaSenhaPage implements OnInit, OnDestroy {
     .then(async () => {
       await alert.present();
     }).catch((error) => {
-      console.log(error);
       this.isRecovering = false;
     })
   }

@@ -1,8 +1,7 @@
 
 export interface IUSer {
   uid?: string,
-  email?: string,
-  emailVerified?: boolean,
   createdAt?: string,
-  firstName: string
+  firstName: string,
+  email?: string
 }

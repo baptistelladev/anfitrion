@@ -45,11 +45,9 @@ export class SuggestionsService {
         const data = docSnap.data() as ISuggestion; // Cast para IShortEstablishment
         return { id: docSnap.id, ...data }; // Retorna o documento com o ID
       } else {
-        console.log("Documento não encontrado!");
         return null;
     }
     } catch (error) {
-      console.error("Erro ao obter o documento:", error);
       return null; // Retorna null em caso de erro
     }
   }
