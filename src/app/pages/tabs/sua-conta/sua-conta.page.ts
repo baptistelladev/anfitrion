@@ -45,24 +45,7 @@ export class SuaContaPage implements OnInit, OnDestroy {
 
   public changingEmail: boolean = false;
 
-  public passwordMatch: {text: any} = {
-    text: {
-      pt: 'senhas coincidem',
-      en: 'passwords match',
-      es: 'las contraseñas coinciden'
-    }
-  }
-
-  public passwordIsValid: boolean = false;
-  public passwordRules: any[];
-  public passwordsMatch: boolean = false;
-
-  public showPassword: boolean = false;
-  public showConfirmPassword: boolean = false;
-  public showPasswordFromNewPassword: boolean = false;
-
   public showNewEmailModal: boolean = false;
-  public showNewPasswordModal: boolean = false;
 
   public emailFieldIsDisabled: boolean = true;
 
@@ -77,7 +60,6 @@ export class SuaContaPage implements OnInit, OnDestroy {
   public accountForm: FormGroup;
 
   public newEmailFormGroup: FormGroup;
-  public newPasswordFormGroup: FormGroup;
 
   constructor(
     private navCtrl : NavController,
@@ -92,14 +74,11 @@ export class SuaContaPage implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.getPasswordRules();
     this.getUserFromNGRX();
     this.getCurrentLanguageFromNGRX();
     this.initAccountForm();
     this.fillAccountForm();
-
     this.initNewEmailForm();
-    this.initNewPasswordForm();
   }
 
   ionViewWillEnter(): void {
@@ -110,13 +89,6 @@ export class SuaContaPage implements OnInit, OnDestroy {
     this.newEmailFormGroup = this.formBuilder.group({
       newEmail: [ '',  [ Validators.required, Validators.email ] ],
       currentPassword: [ '', [ Validators.required, Validators.minLength(8) ] ]
-    })
-  }
-
-  public initNewPasswordForm(): void {
-    this.newPasswordFormGroup = this.formBuilder.group({
-      password: [ '', [ Validators.required, Validators.minLength(8) ] ],
-      confirmPassword: [ '', [ Validators.required, Validators.minLength(8) ] ]
     })
   }
 
@@ -183,58 +155,9 @@ export class SuaContaPage implements OnInit, OnDestroy {
     }
   }
 
-  public toggleNewPasswordModal(show: boolean): void {
-    this.showNewPasswordModal = show;
-
-    if (!show) {
-      this.clearNewPasswordForm()
-    }
-  }
-
-  public togglePassword(): void {
-    this.showPassword = !this.showPassword;
-  }
-
-  public togglePasswordFromNewPassword(): void {
-    this.showPasswordFromNewPassword = !this.showPasswordFromNewPassword;
-  }
-
-  public toggleConfirmPassword(): void {
-    this.showConfirmPassword = !this.showConfirmPassword;
-  }
-
-  public checkPasswordRules(): void {
-    let senha: string = this.newPasswordFormGroup.get('password')?.value;
-    this.utilsService.checkPasswordRules(senha);
-    this.passwordIsValid = this.passwordRules.every((rule) => rule.valid === true);
-
-    this.checkPasswordsMatch();
-  }
-
-  public checkPasswordsMatch(): boolean {
-    this.passwordsMatch = this.newPasswordFormGroup.value.password === this.newPasswordFormGroup.value.confirmPassword;
-
-    if (this.newPasswordFormGroup.value.password === '' && this.newPasswordFormGroup.value.confirmPassword === '') {
-      this.passwordsMatch = false
-    }
-
-    return this.passwordsMatch
-  }
-
   public justLowercase(form: FormGroup, field: string): void {
     let value: string = form.value[field].toLowerCase();
     form.patchValue({ [field]: value });
-  }
-
-  /**
-   * @description Obtém as regras de senha.
-   */
-  public getPasswordRules(): void {
-    this.passwordRules = this.utilsService.getPasswordRules();
-  }
-
-  public clearNewPasswordForm(): void {
-    this.newPasswordFormGroup.reset();
   }
 
   public clearNewEmailForm(): void {
@@ -278,7 +201,12 @@ export class SuaContaPage implements OnInit, OnDestroy {
   }
 
   public async recover() {
-    const alert = await this.overlayService.fireAlert({
+
+    const loading = await this.overlayService.fireLoading();
+
+    await loading.present();
+
+    const alertSuccess = await this.overlayService.fireAlert({
       backdropDismiss: false,
       cssClass: 'anf-alert',
       mode: 'ios',
@@ -289,7 +217,7 @@ export class SuaContaPage implements OnInit, OnDestroy {
           text: 'Entendi',
           role: 'confirm',
           handler: async () => {
-            alert.dismiss();
+            alertSuccess.dismiss();
           }
         }
       ]
@@ -297,9 +225,10 @@ export class SuaContaPage implements OnInit, OnDestroy {
 
     await this.authService.recoverPassword(this.accountForm.value.email)
     .then(async () => {
-      await alert.present();
-    }).catch((error) => {
-      console.log(error);
+      await loading.dismiss();
+      await alertSuccess.present();
+    }).catch( async () => {
+      await loading.dismiss();
     })
   }
 
