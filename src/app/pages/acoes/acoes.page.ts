@@ -45,6 +45,7 @@ export class AcoesPage implements OnInit {
   public passwordIsValid: boolean = false;
   public passwordRules: any[];
   public passwordsMatch: boolean = false;
+  public passwordIsChanged: boolean = false;
 
   public showPassword: boolean = false;
   public showConfirmPassword: boolean = false;
@@ -52,7 +53,6 @@ export class AcoesPage implements OnInit {
 
   public emailIsVerified: boolean = false;
   public emailAndChangeHasVerified: boolean = false;
-  public passwordIsVerified: boolean = false;
 
   public showResetPassword: boolean = false;
 
@@ -217,6 +217,10 @@ export class AcoesPage implements OnInit {
         await alert.onDidDismiss().then(() => {
           this.isUpdatingPassword = false;
           this.newPasswordFormGroup.reset();
+          this.passwordIsValid = false;
+          this.passwordsMatch = false;
+          this.showResetPassword = false;
+          this.passwordIsChanged = true;
         })
       })
       .catch(async () => {
