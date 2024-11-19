@@ -114,10 +114,11 @@ class="ion-content-w-linear-bg">
             </div>
           </ion-col>
 
+          <!-- (click)="toggleNewPasswordModal(true)" -->
           <ion-col size="12" class="txt-right">
             <ion-button
             shape="square"
-            (click)="toggleNewPasswordModal(true)"
+            (click)="recover()"
             [title]="('YOUR_ACCOUNT_PAGE.REQUEST_PASSWORD_CHANGE.0' | translate) + ' ' + ('YOUR_ACCOUNT_PAGE.REQUEST_PASSWORD_CHANGE.1' | translate)"
             class="txt-right no-ion-padding fs-14 no-height"
             fill="clear"

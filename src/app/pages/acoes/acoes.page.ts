@@ -16,6 +16,8 @@ export class AcoesPage implements OnInit {
   public emailAndChangeHasVerified: boolean = false;
   public passwordIsVerified: boolean = false;
 
+  public showResetPassword: boolean = false;
+
   constructor(
     private route: ActivatedRoute,
     private auth : Auth
@@ -26,26 +28,28 @@ export class AcoesPage implements OnInit {
     const oobCode = this.route.snapshot.queryParamMap.get('oobCode');
     const mode = this.route.snapshot.queryParamMap.get('mode');
 
-    if (oobCode) {
-      applyActionCode(this.auth, oobCode)
-      .then(() => {
-        switch (mode) {
-          case ModeEnum.VERIFY_AND_CHANGE_EMAIL:
-            this.emailAndChangeHasVerified = true;
-            break;
+    if (mode === ModeEnum.RESET_PASSWORD) {
+      this.showResetPassword = true;
+    } else {
+      this.showResetPassword = false;
 
-          case ModeEnum.VERIFY_EMAIL:
-            this.emailIsVerified = true;
-            break;
+      if (oobCode) {
+        applyActionCode(this.auth, oobCode)
+        .then(() => {
+          switch (mode) {
+            case ModeEnum.VERIFY_AND_CHANGE_EMAIL:
+              this.emailAndChangeHasVerified = true;
+              break;
 
-          case ModeEnum.RESET_PASSWORD:
-            this.passwordIsVerified = true;
-            break;
-        }
-      })
-      .catch((error) => {
+            case ModeEnum.VERIFY_EMAIL:
+              this.emailIsVerified = true;
+              break;
+          }
+        })
+        .catch((error) => {
 
-      });
+        });
+      }
     }
   }
 

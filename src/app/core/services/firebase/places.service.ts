@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { collectionData, Firestore } from '@angular/fire/firestore';
-import { collection, CollectionReference, getDocs, query, QueryConstraint, where } from 'firebase/firestore';
+import { collection, CollectionReference, doc, getDocs, query, QueryConstraint, updateDoc, where } from 'firebase/firestore';
 import { from, Observable } from 'rxjs';
 import { IFIrebaseFilter } from 'src/app/shared/models/IFirebaseFilter';
 import { IPlace } from 'src/app/shared/models/IPlace';

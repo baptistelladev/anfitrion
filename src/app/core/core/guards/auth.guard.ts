@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
   constructor(
     private afAuth: Auth,
     private navCtrl: NavController,
-    private userService : UsersService
+    private userService : UsersService,
   ) {}
 
   canActivate(): Observable<boolean> {
@@ -24,8 +24,7 @@ export class AuthGuard implements CanActivate {
       take(1),
       switchMap(user => {
         if (user) {
-          console.log(user)
-          return from(this.userService.getUserByUID(CollectionsEnum.USERS, user.uid)).pipe(
+          return from(this.userService.getUserByUID(CollectionsEnum.USERS, user)).pipe(
             map((resp) => {
               if (resp) {
                 return true

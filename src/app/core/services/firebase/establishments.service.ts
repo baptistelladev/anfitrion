@@ -44,7 +44,6 @@ export class EstablishmentsService {
             const data = docSnap.data() as IPlace; // Cast para IShortEstablishment
             return { id: docSnap.id, ...data }; // Retorna o documento com o ID
         } else {
-            console.log("Documento não encontrado!");
             return null;
         }
     } catch (error) {

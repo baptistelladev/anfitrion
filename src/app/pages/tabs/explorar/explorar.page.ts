@@ -347,7 +347,6 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     this.userSubscription = this.user$
     .subscribe((user: IUSer) => {
       this.user = user;
-      console.log(this.user);
     })
   }
 

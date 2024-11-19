@@ -74,7 +74,6 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
     .subscribe({
       next: (suggestions: any) => {
         this.suggestionsBaixadaSantista = suggestions;
-        console.log(this.suggestionsBaixadaSantista);
       },
       error: () => {
 

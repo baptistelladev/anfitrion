@@ -136,9 +136,6 @@ export class SeusDadosPage implements OnInit, OnDestroy {
         birthDateAsText: this.currentLanguage.value === 'en' ? moment(this.personalDataForm.value.birthDateAsText).format('YYYY/MM/DD') : moment(this.personalDataForm.value.birthDateAsText).format('DD/MM/YYYY')
       })
     }
-
-    console.log(this.personalDataForm.value.birthDateAsText);
-
   }
 
   public fillFormAndVariable(user: IUSer): void {

@@ -146,14 +146,11 @@ export class AppComponent implements OnInit {
   }
 
   private async initializePushNotifications() {
-    console.log('Initializing Push Notifications');
-
     try {
       const permissions = await PushNotifications.requestPermissions();
       if (permissions.receive === 'granted') {
         await PushNotifications.register();
         this.setupPushListeners();
-        console.log('Push notifications registered successfully');
       } else {
         console.warn('Push notifications permission not granted');
       }

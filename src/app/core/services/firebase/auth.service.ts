@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, UserCredential } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, UserCredential } from '@angular/fire/auth';
 import { collection, doc, Firestore, setDoc } from '@angular/fire/firestore';
 import { NavController } from '@ionic/angular';
 import { addDoc } from 'firebase/firestore';
@@ -38,9 +38,10 @@ export class AuthService {
         ...userInfo
       })
 
+      await sendEmailVerification(user);
+
       return user
     } catch (error) {
-      console.log(error);
       const errorMessage = this.getFirebaseErrorMessage(error);
       throw errorMessage;
     }
@@ -52,7 +53,6 @@ export class AuthService {
       await this.storageService.setStorageKey(USER_ID, userCredential.user.uid);
       return userCredential.user;
     } catch (error) {
-      console.log(error);
       const errorMessage = this.getFirebaseErrorMessage(error);
       throw errorMessage;
     }
@@ -61,10 +61,8 @@ export class AuthService {
   public async logout(): Promise<any> {
     try {
       await signOut(this.afAuth);
-      console.log('Deslogou');
       return true;
     } catch (error) {
-      console.log(error);
       const errorMessage = this.getFirebaseErrorMessage(error);
       throw errorMessage;
     }

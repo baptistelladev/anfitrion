@@ -9,8 +9,7 @@ export const userInitialState: IUserState = {
   user: {
     firstName: '',
     uid: '',
-    email: '',
-    emailVerified: false
+    email: ''
   }
 }
 
@@ -20,11 +19,20 @@ export const setUser = createAction(
   props<{ user: IUSer }>()
 )
 
+export const setUserEmail = createAction(
+  '[USER] Definir email do usuário logado',
+  props<{ email: string }>()
+)
+
 export const userReducer = createReducer(
   userInitialState,
   on(
     setUser,
     (state, { user }): IUserState => ({ ...state, user: user })
+  ),
+  on(
+    setUserEmail,
+    (state, { email }): IUserState => ({ ...state, user: { ...state.user, email: email }  })
   )
 )
 
