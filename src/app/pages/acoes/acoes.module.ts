@@ -7,12 +7,13 @@ import { IonicModule } from '@ionic/angular';
 import { AcoesPageRoutingModule } from './acoes-routing.module';
 
 import { AcoesPage } from './acoes.page';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { ComponentsModule } from 'src/app/shared/components/components.module';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
+    SharedModule,
+    ComponentsModule,
     AcoesPageRoutingModule
   ],
   declarations: [AcoesPage]

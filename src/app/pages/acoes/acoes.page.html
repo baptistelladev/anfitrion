@@ -46,10 +46,202 @@
 
   <!-- RESET PASSWORD -->
   <section class="reset-password" *ngIf="showResetPassword">
-    <ion-grid [fixed]="true">
-      <ion-row>
+    <ion-header mode="ios" class="ion-no-border">
+      <ion-toolbar mode="ios" class="ion-bg-transparent no-ion-padding">
+        <ion-grid [fixed]="true">
+          <ion-row>
+            <ion-col size="12">
+              <div class="header-container">
+                <div class="logo-container full-width ">
+                  <ion-button
+                  class="back ion-color-gray-text back-btn no-ion-padding font-baloo"
+                  [title]="'SHARED.BACK' | translate"
+                  fill="clear">
+                    <ion-icon name="chevron-back-outline"></ion-icon> <span class="font-w-thin mg-left-5">{{ 'SHARED.BACK' | translate }}</span>
+                  </ion-button>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-toolbar>
+    </ion-header>
 
-      </ion-row>
-    </ion-grid>
+    <form [formGroup]="newPasswordFormGroup" class="password-form">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <ion-text mode="ios">
+              <p class="font-baloo fs-20 color-gray-text">
+                {{ 'YOUR_ACCOUNT_PAGE.MODAL_PASSWORD_TITLE.0' | translate }} <span class="font-w-bold">{{ 'YOUR_ACCOUNT_PAGE.MODAL_PASSWORD_TITLE.1' | translate }}</span>
+              </p>
+              <p class="fs-14 color-gray-text font-w-thin">
+                {{ 'YOUR_ACCOUNT_PAGE.MODAL_PASSWORD_DESC' | translate }}.
+              </p>
+            </ion-text>
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-text mode="ios">
+              <p class="fs-12 color-gray-mid mg-bottom-8 mg-top-16">
+                {{ 'INPUTS.LABEL_NEW_PASSWORD' | translate }}
+              </p>
+            </ion-text>
+
+            <div
+            [ngClass]="{
+            'has-error' : (newPasswordFormGroup.get('password')?.invalid &&
+            (newPasswordFormGroup.get('password')?.touched ||
+            newPasswordFormGroup.get('password')?.dirty))}"
+            class="anfitrion-input-wrapper full-width label-w-white item-has-button-at-end">
+              <ion-item
+              lines="none"
+              mode="ios">
+                <ion-input
+                (keyup)="checkPasswordRules()"
+                (keydown)="preventWhitespace($event)"
+                [type]="showPassword ? 'text' : 'password'"
+                [placeholder]="'INPUTS.PLACEHOLDER_NEW_PASSWORD' | translate"
+                formControlName="password"
+                enterkeyhint="next"
+                mode="ios"
+                inputmode="text">
+                </ion-input>
+
+                <ion-button
+                [title]="showPassword ? ('INPUTS.HIDE_PW' | translate) : ('INPUTS.SHOW_PW' | translate)"
+                (click)="togglePassword()"
+                type="button"
+                class="clear-gray-light"
+                mode="ios"
+                fill="clear">
+                  <ion-icon name="eye-off-outline" *ngIf="showPassword"></ion-icon>
+                  <ion-icon name="eye-outline" *ngIf="!showPassword"></ion-icon>
+                </ion-button>
+              </ion-item>
+
+              <ion-text
+              mode="ios"
+              class="mg-top-8 d-block"
+              *ngIf="
+              newPasswordFormGroup.get('password')?.invalid &&
+              (newPasswordFormGroup.get('password')?.touched || newPasswordFormGroup.get('password')?.dirty)">
+                <p
+                *ngIf="newPasswordFormGroup.get('password')?.hasError('required')"
+                class="fs-12 color-danger">
+                  {{ 'ERRORS.REQUIRED_FIELD' | translate }}
+                </p>
+
+                <p
+                *ngIf="newPasswordFormGroup.get('password')?.hasError('minlength')"
+                class="fs-12 color-danger">
+                  {{ 'ERRORS.MIN_CARACTERES.0' | translate }} 8 {{ 'ERRORS.MIN_CARACTERES.1' | translate }}
+                </p>
+              </ion-text>
+            </div>
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-text mode="ios">
+              <p class="fs-12 color-gray-mid mg-bottom-8">
+                {{ 'INPUTS.LABEL_CONFIRM_NEW_PASSWORD' | translate }}
+              </p>
+            </ion-text>
+
+            <div
+            [ngClass]="{
+            'has-error' : (newPasswordFormGroup.get('confirmPassword')?.invalid &&
+            (newPasswordFormGroup.get('confirmPassword')?.touched ||
+            newPasswordFormGroup.get('confirmPassword')?.dirty))}"
+            class="anfitrion-input-wrapper full-width label-w-gray-ef item-has-button-at-end">
+              <ion-item
+              lines="none"
+              mode="ios">
+                <ion-input
+                (keyup)="checkPasswordsMatch();"
+                (keydown)="preventWhitespace($event)"
+                [placeholder]="'INPUTS.PLACEHOLDER_CONFIRM_NEW_PASSWORD' | translate"
+                [type]="showConfirmPassword ? 'text' : 'password'"
+                formControlName="confirmPassword"
+                enterkeyhint="send"
+                mode="ios"
+                inputmode="text">
+                </ion-input>
+
+                <ion-button
+                [title]="showConfirmPassword ? ('INPUTS.HIDE_PW' | translate) : ('INPUTS.SHOW_PW' | translate)"
+                (click)="toggleConfirmPassword()"
+                type="button"
+                class="clear-gray-light"
+                mode="ios"
+                fill="clear">
+                  <ion-icon name="eye-off-outline" *ngIf="showConfirmPassword"></ion-icon>
+                  <ion-icon name="eye-outline" *ngIf="!showConfirmPassword"></ion-icon>
+                </ion-button>
+              </ion-item>
+
+              <ion-text
+              mode="ios"
+              class="mg-top-8 d-block"
+              *ngIf="
+              newPasswordFormGroup.get('confirmPassword')?.invalid &&
+              (newPasswordFormGroup.get('confirmPassword')?.touched || newPasswordFormGroup.get('confirmPassword')?.dirty)">
+                <p
+                *ngIf="newPasswordFormGroup.get('confirmPassword')?.hasError('required')"
+                class="fs-12 color-danger">
+                  {{ 'ERRORS.REQUIRED_FIELD' | translate }}
+                </p>
+
+                <p
+                *ngIf="newPasswordFormGroup.get('confirmPassword')?.hasError('minlength')"
+                class="fs-12 color-danger">
+                {{ 'ERRORS.MIN_CARACTERES.0' | translate }} 8 {{ 'ERRORS.MIN_CARACTERES.1' | translate }}
+                </p>
+              </ion-text>
+            </div>
+          </ion-col>
+
+          <ion-col size="12" class=" mg-top-16">
+            <div class="password-wrapper">
+              <ul>
+                <li
+                *ngFor="let rule of passwordRules"
+                [ngClass]="{ 'has-rule' : rule.valid }"
+                >
+                  <ion-text mode="ios">
+                    <p class="fs-14">
+                      <ion-icon [name]="rule.valid ? 'checkmark-circle' : 'close-circle'" class="fs-16"></ion-icon>
+                      {{ rule.text[currentLanguage.value] }}
+                    </p>
+                  </ion-text>
+                </li>
+                <li
+                [ngClass]="{ 'has-rule' : passwordsMatch }"
+                >
+                  <ion-text mode="ios">
+                    <p class="fs-14">
+                      <ion-icon [name]="passwordsMatch ? 'checkmark-circle' : 'close-circle'" class="fs-16"></ion-icon>
+                      {{ passwordMatch.text[currentLanguage.value] }}
+                    </p>
+                  </ion-text>
+                </li>
+              </ul>
+            </div>
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-button
+            [disabled]="newPasswordFormGroup.invalid || !passwordIsValid || !passwordsMatch"
+            mode="md"
+            shape="round"
+            class="anfitrion-main-solid fs-14 txt-lowercase full-width close-modal-btn height-44 mg-bottom-16 mg-top-16"
+            [title]=""
+            fill="solid">
+              <ion-icon name="refresh-outline" class="mg-right-5"></ion-icon>{{ 'YOUR_ACCOUNT_PAGE.UPDATE_MY_PASSWORD_BTN.0' | translate }} <span class="font-w-bold mg-left-5">{{ 'YOUR_ACCOUNT_PAGE.UPDATE_MY_PASSWORD_BTN.1' | translate }}</span>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
   </section>
  </ion-content>
