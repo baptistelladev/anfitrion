@@ -10,6 +10,7 @@ import { UtilsService } from 'src/app/core/services/utils.service';
 import { ModeEnum } from 'src/app/shared/enums/Mode';
 import { ILang } from 'src/app/shared/models/ILang';
 import * as AppStore from './../../shared/store/app.state';
+import { UsersService } from 'src/app/core/services/firebase/users.service';
 
 @Component({
   selector: 'anfitrion-acoes',
@@ -17,6 +18,19 @@ import * as AppStore from './../../shared/store/app.state';
   styleUrls: ['./acoes.page.scss'],
 })
 export class AcoesPage implements OnInit {
+
+  public inputErrors: any = {
+    invalidCredentials: {
+      show: false,
+      text: {
+        pt: 'Senha inválida, tente novamente',
+        en: 'Invalid password, try again',
+        es: 'Contraseña incorrecta, inténtalo de nuevo'
+      }
+    }
+  }
+
+  public isUpdatingPassword: boolean = false;
 
   public passwordMatch: {text: any} = {
     text: {
@@ -51,14 +65,13 @@ export class AcoesPage implements OnInit {
     private auth : Auth,
     private formBuilder : FormBuilder,
     private utilsService : UtilsService,
-    private store : Store
+    private store : Store,
+    private userService : UsersService
   ) { }
 
   ngOnInit(): void {
-
-    this.getPasswordRules();
-
     this.getCurrentLanguageFromNGRX();
+    this.getPasswordRules();
 
     // Obtém o parâmetro 'oobCode' da URL
     const oobCode = this.route.snapshot.queryParamMap.get('oobCode');
@@ -66,6 +79,7 @@ export class AcoesPage implements OnInit {
 
     if (mode === ModeEnum.RESET_PASSWORD) {
       this.showResetPassword = true;
+      this.initNewPasswordForm();
     } else {
       this.showResetPassword = false;
 
@@ -82,7 +96,6 @@ export class AcoesPage implements OnInit {
               break;
 
             case ModeEnum.RESET_PASSWORD:
-              this.initNewPasswordForm();
               break;
           }
         })
@@ -126,7 +139,8 @@ export class AcoesPage implements OnInit {
   public initNewPasswordForm(): void {
     this.newPasswordFormGroup = this.formBuilder.group({
       password: [ '', [ Validators.required, Validators.minLength(8) ] ],
-      confirmPassword: [ '', [ Validators.required, Validators.minLength(8) ] ]
+      confirmPassword: [ '', [ Validators.required, Validators.minLength(8) ] ],
+      currentPassword: [ '', [ Validators.required, Validators.minLength(8) ] ]
     })
   }
 
@@ -154,6 +168,24 @@ export class AcoesPage implements OnInit {
     this.passwordIsValid = this.passwordRules.every((rule) => rule.valid === true);
 
     this.checkPasswordsMatch();
+  }
+
+  public updateUserPassword(): void {
+    this.isUpdatingPassword = true;
+
+    this.userService.updateUserPassword(this.newPasswordFormGroup.value.currentPassword, this.newPasswordFormGroup.value.password)
+    .then(() => {
+      this.isUpdatingPassword = false;
+    })
+    .catch(() => {
+      this.isUpdatingPassword = false;
+    })
+  }
+
+  public clearErrorsIfExists(error: string): void {
+    if (error === 'invalid-credentials' && this.inputErrors.invalidCredentials.show) {
+      this.inputErrors.invalidCredentials.show = false;
+    }
   }
 
 }

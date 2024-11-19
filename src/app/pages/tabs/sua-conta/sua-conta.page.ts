@@ -61,6 +61,8 @@ export class SuaContaPage implements OnInit, OnDestroy {
 
   public newEmailFormGroup: FormGroup;
 
+  public showPassword: boolean = false;
+
   constructor(
     private navCtrl : NavController,
     private store : Store,
@@ -140,6 +142,10 @@ export class SuaContaPage implements OnInit, OnDestroy {
     }
   }
 
+  public togglePassword(): void {
+    this.showPassword = !this.showPassword;
+  }
+
   public async toggleNewEmailModal(show: boolean) {
     this.showNewEmailModal = show;
 
@@ -156,8 +162,12 @@ export class SuaContaPage implements OnInit, OnDestroy {
   }
 
   public justLowercase(form: FormGroup, field: string): void {
-    let value: string = form.value[field].toLowerCase();
-    form.patchValue({ [field]: value });
+    let value: string = form.value[field];
+
+    if (value && value.length > 0) {
+      value = value.toLowerCase();
+      form.patchValue({ [field]: value });
+    }
   }
 
   public clearNewEmailForm(): void {

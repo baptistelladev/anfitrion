@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { IUSer } from 'src/app/shared/models/IUser';
 import * as UserStore from './../../../shared/store/user.state';
 import { Auth, EmailAuthProvider, sendEmailVerification, updateEmail, verifyBeforeUpdateEmail, UserCredential } from '@angular/fire/auth';
-import { reauthenticateWithCredential, User} from 'firebase/auth';
+import { reauthenticateWithCredential, updatePassword, User} from 'firebase/auth';
 import { throwError } from 'rxjs';
 import { CollectionsEnum } from 'src/app/shared/enums/Collection';
 import { doc, updateDoc } from 'firebase/firestore';
@@ -61,6 +61,29 @@ export class UsersService {
 
       // Envia o email de verificação para o novo endereço
       await verifyBeforeUpdateEmail(user, newEmail);
+      return true;
+    } catch (error) {
+      throw error; // Lança o erro para ser tratado pelo chamador
+    }
+  }
+
+  public async updateUserPassword(currentPassword: string, newPassword: string): Promise<boolean> {
+    const user = this.auth.currentUser;
+
+    if (!user) {
+      throw new Error('Usuário não autenticado');
+    }
+
+    const credential = EmailAuthProvider.credential(user.email || '', currentPassword);
+
+    console.log(user);
+
+
+    try {
+      // Reautentica o usuário
+      await reauthenticateWithCredential(user, credential);
+      // Envia o email de verificação para o novo endereço
+      await updatePassword(user, newPassword);
       return true;
     } catch (error) {
       throw error; // Lança o erro para ser tratado pelo chamador
