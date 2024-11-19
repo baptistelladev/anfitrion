@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, UserCredential } from '@angular/fire/auth';
+import { Auth, confirmPasswordReset, createUserWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, UserCredential } from '@angular/fire/auth';
 import { collection, doc, Firestore, setDoc } from '@angular/fire/firestore';
 import { NavController } from '@ionic/angular';
 import { addDoc } from 'firebase/firestore';
@@ -76,6 +76,19 @@ export class AuthService {
       console.log(error);
       const errorMessage = this.getFirebaseErrorMessage(error);
       throw errorMessage;
+    }
+  }
+
+  public async confirmNewPassword(obbCode: string, newPassword: string): Promise<any> {
+    try {
+      // 3. Confirme a redefinição de senha com o código e a nova senha
+      const auth = this.afAuth;
+      await confirmPasswordReset(auth, obbCode, newPassword);
+
+      console.log("Senha redefinida com sucesso!");
+      // Aqui você pode redirecionar o usuário para a página de login ou para a tela principal
+    } catch (error: any) {
+      console.error("Erro ao redefinir a senha:", error.message);
     }
   }
 

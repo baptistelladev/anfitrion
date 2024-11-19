@@ -66,27 +66,4 @@ export class UsersService {
       throw error; // Lança o erro para ser tratado pelo chamador
     }
   }
-
-  public async updateUserPassword(currentPassword: string, newPassword: string): Promise<boolean> {
-    const user = this.auth.currentUser;
-
-    if (!user) {
-      throw new Error('Usuário não autenticado');
-    }
-
-    const credential = EmailAuthProvider.credential(user.email || '', currentPassword);
-
-    console.log(user);
-
-
-    try {
-      // Reautentica o usuário
-      await reauthenticateWithCredential(user, credential);
-      // Envia o email de verificação para o novo endereço
-      await updatePassword(user, newPassword);
-      return true;
-    } catch (error) {
-      throw error; // Lança o erro para ser tratado pelo chamador
-    }
-  }
 }

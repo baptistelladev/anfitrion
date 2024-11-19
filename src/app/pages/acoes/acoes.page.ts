@@ -11,6 +11,8 @@ import { ModeEnum } from 'src/app/shared/enums/Mode';
 import { ILang } from 'src/app/shared/models/ILang';
 import * as AppStore from './../../shared/store/app.state';
 import { UsersService } from 'src/app/core/services/firebase/users.service';
+import { AuthService } from 'src/app/core/services/firebase/auth.service';
+import { OverlayService } from 'src/app/shared/services/overlay.service';
 
 @Component({
   selector: 'anfitrion-acoes',
@@ -60,33 +62,44 @@ export class AcoesPage implements OnInit {
   public currentLanguage$: Observable<ILang>;
   public currentLanguageSubscription: Subscription;
 
+  public oobCode: string| null;
+  public mode: string | null;
+
   constructor(
     private route: ActivatedRoute,
     private auth : Auth,
     private formBuilder : FormBuilder,
     private utilsService : UtilsService,
     private store : Store,
-    private userService : UsersService
+    private authService : AuthService,
+    private overlayService : OverlayService
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.getCurrentLanguageFromNGRX();
     this.getPasswordRules();
 
-    // Obtém o parâmetro 'oobCode' da URL
-    const oobCode = this.route.snapshot.queryParamMap.get('oobCode');
-    const mode = this.route.snapshot.queryParamMap.get('mode');
+    const toastError = await this.overlayService.fireToast({
+      position: 'top',
+      cssClass: 'anf-toast anf-toast-danger',
+      icon: 'warning-outline',
+      duration: 2000
+    })
 
-    if (mode === ModeEnum.RESET_PASSWORD) {
+    // Obtém o parâmetro 'oobCode' da URL
+    this.oobCode = this.route.snapshot.queryParamMap.get('oobCode');
+    this.mode = this.route.snapshot.queryParamMap.get('mode');
+
+    if (this.mode === ModeEnum.RESET_PASSWORD) {
       this.showResetPassword = true;
       this.initNewPasswordForm();
     } else {
       this.showResetPassword = false;
 
-      if (oobCode) {
-        applyActionCode(this.auth, oobCode)
+      if (this.oobCode) {
+        applyActionCode(this.auth, this.oobCode)
         .then(() => {
-          switch (mode) {
+          switch (this.mode) {
             case ModeEnum.VERIFY_AND_CHANGE_EMAIL:
               this.emailAndChangeHasVerified = true;
               break;
@@ -99,8 +112,9 @@ export class AcoesPage implements OnInit {
               break;
           }
         })
-        .catch((error) => {
-
+        .catch(async (error) => {
+          toastError.message = `Algo deu errado`;
+          await toastError.present();
         });
       }
     }
@@ -139,8 +153,7 @@ export class AcoesPage implements OnInit {
   public initNewPasswordForm(): void {
     this.newPasswordFormGroup = this.formBuilder.group({
       password: [ '', [ Validators.required, Validators.minLength(8) ] ],
-      confirmPassword: [ '', [ Validators.required, Validators.minLength(8) ] ],
-      currentPassword: [ '', [ Validators.required, Validators.minLength(8) ] ]
+      confirmPassword: [ '', [ Validators.required, Validators.minLength(8) ] ]
     })
   }
 
@@ -170,21 +183,47 @@ export class AcoesPage implements OnInit {
     this.checkPasswordsMatch();
   }
 
-  public updateUserPassword(): void {
+  public async updateUserPassword() {
     this.isUpdatingPassword = true;
 
-    this.userService.updateUserPassword(this.newPasswordFormGroup.value.currentPassword, this.newPasswordFormGroup.value.password)
-    .then(() => {
-      this.isUpdatingPassword = false;
+    const toastError = await this.overlayService.fireToast({
+      position: 'top',
+      cssClass: 'anf-toast anf-toast-danger',
+      icon: 'warning-outline',
+      duration: 2000
     })
-    .catch(() => {
-      this.isUpdatingPassword = false;
-    })
-  }
 
-  public clearErrorsIfExists(error: string): void {
-    if (error === 'invalid-credentials' && this.inputErrors.invalidCredentials.show) {
-      this.inputErrors.invalidCredentials.show = false;
+    const alert = await this.overlayService.fireAlert({
+      backdropDismiss: false,
+      cssClass: 'anf-alert',
+      mode: 'ios',
+      subHeader: 'Senha alterada',
+      message: 'Seu login no app ou no site será feito com a senha nova a partir de agora',
+      buttons: [
+        {
+          text: 'Entendi',
+          role: 'confirm',
+          handler: async () => {
+            await alert.dismiss();
+          }
+        }
+      ]
+    })
+
+    if (this.oobCode) {
+      this.authService.confirmNewPassword(this.oobCode,this.newPasswordFormGroup.value.password).then(async () => {
+        await alert.present();
+
+        await alert.onDidDismiss().then(() => {
+          this.isUpdatingPassword = false;
+          this.newPasswordFormGroup.reset();
+        })
+      })
+      .catch(async () => {
+        this.isUpdatingPassword = false;
+        toastError.message = `Algo deu errado`;
+        await toastError.present();
+      })
     }
   }
 
