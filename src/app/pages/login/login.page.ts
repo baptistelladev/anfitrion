@@ -1,3 +1,4 @@
+import { BackButtonService } from './../../core/core/back-button.service';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription, take } from 'rxjs';
@@ -76,7 +77,8 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
     private overlayService : OverlayService,
     private utilsService : UtilsService,
     private translate : TranslateService,
-    private title : Title
+    private title : Title,
+    private backButtonService : BackButtonService
   ) { }
 
   public async ngOnInit() {
