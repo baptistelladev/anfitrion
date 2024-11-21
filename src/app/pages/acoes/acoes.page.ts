@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -19,7 +19,7 @@ import { OverlayService } from 'src/app/shared/services/overlay.service';
   templateUrl: './acoes.page.html',
   styleUrls: ['./acoes.page.scss'],
 })
-export class AcoesPage implements OnInit {
+export class AcoesPage implements OnInit, OnDestroy {
 
   public inputErrors: any = {
     invalidCredentials: {
@@ -229,6 +229,10 @@ export class AcoesPage implements OnInit {
         await toastError.present();
       })
     }
+  }
+
+  ngOnDestroy(): void {
+    this.currentLanguageSubscription.unsubscribe();
   }
 
 }

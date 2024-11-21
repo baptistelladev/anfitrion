@@ -1,26 +1,20 @@
-import { BackButtonService } from './../../core/core/back-button.service';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription, take } from 'rxjs';
 import { ILang } from 'src/app/shared/models/ILang';
 import * as AppStore from './../../shared/store/app.state';
-import * as UserStore from './../../shared/store/user.state';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swiper from 'swiper';
-import { AlertController, ModalController, NavController, Platform, ToastController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/core/services/firebase/auth.service';
-import { HttpErrorResponse } from '@angular/common/http';
 import { OverlayService } from 'src/app/shared/services/overlay.service';
 import { UtilsService } from 'src/app/core/services/utils.service';
 import { TranslateService } from '@ngx-translate/core';
 import { QuemSomosPage } from '../quem-somos/quem-somos.page';
 import { Title } from '@angular/platform-browser';
 import { IUSer } from 'src/app/shared/models/IUser';
-import { DotLottie } from '@lottiefiles/dotlottie-web';
 import { AnimationOptions } from 'ngx-lottie';
-import { AnimationItem, LottiePlayer } from 'lottie-web';
-import { App } from '@capacitor/app';
-import { UserCredential } from 'firebase/auth';
+import { AnimationItem } from 'lottie-web';
 
 @Component({
   selector: 'anfitrion-login',
@@ -28,6 +22,9 @@ import { UserCredential } from 'firebase/auth';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
+  @ViewChild('loginSwiper')
+  swiperRef: ElementRef | undefined;
+  swiper?: Swiper;
 
   public options: AnimationOptions = {
     path: './../../../assets/movie/anfitrion-around-the-world.json',
@@ -54,34 +51,22 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
   public passwordIsValid: boolean = false;
   public passwordsMatch: boolean = false;
 
-  public showLoginPassword: boolean;
-  public showCreatePassword: boolean;
-  public showCreateConfirmPassword: boolean;
+  public showLoginPassword: boolean = false;
+  public showCreatePassword: boolean = false;
+  public showCreateConfirmPassword: boolean = false;
 
-  @ViewChild('loginSwiper')
-  swiperRef: ElementRef | undefined;
-  swiper?: Swiper;
-
-  public isDoingLogin: boolean;
-  public isCreating: boolean;
+  public isDoingLogin: boolean = false;
+  public isCreating: boolean = false;
 
   public formLoginGroup: FormGroup;
   public formCreateAccGroup: FormGroup;
 
+  public segments: any[] = [{ value: 'ACCESS' },{ value: 'CREATE' }];
+  public selectedSegment: string = 'ACCESS';
+
   public currentLanguage: ILang;
-  public currentLanguage$: Observable<any>;
+  public currentLanguage$: Observable<ILang>;
   public currentLanguageSubscription: Subscription;
-
-  public selectedSegment: string = 'acessar';
-
-  public segments: any[] = [
-    {
-      value: 'acessar'
-    },
-    {
-      value: 'criar'
-    }
-  ]
 
   constructor(
     private store : Store,
@@ -94,18 +79,18 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
     private title : Title
   ) { }
 
-  async ngOnInit() {
+  public async ngOnInit() {
     this.getCurrentLanguageFromNGRX();
     this.initLoginForm();
     this.initCreateAccForm();
     this.getPasswordRules();
   }
 
-  ngAfterViewInit(): void {
+  public ngAfterViewInit(): void {
     this.swiper = this.swiperRef?.nativeElement.swiper;
   }
 
-  ionViewWillEnter(): void {
+  public ionViewWillEnter(): void {
     this.title.setTitle('Login');
   }
 
@@ -113,9 +98,6 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
     animationItem.setSpeed(0.8)
   }
 
-  /**
-   * @description Obtém as regras de senha.
-   */
   public getPasswordRules(): void {
     this.passwordRules = this.utilsService.getPasswordRules();
   }
@@ -206,7 +188,7 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
       this.isCreating = false;
       this.formLoginGroup.patchValue({ email: this.formCreateAccGroup.value.email });
       this.formCreateAccGroup.reset();
-      this.selectedSegment = 'acessar';
+      this.selectedSegment = 'ACCESS';
       this.slideSwiperTo();
       this.showCreatePassword = false;
       this.showCreateConfirmPassword = false;
@@ -241,7 +223,7 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
 
   public slideSwiperToFirst(): void {
 
-    this.selectedSegment = 'acessar';
+    this.selectedSegment = 'ACCESS';
     this.swiper?.slideTo(0, 800);
 
     this.formCreateAccGroup.reset();
@@ -255,9 +237,9 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
   }
 
   public slideSwiperTo(): void {
-    this.selectedSegment === 'acessar' ? this.swiper?.slideTo(0) : this.swiper?.slideTo(1);
+    this.selectedSegment === 'ACCESS' ? this.swiper?.slideTo(0) : this.swiper?.slideTo(1);
 
-    if (this.selectedSegment === 'acessar') {
+    if (this.selectedSegment === 'ACCESS') {
       this.formCreateAccGroup.reset();
       this.showCreatePassword = false;
       this.showCreateConfirmPassword = false;
@@ -312,11 +294,6 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
     this.navCtrl.navigateForward([route])
   }
 
-  /**
-   * @description Valida se o que foi digitado no campo de senha está de acordo com a regra de senha.
-   * Essa função passa o que foi inserido no campo senha e servirá para ir "pintando" as validações.
-   * Ao final de tudo se todas as opções estiverem true, a senha é válida.
-   */
   public checkPasswordRules(): void {
     let senha: string = this.formCreateAccGroup.get('password')?.value;
     this.utilsService.checkPasswordRules(senha);
