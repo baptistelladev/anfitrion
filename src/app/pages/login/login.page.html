@@ -71,11 +71,11 @@ class="ion-content-w-linear-bg">
               [value]="segment.value">
                 <ion-text mode="ios">
                   <p class="font-baloo fs-14">
-                    <ng-container *ngIf="segment.value === 'criar'">
+                    <ng-container *ngIf="segment.value === 'CREATE'">
                       <b>{{ 'LOGIN_PAGE.CREATE' | translate }}</b> {{ 'LOGIN_PAGE.ACCOUNT' | translate }}
                     </ng-container>
 
-                    <ng-container *ngIf="segment.value === 'acessar'">
+                    <ng-container *ngIf="segment.value === 'ACCESS'">
                       <b>{{ 'LOGIN_PAGE.ACCESS' | translate }}</b> {{ 'LOGIN_PAGE.ACCOUNT' | translate }}
                     </ng-container>
                   </p>
