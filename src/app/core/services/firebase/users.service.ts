@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, getDoc } from '@angular/fire/firestore';
+import { Firestore, getDoc, collection } from '@angular/fire/firestore';
 import { Store } from '@ngrx/store';
 import { IUSer } from 'src/app/shared/models/IUser';
 import * as UserStore from './../../../shared/store/user.state';
@@ -64,6 +64,22 @@ export class UsersService {
       return true;
     } catch (error) {
       throw error; // Lança o erro para ser tratado pelo chamador
+    }
+  }
+
+  public async updateUserInfo(docId: string, userInfo: any): Promise<void> {
+    try {
+      const docRef = doc(this.firestore, CollectionsEnum.USERS, docId);
+      await updateDoc(docRef, userInfo);
+      const docSnap = await getDoc(docRef);
+      console.log(docSnap);
+
+      if (docSnap.exists()) {
+        await this.dispatchUser({ ...docSnap.data() as IUSer });
+      }
+    } catch (error) {
+      console.error('Erro ao atualizar documento:', error);
+      throw error;
     }
   }
 }

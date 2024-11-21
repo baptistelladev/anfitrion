@@ -9,7 +9,12 @@ export const userInitialState: IUserState = {
   user: {
     firstName: '',
     uid: '',
-    email: ''
+    email: '',
+    createdAt: '',
+    lastName: '',
+    birthDate: '',
+    userType: '',
+    sex: ''
   }
 }
 

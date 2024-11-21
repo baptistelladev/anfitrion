@@ -341,13 +341,11 @@ id="new-email-modal">
                 fill="solid">
                   <ng-container *ngIf="!changingEmail">
                     <ion-icon name="refresh-outline" class="mg-right-5"></ion-icon>{{ 'YOUR_ACCOUNT_PAGE.UPDATE_MY_EMAIL_BTN.0' | translate }} <span class="font-w-bold mg-left-5">{{ 'YOUR_ACCOUNT_PAGE.UPDATE_MY_EMAIL_BTN.1' | translate }}</span>
-
                   </ng-container>
 
                   <ng-container *ngIf="changingEmail">
                     <ion-spinner name="dots"></ion-spinner>
                   </ng-container>
-
                 </ion-button>
               </ion-col>
             </ion-row>

@@ -13,6 +13,8 @@ import { Title } from '@angular/platform-browser';
 import * as moment from 'moment';
 import { IUserSex } from 'src/app/shared/models/IUserSex';
 import { IUserType } from 'src/app/shared/models/IUSerType';
+import { UsersService } from 'src/app/core/services/firebase/users.service';
+import { OverlayService } from 'src/app/shared/services/overlay.service';
 
 @Component({
   selector: 'anfitrion-seus-dados',
@@ -47,6 +49,10 @@ export class SeusDadosPage implements OnInit, OnDestroy {
   public currentLanguage$: Observable<ILang>;
   public currentLanguageSubscription: Subscription;
 
+  public formHasChanges: boolean;
+  public formHasChanges$: Observable<boolean>;
+  public formHasChangesSubscription: Subscription;
+
   public user: IUSer;
   public user$: Observable<IUSer>;
   public userSubscription: Subscription;
@@ -56,17 +62,22 @@ export class SeusDadosPage implements OnInit, OnDestroy {
   public MOCK_USER_SEX: IUserSex[] = MOCK_USER_SEX;
   public MOCK_USER_TYPES: IUserType[] = MOCK_USER_TYPES;
 
+  public isUpdatingProfile: boolean = false;
+
   constructor(
     private navCtrl : NavController,
     private store : Store,
     private formBuilder : FormBuilder,
-    private title : Title
+    private title : Title,
+    private usersService : UsersService,
+    private overlayService : OverlayService
   ) { }
 
   ngOnInit() {
+    this.getCurrentLanguageFromNGRX();
     this.initPersonalDataForm();
     this.getUserFromNGRX();
-    this.getCurrentLanguageFromNGRX();
+    this.listenFormChanges();
   }
 
   ionViewWillEnter(): void {
@@ -83,7 +94,6 @@ export class SeusDadosPage implements OnInit, OnDestroy {
     this.currentLanguageSubscription = this.currentLanguage$
     .subscribe((language: ILang) => {
       this.currentLanguage = language;
-      this.initialBirthDateFormat();
     })
   }
 
@@ -105,6 +115,7 @@ export class SeusDadosPage implements OnInit, OnDestroy {
     .subscribe((user: IUSer) => {
       this.user = user;
       this.fillFormAndVariable(user);
+      this.initialBirthDateFormat();
     })
   }
 
@@ -140,18 +151,92 @@ export class SeusDadosPage implements OnInit, OnDestroy {
 
   public fillFormAndVariable(user: IUSer): void {
     this.personalDataForm.patchValue({
-      birthDateAsDate: this.maxDateAsDatetime,
-      name: user.firstName
+      name: user.firstName,
+      secondName: user.lastName,
+      type: user.userType,
+      sex: user.sex
     })
+
+    if (user.birthDate) {
+      this.personalDataForm.patchValue({
+        birthDateAsText: user.birthDate,
+        birthDateAsDate: user.birthDate
+      })
+    } else {
+      this.personalDataForm.patchValue({
+        birthDateAsText: '',
+        birthDateAsDate: this.maxDateAsDatetime
+      })
+    }
   }
 
   public defineBirthDate(): void {
     this.birthDateDatetime.confirm(true);
   }
 
+  public relationshipChanged(): void {
+    console.log(this.personalDataForm.value.type);
+  }
+
+  public sexChanged(): void {
+    console.log(this.personalDataForm.value.sex);
+  }
+
+  public listenFormChanges(): void {
+    this.formHasChanges$ = this.personalDataForm.valueChanges;
+
+    this.formHasChangesSubscription = this.formHasChanges$
+    .subscribe((res: any) => {
+      this.formHasChanges = res;
+      console.log(res);
+
+    })
+  }
+
+  public async updateProfile() {
+    const alertSuccess = await this.overlayService.fireAlert({
+      backdropDismiss: false,
+      cssClass: 'anf-alert',
+      mode: 'ios',
+      subHeader: 'Perfil atualizado',
+      message: `Nós atualizamos as suas informações pessoais`,
+      buttons: [
+        {
+          text: 'Tudo bem',
+          role: 'confirm',
+          handler: async () => {
+            await alertSuccess.dismiss();
+            this.navCtrl.back();
+            this.isUpdatingProfile = false;
+          }
+        }
+      ]
+    })
+
+    if (this.user.uid) {
+      this.isUpdatingProfile = true;
+
+      let userInfo = {
+        firstName: this.personalDataForm.value.name,
+        lastName: this.personalDataForm.value.secondName,
+        birthDate: this.personalDataForm.value.birthDateAsDate,
+        userType: this.personalDataForm.value.type,
+        sex: this.personalDataForm.value.sex
+      }
+
+      await this.usersService.updateUserInfo(this.user.uid, userInfo)
+      .then(async () => {
+        await alertSuccess.present();
+      })
+      .catch(() => {
+        this.isUpdatingProfile = false;
+      })
+    }
+  }
+
   public ngOnDestroy(): void {
     this.currentLanguageSubscription.unsubscribe();
     this.userSubscription.unsubscribe();
+    this.formHasChangesSubscription.unsubscribe();
   }
-
 }

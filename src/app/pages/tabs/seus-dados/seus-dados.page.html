@@ -31,7 +31,10 @@ class="ion-content-w-linear-bg">
   </ion-header>
 
   <section class="seus-dados">
-    <form class="seus-dados-container" [formGroup]="personalDataForm">
+    <form
+    (ngSubmit)="updateProfile()"
+    class="seus-dados-container"
+    [formGroup]="personalDataForm">
       <ion-grid [fixed]="true">
         <ion-row>
           <ion-col size="12">
@@ -244,6 +247,7 @@ class="ion-content-w-linear-bg">
               lines="none"
               mode="ios">
                 <ion-select
+                (ionChange)="relationshipChanged()"
                 [cancelText]="'SHARED.CANCEL' | translate"
                 [okText]="'SHARED.DEFINE' | translate"
                 formControlName="type"
@@ -293,6 +297,7 @@ class="ion-content-w-linear-bg">
               lines="none"
               mode="ios">
                 <ion-select
+                (ionChange)="sexChanged()"
                 [cancelText]="'SHARED.CANCEL' | translate"
                 [okText]="'SHARED.DEFINE' | translate"
                 formControlName="sex"
@@ -341,13 +346,20 @@ class="ion-content-w-linear-bg">
 
           <ion-col size="12">
             <ion-button
-            [disabled]="false"
+            type="submit"
+            [disabled]="personalDataForm.invalid || isUpdatingProfile || !formHasChanges"
             mode="md"
             shape="round"
             class="anfitrion-main-solid fs-14 txt-lowercase full-width close-modal-btn height-44 mg-bottom-16 mg-top-16"
-            [title]=""
+            [title]="('SHARED.UPDATE_MY_INFO_BTN.0' | translate) + ' ' + ('SHARED.UPDATE_MY_INFO_BTN.1' | translate)"
             fill="solid">
-              <ion-icon name="refresh-outline" class="mg-right-5"></ion-icon>{{ 'SHARED.UPDATE_MY_INFO_BTN.0' | translate }} <span class="font-w-bold mg-left-5">{{ 'SHARED.UPDATE_MY_INFO_BTN.1' | translate }}</span>
+              <ng-container *ngIf="!isUpdatingProfile">
+                <ion-icon name="refresh-outline" class="mg-right-5"></ion-icon>{{ 'SHARED.UPDATE_MY_INFO_BTN.0' | translate }} <span class="font-w-bold mg-left-5">{{ 'SHARED.UPDATE_MY_INFO_BTN.1' | translate }}</span>
+              </ng-container>
+
+              <ng-container *ngIf="isUpdatingProfile">
+                <ion-spinner name="dots"></ion-spinner>
+              </ng-container>
             </ion-button>
           </ion-col>
         </ion-row>
