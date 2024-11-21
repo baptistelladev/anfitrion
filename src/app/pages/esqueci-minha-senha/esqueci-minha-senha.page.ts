@@ -18,13 +18,13 @@ import { Title } from '@angular/platform-browser';
 })
 export class EsqueciMinhaSenhaPage implements OnInit, OnDestroy {
 
+  public formForgotPassword: FormGroup;
+
+  public isRecovering: boolean = false;
+
   public currentLanguage: ILang;
   public currentLanguage$: Observable<ILang>;
   public currentLanguageSubscription: Subscription;
-
-  public formForgotPassword: FormGroup;
-
-  public isRecovering: boolean;
 
   constructor(
     private navCtrl : NavController,
@@ -42,7 +42,7 @@ export class EsqueciMinhaSenhaPage implements OnInit, OnDestroy {
   }
 
   ionViewWillEnter(): void {
-    this.title.setTitle('Esquec minha senha');
+    this.title.setTitle('Esqueci minha senha');
   }
 
   public back(): void {

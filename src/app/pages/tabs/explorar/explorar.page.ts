@@ -1,14 +1,12 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { map, Observable, Subscription, take } from 'rxjs';
+import { Observable, Subscription, take } from 'rxjs';
 import { ILang } from 'src/app/shared/models/ILang';
 import Swiper from 'swiper';
-import { TranslateService } from '@ngx-translate/core';
 import { Title } from '@angular/platform-browser';
-import { IonContent, ModalController, NavController, Platform } from '@ionic/angular';
+import { IonContent, NavController } from '@ionic/angular';
 import { CidadesPage } from '../cidades/cidades.page';
 import { OverlayService } from 'src/app/shared/services/overlay.service';
-import { CityFeaturesEnum } from 'src/app/shared/enums/CityFeatures';
 import * as AppStore from './../../../shared/store/app.state';
 import * as UserStore from './../../../shared/store/user.state';
 import { IUSer } from 'src/app/shared/models/IUser';
@@ -26,6 +24,10 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('explorarContent') explorarContent: IonContent;
 
+  @ViewChild('explorarSwiper')
+  swiperRef: ElementRef | undefined;
+  swiper?: Swiper;
+
   public currentLanguage: ILang;
   public currentLanguage$: Observable<ILang>;
   public currentLanguageSubscription: Subscription;
@@ -41,10 +43,6 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
   public user: IUSer;
   public user$: Observable<IUSer>;
   public userSubscription: Subscription;
-
-  @ViewChild('explorarSwiper')
-  swiperRef: ElementRef | undefined;
-  swiper?: Swiper;
 
   public beachFeatures: any[] = [
     {
