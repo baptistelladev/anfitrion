@@ -225,7 +225,11 @@
     "JUST_IN_CITY_ADVISE": [
       "We aim to operate throughout Baixada Santista and are working towards making that happen gradually,",
       "but we would like to emphasize that, at this time, it is available only in Santos and São Vicente"
-    ]
+    ],
+    "ALERT_PASSWORD_REDEF" : {
+      "TITLE" : "Email sent",
+      "DESCRIPTION" : "We have sent a password reset link to"
+    }
   },
   "MENU_PAGE" : {
     "HEADER_TITLE" : ["section","menu"],

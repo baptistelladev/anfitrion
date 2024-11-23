@@ -226,7 +226,11 @@
     "JUST_IN_CITY_ADVISE": [
       "Queremos operar en toda la Baixada Santista y estamos trabajando para que esto ocurra de forma gradual,",
       "pero nos gustaría destacar que, en este momento, está disponible solo en Santos y São Vicente"
-    ]
+    ],
+    "ALERT_PASSWORD_REDEF" : {
+      "TITLE" : "Correo electrónico enviado",
+      "DESCRIPTION" : "Hemos enviado un enlace para restablecer la contraseña a"
+    }
   },
   "MENU_PAGE" : {
     "HEADER_TITLE" : ["sección","de menú"],
@@ -241,7 +245,8 @@
     "HEADER_TITLE": ["sección", "contacto"],
     "DESCRIPTION": {
       "TITLE": ["habla", "conmigo"],
-      "SUB_TITLE": "por correo electrónico, redes sociales o WhatsApp."
+      "SUB_TITLE": "por correo electrónico, redes sociales o WhatsApp.",
+      "BUTTON_UNDERSTAND" : "Tudo bien"
     },
     "COMERCIAL" : "comercial",
     "OTHER" : "otros",

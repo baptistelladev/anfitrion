@@ -46,7 +46,7 @@
 
   <!-- RESET PASSWORD -->
   <section class="reset-password" *ngIf="showResetPassword">
-    <form [formGroup]="newPasswordFormGroup" class="password-form">
+    <form [formGroup]="newPasswordFormGroup" class="password-form" (ngSubmit)="updateUserPassword()">
       <ion-grid>
         <ion-row>
           <ion-col size="12">
@@ -210,7 +210,7 @@
 
           <ion-col size="12">
             <ion-button
-            (click)="updateUserPassword()"
+            type="submit"
             [disabled]="newPasswordFormGroup.invalid || !passwordIsValid || !passwordsMatch || isUpdatingPassword"
             mode="md"
             shape="round"
