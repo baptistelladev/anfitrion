@@ -517,7 +517,6 @@ class="ion-content-w-linear-bg">
 
                   <ion-col size="12">
                     <ion-button
-                    (click)="createAcc()"
                     [disabled]="isCreating || formCreateAccGroup.invalid || !passwordIsValid || !passwordsMatch"
                     [title]="('LOGIN_PAGE.CREATE_SLIDER.BTN.0' | translate) + ' ' + 'LOGIN_PAGE.CREATE_SLIDER.BTN.1' | translate"
                     fill="solid"

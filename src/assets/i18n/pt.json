@@ -219,7 +219,11 @@
       "TITLE" : "Atenção",
       "TEXT" : ["Estes horários são fornecidos pelo estabelecimento,","mas podem variar sem aviso prévio, principalmente em feriados e vésperas de feriados"]
     },
-    "JUST_IN_CITY_ADVISE" : ["Queremos atuar em toda a Baixada Santista e estamos trabalhando para que isso aconteça de forma gradual,","mas gostaríamos de ressaltar que neste momento liberamos somente para Santos e São Vicente"]
+    "JUST_IN_CITY_ADVISE" : ["Queremos atuar em toda a Baixada Santista e estamos trabalhando para que isso aconteça de forma gradual,","mas gostaríamos de ressaltar que neste momento liberamos somente para Santos e São Vicente"],
+    "ALERT_PASSWORD_REDEF" : {
+      "TITLE" : "E-mail enviado",
+      "DESCRIPTION" : "Enviamos um link de redefinição de senha para"
+    }
   },
   "MENU_PAGE" : {
     "HEADER_TITLE" : ["sessão","menu"],

@@ -14,6 +14,7 @@ import { UsersService } from 'src/app/core/services/firebase/users.service';
 import { AuthService } from 'src/app/core/services/firebase/auth.service';
 import { OverlayService } from 'src/app/shared/services/overlay.service';
 import { Auth } from '@angular/fire/auth';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'anfitrion-sua-conta',
@@ -72,7 +73,8 @@ export class SuaContaPage implements OnInit, OnDestroy {
     private userService : UsersService,
     private authService : AuthService,
     private overlayService : OverlayService,
-    private auth: Auth
+    private auth: Auth,
+    private translate : TranslateService
   ) { }
 
   ngOnInit() {
@@ -220,11 +222,11 @@ export class SuaContaPage implements OnInit, OnDestroy {
       backdropDismiss: false,
       cssClass: 'anf-alert',
       mode: 'ios',
-      subHeader: 'E-mail enviado',
-      message: `Enviamos um link de redefinição para <b>${this.accountForm.value.email}</b>.`,
+      subHeader: this.translate.instant('COMPONENTS.ALERT_PASSWORD_REDEF.TITLE'),
+      message: `${this.translate.instant('COMPONENTS.ALERT_PASSWORD_REDEF.DESCRIPTION')} <b>${this.accountForm.value.email}</b>.`,
       buttons: [
         {
-          text: 'Entendi',
+          text: this.translate.instant('SHARED.ALRIGHT'),
           role: 'confirm',
           handler: async () => {
             alertSuccess.dismiss();
