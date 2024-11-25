@@ -177,7 +177,7 @@ id="new-email-modal">
                     {{ 'YOUR_ACCOUNT_PAGE.MODAL_EMAIL_TITLE.0' | translate }} <span class="font-w-bold">{{ 'YOUR_ACCOUNT_PAGE.MODAL_EMAIL_TITLE.1' | translate }}</span>
                   </p>
                   <p class="fs-14 color-gray-text font-w-thin">
-                    Você rebecerá uma notificação no seu novo e-mail para confirmar a alteração e terá que fazer login novamente.
+                    {{ 'YOUR_ACCOUNT_PAGE.YOU_WILL_RECEIVE' | translate }}.
                   </p>
                 </ion-text>
               </ion-col>
@@ -248,8 +248,8 @@ id="new-email-modal">
                   <ion-icon name="mail-outline" slot="start" class="color-bootstrap-warning"></ion-icon>
 
                   <ion-text mode="ios" class="color-bootstrap-warning">
-                    <p class="fs-12 mg-bottom-8">Verificação necessária</p>
-                    <p class="fs-14">Enviamos um email para <b>{{ newEmailWeSentNotification }}</b>. Por favor verfique a caixa de entrada ou spam do seu novo endereço de e-mail.</p>
+                    <p class="fs-12 mg-bottom-8">{{ 'YOUR_ACCOUNT_PAGE.EMAIL_SENT.TITLE' | translate }}</p>
+                    <p class="fs-14">{{ 'YOUR_ACCOUNT_PAGE.EMAIL_SENT.TEXT.0'  }} <b>{{ newEmailWeSentNotification }}</b>. {{ 'YOUR_ACCOUNT_PAGE.EMAIL_SENT.TEXT.1' | translate }}.</p>
                   </ion-text>
                 </ion-item>
               </ion-col>
@@ -257,7 +257,7 @@ id="new-email-modal">
               <ion-col size="12">
                 <ion-text size="12">
                   <p class="fs-14 color-gray-text mg-bottom-16 d-block font-w-thin mg-top-16">
-                    Por segurança voce deve inserir a senha da sua conta.
+                    {{ 'YOUR_ACCOUNT_PAGE.BY_SECURE' | translate }}.
                   </p>
                 </ion-text>
 
