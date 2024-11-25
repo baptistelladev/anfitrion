@@ -276,7 +276,7 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ionViewWillEnter(): void {
-    this.title.setTitle('Início');
+
   }
 
   public initialFilter(value: string) {
@@ -316,6 +316,8 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
 
         switch (paramsAsMap.params['suggestion']) {
           case 'rua-gastronomica-de-santos':
+            this.title.setTitle('Rua Gastronômica de santos');
+
             this.suggestionsService
             .getSuggestionsFilteredByValue(CollectionsEnum.SUGGESTIONS_BAIXADA_SANTISTA, SuggestionsEnum.RUA_GASTRONOMICA_DE_SANTOS)
             .then((suggestion: ISuggestion | null) => {

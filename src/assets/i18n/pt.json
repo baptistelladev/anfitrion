@@ -9,12 +9,22 @@
     "MODAL_PASSWORD_TITLE" : ["Defina","sua nova senha"],
     "MODAL_PASSWORD_DESC" : "Troque de senha",
     "UPDATE_MY_EMAIL_BTN" : ["atualizar","meu e-mail"],
-    "UPDATE_MY_PASSWORD_BTN" : ["atualizar","minha senha"]
+    "UPDATE_MY_PASSWORD_BTN" : ["atualizar","minha senha"],
+    "BY_SECURE" : "Por segurança voce deve inserir a senha da sua conta",
+    "EMAIL_SENT" : {
+      "TITLE" : "Verificação necessária",
+      "TEXT" : ["Enviamos um email para","Por favor verfique a caixa de entrada ou spam do seu novo endereço de e-mail"]
+    },
+    "YOU_WILL_RECEIVE" : "Você rebecerá uma notificação no seu novo e-mail para confirmar a alteração e terá que fazer login novamente"
   },
   "YOUR_PERFIL_PAGE" : {
     "YOUR_INFO" : "Estas são suas informações pessoais",
     "INCOMPLETE" : "Perfil incompleto",
-    "PERFIL_ADVISE" : "estes dados não são obrigatórios mas no futuro indicaremos conteúdos com base na sua idade"
+    "PERFIL_ADVISE" : "estes dados não são obrigatórios mas no futuro indicaremos conteúdos com base na sua idade",
+    "ALERT_ADVISE" : {
+      "TITLE" : "Perfil atualizado",
+      "TEXT" : "Nós atualizamos as suas informações pessoais"
+    }
   },
   "PLACES_IN_THE_CITY" : {
     "FILTER_RESTAURANT" : "Filtre os restaurantes",

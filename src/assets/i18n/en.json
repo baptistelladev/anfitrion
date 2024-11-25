@@ -9,12 +9,22 @@
     "MODAL_PASSWORD_TITLE": ["Set", "your new password"],
     "MODAL_PASSWORD_DESC": "Change password",
     "UPDATE_MY_EMAIL_BTN": ["update", "my email"],
-    "UPDATE_MY_PASSWORD_BTN": ["update", "my password"]
+    "UPDATE_MY_PASSWORD_BTN": ["update", "my password"],
+    "BY_SECURE": "For security, you must enter your account password",
+    "EMAIL_SENT": {
+      "TITLE": "Verification needed",
+      "TEXT": ["We sent an email to", "Please check the inbox or spam of your new email address"]
+    },
+    "YOU_WILL_RECEIVE": "You will receive a notification on your new email to confirm the change and you will need to log in again"
   },
   "YOUR_PERFIL_PAGE": {
     "YOUR_INFO": "These are your personal information",
     "INCOMPLETE": "Incomplete profile",
-    "PERFIL_ADVISE": "these data are not mandatory, but in the future, we will recommend content based on your age"
+    "PERFIL_ADVISE": "these data are not mandatory, but in the future, we will recommend content based on your age",
+    "ALERT_ADVISE": {
+      "TITLE": "Profile updated",
+      "TEXT": "We have updated your personal information"
+    }
   },
   "PLACES_IN_THE_CITY" : {
     "FILTER_RESTAURANT": "Filter restaurants",
@@ -27,7 +37,7 @@
     "ACCORDING_YOUR_NEED": "according to your needs"
   },
   "SUGGESTIONS_PAGE" : {
-    "PAGE_TITLE" : "Host suggestions",
+    "PAGE_TITLE" : "host suggestions",
     "TITLE" : "Host suggestions",
     "IN_BAIXADA" : "in",
     "DESCRIPTION" : ["This section was created", "to save time for locals and tourists", ". We created sections based on what people search for most in the city"],

@@ -9,12 +9,22 @@
     "MODAL_PASSWORD_TITLE": ["Definir", "tu nueva contraseña"],
     "MODAL_PASSWORD_DESC": "Cambiar contraseña",
     "UPDATE_MY_EMAIL_BTN": ["actualizar", "mi correo electrónico"],
-    "UPDATE_MY_PASSWORD_BTN": ["actualizar", "mi contraseña"]
+    "UPDATE_MY_PASSWORD_BTN": ["actualizar", "mi contraseña"],
+    "BY_SECURE": "Por seguridad, debe ingresar la contraseña de su cuenta",
+    "EMAIL_SENT": {
+      "TITLE": "Verificación necesaria",
+      "TEXT": ["Enviamos un correo electrónico a", "Por favor, revise la bandeja de entrada o la carpeta de spam de su nueva dirección de correo electrónico"]
+    },
+    "YOU_WILL_RECEIVE": "Recibirá una notificación en su nuevo correo electrónico para confirmar el cambio y deberá iniciar sesión nuevamente"
   },
   "YOUR_PERFIL_PAGE": {
     "YOUR_INFO": "Estas son tus informaciones personales",
     "INCOMPLETE": "Perfil incompleto",
-    "PERFIL_ADVISE": "estos datos no son obligatorios, pero en el futuro recomendaremos contenido basado en tu edad"
+    "PERFIL_ADVISE": "estos datos no son obligatorios, pero en el futuro recomendaremos contenido basado en tu edad",
+    "ALERT_ADVISE": {
+      "TITLE": "Perfil actualizado",
+      "TEXT": "Hemos actualizado tu información personal"
+    }
   },
   "PLACES_IN_THE_CITY" : {
     "FILTER_RESTAURANT": "Filtra los restaurantes",

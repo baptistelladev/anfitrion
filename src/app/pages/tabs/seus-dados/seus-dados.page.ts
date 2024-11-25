@@ -15,6 +15,7 @@ import { IUserSex } from 'src/app/shared/models/IUserSex';
 import { IUserType } from 'src/app/shared/models/IUSerType';
 import { UsersService } from 'src/app/core/services/firebase/users.service';
 import { OverlayService } from 'src/app/shared/services/overlay.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'anfitrion-seus-dados',
@@ -70,7 +71,8 @@ export class SeusDadosPage implements OnInit, OnDestroy {
     private formBuilder : FormBuilder,
     private title : Title,
     private usersService : UsersService,
-    private overlayService : OverlayService
+    private overlayService : OverlayService,
+    private translate : TranslateService
   ) { }
 
   ngOnInit() {
@@ -198,11 +200,11 @@ export class SeusDadosPage implements OnInit, OnDestroy {
       backdropDismiss: false,
       cssClass: 'anf-alert',
       mode: 'ios',
-      subHeader: 'Perfil atualizado',
-      message: `Nós atualizamos as suas informações pessoais`,
+      subHeader: this.translate.instant('YOUR_PERFIL_PAGE.ALERT_ADVISE.TITLE'),
+      message: this.translate.instant('YOUR_PERFIL_PAGE.ALERT_ADVISE.TEXT'),
       buttons: [
         {
-          text: 'Tudo bem',
+          text: this.translate.instant('SHARED.ALRIGHT'),
           role: 'confirm',
           handler: async () => {
             await alertSuccess.dismiss();
