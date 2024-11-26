@@ -70,7 +70,7 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
   public isLoadingLogo: boolean;
 
   public MOCK_CITIES: ICity[] = MOCK_CITIES;
-  public MOCK_FILTERS: any[] = MOCK_FILTERS;
+  public MOCK_FILTERS: IFilter[];
 
   constructor(
     private navCtrl : NavController,
@@ -85,12 +85,19 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
     this.getCurrentLanguageFromNGRX();
     this.title.setTitle('Lugares')
     this.getRouter();
+    this.setFilters();
     this.initialFilter('ALL');
     this.defineActiveFilter('ALL');
   }
 
   ngAfterViewInit(): void {
     this.swiper = this.swiperRef?.nativeElement.swiper;
+  }
+
+  public setFilters(): void {
+    this.MOCK_FILTERS = MOCK_FILTERS.filter((filter: IFilter) => {
+      return !filter.dontShowIn.includes(this.placeType)
+    })
   }
 
   public initialFilter(value: string) {
@@ -213,7 +220,7 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
 
   public defineActiveFilter(value: string) {
     this.places = null;
-    let filterFound: IFilter = this.MOCK_FILTERS.find((filter: any) => {
+    let filterFound: IFilter | undefined = this.MOCK_FILTERS.find((filter: any) => {
       return filter.value === value;
     })
 
@@ -224,7 +231,7 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
     console.log(filterFound, this.currentCityAsParam?.value);
 
 
-    switch (filterFound.value) {
+    switch (filterFound?.value) {
       case FilterEnum.ALL:
         this.getPlaces([
           { field: 'origin.value', operator: '==', value: this.currentCityAsParam?.value },

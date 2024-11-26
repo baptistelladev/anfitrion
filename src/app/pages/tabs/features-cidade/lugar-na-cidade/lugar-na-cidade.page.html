@@ -100,11 +100,12 @@ class="ion-content-w-linear-bg"
               class="hide-element anfitrion-selector min-height-0"
               (ionChange)="filterByCharacteristic($event)"
               [(ngModel)]="selectedFilter">
-                <ion-select-option
-                *ngFor="let filter of MOCK_FILTERS"
-                [value]="filter.value">
-                  {{ filter.text[currentLanguage.value] }}
-                </ion-select-option>
+                <ng-container *ngFor="let filter of MOCK_FILTERS">
+                  <ion-select-option
+                  [value]="filter.value">
+                    {{ filter.text[currentLanguage.value] }}
+                  </ion-select-option>
+                </ng-container>
               </ion-select>
             </ion-button>
           </div>
@@ -113,7 +114,7 @@ class="ion-content-w-linear-bg"
 
       <ion-col size="12" class="no-pad-bottom no-pad-top">
         <ion-text mode="ios" class="line-height-18">
-          <p class="fs-14 color-gray-text">{{ 'SHARED.LOOKING_FOR' | translate }}: <span class="fs-14 color-green font-w-semibold txt-lowercase">{{ activeFilter.text[currentLanguage.value] }}</span></p>
+          <p class="fs-14 color-gray-text mg-bottom-16">{{ 'SHARED.LOOKING_FOR' | translate }}: <span class="fs-14 color-green font-w-semibold txt-lowercase">{{ activeFilter.text[currentLanguage.value] }}</span></p>
         </ion-text>
       </ion-col>
     </ion-row>
@@ -231,7 +232,7 @@ class="ion-content-w-linear-bg"
 
   <ion-grid [fixed]="true">
     <ion-row>
-      <ion-col *ngIf="places && places.length === 0" size="12">
+      <ion-col *ngIf="places && places.length === 0" size="12" class="no-pad-top">
         <ion-text mode="ios">
           <p class="fs-14 color-gray-text font-w-thin">
             {{ 'SHARED.NO_RESULT_ESTABLISHMENTS' | translate }}.

@@ -23,7 +23,7 @@ export const MOCK_FILTERS: IFilter[] = [
       en: 'Pets allowed',
       es: 'Se permiten mascotas'
     },
-    dontShowIn: [PlaceTypeEnum.TABACARIA]
+    dontShowIn: [PlaceTypeEnum.TABACARIA, PlaceTypeEnum.ADEGA]
   },
   {
     value: FilterEnum.TICKET,
