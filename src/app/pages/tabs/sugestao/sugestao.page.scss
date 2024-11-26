@@ -5,10 +5,13 @@ ion-content {
 
   section {
     &.suggestion-hero {
-      background: var(--gray-2);
+      //background: var(--gray-2);
       position: relative;
-      height: 171px;
+      //height: 171px;
 
+      height: auto;
+
+      /*
       .fixed-bg {
         width: 100%;
         height: 100%;
@@ -31,6 +34,8 @@ ion-content {
         height: 350px;
       }
 
+      */
+
       .logo-wrapper {
         ion-grid ion-row ion-col {
           flex: none;
@@ -49,7 +54,8 @@ ion-content {
         @include flexbox(flex-end, center, row);
         width: 100%;
         height: 100%;
-        padding: 0 0 16px 0;
+        //padding: 0 0 16px 0;
+        padding: 0;
 
         ion-grid { flex: none; }
       }
@@ -66,10 +72,10 @@ ion-content {
       header {
         &.suggestion-header {
           width: 100%;
-          position: absolute;
-          top: 0;
-          left: 0;
-          z-index: 314;
+          //position: absolute;
+          //top: 0;
+          //left: 0;
+          //z-index: 314;
 
           .header-container {
             @include flexbox(flex-start, space-between, row);
@@ -137,7 +143,7 @@ ion-content {
     }
 
     &.suggestion-content {
-      padding: 16px 0 0 0;
+      padding: 0 0 0 0;
 
       .inicio-swiper-wrapper {
         padding: 8px 0 0 0;
