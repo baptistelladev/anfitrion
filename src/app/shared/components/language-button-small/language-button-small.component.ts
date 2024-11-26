@@ -9,7 +9,8 @@ import { ILang } from '../../models/ILang';
 })
 export class LanguageButtonSmallComponent  implements OnInit {
 
-  @Input() currentLanguage: ILang
+  @Input() currentLanguage: ILang;
+  @Input() color: string = 'gray-text';
 
   constructor(
     private navCtrl : NavController
