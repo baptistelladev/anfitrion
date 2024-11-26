@@ -14,7 +14,7 @@ mode="ios">
                 <ion-button
                 mode="ios"
                 (click)="back()"
-                class="back ion-color-white back-btn no-ion-padding font-baloo"
+                class="back ion-color-gray-text back-btn no-ion-padding font-baloo"
                 [title]="'SHARED.BACK' | translate"
                 fill="clear">
                   <ion-icon name="chevron-back-outline"></ion-icon> <span class="font-w-thin mg-left-5">{{ 'SHARED.BACK' | translate }}</span>
@@ -30,15 +30,15 @@ mode="ios">
       </ion-grid>
     </header>
 
-    <div class="fixed-bg" [ngClass]="paramAsUrl"></div>
+    <!-- <div class="fixed-bg" [ngClass]="paramAsUrl"></div> -->
 
     <div class="suggestion-title">
       <ion-grid [fixed]="true">
         <ion-row>
           <ion-col size="12">
-            <ion-text mode="ios" class="proportional-text">
-              <p class="color-white title animate__animated animate__fadeInUp">{{ currentSuggestion.name.title[currentLanguage.value] }}</p>
-              <p class="color-linear font-baloo font-w-bold subtitle animate__animated animate__fadeInUp">{{ currentSuggestion.name.text[currentLanguage.value] }}</p>
+            <ion-text mode="ios" class="proportional-text txt-center">
+              <p class="color-gray-text title animate__animated animate__fadeInUp font-w-thin">{{ currentSuggestion.name.title[currentLanguage.value] }}</p>
+              <p class="color-gray-text font-baloo font-w-bold subtitle animate__animated animate__fadeInUp">{{ currentSuggestion.name.text[currentLanguage.value] }}</p>
             </ion-text>
           </ion-col>
         </ion-row>
@@ -54,7 +54,7 @@ mode="ios">
           <ion-text
           class="txt-left color-gray-text full-width icon-title-text without-icon d-block"
           mode="ios">
-            <p class="fs-16 font-w-thin">
+            <p class="fs-14 font-w-thin">
               {{ currentSuggestion.address[currentLanguage.value] }}.
             </p>
           </ion-text>

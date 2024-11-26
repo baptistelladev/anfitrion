@@ -228,9 +228,6 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
       this.activeFilter = filterFound;
     }
 
-    console.log(filterFound, this.currentCityAsParam?.value);
-
-
     switch (filterFound?.value) {
       case FilterEnum.ALL:
         this.getPlaces([
