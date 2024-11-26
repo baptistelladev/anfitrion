@@ -554,3 +554,26 @@ ion-skeleton-text {
     border-radius: 12px;
   }
 }
+
+.lang-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  a {
+    font-size: 13px;
+    color: var(--gray-text);
+    text-decoration: none;
+
+    ion-icon {
+      font-size: 13px;
+      margin: 0 0 -3px 5px;
+    }
+  }
+}
+
+.copy-n-lang-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

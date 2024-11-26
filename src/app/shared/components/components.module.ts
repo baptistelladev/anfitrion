@@ -9,6 +9,7 @@ import { LanguageButtonComponent } from './language-button/language-button.compo
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { AdsenseComponent } from './adsense/adsense.component';
+import { LanguageButtonSmallComponent } from './language-button-small/language-button-small.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AdsenseComponent } from './adsense/adsense.component';
     SocialNetworksComponent,
     CopyrightComponent,
     LanguageButtonComponent,
-    AdsenseComponent
+    AdsenseComponent,
+    LanguageButtonSmallComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +33,8 @@ import { AdsenseComponent } from './adsense/adsense.component';
     SocialNetworksComponent,
     CopyrightComponent,
     LanguageButtonComponent,
-    AdsenseComponent
+    AdsenseComponent,
+    LanguageButtonSmallComponent
   ]
 })
 export class ComponentsModule { }
