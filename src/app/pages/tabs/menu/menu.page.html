@@ -84,10 +84,13 @@
           </div>
         </ion-col>
 
-        <ion-col size="12">
-          <ion-text mode="ios" class="ion-text-center line-height-16">
-            <p class="fs-12 color-gray-text">{{ 'SHARED.VERSION' | translate }} 2.0.0.</p>
-          </ion-text>
+        <ion-col size="12" class="mg-bottom-16">
+          <div class="copy-n-lang-wrapper">
+            <ion-text mode="ios" class="ion-text-center line-height-16">
+              <p class="fs-13 color-gray-text">{{ 'SHARED.VERSION' | translate }} 2.0.0.</p>
+            </ion-text>
+            <anfitrion-language-button-small [currentLanguage]="currentLanguage"></anfitrion-language-button-small>
+          </div>
         </ion-col>
       </ion-row>
     </ion-grid>

@@ -114,7 +114,10 @@ class="ion-bg-gray-2"
         </ion-col>
 
         <ion-col size="12" class="mg-bottom-16">
-          <anfitrion-copyright [color]="'white'"></anfitrion-copyright>
+          <div class="copy-n-lang-wrapper">
+            <anfitrion-copyright [color]="'white'"></anfitrion-copyright>
+            <anfitrion-language-button-small [currentLanguage]="currentLanguage" [color]="'white'"></anfitrion-language-button-small>
+          </div>
         </ion-col>
       </ion-row>
       </ion-grid>

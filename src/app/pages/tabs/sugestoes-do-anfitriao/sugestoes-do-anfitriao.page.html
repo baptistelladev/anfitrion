@@ -241,8 +241,8 @@ class="ion-content-w-linear-bg">
         <ion-col size="12">
           <div class="scroll-to-top full-width">
             <ion-button
+            mode="md"
             (click)="scrollToTop()"
-            size="small"
             shape="round"
             [title]="('SHARED.BACK_TO_TOP.0' | translate) + ' ' + ('SHARED.BACK_TO_TOP.1' | translate)"
             fill="solid"
@@ -261,7 +261,10 @@ class="ion-content-w-linear-bg">
         </ion-col>
 
         <ion-col size="12" class="mg-bottom-16">
-          <anfitrion-copyright></anfitrion-copyright>
+          <div class="copy-n-lang-wrapper">
+            <anfitrion-copyright></anfitrion-copyright>
+            <anfitrion-language-button-small [currentLanguage]="currentLanguage"></anfitrion-language-button-small>
+          </div>
         </ion-col>
       </ion-row>
     </ion-grid>

@@ -1,3 +1,6 @@
 <div class="lang-wrapper">
-  <a href="javascript:void(0)" (click)="navToChangeLang()"><span>|</span>{{ currentLanguage.text[currentLanguage.value] }}<ion-icon name="chevron-down-outline"></ion-icon></a>
+  <a href="javascript:void(0)" (click)="navToChangeLang()" [ngClass]="{
+    'color-white' : color === 'white',
+    'color-gray-text' : color === 'gray-text'
+  }"><span>|</span>{{ currentLanguage.text[currentLanguage.value] }}<ion-icon name="chevron-down-outline"></ion-icon></a>
 </div>

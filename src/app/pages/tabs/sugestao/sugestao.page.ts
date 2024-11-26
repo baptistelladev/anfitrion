@@ -21,6 +21,8 @@ import { PlacesService } from 'src/app/core/services/firebase/places.service';
 import { ISuggestion } from 'src/app/shared/models/ISuggestion';
 import { ActivatedRoute } from '@angular/router';
 import { SuggestionsEnum } from 'src/app/shared/enums/Suggestions';
+import { IFIrebaseFilter } from 'src/app/shared/models/IFirebaseFilter';
+import { FilterEnum } from 'src/app/shared/enums/FilterEnum';
 
 @Component({
   selector: 'anfitrion-sugestao',
@@ -223,7 +225,7 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
   public currentSuggestion$: Observable<ISuggestion>;
   public currentSuggestionSubscription: Subscription;
 
-  public short_establishments: IPlace[];
+  public short_establishments: any[] | null;
   public establishments$: Observable<IPlace[]>;
   public establishmentsSubscription: Subscription;
 
@@ -244,6 +246,8 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
       icon: 'options'
     }
   ]
+
+  public alreadyGetPlacesFirstTime: boolean = false;
 
   constructor(
     private alertCtrl : AlertController,
@@ -266,7 +270,6 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
     this.initialFilter('ALL');
     this.defineActiveFilter('ALL');
     this.getCurrentLanguageFromNGRX();
-    this.getEstablishments();
     this.getParkings();
     this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
@@ -283,28 +286,32 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
     this.selectedFilter = value;
   }
 
-  public getEstablishments() {
-    this.establishments$ = this.placesService.getCollection(
-      CollectionsEnum.PLACES,
-      [
-        { field: 'suggestions', operator: 'array-contains', value: 'RUA_GASTRONOMICA_DE_SANTOS' }
-      ]
-    );
+  public getPlaces(filters: IFIrebaseFilter[] = []) {
+    this.establishments$ = this.placesService
+      .getCollection(
+        CollectionsEnum.PLACES,
+        filters
+      );
 
-    this.establishmentsSubscription = this.establishments$
-    .subscribe((establishments: IPlace[]) => {
-      this.short_establishments = establishments;
-      this.lenghts_to_save_time = [...this.lenghts_to_save_time].map((option: any) => {
-        let list = this.short_establishments.filter((establishment: IPlace) => {
-          return establishment.mainType.value === option['establishment_type'];
-        })
+      this.establishmentsSubscription = this.establishments$
+      .subscribe((places: IPlace[]) => {
+        this.short_establishments = places;
 
-        option['list'] = list;
-        option['length'] = list.length;
+        if (!this.alreadyGetPlacesFirstTime) {
+          this.lenghts_to_save_time = [...this.lenghts_to_save_time].map((option: any) => {
+            let list = this.short_establishments?.filter((establishment: IPlace) => {
+              return establishment.mainType.value === option['establishment_type'];
+            })
 
-        return option;
+            option['list'] = list;
+            option['length'] = list?.length;
+
+            return option;
+          })
+
+          this.alreadyGetPlacesFirstTime = true;
+        }
       })
-    })
   }
 
   public getSuggestionFromUrl() {
@@ -417,45 +424,12 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
   }
 
   public filterByCharacteristic(e: any): void {
-
-
-    switch (e.detail.value) {
-      case 'PET_FRIENDLY':
-        this.establishmentsService
-        .getCollectionFilteredBy(CollectionsEnum.SHORT_ESTABLISHMENTS, 'petfriendly_info.accept_petfriendly')
-        .then( async (short_establishments: IPlace[]) => {
-          this.short_establishments = short_establishments;
-        })
-        break;
-
-      case 'TICKET':
-        this.establishmentsService
-        .getCollectionFilteredBy(CollectionsEnum.SHORT_ESTABLISHMENTS, 'ticket_info.accept_ticket')
-        .then( async (short_establishments: IPlace[]) => {
-          this.short_establishments = short_establishments;
-        })
-        break;
-
-      case 'LIVEMUSIC':
-        this.establishmentsService
-        .getCollectionFilteredBy(CollectionsEnum.SHORT_ESTABLISHMENTS, 'livemusic_info.has_livemusic')
-        .then( async (short_establishments: IPlace[]) => {
-          this.short_establishments = short_establishments;
-        })
-        break;
-
-      case 'ALL':
-        this.getEstablishments();
-        break;
-
-      default:
-        break;
-    }
-
     this.defineActiveFilter(e.detail.value);
   }
 
   public defineActiveFilter(value: string) {
+    this.short_establishments = null;
+
     let filterFound = this.filters.find((filter: any) => {
       return filter.value === value;
     })
@@ -464,6 +438,34 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
       this.activeFilter = filterFound;
     }
 
+    switch (filterFound?.value) {
+      case FilterEnum.ALL:
+        this.getPlaces([
+          { field: 'suggestions', operator: 'array-contains', value: SuggestionsEnum.RUA_GASTRONOMICA_DE_SANTOS }
+        ]);
+        break;
+
+      case FilterEnum.PET_FRIENDLY:
+        this.getPlaces([
+          { field: 'suggestions', operator: 'array-contains', value: SuggestionsEnum.RUA_GASTRONOMICA_DE_SANTOS },
+          { field: 'petfriendly_info.accept_petfriendly', operator: '==', value: true },
+        ]);
+        break;
+
+      case FilterEnum.LIVEMUSIC:
+        this.getPlaces([
+          { field: 'suggestions', operator: 'array-contains', value: SuggestionsEnum.RUA_GASTRONOMICA_DE_SANTOS },
+          { field: 'livemusic_info.has_livemusic', operator: '==', value: true },
+        ]);
+        break;
+
+      case FilterEnum.TICKET:
+        this.getPlaces([
+          { field: 'suggestions', operator: 'array-contains', value: SuggestionsEnum.RUA_GASTRONOMICA_DE_SANTOS },
+          { field: 'ticket_info.accept_ticket', operator: '==', value: true },
+        ]);
+        break;
+    }
   }
 
   public seeSpecficList(show: boolean, info: any): void {

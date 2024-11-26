@@ -383,7 +383,10 @@ mode="ios">
         </ion-col>
 
         <ion-col size="12" class="mg-bottom-16">
-          <anfitrion-copyright></anfitrion-copyright>
+          <div class="copy-n-lang-wrapper">
+            <anfitrion-copyright></anfitrion-copyright>
+            <anfitrion-language-button-small [currentLanguage]="currentLanguage"></anfitrion-language-button-small>
+          </div>
         </ion-col>
       </ion-row>
     </ion-grid>
