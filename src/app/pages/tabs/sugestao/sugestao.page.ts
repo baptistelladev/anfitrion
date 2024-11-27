@@ -294,6 +294,9 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
       );
 
       this.establishmentsSubscription = this.establishments$
+      .pipe(map((establishments: IPlace[]) => {
+        return establishments.sort((a, b) => Number(a.adress.number) - Number(b.adress.number))
+      }))
       .subscribe((places: IPlace[]) => {
         this.short_establishments = places;
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
-import { collection, query, where, getDocs, QueryConstraint, getDoc, CollectionReference, WhereFilterOp, doc, DocumentReference } from 'firebase/firestore';
+import { collection, query, where, getDocs, QueryConstraint, getDoc, CollectionReference, WhereFilterOp, doc, DocumentReference, orderBy } from 'firebase/firestore';
 import { from, Observable } from 'rxjs';
 import { IFIrebaseFilter } from 'src/app/shared/models/IFirebaseFilter';
 import { ISuggestion } from 'src/app/shared/models/ISuggestion';
@@ -16,7 +16,9 @@ export class SuggestionsService {
 
   public getSuggestions(
     collectionName: string,
-    filters: IFIrebaseFilter[] = []
+    filters: IFIrebaseFilter[] = [],
+    orderByField: string = '',
+    orderDirection: 'asc' | 'desc' = 'asc'
   ): Observable<any[]> {
     // Cria a referência da coleção
     const colRef = collection(this.firestore, collectionName) as CollectionReference;
@@ -25,6 +27,15 @@ export class SuggestionsService {
     const queryConstraints: QueryConstraint[] = filters.map(filter =>
       where(filter.field, filter.operator, filter.value)
     );
+
+    if (orderByField) {
+      // Verifica se a consulta já possui um orderBy
+      const hasOrderBy = queryConstraints.some(constraint => constraint instanceof QueryConstraint && constraint.type === 'orderBy');
+
+      if (!hasOrderBy) {
+        queryConstraints.push(orderBy(orderByField, orderDirection));
+      }
+    }
 
     // Cria a consulta com todos os filtros
     const q = query(colRef, ...queryConstraints);

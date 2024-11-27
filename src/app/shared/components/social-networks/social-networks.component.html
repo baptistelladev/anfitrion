@@ -2,7 +2,7 @@
   <ng-container *ngFor="let socialNetwork of socialNetworks">
     <ion-button
     *ngIf="socialNetwork.value === NetworksEnum.INSTAGRAM"
-    (click)="navToAppOrApp(socialNetwork)"
+    (click)="navToAppOrSite(socialNetwork)"
     [title]="socialNetwork.text"
     class="social-network-button"
     size="small"
