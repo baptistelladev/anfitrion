@@ -16,6 +16,7 @@ import { Title } from '@angular/platform-browser';
 import { IUSer } from 'src/app/shared/models/IUser';
 import { AnimationOptions } from 'ngx-lottie';
 import { AnimationItem } from 'lottie-web';
+import { PDFProgressData } from 'ng2-pdf-viewer';
 
 @Component({
   selector: 'anfitrion-login',
@@ -23,6 +24,9 @@ import { AnimationItem } from 'lottie-web';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
+
+  public showTermsAndConditionsModal: boolean = false;
+
   @ViewChild('loginSwiper')
   swiperRef: ElementRef | undefined;
   swiper?: Swiper;
@@ -343,6 +347,10 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
     await modal.present();
 
     return modal;
+  }
+
+  public toggleTermsAndConditionsModal(show: boolean): void {
+    this.showTermsAndConditionsModal = show
   }
 
   public ngOnDestroy(): void {
