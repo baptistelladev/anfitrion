@@ -29,13 +29,13 @@ import { FilterEnum } from 'src/app/shared/enums/FilterEnum';
   templateUrl: './sugestao.page.html',
   styleUrls: ['./sugestao.page.scss'],
 })
-export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
+export class SugestaoPage implements OnInit, OnDestroy {
 
   public paramAsUrl: string;
 
   public establishmentActiveIndex: number | undefined = 1;
   public hideRightControl: boolean = false;
-  public hideLeftControl: boolean = false;
+  public hideLeftControl: boolean = true;
 
   public selectedInfo: any;
 
@@ -274,10 +274,6 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
     this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
-  ngAfterViewInit(): void {
-    this.swiper = this.swiperRef?.nativeElement.swiper;
-  }
-
   ionViewWillEnter(): void {
 
   }
@@ -301,6 +297,8 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
         this.short_establishments = places;
 
         if (!this.alreadyGetPlacesFirstTime) {
+          this.swiper = this.swiperRef?.nativeElement.swiper;
+
           this.lenghts_to_save_time = [...this.lenghts_to_save_time].map((option: any) => {
             let list = this.short_establishments?.filter((establishment: IPlace) => {
               return establishment.mainType.value === option['establishment_type'];
@@ -397,29 +395,17 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
     this.swiper?.slideTo(0, 800);
   }
 
-  public swiperReachedEnd() {
-    this.hideRightControl = true;
-  }
-
-  public swiperReachedBeginning() {
-    this.hideLeftControl = true;
-  }
-
   public slideToNext(): void {
     this.swiper?.slideNext(800);
+  }
 
-    if (this.hideLeftControl) {
-      this.hideLeftControl = false;
-    }
-
+  public listenForSwiperForControl(ev: any): void {
+    this.hideLeftControl = ev.detail[0].isBeginning;
+    this.hideRightControl = ev.detail[0].isEnd;
   }
 
   public slideToPrev(): void {
     this.swiper?.slidePrev(800);
-
-    if (this.hideRightControl) {
-      this.hideRightControl = false;
-    }
   }
 
   public imageHasLoaded() {

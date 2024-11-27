@@ -1,5 +1,4 @@
 <ion-content
-*ngIf="currentSuggestion"
 #suggestionContent
 [scrollEvents]="true"
 mode="ios">
@@ -35,10 +34,17 @@ mode="ios">
     <div class="suggestion-title">
       <ion-grid [fixed]="true" class="no-pad-top">
         <ion-row>
-          <ion-col size="12">
+          <ion-col size="12" *ngIf="currentSuggestion">
             <ion-text mode="ios" class="proportional-text txt-center">
               <p class="color-gray-text title animate__animated animate__fadeInUp font-w-thin">{{ currentSuggestion.name.title[currentLanguage.value] }}</p>
               <p class="color-gray-text font-baloo font-w-bold subtitle animate__animated animate__fadeInUp">{{ currentSuggestion.name.text[currentLanguage.value] }}</p>
+            </ion-text>
+          </ion-col>
+
+          <ion-col size="12" *ngIf="!currentSuggestion">
+            <ion-text mode="ios" class="txt-center">
+              <ion-skeleton-text [animated]="true" class="gray-mid like-desc"></ion-skeleton-text>
+              <ion-skeleton-text [animated]="true" class="gray-text like-title"></ion-skeleton-text>
             </ion-text>
           </ion-col>
         </ion-row>
@@ -50,12 +56,22 @@ mode="ios">
   <section class="suggestion-content">
     <ion-grid [fixed]="true">
       <ion-row>
-        <ion-col size="12">
+        <ion-col size="12" *ngIf="currentSuggestion">
           <ion-text
           class="txt-left color-gray-text full-width icon-title-text without-icon d-block"
           mode="ios">
             <p class="fs-14 font-w-thin">
               {{ currentSuggestion.address[currentLanguage.value] }}.
+            </p>
+          </ion-text>
+        </ion-col>
+
+        <ion-col size="12" *ngIf="!currentSuggestion">
+          <ion-text
+          class="txt-left color-gray-text full-width icon-title-text without-icon d-block"
+          mode="ios">
+            <p>
+              <ion-skeleton-text [animated]="true" class="gray-mid like-desc-address"></ion-skeleton-text>
             </p>
           </ion-text>
         </ion-col>
@@ -108,8 +124,7 @@ mode="ios">
     <div class="inicio-swiper-wrapper">
       <swiper-container
       [init]="true"
-      (swiperreachbeginning)="swiperReachedBeginning()"
-      (swiperreachend)="swiperReachedEnd()"
+      (swiperslidechange)="listenForSwiperForControl($event)"
       class="full-width swiper-w-relative-pagination"
       #establishmentsSwiper
       [freeMode]="true"
@@ -209,7 +224,7 @@ mode="ios">
           <swiper-slide
           *ngFor="let establishment of [1,2,3,4,5,6,7,8,9,10,11,12]; let i = index"
           class="unlock-shadow-from-swiper auto-width">
-            <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+            <ion-skeleton-text [animated]="true" class="like-cards"></ion-skeleton-text>
           </swiper-slide>
         </ng-container>
       </swiper-container>
@@ -273,8 +288,8 @@ mode="ios">
               size-sm="4"
               size-md="3">
                 <ion-item
-                [disabled]="info.list.length === 0"
-                [detailIcon]="info.list.length ? 'chevron-forward-outline' : 'lock-closed-outline'"
+                [disabled]="info.list && info.list.length === 0"
+                [detailIcon]="info.list && info.list.length ? 'chevron-forward-outline' : ''"
                 (click)="seeSpecficList(true, info)"
                 [button]="true"
                 size="12"
@@ -469,7 +484,7 @@ mode="md">
                 mode="md"
                 shape="round"
                 (click)="closeModal()"
-                class="height-44 anfitrion-main-solid fs-14 txt-lowercase full-width"
+                class="height-44 anfitrion-main-solid fs-14 txt-lowercase full-width mg-bottom-8"
                 [title]="'SHARED.CLOSE_MODAL' | translate"
                 fill="solid">
                 {{ 'SHARED.CLOSE_MODAL' | translate }}
