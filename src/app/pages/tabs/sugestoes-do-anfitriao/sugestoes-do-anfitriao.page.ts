@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { IonContent, NavController, Platform } from '@ionic/angular';
+import { IonContent, LoadingController, NavController, Platform } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { ILang } from 'src/app/shared/models/ILang';
@@ -10,6 +10,7 @@ import { SuggestionsService } from 'src/app/core/services/firebase/suggestions.s
 import { CollectionsEnum } from 'src/app/shared/enums/Collection';
 import { SuggestionsEnum } from 'src/app/shared/enums/Suggestions';
 import { ISuggestion } from 'src/app/shared/models/ISuggestion';
+import { OverlayService } from 'src/app/shared/services/overlay.service';
 
 @Component({
   selector: 'anfitrion-sugestoes-do-anfitriao',
@@ -43,7 +44,8 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
     private store : Store,
     private navCtrl : NavController,
     private title : Title,
-    private suggestionsService : SuggestionsService
+    private suggestionsService : SuggestionsService,
+    private overlayService : OverlayService
   ) { }
 
   ngOnInit() {
@@ -65,6 +67,10 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
   }
 
   public async getBaixadaSantistaSuggestions() {
+    const loading = await this.overlayService.fireLoading();
+
+    await loading.present();
+
     this.suggestionsBaixadaSantista$ = this.suggestionsService
     .getSuggestions(CollectionsEnum.SUGGESTIONS_BAIXADA_SANTISTA, [
       { field: "filter", operator: "array-contains", value: SuggestionsEnum.BAIXADA_SANTISTA },
@@ -78,8 +84,8 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
       error: () => {
 
       },
-      complete: () => {
-
+      complete: async () => {
+        await loading.dismiss()
       }
     })
   }

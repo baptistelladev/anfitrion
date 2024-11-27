@@ -470,12 +470,6 @@ ion-item {
   }
 }
 
-ion-skeleton-text {
-  height: 266.5px;
-  width: 100%;
-  border-radius: 12px;
-}
-
 .disable-filter {
   opacity: .3 !important;
   pointer-events: none !important;
@@ -680,4 +674,31 @@ ion-text.proportional-text {
   max-width: 375px;
   margin: 0 auto;
   width: 100%;
+}
+
+ion-skeleton-text {
+  border-radius: 4px;
+  margin: 0;
+
+  &.like-desc {
+    width: 80px;
+    height: 16px;
+  }
+
+  &.like-desc-address {
+    width: 80%;
+    height: 16px;
+    max-width: 300px;
+  }
+
+  &.like-title {
+    width: 180px;
+    height: 30px;
+    margin-top: 9px;
+  }
+  &.like-cards {
+    height: 266.5px;
+    width: 100%;
+    border-radius: 12px;
+  }
 }
