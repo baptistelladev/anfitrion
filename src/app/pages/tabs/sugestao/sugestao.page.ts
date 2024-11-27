@@ -175,7 +175,7 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
   swiper?: Swiper;
 
   @ViewChild('filterSelector') filterSelector: IonSelect;
-  @ViewChild('homeContent') homeContent: IonContent;
+  @ViewChild('suggestionContent') suggestionContent: IonContent;
 
   public selectedFilter: string;
   public activeFilter: any;
@@ -365,14 +365,14 @@ export class SugestaoPage implements OnInit, OnDestroy, AfterViewInit {
   }
 
   public async scrollToTop() {
-    this.homeContent.scrollToTop(600);
+    this.suggestionContent.scrollToTop(600);
   }
 
   public seeEstablishment(establishment: IPlace, e: any): void {
     if (establishment.isBuilding) {
       e.preventDefault();
     } else {
-      this.navCtrl.navigateForward(['/estabelecimento/' + establishment.value]);
+      this.navCtrl.navigateForward(['/logado/estabelecimento/' + establishment.value]);
       this.store.dispatch(AppStore.setCurrentEstablishment({ establishment: establishment } ))
     }
   }
