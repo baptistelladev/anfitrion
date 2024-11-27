@@ -51,7 +51,7 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
   swiper?: Swiper;
 
   public hideRightControl: boolean = false;
-  public hideLeftControl: boolean = false;
+  public hideLeftControl: boolean = true;
 
   public CityEnum = CityEnum;
   public PlaceTypeEnum = PlaceTypeEnum;
@@ -167,28 +167,12 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-  public swiperReachedEnd() {
-    this.hideRightControl = true;
-  }
-
-  public swiperReachedBeginning() {
-    this.hideLeftControl = true;
-  }
-
   public slideToNext(): void {
     this.swiper?.slideNext(800);
-
-    if (this.hideLeftControl) {
-      this.hideLeftControl = false;
-    }
   }
 
   public slideToPrev(): void {
     this.swiper?.slidePrev(800);
-
-    if (this.hideRightControl) {
-      this.hideRightControl = false;
-    }
   }
 
   public seePlace(place: IPlace, e: any): void {
@@ -262,6 +246,10 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
+  public listenForSwiperForControl(ev: any): void {
+    this.hideLeftControl = ev.detail[0].isBeginning;
+    this.hideRightControl = ev.detail[0].isEnd;
+  }
 
   ngOnDestroy(): void {
     this.placesSubscription.unsubscribe();

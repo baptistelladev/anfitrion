@@ -44,6 +44,7 @@ class="ion-content-w-linear-bg">
         slides-offset-before="16"
         slides-offset-after="16"
         initial-slide="0"
+        (swiperslidechange)="listenForSwiperForControl($event)"
         [attr.slides-per-view]="'auto'"
         [attr.space-between]="16"
         [init]="true">
