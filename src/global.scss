@@ -576,3 +576,9 @@ ion-skeleton-text {
   align-items: center;
   justify-content: center;
 }
+
+ion-checkbox {
+  &::part(container) {
+    padding: 2px;
+  }
+}

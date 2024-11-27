@@ -4,11 +4,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { TranslateModule } from '@ngx-translate/core';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 
 @NgModule({
   imports: [
-    ClipboardModule
+    ClipboardModule,
+    PdfViewerModule
   ],
   exports: [
     IonicModule,
@@ -16,7 +18,8 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonModule,
     ReactiveFormsModule,
     ClipboardModule,
-    TranslateModule
+    TranslateModule,
+    PdfViewerModule
   ]
 })
 export class SharedModule { }

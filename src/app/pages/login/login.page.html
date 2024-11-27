@@ -516,6 +516,10 @@ class="ion-content-w-linear-bg">
                   </ion-col>
 
                   <ion-col size="12">
+                    <ion-checkbox mode="md"><ion-text mode="md"><p class="flexed-wrapped color-gray-text fs-14">Ao realizar o cadastro você concorda com os <a href="javascript:void(0)" (click)="toggleTermsAndConditionsModal(true)">Termos e Condições de uso</a></p></ion-text></ion-checkbox>
+                  </ion-col>
+
+                  <ion-col size="12">
                     <ion-button
                     [disabled]="isCreating || formCreateAccGroup.invalid || !passwordIsValid || !passwordsMatch"
                     [title]="('LOGIN_PAGE.CREATE_SLIDER.BTN.0' | translate) + ' ' + 'LOGIN_PAGE.CREATE_SLIDER.BTN.1' | translate"
@@ -550,3 +554,22 @@ class="ion-content-w-linear-bg">
     </div>
   </section>
 </ion-content>
+
+<ion-modal
+mode="md"
+(ionModalDidDismiss)="toggleTermsAndConditionsModal(false)"
+[isOpen]="true"
+[keepContentsMounted]="true">
+  <ng-template>
+    <ion-content class="ion-no-padding">
+      <section class="terms-and-conditions full-width full-height">
+        <pdf-viewer
+        [src]="'./../../../assets/docs/termos-e-condicoes-de-uso.pdf'"
+        [render-text]="true"
+        [original-size]="false"
+        style="width: 100%; height: 100%; display: block;"
+        ></pdf-viewer>
+      </section>
+    </ion-content>
+  </ng-template>
+</ion-modal>

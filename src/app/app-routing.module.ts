@@ -38,6 +38,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/acoes/acoes.module').then( m => m.AcoesPageModule)
   },
   {
+    path: 'termos-e-condicoes-de-uso',
+    loadChildren: () => import('./pages/termos-e-condicoes-de-uso/termos-e-condicoes-de-uso.module').then( m => m.TermosECondicoesDeUsoPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/pagina-nao-existe/pagina-nao-existe.module').then( m => m.PaginaNaoExistePageModule)
   }
