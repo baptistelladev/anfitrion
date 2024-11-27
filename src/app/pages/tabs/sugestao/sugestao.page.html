@@ -123,17 +123,19 @@ mode="ios">
     <!-- SLIDE -->
     <div class="inicio-swiper-wrapper">
       <swiper-container
+      [attr.centered-slides]="false"
+      speed="5000"
       [init]="true"
       (swiperslidechange)="listenForSwiperForControl($event)"
       class="full-width swiper-w-relative-pagination"
       #establishmentsSwiper
-      [freeMode]="true"
+      free-mode="true"
       [autoHeight]="false"
       slides-offset-before="16"
       slides-offset-after="16"
       initial-slide="0"
-      [slidesPerView]="1"
-      space-between="16"
+      [slides-per-view]="'auto'"
+      [attr.space-between]="16"
       [breakpoints]="{
        '200' : {
           slidesPerView: 1.7

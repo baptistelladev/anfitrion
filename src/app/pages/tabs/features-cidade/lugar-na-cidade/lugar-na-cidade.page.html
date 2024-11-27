@@ -123,8 +123,7 @@ class="ion-content-w-linear-bg"
   <div class="places-swiper-container">
     <swiper-container
     [init]="true"
-    (swiperreachbeginning)="swiperReachedBeginning()"
-    (swiperreachend)="swiperReachedEnd()"
+    (swiperslidechange)="listenForSwiperForControl($event)"
     class="full-width swiper-w-relative-pagination"
     #placesSwiper
     [freeMode]="true"
@@ -267,7 +266,7 @@ class="ion-content-w-linear-bg"
 
         <ion-col size="6">
           <ion-text
-          class="color-gray-text fs-13 line-height-20 txt-lowercase txt-right"
+          class="fs-12 color-gray-mid line-height-20 txt-lowercase txt-right"
           mode="ios">
             <p><span class="fs-16 font-w-bold">{{ places.length }}</span> {{ 'SHARED.ESTABLISHMENTS' | translate }}<ng-container *ngIf="places.length > 1">s</ng-container></p>
           </ion-text>

@@ -17,10 +17,10 @@ import { OverlayService } from 'src/app/shared/services/overlay.service';
   templateUrl: './sugestoes-do-anfitriao.page.html',
   styleUrls: ['./sugestoes-do-anfitriao.page.scss'],
 })
-export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestroy {
+export class SugestoesDoAnfitriaoPage implements OnInit, OnDestroy {
 
   public hideRightControl: boolean = false;
-  public hideLeftControl: boolean = false;
+  public hideLeftControl: boolean = true;
 
   @ViewChild('sugestoesCitySwiper')
   citySwiperRef: ElementRef | undefined;
@@ -53,10 +53,6 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
     this.getBaixadaSantistaSuggestions();
   }
 
-  ngAfterViewInit(): void {
-    this.baixadaSantistaSwiper = this.baixadaSantistaSwiperRef?.nativeElement.swiper;
-  }
-
   ionViewWillEnter(): void {
     this.title.setTitle('Sugestões do anfitrião');
   }
@@ -80,6 +76,7 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
     .subscribe({
       next: (suggestions: any) => {
         this.suggestionsBaixadaSantista = suggestions;
+        this.baixadaSantistaSwiper = this.baixadaSantistaSwiperRef?.nativeElement.swiper;
       },
       error: () => {
 
@@ -90,21 +87,17 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
     })
   }
 
+  public listenForSwiperForControl(ev: any): void {
+    this.hideLeftControl = ev.detail[0].isBeginning;
+    this.hideRightControl = ev.detail[0].isEnd;
+  }
+
   public slideToNext(): void {
     this.baixadaSantistaSwiper?.slideNext(800);
-
-    if (this.hideLeftControl) {
-      this.hideLeftControl = false;
-    }
-
   }
 
   public slideToPrev(): void {
     this.baixadaSantistaSwiper?.slidePrev(800);
-
-    if (this.hideRightControl) {
-      this.hideRightControl = false;
-    }
   }
 
   public getCurrentLanguageFromNGRX(): void {
