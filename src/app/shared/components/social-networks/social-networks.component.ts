@@ -44,7 +44,7 @@ export class SocialNetworksComponent  implements OnInit {
     this.navCtrl.navigateForward(['/logado/' + socialNetwork.baseUrl])
   }
 
-  public navToAppOrApp(socialNetwork: ISocialNetwork): void {
+  public navToAppOrSite(socialNetwork: ISocialNetwork): void {
     if (this.platform.is('desktop')) {
       this.openExternalUrl(socialNetwork.baseUrl + socialNetwork.user, '_blank');
     }

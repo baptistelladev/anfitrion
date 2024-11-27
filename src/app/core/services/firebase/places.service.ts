@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { collectionData, Firestore } from '@angular/fire/firestore';
-import { collection, CollectionReference, doc, getDocs, query, QueryConstraint, updateDoc, where } from 'firebase/firestore';
+import { collection, CollectionReference, doc, getDocs, orderBy, query, QueryConstraint, updateDoc, where } from 'firebase/firestore';
 import { from, Observable } from 'rxjs';
 import { IFIrebaseFilter } from 'src/app/shared/models/IFirebaseFilter';
 import { IPlace } from 'src/app/shared/models/IPlace';
@@ -16,7 +16,9 @@ export class PlacesService {
 
   public getCollection(
     collectionName: string,
-    filters: IFIrebaseFilter[] = []
+    filters: IFIrebaseFilter[] = [],
+    orderByField: string = '',
+    orderDirection: 'asc' | 'desc' = 'asc'
   ): Observable<IPlace[]> {
     // Cria a referência da coleção
     const colRef = collection(this.firestore, collectionName) as CollectionReference;
@@ -25,6 +27,15 @@ export class PlacesService {
     const queryConstraints: QueryConstraint[] = filters.map(filter =>
       where(filter.field, filter.operator, filter.value)
     );
+
+    if (orderByField) {
+      // Verifica se a consulta já possui um orderBy
+      const hasOrderBy = queryConstraints.some(constraint => constraint instanceof QueryConstraint && constraint.type === 'orderBy');
+
+      if (!hasOrderBy) {
+        queryConstraints.push(orderBy(orderByField, orderDirection));
+      }
+    }
 
     // Cria a consulta com todos os filtros
     const q = query(colRef, ...queryConstraints);

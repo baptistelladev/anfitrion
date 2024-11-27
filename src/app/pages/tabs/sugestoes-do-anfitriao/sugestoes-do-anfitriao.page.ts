@@ -67,7 +67,7 @@ export class SugestoesDoAnfitriaoPage implements OnInit, AfterViewInit, OnDestro
   public async getBaixadaSantistaSuggestions() {
     this.suggestionsBaixadaSantista$ = this.suggestionsService
     .getSuggestions(CollectionsEnum.SUGGESTIONS_BAIXADA_SANTISTA, [
-      { field: "filter", operator: "array-contains", value: SuggestionsEnum.BAIXADA_SANTISTA }
+      { field: "filter", operator: "array-contains", value: SuggestionsEnum.BAIXADA_SANTISTA },
     ])
 
     this.suggestionsBaixadaSantistaSubscription = this.suggestionsBaixadaSantista$

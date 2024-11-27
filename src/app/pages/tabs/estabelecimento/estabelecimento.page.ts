@@ -1,6 +1,6 @@
 import { MOCK_PLACE_CITY_TYPE } from '../../../shared/mocks/MockPlaceCityType';
 import { AfterContentInit, Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { AlertController, IonContent, NavController } from '@ionic/angular';
+import { AlertController, IonContent, NavController, Platform } from '@ionic/angular';
 import { Clipboard } from '@angular/cdk/clipboard';
 import * as moment from 'moment';
 import { getElement } from 'ionicons/dist/types/stencil-public-runtime';
@@ -66,7 +66,8 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
     private title : Title,
     private route: ActivatedRoute,
     private establishmentService : EstablishmentsService,
-    private analyticsService : AnalyticsService
+    private analyticsService : AnalyticsService,
+    private platform : Platform
   ) { }
 
   async ngOnInit() {
@@ -116,12 +117,18 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
             this.showBackButton = false;
 
             this.establishmentService
-            .getDocumentByValue(CollectionsEnum.SHORT_ESTABLISHMENTS, 'value', this.establishmentNameFromUrl)
+            .getDocumentByValue(CollectionsEnum.PLACES, 'value', this.establishmentNameFromUrl)
             .then((establishmentFromService: IPlace | null) => {
+
+              console.log(establishmentFromService);
+
               if (establishmentFromService) {
                 this.establishment = establishmentFromService;
                 this.defineTitleFromPage(this.establishment.name);
               }
+            })
+            .catch((res) => {
+
             })
           }
         }
@@ -219,12 +226,32 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
     let whats: undefined | IPhone = this.establishment.phones.find(phone => phone.type === PhoneTypesEnum.WHATSAPP);
     let mensagem: string = this.translate.instant('MESSAGES.WELCOME_WHATSAPP');
     let mensagemCodificada = encodeURIComponent(mensagem);
-    window.open(`https://wa.me/55${whats?.ddd}${whats?.number}?text=${mensagemCodificada}`, 'self');
+    this.navToAppOrSite(`https://wa.me/55${whats?.ddd}${whats?.number}?text=`,`${mensagemCodificada}`)
   }
 
   public goToInsta(): void {
     let insta: undefined | ISocialNetwork = this.establishment.networks.find(network => network.value === NetworksEnum.INSTAGRAM);
-    window.open(`https://www.instagram.com/${insta?.user}/`, '_self');
+    this.navToAppOrSite(`https://www.instagram.com/`,`${insta?.user}/`);
+  }
+
+  public openExternalUrl(url: string, target: string = '_system'): void {
+    if (typeof window !== 'undefined') {
+      window.open(url, target);
+    }
+  }
+
+  public navToAppOrSite(urlOrRoute: string, userOrText: string): void {
+    if (this.platform.is('desktop')) {
+      this.openExternalUrl(urlOrRoute + userOrText, '_blank');
+    }
+
+    if (this.platform.is('mobileweb')) {
+      this.openExternalUrl(urlOrRoute + userOrText, '_self');
+    }
+
+    if (this.platform.is('capacitor')) {
+      this.openExternalUrl(urlOrRoute + userOrText);
+    }
   }
 
   public async redirectToInstagram(): Promise<HTMLIonAlertElement> {
