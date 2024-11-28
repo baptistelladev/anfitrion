@@ -1,5 +1,8 @@
 
 export enum NetworksEnum {
   INSTAGRAM = 'INSTAGRAM',
-  WHATSAPP = 'WHATSAPP'
+  WHATSAPP = 'WHATSAPP',
+  YOUTUBE = 'YOUTUBE',
+  TIKTOK = 'TIKTOK',
+  THREADS = 'THREADS'
 }

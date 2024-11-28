@@ -226,12 +226,21 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
     let whats: undefined | IPhone = this.establishment.phones.find(phone => phone.type === PhoneTypesEnum.WHATSAPP);
     let mensagem: string = this.translate.instant('MESSAGES.WELCOME_WHATSAPP');
     let mensagemCodificada = encodeURIComponent(mensagem);
-    this.navToAppOrSite(`https://wa.me/55${whats?.ddd}${whats?.number}?text=`,`${mensagemCodificada}`)
+
+    if (this.platform.is('desktop')) {
+      this.openExternalUrl(`https://wa.me/55${whats?.ddd}${whats?.number}?text=${mensagemCodificada}`, '_blank');
+    }
+
+    if (this.platform.is('mobileweb') || this.platform.is('mobile')) {
+      this.openExternalUrl(`https://wa.me/55${whats?.ddd}${whats?.number}?text=${mensagemCodificada}`, '_self');
+    }
   }
 
   public goToInsta(): void {
     let insta: undefined | ISocialNetwork = this.establishment.networks.find(network => network.value === NetworksEnum.INSTAGRAM);
-    this.navToAppOrSite(`https://www.instagram.com/`,`${insta?.user}/`);
+    if (insta) {
+      this.navToAppOrSite(insta);
+    }
   }
 
   public openExternalUrl(url: string, target: string = '_system'): void {
@@ -240,17 +249,13 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
     }
   }
 
-  public navToAppOrSite(urlOrRoute: string, userOrText: string): void {
+  public navToAppOrSite(socialNetwork: ISocialNetwork): void {
     if (this.platform.is('desktop')) {
-      this.openExternalUrl(urlOrRoute + userOrText, '_blank');
+      this.openExternalUrl(socialNetwork.baseUrl + (socialNetwork.value === NetworksEnum.YOUTUBE || socialNetwork.value === NetworksEnum.TIKTOK ? '@' : '') + socialNetwork.user, '_blank');
     }
 
-    if (this.platform.is('mobileweb')) {
-      this.openExternalUrl(urlOrRoute + userOrText, '_self');
-    }
-
-    if (this.platform.is('capacitor')) {
-      this.openExternalUrl(urlOrRoute + userOrText);
+    if (this.platform.is('mobileweb') || this.platform.is('mobile')) {
+      this.openExternalUrl(socialNetwork.baseUrl + (socialNetwork.value === NetworksEnum.YOUTUBE || socialNetwork.value === NetworksEnum.TIKTOK ? '@' : '') + socialNetwork.user, '_self');
     }
   }
 

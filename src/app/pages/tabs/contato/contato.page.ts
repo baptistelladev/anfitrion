@@ -128,7 +128,7 @@ export class ContatoPage implements OnInit, OnDestroy {
   public openWhatsApp(): void {
     let mensagem: string = this.translate.instant('MESSAGES.WELCOME_WHATSAPP');
     let mensagemCodificada = encodeURIComponent(mensagem);
-    window.open(`https://wa.me/55${this.appInfoContact.phone.ddd}${this.appInfoContact.phone.number}?text=${mensagemCodificada}`, '_self');
+    window.open(`https://wa.me/55${this.appInfoContact.phone.ddd}${this.appInfoContact.phone.number}?text=${mensagemCodificada}`, '_blank');
   }
 
   /**
