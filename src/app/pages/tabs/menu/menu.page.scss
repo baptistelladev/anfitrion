@@ -21,6 +21,14 @@ ion-content {
           position: relative;
           min-height: 96px;
 
+          @media (hover: hover) {
+            &:hover {
+              ion-item:not(.is-disabled) {
+                box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+              }
+            }
+          }
+
           ion-item {
             width: 100%;
             margin: 0;
