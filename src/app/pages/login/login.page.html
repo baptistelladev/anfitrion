@@ -515,12 +515,12 @@ class="ion-content-w-linear-bg">
                   </ion-col>
 
                   <ion-col size="12">
-                    <ion-checkbox mode="md"><ion-text mode="md"><p class="flexed-wrapped color-gray-text fs-14">Ao realizar o cadastro você concorda com os <a href="javascript:void(0)" (click)="toggleTermsAndConditionsModal(true)">Termos e Condições de uso</a></p></ion-text></ion-checkbox>
+                    <ion-checkbox mode="md" formControlName="terms"><ion-text mode="md"><p class="flexed-wrapped color-gray-text fs-14">Ao realizar o cadastro você concorda com os <a href="javascript:void(0)" (click)="toggleTermsAndConditionsModal(true)">Termos e Condições de uso</a></p></ion-text></ion-checkbox>
                   </ion-col>
 
                   <ion-col size="12">
                     <ion-button
-                    [disabled]="isCreating || formCreateAccGroup.invalid || !passwordIsValid || !passwordsMatch"
+                    [disabled]="isCreating || formCreateAccGroup.invalid || !passwordIsValid || !passwordsMatch || !formCreateAccGroup.get('terms')?.value"
                     [title]="('LOGIN_PAGE.CREATE_SLIDER.BTN.0' | translate) + ' ' + 'LOGIN_PAGE.CREATE_SLIDER.BTN.1' | translate"
                     fill="solid"
                     type="submit"
