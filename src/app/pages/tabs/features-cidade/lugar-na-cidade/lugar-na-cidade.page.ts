@@ -160,9 +160,6 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
       this.placesSubscription = this.places$
       .subscribe((places: IPlace[]) => {
         this.places = places;
-        console.log(this.places);
-        console.log(this.placeType, this.currentCityAsParam?.value);
-
       })
     }
   }

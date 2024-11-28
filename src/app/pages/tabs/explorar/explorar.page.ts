@@ -44,6 +44,10 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
   public user$: Observable<IUSer>;
   public userSubscription: Subscription;
 
+  public canAccessEightenContent: boolean;
+  public canAccessEightenContent$: Observable<boolean>;
+  public canAccessEightenContentSubscription: Subscription;
+
   public beachFeatures: any[] = [
     {
       loadIconsFromAssets: false,
@@ -117,7 +121,9 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
           es: ''
         },
         route: 'restaurante',
-        atLeastOneLength: false
+        atLeastOneLength: false,
+        ageLimit: null,
+        userRespectAgeLimit: null
       },
       {
         loadIconsFromAssets: false,
@@ -136,7 +142,9 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
           es: ''
         },
         route: 'bar',
-        atLeastOneLength: false
+        atLeastOneLength: false,
+        ageLimit: null,
+        userRespectAgeLimit: null
       },
       {
         loadIconsFromAssets: false,
@@ -155,7 +163,9 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
           es: ''
         },
         route: 'cafeteria',
-        atLeastOneLength: false
+        atLeastOneLength: false,
+        ageLimit: null,
+        userRespectAgeLimit: null
       },
       {
         loadIconsFromAssets: false,
@@ -174,7 +184,9 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
           es: ''
         },
         route: 'adega',
-        atLeastOneLength: false
+        atLeastOneLength: false,
+        ageLimit: 18,
+        userRespectAgeLimit: null
       },
       {
         loadIconsFromAssets: false,
@@ -193,7 +205,9 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
           es: ''
         },
         route: 'pizzaria',
-        atLeastOneLength: false
+        atLeastOneLength: false,
+        ageLimit: null,
+        userRespectAgeLimit: null
       },
       {
         loadIconsFromAssets: false,
@@ -212,7 +226,9 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
           es: ''
         },
         route: 'hamburgueria',
-        atLeastOneLength: false
+        atLeastOneLength: false,
+        ageLimit: null,
+        userRespectAgeLimit: null
       },
       {
         loadIconsFromAssets: false,
@@ -231,7 +247,9 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
           es: ''
         },
         route: 'doceria',
-        atLeastOneLength: false
+        atLeastOneLength: false,
+        ageLimit: null,
+        userRespectAgeLimit: null
       }
     ]
   }
@@ -345,6 +363,27 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     this.userSubscription = this.user$
     .subscribe((user: IUSer) => {
       this.user = user;
+
+      this.getEighteenContentAccess();
+    })
+  }
+
+  public getEighteenContentAccess(): void {
+    this.canAccessEightenContent$ = this.store.select(UserStore.selectAccessEighteenContent);
+
+    this.canAccessEightenContentSubscription = this.canAccessEightenContent$
+    .subscribe((canAccess: boolean) => {
+      this.canAccessEightenContent = canAccess;
+
+      let placesEighteenContent = this.cityFeatures.places.filter((feature: any) => {
+        return feature.ageLimit === 18;
+      })
+
+      if (placesEighteenContent) {
+        placesEighteenContent.forEach((place: any) => {
+          place.userRespectAgeLimit = this.canAccessEightenContent;
+        })
+      }
     })
   }
 
@@ -386,18 +425,32 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     return modal;
   }
 
-  public searchPlaceInTheCity(type: string): void {
-    this.navCtrl.navigateForward([`/logado/explorar/${type}`], {
-      queryParams: {
-        cidade: this.currentCity.value
-      }
-    })
+  public async searchPlaceInTheCity(place: any) {
+    if (place.userRespectAgeLimit || place.userRespectAgeLimit === null) {
+      this.navCtrl.navigateForward([`/logado/explorar/${place.route}`], {
+        queryParams: {
+          cidade: this.currentCity.value
+        }
+      })
+    } else {
+      const toast = await this.overlayService.fireToast({
+        mode: 'ios',
+        cssClass: 'anf-toast anf-toast-danger',
+        message: 'Você não tem idade suficiente para acessar este conteúdo.',
+        position: 'top',
+        icon: 'ban-outline',
+        duration: 2000
+      })
+
+      await toast.present();
+    }
   }
 
   ngOnDestroy() {
     this.currentLanguageSubscription.unsubscribe();
     this.userSubscription.unsubscribe();
     this.currentCitySubscription.unsubscribe();
+    this.canAccessEightenContentSubscription.unsubscribe();
   }
 
 }

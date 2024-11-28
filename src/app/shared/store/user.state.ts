@@ -2,7 +2,8 @@ import { createAction, createFeatureSelector, createReducer, createSelector, on,
 import { IUSer } from "../models/IUser"
 
 export interface IUserState {
-  user: IUSer
+  user: IUSer,
+  canAccessEighteenContent: boolean
 }
 
 export const userInitialState: IUserState = {
@@ -15,7 +16,8 @@ export const userInitialState: IUserState = {
     birthDate: '',
     userType: '',
     sex: ''
-  }
+  },
+  canAccessEighteenContent: true
 }
 
 // ACTIONS
@@ -29,6 +31,11 @@ export const setUserEmail = createAction(
   props<{ email: string }>()
 )
 
+export const setEighteenAccess = createAction(
+  '[USER] Permitir acesso a conteúdo +18',
+  props<{ canAccessEighteenContent: boolean }>()
+)
+
 export const userReducer = createReducer(
   userInitialState,
   on(
@@ -38,6 +45,10 @@ export const userReducer = createReducer(
   on(
     setUserEmail,
     (state, { email }): IUserState => ({ ...state, user: { ...state.user, email: email }  })
+  ),
+  on(
+    setEighteenAccess,
+    (state, { canAccessEighteenContent }): IUserState => ({ ...state, canAccessEighteenContent: canAccessEighteenContent })
   )
 )
 
@@ -47,4 +58,9 @@ export const selectUserState = createFeatureSelector<IUserState>('user');
 export const selectUser = createSelector(
   selectUserState,
   (state: IUserState) => state.user
+);
+
+export const selectAccessEighteenContent = createSelector(
+  selectUserState,
+  (state: IUserState) => state.canAccessEighteenContent
 );

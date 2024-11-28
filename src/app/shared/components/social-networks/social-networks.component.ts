@@ -58,8 +58,5 @@ export class SocialNetworksComponent  implements OnInit {
     if (typeof window !== 'undefined') {
       window.open(url, target);
     }
-
-    console.log(url, target);
-
   }
 }

@@ -122,8 +122,12 @@ class="ion-content-w-linear-bg">
                 class="feature-item-wrapper">
                   <ion-badge *ngIf="place.atLeastOneLength" class="font-baloo fs-14 color-green">{{ place.atLeastOneLength }}</ion-badge>
 
+                  <ion-text mode="ios" class="forbidden" *ngIf="place.ageLimit === 18 && !place.userRespectAgeLimit">
+                    <p>🔞</p>
+                  </ion-text>
+
                   <ion-item
-                  (click)="searchPlaceInTheCity(place.route)"
+                  (click)="searchPlaceInTheCity(place)"
                   [disabled]="place.isDisabled || !place.atLeastOneLength"
                   [ngClass]="{ 'is-disabled': place.isDisabled || !place.atLeastOneLength }"
                   [title]="place.text[currentLanguage.value]"

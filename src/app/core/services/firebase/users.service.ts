@@ -8,6 +8,7 @@ import { reauthenticateWithCredential, updatePassword, User} from 'firebase/auth
 import { throwError } from 'rxjs';
 import { CollectionsEnum } from 'src/app/shared/enums/Collection';
 import { doc, updateDoc } from 'firebase/firestore';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,9 @@ export class UsersService {
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
         await this.dispatchUser({ ...docSnap.data() as IUSer });
-        this.store.dispatch(UserStore.setUserEmail({ email: userCred.email }))
+        await this.dispatchUserEmail(userCred.email);
+        await this.dispatchEighteenAccess({ ...docSnap.data() as IUSer });
+
         return true;
       } else {
         return false;
@@ -42,6 +45,28 @@ export class UsersService {
   private dispatchUser(user: IUSer): Promise<void> {
     return new Promise((resolve) => {
       this.store.dispatch(UserStore.setUser({ user }));
+      resolve();
+    });
+  }
+
+  private dispatchUserEmail(email: string): Promise<void> {
+    return new Promise((resolve) => {
+      this.store.dispatch(UserStore.setUserEmail({ email: email }));
+      resolve();
+    });
+  }
+
+  private dispatchEighteenAccess(user: IUSer): Promise<void> {
+    return new Promise((resolve) => {
+      const today = moment();
+      const eightenYearsLimitDate = today.subtract(18, 'years')
+
+      if (user.birthDate && moment(user.birthDate, 'YYYY-MM-DD').isSameOrBefore(eightenYearsLimitDate)) {
+        this.store.dispatch(UserStore.setEighteenAccess({ canAccessEighteenContent: true }));
+      } else {
+        this.store.dispatch(UserStore.setEighteenAccess({ canAccessEighteenContent: false }));
+      }
+
       resolve();
     });
   }
@@ -72,8 +97,6 @@ export class UsersService {
       const docRef = doc(this.firestore, CollectionsEnum.USERS, docId);
       await updateDoc(docRef, userInfo);
       const docSnap = await getDoc(docRef);
-      console.log(docSnap);
-
       if (docSnap.exists()) {
         await this.dispatchUser({ ...docSnap.data() as IUSer });
       }
