@@ -86,6 +86,10 @@ const routes: Routes = [
         loadChildren: () => import('./cidades/cidades.module').then( m => m.CidadesPageModule)
       }
     ]
+  },
+  {
+    path: 'termos-e-condicoes-de-uso',
+    loadChildren: () => import('./termos-e-condicoes-de-uso/termos-e-condicoes-de-uso.module').then( m => m.TermosECondicoesDeUsoPageModule)
   }
 ];
 

@@ -55,6 +55,15 @@ export class MenuPage implements OnInit, OnDestroy {
       },
       icon: 'terminal',
       route: 'sobre-nos'
+    },
+    {
+      text: {
+        pt: 'Termos',
+        en: 'Terms',
+        es: 'Términos'
+      },
+      icon: 'document-text',
+      route: 'termos-e-condicoes-de-uso'
     }
   ]
 
@@ -120,14 +129,14 @@ export class MenuPage implements OnInit, OnDestroy {
       message: `${this.translate.instant('MENU_PAGE.LOG_OFF_TEXT')}?`,
       buttons: [
         {
-          text: 'Cancelar',
+          text: `${this.translate.instant('SHARED.CANCEL')}`,
           role: 'cancel',
           handler: () => {
 
           }
         },
         {
-          text: 'Sim, sair',
+          text: `${this.translate.instant('SHARED.EXIT_APP_YES')}`,
           role: 'confirm',
           handler: async () => {
             await this.authService.logout().then(() => {
