@@ -255,11 +255,10 @@ class="ion-content-w-linear-bg">
                     </ion-button>
                   </ion-col>
 
-                  <ion-col
-                  size="12"
-                  class="txt-center">
-                    <div class="footer-container color-gray-text fs-14">
-                      <anfitrion-copyright class="d-block mg-top-16"></anfitrion-copyright>
+                  <ion-col size="12" class="mg-bottom-16">
+                    <div class="copy-n-lang-wrapper mg-top-16">
+                      <anfitrion-copyright></anfitrion-copyright>
+                      <anfitrion-language-button-small [currentLanguage]="currentLanguage"></anfitrion-language-button-small>
                     </div>
                   </ion-col>
                 </ion-row>
@@ -538,11 +537,10 @@ class="ion-content-w-linear-bg">
                     </ion-button>
                   </ion-col>
 
-                  <ion-col
-                  size="12"
-                  class="txt-center">
-                    <div class="footer-container color-gray-text fs-14">
-                      <anfitrion-copyright class="d-block mg-top-16"></anfitrion-copyright>
+                  <ion-col size="12" class="mg-bottom-16">
+                    <div class="copy-n-lang-wrapper mg-top-16">
+                      <anfitrion-copyright></anfitrion-copyright>
+                      <anfitrion-language-button-small [currentLanguage]="currentLanguage"></anfitrion-language-button-small>
                     </div>
                   </ion-col>
                 </ion-row>
@@ -558,7 +556,7 @@ class="ion-content-w-linear-bg">
 <ion-modal
 mode="md"
 (ionModalDidDismiss)="toggleTermsAndConditionsModal(false)"
-[isOpen]="true"
+[isOpen]="showTermsAndConditionsModal"
 [keepContentsMounted]="true">
   <ng-template>
     <ion-content class="ion-no-padding">

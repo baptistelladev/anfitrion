@@ -107,7 +107,13 @@
       "BTN" : ["criar","uma conta"]
     },
     "WHAT_IS" : "o que é o",
-    "ACC_IDENTIFIED" : "Identificamos sua conta e vamos redireciona-lo"
+    "ACC_IDENTIFIED" : "Identificamos sua conta e vamos redireciona-lo",
+    "TERMS_AND_CONDITIONS_MODAL" : {
+      "TITLE" : "Atenção",
+      "DESCRIPTION" : "O anfitrion utiliza cookies que são necessários para o funcionamento adequado das plataformas web e mobile para melhorar a sua experiência. Ao acessar você está de acordo com nossos Termos e Condições de Uso. para espanhol e ingles.",
+      "OK_BUTTON" : "Entendi",
+      "READ_TERMS_BUTTON" : "Termos e Condições de Uso"
+    }
   },
   "CHANGE_LANG_PAGE" : {
     "PAGE_TITLE" : "Troque o idioma que usa na Rua Gastronômica de Santos",
