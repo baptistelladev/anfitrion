@@ -24,6 +24,9 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class SeusDadosPage implements OnInit, OnDestroy {
 
+  public today = moment();
+  public eightenYearsLimitDate = this.today.subtract(18, 'years')
+
   public interfaceOptions: any = {
     showBackdrop: true,
     backdropDismiss: true,
@@ -190,8 +193,6 @@ export class SeusDadosPage implements OnInit, OnDestroy {
     this.formHasChangesSubscription = this.formHasChanges$
     .subscribe((res: any) => {
       this.formHasChanges = res;
-      console.log(res);
-
     })
   }
 
@@ -228,6 +229,12 @@ export class SeusDadosPage implements OnInit, OnDestroy {
 
       await this.usersService.updateUserInfo(this.user.uid, userInfo)
       .then(async () => {
+        if (moment(this.personalDataForm.value.birthDateAsDate, 'YYYY-MM-DD').isSameOrBefore(this.eightenYearsLimitDate)) {
+          this.store.dispatch(UserStore.setEighteenAccess({ canAccessEighteenContent: true }));
+        } else {
+          this.store.dispatch(UserStore.setEighteenAccess({ canAccessEighteenContent: false }));
+        }
+
         await alertSuccess.present();
       })
       .catch(() => {

@@ -105,6 +105,18 @@ ion-content {
   height: 103px;
   position: relative;
 
+  .forbidden {
+    display: block;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    z-index: 315;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    font-size: 22px;
+  }
+
   ion-badge {
     position: absolute;
     top: 12px;

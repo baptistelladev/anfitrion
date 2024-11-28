@@ -119,9 +119,6 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
             this.establishmentService
             .getDocumentByValue(CollectionsEnum.PLACES, 'value', this.establishmentNameFromUrl)
             .then((establishmentFromService: IPlace | null) => {
-
-              console.log(establishmentFromService);
-
               if (establishmentFromService) {
                 this.establishment = establishmentFromService;
                 this.defineTitleFromPage(this.establishment.name);

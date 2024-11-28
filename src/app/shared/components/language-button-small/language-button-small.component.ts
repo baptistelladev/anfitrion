@@ -18,7 +18,6 @@ export class LanguageButtonSmallComponent  implements OnInit {
 
   ngOnInit() {
     console.log(this.currentLanguage);
-
   }
 
   public navToChangeLang(): void {
