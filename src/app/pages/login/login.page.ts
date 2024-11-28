@@ -321,7 +321,8 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
       name: [ '', [ Validators.required, Validators.minLength(3) ] ],
       email: [ '', [ Validators.required, Validators.email ] ],
       password: [ '', [ Validators.required, Validators.minLength(8) ] ],
-      confirmPassword: [ '', [ Validators.required, Validators.minLength(8) ] ]
+      confirmPassword: [ '', [ Validators.required, Validators.minLength(8) ] ],
+      terms: [ false, [ Validators.required ]]
     })
   }
 
