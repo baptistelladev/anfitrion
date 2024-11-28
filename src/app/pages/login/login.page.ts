@@ -17,6 +17,8 @@ import { IUSer } from 'src/app/shared/models/IUser';
 import { AnimationOptions } from 'ngx-lottie';
 import { AnimationItem } from 'lottie-web';
 import { PDFProgressData } from 'ng2-pdf-viewer';
+import { StorageService } from 'src/app/core/services/storage.service';
+import { ACCEPTED_TERMS_AND_CONDITIONS } from 'src/app/shared/consts/keys';
 
 @Component({
   selector: 'anfitrion-login',
@@ -82,7 +84,8 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
     private utilsService : UtilsService,
     private translate : TranslateService,
     private title : Title,
-    private backButtonService : BackButtonService
+    private backButtonService : BackButtonService,
+    private storageService : StorageService
   ) { }
 
   public async ngOnInit() {
@@ -90,6 +93,44 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
     this.initLoginForm();
     this.initCreateAccForm();
     this.getPasswordRules();
+
+    await this.storageService.getStorageKey(ACCEPTED_TERMS_AND_CONDITIONS).then(async (accepted: boolean) => {
+      if (!accepted) {
+        await this.alertCookies()
+      }
+    })
+  }
+
+  public async alertCookies() {
+    const alert = await this.overlayService.fireAlert({
+      mode: 'ios',
+      cssClass: 'anf-alert',
+      subHeader: this.translate.instant('LOGIN_PAGE.TERMS_AND_CONDITIONS_MODAL.TITLE'),
+      message: this.translate.instant('LOGIN_PAGE.TERMS_AND_CONDITIONS_MODAL.DESCRIPTION'),
+      keyboardClose: false,
+      buttons: [
+        {
+          role: 'cancel',
+          text: this.translate.instant('LOGIN_PAGE.TERMS_AND_CONDITIONS_MODAL.OK_BUTTON'),
+          handler: async () => {
+            await alert.dismiss();
+            await this.storageService.setStorageKey(ACCEPTED_TERMS_AND_CONDITIONS, true);
+          }
+        },
+        {
+          role: 'confirm',
+          text: this.translate.instant('LOGIN_PAGE.TERMS_AND_CONDITIONS_MODAL.READ_TERMS_BUTTON'),
+          handler: async () => {
+            await alert.dismiss().then(async () => {
+              this.toggleTermsAndConditionsModal(true);
+              await this.storageService.setStorageKey(ACCEPTED_TERMS_AND_CONDITIONS, true);
+            })
+          }
+        }
+      ]
+    })
+
+    await alert.present()
   }
 
   public ngAfterViewInit(): void {

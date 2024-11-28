@@ -107,7 +107,13 @@
       "BTN" : ["crear","una cuenta"]
     },
     "WHAT_IS" : "¿qué es el",
-    "ACC_IDENTIFIED" : "Hemos identificado su cuenta y lo redirigiremos"
+    "ACC_IDENTIFIED" : "Hemos identificado su cuenta y lo redirigiremos",
+    "TERMS_AND_CONDITIONS_MODAL" : {
+      "TITLE" : "Atención",
+      "DESCRIPTION" : "El anfitrión utiliza cookies que son necesarias para el funcionamiento adecuado de las plataformas web y móvil para mejorar su experiencia. Al acceder, acepta nuestros Términos y Condiciones de Uso.",
+      "OK_BUTTON" : "Entendí",
+      "READ_TERMS_BUTTON" : "Términos y Condiciones de Uso"
+    }
   },
   "CHANGE_LANG_PAGE" : {
     "PAGE_TITLE": "Cambia el idioma que ves en la Calle Gastronómica de Santos",

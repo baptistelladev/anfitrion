@@ -17,6 +17,7 @@ import { StatusBar, Style } from '@capacitor/status-bar';
 import { Platform } from '@ionic/angular';
 import { ConnectionService } from './core/services/connection.service';
 import * as moment from 'moment';
+import { OverlayService } from './shared/services/overlay.service';
 
 
 @Component({
@@ -39,7 +40,8 @@ export class AppComponent implements OnInit {
     private appInfoService : AppInfoService,
     private platform : Platform,
     private connectionService : ConnectionService,
-    private backButtonService : BackButtonService
+    private backButtonService : BackButtonService,
+    private overlayService : OverlayService
   ) {}
 
   async ngOnInit() {

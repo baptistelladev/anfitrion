@@ -107,7 +107,13 @@
       "BTN" : ["create","an account"]
     },
     "WHAT_IS" : "what is the",
-    "ACC_IDENTIFIED" : "We have identified your account and will redirect you"
+    "ACC_IDENTIFIED" : "We have identified your account and will redirect you",
+    "TERMS_AND_CONDITIONS_MODAL" : {
+      "TITLE" : "Attention",
+      "DESCRIPTION" : "The host uses cookies that are necessary for the proper functioning of web and mobile platforms to enhance your experience. By accessing, you agree to our Terms and Conditions of Use.",
+      "OK_BUTTON" : "Got it",
+      "READ_TERMS_BUTTON" : "Terms and Conditions of Use"
+    }
   },
   "CHANGE_LANG_PAGE" : {
     "PAGE_TITLE": "Change the language you see Santos Gastronomic Street",
