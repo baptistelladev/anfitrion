@@ -1,7 +1,7 @@
 <div class="social-network-wrapper full-width" [ngClass]="{ 'centered': centered }">
   <ng-container *ngFor="let socialNetwork of socialNetworks">
     <ion-button
-    *ngIf="socialNetwork.value === NetworksEnum.INSTAGRAM"
+    *ngIf="socialNetwork.value !== NetworksEnum.WHATSAPP"
     (click)="navToAppOrSite(socialNetwork)"
     [title]="socialNetwork.text"
     class="social-network-button"

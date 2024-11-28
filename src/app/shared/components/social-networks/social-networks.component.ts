@@ -46,15 +46,11 @@ export class SocialNetworksComponent  implements OnInit {
 
   public navToAppOrSite(socialNetwork: ISocialNetwork): void {
     if (this.platform.is('desktop')) {
-      this.openExternalUrl(socialNetwork.baseUrl + socialNetwork.user, '_blank');
+      this.openExternalUrl(socialNetwork.baseUrl + (socialNetwork.value === NetworksEnum.YOUTUBE || socialNetwork.value === NetworksEnum.TIKTOK ? '@' : '') + socialNetwork.user, '_blank');
     }
 
-    if (this.platform.is('mobileweb')) {
-      this.openExternalUrl(socialNetwork.baseUrl + socialNetwork.user, '_self');
-    }
-
-    if (this.platform.is('capacitor')) {
-      this.openExternalUrl(socialNetwork.appBaseUrl + socialNetwork.user);
+    if (this.platform.is('mobileweb') || this.platform.is('mobile')) {
+      this.openExternalUrl(socialNetwork.baseUrl + (socialNetwork.value === NetworksEnum.YOUTUBE || socialNetwork.value === NetworksEnum.TIKTOK ? '@' : '') + socialNetwork.user, '_self');
     }
   }
 
@@ -62,5 +58,8 @@ export class SocialNetworksComponent  implements OnInit {
     if (typeof window !== 'undefined') {
       window.open(url, target);
     }
+
+    console.log(url, target);
+
   }
 }
