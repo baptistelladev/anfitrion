@@ -60,7 +60,7 @@
     "YOUR_TIME" : "Seu tempo"
   },
   "TOASTS" : {
-    "CREATED_ACC_SUCCESS" : ["Conta criada com sucesso","acesse agora"]
+    "CREATED_ACC_SUCCESS" : ["Conta criada com sucesso","verificação de e-mail necessária"]
   },
   "FORGOT_PASSWORD_PAGE" : {
     "PAGE_TITLE" : "Recupere sua senha",
@@ -113,7 +113,8 @@
       "DESCRIPTION" : "O anfitrion utiliza cookies que são necessários para o funcionamento adequado das plataformas web e mobile para melhorar a sua experiência. Ao acessar você está de acordo com nossos Termos e Condições de Uso. para espanhol e ingles.",
       "OK_BUTTON" : "Entendi",
       "READ_TERMS_BUTTON" : "Termos e Condições de Uso"
-    }
+    },
+    "EMAIL_VERIFICATION" : "Você ainda não fez a verificação de e-mail obrigatória"
   },
   "CHANGE_LANG_PAGE" : {
     "PAGE_TITLE" : "Troque o idioma que usa na Rua Gastronômica de Santos",
@@ -197,7 +198,8 @@
     "EXIT_APP_TITLE" : "Sair do aplicativo",
     "EXIT_APP_TEXT" : "Você deseja sair do aplicativo agora?",
     "EXIT_APP_YES" : "Sim, sair",
-    "LESS_THAN_18" : "Você possui menos de 18 anos"
+    "LESS_THAN_18" : "Você possui menos de 18 anos ou ainda não nos informou sua idade",
+    "AGE_LIMIT_18" : "Você não tem idade suficiente para acessar este conteúdo ou ainda não nos informou sua idade"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nosso próposito aqui é fazer com que voê economize o seu bem mais precioso:","o tempo"],

@@ -127,7 +127,7 @@ export class SeusDadosPage implements OnInit, OnDestroy {
 
   public clearFieldKeepJustName(event: any): void {
     let name: string = this.personalDataForm.value.name.replace(/[^a-zA-ZÀ-ÿ]/g, '');
-    name = name.charAt(0).toUpperCase() + name.slice(1);
+    name = name.charAt(0).toUpperCase() + name.slice(1).toLocaleLowerCase();
     this.personalDataForm.patchValue({ name: name });
   }
 

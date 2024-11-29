@@ -14,6 +14,7 @@ import { ICity } from 'src/app/shared/models/ICity';
 import { PlacesService } from 'src/app/core/services/firebase/places.service';
 import { IPlace } from 'src/app/shared/models/IPlace';
 import { CollectionsEnum } from 'src/app/shared/enums/Collection';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'anfitrion-explorar',
@@ -285,7 +286,8 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     private title : Title,
     public navCtrl : NavController,
     private overlayService : OverlayService,
-    private placesService : PlacesService
+    private placesService : PlacesService,
+    private translate : TranslateService
   ) { }
 
   ngOnInit() {
@@ -436,7 +438,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
       const toast = await this.overlayService.fireToast({
         mode: 'ios',
         cssClass: 'anf-toast anf-toast-danger',
-        message: 'Você não tem idade suficiente para acessar este conteúdo.',
+        message: `${this.translate.instant('SHARED.AGE_LIMIT_18')}`,
         position: 'top',
         icon: 'ban-outline',
         duration: 2000

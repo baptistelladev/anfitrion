@@ -7,5 +7,6 @@ export interface IUSer {
   lastName?: string,
   birthDate?: string,
   userType?: string,
-  sex?: string
+  sex?: string,
+  readAndAcceptedTerms: boolean
 }
