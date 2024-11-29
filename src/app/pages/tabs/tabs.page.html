@@ -1,24 +1,27 @@
 <ion-tabs
-(ionTabsWillChange)="checkRoute(value)"
 #value
 mode="ios"
 class="ion-no-border">
   <ion-tab-bar
   *ngIf="!hideTabs"
-  [ngClass]="{ 'dark-tab' : applyDarkTabBar, 'light-tab' : !applyDarkTabBar }"
+  [ngClass]="{ 'dark-theme' : applyDarkTabBar, 'light-theme' : !applyDarkTabBar }"
   slot="bottom">
-    <ion-tab-button
-    *ngFor="let tab of MOCK_TABS"
-    [tab]="tab.page"
-    [title]="
+    <ion-segment
+    [ngClass]="{ 'dark-theme' : applyDarkTabBar, 'light-theme' : !applyDarkTabBar }"
+    [(ngModel)]="currentPage"
+    (ionChange)="segmentHasChanged($event)" class="anf-main-like-tabs">
+      <ion-segment-button *ngFor="let tab of MOCK_TABS"
+      [value]="tab.page"
+      [title]="
       tab?.value === 'explorar' ? ('COMPONENTS.TABS.EXPLORE' | translate) :
       tab?.value === 'menu' ? ('COMPONENTS.TABS.MENU' | translate) : ('COMPONENTS.TABS.SUGGESTIONS' | translate)
-    ">
-      <ion-icon [name]="tab.icon + '-outline'"></ion-icon>
+      ">
+        <ion-icon [name]="tab.icon + '-outline'"></ion-icon>
 
-      <ng-container *ngIf="tab?.value === 'explorar'">{{ 'COMPONENTS.TABS.EXPLORE' | translate }}</ng-container>
-      <ng-container *ngIf="tab?.value === 'sugestoes-do-anfitriao'">{{ 'COMPONENTS.TABS.SUGGESTIONS' | translate }}</ng-container>
-      <ng-container *ngIf="tab?.value === 'menu'">{{ 'COMPONENTS.TABS.MENU' | translate }}</ng-container>
-    </ion-tab-button>
+        <ng-container *ngIf="tab?.value === 'explorar'">{{ 'COMPONENTS.TABS.EXPLORE' | translate }}</ng-container>
+        <ng-container *ngIf="tab?.value === 'sugestoes-do-anfitriao'">{{ 'COMPONENTS.TABS.SUGGESTIONS' | translate }}</ng-container>
+        <ng-container *ngIf="tab?.value === 'menu'">{{ 'COMPONENTS.TABS.MENU' | translate }}</ng-container>
+      </ion-segment-button>
+    </ion-segment>
   </ion-tab-bar>
 </ion-tabs>
