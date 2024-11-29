@@ -120,7 +120,7 @@ class="ion-content-w-linear-bg">
               *ngIf="place.show">
                 <div
                 class="feature-item-wrapper">
-                  <ion-badge *ngIf="place.atLeastOneLength" class="font-baloo fs-14 color-green">{{ place.atLeastOneLength }}</ion-badge>
+                  <ion-badge *ngIf="place.atLeastOneLength && (place.userRespectAgeLimit || place.userRespectAgeLimit === null)" class="font-baloo fs-14 color-green">{{ place.atLeastOneLength }}</ion-badge>
 
                   <ion-text mode="ios" class="forbidden" *ngIf="place.ageLimit === 18 && !place.userRespectAgeLimit">
                     <p>🔞</p>
