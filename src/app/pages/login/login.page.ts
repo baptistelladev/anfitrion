@@ -196,7 +196,7 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
           this.navCtrl.navigateForward(['/logado/bem-vindo-a-baixada-santista']);
         })
       } else {
-        toastError.message = `Você ainda não fez a verificação de e-mail obrigatória`;
+        toastError.message = `${this.translate.instant('LOGIN_PAGE.EMAIL_VERIFICATION')}`;
         await toastError.present();
         this.isDoingLogin = false;
       }
@@ -227,7 +227,8 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
     })
 
     let userInfo: IUSer = {
-      firstName: this.formCreateAccGroup.value.name
+      firstName: this.formCreateAccGroup.value.name,
+      readAndAcceptedTerms: this.formCreateAccGroup.value.terms
     }
 
     await this.authService.createUserWithEmailAndPassword(this.formCreateAccGroup.value.email, this.formCreateAccGroup.value.password, userInfo)
@@ -303,7 +304,7 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
 
   public clearFieldKeepJustName(event: any): void {
     let name: string = this.formCreateAccGroup.value.name.replace(/[^a-zA-ZÀ-ÿ]/g, '');
-    name = name.charAt(0).toUpperCase() + name.slice(1);
+    name = name.charAt(0).toUpperCase() + name.slice(1).toLocaleLowerCase();
     this.formCreateAccGroup.patchValue({ name: name });
   }
 
@@ -322,7 +323,7 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
       email: [ '', [ Validators.required, Validators.email ] ],
       password: [ '', [ Validators.required, Validators.minLength(8) ] ],
       confirmPassword: [ '', [ Validators.required, Validators.minLength(8) ] ],
-      terms: [ false, [ Validators.required ]]
+      terms: [ null, [ Validators.required ]]
     })
   }
 
@@ -344,10 +345,13 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
 
   public checkPasswordRules(): void {
     let senha: string = this.formCreateAccGroup.get('password')?.value;
-    this.utilsService.checkPasswordRules(senha);
-    this.passwordIsValid = this.passwordRules.every((rule) => rule.valid === true);
 
-    this.checkPasswordsMatch();
+    if (senha.length > 0) {
+      this.utilsService.checkPasswordRules(senha);
+      this.passwordIsValid = this.passwordRules.every((rule) => rule.valid === true);
+
+      this.checkPasswordsMatch();
+    }
   }
 
   public checkPasswordsMatch(): boolean {

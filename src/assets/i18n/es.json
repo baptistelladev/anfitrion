@@ -60,7 +60,7 @@
     "YOUR_TIME" : "Tu tiempo"
   },
   "TOASTS" : {
-    "CREATED_ACC_SUCCESS" : ["Cuenta creada con éxito", "accede ahora"]
+    "CREATED_ACC_SUCCESS" : ["Cuenta creada con éxito", "verificación de correo electrónico necesaria"]
   },
   "FORGOT_PASSWORD_PAGE" : {
     "PAGE_TITLE" : "Recupera tu contraseña",
@@ -113,7 +113,8 @@
       "DESCRIPTION" : "El anfitrión utiliza cookies que son necesarias para el funcionamiento adecuado de las plataformas web y móvil para mejorar su experiencia. Al acceder, acepta nuestros Términos y Condiciones de Uso.",
       "OK_BUTTON" : "Entendí",
       "READ_TERMS_BUTTON" : "Términos y Condiciones de Uso"
-    }
+    },
+    "EMAIL_VERIFICATION": "Aún no has completado la verificación de correo electrónico obligatoria"
   },
   "CHANGE_LANG_PAGE" : {
     "PAGE_TITLE": "Cambia el idioma que ves en la Calle Gastronómica de Santos",
@@ -198,7 +199,8 @@
     "EXIT_APP_TITLE": "Salir de la aplicación",
     "EXIT_APP_TEXT": "¿Desea salir de la aplicación ahora?",
     "EXIT_APP_YES": "Sí, salir",
-    "LESS_THAN_18" : "Tienes menos de 18 años"
+    "LESS_THAN_18" : "Tienes menos de 18 años o aún no nos has informado tu edad",
+    "AGE_LIMIT_18" : "No tienes la edad suficiente para acceder a este contenido o aún no nos has informado tu edad"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nuestro propósito aquí es ayudarte a ahorrar tu bien más precioso:","el tiempo"],

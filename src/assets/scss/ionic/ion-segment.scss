@@ -53,7 +53,7 @@ ion-segment {
 
       ion-segment-button {
         --color: var(--gray-text);
-        --indicator-color: var(--white);
+        --indicator-color: var(--transparent);
 
         &.segment-button-checked {
           --color: var(--gray-text);
@@ -67,9 +67,9 @@ ion-segment {
 
     ion-segment-button {
       --border-radius: 10px;
-      --indicator-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-      --padding-end: 16px;
-      --padding-start: 16px;
+      --indicator-box-shadow: none;
+      --padding-end: 0;
+      --padding-start: 0;
       font-size: 11px;
 
       ion-icon {
