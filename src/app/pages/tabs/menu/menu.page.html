@@ -41,7 +41,11 @@
 
                 <ion-col *ngFor="let option of menuOptions" [size]="4">
                   <div class="menu-item-wrapper">
+                    <ion-chip mode="ios" *ngIf="option.soon" [ngClass]="{ 'soon': option.soon }" class="txt-uppercase">{{ 'SHARED.COMING_SOON' | translate }}</ion-chip>
+
                     <ion-item
+                    [disabled]="option.soon"
+                    [ngClass]="{'is-disabled': option.soon}"
                     [title]="option.text[currentLanguage.value]"
                     (click)="goToPage(option.route)"
                     mode="ios"

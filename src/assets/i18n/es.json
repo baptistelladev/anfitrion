@@ -197,7 +197,8 @@
     "UPDATE_MY_INFO_BTN": ["actualizar", "mis datos"],
     "EXIT_APP_TITLE": "Salir de la aplicación",
     "EXIT_APP_TEXT": "¿Desea salir de la aplicación ahora?",
-    "EXIT_APP_YES": "Sí, salir"
+    "EXIT_APP_YES": "Sí, salir",
+    "LESS_THAN_18" : "Tienes menos de 18 años"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nuestro propósito aquí es ayudarte a ahorrar tu bien más precioso:","el tiempo"],

@@ -193,10 +193,11 @@
     "FIRST_NAME" : "Primeiro nome",
     "SECOND_NAME" : "Sobrenome",
     "BIRTHDATE" : "Data de nascimento",
-    "UPDATE_MY_INFO_BTN": ["update", "my profile"],
+    "UPDATE_MY_INFO_BTN": ["atualizar", "meu perfil"],
     "EXIT_APP_TITLE" : "Sair do aplicativo",
     "EXIT_APP_TEXT" : "Você deseja sair do aplicativo agora?",
-    "EXIT_APP_YES" : "Sim, sair"
+    "EXIT_APP_YES" : "Sim, sair",
+    "LESS_THAN_18" : "Você possui menos de 18 anos"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nosso próposito aqui é fazer com que voê economize o seu bem mais precioso:","o tempo"],

@@ -229,6 +229,22 @@ class="ion-content-w-linear-bg">
             </div>
           </ion-col>
 
+          <!-- AGE LIMIT: 18 YEARS -->
+          <ion-col size="12" *ngIf="!respectAgeLimit">
+            <ion-item
+            lines="none"
+            mode="ios"
+            class="simulate-bootstrap-alert danger line-height-18">
+              <ion-text mode="ios" class="line-height-22">
+                <p class="mg-right-16 fs-24">🔞</p>
+              </ion-text>
+
+              <ion-text mode="ios" class="color-bootstrap-danger">
+                <p class="fs-14">{{ 'SHARED.LESS_THAN_18' | translate }}.</p>
+              </ion-text>
+            </ion-item>
+          </ion-col>
+
           <ion-col size="12">
             <ion-text mode="ios">
               <p class="fs-12 color-gray-mid mg-bottom-8">
