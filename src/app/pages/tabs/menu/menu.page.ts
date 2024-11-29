@@ -22,21 +22,33 @@ export class MenuPage implements OnInit, OnDestroy {
   public menuOptions: any[] = [
     {
       text: {
-        pt: 'Sua conta',
-        en: 'Your account',  // Alterado para refletir o significado correto
-        es: 'Su cuenta'
+        pt: 'Favoritos',
+        en: 'Favorits',  // Alterado para refletir o significado correto
+        es: 'Favoritos'
       },
-      icon: 'id-card',
-      route: 'sua-conta'
+      icon: 'star',
+      route: 'sua-conta',
+      soon: true
     },
     {
       text: {
-        pt: 'Seus dados',
-        en: 'Your data',
-        es: 'Sus datos'
+        pt: 'Conta',
+        en: 'Account',  // Alterado para refletir o significado correto
+        es: 'Cuenta'
+      },
+      icon: 'id-card',
+      route: 'sua-conta',
+      soon: false
+    },
+    {
+      text: {
+        pt: 'Dados',
+        en: 'Data',
+        es: 'Datos'
       },
       icon: 'finger-print',
-      route: 'seus-dados'
+      route: 'seus-dados',
+      soon: false
     },
     {
       text: {
@@ -45,7 +57,8 @@ export class MenuPage implements OnInit, OnDestroy {
         es: 'Contacto'
       },
       icon: 'call',
-      route: 'contato'
+      route: 'contato',
+      soon: false
     },
     {
       text: {
@@ -54,7 +67,8 @@ export class MenuPage implements OnInit, OnDestroy {
         es: 'Sobre'
       },
       icon: 'terminal',
-      route: 'sobre-nos'
+      route: 'sobre-nos',
+      soon: false
     },
     {
       text: {
@@ -63,7 +77,8 @@ export class MenuPage implements OnInit, OnDestroy {
         es: 'Términos'
       },
       icon: 'document-text',
-      route: 'termos-e-condicoes-de-uso'
+      route: 'termos-e-condicoes-de-uso',
+      soon: false
     }
   ]
 

@@ -121,6 +121,10 @@ export class SugestoesDoAnfitriaoPage implements OnInit, OnDestroy {
     this.navCtrl.navigateForward(['/logado/contato']);
   }
 
+  public navTo(): void {
+    this.navCtrl.navigateBack(['/logado/explorar']);
+  }
+
   ngOnDestroy() {
     this.currentLanguageSubscription.unsubscribe();
     this.suggestionsBaixadaSantistaSubscription.unsubscribe();

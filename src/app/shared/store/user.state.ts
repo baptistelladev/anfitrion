@@ -36,6 +36,12 @@ export const setEighteenAccess = createAction(
   props<{ canAccessEighteenContent: boolean }>()
 )
 
+// AO ATUALIZAR OS DADOS DO USUÁRIO, DEVEMOS RECUPERAR DO BANCO E ATUALIZAR NO NGRX MAS SOMENTE AS PROPRIEDADES QUE EXISTEM NO BANCO E QUE PODEM SER ALTERADOS.
+export const updateUserJustMainInfo = createAction(
+  '[USER] Atualiza o user mas somente as propriedades do banco',
+  props<{ userJustMainInfo: { firstName: string, lastName: string, birthDate: string, userType: string, sex: string }  }>()
+)
+
 export const userReducer = createReducer(
   userInitialState,
   on(
@@ -49,6 +55,20 @@ export const userReducer = createReducer(
   on(
     setEighteenAccess,
     (state, { canAccessEighteenContent }): IUserState => ({ ...state, canAccessEighteenContent: canAccessEighteenContent })
+  ),
+  on(
+    updateUserJustMainInfo,
+    (state, { userJustMainInfo }): IUserState => ({
+      ...state,
+      user: {
+        ...state.user,
+        firstName: userJustMainInfo.firstName,
+        lastName: userJustMainInfo.lastName,
+        birthDate: userJustMainInfo.birthDate,
+        userType: userJustMainInfo.userType,
+        sex: userJustMainInfo.sex
+      }
+    })
   )
 )
 

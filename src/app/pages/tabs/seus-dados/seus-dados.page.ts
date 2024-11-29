@@ -25,7 +25,8 @@ import { TranslateService } from '@ngx-translate/core';
 export class SeusDadosPage implements OnInit, OnDestroy {
 
   public today = moment();
-  public eightenYearsLimitDate = this.today.subtract(18, 'years')
+  public eightenYearsLimitDate = this.today.subtract(18, 'years');
+  public respectAgeLimit: boolean = false;
 
   public interfaceOptions: any = {
     showBackdrop: true,
@@ -144,6 +145,13 @@ export class SeusDadosPage implements OnInit, OnDestroy {
     this.personalDataForm.patchValue({
       birthDateAsText: this.currentLanguage.value === 'en' ? moment(e.detail.value).format('YYYY/MM/DD') : moment(e.detail.value).format('DD/MM/YYYY')
     })
+
+    if (moment(e.detail.value).isSameOrBefore(this.eightenYearsLimitDate)) {
+      this.respectAgeLimit = true;
+    } else {
+      this.respectAgeLimit = false;
+    }
+
   }
 
   public initialBirthDateFormat(): void {
@@ -172,6 +180,12 @@ export class SeusDadosPage implements OnInit, OnDestroy {
         birthDateAsText: '',
         birthDateAsDate: this.maxDateAsDatetime
       })
+    }
+
+    if (moment(user.birthDate).isSameOrBefore(this.eightenYearsLimitDate)) {
+      this.respectAgeLimit = true;
+    } else {
+      this.respectAgeLimit = false;
     }
   }
 
@@ -222,7 +236,7 @@ export class SeusDadosPage implements OnInit, OnDestroy {
       let userInfo = {
         firstName: this.personalDataForm.value.name,
         lastName: this.personalDataForm.value.secondName,
-        birthDate: this.personalDataForm.value.birthDateAsDate,
+        birthDate: moment(this.personalDataForm.value.birthDateAsDate).format('YYYY-MM-DD'),
         userType: this.personalDataForm.value.type,
         sex: this.personalDataForm.value.sex
       }

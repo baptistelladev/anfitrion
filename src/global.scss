@@ -353,6 +353,11 @@ ion-item {
       border: 1px solid var(--bootstrap-success-border);
     }
 
+    &.danger {
+      --background: var(--bootstrap-danger-light-bg);
+      border: 1px solid var(--bootstrap-danger-border);
+    }
+
     ion-icon {
       font-size: 32px;
     }

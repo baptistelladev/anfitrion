@@ -15,6 +15,9 @@ import * as moment from 'moment';
 })
 export class UsersService {
 
+  public today = moment();
+  public eightenYearsLimitDate = this.today.subtract(18, 'years');
+
   constructor(
     private firestore : Firestore,
     private store : Store,
@@ -58,15 +61,19 @@ export class UsersService {
 
   private dispatchEighteenAccess(user: IUSer): Promise<void> {
     return new Promise((resolve) => {
-      const today = moment();
-      const eightenYearsLimitDate = today.subtract(18, 'years')
-
-      if (user.birthDate && moment(user.birthDate, 'YYYY-MM-DD').isSameOrBefore(eightenYearsLimitDate)) {
+      if (user.birthDate && moment(user.birthDate, 'YYYY-MM-DD').isSameOrBefore(this.eightenYearsLimitDate)) {
         this.store.dispatch(UserStore.setEighteenAccess({ canAccessEighteenContent: true }));
       } else {
         this.store.dispatch(UserStore.setEighteenAccess({ canAccessEighteenContent: false }));
       }
 
+      resolve();
+    });
+  }
+
+  private dispatchUpdateUserJustMainInfo(userJustMainInfo: any): Promise<void> {
+    return new Promise((resolve) => {
+      this.store.dispatch(UserStore.updateUserJustMainInfo({ userJustMainInfo: userJustMainInfo }));
       resolve();
     });
   }
@@ -96,9 +103,18 @@ export class UsersService {
     try {
       const docRef = doc(this.firestore, CollectionsEnum.USERS, docId);
       await updateDoc(docRef, userInfo);
-      const docSnap = await getDoc(docRef);
+      const docSnap = await getDoc(docRef)
       if (docSnap.exists()) {
-        await this.dispatchUser({ ...docSnap.data() as IUSer });
+        let userJustMainInfo = {
+          firstName: userInfo.firstName,
+          lastName: userInfo.lastName,
+          birthDate: userInfo.birthDate,
+          userType: userInfo.userType,
+          sex: userInfo.sex
+        }
+
+        await this.dispatchUpdateUserJustMainInfo(userJustMainInfo);
+
       }
     } catch (error) {
       console.error('Erro ao atualizar documento:', error);
