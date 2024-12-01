@@ -15,6 +15,9 @@ import { AuthService } from 'src/app/core/services/firebase/auth.service';
 import { OverlayService } from 'src/app/shared/services/overlay.service';
 import { Auth } from '@angular/fire/auth';
 import { TranslateService } from '@ngx-translate/core';
+import { SuggestionsService } from 'src/app/core/services/firebase/suggestions.service';
+import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
+import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
 
 @Component({
   selector: 'anfitrion-sua-conta',
@@ -74,7 +77,9 @@ export class SuaContaPage implements OnInit, OnDestroy {
     private authService : AuthService,
     private overlayService : OverlayService,
     private auth: Auth,
-    private translate : TranslateService
+    private translate : TranslateService,
+    private suggestionsService : SuggestionsService,
+    private analyticsService : AnalyticsService
   ) { }
 
   ngOnInit() {
@@ -87,6 +92,7 @@ export class SuaContaPage implements OnInit, OnDestroy {
 
   ionViewWillEnter(): void {
     this.title.setTitle('Sua conta');
+    this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
   public initNewEmailForm(): void {

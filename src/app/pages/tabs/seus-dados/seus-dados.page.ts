@@ -16,6 +16,8 @@ import { IUserType } from 'src/app/shared/models/IUSerType';
 import { UsersService } from 'src/app/core/services/firebase/users.service';
 import { OverlayService } from 'src/app/shared/services/overlay.service';
 import { TranslateService } from '@ngx-translate/core';
+import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
+import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 
 @Component({
   selector: 'anfitrion-seus-dados',
@@ -76,7 +78,8 @@ export class SeusDadosPage implements OnInit, OnDestroy {
     private title : Title,
     private usersService : UsersService,
     private overlayService : OverlayService,
-    private translate : TranslateService
+    private translate : TranslateService,
+    private analyticsService : AnalyticsService
   ) { }
 
   ngOnInit() {
@@ -88,6 +91,7 @@ export class SeusDadosPage implements OnInit, OnDestroy {
 
   ionViewWillEnter(): void {
     this.title.setTitle('Seus dados');
+    this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
   public back(): void {

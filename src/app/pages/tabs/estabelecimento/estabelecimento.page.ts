@@ -75,6 +75,9 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
     this.getCurrentLanguageFromNGRX();
     this.selectOption('location');
     this.getCurrentEstablishment();
+  }
+
+  public ionViewWillEnter(): void {
     this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 

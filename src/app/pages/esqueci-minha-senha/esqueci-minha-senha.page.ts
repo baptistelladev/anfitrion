@@ -10,6 +10,8 @@ import { AuthService } from 'src/app/core/services/firebase/auth.service';
 import { OverlayService } from 'src/app/shared/services/overlay.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Title } from '@angular/platform-browser';
+import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
+import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 
 @Component({
   selector: 'anfitrion-esqueci-minha-senha',
@@ -33,7 +35,8 @@ export class EsqueciMinhaSenhaPage implements OnInit, OnDestroy {
     private authService : AuthService,
     private overlayService : OverlayService,
     private title : Title,
-    private backButtonService : BackButtonService
+    private backButtonService : BackButtonService,
+    private analyticsService : AnalyticsService
   ) { }
 
   ngOnInit() {
@@ -43,6 +46,7 @@ export class EsqueciMinhaSenhaPage implements OnInit, OnDestroy {
 
   ionViewWillEnter(): void {
     this.title.setTitle('Esqueci minha senha');
+    this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
   public back(): void {

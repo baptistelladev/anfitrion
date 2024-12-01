@@ -11,6 +11,8 @@ import { CollectionsEnum } from 'src/app/shared/enums/Collection';
 import { SuggestionsEnum } from 'src/app/shared/enums/Suggestions';
 import { ISuggestion } from 'src/app/shared/models/ISuggestion';
 import { OverlayService } from 'src/app/shared/services/overlay.service';
+import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
+import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 
 @Component({
   selector: 'anfitrion-sugestoes-do-anfitriao',
@@ -45,7 +47,8 @@ export class SugestoesDoAnfitriaoPage implements OnInit, OnDestroy {
     private navCtrl : NavController,
     private title : Title,
     private suggestionsService : SuggestionsService,
-    private overlayService : OverlayService
+    private overlayService : OverlayService,
+    private analyticsService : AnalyticsService
   ) { }
 
   ngOnInit() {
@@ -55,6 +58,7 @@ export class SugestoesDoAnfitriaoPage implements OnInit, OnDestroy {
 
   ionViewWillEnter(): void {
     this.title.setTitle('Sugestões do anfitrião');
+    this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
   public seeSuggestion(suggestion: ISuggestion) {

@@ -19,11 +19,12 @@ export class PaginaNaoExistePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
+
   }
 
-  ionViewDidEnter(): void {
-    this.title.setTitle('Página não existe')
+  ionViewWillEnter(): void {
+    this.title.setTitle('Página não existe');
+    this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
   public back(): void {

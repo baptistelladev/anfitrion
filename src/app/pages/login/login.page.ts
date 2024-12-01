@@ -19,6 +19,8 @@ import { AnimationItem } from 'lottie-web';
 import { PDFProgressData } from 'ng2-pdf-viewer';
 import { StorageService } from 'src/app/core/services/storage.service';
 import { ACCEPTED_TERMS_AND_CONDITIONS } from 'src/app/shared/consts/keys';
+import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
+import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 
 @Component({
   selector: 'anfitrion-login',
@@ -85,7 +87,8 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
     private translate : TranslateService,
     private title : Title,
     private backButtonService : BackButtonService,
-    private storageService : StorageService
+    private storageService : StorageService,
+    private analyticsService : AnalyticsService
   ) { }
 
   public async ngOnInit() {
@@ -99,6 +102,15 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
         await this.alertCookies()
       }
     })
+  }
+
+  public ngAfterViewInit(): void {
+    this.swiper = this.swiperRef?.nativeElement.swiper;
+  }
+
+  public ionViewWillEnter(): void {
+    this.title.setTitle('Login');
+    this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
   public async alertCookies() {
@@ -131,14 +143,6 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
     })
 
     await alert.present()
-  }
-
-  public ngAfterViewInit(): void {
-    this.swiper = this.swiperRef?.nativeElement.swiper;
-  }
-
-  public ionViewWillEnter(): void {
-    this.title.setTitle('Login');
   }
 
   public animationCreated(animationItem: AnimationItem): void {

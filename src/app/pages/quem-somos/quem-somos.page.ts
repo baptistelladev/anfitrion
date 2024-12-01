@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
+import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 import { ILang } from 'src/app/shared/models/ILang';
 import Swiper from 'swiper';
 
@@ -73,7 +75,8 @@ export class QuemSomosPage implements OnInit, AfterViewInit {
   swiper?: Swiper;
 
   constructor(
-    private modalCtrl : ModalController
+    private modalCtrl : ModalController,
+    private analyticsService : AnalyticsService
   ) { }
 
   ngOnInit() {
@@ -85,6 +88,10 @@ export class QuemSomosPage implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.swiper?.autoplay.start();
     }, 1000);
+  }
+
+  ionViewWillEnter(): void {
+    this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
   public closeModal(): void {

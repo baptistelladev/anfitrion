@@ -103,11 +103,11 @@ export class MenuPage implements OnInit, OnDestroy {
   ngOnInit() {
     this.getUserFromNGRX();
     this.getCurrentLanguageFromNGRX();
-    this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
   ionViewWillEnter(): void {
     this.title.setTitle('Menu');
+    this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
   public getUserFromNGRX(): void {
