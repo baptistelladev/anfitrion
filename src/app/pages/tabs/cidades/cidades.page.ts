@@ -8,6 +8,9 @@ import { Store } from '@ngrx/store';
 import * as AppStore from './../../../shared/store/app.state';
 import { StorageService } from 'src/app/core/services/storage.service';
 import { CURRENT_CITY } from 'src/app/shared/consts/keys';
+import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
+import { Title } from '@angular/platform-browser';
+import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 
 
 @Component({
@@ -26,10 +29,17 @@ export class CidadesPage implements OnInit {
   constructor(
     private modalCtrl : ModalController,
     private store : Store,
-    private storageService : StorageService
+    private storageService : StorageService,
+    private analyticsService : AnalyticsService,
+    private title : Title
   ) { }
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter(): void {
+    this.title.setTitle('Contato');
+    this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
   public async selectCity(city: any) {

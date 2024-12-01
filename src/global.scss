@@ -183,7 +183,10 @@ hr.anfitrion-divider {
   ion-item {
     --min-height: 60px;
     overflow: visible;
-    --background: transparent;
+    --background: var(--transparent);
+    --background-activated: var(--transparent);
+    --background-focused: var(--transparent);
+    --background-hover: var(--transparent);
     --border-width: 1px;
     --border-color: var(--gray-c);
     --border-style: solid;
@@ -217,6 +220,8 @@ hr.anfitrion-divider {
       --placeholder-color: var(--gray-c);
       --placeholder-opacity: 1;
       --color: var(--gray-text);
+      border-radius: 12px;
+      --border-radius: 12px;
     }
 
     ion-select.select-on-form {

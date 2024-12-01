@@ -49,11 +49,11 @@ export class ContatoPage implements OnInit, OnDestroy {
     this.setInitialSegment('comercial');
     this.getCurrentLanguageFromNGRX();
     this.getContactInfoFromNGRX();
-    this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
-  ionViewDidEnter(): void {
+  ionViewWillEnter(): void {
     this.title.setTitle('Contato');
+    this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
   public getCurrentLanguageFromNGRX(): void {

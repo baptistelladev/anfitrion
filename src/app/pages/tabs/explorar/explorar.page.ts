@@ -15,6 +15,8 @@ import { PlacesService } from 'src/app/core/services/firebase/places.service';
 import { IPlace } from 'src/app/shared/models/IPlace';
 import { CollectionsEnum } from 'src/app/shared/enums/Collection';
 import { TranslateService } from '@ngx-translate/core';
+import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
+import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
 
 @Component({
   selector: 'anfitrion-explorar',
@@ -287,7 +289,8 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     public navCtrl : NavController,
     private overlayService : OverlayService,
     private placesService : PlacesService,
-    private translate : TranslateService
+    private translate : TranslateService,
+    private analyticsService : AnalyticsService
   ) { }
 
   ngOnInit() {
@@ -304,6 +307,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
   ionViewWillEnter(): void {
     this.title.setTitle('Explorar');
+    this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
   public async getPlaces() {

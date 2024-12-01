@@ -19,6 +19,8 @@ import { MOCK_FILTERS } from 'src/app/shared/mocks/MockFilters';
 import { IFIrebaseFilter } from 'src/app/shared/models/IFirebaseFilter';
 import { IFilter } from 'src/app/shared/models/IFilter';
 import { FilterEnum } from 'src/app/shared/enums/FilterEnum';
+import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
+import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 
 @Component({
   selector: 'anfitrion-lugar-na-cidade',
@@ -78,16 +80,21 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
     private store : Store,
     private title : Title,
     private route : ActivatedRoute,
-    private placesService : PlacesService
+    private placesService : PlacesService,
+    private analyticsService : AnalyticsService
   ) { }
 
   ngOnInit() {
     this.getCurrentLanguageFromNGRX();
-    this.title.setTitle('Lugares')
     this.getRouter();
     this.setFilters();
     this.initialFilter('ALL');
     this.defineActiveFilter('ALL');
+  }
+
+  ionViewWillEnter(): void {
+    this.title.setTitle('Lugares');
+    this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
   ngAfterViewInit(): void {

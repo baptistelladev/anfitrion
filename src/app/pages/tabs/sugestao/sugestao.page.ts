@@ -271,11 +271,10 @@ export class SugestaoPage implements OnInit, OnDestroy {
     this.defineActiveFilter('ALL');
     this.getCurrentLanguageFromNGRX();
     this.getParkings();
-    this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
   ionViewWillEnter(): void {
-
+    this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
   public initialFilter(value: string) {

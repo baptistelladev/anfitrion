@@ -43,11 +43,12 @@ export class TrocarIdiomaPage implements OnInit, OnDestroy {
   ngOnInit() {
     this.initLanguageForm();
     this.getCurrentLanguageFromNGRX();
-    this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
+
   }
 
   ionViewWillEnter(): void {
     this.title.setTitle('Trocar idioma');
+    this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
   public getCurrentLanguageFromNGRX(): void {

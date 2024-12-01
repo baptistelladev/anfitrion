@@ -9,6 +9,7 @@ import { AnalyticsService } from 'src/app/core/services/firebase/analytics.servi
 import { TranslateService } from '@ngx-translate/core';
 import { IUSer } from 'src/app/shared/models/IUser';
 import * as UserStore from './../../../shared/store/user.state';
+import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 
 
 @Component({
@@ -42,6 +43,7 @@ export class SobreNosPage implements OnInit, OnDestroy {
 
   ionViewWillEnter(): void {
     this.title.setTitle('Sobre nós');
+    this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
   public getCurrentLanguageFromNGRX(): void {

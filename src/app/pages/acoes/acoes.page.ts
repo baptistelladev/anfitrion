@@ -13,6 +13,8 @@ import * as AppStore from './../../shared/store/app.state';
 import { UsersService } from 'src/app/core/services/firebase/users.service';
 import { AuthService } from 'src/app/core/services/firebase/auth.service';
 import { OverlayService } from 'src/app/shared/services/overlay.service';
+import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
+import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 
 @Component({
   selector: 'anfitrion-acoes',
@@ -72,7 +74,8 @@ export class AcoesPage implements OnInit, OnDestroy {
     private utilsService : UtilsService,
     private store : Store,
     private authService : AuthService,
-    private overlayService : OverlayService
+    private overlayService : OverlayService,
+    private analyticsService : AnalyticsService
   ) { }
 
   async ngOnInit() {
@@ -118,6 +121,10 @@ export class AcoesPage implements OnInit, OnDestroy {
         });
       }
     }
+  }
+
+  ionViewWillEnter(): void {
+    this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
   public getCurrentLanguageFromNGRX(): void {
