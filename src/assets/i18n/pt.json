@@ -52,8 +52,10 @@
     "OF_BAIXADA" : ["da"],
     "YOU_ARE_IN" : "você está em",
     "EXPLORING" : "Explorando",
-    "CITY_PLACES_EXPLORING" : "Para quem procura por gastronomia, drinks, etc",
-    "BEACH_PLACES_EXPLORING" : "Para quem procura por comida, bebida, etc"
+    "CITY_PLACES_EXPLORING" : "Para quem quer conhecer ou encontrar um local para se alimentar",
+    "BEACH_PLACES_EXPLORING" : "Para quem quer conhecer ou procurar um local para se alimentar",
+    "CITY_PEOPLE_EXPLORING" : "Para quem quer consumir na cidade com um profissional autonomo",
+    "BEACH_PEOPLE_EXPLORING" : "Para quem quer consumir na praia com um profissional autonomo"
   },
   "WELCOME_TO" : ["Conheça","a Baixada Santista"],
   "ABOUT_US_PAGE" : {
