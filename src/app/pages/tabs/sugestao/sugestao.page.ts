@@ -429,6 +429,8 @@ export class SugestaoPage implements OnInit, OnDestroy {
         ]);
         break;
     }
+
+
   }
 
   public seeSpecficList(show: boolean, info: any): void {
