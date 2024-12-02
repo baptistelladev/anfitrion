@@ -36,6 +36,9 @@ export class TabsPage implements OnInit {
 
       this.currentUrlJustString = this.router.url.split('/')[2];
       this.currentPage = this.currentUrlJustString;
+
+      console.log(this.currentPage);
+
     });
   }
 

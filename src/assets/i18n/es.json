@@ -334,6 +334,12 @@
     "TEXT": "Horario de funcionamiento",
     "ADVISE": "Decimos que un restaurante está abierto o cerrado con base en los horarios a continuación."
   },
+  "CHILDREN_SPACE": {
+    "TEXT": ["Espacio especial", "para niños"],
+    "TEXT_HASNT": "No tiene espacio para niños.",
+    "ISNT_PAID": "En caso de que lleves a los pequeños.",
+    "IS_PAID": "pero es de pago, consulta con el establecimiento."
+  },
   "MESSAGES" : {
     "WELCOME_WHATSAPP" : "Hola, vengo de la Calle Gastronómica de Santos y..."
   },

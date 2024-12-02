@@ -286,6 +286,31 @@
               </ion-text>
             </ion-col>
 
+            <!-- ESPAÇO PARA CRIANÇAS -->
+            <ion-col size="12">
+              <ion-item mode="ios" lines="none" class="establishment-item">
+                <ion-icon name="balloon-outline" slot="start"></ion-icon>
+
+                <!-- SIM -->
+                <ion-text mode="ios" *ngIf="establishment.children_space.has_space">
+                  <p class="color-gray-text mg-left-16">{{ 'CHILDREN_SPACE.TEXT.0' | translate }} <b class="color-green">{{ 'CHILDREN_SPACE.TEXT.1' | translate }}</b>.</p>
+                  <p class="color-gray-6 mg-left-16 fs-14 mg-top-8" *ngIf="!establishment.children_space.is_paid">{{ 'CHILDREN_SPACE.ISNT_PAID' | translate }}</p>
+                  <p class="color-gray-6 mg-left-16 fs-14 mg-top-8" *ngIf="establishment.children_space.is_paid">{{ 'CHILDREN_SPACE.IS_PAID' | translate }}</p>
+                </ion-text>
+
+                <!-- NÃO -->
+                <ion-text mode="ios" class="line-height-18" *ngIf="!establishment.children_space.has_space">
+                  <p class="color-gray-text mg-left-16">{{ 'CHILDREN_SPACE.TEXT_HASNT' | translate }}</p>
+                </ion-text>
+              </ion-item>
+            </ion-col>
+
+            <ion-col size="12">
+              <ion-text mode="ios">
+                <hr class="anfitrion-divider">
+              </ion-text>
+            </ion-col>
+
             <!-- BOOKING -->
             <ion-col size="12">
               <ion-item mode="ios" lines="none" class="establishment-item">

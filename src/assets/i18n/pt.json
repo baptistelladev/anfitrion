@@ -326,6 +326,12 @@
     "TEXT" : "Horário de funcionamento",
     "ADVISE" : "Dizemos que um restaurante está aberto ou fechado com base nos horários abaixo."
   },
+  "CHILDREN_SPACE": {
+    "TEXT": ["Espaço especial","para crianças"],
+    "TEXT_HASNT" : "Não possui espaço para crianças.",
+    "ISNT_PAID": "Caso você leve seus pequenos.",
+    "IS_PAID": "mas é pago, confira com estabelecimento."
+  },
   "MESSAGES" : {
     "WELCOME_WHATSAPP" : "Olá eu vim do Rua Gastronômica de Santos e..."
   },

@@ -21,6 +21,7 @@ import { IFilter } from 'src/app/shared/models/IFilter';
 import { FilterEnum } from 'src/app/shared/enums/FilterEnum';
 import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
 import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
+import { SuggestionsEnum } from 'src/app/shared/enums/Suggestions';
 
 @Component({
   selector: 'anfitrion-lugar-na-cidade',
@@ -228,7 +229,7 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
         this.getPlaces([
           { field: 'origin.value', operator: '==', value: this.currentCityAsParam?.value },
           { field: 'mainType.value', operator: '==', value: this.placeType },
-          { field: 'petfriendly_info.accept_petfriendly', operator: '==', value: true },
+          { field: 'petfriendly_info.accept_petfriendly', operator: '==', value: true }
         ]);
         break;
 
@@ -236,7 +237,7 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
         this.getPlaces([
           { field: 'origin.value', operator: '==', value: this.currentCityAsParam?.value },
           { field: 'mainType.value', operator: '==', value: this.placeType },
-          { field: 'livemusic_info.has_livemusic', operator: '==', value: true },
+          { field: 'livemusic_info.has_livemusic', operator: '==', value: true }
         ]);
         break;
 
@@ -244,7 +245,15 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
         this.getPlaces([
           { field: 'origin.value', operator: '==', value: this.currentCityAsParam?.value },
           { field: 'mainType.value', operator: '==', value: this.placeType },
-          { field: 'ticket_info.accept_ticket', operator: '==', value: true },
+          { field: 'ticket_info.accept_ticket', operator: '==', value: true }
+        ]);
+        break;
+
+      case FilterEnum.CHILDREN_SPACE:
+        this.getPlaces([
+          { field: 'origin.value', operator: '==', value: this.currentCityAsParam?.value },
+          { field: 'mainType.value', operator: '==', value: this.placeType },
+          { field: 'children_space.has_space', operator: '==', value: true }
         ]);
         break;
     }
