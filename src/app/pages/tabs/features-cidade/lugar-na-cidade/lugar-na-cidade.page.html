@@ -45,7 +45,7 @@ class="ion-content-w-linear-bg"
           </ng-container>
 
           <h2 class="font-baloo">
-            {{ 'EXPLORE_PAGE.EXPLORING' | translate }} <span class="font-w-bold mg-left-5 txt-lowercase"><ng-container [ngSwitch]="placeType">
+            {{ 'EXPLORE_PAGE.EXPLORING' | translate }} <span class="font-w-bold txt-lowercase"><ng-container [ngSwitch]="placeType">
               <ng-container *ngSwitchCase="PlaceTypeCityEnum.RESTAURANTE">{{ 'SHARED.RESTAURANTS' | translate }}</ng-container>
               <ng-container *ngSwitchCase="PlaceTypeCityEnum.BAR">{{ 'SHARED.BARS' | translate }}</ng-container>
               <ng-container *ngSwitchCase="PlaceTypeCityEnum.CAFETERIA">{{ 'SHARED.COFFEE_SHOPS' | translate }}</ng-container>
@@ -57,7 +57,7 @@ class="ion-content-w-linear-bg"
           </h2>
 
           <p class="fs-16">
-            {{ currentCityAsParam?.in[currentLanguage.value] }} {{ currentCityAsParam?.name }}
+            {{ currentCityAsParam?.in[currentLanguage.value] }} {{ currentCityAsParam?.name }} <span class="color-gray-mid text-lowercase">({{ currentLocationAsParam === LocationEnum.CIDADE ? ('SHARED.CITY' | translate) : ('SHARED.BEACH' | translate) }})</span>
           </p>
         </ion-text>
 
@@ -229,7 +229,7 @@ class="ion-content-w-linear-bg"
     </swiper-container>
   </div>
 
-  <ion-grid [fixed]="true">
+  <ion-grid [fixed]="true" class="no-pad-top">
     <ion-row>
       <ion-col *ngIf="places && places.length === 0" size="12" class="no-pad-top">
         <ion-text mode="ios">
@@ -268,7 +268,7 @@ class="ion-content-w-linear-bg"
           <ion-text
           class="fs-12 color-gray-mid line-height-20 txt-lowercase txt-right"
           mode="ios">
-            <p><span class="fs-16 font-w-bold">{{ places.length }}</span> {{ 'SHARED.ESTABLISHMENTS' | translate }}<ng-container *ngIf="places.length > 1">s</ng-container></p>
+            <p><span class="fs-16 font-w-bold mg-right-5">{{ places.length }}</span> <ng-container *ngIf="places.length === 1">{{ 'SHARED.ESTABLISHMENT' | translate }}</ng-container><ng-container *ngIf="places.length > 1">{{ 'SHARED.ESTABLISHMENTS' | translate }}</ng-container></p>
           </ion-text>
         </ion-col>
       </ng-container>

@@ -201,7 +201,9 @@
     "EXIT_APP_YES" : "Yes, I want to exit",
     "LESS_THAN_18" : "You have less than 18 years or have not yet provided your age",
     "AGE_LIMIT_18" : "You are not old enough to access this content or have not yet provided your age",
-    "PEOPLE" : "People"
+    "PEOPLE" : "People",
+    "CITY": "City",
+    "BEACH": "Beach"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Our purpose here is to help you save your most precious asset: ","time"],

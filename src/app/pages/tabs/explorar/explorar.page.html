@@ -151,7 +151,7 @@ class="ion-content-w-linear-bg">
           <ion-col [size]="12">
             <ion-text mode="ios">
               <p class="font-baloo fs-20 color-gray-text font-w-bold">
-                Pessoas <span class="font-default txt-lowercase fs-12 color-gray-mid font-w-normal" *ngIf="people && people.length > 0">({{ people.length }})</span>
+                {{ 'SHARED.PEOPLE' | translate }} <span class="font-default txt-lowercase fs-12 color-gray-mid font-w-normal" *ngIf="people && people.length > 0">({{ people.length }})</span>
               </p>
               <p class="fs-14 color-gray-text font-w-thin" *ngIf="selectedSegment === LocationEnum.CIDADE">
                 Para quem procura por pessoas

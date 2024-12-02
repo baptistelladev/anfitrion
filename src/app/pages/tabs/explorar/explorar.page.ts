@@ -20,6 +20,7 @@ import { AnalyticsService } from 'src/app/core/services/firebase/analytics.servi
 import { MOCK_CITY_FEATURES } from 'src/app/shared/mocks/MockCityFeatures';
 import { MOCK_BEACH_FEATURES } from 'src/app/shared/mocks/MockBeachFeatures';
 import { LocationEnum } from 'src/app/shared/enums/Location';
+import { PeopleService } from 'src/app/core/services/firebase/people.service';
 
 @Component({
   selector: 'anfitrion-explorar',
@@ -97,6 +98,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     public navCtrl : NavController,
     private overlayService : OverlayService,
     private placesService : PlacesService,
+    private peopleService : PeopleService,
     private translate : TranslateService,
     private analyticsService : AnalyticsService
   ) { }
@@ -157,7 +159,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
     await loading.present();
 
-    this.people$ = this.placesService
+    this.people$ = this.peopleService
     .getCollection(
       CollectionsEnum.PEOPLE,
       [
@@ -193,7 +195,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
     await loading.present();
 
-    this.people$ = this.placesService
+    this.people$ = this.peopleService
     .getCollection(
       CollectionsEnum.PEOPLE,
       [
@@ -368,6 +370,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     if (place.userRespectAgeLimit || place.userRespectAgeLimit === null) {
       this.navCtrl.navigateForward([`/logado/explorar/${place.route}`], {
         queryParams: {
+          localidade: this.selectedSegment,
           cidade: this.currentCity.value
         }
       })

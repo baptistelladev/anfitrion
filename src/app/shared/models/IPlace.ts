@@ -57,7 +57,8 @@ export interface IPlace {
     has_space: boolean,
     show_field: boolean,
     is_paid: boolean
-  }
+  },
+  work_at: string[]
 }
 
 export interface ILongEstablishment {

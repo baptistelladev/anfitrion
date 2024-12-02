@@ -22,6 +22,7 @@ import { FilterEnum } from 'src/app/shared/enums/FilterEnum';
 import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
 import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 import { SuggestionsEnum } from 'src/app/shared/enums/Suggestions';
+import { LocationEnum } from 'src/app/shared/enums/Location';
 
 @Component({
   selector: 'anfitrion-lugar-na-cidade',
@@ -58,6 +59,7 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
 
   public CityEnum = CityEnum;
   public PlaceTypeCityEnum = PlaceTypeCityEnum;
+  public LocationEnum = LocationEnum;
 
   public currentLanguage: ILang;
   public currentLanguage$: Observable<ILang>;
@@ -65,6 +67,7 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
 
   public placeType: string;
   public currentCityAsParam: ICity | undefined;
+  public currentLocationAsParam: string | undefined;
 
   public places: IPlace[] | null;
   public places$: Observable<IPlace[]>;
@@ -89,8 +92,8 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
     this.getCurrentLanguageFromNGRX();
     this.getRouter();
     this.setFilters();
-    this.initialFilter('ALL');
-    this.defineActiveFilter('ALL');
+    this.initialFilter(FilterEnum.ALL);
+    this.defineActiveFilter(FilterEnum.ALL);
   }
 
   ionViewWillEnter(): void {
@@ -140,6 +143,8 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
       this.currentCityAsParam = this.MOCK_CITIES.find((city: ICity) => {
         return city.value === res.cidade;
       })
+
+      this.currentLocationAsParam = res.localidade;
     })
 
     this.route.paramMap
@@ -158,7 +163,7 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
   }
 
   public getPlaces(filters: IFIrebaseFilter[] = []) {
-    if (this.currentCityAsParam && this.placeType) {
+    if (this.currentCityAsParam && this.placeType && this.currentLocationAsParam) {
       this.places$ = this.placesService
       .getCollection(
         CollectionsEnum.PLACES,
@@ -202,9 +207,7 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
   }
 
   public filterByCharacteristic(e: any): void {
-
     this.defineActiveFilter(e.detail.value);
-
   }
 
   public defineActiveFilter(value: string) {
@@ -221,7 +224,8 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
       case FilterEnum.ALL:
         this.getPlaces([
           { field: 'origin.value', operator: '==', value: this.currentCityAsParam?.value },
-          { field: 'mainType.value', operator: '==', value: this.placeType }
+          { field: 'mainType.value', operator: '==', value: this.placeType },
+          { field: 'work_place', operator: 'array-contains-any', value: [this.currentLocationAsParam] }
         ]);
         break;
 
@@ -229,7 +233,8 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
         this.getPlaces([
           { field: 'origin.value', operator: '==', value: this.currentCityAsParam?.value },
           { field: 'mainType.value', operator: '==', value: this.placeType },
-          { field: 'petfriendly_info.accept_petfriendly', operator: '==', value: true }
+          { field: 'petfriendly_info.accept_petfriendly', operator: '==', value: true },
+          { field: 'work_place', operator: 'array-contains-any', value: [this.currentLocationAsParam] }
         ]);
         break;
 
@@ -237,7 +242,8 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
         this.getPlaces([
           { field: 'origin.value', operator: '==', value: this.currentCityAsParam?.value },
           { field: 'mainType.value', operator: '==', value: this.placeType },
-          { field: 'livemusic_info.has_livemusic', operator: '==', value: true }
+          { field: 'livemusic_info.has_livemusic', operator: '==', value: true },
+          { field: 'work_place', operator: 'array-contains-any', value: [this.currentLocationAsParam] }
         ]);
         break;
 
@@ -245,7 +251,8 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
         this.getPlaces([
           { field: 'origin.value', operator: '==', value: this.currentCityAsParam?.value },
           { field: 'mainType.value', operator: '==', value: this.placeType },
-          { field: 'ticket_info.accept_ticket', operator: '==', value: true }
+          { field: 'ticket_info.accept_ticket', operator: '==', value: true },
+          { field: 'work_place', operator: 'array-contains-any', value: [this.currentLocationAsParam] }
         ]);
         break;
 
@@ -253,7 +260,8 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
         this.getPlaces([
           { field: 'origin.value', operator: '==', value: this.currentCityAsParam?.value },
           { field: 'mainType.value', operator: '==', value: this.placeType },
-          { field: 'children_space.has_space', operator: '==', value: true }
+          { field: 'children_space.has_space', operator: '==', value: true },
+          { field: 'work_place', operator: 'array-contains-any', value: [this.currentLocationAsParam] }
         ]);
         break;
     }
