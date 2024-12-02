@@ -122,7 +122,7 @@ class="ion-content-w-linear-bg">
               *ngIf="place.show">
                 <div
                 class="feature-item-wrapper">
-                  <ion-badge *ngIf="place.atLeastOneLength && (place.userRespectAgeLimit || place.userRespectAgeLimit === null)" class="font-baloo fs-14 color-green">{{ place.atLeastOneLength }}</ion-badge>
+                  <ion-badge *ngIf="place.atLeastOneLength && (place.userRespectAgeLimit || place.userRespectAgeLimit === null)" class="fs-12 color-green">{{ place.atLeastOneLength }}</ion-badge>
 
                   <ion-text mode="ios" class="forbidden" *ngIf="place.ageLimit === 18 && !place.userRespectAgeLimit">
                     <p>🔞</p>
@@ -154,10 +154,10 @@ class="ion-content-w-linear-bg">
                 {{ 'SHARED.PEOPLE' | translate }} <span class="font-default txt-lowercase fs-12 color-gray-mid font-w-normal" *ngIf="people && people.length > 0">({{ people.length }})</span>
               </p>
               <p class="fs-14 color-gray-text font-w-thin" *ngIf="selectedSegment === LocationEnum.CIDADE">
-                Para quem procura por pessoas
+                {{ 'EXPLORE_PAGE.CITY_PEOPLE_EXPLORING' | translate }}...
               </p>
               <p class="fs-14 color-gray-text font-w-thin" *ngIf="selectedSegment === LocationEnum.PRAIA">
-                Para quem procura por pessoas
+                {{ 'EXPLORE_PAGE.BEACH_PEOPLE_EXPLORING' | translate }}...
               </p>
             </ion-text>
           </ion-col>
@@ -177,7 +177,7 @@ class="ion-content-w-linear-bg">
               *ngIf="people.show">
                 <div
                 class="feature-item-wrapper">
-                  <ion-badge *ngIf="people.atLeastOneLength && (people.userRespectAgeLimit || people.userRespectAgeLimit === null)" class="font-baloo fs-14 color-green">{{ people.atLeastOneLength }}</ion-badge>
+                  <ion-badge *ngIf="people.atLeastOneLength && (people.userRespectAgeLimit || people.userRespectAgeLimit === null)" class="fs-12 color-green">{{ people.atLeastOneLength }}</ion-badge>
 
                   <ion-text mode="ios" class="forbidden" *ngIf="people.ageLimit === 18 && !people.userRespectAgeLimit">
                     <p>🔞</p>

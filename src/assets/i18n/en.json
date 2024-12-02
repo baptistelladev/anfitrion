@@ -52,8 +52,10 @@
     "OF_BAIXADA" : ["from"],
     "YOU_ARE_IN": "you are in",
     "EXPLORING" : "Exploring",
-    "CITY_PLACES_EXPLORING" : "For those looking for gastronomy, drinks, etc",
-    "BEACH_PLACES_EXPLORING" : "For those looking for food, drinks, etc"
+    "CITY_PLACES_EXPLORING": "For those who want to explore or find a place to eat",
+    "BEACH_PLACES_EXPLORING": "For those who want to explore or look for a place to eat",
+    "CITY_PEOPLE_EXPLORING": "For those who want to consume in the city with a freelance professional",
+    "BEACH_PEOPLE_EXPLORING": "For those who want to consume at the beach with a freelance professional"
   },
   "WELCOME_TO" : ["Welcome", "to Baixada Santista"],
   "ABOUT_US_PAGE" : {

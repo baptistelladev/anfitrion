@@ -52,8 +52,10 @@
     "OF_BAIXADA" : ["de la"],
     "YOU_ARE_IN": "estás en",
     "EXPLORING" : "Explorando",
-    "CITY_PLACES_EXPLORING" : "Para quienes buscan gastronomía, bebidas, etc",
-    "BEACH_PLACES_EXPLORING" : "Para quienes buscan comida, bebida, etc"
+    "CITY_PLACES_EXPLORING": "Para quienes quieren conocer o encontrar un lugar para alimentarse",
+    "BEACH_PLACES_EXPLORING": "Para quienes quieren conocer o buscar un lugar para alimentarse",
+    "CITY_PEOPLE_EXPLORING": "Para quienes quieren consumir en la ciudad con un profesional autónomo",
+    "BEACH_PEOPLE_EXPLORING": "Para quienes quieren consumir en la playa con un profesional autónomo"
   },
   "WELCOME_TO" : ["bienvenido", "a Baixada Santista"],
   "ABOUT_US_PAGE" : {
