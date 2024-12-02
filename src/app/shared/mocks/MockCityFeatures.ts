@@ -1,9 +1,10 @@
-import { PlaceTypeEnum } from 'src/app/shared/enums/PlaceType';
+import { PlaceTypeCityEnum } from 'src/app/shared/enums/PlaceType';
+import { PeopleTypeCityEnum } from '../enums/PeopleType';
 export const MOCK_CITY_FEATURES = {
   places: [
     {
       loadIconsFromAssets: false,
-      value: PlaceTypeEnum.RESTAURANTE,
+      value: PlaceTypeCityEnum.RESTAURANTE,
       icon: 'restaurant',
       text: {
         pt: 'Restaurantes',
@@ -24,7 +25,7 @@ export const MOCK_CITY_FEATURES = {
     },
     {
       loadIconsFromAssets: false,
-      value: PlaceTypeEnum.BAR,
+      value: PlaceTypeCityEnum.BAR,
       icon: 'beer',
       text: {
         pt: 'Bares',
@@ -45,7 +46,7 @@ export const MOCK_CITY_FEATURES = {
     },
     {
       loadIconsFromAssets: false,
-      value: PlaceTypeEnum.CAFETERIA,
+      value: PlaceTypeCityEnum.CAFETERIA,
       icon: 'cafe',
       text: {
         pt: 'Cafeterias',
@@ -66,7 +67,7 @@ export const MOCK_CITY_FEATURES = {
     },
     {
       loadIconsFromAssets: false,
-      value: PlaceTypeEnum.ADEGA,
+      value: PlaceTypeCityEnum.ADEGA,
       icon: 'wine',
       text: {
         pt: 'Adegas',
@@ -87,7 +88,7 @@ export const MOCK_CITY_FEATURES = {
     },
     {
       loadIconsFromAssets: false,
-      value: PlaceTypeEnum.PIZZARIA,
+      value: PlaceTypeCityEnum.PIZZARIA,
       icon: 'pizza',
       text: {
         pt: 'Pizzarias',
@@ -108,7 +109,7 @@ export const MOCK_CITY_FEATURES = {
     },
     {
       loadIconsFromAssets: false,
-      value: PlaceTypeEnum.HAMBURGUERIA,
+      value: PlaceTypeCityEnum.HAMBURGUERIA,
       icon: 'fast-food',
       text: {
         pt: 'Hamburguerias',
@@ -129,7 +130,7 @@ export const MOCK_CITY_FEATURES = {
     },
     {
       loadIconsFromAssets: false,
-      value: PlaceTypeEnum.DOCERIA,
+      value: PlaceTypeCityEnum.DOCERIA,
       icon: 'pie-chart',
       text: {
         pt: 'Docerias',
@@ -144,6 +145,29 @@ export const MOCK_CITY_FEATURES = {
         es: ''
       },
       route: 'doceria',
+      atLeastOneLength: false,
+      ageLimit: null,
+      userRespectAgeLimit: null
+    }
+  ],
+  people: [
+    {
+      loadIconsFromAssets: false,
+      value: PeopleTypeCityEnum.AMBULANTE,
+      icon: 'person',
+      text: {
+        pt: 'Ambulantes',
+        en: 'Vendors',
+        es: 'Ambulantes'
+      },
+      isDisabled: false,
+      show: true,
+      description: {
+        pt: 'para quem quer comer, beber ou comprar algum item.',
+        en: 'who want to eat, drink, or buy something.',
+        es: 'quieren comer, beber o comprar algo.'
+      },
+      route: 'ambulante',
       atLeastOneLength: false,
       ageLimit: null,
       userRespectAgeLimit: null

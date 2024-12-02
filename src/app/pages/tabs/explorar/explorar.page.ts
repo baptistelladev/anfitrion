@@ -18,6 +18,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
 import { MOCK_CITY_FEATURES } from 'src/app/shared/mocks/MockCityFeatures';
+import { MOCK_BEACH_FEATURES } from 'src/app/shared/mocks/MockBeachFeatures';
+import { LocationEnum } from 'src/app/shared/enums/Location';
 
 @Component({
   selector: 'anfitrion-explorar',
@@ -40,9 +42,13 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
   public currentCity$: Observable<ICity>;
   public currentCitySubscription: Subscription;
 
-  public places: IPlace[];
+  public places: IPlace[] | null;
   public places$: Observable<IPlace[]>;
   public placesSubscription: Subscription;
+
+  public people: any[] | null;
+  public people$: Observable<IPlace[]>;
+  public peopleSubscription: Subscription;
 
   public user: IUSer;
   public user$: Observable<IUSer>;
@@ -52,65 +58,16 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
   public canAccessEightenContent$: Observable<boolean>;
   public canAccessEightenContentSubscription: Subscription;
 
-  public beachFeatures: any[] = [
-    {
-      loadIconsFromAssets: false,
-      value: 'QUIOSQUES',
-      icon: 'storefront',
-      text: {
-        pt: 'Quiosques',
-        en: 'Kiosks',
-        es: 'Quiscos'
-      },
-      isDisabled: true,
-      show: true,
-      description: {
-        pt: 'quer comer ou beber na orla praia.',
-        en: 'who want to eat or drink on the beach.',
-        es: 'quieren comer o beber en la orla de la playa.'
-      }
-    },
-    {
-      loadIconsFromAssets: false,
-      value: 'CARRINHOS',
-      icon: 'cart',
-      text: {
-        pt: 'Carrinhos',
-        en: 'Carts',
-        es: 'Carritos'
-      },
-      isDisabled: true,
-      show: true,
-      description: {
-        pt: 'quer comer, beber ou ficar em guarda-sol na faixa de areia.',
-        en: 'who want to eat, drink, or stay under a sunshade on the sand.',
-        es: 'quieren comer, beber o quedarse bajo una sombrilla en la arena.'
-      }
-    },
-    {
-      loadIconsFromAssets: false,
-      value: 'AMBULANTES',
-      icon: 'person',
-      text: {
-        pt: 'Ambulantes',
-        en: 'Vendors',
-        es: 'Ambulantes'
-      },
-      isDisabled: true,
-      show: true,
-      description: {
-        pt: 'para quem quer comer, beber ou comprar algum item.',
-        en: 'who want to eat, drink, or buy something.',
-        es: 'quieren comer, beber o comprar algo.'
-      }
-    }
-  ]
+  public MOCK_BEACH_FEATURES: any = MOCK_BEACH_FEATURES;
+  public MOCK_CITY_FEATURES: any = MOCK_CITY_FEATURES;
 
-  public cityFeatures: any = MOCK_CITY_FEATURES;
+  public FEATURES: any;
+
+  public LocationEnum = LocationEnum;
 
   public segments: any[] = [
     {
-      value: 'CIDADE',
+      value: LocationEnum.CIDADE,
       text: {
         pt: ["na", "cidade"],
         en: ["in the", "city"],
@@ -118,7 +75,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
       }
     },
     {
-      value: 'PRAIA',
+      value: LocationEnum.PRAIA,
       text: {
         pt: ["na", "praia"],
         en: ["at the", "beach"],
@@ -148,8 +105,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     this.getUserFromNGRX();
     this.getCurrentCityFromNGRX();
     this.getCurrentLanguageFromNGRX();
-    this.selectInitialSegment('CIDADE');
-    this.getPlaces();
+    this.selectInitialSegment(LocationEnum.CIDADE);
   }
 
   ngAfterViewInit(): void {
@@ -161,7 +117,8 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
-  public async getPlaces() {
+  public async getPlacesFromCity() {
+
     const loading = await this.overlayService.fireLoading();
 
     await loading.present();
@@ -170,7 +127,8 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     .getCollection(
       CollectionsEnum.PLACES,
       [
-        { field: 'origin.value', operator: '==', value: this.currentCity.value }
+        { field: 'origin.value', operator: '==', value: this.currentCity.value },
+        { field: 'work_place', operator: 'array-contains-any', value: [this.selectedSegment] }
       ]
     );
 
@@ -184,8 +142,116 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
         return acc;
       }, {});
 
-      this.cityFeatures.places.forEach((feature: any) => {
+      this.FEATURES.places.forEach((feature: any) => {
         feature.atLeastOneLength = compressedInformation[feature.value] ? compressedInformation[feature.value] : 0
+      })
+
+      await loading.dismiss();
+    })
+  }
+
+
+  public async getPeopleFromBeach() {
+
+    const loading = await this.overlayService.fireLoading();
+
+    await loading.present();
+
+    this.people$ = this.placesService
+    .getCollection(
+      CollectionsEnum.PEOPLE,
+      [
+        { field: 'origin.value', operator: '==', value: this.currentCity.value },
+        { field: 'work_place', operator: 'array-contains-any', value: [this.selectedSegment] }
+      ]
+    );
+
+    this.peopleSubscription = this.people$
+    .subscribe( async (people: any[]) => {
+      this.people = people;
+
+      console.log(this.people);
+
+
+      let compressedInformation = this.people.reduce((acc: any, place) => {
+        const key = place.mainType.value.toUpperCase();
+        acc[key] = (acc[key] || 0) + 1;
+        return acc;
+      }, {});
+
+      this.FEATURES.people.forEach((feature: any) => {
+        feature.atLeastOneLength = compressedInformation[feature.value] ? compressedInformation[feature.value] : 0
+      })
+
+      await loading.dismiss();
+    })
+  }
+
+  public async getPeopleFromCity() {
+
+    const loading = await this.overlayService.fireLoading();
+
+    await loading.present();
+
+    this.people$ = this.placesService
+    .getCollection(
+      CollectionsEnum.PEOPLE,
+      [
+        { field: 'origin.value', operator: '==', value: this.currentCity.value },
+        { field: 'work_place', operator: 'array-contains-any', value: [this.selectedSegment] }
+      ]
+    );
+
+    this.peopleSubscription = this.people$
+    .subscribe( async (people: any[]) => {
+      this.people = people;
+
+      console.log(this.people);
+
+
+      let compressedInformation = this.people.reduce((acc: any, place) => {
+        const key = place.mainType.value.toUpperCase();
+        acc[key] = (acc[key] || 0) + 1;
+        return acc;
+      }, {});
+
+      this.FEATURES.people.forEach((feature: any) => {
+        feature.atLeastOneLength = compressedInformation[feature.value] ? compressedInformation[feature.value] : 0
+      })
+
+      await loading.dismiss();
+    })
+  }
+
+  public async getPlacesFromBeach() {
+    const loading = await this.overlayService.fireLoading();
+
+    await loading.present();
+
+    this.places$ = this.placesService
+    .getCollection(
+      CollectionsEnum.PLACES,
+      [
+        { field: 'origin.value', operator: '==', value: this.currentCity.value },
+        { field: 'work_place', operator: 'array-contains-any', value: [this.selectedSegment] }
+      ]
+    );
+
+    this.placesSubscription = this.places$
+    .subscribe( async (places: IPlace[]) => {
+      this.places = places;
+
+      let compressedInformation = this.places.reduce((acc: any, place) => {
+        const key = place.mainType.value.toUpperCase();
+
+        acc[key] = (acc[key] || 0) + 1;
+        return acc;
+      }, {});
+
+      this.FEATURES.places.forEach((feature: any) => {
+        feature.atLeastOneLength = compressedInformation[feature.value] ? compressedInformation[feature.value] : 0
+
+        console.log(feature.atLeastOneLength);
       })
 
       await loading.dismiss();
@@ -194,6 +260,9 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
   public selectInitialSegment(segmentValue: string) {
     this.selectedSegment = segmentValue;
+    this.FEATURES = this.MOCK_CITY_FEATURES;
+    this.getPlacesFromCity();
+    this.getPeopleFromCity();
   }
 
   public getCurrentLanguageFromNGRX(): void {
@@ -232,7 +301,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     .subscribe((canAccess: boolean) => {
       this.canAccessEightenContent = canAccess;
 
-      let placesEighteenContent = this.cityFeatures.places.filter((feature: any) => {
+      let placesEighteenContent = this.MOCK_CITY_FEATURES.places.filter((feature: any) => {
         return feature.ageLimit === 18;
       })
 
@@ -245,7 +314,20 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public segmentChanged(): void {
-    console.log('dada');
+
+    this.FEATURES = null;
+    this.places = null;
+    this.people = null;
+
+    if (this.selectedSegment === LocationEnum.PRAIA) {
+      this.FEATURES = this.MOCK_BEACH_FEATURES;
+      this.getPlacesFromBeach();
+      this.getPeopleFromBeach();
+    } else {
+      this.FEATURES = this.MOCK_CITY_FEATURES;
+      this.getPlacesFromCity();
+      this.getPeopleFromCity();
+    }
   }
 
   public async scrollToTop() {
@@ -275,7 +357,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
     await modal.onDidDismiss().then((resp: any) => {
       if (resp.role === 'change') {
-        this.getPlaces();
+        this.segmentChanged();
       }
     })
 

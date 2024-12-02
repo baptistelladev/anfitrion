@@ -1,7 +1,7 @@
 import { CityFeaturesEnum } from "../enums/CityFeatures";
 import { FilterEnum } from "../enums/FilterEnum";
 import { PlaceSpecialtyEnum } from "../enums/PlaceSpecialty";
-import { PlaceTypeEnum } from "../enums/PlaceType";
+import { PlaceTypeCityEnum } from "../enums/PlaceType";
 import { IFilter } from "../models/IFilter";
 import { ITab } from "../models/ITab";
 
@@ -23,7 +23,7 @@ export const MOCK_FILTERS: IFilter[] = [
       en: 'Pets allowed',
       es: 'Se permiten mascotas'
     },
-    dontShowIn: [PlaceTypeEnum.TABACARIA, PlaceTypeEnum.ADEGA]
+    dontShowIn: [PlaceTypeCityEnum.TABACARIA, PlaceTypeCityEnum.ADEGA]
   },
   {
     value: FilterEnum.TICKET,
@@ -41,7 +41,7 @@ export const MOCK_FILTERS: IFilter[] = [
       en: 'Has live music',
       es: 'Tiene música en vivo'
     },
-    dontShowIn: [PlaceTypeEnum.ADEGA, PlaceTypeEnum.DOCERIA, PlaceTypeEnum.CAFETERIA, PlaceTypeEnum.EMPORIO, PlaceTypeEnum.HAMBURGUERIA, PlaceTypeEnum.MERCADO, PlaceTypeEnum.PIZZARIA, PlaceTypeEnum.TABACARIA]
+    dontShowIn: [PlaceTypeCityEnum.ADEGA, PlaceTypeCityEnum.DOCERIA, PlaceTypeCityEnum.CAFETERIA, PlaceTypeCityEnum.EMPORIO, PlaceTypeCityEnum.HAMBURGUERIA, PlaceTypeCityEnum.MERCADO, PlaceTypeCityEnum.PIZZARIA, PlaceTypeCityEnum.TABACARIA]
   },
   {
     value: FilterEnum.CHILDREN_SPACE,
@@ -50,6 +50,6 @@ export const MOCK_FILTERS: IFilter[] = [
       en: 'Space for children',
       es: 'Área de niños'
     },
-    dontShowIn: [PlaceTypeEnum.ADEGA, PlaceTypeEnum.DOCERIA, PlaceTypeEnum.CAFETERIA, PlaceTypeEnum.EMPORIO, PlaceTypeEnum.MERCADO, PlaceTypeEnum.TABACARIA]
+    dontShowIn: [PlaceTypeCityEnum.ADEGA, PlaceTypeCityEnum.DOCERIA, PlaceTypeCityEnum.CAFETERIA, PlaceTypeCityEnum.EMPORIO, PlaceTypeCityEnum.MERCADO, PlaceTypeCityEnum.TABACARIA]
   }
 ]

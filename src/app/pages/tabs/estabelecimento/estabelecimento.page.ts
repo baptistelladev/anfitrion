@@ -16,7 +16,7 @@ import { Title } from '@angular/platform-browser';
 import { IPhone } from 'src/app/shared/models/IPhone';
 import { PhoneTypesEnum } from 'src/app/shared/enums/PhoneTypes';
 import { NetworksEnum } from 'src/app/shared/enums/Networks';
-import { PlaceTypeEnum } from 'src/app/shared/enums/PlaceType';
+import { PlaceTypeCityEnum } from 'src/app/shared/enums/PlaceType';
 import { ActivatedRoute } from '@angular/router';
 import { EstablishmentsService } from 'src/app/core/services/firebase/establishments.service';
 import { CollectionsEnum } from 'src/app/shared/enums/Collection';
@@ -52,7 +52,7 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
   public translatedPage: any;
   public translatedPage$: Observable<any>;
 
-  public PlaceTypeEnum = PlaceTypeEnum;
+  public PlaceTypeCityEnum = PlaceTypeCityEnum;
 
   public establishmentNameFromUrl: string | null;
 

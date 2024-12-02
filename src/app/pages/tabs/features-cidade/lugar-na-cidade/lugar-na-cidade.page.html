@@ -35,24 +35,24 @@ class="ion-content-w-linear-bg"
         class="txt-center color-gray-text full-width icon-title-text"
         mode="ios">
           <ng-container [ngSwitch]="placeType">
-            <ng-container *ngSwitchCase="PlaceTypeEnum.RESTAURANTE"><ion-icon name="restaurant-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="PlaceTypeEnum.BAR"><ion-icon name="beer-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="PlaceTypeEnum.CAFETERIA"><ion-icon name="cafe-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="PlaceTypeEnum.ADEGA"><ion-icon name="wine-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="PlaceTypeEnum.PIZZARIA"><ion-icon name="pizza-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="PlaceTypeEnum.HAMBURGUERIA"><ion-icon name="fast-food-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="PlaceTypeEnum.DOCERIA"><ion-icon name="pie-chart-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
+            <ng-container *ngSwitchCase="PlaceTypeCityEnum.RESTAURANTE"><ion-icon name="restaurant-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
+            <ng-container *ngSwitchCase="PlaceTypeCityEnum.BAR"><ion-icon name="beer-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
+            <ng-container *ngSwitchCase="PlaceTypeCityEnum.CAFETERIA"><ion-icon name="cafe-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
+            <ng-container *ngSwitchCase="PlaceTypeCityEnum.ADEGA"><ion-icon name="wine-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
+            <ng-container *ngSwitchCase="PlaceTypeCityEnum.PIZZARIA"><ion-icon name="pizza-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
+            <ng-container *ngSwitchCase="PlaceTypeCityEnum.HAMBURGUERIA"><ion-icon name="fast-food-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
+            <ng-container *ngSwitchCase="PlaceTypeCityEnum.DOCERIA"><ion-icon name="pie-chart-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
           </ng-container>
 
           <h2 class="font-baloo">
             {{ 'EXPLORE_PAGE.EXPLORING' | translate }} <span class="font-w-bold mg-left-5 txt-lowercase"><ng-container [ngSwitch]="placeType">
-              <ng-container *ngSwitchCase="PlaceTypeEnum.RESTAURANTE">{{ 'SHARED.RESTAURANTS' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeEnum.BAR">{{ 'SHARED.BARS' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeEnum.CAFETERIA">{{ 'SHARED.COFFEE_SHOPS' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeEnum.ADEGA">{{ 'SHARED.BEVERAGE_STORES' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeEnum.PIZZARIA">{{ 'SHARED.PIZZERIAS' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeEnum.HAMBURGUERIA">{{ 'SHARED.BURGER_JOINTS' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeEnum.DOCERIA">{{ 'SHARED.SWEET_SHOPS' | translate }}</ng-container>
+              <ng-container *ngSwitchCase="PlaceTypeCityEnum.RESTAURANTE">{{ 'SHARED.RESTAURANTS' | translate }}</ng-container>
+              <ng-container *ngSwitchCase="PlaceTypeCityEnum.BAR">{{ 'SHARED.BARS' | translate }}</ng-container>
+              <ng-container *ngSwitchCase="PlaceTypeCityEnum.CAFETERIA">{{ 'SHARED.COFFEE_SHOPS' | translate }}</ng-container>
+              <ng-container *ngSwitchCase="PlaceTypeCityEnum.ADEGA">{{ 'SHARED.BEVERAGE_STORES' | translate }}</ng-container>
+              <ng-container *ngSwitchCase="PlaceTypeCityEnum.PIZZARIA">{{ 'SHARED.PIZZERIAS' | translate }}</ng-container>
+              <ng-container *ngSwitchCase="PlaceTypeCityEnum.HAMBURGUERIA">{{ 'SHARED.BURGER_JOINTS' | translate }}</ng-container>
+              <ng-container *ngSwitchCase="PlaceTypeCityEnum.DOCERIA">{{ 'SHARED.SWEET_SHOPS' | translate }}</ng-container>
             </ng-container></span>
           </h2>
 
@@ -66,13 +66,13 @@ class="ion-content-w-linear-bg"
         mode="ios">
           <p class="color-gray-text fs-14 font-w-thin mg-top-32 d-block">
             <ng-container [ngSwitch]="placeType">
-              <ng-container *ngSwitchCase="PlaceTypeEnum.RESTAURANTE">{{ 'PLACES_IN_THE_CITY.FILTER_RESTAURANT' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeEnum.BAR">{{ 'PLACES_IN_THE_CITY.FILTER_BAR' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeEnum.CAFETERIA">{{ 'PLACES_IN_THE_CITY.FILTER_COFFE_SHOP' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeEnum.ADEGA">{{ 'PLACES_IN_THE_CITY.FILTER_BEVERAGE' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeEnum.PIZZARIA">{{ 'PLACES_IN_THE_CITY.FILTER_PIZZERIA' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeEnum.HAMBURGUERIA">{{ 'PLACES_IN_THE_CITY.FILTER_BURGER_JOINT' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeEnum.DOCERIA">{{ 'PLACES_IN_THE_CITY.FILTER_SWEET_SHOP' | translate }}</ng-container> {{ 'PLACES_IN_THE_CITY.ACCORDING_YOUR_NEED' | translate }}.
+              <ng-container *ngSwitchCase="PlaceTypeCityEnum.RESTAURANTE">{{ 'PLACES_IN_THE_CITY.FILTER_RESTAURANT' | translate }}</ng-container>
+              <ng-container *ngSwitchCase="PlaceTypeCityEnum.BAR">{{ 'PLACES_IN_THE_CITY.FILTER_BAR' | translate }}</ng-container>
+              <ng-container *ngSwitchCase="PlaceTypeCityEnum.CAFETERIA">{{ 'PLACES_IN_THE_CITY.FILTER_COFFE_SHOP' | translate }}</ng-container>
+              <ng-container *ngSwitchCase="PlaceTypeCityEnum.ADEGA">{{ 'PLACES_IN_THE_CITY.FILTER_BEVERAGE' | translate }}</ng-container>
+              <ng-container *ngSwitchCase="PlaceTypeCityEnum.PIZZARIA">{{ 'PLACES_IN_THE_CITY.FILTER_PIZZERIA' | translate }}</ng-container>
+              <ng-container *ngSwitchCase="PlaceTypeCityEnum.HAMBURGUERIA">{{ 'PLACES_IN_THE_CITY.FILTER_BURGER_JOINT' | translate }}</ng-container>
+              <ng-container *ngSwitchCase="PlaceTypeCityEnum.DOCERIA">{{ 'PLACES_IN_THE_CITY.FILTER_SWEET_SHOP' | translate }}</ng-container> {{ 'PLACES_IN_THE_CITY.ACCORDING_YOUR_NEED' | translate }}.
             </ng-container>
           </p>
         </ion-text>

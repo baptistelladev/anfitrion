@@ -1,5 +1,5 @@
 
-export enum PlaceTypeEnum {
+export enum PlaceTypeCityEnum {
   RESTAURANTE = 'RESTAURANTE',
   BAR = 'BAR',
   PIZZARIA = 'PIZZARIA',
@@ -11,4 +11,9 @@ export enum PlaceTypeEnum {
   CHURRASCARIA = 'CHURRASCARIA',
   CAFETERIA = 'CAFETERIA',
   EMPORIO = 'EMPORIO'
+}
+
+export enum PlaceTypeBeachEnum {
+  QUIOSQUE = 'QUIOSQUE',
+  CARRINHO = 'CARRINHO'
 }
