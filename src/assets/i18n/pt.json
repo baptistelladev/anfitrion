@@ -201,7 +201,9 @@
     "EXIT_APP_YES" : "Sim, sair",
     "LESS_THAN_18" : "Você possui menos de 18 anos ou ainda não nos informou sua idade",
     "AGE_LIMIT_18" : "Você não tem idade suficiente para acessar este conteúdo ou ainda não nos informou sua idade",
-    "PEOPLE" : "Pessoas"
+    "PEOPLE" : "Pessoas",
+    "CITY" : "Cidade",
+    "BEACH" : "Praia"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nosso próposito aqui é fazer com que voê economize o seu bem mais precioso:","o tempo"],
