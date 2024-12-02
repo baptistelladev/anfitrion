@@ -72,8 +72,7 @@ class="ion-content-w-linear-bg">
             mode="ios">
               <ion-segment-button
               *ngFor="let segment of segments"
-              [value]="segment.value"
-              [disabled]="segment.value === 'PRAIA'">
+              [value]="segment.value">
                 <ion-text mode="ios">
                   <p class="font-baloo fs-14">
                     {{ segment.text[currentLanguage.value][0] }} <b>{{ segment.text[currentLanguage.value][1] }}</b>
@@ -93,10 +92,13 @@ class="ion-content-w-linear-bg">
           <ion-col size="12">
             <ion-text mode="ios">
               <p class="font-baloo fs-20 color-gray-text font-w-bold">
-                {{ 'SHARED.PLACES' | translate }}
+                {{ 'SHARED.PLACES' | translate }} <span class="font-default txt-lowercase fs-12 color-gray-mid font-w-normal" *ngIf="places && places.length > 0">({{ places.length }})</span>
               </p>
-              <p class="fs-14 color-gray-text font-w-thin">
-                {{ 'EXPLORE_PAGE.PLACES_EXPLORING' | translate }}...
+              <p class="fs-14 color-gray-text font-w-thin" *ngIf="selectedSegment === LocationEnum.CIDADE">
+                {{ 'EXPLORE_PAGE.CITY_PLACES_EXPLORING' | translate }}...
+              </p>
+              <p class="fs-14 color-gray-text font-w-thin" *ngIf="selectedSegment === LocationEnum.PRAIA">
+                {{ 'EXPLORE_PAGE.BEACH_PLACES_EXPLORING' | translate }}...
               </p>
             </ion-text>
           </ion-col>
@@ -114,7 +116,7 @@ class="ion-content-w-linear-bg">
           </ion-col>
 
           <ng-container *ngIf="places && places.length > 0">
-            <ng-container *ngFor="let place of cityFeatures.places">
+            <ng-container *ngFor="let place of FEATURES.places">
               <ion-col
               size="auto"
               *ngIf="place.show">
@@ -146,14 +148,60 @@ class="ion-content-w-linear-bg">
              </ng-container>
           </ng-container>
 
-          <!-- SÓ APARECE SE HOUVER REGISTROS -->
-          <ion-col size="12" class="txt-right" *ngIf="places && places.length > 0">
+          <ion-col [size]="12">
             <ion-text mode="ios">
-              <p class="fs-12 color-gray-mid">
-                <b class="fs-14">{{ places.length }}</b> <span class="txt-lowercase mg-left-5">{{ 'SHARED.PLACES' | translate }}</span> {{ currentCity.in[currentLanguage.value] }} {{ currentCity.name }}.
+              <p class="font-baloo fs-20 color-gray-text font-w-bold">
+                Pessoas <span class="font-default txt-lowercase fs-12 color-gray-mid font-w-normal" *ngIf="people && people.length > 0">({{ people.length }})</span>
+              </p>
+              <p class="fs-14 color-gray-text font-w-thin" *ngIf="selectedSegment === LocationEnum.CIDADE">
+                Para quem procura por pessoas
+              </p>
+              <p class="fs-14 color-gray-text font-w-thin" *ngIf="selectedSegment === LocationEnum.PRAIA">
+                Para quem procura por pessoas
               </p>
             </ion-text>
           </ion-col>
+
+          <ion-col *ngIf="people && people.length === 0" [size]="12">
+            <ion-text mode="ios">
+              <p class="fs-14 color-gray-text font-w-thin">
+                {{ 'SHARED.NOT_FOUND' | translate }} <span class="txt-lowercase">{{ 'SHARED.PEOPLE' | translate }}</span> {{ currentCity.in[currentLanguage.value] }} {{ currentCity.name }}.
+              </p>
+            </ion-text>
+          </ion-col>
+
+          <ng-container *ngIf="people && people.length > 0">
+            <ng-container *ngFor="let people of FEATURES.people">
+              <ion-col
+              size="auto"
+              *ngIf="people.show">
+                <div
+                class="feature-item-wrapper">
+                  <ion-badge *ngIf="people.atLeastOneLength && (people.userRespectAgeLimit || people.userRespectAgeLimit === null)" class="font-baloo fs-14 color-green">{{ people.atLeastOneLength }}</ion-badge>
+
+                  <ion-text mode="ios" class="forbidden" *ngIf="people.ageLimit === 18 && !people.userRespectAgeLimit">
+                    <p>🔞</p>
+                  </ion-text>
+
+                  <ion-item
+                  (click)="searchPlaceInTheCity(people)"
+                  [disabled]="people.isDisabled || !people.atLeastOneLength"
+                  [ngClass]="{ 'is-disabled': people.isDisabled || !people.atLeastOneLength }"
+                  [title]="people.text[currentLanguage.value]"
+                  mode="ios"
+                  [detail]="false"
+                  [button]="true"
+                  lines="none">
+                    <ion-text
+                      mode="ios">
+                      <ion-icon [name]="people.icon + '-outline'" *ngIf="!people.loadIconsFromAssets"></ion-icon>
+                      <p class="fs-12 mg-top-5 color-gray-text">{{ people.text[currentLanguage.value] }}</p>
+                    </ion-text>
+                  </ion-item>
+                </div>
+              </ion-col>
+             </ng-container>
+          </ng-container>
         </ion-row>
       </ion-grid>
     </div>

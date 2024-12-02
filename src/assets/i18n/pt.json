@@ -52,7 +52,8 @@
     "OF_BAIXADA" : ["da"],
     "YOU_ARE_IN" : "você está em",
     "EXPLORING" : "Explorando",
-    "PLACES_EXPLORING" : "Para quem procura por gastronomia, drinks, etc"
+    "CITY_PLACES_EXPLORING" : "Para quem procura por gastronomia, drinks, etc",
+    "BEACH_PLACES_EXPLORING" : "Para quem procura por comida, bebida, etc"
   },
   "WELCOME_TO" : ["Conheça","a Baixada Santista"],
   "ABOUT_US_PAGE" : {
@@ -199,7 +200,8 @@
     "EXIT_APP_TEXT" : "Você deseja sair do aplicativo agora?",
     "EXIT_APP_YES" : "Sim, sair",
     "LESS_THAN_18" : "Você possui menos de 18 anos ou ainda não nos informou sua idade",
-    "AGE_LIMIT_18" : "Você não tem idade suficiente para acessar este conteúdo ou ainda não nos informou sua idade"
+    "AGE_LIMIT_18" : "Você não tem idade suficiente para acessar este conteúdo ou ainda não nos informou sua idade",
+    "PEOPLE" : "Pessoas"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nosso próposito aqui é fazer com que voê economize o seu bem mais precioso:","o tempo"],

@@ -16,6 +16,7 @@
 .line-height-16 { line-height: 16px; }
 .line-height-12 { line-height: 12px; }
 
+.font-default { font-family: var(--ion-font-family, inherit)};
 .font-baloo { font-family: var(--font-baloo) !important; }
 .font-times-new-roman { font-family: "Times New Roman", Times, Georgia, "Garamond", "Palatino Linotype", "Book Antiqua", serif; }
 

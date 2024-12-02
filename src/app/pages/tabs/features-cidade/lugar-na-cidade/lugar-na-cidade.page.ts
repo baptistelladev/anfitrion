@@ -9,7 +9,7 @@ import { Store } from '@ngrx/store';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CityEnum } from 'src/app/shared/enums/City';
-import { PlaceTypeEnum } from 'src/app/shared/enums/PlaceType';
+import { PlaceTypeCityEnum } from 'src/app/shared/enums/PlaceType';
 import { IPlace } from 'src/app/shared/models/IPlace';
 import { CollectionsEnum } from 'src/app/shared/enums/Collection';
 import { PlacesService } from 'src/app/core/services/firebase/places.service';
@@ -57,7 +57,7 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
   public hideLeftControl: boolean = true;
 
   public CityEnum = CityEnum;
-  public PlaceTypeEnum = PlaceTypeEnum;
+  public PlaceTypeCityEnum = PlaceTypeCityEnum;
 
   public currentLanguage: ILang;
   public currentLanguage$: Observable<ILang>;
