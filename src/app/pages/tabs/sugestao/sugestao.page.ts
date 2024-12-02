@@ -23,6 +23,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SuggestionsEnum } from 'src/app/shared/enums/Suggestions';
 import { IFIrebaseFilter } from 'src/app/shared/models/IFirebaseFilter';
 import { FilterEnum } from 'src/app/shared/enums/FilterEnum';
+import { MOCK_FILTERS } from 'src/app/shared/mocks/MockFilters';
 
 @Component({
   selector: 'anfitrion-sugestao',
@@ -180,40 +181,7 @@ export class SugestaoPage implements OnInit, OnDestroy {
   public selectedFilter: string;
   public activeFilter: any;
 
-  public filters: any[] = [
-    {
-      value: 'ALL',
-      text: {
-        pt: 'Todos',
-        en: 'All',
-        es: 'Todos'
-      }
-    },
-    {
-      value: 'PET_FRIENDLY',
-      text: {
-        pt: 'Pode levar pet',
-        en: 'Pets allowed',
-        es: 'Se permiten mascotas'
-      }
-    },
-    {
-      value: 'TICKET',
-      text: {
-        pt: 'Aceita vale refeição',
-        en: 'Accept meal vouchers ',
-        es: 'Acepta vales de comida'
-      }
-    },
-    {
-      value: 'LIVEMUSIC',
-      text: {
-        pt: 'Tem música ao vivo',
-        en: 'Has live music',
-        es: 'Tiene música en vivo'
-      }
-    }
-  ]
+  public filters: any[] = MOCK_FILTERS;
 
   public showSpecificList: boolean = false;
 
@@ -436,21 +404,28 @@ export class SugestaoPage implements OnInit, OnDestroy {
       case FilterEnum.PET_FRIENDLY:
         this.getPlaces([
           { field: 'suggestions', operator: 'array-contains', value: SuggestionsEnum.RUA_GASTRONOMICA_DE_SANTOS },
-          { field: 'petfriendly_info.accept_petfriendly', operator: '==', value: true },
+          { field: 'petfriendly_info.accept_petfriendly', operator: '==', value: true }
         ]);
         break;
 
       case FilterEnum.LIVEMUSIC:
         this.getPlaces([
           { field: 'suggestions', operator: 'array-contains', value: SuggestionsEnum.RUA_GASTRONOMICA_DE_SANTOS },
-          { field: 'livemusic_info.has_livemusic', operator: '==', value: true },
+          { field: 'livemusic_info.has_livemusic', operator: '==', value: true }
         ]);
         break;
 
       case FilterEnum.TICKET:
         this.getPlaces([
           { field: 'suggestions', operator: 'array-contains', value: SuggestionsEnum.RUA_GASTRONOMICA_DE_SANTOS },
-          { field: 'ticket_info.accept_ticket', operator: '==', value: true },
+          { field: 'ticket_info.accept_ticket', operator: '==', value: true }
+        ]);
+        break;
+
+      case FilterEnum.CHILDREN_SPACE:
+        this.getPlaces([
+          { field: 'suggestions', operator: 'array-contains', value: SuggestionsEnum.RUA_GASTRONOMICA_DE_SANTOS },
+          { field: 'children_space.has_space', operator: '==', value: true }
         ]);
         break;
     }

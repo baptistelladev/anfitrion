@@ -332,6 +332,12 @@
     "TEXT": "Working hours",
     "ADVISE": "We state whether a restaurant is open or closed based on the hours below."
   },
+  "CHILDREN_SPACE": {
+    "TEXT": ["Special space", "for children"],
+    "TEXT_HASNT": "Does not have space kids.",
+    "ISNT_PAID": "In case you bring your little ones.",
+    "IS_PAID": "but it is paid, check with the establishment."
+  },
   "MESSAGES" : {
     "WELCOME_WHATSAPP" : "Hello, I came from the Gastronomic Street of Santos and..."
   },

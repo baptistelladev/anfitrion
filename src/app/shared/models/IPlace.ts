@@ -52,7 +52,12 @@ export interface IPlace {
   isBuilding: boolean,
   isPremium: boolean,
   suggestions: string[],
-  created_at: string
+  created_at: string,
+  children_space: {
+    has_space: boolean,
+    show_field: boolean,
+    is_paid: boolean
+  }
 }
 
 export interface ILongEstablishment {

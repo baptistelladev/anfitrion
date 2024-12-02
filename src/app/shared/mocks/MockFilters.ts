@@ -42,5 +42,14 @@ export const MOCK_FILTERS: IFilter[] = [
       es: 'Tiene música en vivo'
     },
     dontShowIn: [PlaceTypeEnum.ADEGA, PlaceTypeEnum.DOCERIA, PlaceTypeEnum.CAFETERIA, PlaceTypeEnum.EMPORIO, PlaceTypeEnum.HAMBURGUERIA, PlaceTypeEnum.MERCADO, PlaceTypeEnum.PIZZARIA, PlaceTypeEnum.TABACARIA]
+  },
+  {
+    value: FilterEnum.CHILDREN_SPACE,
+    text: {
+      pt: 'Espaço kids',
+      en: 'Space for children',
+      es: 'Área de niños'
+    },
+    dontShowIn: [PlaceTypeEnum.ADEGA, PlaceTypeEnum.DOCERIA, PlaceTypeEnum.CAFETERIA, PlaceTypeEnum.EMPORIO, PlaceTypeEnum.MERCADO, PlaceTypeEnum.TABACARIA]
   }
 ]

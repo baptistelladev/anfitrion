@@ -138,6 +138,11 @@ export const appInitialState: IAppState = {
         }
       ]
     },
+    children_space: {
+      has_space: false,
+      show_field: false,
+      is_paid: false
+    },
     petfriendly_info: {
       accept_petfriendly: false,
       show_field: false
