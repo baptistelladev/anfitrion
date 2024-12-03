@@ -12,7 +12,7 @@ ion-content {
       .city-wrapper {
         width: 100%;
         max-width: 338px;
-        margin: 0 auto;
+        margin: 0 0 16px 0;
 
         ion-item {
           --min-height: 0;
@@ -31,7 +31,7 @@ ion-content {
       .explorar-header-wrapper {
         width: 100%;
         height: auto;
-        min-height: 196px;
+        min-height: 166px;
         padding: 0 16px;
         position: relative;
 
