@@ -34,7 +34,8 @@
     "FILTER_PIZZERIA": "Filter pizzerias",
     "FILTER_BURGER_JOINT": "Filter burger joints",
     "FILTER_SWEET_SHOP": "Filter sweet shops",
-    "ACCORDING_YOUR_NEED": "according to your needs"
+    "ACCORDING_YOUR_NEED": "according to your needs",
+    "BACK_TO_EXPLORE" : ["Back to", "explore"]
   },
   "SUGGESTIONS_PAGE" : {
     "PAGE_TITLE" : "host suggestions",

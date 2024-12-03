@@ -1,4 +1,3 @@
-
 export enum PlaceSpecialtyEnum {
   BRASILEIRA = 'BRASILEIRA',
   MEXICANA = 'MEXICANA',

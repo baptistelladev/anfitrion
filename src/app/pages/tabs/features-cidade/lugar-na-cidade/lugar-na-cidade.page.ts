@@ -23,6 +23,8 @@ import { AnalyticsService } from 'src/app/core/services/firebase/analytics.servi
 import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 import { SuggestionsEnum } from 'src/app/shared/enums/Suggestions';
 import { LocationEnum } from 'src/app/shared/enums/Location';
+import { IUSer } from 'src/app/shared/models/IUser';
+import * as UserStore from './../../../../shared/store/user.state';
 
 @Component({
   selector: 'anfitrion-lugar-na-cidade',
@@ -53,6 +55,14 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('placesSwiper')
   swiperRef: ElementRef | undefined;
   swiper?: Swiper;
+
+  public user: IUSer;
+  public user$: Observable<IUSer>;
+  public userSubscription: Subscription;
+
+  public canAccessEightenContent: boolean;
+  public canAccessEightenContent$: Observable<boolean>;
+  public canAccessEightenContentSubscription: Subscription;
 
   public hideRightControl: boolean = false;
   public hideLeftControl: boolean = true;
@@ -89,6 +99,7 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
   ) { }
 
   ngOnInit() {
+    this.getUserFromNGRX();
     this.getCurrentLanguageFromNGRX();
     this.getRouter();
     this.setFilters();
@@ -105,10 +116,34 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
     this.swiper = this.swiperRef?.nativeElement.swiper;
   }
 
+  public getUserFromNGRX(): void {
+    this.user$ = this.store.select(UserStore.selectUser);
+
+    this.userSubscription = this.user$
+    .subscribe((user: IUSer) => {
+      this.user = user;
+
+      this.getEighteenContentAccess();
+    })
+  }
+
+  public getEighteenContentAccess(): void {
+    this.canAccessEightenContent$ = this.store.select(UserStore.selectAccessEighteenContent);
+
+    this.canAccessEightenContentSubscription = this.canAccessEightenContent$
+    .subscribe((canAccess: boolean) => {
+      this.canAccessEightenContent = canAccess;
+    })
+  }
+
   public setFilters(): void {
     this.MOCK_FILTERS = MOCK_FILTERS.filter((filter: IFilter) => {
       return !filter.dontShowIn.includes(this.placeType)
     })
+  }
+
+  public navToExplore(): void {
+    this.navCtrl.navigateBack(['/logado/explorar'])
   }
 
   public initialFilter(value: string) {
@@ -275,6 +310,8 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
   ngOnDestroy(): void {
     this.placesSubscription.unsubscribe();
     this.currentLanguageSubscription.unsubscribe();
+    this.canAccessEightenContentSubscription.unsubscribe();
+    this.userSubscription.unsubscribe();
     this.places = null;
   }
 

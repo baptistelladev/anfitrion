@@ -1,8 +1,9 @@
+import { CityEnum } from "../enums/City";
 import { ICity } from "../models/ICity";
 
 export const MOCK_CITIES: ICity[] = [
   {
-    value: 'SAO_VICENTE',
+    value: CityEnum.SAO_VICENTE,
     name: 'São Vicente',
     sigla: 'sv',
     isDisabled: false,
@@ -18,7 +19,7 @@ export const MOCK_CITIES: ICity[] = [
     }
   },
   {
-    value: 'SANTOS',
+    value: CityEnum.SANTOS,
     name: 'Santos',
     sigla: 'santos',
     isDisabled: false,
@@ -34,7 +35,7 @@ export const MOCK_CITIES: ICity[] = [
     }
   },
   {
-    value: 'PRAIA_GRANDE',
+    value: CityEnum.PRAIA_GRANDE,
     name: 'Praia Grande',
     sigla: 'pg',
     isDisabled: true,
@@ -50,7 +51,7 @@ export const MOCK_CITIES: ICity[] = [
     }
   },
   {
-    value: 'GUARUJA',
+    value: CityEnum.GUARUJA,
     name: 'Guarujá',
     sigla: 'guaru',
     isDisabled: true,
@@ -66,7 +67,7 @@ export const MOCK_CITIES: ICity[] = [
     }
   },
   {
-    value: 'PERUIBE',
+    value: CityEnum.PERUIBE,
     name: 'Peruíbe',
     sigla: 'peruibe',
     isDisabled: true,
@@ -82,7 +83,7 @@ export const MOCK_CITIES: ICity[] = [
     }
   },
   {
-    value: 'BERTIOGA',
+    value: CityEnum.BERTIOGA,
     name: 'Bertioga',
     sigla: 'bertioga',
     isDisabled: true,
@@ -98,7 +99,7 @@ export const MOCK_CITIES: ICity[] = [
     }
   },
   {
-    value: 'CUBATAO',
+    value: CityEnum.CUBATAO,
     name: 'Cubatão',
     sigla: 'cubatao',
     isDisabled: true,
@@ -114,7 +115,7 @@ export const MOCK_CITIES: ICity[] = [
     }
   },
   {
-    value: 'ITANHAEM',
+    value: CityEnum.ITANHAEM,
     name: 'Itanhaém',
     sigla: 'itanhaem',
     isDisabled: true,
@@ -130,7 +131,7 @@ export const MOCK_CITIES: ICity[] = [
     }
   },
   {
-    value: 'MONGAGUA',
+    value: CityEnum.MONGAGUA,
     name: 'Mongaguá',
     sigla: 'mongagua',
     isDisabled: true,
