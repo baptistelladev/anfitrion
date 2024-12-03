@@ -1,4 +1,5 @@
 <ion-content
+[ngClass]="{ 'blur-when-doesnt-respect-age': !canAccessEightenContent }"
 #placesContent
 class="ion-content-w-linear-bg"
 [forceOverscroll]="false">
@@ -365,3 +366,28 @@ class="ion-content-w-linear-bg"
     </ion-row>
   </ion-grid>
 </ion-content>
+
+<div class="content-wall" [ngClass]="{ 'is-active': !canAccessEightenContent }">
+  <div class="content">
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col size="12" class="txt-center">
+          <ion-text mode="ios" class="txt-center animate__animated" [ngClass]="{ 'animate__fadeIn': !canAccessEightenContent }">
+            <p class="age-limit">🔞</p>
+            <p class="color-gray-text fs-14">{{ 'SHARED.AGE_LIMIT_18' | translate }}</p>
+          </ion-text>
+
+          <ion-button
+          (click)="navToExplore()"
+          shape="round"
+          class="anf-main-solid fs-12 mg-top-32"
+          [title]="('PLACES_IN_THE_CITY.BACK_TO_EXPLORE.0' | translate) + ' ' + ('PLACES_IN_THE_CITY.BACK_TO_EXPLORE.1' | translate)"
+          mode="md"
+          fill="solid">
+            <ion-icon [name]="'search' + '-outline'" class="fs-20 mg-right-5"></ion-icon> {{ 'PLACES_IN_THE_CITY.BACK_TO_EXPLORE.0' | translate }} <b class="mg-left-5">{{ 'PLACES_IN_THE_CITY.BACK_TO_EXPLORE.1' | translate}}</b>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</div>

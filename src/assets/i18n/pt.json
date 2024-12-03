@@ -34,7 +34,8 @@
     "FILTER_PIZZERIA" : "Filtre as pizzarias",
     "FILTER_BURGER_JOINT" : "Filtre as hamburguerias",
     "FILTER_SWEET_SHOP" : "Filtre as docerias",
-    "ACCORDING_YOUR_NEED" : "de acordo com a sua necessidade"
+    "ACCORDING_YOUR_NEED" : "de acordo com a sua necessidade",
+    "BACK_TO_EXPLORE" : ["Volte a","explorar"]
   },
   "SUGGESTIONS_PAGE" : {
     "PAGE_TITLE" : "Sugestões do anfitrião",

@@ -21,6 +21,8 @@ import { MOCK_CITY_FEATURES } from 'src/app/shared/mocks/MockCityFeatures';
 import { MOCK_BEACH_FEATURES } from 'src/app/shared/mocks/MockBeachFeatures';
 import { LocationEnum } from 'src/app/shared/enums/Location';
 import { PeopleService } from 'src/app/core/services/firebase/people.service';
+import { MOCK_LOCATION } from 'src/app/shared/mocks/MockLocation';
+import { ILocation } from 'src/app/shared/models/ILocation';
 
 @Component({
   selector: 'anfitrion-explorar',
@@ -66,24 +68,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
   public LocationEnum = LocationEnum;
 
-  public segments: any[] = [
-    {
-      value: LocationEnum.CIDADE,
-      text: {
-        pt: ["na", "cidade"],
-        en: ["in the", "city"],
-        es: ["en la", "ciudad"]
-      }
-    },
-    {
-      value: LocationEnum.PRAIA,
-      text: {
-        pt: ["na", "praia"],
-        en: ["at the", "beach"],
-        es: ["en la", "playa"]
-      }
-    }
-];
+  public MOCK_LOCATION: ILocation[] = MOCK_LOCATION;
 
   public selectedSegment: string = '';
   public selectedFeatures: any[];

@@ -66,7 +66,7 @@ export const appInitialState: IAppState = {
     value: ''
   },
   currentPlace: {
-    work_at: [],
+    work_place: [],
     created_at: '',
     suggestions: [],
     isBuilding: false,
