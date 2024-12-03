@@ -629,3 +629,39 @@ ion-checkbox {
     }
   }
 }
+
+ion-chip.as-badge {
+  border-radius: 5px;
+  padding: 3px 5px;
+  font-size: 8px;
+  min-height: 0;
+  margin: 0;
+  max-height: 15px;
+
+  &.positioned {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 314;
+  }
+
+  &.soon {
+    background: var(--bootstrap-success-light-bg);
+    color: var(--bootstrap-success);
+  }
+
+  &.user-type {
+    background: var(--bootstrap-gray-light-bg);
+    color: var(--bootstrap-gray);
+  }
+
+  &.tourist {
+    background: var(--bootstrap-tourist-light-bg);
+    color: var(--bootstrap-tourist);
+  }
+
+  &.resident {
+    background: var(--bootstrap-resident-light-bg);
+    color: var(--bootstrap-resident);
+  }
+}

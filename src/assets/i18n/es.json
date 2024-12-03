@@ -207,7 +207,11 @@
     "AGE_LIMIT_18" : "No tienes la edad suficiente para acceder a este contenido o aún no nos has informado tu edad",
     "PEOPLE" : "Personas",
     "CITY": "Ciudad",
-    "BEACH": "Playa"
+    "BEACH": "Playa",
+    "TOURIST" : "Turista",
+    "RESIDENT" : "Residente",
+    "FREE_ACCOUNT" : "Cuenta gratuita",
+    "PREMIUM_ACCOUNT" : "Cuenta premium"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nuestro propósito aquí es ayudarte a ahorrar tu bien más precioso:","el tiempo"],

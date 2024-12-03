@@ -24,24 +24,45 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content mode="ios">
+<ion-content mode="ios" [fullscreen]="true">
   <section class="menu">
-    <ion-grid [fixed]="true">
+    <ion-grid [fixed]="true" class="no-pad-top">
       <ion-row>
-        <ion-col size="12">
+        <ion-col size="12" class="no-pad-top">
           <div class="menu-container">
-            <ion-grid [fixed]="true">
+            <ion-grid [fixed]="true" class="no-pad-top">
               <ion-row>
+                <ion-col class="no-pad-top" size="12">
+                  <ion-text mode="ios" class="line-height-24 txt-center">
+                    <p class="fs-14 color-gray-text font-w-thin fs-20">{{ user.firstName }} {{ user.lastName }}</p>
+                  </ion-text>
+
+                  <div class="chips">
+                    <ion-chip
+                    *ngIf="user.userType"
+                    [ngClass]="user.userType === UserTypeEnum.MORADOR ? 'tourist' : 'resident'"
+                    mode="ios"
+                    class="txt-uppercase as-badge">
+                      {{ user.userType === UserTypeEnum.MORADOR ? ('SHARED.RESIDENT' | translate) : ('SHARED.TOURIST' | translate) }}
+                    </ion-chip>
+
+                    <ion-chip
+                    mode="ios"
+                    class="txt-uppercase as-badge">
+                      {{ 'SHARED.FREE_ACCOUNT' | translate }}
+                    </ion-chip>
+                  </div>
+                </ion-col>
+
                 <ion-col size="12">
                   <ion-text mode="ios" class="line-height-22">
-                    <p class="fs-18 color-gray-6 font-baloo"><b>Menu</b>,</p>
-                    <p class="fs-14 color-gray-text font-w-thin">{{ user.firstName }}, {{ 'MENU_PAGE.HOW_CAN_I_HELP' | translate }}?</p>
+                    <p class="fs-18 color-gray-6 font-baloo"><b>Menu</b></p>
                   </ion-text>
                 </ion-col>
 
                 <ion-col *ngFor="let option of menuOptions" [size]="4">
                   <div class="menu-item-wrapper">
-                    <ion-chip mode="ios" *ngIf="option.soon" [ngClass]="{ 'soon': option.soon }" class="txt-uppercase">{{ 'SHARED.COMING_SOON' | translate }}</ion-chip>
+                    <ion-chip mode="ios" *ngIf="option.soon" [ngClass]="{ 'soon': option.soon }" class="txt-uppercase as-badge positioned">{{ 'SHARED.COMING_SOON' | translate }}</ion-chip>
 
                     <ion-item
                     [disabled]="option.soon"
@@ -69,8 +90,8 @@
   </section>
 </ion-content>
 
-<ion-footer mode="ios" class="ion-no-border">
-  <ion-toolbar mode="ios" class="ion-bg-gray-ed">
+<ion-footer mode="ios" class="ion-no-border bg-transparent">
+  <ion-toolbar mode="ios" class="special-toolbar-bg">
     <ion-grid [fixed]="true">
       <ion-row>
         <ion-col size="12">
