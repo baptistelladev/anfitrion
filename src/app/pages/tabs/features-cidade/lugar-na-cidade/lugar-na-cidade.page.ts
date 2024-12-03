@@ -180,6 +180,7 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
       })
 
       this.currentLocationAsParam = res.localidade;
+
     })
 
     this.route.paramMap

@@ -124,6 +124,7 @@ class="ion-content-w-linear-bg">
                       lines="none"
                       mode="ios">
                         <ion-input
+                        #emailInput
                         (keyup)="justLowercase(formLoginGroup, 'email')"
                         (keydown)="preventWhitespace($event)"
                         formControlName="email"
@@ -167,6 +168,7 @@ class="ion-content-w-linear-bg">
                       lines="none"
                       mode="ios">
                         <ion-input
+                        #passwordInput
                         (keydown)="preventWhitespace($event)"
                         [placeholder]="'INPUTS.PASSWORD' | translate"
                         [type]="showLoginPassword ? 'text' : 'password'"
