@@ -21,23 +21,6 @@ ion-content {
           position: relative;
           min-height: 96px;
 
-          ion-chip {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            z-index: 314;
-            border-radius: 5px;
-            padding: 3px 5px;
-            font-size: 8px;
-            min-height: 0;
-            margin: 0;
-
-            &.soon {
-              background: var(--bootstrap-success-light-bg);
-              color: var(--bootstrap-success);
-            }
-          }
-
           @media (hover: hover) {
             &:hover {
               ion-item:not(.is-disabled) {
@@ -87,4 +70,17 @@ ion-content {
   width: 100%;
   margin: 0 auto;
   @include flexbox(center, center, row);
+}
+
+.chips {
+  @include flexbox(flex-start, center, row);
+  margin: 6px 0 0 0;
+
+  ion-chip {
+    margin: 0 4px;
+  }
+}
+
+.special-toolbar-bg {
+  --background: linear-gradient(to bottom, var(--transparent), var(--gray-ed) 37%);
 }

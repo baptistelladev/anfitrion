@@ -206,7 +206,11 @@
     "AGE_LIMIT_18" : "You are not old enough to access this content or have not yet provided your age",
     "PEOPLE" : "People",
     "CITY": "City",
-    "BEACH": "Beach"
+    "BEACH": "Beach",
+    "TOURIST" : "Tourist",
+    "RESIDENT" : "Resident",
+    "FREE_ACCOUNT" : "Free account",
+    "PREMIUM_ACCOUNT" : "Premium account"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Our purpose here is to help you save your most precious asset: ","time"],

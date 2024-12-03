@@ -11,6 +11,7 @@ import { IUSer } from 'src/app/shared/models/IUser';
 import * as UserStore from './../../../shared/store/user.state';
 import * as AppStore from './../../../shared/store/app.state';
 import { TranslateService } from '@ngx-translate/core';
+import { UserTypeEnum } from 'src/app/shared/enums/UserType';
 
 @Component({
   selector: 'anfitrion-menu',
@@ -19,17 +20,9 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class MenuPage implements OnInit, OnDestroy {
 
+  public UserTypeEnum = UserTypeEnum;
+
   public menuOptions: any[] = [
-    {
-      text: {
-        pt: 'Favoritos',
-        en: 'Favorits',  // Alterado para refletir o significado correto
-        es: 'Favoritos'
-      },
-      icon: 'star',
-      route: 'sua-conta',
-      soon: true
-    },
     {
       text: {
         pt: 'Conta',
@@ -79,7 +72,17 @@ export class MenuPage implements OnInit, OnDestroy {
       icon: 'document-text',
       route: 'termos-e-condicoes-de-uso',
       soon: false
-    }
+    },
+    {
+      text: {
+        pt: 'Favoritos',
+        en: 'Favorits',
+        es: 'Favoritos'
+      },
+      icon: 'star',
+      route: 'sua-conta',
+      soon: true
+    },
   ]
 
   public currentLanguage: ILang;

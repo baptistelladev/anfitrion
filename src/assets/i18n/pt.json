@@ -206,7 +206,11 @@
     "AGE_LIMIT_18" : "Você não tem idade suficiente para acessar este conteúdo ou ainda não nos informou sua idade",
     "PEOPLE" : "Pessoas",
     "CITY" : "Cidade",
-    "BEACH" : "Praia"
+    "BEACH" : "Praia",
+    "TOURIST" : "Turista",
+    "RESIDENT" : "Morador",
+    "FREE_ACCOUNT" : "Conta gratuita",
+    "PREMIUM_ACCOUNT" : "Conta premium"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nosso próposito aqui é fazer com que voê economize o seu bem mais precioso:","o tempo"],

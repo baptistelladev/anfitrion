@@ -18,6 +18,7 @@ import { OverlayService } from 'src/app/shared/services/overlay.service';
 import { TranslateService } from '@ngx-translate/core';
 import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
 import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
+import { UserTypeEnum } from 'src/app/shared/enums/UserType';
 
 @Component({
   selector: 'anfitrion-seus-dados',
@@ -25,6 +26,8 @@ import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
   styleUrls: ['./seus-dados.page.scss'],
 })
 export class SeusDadosPage implements OnInit, OnDestroy {
+
+  public UserTypeEnum = UserTypeEnum;
 
   public today = moment();
   public eightenYearsLimitDate = this.today.subtract(18, 'years');

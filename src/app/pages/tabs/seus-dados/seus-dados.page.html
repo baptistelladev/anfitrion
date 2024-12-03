@@ -257,7 +257,7 @@ class="ion-content-w-linear-bg">
             'has-error' : (personalDataForm.get('type')?.invalid &&
             (personalDataForm.get('type')?.touched ||
             personalDataForm.get('type')?.dirty))}"
-            class="anfitrion-input-wrapper select-on-form full-width white-background-item label-w-white item-has-button-at-end ">
+            class="anfitrion-input-wrapper select-on-form full-width white-background-item label-w-white item-has-button-at-end mg-bottom-5">
               <ion-item
               class="has-select-on-form"
               lines="none"
@@ -292,6 +292,15 @@ class="ion-content-w-linear-bg">
                   {{ 'ERRORS.REQUIRED_FIELD' | translate }}
                 </p>
               </ion-text>
+            </div>
+
+            <div class="mg-top-8">
+              <ion-chip
+              [ngClass]="personalDataForm.get('type')?.value === UserTypeEnum.MORADOR ? 'tourist' : 'resident'"
+              mode="ios"
+              class="txt-uppercase as-badge">
+                {{personalDataForm.get('type')?.value === UserTypeEnum.MORADOR ? ('SHARED.RESIDENT' | translate) : ('SHARED.TOURIST' | translate) }}
+              </ion-chip>
             </div>
           </ion-col>
 
