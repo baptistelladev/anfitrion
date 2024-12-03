@@ -356,9 +356,11 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
       this.navCtrl.navigateForward([`/logado/explorar/${place.route}`], {
         queryParams: {
           localidade: this.selectedSegment,
-          cidade: this.currentCity.value
+          cidade: this.currentCity.value,
+          maioridade: place.ageLimit
         }
       })
+
     } else {
       const toast = await this.overlayService.fireToast({
         mode: 'ios',

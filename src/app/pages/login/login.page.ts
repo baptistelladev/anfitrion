@@ -6,7 +6,7 @@ import { ILang } from 'src/app/shared/models/ILang';
 import * as AppStore from './../../shared/store/app.state';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swiper from 'swiper';
-import { NavController } from '@ionic/angular';
+import { IonInput, NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/core/services/firebase/auth.service';
 import { OverlayService } from 'src/app/shared/services/overlay.service';
 import { UtilsService } from 'src/app/core/services/utils.service';
@@ -28,6 +28,9 @@ import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
+
+  @ViewChild('passwordInput') passwordInput : IonInput;
+  @ViewChild('emailInput') emailInput : IonInput;
 
   public showTermsAndConditionsModal: boolean = false;
 
@@ -188,6 +191,12 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
 
     await this.authService.signInWithEmailAndPassword(this.formLoginGroup.value.email, this.formLoginGroup.value.password)
     .then( async (user: any) => {
+
+      const passwordInput = this.passwordInput.getInputElement();
+      passwordInput.then((input) => input.blur());
+
+      const emailInput = this.emailInput.getInputElement();
+      emailInput.then((input) => input.blur());
 
       if (user.emailVerified) {
         toastSuccess.message = `${this.translate.instant('LOGIN_PAGE.ACC_IDENTIFIED')}`;
