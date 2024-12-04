@@ -79,3 +79,15 @@
     }
   }
 }
+
+.beaches-filter-n-wrapper {
+  @include flexbox(flex-start, center, row);
+
+  .beaches-wrapper {
+    flex: 1;
+  }
+
+  .filter-btn-wrapper {
+
+  }
+}
