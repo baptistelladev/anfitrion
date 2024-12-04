@@ -88,119 +88,149 @@ class="ion-content-w-linear-bg">
     <div class="features-segment">
       <ion-grid [fixed]="true">
         <ion-row>
-          <ion-col size="12">
-            <ion-text mode="ios">
-              <p class="font-baloo fs-20 color-gray-text font-w-bold">
-                {{ 'SHARED.PLACES' | translate }} <span class="font-default txt-lowercase fs-12 color-gray-mid font-w-normal" *ngIf="places && places.length > 0">({{ places.length }})</span>
-              </p>
-              <p class="fs-14 color-gray-text font-w-thin" *ngIf="selectedSegment === LocationEnum.CIDADE">
-                {{ 'EXPLORE_PAGE.CITY_PLACES_EXPLORING' | translate }}...
-              </p>
-              <p class="fs-14 color-gray-text font-w-thin" *ngIf="selectedSegment === LocationEnum.PRAIA">
-                {{ 'EXPLORE_PAGE.BEACH_PLACES_EXPLORING' | translate }}...
-              </p>
-            </ion-text>
-          </ion-col>
-
-          <ion-col size="12" *ngIf="places && places.length === 0">
-            <ion-text mode="ios">
-              <p class="fs-14 color-gray-text font-w-thin">
-                {{ 'SHARED.NOT_FOUND' | translate }} <span class="txt-lowercase">{{ 'SHARED.PLACES' | translate }}</span> {{ currentCity.in[currentLanguage.value] }} {{ currentCity.name }}.
-              </p>
-
-              <p class="fs-14 pad-top-16">
-                <a href="javascript:void(0)" (click)="openCityModal()" [title]="'SHARED.TRY_ANOTHER_CITY' | translate" class="send-feedback">{{ 'SHARED.TRY_ANOTHER_CITY' | translate }}<ion-icon name="arrow-forward" class="mg-left-5"></ion-icon></a>
-              </p>
-            </ion-text>
-          </ion-col>
-
-          <ng-container *ngIf="places && places.length > 0">
-            <ng-container *ngFor="let place of FEATURES.places">
-              <ion-col
-              size="auto"
-              *ngIf="place.show">
-                <div
-                class="feature-item-wrapper">
-                  <ion-badge *ngIf="place.atLeastOneLength && (place.userRespectAgeLimit || place.userRespectAgeLimit === null)" class="fs-12 color-green">{{ place.atLeastOneLength }}</ion-badge>
-
-                  <ion-text mode="ios" class="forbidden" *ngIf="place.ageLimit === 18 && !place.userRespectAgeLimit">
-                    <p>🔞</p>
+          <ion-col size="12" [attr.size-lg]="selectedSegment === LocationEnum.PRAIA ? 6 : 12" class="no-padding mg-bottom-16">
+            <ion-grid class="no-padding">
+              <ion-row>
+                <ion-col size="12">
+                  <ion-text mode="ios">
+                    <p class="font-baloo fs-20 color-gray-text font-w-bold">
+                      {{ 'SHARED.PLACES' | translate }} <span class="font-default txt-lowercase fs-12 color-gray-mid font-w-normal" *ngIf="places && places.length > 0">({{ places.length }})</span>
+                    </p>
+                    <p class="fs-14 color-gray-text font-w-thin" *ngIf="selectedSegment === LocationEnum.CIDADE">
+                      {{ 'EXPLORE_PAGE.CITY_PLACES_EXPLORING' | translate }}.
+                    </p>
+                    <p class="fs-14 color-gray-text font-w-thin" *ngIf="selectedSegment === LocationEnum.PRAIA">
+                      {{ 'EXPLORE_PAGE.BEACH_PLACES_EXPLORING' | translate }}.
+                    </p>
                   </ion-text>
+                </ion-col>
 
-                  <ion-item
-                  (click)="searchPlaceInTheCity(place)"
-                  [disabled]="place.isDisabled || !place.atLeastOneLength"
-                  [ngClass]="{ 'is-disabled': place.isDisabled || !place.atLeastOneLength }"
-                  [title]="place.text[currentLanguage.value]"
-                  mode="ios"
-                  [detail]="false"
-                  [button]="true"
-                  lines="none">
-                    <ion-text
-                      mode="ios">
-                      <ion-icon [name]="place.icon + '-outline'" *ngIf="!place.loadIconsFromAssets"></ion-icon>
-                      <p class="fs-12 mg-top-5 color-gray-text">{{ place.text[currentLanguage.value] }}</p>
-                    </ion-text>
-                  </ion-item>
-                </div>
-              </ion-col>
-             </ng-container>
-          </ng-container>
+                <ion-col size="12" *ngIf="places && places.length === 0">
+                  <ion-text mode="ios">
+                    <p class="fs-14 color-gray-text font-w-thin">
+                      {{ 'SHARED.NOT_FOUND' | translate }} <span class="txt-lowercase">{{ 'SHARED.PLACES' | translate }}</span> {{ currentCity.in[currentLanguage.value] }} {{ currentCity.name }}.
+                    </p>
 
-          <ion-col [size]="12">
-            <ion-text mode="ios">
-              <p class="font-baloo fs-20 color-gray-text font-w-bold">
-                {{ 'SHARED.PEOPLE' | translate }} <span class="font-default txt-lowercase fs-12 color-gray-mid font-w-normal" *ngIf="people && people.length > 0">({{ people.length }})</span>
-              </p>
-              <p class="fs-14 color-gray-text font-w-thin" *ngIf="selectedSegment === LocationEnum.CIDADE">
-                {{ 'EXPLORE_PAGE.CITY_PEOPLE_EXPLORING' | translate }}...
-              </p>
-              <p class="fs-14 color-gray-text font-w-thin" *ngIf="selectedSegment === LocationEnum.PRAIA">
-                {{ 'EXPLORE_PAGE.BEACH_PEOPLE_EXPLORING' | translate }}...
-              </p>
-            </ion-text>
-          </ion-col>
-
-          <ion-col *ngIf="people && people.length === 0" [size]="12">
-            <ion-text mode="ios">
-              <p class="fs-14 color-gray-text font-w-thin">
-                {{ 'SHARED.NOT_FOUND' | translate }} <span class="txt-lowercase">{{ 'SHARED.PEOPLE' | translate }}</span> {{ currentCity.in[currentLanguage.value] }} {{ currentCity.name }}.
-              </p>
-            </ion-text>
-          </ion-col>
-
-          <ng-container *ngIf="people && people.length > 0">
-            <ng-container *ngFor="let people of FEATURES.people">
-              <ion-col
-              size="auto"
-              *ngIf="people.show">
-                <div
-                class="feature-item-wrapper">
-                  <ion-badge *ngIf="people.atLeastOneLength && (people.userRespectAgeLimit || people.userRespectAgeLimit === null)" class="fs-12 color-green">{{ people.atLeastOneLength }}</ion-badge>
-
-                  <ion-text mode="ios" class="forbidden" *ngIf="people.ageLimit === 18 && !people.userRespectAgeLimit">
-                    <p>🔞</p>
+                    <p class="fs-14 pad-top-16">
+                      <a href="javascript:void(0)" (click)="openCityModal()" [title]="'SHARED.TRY_ANOTHER_CITY' | translate" class="send-feedback">{{ 'SHARED.TRY_ANOTHER_CITY' | translate }}<ion-icon name="arrow-forward" class="mg-left-5"></ion-icon></a>
+                    </p>
                   </ion-text>
+                </ion-col>
 
-                  <ion-item
-                  (click)="searchPlaceInTheCity(people)"
-                  [disabled]="people.isDisabled || !people.atLeastOneLength"
-                  [ngClass]="{ 'is-disabled': people.isDisabled || !people.atLeastOneLength }"
-                  [title]="people.text[currentLanguage.value]"
-                  mode="ios"
-                  [detail]="false"
-                  [button]="true"
-                  lines="none">
-                    <ion-text
-                      mode="ios">
-                      <ion-icon [name]="people.icon + '-outline'" *ngIf="!people.loadIconsFromAssets"></ion-icon>
-                      <p class="fs-12 mg-top-5 color-gray-text">{{ people.text[currentLanguage.value] }}</p>
-                    </ion-text>
-                  </ion-item>
-                </div>
-              </ion-col>
-             </ng-container>
-          </ng-container>
+                <ng-container *ngIf="lookingForPlaces">
+                  <ng-container *ngFor="let skeleton of [1,2,3,4,5,6,7]">
+                    <ion-col
+                    size="auto">
+                      <ion-skeleton-text mode="ios" [animated]="true" class="like-feature"></ion-skeleton-text>
+                    </ion-col>
+                  </ng-container>
+                </ng-container>
+
+                <ng-container *ngIf="places && places.length > 0 && !lookingForPlaces">
+                  <ng-container *ngFor="let place of FEATURES.places">
+                    <ion-col
+                    size="auto"
+                    *ngIf="place.show">
+                      <div
+                      class="feature-item-wrapper">
+                        <ion-badge *ngIf="place.atLeastOneLength && (place.userRespectAgeLimit || place.userRespectAgeLimit === null)" class="fs-12 color-green">{{ place.atLeastOneLength }}</ion-badge>
+
+                        <ion-text mode="ios" class="forbidden" *ngIf="place.ageLimit === 18 && !place.userRespectAgeLimit">
+                          <p>🔞</p>
+                        </ion-text>
+
+                        <ion-item
+                        (click)="searchPlaceInTheCity(place)"
+                        [disabled]="place.isDisabled || !place.atLeastOneLength"
+                        [ngClass]="{ 'is-disabled': place.isDisabled || !place.atLeastOneLength }"
+                        [title]="place.text[currentLanguage.value]"
+                        mode="ios"
+                        [detail]="false"
+                        [button]="true"
+                        lines="none">
+                          <ion-text
+                            mode="ios">
+                            <ion-icon [name]="place.icon + '-outline'" *ngIf="!place.loadIconsFromAssets"></ion-icon>
+                            <p class="fs-12 mg-top-5 color-gray-text">{{ place.text[currentLanguage.value] }}</p>
+                          </ion-text>
+                        </ion-item>
+                      </div>
+                    </ion-col>
+                   </ng-container>
+                </ng-container>
+              </ion-row>
+            </ion-grid>
+          </ion-col>
+
+          <ion-col size="12" [attr.size-lg]="selectedSegment === LocationEnum.PRAIA ? 6 : 12" class="no-padding mg-bottom-16">
+            <ion-grid class="no-padding">
+              <ion-row>
+                <ion-col [size]="12">
+                  <ion-text mode="ios">
+                    <p class="font-baloo fs-20 color-gray-text font-w-bold">
+                      {{ 'SHARED.PEOPLE' | translate }} <span class="font-default txt-lowercase fs-12 color-gray-mid font-w-normal" *ngIf="people && people.length > 0">({{ people.length }})</span>
+                    </p>
+                    <p class="fs-14 color-gray-text font-w-thin" *ngIf="selectedSegment === LocationEnum.CIDADE">
+                      {{ 'EXPLORE_PAGE.CITY_PEOPLE_EXPLORING' | translate }}.
+                    </p>
+                    <p class="fs-14 color-gray-text font-w-thin" *ngIf="selectedSegment === LocationEnum.PRAIA">
+                      {{ 'EXPLORE_PAGE.BEACH_PEOPLE_EXPLORING' | translate }}.
+                    </p>
+                  </ion-text>
+                </ion-col>
+
+                <ion-col *ngIf="people && people.length === 0" [size]="12">
+                  <ion-text mode="ios">
+                    <p class="fs-14 color-gray-text font-w-thin">
+                      {{ 'SHARED.NOT_FOUND' | translate }} <span class="txt-lowercase">{{ 'SHARED.PEOPLE' | translate }}</span> {{ currentCity.in[currentLanguage.value] }} {{ currentCity.name }}.
+                    </p>
+                  </ion-text>
+                </ion-col>
+
+                <ng-container *ngIf="lookingForPlaces">
+                  <ng-container *ngFor="let skeleton of [1,2,3]">
+                    <ion-col
+                    size="auto">
+                      <ion-skeleton-text mode="ios" [animated]="true" class="like-feature"></ion-skeleton-text>
+                    </ion-col>
+                  </ng-container>
+                </ng-container>
+
+                <ng-container *ngIf="people && people.length > 0 && !lookingForPeople">
+                  <ng-container *ngFor="let people of FEATURES.people">
+                    <ion-col
+                    size="auto"
+                    *ngIf="people.show">
+                      <div
+                      class="feature-item-wrapper">
+                        <ion-badge *ngIf="people.atLeastOneLength && (people.userRespectAgeLimit || people.userRespectAgeLimit === null)" class="fs-12 color-green">{{ people.atLeastOneLength }}</ion-badge>
+
+                        <ion-text mode="ios" class="forbidden" *ngIf="people.ageLimit === 18 && !people.userRespectAgeLimit">
+                          <p>🔞</p>
+                        </ion-text>
+
+                        <ion-item
+                        (click)="searchPlaceInTheCity(people)"
+                        [disabled]="people.isDisabled || !people.atLeastOneLength"
+                        [ngClass]="{ 'is-disabled': people.isDisabled || !people.atLeastOneLength }"
+                        [title]="people.text[currentLanguage.value]"
+                        mode="ios"
+                        [detail]="false"
+                        [button]="true"
+                        lines="none">
+                          <ion-text
+                            mode="ios">
+                            <ion-icon [name]="people.icon + '-outline'" *ngIf="!people.loadIconsFromAssets"></ion-icon>
+                            <p class="fs-12 mg-top-5 color-gray-text">{{ people.text[currentLanguage.value] }}</p>
+                          </ion-text>
+                        </ion-item>
+                      </div>
+                    </ion-col>
+                   </ng-container>
+                </ng-container>
+              </ion-row>
+            </ion-grid>
+          </ion-col>
         </ion-row>
       </ion-grid>
     </div>

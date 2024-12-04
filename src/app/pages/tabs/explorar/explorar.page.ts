@@ -31,6 +31,9 @@ import { ILocation } from 'src/app/shared/models/ILocation';
 })
 export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
+  public lookingForPlaces: boolean = false;
+  public lookingForPeople: boolean = false;
+
   @ViewChild('explorarContent') explorarContent: IonContent;
 
   @ViewChild('explorarSwiper')
@@ -106,9 +109,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
   public async getPlacesFromCity() {
 
-    const loading = await this.overlayService.fireLoading();
-
-    await loading.present();
+    this.lookingForPlaces = true;
 
     this.places$ = this.placesService
     .getCollection(
@@ -133,16 +134,14 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
         feature.atLeastOneLength = compressedInformation[feature.value] ? compressedInformation[feature.value] : 0
       })
 
-      await loading.dismiss();
+      this.lookingForPlaces = false;
     })
   }
 
 
   public async getPeopleFromBeach() {
 
-    const loading = await this.overlayService.fireLoading();
-
-    await loading.present();
+    this.lookingForPlaces = true;
 
     this.people$ = this.peopleService
     .getCollection(
@@ -170,15 +169,13 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
         feature.atLeastOneLength = compressedInformation[feature.value] ? compressedInformation[feature.value] : 0
       })
 
-      await loading.dismiss();
+      this.lookingForPlaces = false;
     })
   }
 
   public async getPeopleFromCity() {
 
-    const loading = await this.overlayService.fireLoading();
-
-    await loading.present();
+    this.lookingForPeople = true;
 
     this.people$ = this.peopleService
     .getCollection(
@@ -206,7 +203,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
         feature.atLeastOneLength = compressedInformation[feature.value] ? compressedInformation[feature.value] : 0
       })
 
-      await loading.dismiss();
+      this.lookingForPeople = false;
     })
   }
 
