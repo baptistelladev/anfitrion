@@ -210,7 +210,9 @@
     "TOURIST" : "Turista",
     "RESIDENT" : "Morador",
     "FREE_ACCOUNT" : "Conta gratuita",
-    "PREMIUM_ACCOUNT" : "Conta premium"
+    "PREMIUM_ACCOUNT" : "Conta premium",
+    "KIOSKS" : "Quiosques",
+    "CARTS" : "Carrinhos"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nosso próposito aqui é fazer com que voê economize o seu bem mais precioso:","o tempo"],

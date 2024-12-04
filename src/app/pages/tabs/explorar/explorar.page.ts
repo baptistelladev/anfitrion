@@ -208,9 +208,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public async getPlacesFromBeach() {
-    const loading = await this.overlayService.fireLoading();
-
-    await loading.present();
+    this.lookingForPlaces = true;
 
     this.places$ = this.placesService
     .getCollection(
@@ -238,7 +236,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
         console.log(feature.atLeastOneLength);
       })
 
-      await loading.dismiss();
+      this.lookingForPlaces = false
     })
   }
 
@@ -246,7 +244,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     this.selectedSegment = segmentValue;
     this.FEATURES = this.MOCK_CITY_FEATURES;
     this.getPlacesFromCity();
-    this.getPeopleFromCity();
+    // MOSTRAR PESSOAS [SOON] this.getPeopleFromCity();
   }
 
   public getCurrentLanguageFromNGRX(): void {
@@ -301,16 +299,16 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
     this.FEATURES = null;
     this.places = null;
-    this.people = null;
+    // MOSTRAR PESSOAS [SOON]  this.people = null;
 
     if (this.selectedSegment === LocationEnum.PRAIA) {
       this.FEATURES = this.MOCK_BEACH_FEATURES;
       this.getPlacesFromBeach();
-      this.getPeopleFromBeach();
+      // MOSTRAR PESSOAS [SOON] this.getPeopleFromBeach();
     } else {
       this.FEATURES = this.MOCK_CITY_FEATURES;
       this.getPlacesFromCity();
-      this.getPeopleFromCity();
+      // MOSTRAR PESSOAS [SOON]  this.getPeopleFromCity();
     }
   }
 
@@ -348,13 +346,20 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     return modal;
   }
 
+  public async searchPlace(place: any) {
+    if (place.origin === LocationEnum.CIDADE) {
+      await this.searchPlaceInTheCity(place);
+    } else {
+      this.searchPlaceAtTheBeach(place);
+    }
+  }
+
   public async searchPlaceInTheCity(place: any) {
     if (place.userRespectAgeLimit || place.userRespectAgeLimit === null) {
-      this.navCtrl.navigateForward([`/logado/explorar/${place.route}`], {
+      this.navCtrl.navigateForward([`/logado/explorar/lugares-na-cidade/${place.route}`], {
         queryParams: {
           localidade: this.selectedSegment,
-          cidade: this.currentCity.value,
-          maioridade: place.ageLimit
+          cidade: this.currentCity.value
         }
       })
 
@@ -370,6 +375,15 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
       await toast.present();
     }
+  }
+
+  public async searchPlaceAtTheBeach(place: any) {
+    this.navCtrl.navigateForward([`/logado/explorar/lugares-na-praia/${place.route}`], {
+      queryParams: {
+        localidade: this.selectedSegment,
+        cidade: this.currentCity.value
+      }
+    })
   }
 
   ngOnDestroy() {

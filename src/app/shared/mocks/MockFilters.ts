@@ -1,4 +1,3 @@
-import { CityFeaturesEnum } from "../enums/CityFeatures";
 import { FilterEnum } from "../enums/FilterEnum";
 import { PlaceSpecialtyEnum } from "../enums/PlaceSpecialty";
 import { PlaceTypeCityEnum } from "../enums/PlaceType";

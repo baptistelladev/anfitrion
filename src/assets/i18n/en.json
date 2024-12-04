@@ -210,7 +210,9 @@
     "TOURIST" : "Tourist",
     "RESIDENT" : "Resident",
     "FREE_ACCOUNT" : "Free account",
-    "PREMIUM_ACCOUNT" : "Premium account"
+    "PREMIUM_ACCOUNT" : "Premium account",
+    "KIOSKS" : "KIOSKS",
+    "CARTS" : "CARTS"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Our purpose here is to help you save your most precious asset: ","time"],

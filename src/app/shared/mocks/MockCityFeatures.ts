@@ -1,5 +1,6 @@
 import { PlaceTypeCityEnum } from 'src/app/shared/enums/PlaceType';
 import { PeopleTypeCityEnum } from '../enums/PeopleType';
+import { LocationEnum } from '../enums/Location';
 export const MOCK_CITY_FEATURES = {
   places: [
     {
@@ -21,7 +22,8 @@ export const MOCK_CITY_FEATURES = {
       route: 'restaurante',
       atLeastOneLength: false,
       ageLimit: null,
-      userRespectAgeLimit: null
+      userRespectAgeLimit: null,
+      origin: LocationEnum.CIDADE
     },
     {
       loadIconsFromAssets: false,
@@ -42,7 +44,8 @@ export const MOCK_CITY_FEATURES = {
       route: 'bar',
       atLeastOneLength: false,
       ageLimit: null,
-      userRespectAgeLimit: null
+      userRespectAgeLimit: null,
+      origin: LocationEnum.CIDADE
     },
     {
       loadIconsFromAssets: false,
@@ -63,7 +66,8 @@ export const MOCK_CITY_FEATURES = {
       route: 'cafeteria',
       atLeastOneLength: false,
       ageLimit: null,
-      userRespectAgeLimit: null
+      userRespectAgeLimit: null,
+      origin: LocationEnum.CIDADE
     },
     {
       loadIconsFromAssets: false,
@@ -84,7 +88,8 @@ export const MOCK_CITY_FEATURES = {
       route: 'adega',
       atLeastOneLength: false,
       ageLimit: 18,
-      userRespectAgeLimit: null
+      userRespectAgeLimit: null,
+      origin: LocationEnum.CIDADE
     },
     {
       loadIconsFromAssets: false,
@@ -105,7 +110,8 @@ export const MOCK_CITY_FEATURES = {
       route: 'pizzaria',
       atLeastOneLength: false,
       ageLimit: null,
-      userRespectAgeLimit: null
+      userRespectAgeLimit: null,
+      origin: LocationEnum.CIDADE
     },
     {
       loadIconsFromAssets: false,
@@ -126,7 +132,8 @@ export const MOCK_CITY_FEATURES = {
       route: 'hamburgueria',
       atLeastOneLength: false,
       ageLimit: null,
-      userRespectAgeLimit: null
+      userRespectAgeLimit: null,
+      origin: LocationEnum.CIDADE
     },
     {
       loadIconsFromAssets: false,
@@ -147,7 +154,30 @@ export const MOCK_CITY_FEATURES = {
       route: 'doceria',
       atLeastOneLength: false,
       ageLimit: null,
-      userRespectAgeLimit: null
+      userRespectAgeLimit: null,
+      origin: LocationEnum.CIDADE
+    },
+    {
+      loadIconsFromAssets: false,
+      value: PlaceTypeCityEnum.SORVETERIA,
+      icon: 'ice-cream',
+      text: {
+        pt: 'Sorveteria',
+        en: 'Ice Cream Parlor',
+        es: 'Heladería'
+      },
+      isDisabled: false,
+      show: true,
+      description: {
+        pt: '',
+        en: '',
+        es: ''
+      },
+      route: 'sorveteria',
+      atLeastOneLength: false,
+      ageLimit: null,
+      userRespectAgeLimit: null,
+      origin: LocationEnum.CIDADE
     }
   ],
   people: [
@@ -170,7 +200,8 @@ export const MOCK_CITY_FEATURES = {
       route: 'ambulante',
       atLeastOneLength: false,
       ageLimit: null,
-      userRespectAgeLimit: null
+      userRespectAgeLimit: null,
+      origin: LocationEnum.CIDADE
     }
   ]
 }
