@@ -15,6 +15,9 @@ import { ICity } from 'src/app/shared/models/ICity';
 import { MOCK_CITIES } from 'src/app/shared/mocks/MockCities';
 import { LocationEnum } from 'src/app/shared/enums/Location';
 import { PlaceTypeBeachEnum } from 'src/app/shared/enums/PlaceType';
+import { IBeach } from 'src/app/shared/models/IBeach';
+import { CityEnum } from 'src/app/shared/enums/City';
+import { MOCK_SANTOS_BEACHES } from 'src/app/shared/mocks/MockBeaches';
 
 @Component({
   selector: 'anfitrion-lugar-na-praia',
@@ -39,6 +42,7 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy {
   public LocationEnum = LocationEnum;
 
   public MOCK_CITIES: ICity[] = MOCK_CITIES;
+  public MOCK_BEACHES: IBeach[];
 
   @ViewChild('placesContent') placesContent: IonContent;
 
@@ -95,6 +99,15 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy {
       this.currentCityAsParam = this.MOCK_CITIES.find((city: ICity) => {
         return city.value === res.cidade;
       })
+
+      switch (this.currentCityAsParam?.value) {
+        case CityEnum.SANTOS:
+          this.MOCK_BEACHES = MOCK_SANTOS_BEACHES
+          break;
+
+        default:
+          break;
+      }
 
       this.currentLocationAsParam = res.localidade;
 
