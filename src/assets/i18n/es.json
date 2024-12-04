@@ -211,7 +211,9 @@
     "TOURIST" : "Turista",
     "RESIDENT" : "Residente",
     "FREE_ACCOUNT" : "Cuenta gratuita",
-    "PREMIUM_ACCOUNT" : "Cuenta premium"
+    "PREMIUM_ACCOUNT" : "Cuenta premium",
+    "KIOSKS" : "Quioscos",
+    "CARTS" : "Carritos"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nuestro propósito aquí es ayudarte a ahorrar tu bien más precioso:","el tiempo"],

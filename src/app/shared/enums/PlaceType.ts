@@ -10,7 +10,8 @@ export enum PlaceTypeCityEnum {
   MERCADO = 'MERCADO',
   CHURRASCARIA = 'CHURRASCARIA',
   CAFETERIA = 'CAFETERIA',
-  EMPORIO = 'EMPORIO'
+  EMPORIO = 'EMPORIO',
+  SORVETERIA = 'SORVETERIA'
 }
 
 export enum PlaceTypeBeachEnum {

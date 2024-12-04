@@ -1,0 +1,185 @@
+<ion-content
+#placesContent
+class="ion-content-w-linear-bg"
+[forceOverscroll]="false">
+  <ion-header mode="ios" class="ion-no-border bg-transparent">
+    <ion-toolbar mode="ios" class="ion-bg-transparent no-ion-padding">
+      <ion-grid [fixed]="true" class="no-pad-bottom">
+        <ion-row>
+          <ion-col size="12">
+            <div class="header-container">
+              <div class="back-btn-wrapper">
+                <ion-button
+                (click)="back()"
+                class="back ion-color-gray-text back-btn no-ion-padding font-baloo"
+                [title]="'SHARED.BACK' | translate"
+                fill="clear">
+                  <ion-icon name="chevron-back-outline"></ion-icon> <span class="font-w-thin mg-left-5">{{ 'SHARED.BACK' | translate }}</span>
+                </ion-button>
+              </div>
+
+              <div class="language-container">
+                <anfitrion-language-button [currentLanguage]="currentLanguage"></anfitrion-language-button>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+  </ion-header>
+
+  <section class="lugares-na-praia">
+    <ion-grid [fixed]="true" class="no-pad-top">
+      <ion-row>
+        <ion-col>
+          <ion-grid [fixed]="true" class="no-padding">
+            <ion-row>
+              <ion-col size="12">
+                <ion-text
+                class="txt-center color-gray-text full-width icon-title-text"
+                mode="ios">
+                <ng-container [ngSwitch]="placeType">
+                  <ng-container *ngSwitchCase="PlaceTypeBeachEnum.QUIOSQUE"><ion-icon name="storefront-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
+                  <ng-container *ngSwitchCase="PlaceTypeBeachEnum.CARRINHO"><ion-icon name="cart-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
+                </ng-container>
+
+                  <h2 class="font-baloo">
+                    {{ 'EXPLORE_PAGE.EXPLORING' | translate }} <span class="font-w-bold txt-lowercase"><ng-container [ngSwitch]="placeType">
+                      <ng-container *ngSwitchCase="PlaceTypeBeachEnum.QUIOSQUE">{{ 'SHARED.KIOSKS' | translate }}</ng-container>
+                      <ng-container *ngSwitchCase="PlaceTypeBeachEnum.CARRINHO">{{ 'SHARED.CARTS' | translate }}</ng-container>
+                    </ng-container></span>
+                  </h2>
+
+                  <p class="fs-16">
+                    {{ currentCityAsParam?.in[currentLanguage.value] }} {{ currentCityAsParam?.name }} <span class="color-gray-mid text-lowercase">({{ currentLocationAsParam === LocationEnum.CIDADE ? ('SHARED.CITY' | translate) : ('SHARED.BEACH' | translate) }})</span>
+                  </p>
+                </ion-text>
+              </ion-col>
+
+              <ion-col size="12">
+                <ion-text mode="ios" class="d-block mg-bottom-8 mg-top-32">
+                  <p class="fs-14 color-gray-text font-w-thin">
+                    Filtre os quiosques de acordo com a sua necessidade.
+                  </p>
+                </ion-text>
+              </ion-col>
+
+              <ion-col size="12">
+                <div class="view-n-filter-wrapper">
+                  <div class="buttons-wrapper">
+
+                  </div>
+                </div>
+              </ion-col>
+
+              <ion-col size="12" class="no-pad-bottom no-pad-top">
+                <ion-text mode="ios" class="line-height-18">
+                  <p class="fs-14 color-gray-text mg-bottom-16">{{ 'SHARED.LOOKING_FOR' | translate }}: <span class="fs-14 color-green font-w-semibold txt-lowercase">Todos</span></p>
+                </ion-text>
+              </ion-col>
+
+              <ion-col size="12" size-sm="6" size-lg="4" *ngFor="let place of [1,2,3,4,5]">
+                <div class="kiosks-wrapper">
+                  <div class="beach-kiosk-container">
+
+                    <ion-icon src="./../../../../assets/icon/verified-check.svg" class="verified"></ion-icon>
+
+                    <ion-item
+                    [button]="true"
+                    class="beach-kiosk"
+                    lines="none"
+                    mode="ios">
+
+                      <ion-avatar>
+                        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                      </ion-avatar>
+
+                      <ion-text mode="ios" class="line-height-16">
+                        <p class="color-gray-text fs-15 font-baloo name"><b>Nome do Quiosque Felipe Baptistella</b></p>
+                        <p class="color-gray-mid fs-12">Praia do Gonzaga &#x2022; Canal 3</p>
+
+                        <ion-chip
+                        mode="ios"
+                        class="txt-uppercase as-badge deliver">
+                          Entrega na areia
+                        </ion-chip>
+                      </ion-text>
+                    </ion-item>
+                  </div>
+                </div>
+              </ion-col>
+
+              <ion-col size="12">
+                <div class="see-more-wrapper w-100 center-w-flex">
+                  <ion-button
+                  mode="md"
+                  shape="round"
+                  [title]="'Carregar mais'"
+                  fill="solid"
+                  class="anfitrion-main-solid mg-bottom-16 mg-top-16 fs-12">
+                    Mostrar mais
+                  </ion-button>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <anfitrion-adsense>
+      <div adsense class="txt-center full-width full-height">
+        <script
+        async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1158629671776524"
+        crossorigin="anonymous">
+        </script>
+
+        <!--anfitrion-inicio-top -->
+        <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-1158629671776524"
+        data-ad-slot="7416407934"
+        data-ad-format="auto"
+        data-full-width-responsive="true">
+        </ins>
+
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
+    </anfitrion-adsense>
+
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col size="12">
+          <div class="scroll-to-top full-width">
+            <ion-button
+            mode="md"
+            (click)="scrollToTop()"
+            shape="round"
+            [title]="('SHARED.BACK_TO_TOP.0' | translate) + ' ' + ('SHARED.BACK_TO_TOP.1' | translate)"
+            fill="solid"
+            class="anfitrion-main-solid mg-bottom-16 mg-top-16 fs-12">
+              {{ 'SHARED.BACK_TO_TOP.0' | translate }} <b class="mg-left-5">{{ 'SHARED.BACK_TO_TOP.1' | translate }}</b> <ion-icon name="chevron-up-outline" class="mg-left-5"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-col>
+
+        <ion-col size="12">
+          <anfitrion-made-w-love [centered]="true"></anfitrion-made-w-love>
+        </ion-col>
+
+        <ion-col size="12" class="no-pad-top">
+          <anfitrion-social-networks [centered]="true"></anfitrion-social-networks>
+        </ion-col>
+
+        <ion-col size="12" class="mg-bottom-16">
+          <div class="copy-n-lang-wrapper">
+            <anfitrion-copyright></anfitrion-copyright>
+            <anfitrion-language-button-small [currentLanguage]="currentLanguage"></anfitrion-language-button-small>
+          </div>
+        </ion-col>
+        </ion-row>
+      </ion-grid>
+  </section>
+</ion-content>

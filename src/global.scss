@@ -660,7 +660,7 @@ ion-chip.as-badge {
     color: var(--bootstrap-tourist);
   }
 
-  &.resident {
+  &.resident, &.deliver {
     background: var(--bootstrap-resident-light-bg);
     color: var(--bootstrap-resident);
   }

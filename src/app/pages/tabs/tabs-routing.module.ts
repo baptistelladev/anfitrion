@@ -46,8 +46,12 @@ const routes: Routes = [
             loadChildren: () => import('./explorar/explorar.module').then( m => m.ExplorarPageModule),
           },
           {
-            path: ':place_type',
+            path: 'lugares-na-cidade/:place_type',
             loadChildren: () => import('./features-cidade/lugar-na-cidade/lugar-na-cidade.module').then( m => m.LugarNaCidadePageModule)
+          },
+          {
+            path: 'lugares-na-praia/:place_type',
+            loadChildren: () => import('./features-praia/lugar-na-praia/lugar-na-praia.module').then( m => m.LugarNaPraiaPageModule)
           }
         ]
       },
@@ -90,6 +94,10 @@ const routes: Routes = [
   {
     path: 'termos-e-condicoes-de-uso',
     loadChildren: () => import('./termos-e-condicoes-de-uso/termos-e-condicoes-de-uso.module').then( m => m.TermosECondicoesDeUsoPageModule)
+  },
+  {
+    path: 'lugar-na-praia',
+    loadChildren: () => import('./features-praia/lugar-na-praia/lugar-na-praia.module').then( m => m.LugarNaPraiaPageModule)
   }
 ];
 
