@@ -9,11 +9,12 @@ ion-content {
       width: 100%;
       position: fixed;
       bottom: -30vh;
-      min-width: 800px;
-      max-width: 1200px;
+      min-width: 400px;
+      max-width: 400px;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translateX(-50%) scale(2);
       opacity: .5;
+
     }
 
     &.links {
