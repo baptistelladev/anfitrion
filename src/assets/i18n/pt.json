@@ -1,4 +1,10 @@
 {
+  "LINKS_PAGE" : {
+    "PAGE_TITLE" : "Links",
+    "HI_VISITANT" : "Olá visitante",
+    "RECOMMEND" : "Você está acessando o site pelo navegador interno do Instagram, o que pode prejudicar sua experiência. Recomendamos usar seu navegador padrão ou baixar nosso app nas lojas oficiais.",
+    "ALERT_BTN" : "Entendi"
+  },
   "YOUR_ACCOUNT_PAGE" : {
     "YOUR_INFO" : "Estas são as informações da sua conta anfitrion criada em",
     "PASSWORD_ADVISE" : "Por questões de segurança não mostramos sua senha, mas você ainda pode troca-lá se for necessário",

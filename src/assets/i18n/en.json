@@ -1,4 +1,10 @@
 {
+  "LINKS_PAGE": {
+    "PAGE_TITLE": "Links",
+    "HI_VISITANT": "Hello visitor",
+    "RECOMMEND": "You are accessing the site through Instagram's internal browser, which may affect your experience. We recommend using your default browser or downloading our app from the official stores.",
+    "ALERT_BTN": "Got it"
+  },
   "YOUR_ACCOUNT_PAGE": {
     "YOUR_INFO": "This is your anfitrion account information created in",
     "PASSWORD_ADVISE": "For security reasons, we don't show your password, but you can still change it if necessary",
