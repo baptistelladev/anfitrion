@@ -53,7 +53,7 @@ class="ion-bg-gray-2"
             (click)="navToMainPage()"
             mode="md"
             shape="round"
-            [title]="''"
+            [title]="('SHARED.ACCESS.0' | translate) + ' ' + ('SHARED.ACCESS.1' | translate)"
             fill="solid"
             class="anfitrion-main-solid fs-14 anf-no-shadow-btn height-44">
               <ion-icon name="log-in-outline" class="mg-right-8 fs-22"></ion-icon> {{ 'SHARED.ACCESS.0' | translate }} <b class="mg-left-5">{{ 'SHARED.ACCESS.1' | translate }}</b>
@@ -62,9 +62,10 @@ class="ion-bg-gray-2"
 
           <ion-col size="12" class="txt-center">
             <ion-button
+            mode="md"
             (click)="navTo(['/sobre-nos'])"
             shape="round"
-            [title]="''"
+            [title]="'LOGIN_PAGE.WHAT_IS' | translate"
             fill="solid"
             class="anfitrion-gray-solid fs-14 height-44 font-w-normal">
               {{ 'LOGIN_PAGE.WHAT_IS' | translate }} <b class="mg-left-5 color-green">anfitrion</b>

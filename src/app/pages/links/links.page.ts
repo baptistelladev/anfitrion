@@ -11,6 +11,8 @@ import { AnimationItem } from 'lottie-web';
 import { OverlayService } from 'src/app/shared/services/overlay.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Title } from '@angular/platform-browser';
+import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
+import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 
 @Component({
   selector: 'anfitrion-links',
@@ -27,6 +29,8 @@ export class LinksPage implements OnInit, OnDestroy {
   public user$: Observable<IUSer>;
   public userSubscription: Subscription;
 
+  public hasTranslation: boolean = false;
+
   public options: AnimationOptions = {
     path: './../../../assets/movie/anfitrion-around-the-world.json',
     autoplay: true,
@@ -38,39 +42,43 @@ export class LinksPage implements OnInit, OnDestroy {
     private navCtrl : NavController,
     private overlayService : OverlayService,
     private translate : TranslateService,
-    private title : Title
+    private title : Title,
+    private analyticsService : AnalyticsService
   ) { }
 
   ngOnInit() {
-    this.title.setTitle('Links');
     this.getUserFromNGRX();
     this.getCurrentLanguageFromNGRX();
     this.isInstagramBrowser();
   }
 
-  public async isInstagramBrowser() {
+  ionViewWillEnter(): void {
+    this.title.setTitle('Links');
+    this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
+  }
 
-    const alert = await this.overlayService.fireAlert({
-      mode: 'ios',
-      subHeader: '',
-      message: this.translate.instant('LINKS_PAGE.')
-    })
+  public async isInstagramBrowser() {
 
     this.translate.get('LINKS_PAGE')
     .pipe(take(1))
-    .subscribe((res: any) => {
-      alert.subHeader = res.HI_VISITANT,
-      alert.message = res.RECOMMEND,
-      alert.buttons = [res.ALERT.BTN]
+    .subscribe(async (res: any) => {
+      if (res) {
+        const alert = await this.overlayService.fireAlert({
+          mode: 'ios',
+          subHeader: res.HI_VISITANT,
+          message: res.RECOMMEND,
+          buttons: [res.ALERT_BTN]
+        })
+
+        const userAgent: string = navigator.userAgent || (window as any).opera;
+        // Verificando se o user-agent contém referências ao Instagram
+        let isInstagragramBroswer = /Instagram/i.test(userAgent);
+
+        if (isInstagragramBroswer) {
+          await alert.present();
+        }
+      }
     })
-
-    const userAgent: string = navigator.userAgent || (window as any).opera;
-    // Verificando se o user-agent contém referências ao Instagram
-    let isInstagragramBroswer = /Instagram/i.test(userAgent);
-
-    if (isInstagragramBroswer) {
-      alert.present();
-    }
   }
 
   public getUserFromNGRX(): void {
