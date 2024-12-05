@@ -1,40 +1,81 @@
+<ion-header mode="ios" class="ion-no-border">
+  <ion-toolbar mode="ios" class="ion-bg-transparent no-ion-padding">
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col size="12">
+          <ion-header
+          mode="ios"
+          class="ion-no-border">
+            <ion-toolbar
+            class="ion-bg-transparent ion-no-padding">
+              <div class="header-container">
+                <div class="header-logo">
+                  <anfitrion-logo
+                  [size]="'big'"
+                  [currentLanguage]="currentLanguage">
+                  </anfitrion-logo>
+                </div>
+
+                <div class="header-buttons">
+                  <anfitrion-language-button
+                  [currentLanguage]="currentLanguage">
+                  </anfitrion-language-button>
+                </div>
+              </div>
+            </ion-toolbar>
+          </ion-header>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content
 class="ion-bg-gray-2"
 [fullscreen]="true">
   <section class="links">
 
+    <div class="map-fixed">
+      <ng-lottie [options]="options" (animationCreated)="animationCreated($event)" />
+    </div>
+
     <div class="buttons">
       <ion-grid [fixed]="true">
         <ion-row>
+          <ion-col size="12" class="mg-bottom-16">
+            <ion-text mode="ios" class="txt-center">
+              <p class="fs-16 color-white">{{ 'LOGIN_PAGE.SUB_TITLE' | translate }}.</p>
+            </ion-text>
+          </ion-col>
+
           <ion-col size="12" class="txt-center">
             <ion-button
+            (click)="navToMainPage()"
             mode="md"
             shape="round"
             [title]="''"
             fill="solid"
             class="anfitrion-main-solid fs-14 anf-no-shadow-btn height-44">
-              <ion-icon name="chevron-up-outline" class="mg-right-5"></ion-icon> acessar <b class="mg-left-5">site</b>
+              <ion-icon name="log-in-outline" class="mg-right-8 fs-22"></ion-icon> {{ 'SHARED.ACCESS.0' | translate }} <b class="mg-left-5">{{ 'SHARED.ACCESS.1' | translate }}</b>
             </ion-button>
           </ion-col>
 
           <ion-col size="12" class="txt-center">
             <ion-button
+            (click)="navTo(['/sobre-nos'])"
             shape="round"
             [title]="''"
             fill="solid"
-            class="anfitrion-gray-solid fs-14 height-44">
-              <ion-icon name="chevron-up-outline" class="mg-right-5"></ion-icon> o que é o <b class="mg-left-5 color-green">anfitrion</b>
+            class="anfitrion-gray-solid fs-14 height-44 font-w-normal">
+              {{ 'LOGIN_PAGE.WHAT_IS' | translate }} <b class="mg-left-5 color-green">anfitrion</b>
             </ion-button>
           </ion-col>
 
-          <ion-col size="12" class="txt-center">
-            <ion-button
-            shape="round"
-            [title]="''"
-            fill="solid"
-            class="anfitrion-gray-solid fs-14 height-44">
-              <ion-icon name="chevron-up-outline" class="mg-right-5"></ion-icon> dada <b class="mg-left-5 color-green">dada</b>
-            </ion-button>
+          <ion-col size="12" class="mg-bottom-16">
+            <div class="copy-n-lang-wrapper mg-top-16">
+              <anfitrion-copyright [color]="'white'"></anfitrion-copyright>
+              <anfitrion-language-button-small [currentLanguage]="currentLanguage" [color]="'white'"></anfitrion-language-button-small>
+            </div>
           </ion-col>
         </ion-row>
       </ion-grid>

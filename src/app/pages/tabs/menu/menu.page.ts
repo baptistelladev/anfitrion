@@ -135,8 +135,12 @@ export class MenuPage implements OnInit, OnDestroy {
     this.navCtrl.back()
   }
 
-  public goToPage(page: string): void {
-    this.navCtrl.navigateForward(['/logado/' + page])
+  public goToPage(option: any): void {
+    if (option.route === 'sobre-nos') {
+      this.navCtrl.navigateForward(['/' + option.route ])
+    } else {
+      this.navCtrl.navigateForward(['/logado/' + option.route])
+    }
   }
 
   public async logoutAlert(): Promise<HTMLIonAlertElement> {

@@ -46,6 +46,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/links/links.module').then( m => m.LinksPageModule)
   },
   {
+    path: 'sobre-nos',
+    loadChildren: () => import('./pages/sobre-nos/sobre-nos.module').then( m => m.SobreNosPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/pagina-nao-existe/pagina-nao-existe.module').then( m => m.PaginaNaoExistePageModule)
   }

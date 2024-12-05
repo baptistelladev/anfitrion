@@ -30,10 +30,6 @@ const routes: Routes = [
         loadChildren: () => import('./contato/contato.module').then( m => m.ContatoPageModule)
       },
       {
-        path: 'sobre-nos',
-        loadChildren: () => import('./sobre-nos/sobre-nos.module').then( m => m.SobreNosPageModule)
-      },
-      {
         path: 'explorar',
         children: [
           {

@@ -3,12 +3,12 @@ import { IonContent, NavController, Platform } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { ILang } from 'src/app/shared/models/ILang';
-import * as AppStore from './../../../shared/store/app.state';
+import * as AppStore from './../../shared/store/app.state';
 import { Title } from '@angular/platform-browser';
 import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
 import { TranslateService } from '@ngx-translate/core';
 import { IUSer } from 'src/app/shared/models/IUser';
-import * as UserStore from './../../../shared/store/user.state';
+import * as UserStore from './../../shared/store/user.state';
 import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 
 

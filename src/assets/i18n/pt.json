@@ -212,7 +212,9 @@
     "FREE_ACCOUNT" : "Conta gratuita",
     "PREMIUM_ACCOUNT" : "Conta premium",
     "KIOSKS" : "Quiosques",
-    "CARTS" : "Carrinhos"
+    "CARTS" : "Carrinhos",
+    "VISITANT" : "Visitante",
+    "ACCESS" : ["acessar","site"]
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nosso próposito aqui é fazer com que voê economize o seu bem mais precioso:","o tempo"],
