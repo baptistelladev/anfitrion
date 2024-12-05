@@ -19,6 +19,7 @@ import { IBeach } from 'src/app/shared/models/IBeach';
 import { CityEnum } from 'src/app/shared/enums/City';
 import { MOCK_SANTOS_BEACHES } from 'src/app/shared/mocks/MockBeaches';
 import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
+import { IFilter } from 'src/app/shared/models/IFilter';
 
 @Component({
   selector: 'anfitrion-lugar-na-praia',
@@ -26,6 +27,8 @@ import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
   styleUrls: ['./lugar-na-praia.page.scss'],
 })
 export class LugarNaPraiaPage implements OnInit, OnDestroy {
+
+  public selectedFilter: string;
 
   public user: IUSer;
   public user$: Observable<IUSer>;
@@ -44,6 +47,8 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy {
 
   public MOCK_CITIES: ICity[] = MOCK_CITIES;
   public MOCK_BEACHES: IBeach[];
+
+  public MOCK_FILTERS: IFilter[];
 
   public selectedBeach: IBeach;
 
@@ -142,6 +147,10 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy {
 
   public async selectBeach(beach: IBeach) {
     this.selectedBeach = beach;
+  }
+
+  public filterByCharacteristic(e: any): void {
+   console.log(e.detail.value);
   }
 
   public ngOnDestroy(): void {

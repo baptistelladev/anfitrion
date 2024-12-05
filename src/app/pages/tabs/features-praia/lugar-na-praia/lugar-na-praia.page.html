@@ -98,11 +98,34 @@ class="ion-content-w-linear-bg"
 
     <ion-grid [fixed]="true">
       <ion-row>
-
-        <ion-col size="12">
+        <ion-col size="12" class="no-pad-top">
           <div class="view-n-filter-wrapper">
             <div class="buttons-wrapper">
+              <ion-button
+              shape="round"
+              class="anf-main-solid fs-12"
+              [title]="'SHARED.TO_FILTER' | translate"
+              mode="md"
+              fill="solid">
+                <ion-icon [name]="'options' + '-outline'" class="fs-20"></ion-icon>
 
+                <ion-select
+                mode="ios"
+                [cancelText]="'SHARED.CANCEL' | translate"
+                [okText]="'SHARED.TO_FILTER' | translate"
+                #filterSelector
+                [label]="'SHARED.FILTER' | translate"
+                class="hide-element anfitrion-selector min-height-0"
+                (ionChange)="filterByCharacteristic($event)"
+                [(ngModel)]="selectedFilter">
+                  <ng-container *ngFor="let filter of MOCK_FILTERS">
+                    <ion-select-option
+                    [value]="filter.value">
+                      {{ filter.text[currentLanguage.value] }}
+                    </ion-select-option>
+                  </ng-container>
+                </ion-select>
+              </ion-button>
             </div>
           </div>
         </ion-col>

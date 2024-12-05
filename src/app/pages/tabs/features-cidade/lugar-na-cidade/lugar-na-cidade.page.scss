@@ -1,10 +1,3 @@
 @import './../../../../../assets/scss/utils/mixins.scss';
 
-.view-n-filter-wrapper {
-  @include flexbox(center, space-between, row);
 
-  .buttons-wrapper {
-    width: 100%;
-    @include flexbox(center, flex-end, row);
-  }
-}
