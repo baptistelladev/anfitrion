@@ -43,7 +43,7 @@ class="ion-bg-gray-2"
         <ion-col size="12">
           <ion-text mode="ios" class="line-height-22">
             <p class="fs-14 color-white">{{ 'ABOUT_PAGE.HELLO' | translate }},</p>
-            <p class="color-linear font-w-bold font-baloo fs-24">{{ user.firstName }}</p>
+            <p class="color-linear font-w-bold font-baloo fs-24" [ngClass]="{'txt-lowercase': !user.firstName }">{{ user.firstName ? user.firstName : ('SHARED.VISITANT' | translate) }}</p>
           </ion-text>
         </ion-col>
 

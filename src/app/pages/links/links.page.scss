@@ -4,6 +4,18 @@ ion-content {
       flex: none;
     }
 
+    ng-lottie {
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      bottom: -30vh;
+      min-width: 800px;
+      max-width: 1200px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: .5;
+    }
+
     &.links {
       width: 100%;
       height: 100%;

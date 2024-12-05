@@ -1,20 +1,18 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
-import { IonicModule } from '@ionic/angular';
-
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { LinksPageRoutingModule } from './links-routing.module';
-
 import { LinksPage } from './links.page';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { ComponentsModule } from 'src/app/shared/components/components.module';
+import { LottieComponent } from 'ngx-lottie';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    LinksPageRoutingModule
+    SharedModule,
+    LinksPageRoutingModule,
+    ComponentsModule,
+    LottieComponent
   ],
-  declarations: [LinksPage]
+  declarations: [LinksPage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class LinksPageModule {}
