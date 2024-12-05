@@ -54,7 +54,7 @@ class="ion-content-w-linear-bg"
         </ion-col>
 
         <ion-col size="12">
-          <ion-text mode="ios" class="d-block mg-bottom-8 mg-top-32">
+          <ion-text mode="ios" class="d-block mg-bottom-8 mg-top-16">
             <p class="fs-14 color-gray-text font-w-thin">
               Filtre os quiosques de acordo com a sua necessidade.
             </p>
@@ -73,56 +73,24 @@ class="ion-content-w-linear-bg"
       slides-offset-before="16"
       slides-offset-after="16"
       initial-slide="0"
-      [slidesPerView]="1"
-      space-between="16"
-      [breakpoints]="{
-        '200' : {
-          slidesPerView: 1.7
-        },
-        '363' : {
-          slidesPerView: 1.9
-        },
-        '445' : {
-          slidesPerView: 2.4
-        },
-        '667' : {
-          slidesPerView: 3.4
-        },
-        '792' : {
-          slidesPerView: 3.8
-        },
-        '991' : {
-          slidesPerView: 4.5
-        },
-        '1200' : {
-          slidesPerView: 5.2
-        },
-        '1300' : {
-          slidesPerView: 6.7
-        },
-        '1600' : {
-          slidesPerView: 8
-        },
-        '2000' : {
-          slidesPerView: 10.3
-        }
-      }">
-        <ng-container>
-          <swiper-slide
-          class="unlock-shadow-from-swiper auto-width">
-            <div>
-              Todas as praias
-            </div>
-          </swiper-slide>
-        </ng-container>
-
+      [slidesPerView]="'auto'"
+      space-between="16">
         <ng-container>
           <swiper-slide
           *ngFor="let beach of MOCK_BEACHES"
           class="unlock-shadow-from-swiper auto-width">
-            <div>
-              {{ 'Praia do ' + beach.text}}
-            </div>
+            <ion-item
+            [ngClass]="{'is-selected': beach.value === (selectedBeach && selectedBeach.value)}"
+            (click)="selectBeach(beach)"
+            mode="ios"
+            lines="none"
+            class="beach-item mg-bottom-8">
+              <ion-text mode="ios" class="line-height-18">
+                <p class="name" *ngIf="beach.value === 'ALL'">{{ beach.text[currentLanguage.value] }}</p>
+                <p class="name" *ngIf="beach.value !== 'ALL'">{{ beach.text }}</p>
+                <p class="fs-11 located">{{ beach.located.from.text }} {{ beach.located.operator.text[currentLanguage.value] }} {{ beach.located.to.text }}</p>
+              </ion-text>
+            </ion-item>
           </swiper-slide>
         </ng-container>
       </swiper-container>
@@ -141,7 +109,7 @@ class="ion-content-w-linear-bg"
 
         <ion-col size="12" class="no-pad-bottom">
           <ion-text mode="ios" class="line-height-18">
-            <p class="fs-14 color-gray-text mg-bottom-16">{{ 'SHARED.LOOKING_FOR' | translate }}: <span class="fs-14 color-green font-w-semibold txt-lowercase">Todos</span></p>
+            <p class="fs-14 color-gray-text mg-bottom-16">{{ 'SHARED.LOOKING_FOR' | translate }}: <span class="fs-14 color-green font-w-semibold txt-lowercase">Todas as praias</span></p>
           </ion-text>
         </ion-col>
 

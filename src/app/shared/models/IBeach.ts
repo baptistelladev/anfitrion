@@ -1,12 +1,16 @@
 export interface IBeach {
   value: string,
   city: string,
-  text: string,
+  text: any,
   popularName: string,
   located: {
     from: {
       value: string,
       text: string
+    },
+    operator: {
+      text: any,
+      value: string
     },
     to: {
       value: string,

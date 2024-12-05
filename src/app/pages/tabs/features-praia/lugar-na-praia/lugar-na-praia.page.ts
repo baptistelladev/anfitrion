@@ -18,6 +18,7 @@ import { PlaceTypeBeachEnum } from 'src/app/shared/enums/PlaceType';
 import { IBeach } from 'src/app/shared/models/IBeach';
 import { CityEnum } from 'src/app/shared/enums/City';
 import { MOCK_SANTOS_BEACHES } from 'src/app/shared/mocks/MockBeaches';
+import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 
 @Component({
   selector: 'anfitrion-lugar-na-praia',
@@ -44,6 +45,8 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy {
   public MOCK_CITIES: ICity[] = MOCK_CITIES;
   public MOCK_BEACHES: IBeach[];
 
+  public selectedBeach: IBeach;
+
   @ViewChild('placesContent') placesContent: IonContent;
 
   constructor(
@@ -60,6 +63,11 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy {
     this.getUserFromNGRX();
     this.getCurrentLanguageFromNGRX();
     this.getRouter();
+  }
+
+  ionViewWillEnter(): void {
+    this.title.setTitle('Lugares na praia');
+    this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
   public back(): void {
@@ -95,21 +103,15 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy {
       map((params) => {
       return params
     }))
-    .subscribe((res: any) => {
+    .subscribe(async (res: any) => {
       this.currentCityAsParam = this.MOCK_CITIES.find((city: ICity) => {
         return city.value === res.cidade;
       })
 
-      switch (this.currentCityAsParam?.value) {
-        case CityEnum.SANTOS:
-          this.MOCK_BEACHES = MOCK_SANTOS_BEACHES
-          break;
-
-        default:
-          break;
-      }
-
       this.currentLocationAsParam = res.localidade;
+
+      await this.defineBeaches(this.currentCityAsParam);
+      await this.selectBeach(this.MOCK_BEACHES[0]);
 
     })
 
@@ -126,6 +128,20 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy {
     .subscribe((res: any) => {
       this.placeType = res.place_type;
     })
+  }
+
+  public async defineBeaches(currentBeach?: ICity): Promise<IBeach[]> {
+    switch (currentBeach?.value) {
+      case CityEnum.SANTOS:
+        this.MOCK_BEACHES = MOCK_SANTOS_BEACHES;
+        break;
+    }
+
+    return this.MOCK_BEACHES
+  }
+
+  public async selectBeach(beach: IBeach) {
+    this.selectedBeach = beach;
   }
 
   public ngOnDestroy(): void {
