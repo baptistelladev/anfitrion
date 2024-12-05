@@ -29,8 +29,8 @@ ion-button {
   &.anfitrion-main-solid {
     --background: linear-gradient(.351turn,#769834 43.71%,#547D0E 58.8%);
     --color: var(--white);
-    --padding-end: 12px;
-    --padding-start: 12px;
+    --padding-end: 16px;
+    --padding-start: 16px;
     --border-width: 1px;
     --border-style: solid;
     --border-color: var(--green-dark);
@@ -41,8 +41,8 @@ ion-button {
   &.anfitrion-white-solid {
     --background: var(--white);
     --color: var(--gray-text);
-    --padding-end: 12px;
-    --padding-start: 12px;
+    --padding-end: 16px;
+    --padding-start: 16px;
     --border-width: 1px;
     --border-style: solid;
     --border-color: var(--gray-c);
@@ -70,8 +70,8 @@ ion-button {
   &.anf-main-solid {
     --background: linear-gradient(.351turn,#769834 43.71%,#547D0E 58.8%);
     --color: var(--white);
-    --padding-end: 12px;
-    --padding-start: 12px;
+    --padding-end: 16px;
+    --padding-start: 16px;
     --border-width: 1px;
     --border-style: solid;
     --border-color: var(--green-dark);
@@ -81,8 +81,8 @@ ion-button {
 
   &.logoff-btn {
     --color: var(--gray-text);
-    --padding-end: 12px;
-    --padding-start: 12px;
+    --padding-end: 16px;
+    --padding-start: 16px;
     text-transform: none;
     font-weight: normal;
 
@@ -91,8 +91,8 @@ ion-button {
 
   &.anf-main-outline {
     --color: var(--green);
-    --padding-end: 12px;
-    --padding-start: 12px;
+    --padding-end: 16px;
+    --padding-start: 16px;
     --border-width: .5px;
     --border-style: solid;
     --border-color: var(--green);
@@ -132,7 +132,8 @@ ion-button {
   &.height-44 { height: 44px; }
 
   &.anf-no-shadow-btn {
-    --box-shadow: none;
+    --box-shadow: none !important;
+    box-shadow: none !important;
   }
 
   &.btn-danger {

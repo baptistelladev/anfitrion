@@ -42,6 +42,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/termos-e-condicoes-de-uso/termos-e-condicoes-de-uso.module').then( m => m.TermosECondicoesDeUsoPageModule)
   },
   {
+    path: 'links',
+    loadChildren: () => import('./pages/links/links.module').then( m => m.LinksPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/pagina-nao-existe/pagina-nao-existe.module').then( m => m.PaginaNaoExistePageModule)
   }
