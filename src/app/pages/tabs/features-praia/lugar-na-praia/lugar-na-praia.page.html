@@ -311,7 +311,11 @@ class="ion-content-w-linear-bg"
   <ng-template>
     <ion-content>
       <section class="map">
-        <anfitrion-map [center]="selectedBeach.location"></anfitrion-map>
+        <ion-button
+        class="back-button">
+          Voltar
+        </ion-button>
+        <anfitrion-map [center]="selectedBeach.location" [kmlCoordinates]="selectedBeach.kmlCoordinates"></anfitrion-map>
       </section>
     </ion-content>
   </ng-template>

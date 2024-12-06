@@ -25,8 +25,6 @@ import { FilterEnum } from 'src/app/shared/enums/FilterEnum';
 import { IFIrebaseFilter } from 'src/app/shared/models/IFirebaseFilter';
 import { IPlace } from 'src/app/shared/models/IPlace';
 import { CollectionsEnum } from 'src/app/shared/enums/Collection';
-import { MapsStaticService } from 'src/app/core/services/maps/maps-static.service';
-import { MapsService } from 'src/app/core/services/maps/maps.service';
 
 @Component({
   selector: 'anfitrion-lugar-na-praia',
@@ -81,8 +79,7 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy {
     private title : Title,
     private route : ActivatedRoute,
     private placesService : PlacesService,
-    private analyticsService : AnalyticsService,
-    private mapsService : MapsService
+    private analyticsService : AnalyticsService
   ) { }
 
   async ngOnInit() {
