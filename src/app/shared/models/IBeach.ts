@@ -21,5 +21,6 @@ export interface IBeach {
   location?: {
     lat: number,
     lng: number
-  }
+  },
+  kmlCoordinates?: any[] | undefined
 }

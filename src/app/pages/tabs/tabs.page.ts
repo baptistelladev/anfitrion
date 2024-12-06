@@ -4,7 +4,6 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { ITab } from 'src/app/shared/models/ITab';
 import { NavController } from '@ionic/angular';
 import { filter } from 'rxjs';
-import { MapsService } from 'src/app/core/services/maps/maps.service';
 
 @Component({
   selector: 'anfitrion-tabs',
@@ -21,8 +20,7 @@ export class TabsPage implements OnInit {
 
   constructor(
     private router : Router,
-    private navCtrl : NavController,
-    private mapsService : MapsService
+    private navCtrl : NavController
   ) { }
 
   ngOnInit() {
