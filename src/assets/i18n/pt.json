@@ -172,6 +172,7 @@
     "FILTER" : "Filtro",
     "TO_FILTER" : "Filtrar",
     "ALRIGHT" : "Tudo bem",
+    "NO_RESULT_KIOSKS" : "Nenhum quiosque por enquanto",
     "NO_RESULT_ESTABLISHMENTS" : "Nenhum estabelecimento por enquanto",
     "NO_RESULT_PARKINGS" : "Nenhum estacionamento por enquanto",
     "SPECIALTY" : "Culinária",
@@ -220,7 +221,8 @@
     "KIOSKS" : "Quiosques",
     "CARTS" : "Carrinhos",
     "VISITANT" : "Visitante",
-    "ACCESS" : ["acessar","site"]
+    "ACCESS" : ["acessar","site"],
+    "DELIVERY_SAND" : "Entrega na areia"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nosso próposito aqui é fazer com que voê economize o seu bem mais precioso:","o tempo"],

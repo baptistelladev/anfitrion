@@ -148,3 +148,14 @@ ion-item {
     }
   }
 }
+
+ion-skeleton-text {
+  &.like-kiosk-card {
+    border-radius: 12px;
+    --border-radius: 12px;
+    --min-height: 96px;
+    height: 96px;
+    width: 100%;
+    margin: 0;
+  }
+}

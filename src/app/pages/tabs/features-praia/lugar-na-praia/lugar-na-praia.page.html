@@ -86,8 +86,7 @@ class="ion-content-w-linear-bg"
             lines="none"
             class="beach-item mg-bottom-8">
               <ion-text mode="ios" class="line-height-18">
-                <p class="name" *ngIf="beach.value === 'ALL'">{{ beach.text[currentLanguage.value] }}</p>
-                <p class="name" *ngIf="beach.value !== 'ALL'">{{ beach.text }}</p>
+                <p class="name">{{ beach.text[currentLanguage.value] }}</p>
                 <p class="fs-11 located">{{ beach.located.from.text }} {{ beach.located.operator.text[currentLanguage.value] }} {{ beach.located.to.text }}</p>
               </ion-text>
             </ion-item>
@@ -102,6 +101,7 @@ class="ion-content-w-linear-bg"
           <div class="view-n-filter-wrapper">
             <div class="buttons-wrapper">
               <ion-button
+              (click)="openFilterSelect()"
               shape="round"
               class="anf-main-solid fs-12"
               [title]="'SHARED.TO_FILTER' | translate"
@@ -132,40 +132,58 @@ class="ion-content-w-linear-bg"
 
         <ion-col size="12" class="no-pad-bottom">
           <ion-text mode="ios" class="line-height-18">
-            <p class="fs-14 color-gray-text mg-bottom-16">{{ 'SHARED.LOOKING_FOR' | translate }}: <span class="fs-14 color-green font-w-semibold txt-lowercase">Todas as praias</span></p>
+            <p class="fs-14 color-gray-text mg-bottom-16" *ngIf="activeFilter && selectedBeach">
+              {{ 'SHARED.LOOKING_FOR' | translate }}: <span class="fs-14 color-green font-w-semibold txt-lowercase">{{ activeFilter?.text[currentLanguage.value] }} {{ selectedBeach.in[currentLanguage.value] }} {{ selectedBeach.text[currentLanguage.value] }}</span>
+            </p>
           </ion-text>
         </ion-col>
 
-        <ion-col size="12" size-sm="6" size-lg="4" *ngFor="let place of [1,2,3,4,5]">
-          <div class="kiosks-wrapper">
-            <div class="beach-kiosk-container">
+        <ng-container *ngIf="places && places.length > 0">
+          <ion-col size="12" size-sm="6" size-lg="4" *ngFor="let place of places">
+            <div class="kiosks-wrapper">
+              <div class="beach-kiosk-container">
 
-              <ion-icon src="./../../../../assets/icon/verified-check.svg" class="verified"></ion-icon>
+                <ion-icon src="./../../../../assets/icon/verified-check.svg" class="verified" *ngIf="place.isPremium"></ion-icon>
 
-              <ion-item
-              [button]="true"
-              class="beach-kiosk"
-              lines="none"
-              mode="ios">
+                <ion-item
+                [button]="true"
+                class="beach-kiosk"
+                lines="none"
+                mode="ios">
+                  <ion-avatar>
+                    <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                  </ion-avatar>
 
-                <ion-avatar>
-                  <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-                </ion-avatar>
+                  <ion-text mode="ios" class="line-height-16">
+                    <p class="color-gray-text fs-15 font-baloo name"><b>{{ place.name }}</b></p>
+                    <p class="color-gray-mid fs-12">{{ place.beachInfo?.text }} &#x2022; {{ place.mainBeach }}</p>
 
-                <ion-text mode="ios" class="line-height-16">
-                  <p class="color-gray-text fs-15 font-baloo name"><b>Nome do Quiosque Felipe Baptistella</b></p>
-                  <p class="color-gray-mid fs-12">Praia do Gonzaga &#x2022; Canal 3</p>
-
-                  <ion-chip
-                  mode="ios"
-                  class="txt-uppercase as-badge deliver">
-                    Entrega na areia
-                  </ion-chip>
-                </ion-text>
-              </ion-item>
+                    <ion-chip
+                    *ngIf="place.delivery_sand"
+                    mode="ios"
+                    class="txt-uppercase as-badge deliver">
+                      {{ 'SHARED.DELIVERY_SAND' | translate }}
+                    </ion-chip>
+                  </ion-text>
+                </ion-item>
+              </div>
             </div>
-          </div>
+          </ion-col>
+        </ng-container>
+
+        <ion-col *ngIf="places && places.length === 0" size="12" class="no-pad-top">
+          <ion-text mode="ios">
+            <p class="fs-14 color-gray-text font-w-thin">
+              {{ 'SHARED.NO_RESULT_KIOSKS' | translate }}.
+            </p>
+          </ion-text>
         </ion-col>
+
+        <ng-container *ngIf="!places">
+          <ion-col size="12" size-sm="6" size-lg="4" *ngFor="let place of [1,2,3,4,5]">
+            <ion-skeleton-text class="like-kiosk-card" [animated]="true"></ion-skeleton-text>
+          </ion-col>
+        </ng-container>
 
         <ion-col size="12">
           <div class="see-more-wrapper w-100 center-w-flex">
@@ -178,6 +196,45 @@ class="ion-content-w-linear-bg"
               Mostrar mais
             </ion-button>
           </div>
+        </ion-col>
+
+        <ion-col size="12">
+          <hr class="anfitrion-divider">
+        </ion-col>
+
+        <ion-col size="12" size-md="6">
+          <ion-item lines="none" class="ion-bg-transparent item-title-w-icon">
+            <ion-text
+            class="txt-left color-gray-text full-width icon-title-text without-icon d-block mg-bottom-8 has-icon"
+            mode="ios">
+              <h2 class="font-baloo fs-20">
+                <ion-icon name="chatbubbles-outline"></ion-icon>
+                {{ 'INICIO_PAGE.FEEDBACK.GIVE_YOUR_FEEDBACK.0' | translate }} <span class="font-w-bold mg-left-5">{{ 'INICIO_PAGE.FEEDBACK.GIVE_YOUR_FEEDBACK.1' | translate }}</span>
+              </h2>
+
+              <p class="fs-14 font-w-thin">
+                {{ 'INICIO_PAGE.FEEDBACK.GIVE_YOUR_FEEDBACK_TEXT' | translate }}
+              </p>
+
+              <p class="fs-14 mg-top-16">
+                <a href="javascript:void(0)" [routerLink]="['/logado/contato']" [title]="'INICIO_PAGE.FEEDBACK.SEND_FEEDBACK' | translate" class="send-feedback">{{ 'INICIO_PAGE.FEEDBACK.SEND_FEEDBACK' | translate }} <ion-icon name="arrow-forward"></ion-icon></a>
+              </p>
+            </ion-text>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="12" size-md="6">
+          <ion-item
+          lines="none"
+          mode="ios"
+          class="simulate-bootstrap-alert warning line-height-18">
+            <ion-icon src="./../../../../assets/icon/verified-check.svg" class="verified" slot="start"></ion-icon>
+
+            <ion-text mode="ios" class="color-bootstrap-warning">
+              <p class="fs-12 mg-bottom-8">{{ 'INICIO_PAGE.VERIFIED.TITLE' | translate }}</p>
+              <p class="fs-14">{{ 'INICIO_PAGE.VERIFIED.TEXT.0' | translate }} <b>{{ 'INICIO_PAGE.VERIFIED.TEXT.1' | translate }}</b> {{ 'INICIO_PAGE.VERIFIED.TEXT.2' | translate }}.</p>
+            </ion-text>
+          </ion-item>
         </ion-col>
       </ion-row>
     </ion-grid>

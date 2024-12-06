@@ -16,5 +16,6 @@ export interface IBeach {
       value: string,
       text: string
     }
-  }
+  },
+  in: any
 }

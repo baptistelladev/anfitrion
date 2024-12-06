@@ -5,6 +5,7 @@ import { IPhone } from "./IPhone"
 import { ITicket } from "./ITicket"
 import { ITime } from "./ITime"
 import { ICity } from "./ICity"
+import { IBeach } from "./IBeach"
 
 export interface IPlace {
   id?: string,
@@ -58,9 +59,8 @@ export interface IPlace {
     show_field: boolean,
     is_paid: boolean
   },
-  work_place: string[]
-}
-
-export interface ILongEstablishment {
-
+  work_place: string[],
+  beachInfo?: IBeach,
+  mainBeach?: string,
+  delivery_sand?: boolean
 }
