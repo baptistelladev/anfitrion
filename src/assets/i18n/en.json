@@ -172,6 +172,7 @@
     "FILTER" : "Filter",
     "TO_FILTER" : "Filter now",
     "ALRIGHT" : "Okay",
+    "NO_RESULT_KIOSKS" : "No kiosks for now",
     "NO_RESULT_ESTABLISHMENTS" : "No establishments for now",
     "NO_RESULT_PARKINGS" : "No parking for now",
     "SPECIALTY" : "Cooking",
@@ -220,7 +221,8 @@
     "KIOSKS" : "KIOSKS",
     "CARTS" : "CARTS",
     "VISITANT" : "Visitant",
-    "ACCESS" : ["access","site"]
+    "ACCESS" : ["access","site"],
+    "DELIVERY_SAND": "Delivery on the sand"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Our purpose here is to help you save your most precious asset: ","time"],

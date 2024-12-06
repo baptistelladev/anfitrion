@@ -172,6 +172,7 @@
     "FILTER" : "Filtro",
     "TO_FILTER" : "Filtrar",
     "ALRIGHT" : "Tudo bien",
+    "NO_RESULT_KIOSKS" : "Ningún quiosco por ahora",
     "NO_RESULT_ESTABLISHMENTS" : "No hay establecimientos por ahora",
     "NO_RESULT_PARKINGS" : "Ningún estacionamiento por ahora",
     "TICKETS_DONT": "No acepta vales de comida como pago",
@@ -221,7 +222,8 @@
     "KIOSKS" : "Quioscos",
     "CARTS" : "Carritos",
     "VISITANT" : "Visitante",
-    "ACCESS" : ["aceder", "al sitio web"]
+    "ACCESS" : ["aceder", "al sitio web"],
+    "DELIVERY_SAND": "Entrega en la arena"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nuestro propósito aquí es ayudarte a ahorrar tu bien más precioso:","el tiempo"],
