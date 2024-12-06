@@ -27,4 +27,9 @@ ion-modal {
     --width: auto;
     --height: auto;
   }
+
+  &.anf-adapt-map {
+    --width: 320px;
+    --height: 320px;
+  }
 }

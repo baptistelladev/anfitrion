@@ -21,6 +21,9 @@ export const environment = {
     messagingSenderId: "157295722273",
     appId: "1:157295722273:web:d00675071d3fe9b82e8860",
     measurementId: "G-Y4J1510TPW"
+  },
+  googleMaps: {
+    apiKey: "AIzaSyAAFgpCz_XcIaR41TIJUeeMd1nnluwNJGs"
   }
 };
 

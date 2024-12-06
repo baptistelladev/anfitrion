@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { IonContent, IonSelect, NavController } from '@ionic/angular';
@@ -25,6 +25,8 @@ import { FilterEnum } from 'src/app/shared/enums/FilterEnum';
 import { IFIrebaseFilter } from 'src/app/shared/models/IFirebaseFilter';
 import { IPlace } from 'src/app/shared/models/IPlace';
 import { CollectionsEnum } from 'src/app/shared/enums/Collection';
+import { MapsStaticService } from 'src/app/core/services/maps/maps-static.service';
+import { MapsService } from 'src/app/core/services/maps/maps.service';
 
 @Component({
   selector: 'anfitrion-lugar-na-praia',
@@ -32,6 +34,11 @@ import { CollectionsEnum } from 'src/app/shared/enums/Collection';
   styleUrls: ['./lugar-na-praia.page.scss'],
 })
 export class LugarNaPraiaPage implements OnInit, OnDestroy {
+
+  @ViewChild('map', { static: false }) mapElement: HTMLElement | undefined;
+
+  public showBeachMap: boolean = false;
+  public beachPngPrint: any;
 
   public filter: IFIrebaseFilter[];
 
@@ -74,7 +81,8 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy {
     private title : Title,
     private route : ActivatedRoute,
     private placesService : PlacesService,
-    private analyticsService : AnalyticsService
+    private analyticsService : AnalyticsService,
+    private mapsService : MapsService
   ) { }
 
   async ngOnInit() {
@@ -251,6 +259,10 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy {
         this.places = places;
       })
     }
+  }
+
+  public async toggleModalMap(show: boolean) {
+    this.showBeachMap = show;
   }
 
   public ngOnDestroy(): void {

@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { AdsenseComponent } from './adsense/adsense.component';
 import { LanguageButtonSmallComponent } from './language-button-small/language-button-small.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { LanguageButtonSmallComponent } from './language-button-small/language-b
     CopyrightComponent,
     LanguageButtonComponent,
     AdsenseComponent,
-    LanguageButtonSmallComponent
+    LanguageButtonSmallComponent,
+    MapComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { LanguageButtonSmallComponent } from './language-button-small/language-b
     CopyrightComponent,
     LanguageButtonComponent,
     AdsenseComponent,
-    LanguageButtonSmallComponent
+    LanguageButtonSmallComponent,
+    MapComponent
   ]
 })
 export class ComponentsModule { }
