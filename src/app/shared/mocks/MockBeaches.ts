@@ -1,4 +1,4 @@
-import { SantosBeachEnum } from "../enums/Beach";
+import { SantosBeachEnum, SaoVicenteBeachEnum } from "../enums/Beach";
 import { CityEnum } from "../enums/City";
 import { IBeach } from "../models/IBeach";
 
@@ -34,6 +34,10 @@ export const MOCK_SANTOS_BEACHES: IBeach[] = [
       pt: 'em',
       en: 'on',
       es: 'en todas'
+    },
+    location: {
+      lat: 0,
+      lng: 0
     }
   },
   {
@@ -67,6 +71,10 @@ export const MOCK_SANTOS_BEACHES: IBeach[] = [
       pt: 'na',
       en: 'on',
       es: 'en la'
+    },
+    location: {
+      lat: -23.9695634,
+      lng: -46.3437696
     }
   },
   {
@@ -259,6 +267,75 @@ export const MOCK_SANTOS_BEACHES: IBeach[] = [
       to: {
         value: '',
         text: 'Balsa Santos/Guarujá'
+      }
+    },
+    in: {
+      pt: 'na',
+      en: 'on',
+      es: 'en la'
+    }
+  }
+]
+
+export const MOCK_SAO_VICENTE_BEACHES: IBeach[] = [
+  {
+    value: 'ALL',
+    city: '',
+    text: {
+      pt: 'Todas as praias',
+      en: 'All beaches',
+      es: 'Todas las playas'
+    },
+    popularName: '',
+    located: {
+      from: {
+        value: '',
+        text: ''
+      },
+      operator: {
+        text: {
+          pt: 'disponíveis',
+          en: 'available',
+          es: 'disponibles'
+        },
+        value: ''
+      },
+      to: {
+        value: '',
+        text: ''
+      }
+    },
+    in: {
+      pt: 'em',
+      en: 'on',
+      es: 'en todas'
+    }
+  },
+  {
+    value: SaoVicenteBeachEnum.ITARARE,
+    city: CityEnum.SANTOS,
+    text: {
+      pt: 'Praia do Itararé',
+      es: 'Playa de Itararé',
+      en: 'Itararé Beach'
+    },
+    popularName: '',
+    located: {
+      from: {
+        value: '',
+        text: 'Divisa'
+      },
+      operator: {
+        text: {
+          pt: 'até',
+          en: 'until',
+          es: 'a'
+        },
+        value: 'ENTRE'
+      },
+      to: {
+        value: '',
+        text: 'Canal 1'
       }
     },
     in: {

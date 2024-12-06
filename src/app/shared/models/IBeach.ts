@@ -17,5 +17,9 @@ export interface IBeach {
       text: string
     }
   },
-  in: any
+  in: any,
+  location?: {
+    lat: number,
+    lng: number
+  }
 }

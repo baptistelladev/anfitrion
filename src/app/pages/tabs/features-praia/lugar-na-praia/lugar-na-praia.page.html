@@ -90,6 +90,16 @@ class="ion-content-w-linear-bg"
                 <p class="fs-11 located">{{ beach.located.from.text }} {{ beach.located.operator.text[currentLanguage.value] }} {{ beach.located.to.text }}</p>
               </ion-text>
             </ion-item>
+
+            <ion-button
+            (click)="toggleModalMap(true)"
+            *ngIf="beach.value !== 'ALL' && selectedBeach?.value === beach.value"
+            [title]="('LOGIN_PAGE.ACCESS_SLIDER.FORGET_BTN.0' | translate) + ' ' + ('LOGIN_PAGE.ACCESS_SLIDER.FORGET_BTN.1' | translate)"
+            class="txt-right no-ion-padding fs-12"
+            fill="clear"
+            mode="ios">
+              ver <b class="mg-left-5">no mapa</b> <ion-icon name="open-outline" class="mg-left-5"></ion-icon>
+            </ion-button>
           </swiper-slide>
         </ng-container>
       </swiper-container>
@@ -295,3 +305,14 @@ class="ion-content-w-linear-bg"
       </ion-grid>
   </section>
 </ion-content>
+
+<!-- MAPA -->
+<ion-modal [isOpen]="selectedBeach && showBeachMap" class="anf-full-size">
+  <ng-template>
+    <ion-content>
+      <section class="map">
+        <anfitrion-map [center]="selectedBeach.location"></anfitrion-map>
+      </section>
+    </ion-content>
+  </ng-template>
+</ion-modal>
