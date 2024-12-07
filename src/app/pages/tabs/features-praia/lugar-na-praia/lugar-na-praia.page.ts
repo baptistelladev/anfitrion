@@ -17,7 +17,7 @@ import { LocationEnum } from 'src/app/shared/enums/Location';
 import { PlaceTypeBeachEnum } from 'src/app/shared/enums/PlaceType';
 import { IBeach } from 'src/app/shared/models/IBeach';
 import { CityEnum } from 'src/app/shared/enums/City';
-import { MOCK_SANTOS_BEACHES } from 'src/app/shared/mocks/MockBeaches';
+import { MOCK_SANTOS_BEACHES, MOCK_SAO_VICENTE_BEACHES } from 'src/app/shared/mocks/MockBeaches';
 import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 import { IFilter } from 'src/app/shared/models/IFilter';
 import { MOCK_FILTERS } from 'src/app/shared/mocks/MockFilters';
@@ -115,7 +115,7 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy, AfterViewInit {
     this.filter = [];
 
     // PRECISAMOS DEFINIR UMA PRAIA SE EXISTIR
-    if (this.selectedBeach.value !== 'ALL') {
+    if (this.selectedBeach && this.selectedBeach.value !== 'ALL') {
       this.filter.push({ field: 'beachInfo.value', operator: '==', value: this.selectedBeach.value });
     }
 
@@ -207,7 +207,7 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy, AfterViewInit {
       this.currentLocationAsParam = res.localidade;
 
       await this.defineBeaches(this.currentCityAsParam);
-      await this.selectInitialBeach(this.MOCK_BEACHES[0]);
+      await this.selectInitialBeach();
       await this.setFilters();
       await this.defineActiveFilter(FilterEnum.ALL);
       await this.initialFilter(FilterEnum.ALL);
@@ -234,13 +234,31 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy, AfterViewInit {
       case CityEnum.SANTOS:
         this.MOCK_BEACHES = MOCK_SANTOS_BEACHES;
         break;
+
+      case CityEnum.SAO_VICENTE:
+        this.MOCK_BEACHES = MOCK_SAO_VICENTE_BEACHES;
+        break;
+
+      case CityEnum.PRAIA_GRANDE:
+        this.MOCK_BEACHES = [];
+        break;
     }
 
     return this.MOCK_BEACHES
   }
 
-  public async selectInitialBeach(beach: IBeach) {
-    this.selectedBeach = beach;
+  public async selectInitialBeach() {
+    let beachFound: IBeach | undefined = this.MOCK_BEACHES.find((beach: IBeach) => {
+      return beach.value === 'ALL';
+    })
+
+    if (this.MOCK_BEACHES) {
+      if (beachFound) {
+        this.selectedBeach = beachFound
+      } else {
+        this.selectedBeach = this.MOCK_BEACHES[0];
+      }
+    }
   }
 
   public async selectBeach(beach: IBeach) {

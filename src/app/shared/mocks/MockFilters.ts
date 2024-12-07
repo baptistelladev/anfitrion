@@ -40,7 +40,7 @@ export const MOCK_FILTERS: IFilter[] = [
       en: 'Has live music',
       es: 'Tiene música en vivo'
     },
-    dontShowIn: [PlaceTypeCityEnum.ADEGA, PlaceTypeCityEnum.DOCERIA, PlaceTypeCityEnum.CAFETERIA, PlaceTypeCityEnum.EMPORIO, PlaceTypeCityEnum.HAMBURGUERIA, PlaceTypeCityEnum.MERCADO, PlaceTypeCityEnum.PIZZARIA, PlaceTypeCityEnum.TABACARIA, PlaceTypeBeachEnum.QUIOSQUE]
+    dontShowIn: [PlaceTypeCityEnum.ADEGA, PlaceTypeCityEnum.DOCERIA, PlaceTypeCityEnum.CAFETERIA, PlaceTypeCityEnum.EMPORIO, PlaceTypeCityEnum.HAMBURGUERIA, PlaceTypeCityEnum.MERCADO, PlaceTypeCityEnum.PIZZARIA, PlaceTypeCityEnum.TABACARIA, PlaceTypeBeachEnum.QUIOSQUE, PlaceTypeCityEnum.SORVETERIA]
   },
   {
     value: FilterEnum.CHILDREN_SPACE,
