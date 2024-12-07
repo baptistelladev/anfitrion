@@ -76,34 +76,7 @@ export const MOCK_SANTOS_BEACHES: IBeach[] = [
       lat: -23.969867,
       lng: -46.350651
     },
-    kmlCoordinates: [
-      { lat: -23.968751808155897, lng: -46.35661974643433 },
-      { lat: -23.970026277361836, lng: -46.35660901759936 },
-      { lat: -23.970359597997987, lng: -46.35450616594377 },
-      { lat: -23.971310537427392, lng: -46.352929027202066 },
-      { lat: -23.9714085720211, lng: -46.35268226399758 },
-      { lat: -23.971261520102566, lng: -46.35223165292852 },
-      { lat: -23.97087918432902, lng: -46.351148040595795 },
-      { lat: -23.971222306229283, lng: -46.35072961603167 },
-      { lat: -23.972016384837442, lng: -46.35072961603167 },
-      { lat: -23.972408520616792, lng: -46.35036483564244 },
-      { lat: -23.97238891385617, lng: -46.350021512923156 },
-      { lat: -23.97210461549183, lng: -46.349699647873834 },
-      { lat: -23.9705556685577, lng: -46.34975329204872 },
-      { lat: -23.969222382868836, lng: -46.349721105543786 },
-      { lat: -23.969124346611995, lng: -46.34721055815905 },
-      { lat: -23.96968805407037, lng: -46.3463254292734 },
-      { lat: -23.96977628631893, lng: -46.3457514366021 },
-      { lat: -23.968064516843715, lng: -46.345764393887144 },
-      { lat: -23.967910474323745, lng: -46.34731531707903 },
-      { lat: -23.96811381041123, lng: -46.349014589445815 },
-      { lat: -23.968280176062382, lng: -46.34950009583632 },
-      { lat: -23.968551289996697, lng: -46.35121959763603 },
-      { lat: -23.96848351156659, lng: -46.35137468995522 },
-      { lat: -23.968477349889355, lng: -46.35189391206729 },
-      { lat: -23.968902801680557, lng: -46.35604078381653 },
-      { lat: -23.968751808155897, lng: -46.35661974643433 }
-    ]
+    kmlCoordinates: []
   },
   {
     value: SantosBeachEnum.POMPEIA,
@@ -136,7 +109,12 @@ export const MOCK_SANTOS_BEACHES: IBeach[] = [
       pt: 'na',
       en: 'on',
       es: 'en la'
-    }
+    },
+    location: {
+      lat: -23.969121965234972,
+      lng: -46.34263554212077
+    },
+    kmlCoordinates: []
   },
   {
     value: SantosBeachEnum.GONZAGA,
@@ -169,7 +147,12 @@ export const MOCK_SANTOS_BEACHES: IBeach[] = [
       pt: 'na',
       en: 'on',
       es: 'en la'
-    }
+    },
+    location: {
+      lat: -23.970552455131553,
+      lng: -46.33425639263376
+    },
+    kmlCoordinates: []
   },
   {
     value: SantosBeachEnum.BOQUEIRAO,
@@ -202,7 +185,12 @@ export const MOCK_SANTOS_BEACHES: IBeach[] = [
       pt: 'na',
       en: 'on',
       es: 'en la'
-    }
+    },
+    location: {
+      lat: -23.972813959159687,
+      lng: -46.32581760530018
+    },
+    kmlCoordinates: []
   },
   {
     value: SantosBeachEnum.EMBARE,
@@ -235,7 +223,12 @@ export const MOCK_SANTOS_BEACHES: IBeach[] = [
       pt: 'na',
       en: 'on',
       es: 'en la'
-    }
+    },
+    location: {
+      lat: -23.976451355287853,
+      lng: -46.31861630764783
+    },
+    kmlCoordinates: []
   },
   {
     value: SantosBeachEnum.APARECIDA,
@@ -268,7 +261,12 @@ export const MOCK_SANTOS_BEACHES: IBeach[] = [
       pt: 'na',
       en: 'on',
       es: 'en la'
-    }
+    },
+    location: {
+      lat: -23.98135554702469,
+      lng: -46.31253322417445
+    },
+    kmlCoordinates: []
   },
   {
     value: SantosBeachEnum.PONTA_DA_PRAIA,
@@ -301,7 +299,12 @@ export const MOCK_SANTOS_BEACHES: IBeach[] = [
       pt: 'na',
       en: 'on',
       es: 'en la'
-    }
+    },
+    location: {
+      lat: -23.98538774251839,
+      lng: -46.30940222554454
+    },
+    kmlCoordinates: []
   }
 ]
 

@@ -64,6 +64,16 @@ mode="ios">
               {{ currentSuggestion.address[currentLanguage.value] }}.
             </p>
           </ion-text>
+
+          <ion-button
+          *ngIf="currentSuggestion.location?.lat"
+          (click)="toggleModalMap(true)"
+          [title]="('SHARED.SEE_MAP.0' | translate) + ' ' + ('SHARED.SEE_MAP.1' | translate)"
+          class="txt-left no-ion-padding fs-12 see-on-map"
+          fill="clear"
+          mode="ios">
+            {{ 'SHARED.SEE_MAP.0' | translate }} <b class="mg-left-5">{{ 'SHARED.SEE_MAP.1' | translate }}</b> <ion-icon name="open-outline" class="mg-left-5"></ion-icon>
+          </ion-button>
         </ion-col>
 
         <ion-col size="12" *ngIf="!currentSuggestion">
@@ -173,6 +183,7 @@ mode="ios">
           *ngFor="let establishment of short_establishments; let i = index"
           class="unlock-shadow-from-swiper auto-width">
             <ion-card
+            (click)="slideSwiperTo(i)"
             [ngClass]="{ 'coming-soon': establishment.isBuilding }"
             mode="ios"
             class="establishment-card-vertical"
@@ -497,5 +508,26 @@ mode="md">
         </ion-grid>
       </ion-toolbar>
     </ion-footer>
+  </ng-template>
+</ion-modal>
+
+<!-- MAPA -->
+<ion-modal [isOpen]="showBeachMap && currentSuggestion.location?.lat" class="anf-full-size" (ionModalDidDismiss)="toggleModalMap(false)">
+  <ng-template>
+    <ion-content>
+      <section class="map">
+        <ion-button
+        (click)="toggleModalMap(false)"
+        mode="md"
+        shape="round"
+        [title]="'SHARED.BACK' | translate"
+        fill="solid"
+        class="anfitrion-main-solid fs-14 back-button-from-modal-map height-44">
+          <ion-icon name="chevron-back-outline"></ion-icon> <span class="font-w-thin mg-left-5 mg-right-5">{{ 'SHARED.BACK' | translate }}</span>
+        </ion-button>
+
+        <anfitrion-map [center]="currentSuggestion.location" [zoom]="18"></anfitrion-map>
+      </section>
+    </ion-content>
   </ng-template>
 </ion-modal>

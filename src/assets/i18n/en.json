@@ -222,7 +222,8 @@
     "CARTS" : "CARTS",
     "VISITANT" : "Visitant",
     "ACCESS" : ["access","site"],
-    "DELIVERY_SAND": "Delivery on the sand"
+    "DELIVERY_SAND": "Delivery on the sand",
+    "SEE_MAP": ["see", "on map"]
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Our purpose here is to help you save your most precious asset: ","time"],

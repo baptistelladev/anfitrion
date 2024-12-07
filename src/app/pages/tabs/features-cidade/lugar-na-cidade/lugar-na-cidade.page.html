@@ -171,6 +171,7 @@ class="ion-content-w-linear-bg"
         *ngFor="let place of places; let i = index"
         class="unlock-shadow-from-swiper auto-width">
           <ion-card
+          (click)="slideSwiperTo(i)"
           [ngClass]="{ 'coming-soon': place.isBuilding }"
           mode="ios"
           class="place-card-vertical"

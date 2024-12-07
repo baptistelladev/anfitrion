@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { IonContent, IonSelect, NavController } from '@ionic/angular';
@@ -25,13 +25,18 @@ import { FilterEnum } from 'src/app/shared/enums/FilterEnum';
 import { IFIrebaseFilter } from 'src/app/shared/models/IFirebaseFilter';
 import { IPlace } from 'src/app/shared/models/IPlace';
 import { CollectionsEnum } from 'src/app/shared/enums/Collection';
+import Swiper from 'swiper';
 
 @Component({
   selector: 'anfitrion-lugar-na-praia',
   templateUrl: './lugar-na-praia.page.html',
   styleUrls: ['./lugar-na-praia.page.scss'],
 })
-export class LugarNaPraiaPage implements OnInit, OnDestroy {
+export class LugarNaPraiaPage implements OnInit, OnDestroy, AfterViewInit {
+
+  @ViewChild('beachSwiper')
+  swiperRef: ElementRef | undefined;
+  swiper?: Swiper;
 
   @ViewChild('map', { static: false }) mapElement: HTMLElement | undefined;
 
@@ -86,6 +91,10 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy {
     this.getUserFromNGRX();
     this.getCurrentLanguageFromNGRX();
     this.getRouter();
+  }
+
+  public ngAfterViewInit(): void {
+    this.swiper = this.swiperRef?.nativeElement.swiper;
   }
 
   ionViewWillEnter(): void {
@@ -260,6 +269,10 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy {
 
   public async toggleModalMap(show: boolean) {
     this.showBeachMap = show;
+  }
+
+  public slideSwiperTo(index: number): void {
+    this.swiper?.slideTo(index, 800);
   }
 
   public ngOnDestroy(): void {
