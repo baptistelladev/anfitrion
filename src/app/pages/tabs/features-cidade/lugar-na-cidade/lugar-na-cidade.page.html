@@ -31,6 +31,7 @@ class="ion-content-w-linear-bg"
 
   <ion-grid [fixed]="true" class="no-pad-top">
     <ion-row>
+
       <ion-col size="12" class="no-pad-top">
         <ion-text
         class="txt-center color-gray-text full-width icon-title-text"
@@ -63,11 +64,13 @@ class="ion-content-w-linear-bg"
             {{ currentCityAsParam?.in[currentLanguage.value] }} {{ currentCityAsParam?.name }} <span class="color-gray-mid text-lowercase">({{ currentLocationAsParam === LocationEnum.CIDADE ? ('SHARED.CITY' | translate) : ('SHARED.BEACH' | translate) }})</span>
           </p>
         </ion-text>
+      </ion-col>
 
+      <ion-col size="12">
         <ion-text
         class="txt-left color-gray-text"
         mode="ios">
-          <p class="color-gray-text fs-14 font-w-thin mg-top-32 d-block">
+          <p class="color-gray-text fs-14 font-w-thin">
             <ng-container [ngSwitch]="placeType">
               <ng-container *ngSwitchCase="PlaceTypeCityEnum.RESTAURANTE">{{ 'PLACES_IN_THE_CITY.FILTER_RESTAURANT' | translate }}</ng-container>
               <ng-container *ngSwitchCase="PlaceTypeCityEnum.BAR">{{ 'PLACES_IN_THE_CITY.FILTER_BAR' | translate }}</ng-container>
@@ -85,6 +88,8 @@ class="ion-content-w-linear-bg"
       <ion-col size="12">
         <div class="view-n-filter-wrapper">
           <div class="buttons-wrapper">
+            <anfitrion-search></anfitrion-search>
+
             <ion-button
             (click)="openFilterSelect()"
             shape="round"

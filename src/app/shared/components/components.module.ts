@@ -11,6 +11,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AdsenseComponent } from './adsense/adsense.component';
 import { LanguageButtonSmallComponent } from './language-button-small/language-button-small.component';
 import { MapComponent } from './map/map.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MapComponent } from './map/map.component';
     LanguageButtonComponent,
     AdsenseComponent,
     LanguageButtonSmallComponent,
-    MapComponent
+    MapComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +39,8 @@ import { MapComponent } from './map/map.component';
     LanguageButtonComponent,
     AdsenseComponent,
     LanguageButtonSmallComponent,
-    MapComponent
+    MapComponent,
+    SearchComponent
   ]
 })
 export class ComponentsModule { }
