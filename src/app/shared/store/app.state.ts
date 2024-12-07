@@ -34,7 +34,8 @@ export const appInitialState: IAppState = {
       pt: '',
       en: '',
       es: ''
-    }
+    },
+    hasBeach: false
   },
   parkings: [
     {
@@ -99,7 +100,8 @@ export const appInitialState: IAppState = {
         pt: '',
         en: '',
         es: ''
-      }
+      },
+      hasBeach: false
     },
     specialty: [
       {

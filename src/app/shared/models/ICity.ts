@@ -4,5 +4,6 @@ export interface ICity {
   sigla: string,
   isDisabled?: boolean,
   from: any,
-  in: any
+  in: any,
+  hasBeach: boolean
 }

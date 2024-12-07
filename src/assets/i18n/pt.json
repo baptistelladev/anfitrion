@@ -69,7 +69,8 @@
     "CITY_PLACES_EXPLORING" : "Para quem quer conhecer ou encontrar um local para se alimentar",
     "BEACH_PLACES_EXPLORING" : "Para quem quer conhecer ou procurar um local para se alimentar",
     "CITY_PEOPLE_EXPLORING" : "Para quem quer consumir na cidade com um profissional autonomo",
-    "BEACH_PEOPLE_EXPLORING" : "Para quem quer consumir na praia com um profissional autonomo"
+    "BEACH_PEOPLE_EXPLORING" : "Para quem quer consumir na praia com um profissional autonomo",
+    "NUMBER_OF_BEACHES" : "A cidade que voce selecionou possui cerca de {{ length }} praias"
   },
   "WELCOME_TO" : ["Conheça","a Baixada Santista"],
   "ABOUT_US_PAGE" : {
