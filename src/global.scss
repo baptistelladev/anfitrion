@@ -674,3 +674,10 @@ ion-chip.as-badge {
     @include flexbox(center, flex-end, row);
   }
 }
+
+.back-button-from-modal-map {
+  position: absolute;
+  left: 32px;
+  top: 32px;
+  z-index: 999;
+}

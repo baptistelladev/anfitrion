@@ -32,6 +32,8 @@ import { MOCK_FILTERS } from 'src/app/shared/mocks/MockFilters';
 })
 export class SugestaoPage implements OnInit, OnDestroy {
 
+  public showBeachMap: boolean = false;
+
   public paramAsUrl: string;
 
   public establishmentActiveIndex: number | undefined = 1;
@@ -362,6 +364,10 @@ export class SugestaoPage implements OnInit, OnDestroy {
     this.swiper?.slideTo(0, 800);
   }
 
+  public slideSwiperTo(index: number): void {
+    this.swiper?.slideTo(index, 800);
+  }
+
   public slideToNext(): void {
     this.swiper?.slideNext(800);
   }
@@ -471,6 +477,10 @@ export class SugestaoPage implements OnInit, OnDestroy {
         this.getSuggestionFromUrl();
       }
     })
+  }
+
+  public async toggleModalMap(show: boolean) {
+    this.showBeachMap = show;
   }
 
   public ngOnDestroy(): void {

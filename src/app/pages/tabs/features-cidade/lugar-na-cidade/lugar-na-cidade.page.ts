@@ -308,6 +308,10 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
     this.hideRightControl = ev.detail[0].isEnd;
   }
 
+  public slideSwiperTo(index: number): void {
+    this.swiper?.slideTo(index, 800);
+  }
+
   ngOnDestroy(): void {
     this.placesSubscription.unsubscribe();
     this.currentLanguageSubscription.unsubscribe();

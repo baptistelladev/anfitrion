@@ -13,6 +13,7 @@ export class MapComponent  implements OnInit, AfterViewInit {
 
   @Input() center: { lat: number, lng: number} | undefined;
   @Input() kmlCoordinates: any[] | undefined;
+  @Input() zoom?: number = 16;
   googleMaps: any;
   map: any;
   marker: any;
@@ -39,7 +40,7 @@ export class MapComponent  implements OnInit, AfterViewInit {
 
     this.map = new Map(mapEl, {
       center: location,
-      zoom: 16,
+      zoom: this.zoom,
       mapId: "4504f8b37365c3d0",
       // scaleControl: false,
       streetViewControl: false,

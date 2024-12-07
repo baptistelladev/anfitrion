@@ -222,7 +222,8 @@
     "CARTS" : "Carrinhos",
     "VISITANT" : "Visitante",
     "ACCESS" : ["acessar","site"],
-    "DELIVERY_SAND" : "Entrega na areia"
+    "DELIVERY_SAND" : "Entrega na areia",
+    "SEE_MAP" : ["ver","no mapa"]
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nosso próposito aqui é fazer com que voê economize o seu bem mais precioso:","o tempo"],

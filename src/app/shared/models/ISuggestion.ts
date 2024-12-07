@@ -9,5 +9,9 @@ export interface ISuggestion {
   created_at: string,
   updated_at: string,
   route: string,
-  address: any
+  address: any,
+  location?: {
+    lat: number,
+    lng: number
+  }
 }

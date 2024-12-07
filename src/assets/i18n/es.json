@@ -223,7 +223,8 @@
     "CARTS" : "Carritos",
     "VISITANT" : "Visitante",
     "ACCESS" : ["aceder", "al sitio web"],
-    "DELIVERY_SAND": "Entrega en la arena"
+    "DELIVERY_SAND": "Entrega en la arena",
+    "SEE_MAP": ["ver", "en el mapa"]
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nuestro propósito aquí es ayudarte a ahorrar tu bien más precioso:","el tiempo"],

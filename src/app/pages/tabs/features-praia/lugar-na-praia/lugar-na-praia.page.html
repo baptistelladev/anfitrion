@@ -67,7 +67,7 @@ class="ion-content-w-linear-bg"
       <swiper-container
       [init]="true"
       class="full-width swiper-w-relative-pagination"
-      #placesSwiper
+      #beachSwiper
       [freeMode]="true"
       [autoHeight]="false"
       slides-offset-before="16"
@@ -77,11 +77,11 @@ class="ion-content-w-linear-bg"
       space-between="16">
         <ng-container>
           <swiper-slide
-          *ngFor="let beach of MOCK_BEACHES"
+          *ngFor="let beach of MOCK_BEACHES; let i = index"
           class="unlock-shadow-from-swiper auto-width">
             <ion-item
             [ngClass]="{'is-selected': beach.value === (selectedBeach && selectedBeach.value)}"
-            (click)="selectBeach(beach)"
+            (click)="selectBeach(beach); slideSwiperTo(i)"
             mode="ios"
             lines="none"
             class="beach-item mg-bottom-8">
@@ -307,14 +307,20 @@ class="ion-content-w-linear-bg"
 </ion-content>
 
 <!-- MAPA -->
-<ion-modal [isOpen]="selectedBeach && showBeachMap" class="anf-full-size">
+<ion-modal [isOpen]="selectedBeach && showBeachMap" class="anf-full-size" (ionModalDidDismiss)="toggleModalMap(false)">
   <ng-template>
     <ion-content>
       <section class="map">
         <ion-button
-        class="back-button">
-          Voltar
+        (click)="toggleModalMap(false)"
+        mode="md"
+        shape="round"
+        [title]="'SHARED.BACK' | translate"
+        fill="solid"
+        class="anfitrion-main-solid fs-14 back-button-from-modal-map height-44">
+          <ion-icon name="chevron-back-outline"></ion-icon> <span class="font-w-thin mg-left-5 mg-right-5">{{ 'SHARED.BACK' | translate }}</span>
         </ion-button>
+
         <anfitrion-map [center]="selectedBeach.location" [kmlCoordinates]="selectedBeach.kmlCoordinates"></anfitrion-map>
       </section>
     </ion-content>
