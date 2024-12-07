@@ -251,7 +251,7 @@ class="ion-content-w-linear-bg">
       <ion-col size="12" *ngIf="currentCity?.hasBeach && selectedSegment === LocationEnum.PRAIA">
         <ion-text mode="ios">
           <p class="font-baloo fs-20 color-gray-text font-w-bold">
-            {{ 'SHARED.BEACHES' | translate }} <span class="font-w-normal">de Santos</span>
+            {{ 'SHARED.BEACHES' | translate }} <span class="font-w-normal">{{ currentCity.in[currentLanguage.value] }} {{ currentCity.name }}</span>
           </p>
           <p class="fs-14 color-gray-text font-w-thin line-height-18">
             {{ 'EXPLORE_PAGE.NUMBER_OF_BEACHES' | translate: { length: MOCK_BEACHES.length } }}: <span *ngFor="let beach of MOCK_BEACHES.slice(1); let i = index; let isLast = last">{{ beach.text[currentLanguage.value] }}<ng-container *ngIf="!isLast">, </ng-container></span>.

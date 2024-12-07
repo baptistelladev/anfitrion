@@ -124,6 +124,8 @@ class="ion-content-w-linear-bg"
         <ion-col size="12">
           <div class="view-n-filter-wrapper">
             <div class="buttons-wrapper">
+              <anfitrion-search></anfitrion-search>
+
               <ion-button
               [disabled]="MOCK_BEACHES.length === 0 || !places"
               (click)="openFilterSelect()"
