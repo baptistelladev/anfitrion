@@ -5,7 +5,7 @@ import { IBeach } from "../models/IBeach";
 export const MOCK_SANTOS_BEACHES: IBeach[] = [
   {
     value: 'ALL',
-    city: '',
+    city: CityEnum.SANTOS,
     text: {
       pt: 'Todas as praias',
       en: 'All beaches',
@@ -19,9 +19,9 @@ export const MOCK_SANTOS_BEACHES: IBeach[] = [
       },
       operator: {
         text: {
-          pt: 'disponíveis',
-          en: 'available',
-          es: 'disponibles'
+          pt: 'Disponíveis',
+          en: 'Available',
+          es: 'Disponibles'
         },
         value: ''
       },
@@ -38,7 +38,8 @@ export const MOCK_SANTOS_BEACHES: IBeach[] = [
     location: {
       lat: 0,
       lng: 0
-    }
+    },
+    kmlCoordinates: []
   },
   {
     value: SantosBeachEnum.JOSE_MENINO,
@@ -60,7 +61,7 @@ export const MOCK_SANTOS_BEACHES: IBeach[] = [
           en: 'until',
           es: 'a'
         },
-        value: 'ENTRE'
+        value: 'ATE'
       },
       to: {
         value: '',
@@ -311,7 +312,7 @@ export const MOCK_SANTOS_BEACHES: IBeach[] = [
 export const MOCK_SAO_VICENTE_BEACHES: IBeach[] = [
   {
     value: 'ALL',
-    city: '',
+    city: CityEnum.SAO_VICENTE,
     text: {
       pt: 'Todas as praias',
       en: 'All beaches',
@@ -325,9 +326,9 @@ export const MOCK_SAO_VICENTE_BEACHES: IBeach[] = [
       },
       operator: {
         text: {
-          pt: 'disponíveis',
-          en: 'available',
-          es: 'disponibles'
+          pt: 'Disponíveis',
+          en: 'Available',
+          es: 'Disponibles'
         },
         value: ''
       },
@@ -340,11 +341,16 @@ export const MOCK_SAO_VICENTE_BEACHES: IBeach[] = [
       pt: 'em',
       en: 'on',
       es: 'en todas'
-    }
+    },
+    location: {
+      lat: 0,
+      lng: 0
+    },
+    kmlCoordinates: []
   },
   {
     value: SaoVicenteBeachEnum.ITARARE,
-    city: CityEnum.SANTOS,
+    city: CityEnum.SAO_VICENTE,
     text: {
       pt: 'Praia do Itararé',
       es: 'Playa de Itararé',
@@ -366,14 +372,170 @@ export const MOCK_SAO_VICENTE_BEACHES: IBeach[] = [
       },
       to: {
         value: '',
-        text: 'Canal 1'
+        text: 'R. Saldanha da Gama'
       }
     },
     in: {
       pt: 'na',
       en: 'on',
       es: 'en la'
-    }
+    },
+    location: {
+      lat: -23.97167889629475,
+      lng: -46.36682825819055
+    },
+    kmlCoordinates: []
+  },
+  {
+    value: SaoVicenteBeachEnum.MILIONARIOS,
+    city: CityEnum.SAO_VICENTE,
+    text: {
+      pt: 'Praia dos Milionários',
+      es: 'Playa de los Milionarios',
+      en: 'Milionários Beach'
+    },
+    popularName: '',
+    located: {
+      from: {
+        value: '',
+        text: 'Ilha Porchat'
+      },
+      operator: {
+        text: {
+          pt: 'até',
+          en: 'until',
+          es: 'a'
+        },
+        value: 'ENTRE'
+      },
+      to: {
+        value: '',
+        text: 'Burgman'
+      }
+    },
+    in: {
+      pt: 'na',
+      en: 'on',
+      es: 'en la'
+    },
+    location: {
+      lat: -23.975994198335087,
+      lng: -46.371669476317834
+    },
+    kmlCoordinates: []
+  },
+  {
+    value: SaoVicenteBeachEnum.PONTINHA_DA_PRAIA,
+    city: CityEnum.SAO_VICENTE,
+    text: {
+      pt: 'Praia Pontinha da Praia',
+      es: 'Playa Pontinha de la Playa',
+      en: 'Pontinha da Praia Beach'
+    },
+    popularName: '',
+    located: {
+      from: {
+        value: '',
+        text: 'Milionários'
+      },
+      operator: {
+        text: {
+          pt: 'até',
+          en: 'until',
+          es: 'a'
+        },
+        value: 'ATE'
+      },
+      to: {
+        value: '',
+        text: 'Gonzaguinha'
+      }
+    },
+    in: {
+      pt: 'na',
+      en: 'on',
+      es: 'en la'
+    },
+    location: {
+      lat: -23.97033645432574,
+      lng: -46.374620226101484
+    },
+    kmlCoordinates: []
+  },
+  {
+    value: SaoVicenteBeachEnum.PARANAPUA,
+    city: CityEnum.SAO_VICENTE,
+    text: {
+      pt: 'Praia de Paranapuã',
+      es: 'Playa Paranapuã',
+      en: 'Paranapuã Beach'
+    },
+    popularName: '',
+    located: {
+      from: {
+        value: '',
+        text: ''
+      },
+      operator: {
+        text: {
+          pt: 'próximo á Ponte Pênsil',
+          en: 'Next to the Ponte Pênsil',
+          es: 'Cerca del Ponte Pênsil'
+        },
+        value: ''
+      },
+      to: {
+        value: '',
+        text: ''
+      }
+    },
+    in: {
+      pt: 'na',
+      en: 'on',
+      es: 'en la'
+    },
+    location: {
+      lat: -23.97812036192007,
+      lng: -46.385824165278024
+    },
+    kmlCoordinates: []
+  },
+  {
+    value: SaoVicenteBeachEnum.ITAQUITANDUVA,
+    city: CityEnum.SAO_VICENTE,
+    text: {
+      pt: 'Praia do Itaquitanduva',
+      es: 'Playa Itaquitanduva',
+      en: 'Itaquitanduva Beach'
+    },
+    popularName: '',
+    located: {
+      from: {
+        value: '',
+        text: ''
+      },
+      operator: {
+        text: {
+          pt: 'Próximo a Itaquitanduva',
+          en: 'Near Itaquitanduva',
+          es: 'Cerca de Itaquitanduva'
+        },
+        value: ''
+      },
+      to: {
+        value: '',
+        text: ''
+      }
+    },
+    in: {
+      pt: 'na',
+      en: 'on',
+      es: 'en la'
+    },
+    location: {
+      lat: -24.000217336106452,
+      lng: -46.39233134738474
+    },
+    kmlCoordinates: []
   }
 ]
-

@@ -33,6 +33,7 @@
     }
   },
   "PLACES_IN_THE_CITY" : {
+    "FILTER_ICE_CREAM_PARLORS": "Filtre as sorveterias",
     "FILTER_RESTAURANT" : "Filtre os restaurantes",
     "FILTER_BAR" : "Filtre os bares",
     "FILTER_COFFE_SHOP" : "Filtre as cafeterias",
@@ -40,6 +41,12 @@
     "FILTER_PIZZERIA" : "Filtre as pizzarias",
     "FILTER_BURGER_JOINT" : "Filtre as hamburguerias",
     "FILTER_SWEET_SHOP" : "Filtre as docerias",
+    "ACCORDING_YOUR_NEED" : "de acordo com a sua necessidade",
+    "BACK_TO_EXPLORE" : ["Volte a","explorar"]
+  },
+  "PLACES_AT_THE_BEACH" : {
+    "FILTER_KIOSKS" : "Filtre os quiosques",
+    "FILTER_CARTS" : "Filtre os carrinhos",
     "ACCORDING_YOUR_NEED" : "de acordo com a sua necessidade",
     "BACK_TO_EXPLORE" : ["Volte a","explorar"]
   },
@@ -214,6 +221,7 @@
     "PEOPLE" : "Pessoas",
     "CITY" : "Cidade",
     "BEACH" : "Praia",
+    "BEACHES" : "Praias",
     "TOURIST" : "Turista",
     "RESIDENT" : "Morador",
     "FREE_ACCOUNT" : "Conta gratuita",
@@ -223,7 +231,10 @@
     "VISITANT" : "Visitante",
     "ACCESS" : ["acessar","site"],
     "DELIVERY_SAND" : "Entrega na areia",
-    "SEE_MAP" : ["ver","no mapa"]
+    "SEE_MAP" : ["ver","no mapa"],
+    "NO_PLACES" : "Não encontramos nenhum lugar por enquanto",
+    "SHOW_MORE" : "mostrar mais",
+    "ICE_CREAM_PARLORS" : "Sorveterias"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nosso próposito aqui é fazer com que voê economize o seu bem mais precioso:","o tempo"],
@@ -274,7 +285,9 @@
     "HOW_CAN_I_HELP" : "como posso te ajudar",
     "LOG_OFF_BTN" : ["sair","da minha conta"],
     "LOG_OFF_TITLE" : "Sair da conta",
-    "LOG_OFF_TEXT" : "Você quer mesmo sair da sua conta"
+    "LOG_OFF_TEXT" : "Você quer mesmo sair da sua conta",
+    "INCOMPLETE_PROFILE_TITLE" : "Perfil incompleto",
+    "INCOMPLETE_PROFILE_TEXT" : "Faltam algumas informações no seu perfil, acesse a tela Seus dados"
   },
   "CONTACT_PAGE" : {
     "PAGE_TITLE" : "Fale comigo sobre a Rua Gastronômica de Santos",

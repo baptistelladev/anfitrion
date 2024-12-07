@@ -32,7 +32,7 @@
           <div class="menu-container">
             <ion-grid [fixed]="true" class="no-pad-top">
               <ion-row>
-                <ion-col class="no-pad-top" size="12">
+                <ion-col class="no-pad-top" size="12" *ngIf="user.sex && user.lastName && user.birthDate && user.userType">
                   <ion-text mode="ios" class="line-height-24 txt-center">
                     <p class="fs-14 color-gray-text font-w-thin fs-20">{{ user.firstName }} {{ user.lastName }}</p>
                   </ion-text>
@@ -52,6 +52,21 @@
                       {{ 'SHARED.FREE_ACCOUNT' | translate }}
                     </ion-chip>
                   </div>
+                </ion-col>
+
+                <ion-col size="12"
+                *ngIf="!user.sex || !user.lastName || !user.birthDate || !user.userType">
+                  <ion-item
+                  lines="none"
+                  mode="ios"
+                  class="simulate-bootstrap-alert warning line-height-18mg-bottom-16">
+                    <ion-icon name="warning-outline" slot="start" class="color-bootstrap-warning"></ion-icon>
+
+                    <ion-text mode="ios" class="color-bootstrap-warning">
+                      <p class="fs-12 mg-bottom-8">{{ 'MENU_PAGE.INCOMPLETE_PROFILE_TITLE' | translate }}</p>
+                      <p class="fs-14">{{ 'MENU_PAGE.INCOMPLETE_PROFILE_TEXT' | translate }}.</p>
+                    </ion-text>
+                  </ion-item>
                 </ion-col>
 
                 <ion-col size="12">

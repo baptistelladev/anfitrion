@@ -43,6 +43,7 @@ class="ion-content-w-linear-bg"
             <ng-container *ngSwitchCase="PlaceTypeCityEnum.PIZZARIA"><ion-icon name="pizza-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
             <ng-container *ngSwitchCase="PlaceTypeCityEnum.HAMBURGUERIA"><ion-icon name="fast-food-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
             <ng-container *ngSwitchCase="PlaceTypeCityEnum.DOCERIA"><ion-icon name="pie-chart-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
+            <ng-container *ngSwitchCase="PlaceTypeCityEnum.SORVETERIA"><ion-icon name="ice-cream-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
           </ng-container>
 
           <h2 class="font-baloo">
@@ -54,6 +55,7 @@ class="ion-content-w-linear-bg"
               <ng-container *ngSwitchCase="PlaceTypeCityEnum.PIZZARIA">{{ 'SHARED.PIZZERIAS' | translate }}</ng-container>
               <ng-container *ngSwitchCase="PlaceTypeCityEnum.HAMBURGUERIA">{{ 'SHARED.BURGER_JOINTS' | translate }}</ng-container>
               <ng-container *ngSwitchCase="PlaceTypeCityEnum.DOCERIA">{{ 'SHARED.SWEET_SHOPS' | translate }}</ng-container>
+              <ng-container *ngSwitchCase="PlaceTypeCityEnum.SORVETERIA">{{ 'SHARED.ICE_CREAM_PARLORS' | translate }}</ng-container>
             </ng-container></span>
           </h2>
 
@@ -73,7 +75,8 @@ class="ion-content-w-linear-bg"
               <ng-container *ngSwitchCase="PlaceTypeCityEnum.ADEGA">{{ 'PLACES_IN_THE_CITY.FILTER_BEVERAGE' | translate }}</ng-container>
               <ng-container *ngSwitchCase="PlaceTypeCityEnum.PIZZARIA">{{ 'PLACES_IN_THE_CITY.FILTER_PIZZERIA' | translate }}</ng-container>
               <ng-container *ngSwitchCase="PlaceTypeCityEnum.HAMBURGUERIA">{{ 'PLACES_IN_THE_CITY.FILTER_BURGER_JOINT' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeCityEnum.DOCERIA">{{ 'PLACES_IN_THE_CITY.FILTER_SWEET_SHOP' | translate }}</ng-container> {{ 'PLACES_IN_THE_CITY.ACCORDING_YOUR_NEED' | translate }}.
+              <ng-container *ngSwitchCase="PlaceTypeCityEnum.DOCERIA">{{ 'PLACES_IN_THE_CITY.FILTER_SWEET_SHOP' | translate }}</ng-container>
+              <ng-container *ngSwitchCase="PlaceTypeCityEnum.SORVETERIA">{{ 'PLACES_IN_THE_CITY.FILTER_ICE_CREAM_PARLORS' | translate }}</ng-container> {{ 'PLACES_IN_THE_CITY.ACCORDING_YOUR_NEED' | translate }}.
             </ng-container>
           </p>
         </ion-text>

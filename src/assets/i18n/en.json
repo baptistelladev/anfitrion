@@ -33,6 +33,7 @@
     }
   },
   "PLACES_IN_THE_CITY" : {
+    "FILTER_ICE_CREAM_PARLORS": "Filter ice cream parlors",
     "FILTER_RESTAURANT": "Filter restaurants",
     "FILTER_BAR": "Filter bars",
     "FILTER_COFFE_SHOP": "Filter coffee shops",
@@ -42,6 +43,12 @@
     "FILTER_SWEET_SHOP": "Filter sweet shops",
     "ACCORDING_YOUR_NEED": "according to your needs",
     "BACK_TO_EXPLORE" : ["Back to", "explore"]
+  },
+  "PLACES_AT_THE_BEACH" : {
+    "FILTER_KIOSKS": "Filter the kiosks",
+    "FILTER_CARTS": "Filter the carts",
+    "ACCORDING_YOUR_NEED": "according to your need",
+    "BACK_TO_EXPLORE": ["Back to", "explore"]
   },
   "SUGGESTIONS_PAGE" : {
     "PAGE_TITLE" : "host suggestions",
@@ -214,6 +221,7 @@
     "PEOPLE" : "People",
     "CITY": "City",
     "BEACH": "Beach",
+    "BEACHES": "Beaches",
     "TOURIST" : "Tourist",
     "RESIDENT" : "Resident",
     "FREE_ACCOUNT" : "Free account",
@@ -223,7 +231,10 @@
     "VISITANT" : "Visitant",
     "ACCESS" : ["access","site"],
     "DELIVERY_SAND": "Delivery on the sand",
-    "SEE_MAP": ["see", "on map"]
+    "SEE_MAP": ["see", "on map"],
+    "NO_PLACES": "We didn't find any places yet",
+    "SHOW_MORE" : "show more",
+    "ICE_CREAM_PARLORS" : "Ice Cream Parlors"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Our purpose here is to help you save your most precious asset: ","time"],
@@ -280,7 +291,9 @@
     "HOW_CAN_I_HELP": "how can I help you",
     "LOG_OFF_BTN": ["log off", "from my account"],
     "LOG_OFF_TITLE": "Log off account",
-    "LOG_OFF_TEXT": "Do you really want to log out of your account"
+    "LOG_OFF_TEXT": "Do you really want to log out of your account",
+    "INCOMPLETE_PROFILE_TITLE": "Incomplete profile",
+    "INCOMPLETE_PROFILE_TEXT": "Some information is missing from your profile, go to the Data screen"
   },
   "CONTACT_PAGE" : {
     "PAGE_TITLE": "Talk to me about the Gastronomic Street of Santos",

@@ -33,6 +33,7 @@
     }
   },
   "PLACES_IN_THE_CITY" : {
+    "FILTER_ICE_CREAM_PARLORS": "Filtra las heladerías",
     "FILTER_RESTAURANT": "Filtra los restaurantes",
     "FILTER_BAR": "Filtra los bares",
     "FILTER_COFFE_SHOP": "Filtra las cafeterías",
@@ -42,6 +43,12 @@
     "FILTER_SWEET_SHOP": "Filtra las dulcerías",
     "ACCORDING_YOUR_NEED": "de acuerdo a tus necesidades",
     "BACK_TO_EXPLORE" : ["Vuelve a", "explorar"]
+  },
+  "PLACES_AT_THE_BEACH" : {
+    "FILTER_KIOSKS": "Filtra los quioscos",
+    "FILTER_CARTS": "Filtra los carritos",
+    "ACCORDING_YOUR_NEED": "según tu necesidad",
+    "BACK_TO_EXPLORE": ["Vuelve a", "explorar"]
   },
   "SUGGESTIONS_PAGE" : {
     "PAGE_TITLE" : "Sugerencias del anfitrión",
@@ -215,6 +222,7 @@
     "PEOPLE" : "Personas",
     "CITY": "Ciudad",
     "BEACH": "Playa",
+    "BEACHES": "Playas",
     "TOURIST" : "Turista",
     "RESIDENT" : "Residente",
     "FREE_ACCOUNT" : "Cuenta gratuita",
@@ -224,7 +232,10 @@
     "VISITANT" : "Visitante",
     "ACCESS" : ["aceder", "al sitio web"],
     "DELIVERY_SAND": "Entrega en la arena",
-    "SEE_MAP": ["ver", "en el mapa"]
+    "SEE_MAP": ["ver", "en el mapa"],
+    "NO_PLACES": "No encontramos ningún lugar por ahora",
+    "SHOW_MORE" : "mostrar más",
+    "ICE_CREAM_PARLORS" : "Heladerías"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nuestro propósito aquí es ayudarte a ahorrar tu bien más precioso:","el tiempo"],
@@ -281,7 +292,9 @@
     "HOW_CAN_I_HELP": "cómo puedo ayudarte",
     "LOG_OFF_BTN": ["cerrar sesión", "de mi cuenta"],
     "LOG_OFF_TITLE": "Cerrar sesión de la cuenta",
-    "LOG_OFF_TEXT": "¿Realmente quieres cerrar sesión en tu cuenta"
+    "LOG_OFF_TEXT": "¿Realmente quieres cerrar sesión en tu cuenta",
+    "INCOMPLETE_PROFILE_TITLE": "Perfil incompleto",
+    "INCOMPLETE_PROFILE_TEXT": "Faltan algunos datos en tu perfil, accede a la pantalla Tus datos"
   },
   "CONTACT_PAGE": {
     "PAGE_TITLE": "Háblame sobre la Calle Gastronómica de Santos",
