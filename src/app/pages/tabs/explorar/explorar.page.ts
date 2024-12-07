@@ -23,6 +23,9 @@ import { LocationEnum } from 'src/app/shared/enums/Location';
 import { PeopleService } from 'src/app/core/services/firebase/people.service';
 import { MOCK_LOCATION } from 'src/app/shared/mocks/MockLocation';
 import { ILocation } from 'src/app/shared/models/ILocation';
+import { IBeach } from 'src/app/shared/models/IBeach';
+import { CityEnum } from 'src/app/shared/enums/City';
+import { MOCK_SANTOS_BEACHES, MOCK_SAO_VICENTE_BEACHES } from 'src/app/shared/mocks/MockBeaches';
 
 @Component({
   selector: 'anfitrion-explorar',
@@ -79,6 +82,8 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
   public selectSubFeatures: any[];
   public selectedSubFeatures: any;
+
+  public MOCK_BEACHES: IBeach[];
 
   constructor(
     private store : Store,
@@ -262,6 +267,19 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     this.currentCitySubscription = this.currentCity$
     .subscribe((city: ICity) => {
       this.currentCity = city;
+
+      switch (this.currentCity.value) {
+        case CityEnum.SANTOS:
+          this.MOCK_BEACHES = MOCK_SANTOS_BEACHES;
+          break;
+
+        case CityEnum.SAO_VICENTE:
+            this.MOCK_BEACHES = MOCK_SAO_VICENTE_BEACHES;
+            break;
+
+        default:
+          break;
+      }
     })
   }
 

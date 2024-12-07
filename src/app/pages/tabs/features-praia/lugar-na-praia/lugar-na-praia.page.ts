@@ -218,6 +218,7 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy, AfterViewInit {
     .pipe(
       take(1),
       map((params: any) => {
+
       const updatedParams = {
         ...params.params,
         place_type: params.params.place_type.toUpperCase()
@@ -238,10 +239,6 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy, AfterViewInit {
       case CityEnum.SAO_VICENTE:
         this.MOCK_BEACHES = MOCK_SAO_VICENTE_BEACHES;
         break;
-
-      case CityEnum.PRAIA_GRANDE:
-        this.MOCK_BEACHES = [];
-        break;
     }
 
     return this.MOCK_BEACHES
@@ -252,7 +249,7 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy, AfterViewInit {
       return beach.value === 'ALL';
     })
 
-    if (this.MOCK_BEACHES) {
+    if (this.MOCK_BEACHES.length > 0) {
       if (beachFound) {
         this.selectedBeach = beachFound
       } else {

@@ -16,7 +16,8 @@ export const MOCK_CITIES: ICity[] = [
       pt: 'em',
       en: 'in',
       es: 'en'
-    }
+    },
+    hasBeach: true
   },
   {
     value: CityEnum.SANTOS,
@@ -32,7 +33,8 @@ export const MOCK_CITIES: ICity[] = [
       pt: 'em',
       en: 'in',
       es: 'en'
-    }
+    },
+    hasBeach: true
   },
   {
     value: CityEnum.PRAIA_GRANDE,
@@ -48,7 +50,8 @@ export const MOCK_CITIES: ICity[] = [
       pt: 'na',
       en: 'at',
       es: 'en la'
-    }
+    },
+    hasBeach: true
   },
   {
     value: CityEnum.GUARUJA,
@@ -64,7 +67,8 @@ export const MOCK_CITIES: ICity[] = [
       pt: 'no',
       en: 'at',
       es: 'en el'
-    }
+    },
+    hasBeach: true
   },
   {
     value: CityEnum.PERUIBE,
@@ -80,7 +84,8 @@ export const MOCK_CITIES: ICity[] = [
       pt: 'em',
       en: 'in',
       es: 'en'
-    }
+    },
+    hasBeach: true
   },
   {
     value: CityEnum.BERTIOGA,
@@ -96,7 +101,8 @@ export const MOCK_CITIES: ICity[] = [
       pt: 'em',
       en: 'in',
       es: 'en'
-    }
+    },
+    hasBeach: true
   },
   {
     value: CityEnum.CUBATAO,
@@ -112,7 +118,8 @@ export const MOCK_CITIES: ICity[] = [
       pt: 'em',
       en: 'in',
       es: 'en'
-    }
+    },
+    hasBeach: false
   },
   {
     value: CityEnum.ITANHAEM,
@@ -128,7 +135,8 @@ export const MOCK_CITIES: ICity[] = [
       pt: 'em',
       en: 'in',
       es: 'en'
-    }
+    },
+    hasBeach: true
   },
   {
     value: CityEnum.MONGAGUA,
@@ -144,6 +152,7 @@ export const MOCK_CITIES: ICity[] = [
       pt: 'em',
       en: 'in',
       es: 'en'
-    }
+    },
+    hasBeach: true
   }
 ]

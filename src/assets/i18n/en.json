@@ -69,7 +69,8 @@
     "CITY_PLACES_EXPLORING": "For those who want to explore or find a place to eat",
     "BEACH_PLACES_EXPLORING": "For those who want to explore or look for a place to eat",
     "CITY_PEOPLE_EXPLORING": "For those who want to consume in the city with a freelance professional",
-    "BEACH_PEOPLE_EXPLORING": "For those who want to consume at the beach with a freelance professional"
+    "BEACH_PEOPLE_EXPLORING": "For those who want to consume at the beach with a freelance professional",
+    "NUMBER_OF_BEACHES" : "The city you selected has about {{ length }} beaches"
   },
   "WELCOME_TO" : ["Welcome", "to Baixada Santista"],
   "ABOUT_US_PAGE" : {

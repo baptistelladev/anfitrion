@@ -69,7 +69,7 @@ class="ion-content-w-linear-bg"
         <ion-col size="12" *ngIf="MOCK_BEACHES && MOCK_BEACHES.length === 0">
           <ion-text mode="ios" class="d-block mg-bottom-8 mg-top-16">
             <p class="fs-14 color-gray-text font-w-thin">
-              Não encontramos praias cadastradas.
+              {{ "SHARED.NO_PLACES" | translate }}
             </p>
           </ion-text>
         </ion-col>
@@ -93,7 +93,7 @@ class="ion-content-w-linear-bg"
           *ngFor="let beach of MOCK_BEACHES; let i = index"
           class="unlock-shadow-from-swiper auto-width">
             <ion-item
-            [ngClass]="{'is-selected': beach.value === (selectedBeach && selectedBeach.value)}"
+            [ngClass]="{'is-selected': beach.value === (selectedBeach && selectedBeach.value), 'remove-click-or-touch' : beach.value === (selectedBeach && selectedBeach.value)}"
             (click)="selectBeach(beach); slideSwiperTo(i)"
             mode="ios"
             lines="none"
@@ -107,11 +107,11 @@ class="ion-content-w-linear-bg"
             <ion-button
             (click)="toggleModalMap(true)"
             *ngIf="beach.value !== 'ALL' && selectedBeach?.value === beach.value"
-            [title]="('LOGIN_PAGE.ACCESS_SLIDER.FORGET_BTN.0' | translate) + ' ' + ('LOGIN_PAGE.ACCESS_SLIDER.FORGET_BTN.1' | translate)"
+            [title]="('SHARED.SEE_MAP.0' | translate) + ' ' + ('SHARED.SEE_MAP.1' | translate)"
             class="txt-right no-ion-padding fs-12"
             fill="clear"
             mode="ios">
-              ver <b class="mg-left-5">no mapa</b> <ion-icon name="open-outline" class="mg-left-5"></ion-icon>
+              {{ 'SHARED.SEE_MAP.0' | translate }} <b class="mg-left-5">{{ 'SHARED.SEE_MAP.1' | translate }}</b> <ion-icon name="open-outline" class="mg-left-5"></ion-icon>
             </ion-button>
           </swiper-slide>
         </ng-container>
