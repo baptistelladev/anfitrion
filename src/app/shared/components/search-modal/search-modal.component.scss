@@ -5,11 +5,11 @@ section {
 
   &.searchbar-modal-header {
     height: 128px;
-    background: var(--gray-2);
+    background: var(--gray-ec);
     position: relative;
 
     .searchbar-wrapper {
-      bottom: -32px;
+      bottom: -39px;
       left: 0;
       position: absolute;
       height: auto;
@@ -19,15 +19,22 @@ section {
       z-index: 100;
 
       ion-searchbar {
-        padding: 0;
+        padding: 8px 8px 16px 8px;
         min-height: 0;
         --border-radius: 0;
-        --background: var(--gray-ec);
+        --background: var(--white);
         margin-top: -16px;
         --border-radius: 50px;
         --box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
         max-width: 492px;
-        margin:  5px auto 0 auto;
+        margin:  0 auto;
+        --placeholder-color: var(--gray-c);
+        --placeholder-opacity: 1;
+        --transition: all 200ms ease;
+
+        &.searchbar-has-focus {
+          --box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 12px 0px;
+        }
 
         &::ng-deep {
           .searchbar-input-container.sc-ion-searchbar-ios {

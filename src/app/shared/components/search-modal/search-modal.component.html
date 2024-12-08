@@ -10,7 +10,7 @@ class="ion-content-w-linear-bg"
               <ion-button
               (click)="closeModal()"
               mode="ios"
-              class="back ion-color-white back-btn no-ion-padding font-baloo"
+              class="back ion-color-gray-text back-btn no-ion-padding font-baloo"
               [title]="'SHARED.BACK' | translate"
               fill="clear">
                 <ion-icon name="chevron-back-outline"></ion-icon> <span class="font-w-thin mg-left-5">{{ 'SHARED.BACK' | translate }}</span>
@@ -23,8 +23,8 @@ class="ion-content-w-linear-bg"
 
     <div class="searchbar-wrapper">
       <ion-text mode="ios">
-        <p class="font-baloo fs-20 color-gray-c font-w-normal txt-center">
-          <b class="color-white">{{ placeTypeOBJ.text[currentLang.value] }}</b>
+        <p class="font-baloo fs-20 color-gray-text font-w-normal txt-center">
+          <b>{{ placeTypeOBJ.text[currentLang.value] }}</b>
           {{ currentCityAsParam?.in[currentLang.value] }} {{ currentCityAsParam?.name }}
         </p>
       </ion-text>
