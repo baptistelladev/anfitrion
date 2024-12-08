@@ -5,8 +5,12 @@ ion-breadcrumbs {
     --color-hover: rgb(103, 61, 180);
 
     ion-breadcrumb {
-      font-size: 16px;
+      font-size: 14px;
       color: var(--gray-text);
+
+      &::part(native) {
+        padding: 0 6px;
+      }
 
       &:first-child {
         &::part(native) {

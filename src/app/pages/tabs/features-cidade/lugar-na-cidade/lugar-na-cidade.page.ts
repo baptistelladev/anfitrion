@@ -1,3 +1,4 @@
+import { MOCK_CITY_FEATURES } from 'src/app/shared/mocks/MockCityFeatures';
 import { MOCK_CITIES } from 'src/app/shared/mocks/MockCities';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { IonContent, IonSelect, NavController } from '@ionic/angular';
@@ -87,6 +88,9 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
 
   public MOCK_CITIES: ICity[] = MOCK_CITIES;
   public MOCK_FILTERS: IFilter[];
+  public MOCK_CITY_FEATURES: any = MOCK_CITY_FEATURES;
+
+  public placeTypeOBJ: any;
 
   constructor(
     private navCtrl : NavController,
@@ -195,6 +199,11 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
     }))
     .subscribe((res: any) => {
       this.placeType = res.place_type;
+
+      this.placeTypeOBJ = this.MOCK_CITY_FEATURES.places.find((placeType: any) => {
+        return placeType.value === this.placeType
+      })
+
     })
   }
 

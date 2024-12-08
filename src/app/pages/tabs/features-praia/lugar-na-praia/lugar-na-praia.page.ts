@@ -1,3 +1,4 @@
+import { MOCK_BEACH_FEATURES } from 'src/app/shared/mocks/MockBeachFeatures';
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
@@ -70,12 +71,16 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy, AfterViewInit {
   public MOCK_CITIES: ICity[] = MOCK_CITIES;
   public MOCK_BEACHES: IBeach[];
 
+  public MOCK_BEACH_FEATURES: any = MOCK_BEACH_FEATURES;
+
   public MOCK_FILTERS: IFilter[];
 
   public selectedBeach: IBeach;
 
   @ViewChild('placesContent') placesContent: IonContent;
   @ViewChild('filterSelector') filterSelector: IonSelect;
+
+  public placeTypeOBJ: any;
 
   constructor(
     private navCtrl : NavController,
@@ -227,6 +232,10 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy, AfterViewInit {
     }))
     .subscribe((res: any) => {
       this.placeType = res.place_type;
+
+      this.placeTypeOBJ = this.MOCK_BEACH_FEATURES.places.find((placeType: any) => {
+        return placeType.value === this.placeType
+      })
     })
   }
 

@@ -1,0 +1,68 @@
+section {
+  &.searchbar-modal {
+    width: 100%;
+  }
+
+  &.searchbar-modal-header {
+    height: 128px;
+    background: var(--gray-2);
+    position: relative;
+
+    .searchbar-wrapper {
+      bottom: -32px;
+      left: 0;
+      position: absolute;
+      height: auto;
+      --border-radius: 50px;
+      width: 100%;
+      padding: 0 32px;
+      z-index: 100;
+
+      ion-searchbar {
+        padding: 0;
+        min-height: 0;
+        --border-radius: 0;
+        --background: var(--gray-ec);
+        margin-top: -16px;
+        --border-radius: 50px;
+        --box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+        max-width: 492px;
+        margin:  5px auto 0 auto;
+
+        &::ng-deep {
+          .searchbar-input-container.sc-ion-searchbar-ios {
+            min-height: 64px;
+
+            .searchbar-clear-button.sc-ion-searchbar-ios {
+              margin-right: 13px;
+            }
+
+            input {
+              padding-left: 52px;
+              padding-right: 44px;
+              color: var(--gray-text);
+              font-size: 15px;
+            }
+          }
+
+          .searchbar-search-icon.sc-ion-searchbar-ios {
+            margin: 0 0 0 16px;
+            color: var(--gray-text);
+          }
+        }
+      }
+    }
+  }
+}
+
+ion-header {
+  ion-toolbar {
+    --padding-end: 0;
+    --padding-start: 0;
+    --min-height: 0;
+
+
+  }
+}
+
+.pad-left-40 { padding-left: 40px;}
