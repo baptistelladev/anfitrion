@@ -52,17 +52,8 @@ class="ion-content-w-linear-bg"
         <ion-text
         class="txt-left color-gray-text"
         mode="ios">
-          <p class="color-gray-text fs-14 font-w-thin">
-            <ng-container [ngSwitch]="placeType">
-              <ng-container *ngSwitchCase="PlaceTypeCityEnum.RESTAURANTE">{{ 'PLACES_IN_THE_CITY.FILTER_RESTAURANT' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeCityEnum.BAR">{{ 'PLACES_IN_THE_CITY.FILTER_BAR' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeCityEnum.CAFETERIA">{{ 'PLACES_IN_THE_CITY.FILTER_COFFE_SHOP' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeCityEnum.ADEGA">{{ 'PLACES_IN_THE_CITY.FILTER_BEVERAGE' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeCityEnum.PIZZARIA">{{ 'PLACES_IN_THE_CITY.FILTER_PIZZERIA' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeCityEnum.HAMBURGUERIA">{{ 'PLACES_IN_THE_CITY.FILTER_BURGER_JOINT' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeCityEnum.DOCERIA">{{ 'PLACES_IN_THE_CITY.FILTER_SWEET_SHOP' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeCityEnum.SORVETERIA">{{ 'PLACES_IN_THE_CITY.FILTER_ICE_CREAM_PARLORS' | translate }}</ng-container> {{ 'PLACES_IN_THE_CITY.ACCORDING_YOUR_NEED' | translate }}.
-            </ng-container>
+          <p class="color-gray-text fs-14 font-w-thin txt-">
+            {{ 'PLACES_IN_THE_CITY.FILTER' | translate: { placeType: placeTypeOBJ.text[currentLanguage.value].toLowerCase() } }} {{ 'PLACES_IN_THE_CITY.ACCORDING_YOUR_NEED' | translate }}.
           </p>
         </ion-text>
       </ion-col>
