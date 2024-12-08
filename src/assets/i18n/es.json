@@ -33,20 +33,12 @@
     }
   },
   "PLACES_IN_THE_CITY" : {
-    "FILTER_ICE_CREAM_PARLORS": "Filtra las heladerías",
-    "FILTER_RESTAURANT": "Filtra los restaurantes",
-    "FILTER_BAR": "Filtra los bares",
-    "FILTER_COFFE_SHOP": "Filtra las cafeterías",
-    "FILTER_BEVERAGE": "Filtra las bodegas",
-    "FILTER_PIZZERIA": "Filtra las pizzerías",
-    "FILTER_BURGER_JOINT": "Filtra las hamburgueserías",
-    "FILTER_SWEET_SHOP": "Filtra las dulcerías",
+    "FILTER": "Filtra {{ placeType }}",
     "ACCORDING_YOUR_NEED": "de acuerdo a tus necesidades",
     "BACK_TO_EXPLORE" : ["Vuelve a", "explorar"]
   },
   "PLACES_AT_THE_BEACH" : {
-    "FILTER_KIOSKS": "Filtra los quioscos",
-    "FILTER_CARTS": "Filtra los carritos",
+    "FILTER": "Filtra {{ placeType }}",
     "ACCORDING_YOUR_NEED": "según tu necesidad",
     "BACK_TO_EXPLORE": ["Vuelve a", "explorar"]
   },
