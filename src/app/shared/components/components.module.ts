@@ -12,6 +12,7 @@ import { AdsenseComponent } from './adsense/adsense.component';
 import { LanguageButtonSmallComponent } from './language-button-small/language-button-small.component';
 import { MapComponent } from './map/map.component';
 import { SearchComponent } from './search/search.component';
+import { SearchModalComponent } from './search-modal/search-modal.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SearchComponent } from './search/search.component';
     AdsenseComponent,
     LanguageButtonSmallComponent,
     MapComponent,
-    SearchComponent
+    SearchComponent,
+    SearchModalComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +42,8 @@ import { SearchComponent } from './search/search.component';
     AdsenseComponent,
     LanguageButtonSmallComponent,
     MapComponent,
-    SearchComponent
+    SearchComponent,
+    SearchModalComponent
   ]
 })
 export class ComponentsModule { }

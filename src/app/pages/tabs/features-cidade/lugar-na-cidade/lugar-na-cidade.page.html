@@ -36,28 +36,10 @@ class="ion-content-w-linear-bg"
         <ion-text
         class="txt-center color-gray-text full-width icon-title-text"
         mode="ios">
-          <ng-container [ngSwitch]="placeType">
-            <ng-container *ngSwitchCase="PlaceTypeCityEnum.RESTAURANTE"><ion-icon name="restaurant-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="PlaceTypeCityEnum.BAR"><ion-icon name="beer-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="PlaceTypeCityEnum.CAFETERIA"><ion-icon name="cafe-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="PlaceTypeCityEnum.ADEGA"><ion-icon name="wine-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="PlaceTypeCityEnum.PIZZARIA"><ion-icon name="pizza-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="PlaceTypeCityEnum.HAMBURGUERIA"><ion-icon name="fast-food-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="PlaceTypeCityEnum.DOCERIA"><ion-icon name="pie-chart-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="PlaceTypeCityEnum.SORVETERIA"><ion-icon name="ice-cream-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-          </ng-container>
+          <ion-icon [name]="placeTypeOBJ?.icon + '-outline'" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon>
 
           <h2 class="font-baloo">
-            {{ 'EXPLORE_PAGE.EXPLORING' | translate }} <span class="font-w-bold txt-lowercase"><ng-container [ngSwitch]="placeType">
-              <ng-container *ngSwitchCase="PlaceTypeCityEnum.RESTAURANTE">{{ 'SHARED.RESTAURANTS' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeCityEnum.BAR">{{ 'SHARED.BARS' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeCityEnum.CAFETERIA">{{ 'SHARED.COFFEE_SHOPS' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeCityEnum.ADEGA">{{ 'SHARED.BEVERAGE_STORES' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeCityEnum.PIZZARIA">{{ 'SHARED.PIZZERIAS' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeCityEnum.HAMBURGUERIA">{{ 'SHARED.BURGER_JOINTS' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeCityEnum.DOCERIA">{{ 'SHARED.SWEET_SHOPS' | translate }}</ng-container>
-              <ng-container *ngSwitchCase="PlaceTypeCityEnum.SORVETERIA">{{ 'SHARED.ICE_CREAM_PARLORS' | translate }}</ng-container>
-            </ng-container></span>
+            {{ 'EXPLORE_PAGE.EXPLORING' | translate }} <span class="font-w-bold txt-lowercase">{{ placeTypeOBJ?.text[currentLanguage.value] }}</span>
           </h2>
 
           <p class="fs-16">
@@ -88,7 +70,12 @@ class="ion-content-w-linear-bg"
       <ion-col size="12">
         <div class="view-n-filter-wrapper">
           <div class="buttons-wrapper">
-            <anfitrion-search></anfitrion-search>
+            <anfitrion-search
+            [placeTypeOBJ]="placeTypeOBJ"
+            [currentCityAsParam]="currentCityAsParam"
+            [currentLang]="currentLanguage"
+            [id]="'MODAL_PLACE_' + placeType">
+            </anfitrion-search>
 
             <ion-button
             (click)="openFilterSelect()"

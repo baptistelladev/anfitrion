@@ -1,0 +1,39 @@
+<ion-content
+class="ion-content-w-linear-bg"
+[forceOverscroll]="false">
+  <section class="searchbar-modal-header">
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col size="12">
+          <div class="header-container">
+            <div class="back-btn-wrapper">
+              <ion-button
+              (click)="closeModal()"
+              mode="ios"
+              class="back ion-color-white back-btn no-ion-padding font-baloo"
+              [title]="'SHARED.BACK' | translate"
+              fill="clear">
+                <ion-icon name="chevron-back-outline"></ion-icon> <span class="font-w-thin mg-left-5">{{ 'SHARED.BACK' | translate }}</span>
+              </ion-button>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div class="searchbar-wrapper">
+      <ion-text mode="ios">
+        <p class="font-baloo fs-20 color-gray-c font-w-normal txt-center">
+          <b class="color-white">{{ placeTypeOBJ.text[currentLang.value] }}</b>
+          {{ currentCityAsParam?.in[currentLang.value] }} {{ currentCityAsParam?.name }}
+        </p>
+      </ion-text>
+
+      <ion-searchbar mode="ios" [placeholder]="'SHARED.INSERT_NAME' | translate"></ion-searchbar>
+    </div>
+  </section>
+
+  <section class="searchbar-modal">
+
+  </section>
+</ion-content>

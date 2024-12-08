@@ -235,7 +235,8 @@
     "SEE_MAP" : ["ver","no mapa"],
     "NO_PLACES" : "Não encontramos nenhum lugar por enquanto",
     "SHOW_MORE" : "mostrar mais",
-    "ICE_CREAM_PARLORS" : "Sorveterias"
+    "ICE_CREAM_PARLORS" : "Sorveterias",
+    "INSERT_NAME" : "Inserir nome"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nosso próposito aqui é fazer com que voê economize o seu bem mais precioso:","o tempo"],

@@ -236,7 +236,8 @@
     "SEE_MAP": ["ver", "en el mapa"],
     "NO_PLACES": "No encontramos ningún lugar por ahora",
     "SHOW_MORE" : "mostrar más",
-    "ICE_CREAM_PARLORS" : "Heladerías"
+    "ICE_CREAM_PARLORS" : "Heladerías",
+    "INSERT_NAME" : "Insertar nombre"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nuestro propósito aquí es ayudarte a ahorrar tu bien más precioso:","el tiempo"],

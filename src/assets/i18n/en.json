@@ -235,7 +235,8 @@
     "SEE_MAP": ["see", "on map"],
     "NO_PLACES": "We didn't find any places yet",
     "SHOW_MORE" : "show more",
-    "ICE_CREAM_PARLORS" : "Ice Cream Parlors"
+    "ICE_CREAM_PARLORS" : "Ice Cream Parlors",
+    "INSERT_NAME" : "Insert name"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Our purpose here is to help you save your most precious asset: ","time"],

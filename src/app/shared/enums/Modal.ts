@@ -1,0 +1,4 @@
+
+export enum ModalEnum {
+  MODAL_PLACE_RESTAURANTE = 'MODAL_PLACE_RESTAURANTE'
+}

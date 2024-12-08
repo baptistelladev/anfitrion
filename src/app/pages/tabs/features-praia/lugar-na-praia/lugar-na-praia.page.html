@@ -35,16 +35,10 @@ class="ion-content-w-linear-bg"
           <ion-text
           class="txt-center color-gray-text full-width icon-title-text"
           mode="ios">
-          <ng-container [ngSwitch]="placeType">
-            <ng-container *ngSwitchCase="PlaceTypeBeachEnum.QUIOSQUE"><ion-icon name="storefront-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-            <ng-container *ngSwitchCase="PlaceTypeBeachEnum.CARRINHO"><ion-icon name="cart-outline" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon></ng-container>
-          </ng-container>
+            <ion-icon [name]="placeTypeOBJ?.icon + '-outline'" class="full-width fs-32 animate__animated animate__fadeInUp"></ion-icon>
 
             <h2 class="font-baloo">
-              {{ 'EXPLORE_PAGE.EXPLORING' | translate }} <span class="font-w-bold txt-lowercase"><ng-container [ngSwitch]="placeType">
-                <ng-container *ngSwitchCase="PlaceTypeBeachEnum.QUIOSQUE">{{ 'SHARED.KIOSKS' | translate }}</ng-container>
-                <ng-container *ngSwitchCase="PlaceTypeBeachEnum.CARRINHO">{{ 'SHARED.CARTS' | translate }}</ng-container>
-              </ng-container></span>
+              {{ 'EXPLORE_PAGE.EXPLORING' | translate }} <span class="font-w-bold txt-lowercase">{{ placeTypeOBJ?.text[currentLanguage.value] }}</span>
             </h2>
 
             <p class="fs-16">
@@ -124,7 +118,12 @@ class="ion-content-w-linear-bg"
         <ion-col size="12">
           <div class="view-n-filter-wrapper">
             <div class="buttons-wrapper">
-              <anfitrion-search></anfitrion-search>
+              <anfitrion-search
+              [placeTypeOBJ]="placeTypeOBJ"
+              [currentCityAsParam]="currentCityAsParam"
+              [currentLang]="currentLanguage"
+              [id]="'MODAL_PLACE_' + placeType">
+              </anfitrion-search>
 
               <ion-button
               [disabled]="MOCK_BEACHES.length === 0 || !places"
