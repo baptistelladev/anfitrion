@@ -88,6 +88,13 @@ ion-text.proportional-text {
 .japa-card {
   width: 100%;
   position: relative;
+  transition: all 200ms ease;
+
+  &:hover {
+    .japa-card-content {
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    }
+  }
 
   ion-icon {
     &.verified {
@@ -103,34 +110,71 @@ ion-text.proportional-text {
     background: linear-gradient(to bottom, var(--white), var(--transparent));
     border-radius: 12px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-    padding: 16px 0 0 0;
+    padding: 0;
+    transition: all 200ms ease;
 
-    .info {
-      padding: 16px 16px 0 16px;
+    .info-wrapper {
+      @include flexbox(center, flex-start, row);
+      padding: 16px;
 
-      ion-text {
-        p {
-          &.type {
-            color: var(--gray-text);
-            margin: 0 0 10px 0;
-            font-size: 9px;
+      .info {
+        padding: 0 0 0 16px;
+        max-width: calc(100% - 70px);
+        display: block;
+        width: 100%;
+
+        ion-text {
+          width: 100%;
+
+          p {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            &.type {
+              color: var(--gray-text);
+              margin: 0 0 2px 0;
+              font-size: 9px;
+            }
+
+            &.number {
+              margin: 5px 0 0 0;
+            }
           }
 
-          &.number {
-            margin: 5px 0 0 0;
+          h2 {
+            &.name {
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
           }
         }
+      }
 
-        h2 {
-          &.name {
-            max-width: 95px;
+      .logo-wrapper {
+        position: relative;
+
+        .logo-container {
+          width: 70px;
+          height: 70px;
+          border-radius: 100px;
+          margin: 0;
+          overflow: hidden;
+          @include flexbox(center, center, row);
+          transition: all 200ms ease;
+          background: var(--white);
+
+          &.logo-needs-gray-2 {
+            background: var(--gray-2);
           }
         }
       }
     }
 
+
     ul {
-      padding: 16px;
+      padding: 0 16px 16px 16px;
       margin: 0;
       list-style: none;
 
@@ -146,6 +190,7 @@ ion-text.proportional-text {
           flex: 1;
           border-bottom: 1px dotted var(--gray-da);
           margin: 0 5px;
+          min-width: 20px;
         }
       }
     }
@@ -186,25 +231,7 @@ ion-text.proportional-text {
       }
     }
 
-    .logo-wrapper {
-      width: 100%;
-      position: relative;
 
-      .logo-container {
-        width: 70px;
-        height: 70px;
-        border-radius: 100px;
-        margin: 0;
-        overflow: hidden;
-        @include flexbox(center, center, row);
-        transition: all 200ms ease;
-        background: var(--white);
-
-        &.logo-needs-gray-2 {
-          background: var(--gray-2);
-        }
-      }
-    }
   }
 }
 
