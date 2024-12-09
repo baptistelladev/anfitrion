@@ -76,6 +76,11 @@ export class SugestoesDoAnfitriaoPage implements OnInit, OnDestroy {
     this.navCtrl.navigateForward([`/logado/sugestoes-do-anfitriao/${suggestion.route}`]);
   }
 
+  public seeSelectedCitySuggestion(suggestion: ISuggestion) {
+    this.store.dispatch(AppStore.setCurrentSuggestion({ suggestion: suggestion }))
+    this.navCtrl.navigateForward([`/logado/sugestoes-do-anfitriao/${suggestion.route}`]);
+  }
+
   public async getBaixadaSantistaSuggestions() {
     const loading = await this.overlayService.fireLoading();
 

@@ -1,0 +1,123 @@
+@import './../../../../../assets/scss/utils/mixins.scss';
+
+ion-content {
+  --background: linear-gradient(to top, var(--gray-ed) 15%, var(--white));
+
+  section {
+    &.festival-comida-japonesa-hero {
+      width: 100%;
+      position: relative;
+      height: auto;
+    }
+
+    .suggestion-title {
+      @include flexbox(flex-end, center, row);
+      width: 100%;
+      height: 100%;
+      //padding: 0 0 16px 0;
+      padding: 0;
+
+      ion-grid { flex: none; }
+    }
+
+    .language-container {
+      @include flexbox(center, flex-end, row);
+
+      anfitrion-language-button {
+        z-index: 314;
+      }
+    }
+
+    header {
+      &.suggestion-header {
+        width: 100%;
+        //position: absolute;
+        //top: 0;
+        //left: 0;
+        //z-index: 314;
+
+        .header-container {
+          @include flexbox(flex-start, space-between, row);
+        }
+      }
+    }
+  }
+}
+
+ion-skeleton-text {
+  border-radius: 4px;
+  margin: 0;
+
+  &.like-desc {
+    width: 80px;
+    height: 16px;
+  }
+
+  &.like-desc-address {
+    width: 80%;
+    height: 16px;
+    max-width: 300px;
+  }
+
+  &.like-title {
+    width: 180px;
+    height: 30px;
+    margin-top: 9px;
+  }
+  &.like-cards {
+    height: 266.5px;
+    width: 100%;
+    border-radius: 12px;
+  }
+}
+
+ion-text.proportional-text {
+  line-height: clamp(24px, 2.7vw, 25px);
+
+  p {
+    &.title {
+      font-size: clamp(16px, 2vw, 16px);
+    }
+
+    &.subtitle {
+      font-size: clamp(24px, 3vw, 32px);
+    }
+  }
+}
+
+.japa-card {
+  width: 100%;
+
+  .japa-card-content {
+    width: 100%;
+    min-height: 270px;
+    background: linear-gradient(to bottom, var(--white), var(--transparent));
+    border-radius: 12px 12px 0 0;
+    padding: 16px;
+
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+
+      li {
+        @include flexbox(flex-end, flex-start, row);
+        width: 100%;
+        margin-bottom: 4px;
+
+        p {
+        }
+
+        span {
+          flex: 1;
+          border-bottom: 1px dotted var(--gray-da);
+          margin: 0 5px;
+        }
+      }
+    }
+  }
+}
+
+.festival-comida-japonesa-swiper-wrapper {
+  padding: 16px 0 0 0;
+}

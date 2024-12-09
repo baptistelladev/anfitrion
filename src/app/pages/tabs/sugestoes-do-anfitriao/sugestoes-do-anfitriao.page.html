@@ -96,7 +96,7 @@ class="ion-content-w-linear-bg">
                     mode="ios"
                     class="txt-uppercase as-badge tourist">
                       {{ 'SHARED.TOURISTS' | translate  }}
-                    </ion-chip>
+                    </ion-chip>x'
                   </div>
                 </div>
               </div>
@@ -225,7 +225,7 @@ class="ion-content-w-linear-bg">
         </ion-col>
 
         <ion-col size="12" size-md="6" size-lg="4" *ngFor="let suggestion of suggestionsSelectedCity">
-          <div class="city-card-wrapper" mode="ios">
+          <div class="city-card-wrapper" mode="ios" (click)="seeSelectedCitySuggestion(suggestion)">
             <div class="card-content">
               <div class="card-desc">
                 <ion-item mode="ios" lines="none" class="ion-bg-transparent" [button]="true">

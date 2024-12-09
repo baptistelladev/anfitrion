@@ -237,8 +237,8 @@ export class SugestaoPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getCurrentSuggestionFromNGRX();
-    this.initialFilter('ALL');
-    this.defineActiveFilter('ALL');
+    this.initialFilter(FilterEnum.ALL);
+    this.defineActiveFilter(FilterEnum.ALL);
     this.getCurrentLanguageFromNGRX();
     this.getParkings();
   }
