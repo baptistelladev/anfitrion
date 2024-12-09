@@ -685,3 +685,15 @@ ion-chip.as-badge {
 .remove-click-or-touch {
   pointer-events: none;
 }
+
+.two-chips-side-by-side {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  ion-chip.as-badge:not(:last-child) {
+    margin: 0 5px 0 0;
+  }
+
+
+}

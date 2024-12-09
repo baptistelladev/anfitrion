@@ -29,7 +29,13 @@ class="ion-content-w-linear-bg"
         </p>
       </ion-text>
 
-      <ion-searchbar mode="ios" [placeholder]="'SHARED.INSERT_NAME' | translate"></ion-searchbar>
+      <ion-searchbar
+      class="txt-lowercase"
+      (ionInput)="isTyping($event)"
+      [debounce]="500"
+      mode="ios"
+      [placeholder]="'SHARED.INSERT_NAME' | translate" #searchbar>
+      </ion-searchbar>
     </div>
   </section>
 
