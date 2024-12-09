@@ -1,0 +1,213 @@
+<ion-content
+#japaneseFoodContent
+[scrollEvents]="true"
+mode="ios">
+  <section class="festival-comida-japonesa-hero">
+    <header class="suggestion-header">
+      <ion-grid [fixed]="true" class="no-pad-bottom">
+        <ion-row>
+          <ion-col size="12">
+            <div class="header-container">
+              <div class="back-btn-wrapper">
+                <ion-button
+                (click)="back()"
+                mode="ios"
+                class="back ion-color-gray-text back-btn no-ion-padding font-baloo"
+                [title]="'SHARED.BACK' | translate"
+                fill="clear">
+                  <ion-icon name="chevron-back-outline"></ion-icon> <span class="font-w-thin mg-left-5">{{ 'SHARED.BACK' | translate }}</span>
+                </ion-button>
+              </div>
+
+              <div class="language-container">
+                <anfitrion-language-button [currentLanguage]="currentLanguage"></anfitrion-language-button>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </header>
+
+    <div class="suggestion-title">
+      <ion-grid [fixed]="true" class="no-pad-top">
+        <ion-row>
+          <ion-col size="12" *ngIf="currentSuggestion">
+            <ion-text mode="ios" class="proportional-text txt-center">
+              <ng-container *ngIf="currentLanguage.value !== 'en'">
+                <p class="color-gray-text title animate__animated animate__fadeInUp font-w-thin">{{ currentSuggestion.name.title[currentLanguage.value] }}</p>
+                <p class="color-gray-text font-baloo font-w-bold subtitle animate__animated animate__fadeInUp">{{ currentSuggestion.name.text[currentLanguage.value] }}</p>
+              </ng-container>
+
+              <ng-container *ngIf="currentLanguage.value === 'en'">
+                <p class="color-gray-text font-baloo font-w-bold subtitle animate__animated animate__fadeInUp">{{ currentSuggestion.name.text[currentLanguage.value] }}</p>
+                <p class="color-gray-text title animate__animated animate__fadeInUp font-w-thin">{{ currentSuggestion.name.title[currentLanguage.value] }}</p>
+              </ng-container>
+            </ion-text>
+          </ion-col>
+
+          <ion-col size="12" *ngIf="!currentSuggestion">
+            <ion-text mode="ios" class="txt-center">
+              <ion-skeleton-text [animated]="true" class="gray-mid like-desc"></ion-skeleton-text>
+              <ion-skeleton-text [animated]="true" class="gray-text like-title"></ion-skeleton-text>
+            </ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="suggestion-content">
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col size="12" *ngIf="currentSuggestion">
+          <ion-text
+          class="txt-left color-gray-text full-width icon-title-text without-icon d-block"
+          mode="ios">
+            <p class="fs-14 font-w-thin">
+              {{ currentSuggestion.address[currentLanguage.value] }}  {{ currentCity.from[currentLanguage.value] }} {{ currentCity.name }}
+            </p>
+          </ion-text>
+        </ion-col>
+
+        <ion-col size="12" *ngIf="!currentSuggestion">
+          <ion-text
+          class="txt-left color-gray-text full-width icon-title-text without-icon d-block"
+          mode="ios">
+            <p>
+              <ion-skeleton-text [animated]="true" class="gray-mid like-desc-address"></ion-skeleton-text>
+            </p>
+          </ion-text>
+        </ion-col>
+
+        <ion-col size="12">
+          <div class="view-n-filter-wrapper">
+            <div class="looking-for-wrapper">
+
+            </div>
+
+            <div class="buttons-wrapper">
+              <ion-button
+              (click)="openFilterSelect()"
+              shape="round"
+              class="anf-main-solid fs-12"
+              *ngFor="let button of filterButtons"
+              [title]="'SHARED.FILTER' | translate"
+              mode="md"
+              fill="solid">
+                <ion-icon [name]="button.icon + '-outline'" class="fs-20"></ion-icon>
+
+                <ion-select
+                mode="ios"
+                [okText]="'Filtrar'"
+                #filterSelector
+                [label]="'SHARED.FILTER' | translate"
+                class="hide-element anfitrion-selector min-height-0"
+                (ionChange)="filterByCharacteristic($event)"
+                [(ngModel)]="selectedFilter">
+                  <ion-select-option
+                  *ngFor="let filter of MOCK_FILTERS"
+                  [value]="filter.value">
+                    {{ filter.text[currentLanguage.value] }}
+                  </ion-select-option>
+                </ion-select>
+              </ion-button>
+            </div>
+          </div>
+        </ion-col>
+
+        <ion-col size="12" class="no-pad-bottom no-pad-top" *ngIf="activeFilter">
+          <ion-text mode="ios" class="line-height-18">
+            <p class="fs-14 color-gray-text">{{ 'SHARED.LOOKING_FOR' | translate }}: <span class="fs-14 color-green font-w-semibold txt-lowercase">{{ activeFilter.text[currentLanguage.value] }}</span></p>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+     <!-- SLIDE -->
+     <div class="festival-comida-japonesa-swiper-wrapper">
+      <swiper-container
+      [attr.centered-slides]="false"
+      speed="5000"
+      [init]="true"
+      (swiperslidechange)="listenForSwiperForControl($event)"
+      class="full-width swiper-w-relative-pagination"
+      #japaneseSwiper
+      free-mode="true"
+      [autoHeight]="false"
+      slides-offset-before="16"
+      slides-offset-after="16"
+      initial-slide="0"
+      [slides-per-view]="'auto'"
+      [attr.space-between]="16"
+      [breakpoints]="{
+       '200' : {
+          slidesPerView: 1.7
+        },
+        '363' : {
+          slidesPerView: 1.9
+        },
+        '445' : {
+          slidesPerView: 2.4
+        },
+        '667' : {
+          slidesPerView: 3.4
+        },
+        '792' : {
+          slidesPerView: 3.8
+        },
+        '991' : {
+          slidesPerView: 4.5
+        },
+        '1200' : {
+          slidesPerView: 5.2
+        },
+        '1300' : {
+          slidesPerView: 6.7
+        },
+        '1600' : {
+          slidesPerView: 8
+        },
+        '2000' : {
+          slidesPerView: 10.3
+        }
+      }">
+        <ng-container *ngIf="places && places.length > 0">
+          <swiper-slide
+          *ngFor="let place of places; let i = index"
+          class="unlock-shadow-from-swiper auto-width">
+            <div class="japa-card">
+              <div class="japa-card-content">
+                <ul>
+                  <li>
+                    <p class="color-gray-mid fs-12">Por pessoa</p><span></span><p class="color-gray-text fs-14">{{ 100 | currency: 'BRL' }}</p>
+                  </li>
+                  <li>
+                    <p class="color-gray-mid fs-12">Homem</p><span></span><p class="color-gray-text fs-14">{{ 80 | currency: 'BRL' }}</p>
+                  </li>
+                  <li>
+                    <p class="color-gray-mid fs-12">Mulher</p><span></span><p class="color-gray-text fs-14">{{ 90 | currency: 'BRL' }}</p>
+                  </li>
+                  <li>
+                    <p class="color-gray-mid fs-12">Casal</p><span></span><p class="color-gray-text fs-14">{{ 200 | currency: 'BRL' }}</p>
+                  </li>
+                  <li>
+                    <p class="color-gray-mid fs-12">Criança</p><span></span><p class="color-gray-text fs-14">{{ 50 | currency: 'BRL' }}</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </swiper-slide>
+        </ng-container>
+
+        <ng-container *ngIf="!places">
+          <swiper-slide
+          *ngFor="let establishment of [1,2,3,4,5,6]; let i = index"
+          class="unlock-shadow-from-swiper auto-width">
+            <ion-skeleton-text [animated]="true" class="like-cards"></ion-skeleton-text>
+          </swiper-slide>
+        </ng-container>
+      </swiper-container>
+    </div>
+  </section>
+</ion-content>

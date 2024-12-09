@@ -9,7 +9,7 @@ export const MOCK_CITIES: ICity[] = [
     isDisabled: false,
     from: {
       pt: 'de',
-      en: 'from',
+      en: 'of',
       es: 'de'
     },
     in: {
@@ -26,7 +26,7 @@ export const MOCK_CITIES: ICity[] = [
     isDisabled: false,
     from: {
       pt: 'de',
-      en: 'from',
+      en: 'of',
       es: 'de'
     },
     in: {
@@ -43,7 +43,7 @@ export const MOCK_CITIES: ICity[] = [
     isDisabled: true,
     from: {
       pt: 'de',
-      en: 'from',
+      en: 'of',
       es: 'de'
     },
     in: {
@@ -60,7 +60,7 @@ export const MOCK_CITIES: ICity[] = [
     isDisabled: true,
     from: {
       pt: 'de',
-      en: 'from',
+      en: 'of',
       es: 'de'
     },
     in: {
@@ -77,7 +77,7 @@ export const MOCK_CITIES: ICity[] = [
     isDisabled: true,
     from: {
       pt: 'de',
-      en: 'from',
+      en: 'of',
       es: 'de'
     },
     in: {
@@ -94,7 +94,7 @@ export const MOCK_CITIES: ICity[] = [
     isDisabled: true,
     from: {
       pt: 'de',
-      en: 'from',
+      en: 'of',
       es: 'de'
     },
     in: {
@@ -111,7 +111,7 @@ export const MOCK_CITIES: ICity[] = [
     isDisabled: true,
     from: {
       pt: 'de',
-      en: 'from',
+      en: 'of',
       es: 'de'
     },
     in: {
@@ -128,7 +128,7 @@ export const MOCK_CITIES: ICity[] = [
     isDisabled: true,
     from: {
       pt: 'de',
-      en: 'from',
+      en: 'of',
       es: 'de'
     },
     in: {
@@ -145,7 +145,7 @@ export const MOCK_CITIES: ICity[] = [
     isDisabled: true,
     from: {
       pt: 'de',
-      en: 'from',
+      en: 'of',
       es: 'de'
     },
     in: {

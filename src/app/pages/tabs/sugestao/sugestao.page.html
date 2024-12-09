@@ -69,7 +69,7 @@ mode="ios">
           *ngIf="currentSuggestion.location?.lat"
           (click)="toggleModalMap(true)"
           [title]="('SHARED.SEE_MAP.0' | translate) + ' ' + ('SHARED.SEE_MAP.1' | translate)"
-          class="txt-left no-ion-padding fs-12 see-on-map"
+          class="txt-left no-ion-padding fs-12 minus-mg-top-5"
           fill="clear"
           mode="ios">
             {{ 'SHARED.SEE_MAP.0' | translate }} <b class="mg-left-5">{{ 'SHARED.SEE_MAP.1' | translate }}</b> <ion-icon name="open-outline" class="mg-left-5"></ion-icon>
@@ -98,14 +98,14 @@ mode="ios">
               shape="round"
               class="anf-main-solid fs-12"
               *ngFor="let button of filterButtons"
-              [title]="'filtrar'"
+              [title]="'SHARED.FILTER' | translate"
               mode="md"
               fill="solid">
                 <ion-icon [name]="button.icon + '-outline'" class="fs-20"></ion-icon>
 
                 <ion-select
                 mode="ios"
-                [okText]="'Filtrar'"
+                [okText]="'SHARED.FILTER' | translate"
                 #filterSelector
                 [label]="'SHARED.FILTER' | translate"
                 class="hide-element anfitrion-selector min-height-0"
