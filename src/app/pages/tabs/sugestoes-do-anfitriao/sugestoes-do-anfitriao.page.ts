@@ -13,6 +13,7 @@ import { ISuggestion } from 'src/app/shared/models/ISuggestion';
 import { OverlayService } from 'src/app/shared/services/overlay.service';
 import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
 import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
+import { ICity } from 'src/app/shared/models/ICity';
 
 @Component({
   selector: 'anfitrion-sugestoes-do-anfitriao',
@@ -38,9 +39,17 @@ export class SugestoesDoAnfitriaoPage implements OnInit, OnDestroy {
   public currentLanguage$: Observable<ILang>;
   public currentLanguageSubscription: Subscription;
 
-  public suggestionsBaixadaSantista: any;
-  public suggestionsBaixadaSantista$: Observable<any>
+  public suggestionsBaixadaSantista: ISuggestion[];
+  public suggestionsBaixadaSantista$: Observable<ISuggestion[]>
   public suggestionsBaixadaSantistaSubscription: Subscription;
+
+  public suggestionsSelectedCity: ISuggestion[];
+  public suggestionsSelectedCity$: Observable<ISuggestion[]>
+  public suggestionsSelectedCitySubscription: Subscription;
+
+  public currentCity: ICity;
+  public currentCity$: Observable<ICity>;
+  public currentCitySubscription: Subscription;
 
   constructor(
     private store : Store,
@@ -54,6 +63,7 @@ export class SugestoesDoAnfitriaoPage implements OnInit, OnDestroy {
   ngOnInit() {
     this.getCurrentLanguageFromNGRX();
     this.getBaixadaSantistaSuggestions();
+    this.getCurrentCityFromNGRX();
   }
 
   ionViewWillEnter(): void {
@@ -88,6 +98,36 @@ export class SugestoesDoAnfitriaoPage implements OnInit, OnDestroy {
       complete: async () => {
         await loading.dismiss()
       }
+    })
+  }
+
+  public async getSelectedCitySuggestions(cityValue: string) {
+    this.suggestionsSelectedCity$ = this.suggestionsService
+    .getSuggestions(CollectionsEnum.SUGGESTIONS_BAIXADA_SANTISTA, [
+      { field: "filter", operator: "array-contains", value: cityValue },
+    ])
+
+    this.suggestionsSelectedCitySubscription = this.suggestionsSelectedCity$
+    .subscribe({
+      next: (suggestions: any) => {
+        this.suggestionsSelectedCity = suggestions;
+      },
+      error: () => {
+
+      },
+      complete: async () => {
+
+      }
+    })
+  }
+
+  public getCurrentCityFromNGRX(): void {
+    this.currentCity$ = this.store.select(AppStore.selectAppCurrentCity);
+
+    this.currentCitySubscription = this.currentCity$
+    .subscribe((city: ICity) => {
+      this.currentCity = city;
+      this.getSelectedCitySuggestions(this.currentCity.value);
     })
   }
 

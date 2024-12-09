@@ -650,7 +650,7 @@ ion-chip.as-badge {
     color: var(--bootstrap-success);
   }
 
-  &.user-type {
+  &.user-type, &.gray {
     background: var(--bootstrap-gray-light-bg);
     color: var(--bootstrap-gray);
   }

@@ -47,7 +47,8 @@
     "TITLE" : "Host suggestions",
     "IN_BAIXADA" : "in",
     "DESCRIPTION" : ["This section was created", "to save time for locals and tourists", ". We created sections based on what people search for most in the city"],
-    "NO_RESULT" : "We don't have any suggestions yet"
+    "NO_RESULT" : "We don't have any suggestions yet",
+    "SEE_IN_SELECTED_CITY": "Check out what we've prepared for the people who are {{ city }}"
   },
   "EXPLORE_PAGE" : {
     "PAGE_TITLE": "Explore",

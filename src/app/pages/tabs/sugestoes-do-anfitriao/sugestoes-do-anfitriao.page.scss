@@ -101,6 +101,14 @@ ion-content {
     }
   }
 
+  .indication {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+
   .indicated-text {
     padding: 8px 0 0 0;
   }
@@ -141,25 +149,22 @@ ion-content {
   box-shadow: none;
   padding: 16px;
   transition: all 200ms ease;
+  border: 1px solid var(--white);
+  border-radius: 12px;
+  outline: 1px solid var(--gray-da);
 
   &:hover {
-    .card-content {
-      box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
-    }
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    background-color: var(--gray-fa);
   }
 
   .card-content {
-    background: var(--white);
-    border-radius: 10px;
+    background: var(--transparent);
+    border-radius: 0;
     margin: 0 0 8px 0;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
     transition: all 200ms ease;
     overflow: hidden;
-
-    .card-desc {
-      padding: 16px;
-      border-bottom: 1px solid var(--gray-ec);
-    }
 
     ion-item {
       --padding-start: 0;
@@ -167,11 +172,8 @@ ion-content {
       --padding-top: 0;
       --padding-end: 0;
       --inner-padding-end: 0;
-      border-top: 1px solid var(--white);
-      --background: rgba(0, 0, 0, .03);
-      --color: var(--green);
-      text-shadow: 1px 1px 1px var(--white);
-      font-size: 15px;
+      --background: var(--transparent);
+      --background-hover: var(--transparent);
     }
   }
 
