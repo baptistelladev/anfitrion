@@ -385,6 +385,11 @@
     "BARIATRIC" : "Bariátricos",
     "FREE" : "Grátis",
     "FULL_PRICE" : "Integral",
-    "HALF_PRICE" : "Meia"
+    "HALF_PRICE" : "Meia",
+    "WE_ARE_TALKING" : "Já que estamos falando de",
+    "WE_ARE_TALKING_DESC" : [
+      "Cada restaurante tem suas próprias promoções e preços exclusivos. Alguns até diferenciam o preço no almoço, no jantar, fins de semana, etc. Aqui no anfitrion, a gente faz questão de deixar tudo mastigadinho pra você não precisar perder tempo rolando as redes sociais.",
+      "Se quiser ver as promoções clique/toque no botão (ver detalhes). E, claro, se quiser dar aquela espiada no insta do restaurante, fique a vontade. O importante é que o trabalho pesado a gente já fez: juntamos tudo em um só lugar, com carinho pra você."
+    ]
   }
 }

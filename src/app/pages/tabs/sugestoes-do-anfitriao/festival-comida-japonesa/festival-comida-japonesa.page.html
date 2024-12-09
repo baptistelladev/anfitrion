@@ -292,18 +292,15 @@ mode="ios">
 
       <ion-col size="12" size-md="6">
         <ion-text mode="ios">
-          <p class="font-baloo fs-20 color-gray-text font-w-thin">
-            <b>Felipe</b>, já que estamos falando de japa.
-          </p>
-          <p class="fs-14 color-gray-text font-w-thin">
-            Permita-me te falar um pouco mais sobre isso.
+          <p class="font-baloo fs-20 color-gray-text font-w-bold" *ngIf="currentSuggestion">
+            {{ 'FESTIVAL_PAGE.WE_ARE_TALKING' | translate }} {{ currentSuggestion.name.text[currentLanguage.value] }}
           </p>
         </ion-text>
 
         <ion-text mode="ios" class="d-block mg-bottom-16">
-          <p class="fs-14 color-gray-text font-w-thin mg-top-16">Cada restaurante tem suas próprias promoções e preços exclusivos. Alguns até diferenciam o preço no almoço, no jantar, fins de semana, etc. Aqui no anfitrion, a gente faz questão de deixar tudo mastigadinho pra você não precisar perder tempo rolando as redes sociais.</p>
-
-          <p class="fs-14 color-gray-text font-w-thin mg-top-16">Se quiser ver as promoções clique/toque no botão (ver detalhes). E, claro, se quiser dar aquela espiada no insta do restaurante, fique a vontade. O importante é que o trabalho pesado a gente já fez: juntamos tudo em um só lugar, com carinho pra você.</p>
+          <p class="fs-14 color-gray-text font-w-thin mg-top-16" *ngFor="let text of ('FESTIVAL_PAGE.WE_ARE_TALKING_DESC' | translate)">
+            {{ text }}
+          </p>
         </ion-text>
       </ion-col>
 
