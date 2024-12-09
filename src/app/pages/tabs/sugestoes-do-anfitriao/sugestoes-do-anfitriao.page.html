@@ -158,13 +158,68 @@ class="ion-content-w-linear-bg">
             </ion-text>
           </ion-col>
         </ng-container>
+      </ion-row>
+    </ion-grid>
 
-        <ion-col size="12" class="mg-top-16">
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col size="12">
           <ion-text mode="ios" class="line-height-18">
             <p class="color-gray-text fs-14">
-              {{ 'SUGGESTIONS_PAGE.DESCRIPTION.0' | translate }} <b>{{ 'SUGGESTIONS_PAGE.DESCRIPTION.1' | translate }}</b> {{ 'SUGGESTIONS_PAGE.DESCRIPTION.2' | translate }}.
+              <ion-text mode="ios">
+                <p class="font-baloo fs-20 color-gray-text font-w-normal">
+                  Sugestões <b>em Santos</b> <span class="font-default txt-lowercase fs-12 color-gray-mid font-w-normal mg-left-5">({{ 1 }})</span>
+                </p>
+                <p class="fs-14 color-gray-text font-w-thin mg-top-5">
+                  Confira o que separamos para as pessoas que estão em Santos.
+                </p>
+              </ion-text>
             </p>
           </ion-text>
+        </ion-col>
+
+        <ion-col size="12" size-md="6" size-lg="4">
+          <div class="city-card-wrapper" mode="ios">
+            <div class="card-content">
+              <div class="card-desc">
+                <ion-text>
+                  <ion-text mode="ios">
+                    <p class="color-gray-mid fs-14 font-w-thin">Rodízio de</p>
+                    <p class="description fs-18 color-gray-mid">Comida japonesa</p>
+                  </ion-text>
+                </ion-text>
+              </div>
+
+              <ion-item lines="none" mode="ios" [button]="true" class="ion-text-center" [detail]="false">
+                <ion-text mode="ios" class="full-width">
+                  <p class="txt-lowercase">ver valores</p>
+                </ion-text>
+              </ion-item>
+            </div>
+
+            <div class="indication">
+              <ion-text size="12" class="txt-left">
+                <p class="color-gray-mid fs-12 mg-right-5">
+                  gastronomia &#x2022;
+                </p>
+              </ion-text>
+
+              <div class="two-chips-side-by-side">
+                <ion-chip
+                [ngClass]="'tourist'"
+                mode="ios"
+                class="txt-uppercase as-badge resident">
+                  {{ 'SHARED.RESIDENTS' | translate }}
+                </ion-chip>
+
+                <ion-chip
+                mode="ios"
+                class="txt-uppercase as-badge tourist">
+                  {{ 'SHARED.TOURISTS' | translate  }}
+                </ion-chip>
+              </div>
+            </div>
+          </div>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -193,6 +248,15 @@ class="ion-content-w-linear-bg">
 
     <ion-grid [fixed]="true">
       <ion-row>
+
+        <ion-col size="12" class="mg-top-16">
+          <ion-text mode="ios" class="line-height-18">
+            <p class="color-gray-text fs-14">
+              {{ 'SUGGESTIONS_PAGE.DESCRIPTION.0' | translate }} <b>{{ 'SUGGESTIONS_PAGE.DESCRIPTION.1' | translate }}</b> {{ 'SUGGESTIONS_PAGE.DESCRIPTION.2' | translate }}.
+            </p>
+          </ion-text>
+        </ion-col>
+
         <ion-col size="12">
           <div class="scroll-to-top full-width">
             <ion-button
