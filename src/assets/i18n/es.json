@@ -47,7 +47,8 @@
     "TITLE" : "Sugerencias del anfitrión",
     "IN_BAIXADA" : "en la",
     "DESCRIPTION" : ["Esta sección fue creada", "para ahorrar tiempo a residentes y turistas", ". Creamos secciones basadas en lo que la gente más busca en la ciudad"],
-    "NO_RESULT" : "Aún no tenemos sugerencias"
+    "NO_RESULT" : "Aún no tenemos sugerencias",
+    "SEE_IN_SELECTED_CITY": "Descubre lo que hemos preparado para las personas que están {{ city }}"
   },
   "EXPLORE_PAGE" : {
     "PAGE_TITLE": "Explorar",
