@@ -227,7 +227,7 @@ export class FestivalComidaJaponesaPage implements OnInit, OnDestroy, AfterViewI
   public ngOnDestroy(): void {
     this.currentLanguageSubscription.unsubscribe();
     this.currentSuggestionSubscription.unsubscribe();
-    this.placesSubscription.unsubscribe();
+    //this.placesSubscription.unsubscribe();
   }
 
 }

@@ -183,7 +183,6 @@ mode="ios">
           *ngFor="let establishment of short_establishments; let i = index"
           class="unlock-shadow-from-swiper auto-width">
             <ion-card
-            (click)="slideSwiperTo(i)"
             [ngClass]="{ 'coming-soon': establishment.isBuilding }"
             mode="ios"
             class="establishment-card-vertical"
@@ -213,22 +212,17 @@ mode="ios">
                 </ion-text>
               </ion-card-content>
 
-              <ion-card-footer mode="ios">
-                <ion-button
-                *ngIf="!establishment.isBuilding"
-                (click)="seeEstablishment(establishment, $event)"
-                title="Ver detalhes"
-                mode="md"
-                class="full-width">
-                  {{ 'SHARED.SEE_DETAILS.0' | translate }} <b class="mg-left-5">{{ 'SHARED.SEE_DETAILS.1' | translate }}</b> <ion-icon name="arrow-forward" class="mg-left-5"></ion-icon>
-                </ion-button>
+              <div class="button-list">
+                <ion-list mode="ios" lines="none">
+                  <ion-item mode="ios" lines="none" [button]="true" class="main" *ngIf="!establishment.isBuilding" (click)="seeEstablishment(establishment, $event)">
+                    {{ 'SHARED.SEE_DETAILS.0' | translate }} <b class="mg-left-5">{{ 'SHARED.SEE_DETAILS.1' | translate }}</b>
+                  </ion-item>
 
-                <div class="coming-soon" *ngIf="establishment.isBuilding">
-                  <ion-text mode="ios">
-                    <p class="fs-14 d-block">{{ 'SHARED.COMING_SOON' | translate }}</p>
-                  </ion-text>
-                </div>
-              </ion-card-footer>
+                  <ion-item mode="ios" lines="none" *ngIf="establishment.isBuilding" class="coming-soon">
+                    {{ 'SHARED.COMING_SOON' | translate }}
+                  </ion-item>
+                </ion-list>
+              </div>
             </ion-card>
           </swiper-slide>
         </ng-container>
