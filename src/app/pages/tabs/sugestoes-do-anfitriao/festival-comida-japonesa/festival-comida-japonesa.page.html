@@ -234,4 +234,40 @@ mode="ios">
       </swiper-container>
     </div>
   </section>
+
+  <ion-grid [fixed]="true">
+    <ion-row>
+      <ng-container *ngIf="places && places.length > 0">
+        <ion-col size="6">
+          <div class="controls-wrapper">
+            <ion-button
+            [disabled]="hideLeftControl"
+            mode="md"
+            class="anfitrion-main-solid fs-14 mg-right-8"
+            shape="round"
+            title="">
+              <ion-icon name="arrow-back-outline"></ion-icon>
+            </ion-button>
+
+            <ion-button
+            [disabled]="hideRightControl"
+            mode="md"
+            class="anfitrion-main-solid fs-14"
+            shape="round"
+            title="">
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-col>
+
+        <ion-col size="6" class="txt-right">
+          <ion-text mode="ios">
+            <p class="fs-12 color-gray-mid">
+              <b class="fs-14">{{ places.length }}</b> <span class="txt-lowercase mg-left-5"><ng-container *ngIf="places.length === 1">{{ 'SHARED.ESTABLISHMENT' | translate }}</ng-container><ng-container *ngIf="places.length > 1">{{ 'SHARED.ESTABLISHMENTS' | translate }}</ng-container>.</span>
+            </p>
+          </ion-text>
+        </ion-col>
+      </ng-container>
+    </ion-row>
+  </ion-grid>
 </ion-content>
