@@ -231,7 +231,9 @@
     "ICE_CREAM_PARLORS" : "Ice Cream Parlors",
     "INSERT_NAME" : "Insert name",
     "TOURISTS" : "Tourists",
-    "RESIDENTS" : "Residents"
+    "RESIDENTS" : "Residents",
+    "BOOKING" : ["Book", "now"],
+    "LAST_UPDATE" : "last update"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Our purpose here is to help you save your most precious asset: ","time"],
@@ -376,9 +378,19 @@
     "WELCOME_WHATSAPP" : "Hello, I came from the Gastronomic Street of Santos and..."
   },
   "PAGE_NOT_FOUND": {
-  "PAGE_TITLE": "We couldn't find the page, return to the main screen",
-  "TITLE": ["page", "not found"],
-  "TEXT": ["You might have typed something wrong, ", "must be hunger, I don't know..."],
-  "BUTTON": ["Back", "to main screen"]
-}
+    "PAGE_TITLE": "We couldn't find the page, return to the main screen",
+    "TITLE": ["page", "not found"],
+    "TEXT": ["You might have typed something wrong, ", "must be hunger, I don't know..."],
+    "BUTTON": ["Back", "to main screen"]
+  },
+  "FESTIVAL_PAGE": {
+    "BY_PERSON": "Per person",
+    "CHILD_UNTIL": "Child up to {{ year }} years",
+    "CHILD_BETWEEN": "Child between {{ startYear }} and {{ endYear }} years",
+    "CHILD_ABOVE": "Child above {{ year }} years",
+    "BARIATRIC": "Bariatrics",
+    "FREE": "Free",
+    "FULL_PRICE": "Full price",
+    "HALF_PRICE": "Half price"
+  }
 }

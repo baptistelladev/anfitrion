@@ -231,7 +231,9 @@
     "ICE_CREAM_PARLORS" : "Sorveterias",
     "INSERT_NAME" : "Inserir nome",
     "TOURISTS" : "Turistas",
-    "RESIDENTS" : "Moradores"
+    "RESIDENTS" : "Moradores",
+    "BOOKING" : ["Fazer reserva","agora"],
+    "LAST_UPDATE" : "ultima atualização"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nosso próposito aqui é fazer com que voê economize o seu bem mais precioso:","o tempo"],
@@ -374,5 +376,15 @@
     "TITLE": ["página","não encontrada"],
     "TEXT" : ["Você deve ter digitado algo errado, ","deve ser fome, sei lá..."],
     "BUTTON" : ["Voltar","para tela principal"]
+  },
+  "FESTIVAL_PAGE" : {
+    "BY_PERSON" : "Por pessoa",
+    "CHILD_UNTIL" : "Criança até {{ year }} anos",
+    "CHILD_BETWEEN" : "Criança entre {{ startYear }} anos e {{ endYear }} anos",
+    "CHILD_ABOVE" : "Criança acima de {{ year }} anos",
+    "BARIATRIC" : "Bariátricos",
+    "FREE" : "Grátis",
+    "FULL_PRICE" : "Integral",
+    "HALF_PRICE" : "Meia"
   }
 }

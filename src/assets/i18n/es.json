@@ -232,7 +232,9 @@
     "ICE_CREAM_PARLORS" : "Heladerías",
     "INSERT_NAME" : "Insertar nombre",
     "TOURISTS" : "Turistas",
-    "RESIDENTS" : "Residentes"
+    "RESIDENTS" : "Residentes",
+    "BOOKING" : ["Hacer una reserva", "ahora"],
+    "LAST_UPDATE" : "última actualización"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nuestro propósito aquí es ayudarte a ahorrar tu bien más precioso:","el tiempo"],
@@ -378,9 +380,19 @@
     "WELCOME_WHATSAPP" : "Hola, vengo de la Calle Gastronómica de Santos y..."
   },
   "PAGE_NOT_FOUND": {
-  "PAGE_TITLE": "No encontramos la página, vuelve a la pantalla principal",
-  "TITLE": ["página", "no encontrada"],
-  "TEXT": ["Puede que hayas escrito algo mal, ", "debe ser hambre, no sé..."],
-  "BUTTON": ["Volver", "a la pantalla principal"]
-}
+    "PAGE_TITLE": "No encontramos la página, vuelve a la pantalla principal",
+    "TITLE": ["página", "no encontrada"],
+    "TEXT": ["Puede que hayas escrito algo mal, ", "debe ser hambre, no sé..."],
+    "BUTTON": ["Volver", "a la pantalla principal"]
+  },
+  "FESTIVAL_PAGE": {
+    "BY_PERSON": "Por persona",
+    "CHILD_UNTIL": "Niño hasta {{ year }} años",
+    "CHILD_BETWEEN": "Niño entre {{ startYear }} y {{ endYear }} años",
+    "CHILD_ABOVE": "Niño mayor de {{ year }} años",
+    "BARIATRIC": "Bariátricos",
+    "FREE": "Gratis",
+    "FULL_PRICE": "Precio completo",
+    "HALF_PRICE": "Media entrada"
+  }
 }

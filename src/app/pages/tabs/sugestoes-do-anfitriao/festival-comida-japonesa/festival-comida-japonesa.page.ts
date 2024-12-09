@@ -188,13 +188,20 @@ export class FestivalComidaJaponesaPage implements OnInit, OnDestroy, AfterViewI
 
     switch (filterFound?.value) {
       case FilterEnum.ALL:
-      /**
       this.getPlaces([
         { field: 'suggestions', operator: 'array-contains', value: this.currentSuggestion?.value },
         { field: 'origin.value', operator: '==', value: this.currentCity?.value }
-      ]); */
-      this.places = [1,2,3,4,5]
+      ]);
       break;
+    }
+  }
+
+  public seePlace(place: IPlace, e: any): void {
+    if (place.isBuilding) {
+      e.preventDefault();
+    } else {
+      this.navCtrl.navigateForward(['/logado/estabelecimento/' + place.value]);
+      this.store.dispatch(AppStore.setCurrentEstablishment({ establishment: place } ))
     }
   }
 
@@ -222,6 +229,10 @@ export class FestivalComidaJaponesaPage implements OnInit, OnDestroy, AfterViewI
   public listenForSwiperForControl(ev: any): void {
     this.hideLeftControl = ev.detail[0].isBeginning;
     this.hideRightControl = ev.detail[0].isEnd;
+  }
+
+  public async scrollToTop() {
+    this.japaneseFoodContent.scrollToTop(600);
   }
 
   public ngOnDestroy(): void {
