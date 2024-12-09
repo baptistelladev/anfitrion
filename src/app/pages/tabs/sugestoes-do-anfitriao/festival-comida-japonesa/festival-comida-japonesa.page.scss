@@ -87,16 +87,50 @@ ion-text.proportional-text {
 
 .japa-card {
   width: 100%;
+  position: relative;
+
+  ion-icon {
+    &.verified {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 22px;
+    }
+  }
 
   .japa-card-content {
     width: 100%;
-    min-height: 270px;
     background: linear-gradient(to bottom, var(--white), var(--transparent));
-    border-radius: 12px 12px 0 0;
-    padding: 16px;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    padding: 16px 0 0 0;
+
+    .info {
+      padding: 16px 16px 0 16px;
+
+      ion-text {
+        p {
+          &.type {
+            color: var(--gray-text);
+            margin: 0 0 10px 0;
+            font-size: 9px;
+          }
+
+          &.number {
+            margin: 5px 0 0 0;
+          }
+        }
+
+        h2 {
+          &.name {
+            max-width: 95px;
+          }
+        }
+      }
+    }
 
     ul {
-      padding: 0;
+      padding: 16px;
       margin: 0;
       list-style: none;
 
@@ -112,6 +146,62 @@ ion-text.proportional-text {
           flex: 1;
           border-bottom: 1px dotted var(--gray-da);
           margin: 0 5px;
+        }
+      }
+    }
+
+    .button-list {
+      overflow: hidden;
+
+      ion-list {
+        background-color: transparent;
+
+        ion-item {
+          --padding-start: 16px;
+          --padding-end: 0;
+          --padding-top: 16px;
+          --padding-bottom: 16px;
+          --inner-padding-end: 16px;
+          text-transform: none;
+          --background: var(--gray-fa);
+          border-radius: 0;
+          --border-radius: 0;
+          border-top: 0.5px solid var(--gray-da);
+          font-weight: 300;
+          --background: var(--transparent);
+          font-size: 14px;
+          --min-height: 0;
+          --color: var(--gray-text);
+          --background-hover: var(--gray-text);
+
+          &.reserve, &.main {
+            --color: var(--green);
+            --background-hover: var(--green);
+          }
+
+          &.coming-soon {
+            border-top: none;
+          }
+        }
+      }
+    }
+
+    .logo-wrapper {
+      width: 100%;
+      position: relative;
+
+      .logo-container {
+        width: 70px;
+        height: 70px;
+        border-radius: 100px;
+        margin: 0;
+        overflow: hidden;
+        @include flexbox(center, center, row);
+        transition: all 200ms ease;
+        background: var(--white);
+
+        &.logo-needs-gray-2 {
+          background: var(--gray-2);
         }
       }
     }

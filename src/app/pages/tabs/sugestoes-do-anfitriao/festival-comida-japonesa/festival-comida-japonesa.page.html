@@ -138,38 +138,29 @@ mode="ios">
       slides-offset-before="16"
       slides-offset-after="16"
       initial-slide="0"
-      [slides-per-view]="'auto'"
+      [slides-per-view]="1.3"
       [attr.space-between]="16"
       [breakpoints]="{
-       '200' : {
-          slidesPerView: 1.7
-        },
-        '363' : {
-          slidesPerView: 1.9
+        '320' : {
+          slidesPerView: 1.3
         },
         '445' : {
-          slidesPerView: 2.4
+          slidesPerView: 1.7
         },
-        '667' : {
-          slidesPerView: 3.4
+        '700' : {
+          slidesPerView: 2.3
         },
-        '792' : {
+        '800' : {
+          slidesPerView: 2.8
+        },
+        '960' : {
           slidesPerView: 3.8
-        },
-        '991' : {
-          slidesPerView: 4.5
         },
         '1200' : {
           slidesPerView: 5.2
         },
-        '1300' : {
-          slidesPerView: 6.7
-        },
-        '1600' : {
-          slidesPerView: 8
-        },
-        '2000' : {
-          slidesPerView: 10.3
+        '1500' : {
+          slidesPerView: 6.2
         }
       }">
         <ng-container *ngIf="places && places.length > 0">
@@ -177,25 +168,58 @@ mode="ios">
           *ngFor="let place of places; let i = index"
           class="unlock-shadow-from-swiper auto-width">
             <div class="japa-card">
+              <ion-icon src="./../../../../assets/icon/verified-check.svg" class="verified" *ngIf="true"></ion-icon>
+
               <div class="japa-card-content">
+
+                <div class="logo-wrapper txt-center">
+                  <div class="logo-container">
+                    <ion-img
+                    [src]="'./../../../../../assets/images/establishments/seu-miyagi.jpg'">
+                    </ion-img>
+                  </div>
+                </div>
+
+                <div class="info mg-top-8">
+                  <ion-text mode="ios" class="txt-center">
+                    <p class="color-gray-text txt-uppercase type font-w-thin type fs-9">
+                      {{ 'restaurante' }}
+                    </p>
+                    <h2 class="color-gray-text font-baloo name fs-16"><b>{{ 'Seu Miagy' }}</b></h2>
+                  </ion-text>
+                </div>
+
                 <ul>
                   <li>
-                    <p class="color-gray-mid fs-12">Por pessoa</p><span></span><p class="color-gray-text fs-14">{{ 100 | currency: 'BRL' }}</p>
+                    <p class="color-gray-mid fs-12">Por pessoa</p><span></span><p class="color-green fs-16 font-w-bold">{{ 100 | currency: 'BRL' }}</p>
                   </li>
                   <li>
-                    <p class="color-gray-mid fs-12">Homem</p><span></span><p class="color-gray-text fs-14">{{ 80 | currency: 'BRL' }}</p>
+                    <p class="color-gray-mid fs-12">Criança até 2 anos</p><span></span><p class="color-gray-mid fs-14 font-w-bold">grátis</p>
                   </li>
                   <li>
-                    <p class="color-gray-mid fs-12">Mulher</p><span></span><p class="color-gray-text fs-14">{{ 90 | currency: 'BRL' }}</p>
+                    <p class="color-gray-mid fs-12">Crianças entre 2 e 5 anos</p><span></span><p class="color-gray-mid fs-14 font-w-bold">meia</p>
                   </li>
                   <li>
-                    <p class="color-gray-mid fs-12">Casal</p><span></span><p class="color-gray-text fs-14">{{ 200 | currency: 'BRL' }}</p>
-                  </li>
-                  <li>
-                    <p class="color-gray-mid fs-12">Criança</p><span></span><p class="color-gray-text fs-14">{{ 50 | currency: 'BRL' }}</p>
+                    <p class="color-gray-mid fs-12">Crianças acima de 5 anos</p><span></span><p class="color-gray-mid fs-14 font-w-bold">integral</p>
                   </li>
                 </ul>
+
+                <div class="button-list">
+                  <ion-list mode="ios" lines="none">
+                    <ion-item mode="ios" lines="none" [button]="true" class="reserve" [detailIcon]="'logo-whatsapp'">
+                      <span class="mg-right-5 font-w-bold">fazer reserva</span> agora
+                    </ion-item>
+                    <ion-item mode="ios" lines="none" [button]="true">
+                      ver detalhes
+                    </ion-item>
+                  </ion-list>
+                </div>
               </div>
+
+              <ion-text mode="ios" class="color-gray-mid txt-right mg-top-8 d-block">
+                <p class="fs-10">última atualização:</p>
+                <p class="fs-12">5 de outubro de 2145.</p>
+              </ion-text>
             </div>
           </swiper-slide>
         </ng-container>
