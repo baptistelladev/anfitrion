@@ -1,6 +1,5 @@
 import { IUserType } from "../models/IUSerType";
 
-
 export const MOCK_USER_TYPES: IUserType[] = [
   {
     text: {
