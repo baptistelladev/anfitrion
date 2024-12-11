@@ -62,5 +62,8 @@ export interface IPlace {
   work_place: string[],
   beachInfo?: IBeach,
   mainBeach?: string,
-  delivery_sand?: boolean
+  delivery_sand?: { // PARA PRAIAS
+    make_delivery?: boolean,
+    delivery_is_free?: boolean
+  }
 }
