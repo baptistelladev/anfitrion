@@ -6,6 +6,7 @@ import { ITicket } from "./ITicket"
 import { ITime } from "./ITime"
 import { ICity } from "./ICity"
 import { IBeach } from "./IBeach"
+import { IFestivalFood } from "./IFestivalFood"
 
 export interface IPlace {
   id?: string,
@@ -65,5 +66,11 @@ export interface IPlace {
   delivery_sand?: { // PARA PRAIAS
     make_delivery?: boolean,
     delivery_is_free?: boolean
-  }
+  },
+  festival_info?: { // PARA RESTAURANTES COM FESTIVAL
+    has_any_festival_type?: boolean,
+    show_field?: boolean,
+    festivals?: IFestivalFood[]
+  },
+  last_update: string
 }

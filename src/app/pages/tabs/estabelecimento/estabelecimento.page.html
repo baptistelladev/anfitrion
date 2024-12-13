@@ -143,9 +143,62 @@
                     <ng-container *ngFor="let specialty of establishment.specialty; let last = last">
                       <b>{{ specialty.text[currentLanguage.value] }}</b><ng-container *ngIf="!last">, </ng-container></ng-container>.
                   </p>
-                  <p class="color-gray-6 mg-left-16 fs-14 mg-top-8">{{ 'SHARED.SPECIALTY' | translate }}<ng-container *ngIf="establishment.specialty.length > 0">s</ng-container>.</p>
+                  <p class="color-gray-6 mg-left-16 fs-14 mg-top-8">{{ 'SHARED.SPECIALTY' | translate }}<ng-container *ngIf="establishment.specialty.length > 1">s</ng-container>.</p>
                 </ion-text>
               </ion-item>
+            </ion-col>
+          </ng-container>
+
+          <!-- SÓ SE HOUVER RODIZIO DE COMIDA/FESTIVAL -->
+          <ng-container *ngIf="true">
+            <ion-col size="12">
+              <div class="japa-card">
+                <div class="japa-card-content">
+                  <div class="title">
+                    <ion-text mode="ios">
+                      <p class="color-gray-6 font-baloo fs-18">Festival de <b>comida japonesa</b></p>
+                    </ion-text>
+                  </div>
+
+                  <ul>
+                    <li>
+                      <p class="color-gray-mid fs-12">{{ 'FESTIVAL_PAGE.BY_PERSON' | translate }}</p><span></span><p class="color-green fs-16 font-w-bold">{{ 100 | currency: 'BRL' }}</p>
+                    </li>
+                    <li>
+                      <p class="color-gray-mid fs-12">{{ 'FESTIVAL_PAGE.CHILD_UNTIL' | translate: { year: 2 } }}</p><span></span><p class="color-gray-mid fs-14 font-w-bold txt-lowercase">{{ 'FESTIVAL_PAGE.FREE' | translate }}</p>
+                    </li>
+                    <li>
+                      <p class="color-gray-mid fs-12">{{ 'FESTIVAL_PAGE.CHILD_BETWEEN' | translate: { startYear: 2, endYear: 5 } }}</p><span></span><p class="color-gray-mid fs-14 font-w-bold txt-lowercase">{{ 'FESTIVAL_PAGE.HALF_PRICE' | translate }}</p>
+                    </li>
+                    <li>
+                      <p class="color-gray-mid fs-12">{{ 'FESTIVAL_PAGE.CHILD_ABOVE' | translate: { year: 5 } }}</p><span></span><p class="color-gray-mid fs-14 font-w-bold txt-lowercase">{{ 'FESTIVAL_PAGE.FULL_PRICE' | translate }}</p>
+                    </li>
+                    <li>
+                      <p class="color-gray-mid fs-12">{{ 'FESTIVAL_PAGE.BARIATRIC' | translate }}</p><span></span><p class="color-gray-mid fs-14 font-w-bold txt-lowercase">15% off</p>
+                    </li>
+                  </ul>
+
+                  <div class="button-list">
+                    <ion-list mode="ios" lines="none">
+                      <ion-item
+                      (click)="redirectToWhatsapp()"
+                      [title]="('SHARED.BOOKING.0' | translate) + ' ' + ('SHARED.BOOKING.1' | translate)"
+                      mode="ios"
+                      lines="none"
+                      [button]="true"
+                      class="reserve"
+                      [detailIcon]="'logo-whatsapp'">
+                        <span class="mg-right-5 font-w-bold">{{ 'SHARED.BOOKING.0' | translate }}</span> {{ 'SHARED.BOOKING.1' | translate }}
+                      </ion-item>
+                    </ion-list>
+                  </div>
+                </div>
+
+                <ion-text mode="ios" class="color-gray-mid txt-right mg-top-8 d-block">
+                  <p class="fs-10">{{ 'SHARED.LAST_UPDATE' | translate }}</p>
+                  <p class="fs-12">5 de outubro de 2145</p>
+                </ion-text>
+              </div>
             </ion-col>
           </ng-container>
 

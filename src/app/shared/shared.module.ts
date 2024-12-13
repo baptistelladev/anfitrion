@@ -5,14 +5,17 @@ import { IonicModule } from '@ionic/angular';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { TranslateModule } from '@ngx-translate/core';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { MomentDatePipe } from './pipes/moment-date.pipe';
 
 
 @NgModule({
   imports: [
     ClipboardModule,
-    PdfViewerModule
+    PdfViewerModule,
+    MomentDatePipe
   ],
   exports: [
+    MomentDatePipe,
     IonicModule,
     FormsModule,
     CommonModule,

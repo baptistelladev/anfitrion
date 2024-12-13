@@ -1,3 +1,5 @@
+import { BenefitOperatorsEnum } from './../../../../shared/enums/BenefitOperators';
+import { IFestivalFoodType } from './../../../../shared/models/IFestivalFoodType';
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map, Observable, Subscription, take } from 'rxjs';
@@ -18,6 +20,10 @@ import { PlacesService } from 'src/app/core/services/firebase/places.service';
 import { IFIrebaseFilter } from 'src/app/shared/models/IFirebaseFilter';
 import { IFilter } from 'src/app/shared/models/IFilter';
 import { ICity } from 'src/app/shared/models/ICity';
+import { IFestivalFood } from 'src/app/shared/models/IFestivalFood';
+import { FestivalFoodTypeEnum } from 'src/app/shared/enums/FestivalFoodType';
+import { BenefitConsumerEnum } from 'src/app/shared/enums/BenefitConsumer';
+import * as moment from 'moment';
 
 @Component({
   selector: 'anfitrion-festival-comida-japonesa',
@@ -64,6 +70,9 @@ export class FestivalComidaJaponesaPage implements OnInit, OnDestroy, AfterViewI
 
   public activeFilter: any;
   public MOCK_FILTERS: IFilter[];
+
+  public BenefitConsumerEnum = BenefitConsumerEnum;
+  public BenefitOperatorsEnum = BenefitOperatorsEnum;
 
   constructor(
     private store : Store,
@@ -220,9 +229,27 @@ export class FestivalComidaJaponesaPage implements OnInit, OnDestroy, AfterViewI
         filters
       );
 
+
+
       this.placesSubscription = this.places$
+      .pipe(
+        map((places: IPlace[]) => {
+          return places.filter((place: IPlace) => {
+            // Verifica se a propriedade e o array de festivais existem
+            if (place.festival_info?.festivals) {
+
+              return place.festival_info.festivals.some((festival: any) => {
+                return festival.food_type === FestivalFoodTypeEnum.COMIDA_JAPONESA;
+              });
+            }
+            return false; // Se não houver festivais, exclui o place
+          });
+        })
+      )
       .subscribe((places: IPlace[]) => {
         this.places = places;
+        console.log(this.places);
+
       })
   }
 

@@ -161,3 +161,98 @@ ion-skeleton-text {
 ion-button.copy-btn {
   --padding-end: 0;
 }
+
+.japa-card {
+  width: 100%;
+  position: relative;
+  transition: all 200ms ease;
+
+  &:hover {
+    .japa-card-content {
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    }
+  }
+
+  ion-icon {
+    &.verified {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 22px;
+    }
+  }
+
+  .japa-card-content {
+    width: 100%;
+    background: linear-gradient(to bottom, var(--white), var(--transparent));
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    padding: 0;
+    transition: all 200ms ease;
+
+    .title {
+      padding: 16px 16px 4px 16px;
+    }
+
+    ul {
+      padding: 0 16px 16px 16px;
+      margin: 0;
+      list-style: none;
+
+      li {
+        @include flexbox(flex-end, flex-start, row);
+        width: 100%;
+        margin-bottom: 4px;
+
+        p {
+        }
+
+        span {
+          flex: 1;
+          border-bottom: 1px dotted var(--gray-da);
+          margin: 0 5px;
+          min-width: 20px;
+        }
+      }
+    }
+
+    .button-list {
+      overflow: hidden;
+
+      ion-list {
+        background-color: transparent;
+        border-radius: 0;
+
+        ion-item {
+          --padding-start: 16px;
+          --padding-end: 0;
+          --padding-top: 16px;
+          --padding-bottom: 16px;
+          --inner-padding-end: 16px;
+          text-transform: none;
+          --background: var(--gray-fa);
+          border-radius: 0;
+          --border-radius: 0;
+          border-top: 0.5px solid var(--gray-da);
+          font-weight: 300;
+          --background: var(--transparent);
+          font-size: 14px;
+          --min-height: 0;
+          --color: var(--gray-text);
+          --background-hover: var(--gray-text);
+
+          &.reserve, &.main {
+            --color: var(--green);
+            --background-hover: var(--green);
+          }
+
+          &.coming-soon {
+            border-top: none;
+          }
+        }
+      }
+    }
+
+
+  }
+}
