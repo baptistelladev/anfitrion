@@ -12,7 +12,6 @@ export interface IAppState {
   currentLanguage: ILang,
   currentCity: ICity,
   currentPlace: IPlace,
-  parkings: IParking[],
   appInfoNetworks: ISocialNetwork[],
   appInfoContact: IContact,
   currentSuggestion: ISuggestion,
@@ -37,27 +36,6 @@ export const appInitialState: IAppState = {
     },
     hasBeach: false
   },
-  parkings: [
-    {
-      name: '',
-      value: '',
-      adress: {
-        type: {
-          pt: '',
-          en: '',
-          es: ''
-        },
-        street: '',
-        number: '',
-        neighborhood: '',
-        zip_code: ''
-      },
-      phone: {
-        ddd: '',
-        number: ''
-      }
-    }
-  ],
   currentLanguage: {
     text: {
       pt: '',
@@ -67,6 +45,7 @@ export const appInitialState: IAppState = {
     value: ''
   },
   currentPlace: {
+    last_update: '',
     work_place: [],
     created_at: '',
     suggestions: [],
@@ -311,10 +290,6 @@ export const appReducer = createReducer(
     (state, { contact }): IAppState => ({ ...state, appInfoContact: contact })
   ),
   on(
-    setParkings,
-    (state, { parkings }): IAppState => ({ ...state, parkings: parkings })
-  ),
-  on(
     setCurrentSuggestion,
     (state, { suggestion }): IAppState => ({ ...state, currentSuggestion: suggestion })
   ),
@@ -350,11 +325,6 @@ export const selectAppInfoNetworks = createSelector(
 export const selectAppInfoContact = createSelector(
   selectAppState,
   (state: IAppState) => state.appInfoContact
-);
-
-export const selectParkings = createSelector(
-  selectAppState,
-  (state: IAppState) => state.parkings
 );
 
 export const selectCurrentSuggestion = createSelector(

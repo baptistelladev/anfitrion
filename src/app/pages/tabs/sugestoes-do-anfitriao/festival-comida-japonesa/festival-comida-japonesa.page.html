@@ -192,26 +192,30 @@ mode="ios">
                 </div>
 
                 <ul>
-                  <li>
-                    <p class="color-gray-mid fs-12">{{ 'FESTIVAL_PAGE.BY_PERSON' | translate }}</p><span></span><p class="color-green fs-16 font-w-bold">{{ 100 | currency: 'BRL' }}</p>
-                  </li>
-                  <li>
-                    <p class="color-gray-mid fs-12">{{ 'FESTIVAL_PAGE.CHILD_UNTIL' | translate: { year: 2 } }}</p><span></span><p class="color-gray-mid fs-14 font-w-bold txt-lowercase">{{ 'FESTIVAL_PAGE.FREE' | translate }}</p>
-                  </li>
-                  <li>
-                    <p class="color-gray-mid fs-12">{{ 'FESTIVAL_PAGE.CHILD_BETWEEN' | translate: { startYear: 2, endYear: 5 } }}</p><span></span><p class="color-gray-mid fs-14 font-w-bold txt-lowercase">{{ 'FESTIVAL_PAGE.HALF_PRICE' | translate }}</p>
-                  </li>
-                  <li>
-                    <p class="color-gray-mid fs-12">{{ 'FESTIVAL_PAGE.CHILD_ABOVE' | translate: { year: 5 } }}</p><span></span><p class="color-gray-mid fs-14 font-w-bold txt-lowercase">{{ 'FESTIVAL_PAGE.FULL_PRICE' | translate }}</p>
-                  </li>
-                  <li>
-                    <p class="color-gray-mid fs-12">{{ 'FESTIVAL_PAGE.BARIATRIC' | translate }}</p><span></span><p class="color-gray-mid fs-14 font-w-bold txt-lowercase">15% off</p>
+                  <li *ngFor="let rule of place.festival_info.festivals[0].rules">
+                    <ng-container>
+                      <p class="color-gray-mid fs-12">
+                        {{ rule.consumer_festival_type }} {{ rule.operator }} {{ rule.condition_start }} <ng-container *ngIf="rule.operator === BenefitOperatorsEnum.ENTRE">e {{ rule.condition_end }}</ng-container></p>
+                        <span></span>
+                      <p class="color-green fs-16 font-w-bold" *ngIf="rule.price && rule.price !== 0 && rule.price !== '0'">{{ rule.price | currency }}</p>
+                      <p class="color-gray-mid fs-14 font-w-bold txt-lowercase" *ngIf="!rule.price || rule.price === 0 || rule.price === '0'"><ng-container *ngIf="rule.discount && rule.discount !== 0 && rule.discount !== '0'">{{ rule.discount }}%</ng-container> {{ rule.benefit_type }}</p>
+                    </ng-container>
                   </li>
                 </ul>
 
                 <div class="button-list">
                   <ion-list mode="ios" lines="none">
                     <ion-item
+                    [title]="('SHARED.SEE_DETAILS.0' | translate) + ' ' + ('SHARED.SEE_DETAILS.1' | translate)"
+                    (click)="seePlace(place, $event)"
+                    mode="ios"
+                    lines="none"
+                    [button]="true">
+                      {{ 'SHARED.SEE_PROFILE.0' | translate }} <b class="mg-left-5">{{ 'SHARED.SEE_PROFILE.1' | translate }}</b>
+                    </ion-item>
+
+                    <ion-item
+                    *ngIf="place.isPremium"
                     [title]="('SHARED.BOOKING.0' | translate) + ' ' + ('SHARED.BOOKING.1' | translate)"
                     mode="ios"
                     lines="none"
@@ -220,22 +224,13 @@ mode="ios">
                     [detailIcon]="'logo-whatsapp'">
                       <span class="mg-right-5 font-w-bold">{{ 'SHARED.BOOKING.0' | translate }}</span> {{ 'SHARED.BOOKING.1' | translate }}
                     </ion-item>
-
-                    <ion-item
-                    [title]="('SHARED.SEE_DETAILS.0' | translate) + ' ' + ('SHARED.SEE_DETAILS.1' | translate)"
-                    (click)="seePlace(place, $event)"
-                    mode="ios"
-                    lines="none"
-                    [button]="true">
-                      {{ 'SHARED.SEE_DETAILS.0' | translate }} <b class="mg-left-5">{{ 'SHARED.SEE_DETAILS.1' | translate }}</b>
-                    </ion-item>
                   </ion-list>
                 </div>
               </div>
 
               <ion-text mode="ios" class="color-gray-mid txt-right mg-top-8 d-block">
                 <p class="fs-10">{{ 'SHARED.LAST_UPDATE' | translate }}</p>
-                <p class="fs-12">5 de outubro de 2145</p>
+                <p class="fs-12">{{ place.festival_info.festivals[0].last_update | momentDate: this.currentLanguage.value }}</p>
               </ion-text>
             </div>
           </swiper-slide>
@@ -254,6 +249,12 @@ mode="ios">
 
   <ion-grid [fixed]="true">
     <ion-row>
+      <ion-col size="12" *ngIf="places && places.length === 0" class="no-pad-top">
+        <ion-text mode="ios" class="line-height-22">
+          <p class="color-gray-text fs-14 font-w-thin" >{{ 'SHARED.NO_PLACES' | translate }}.</p>
+        </ion-text>
+      </ion-col>
+
       <ng-container *ngIf="places && places.length > 0">
         <ion-col size="6">
           <div class="controls-wrapper">

@@ -144,6 +144,7 @@
     "ESTABLISHMENTS" : "establishments",
     "VERSION" : "version",
     "SEE_DETAILS" : ["see","details"],
+    "SEE_PROFILE" : ["see","profile"],
     "CANCEL" : "Cancel",
     "DEFINE" : "Define",
     "TODAY": "Today",

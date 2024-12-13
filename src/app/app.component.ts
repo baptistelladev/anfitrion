@@ -50,7 +50,9 @@ export class AppComponent implements OnInit {
     .then(async (res: string) => {
       this.getAppInfo();
 
-      await this.storageService.createStorage();
+      let teste = await this.storageService.createStorage();
+      console.log(teste, ' puta que pariu');
+
 
       if (this.platform.is('mobile') ) {
         await this.initializePushNotifications();
