@@ -11,7 +11,7 @@ import { Title } from '@angular/platform-browser';
 import { SuggestionsService } from 'src/app/core/services/firebase/suggestions.service';
 import { CollectionsEnum } from 'src/app/shared/enums/Collection';
 import { SuggestionsEnum } from 'src/app/shared/enums/Suggestions';
-import { IonContent, IonSelect, NavController } from '@ionic/angular';
+import { IonContent, IonSelect, NavController, Platform } from '@ionic/angular';
 import Swiper from 'swiper';
 import { MOCK_FILTERS } from 'src/app/shared/mocks/MockFilters';
 import { FilterEnum } from 'src/app/shared/enums/FilterEnum';
@@ -24,6 +24,10 @@ import { IFestivalFood } from 'src/app/shared/models/IFestivalFood';
 import { FestivalFoodTypeEnum } from 'src/app/shared/enums/FestivalFoodType';
 import { BenefitConsumerEnum } from 'src/app/shared/enums/BenefitConsumer';
 import * as moment from 'moment';
+import { OverlayService } from 'src/app/shared/services/overlay.service';
+import { TranslateService } from '@ngx-translate/core';
+import { IPhone } from 'src/app/shared/models/IPhone';
+import { PhoneTypesEnum } from 'src/app/shared/enums/PhoneTypes';
 
 @Component({
   selector: 'anfitrion-festival-comida-japonesa',
@@ -31,6 +35,8 @@ import * as moment from 'moment';
   styleUrls: ['./festival-comida-japonesa.page.scss'],
 })
 export class FestivalComidaJaponesaPage implements OnInit, OnDestroy, AfterViewInit {
+
+  public PhoneTypesEnum = PhoneTypesEnum;
 
   public hideRightControl: boolean = false;
   public hideLeftControl: boolean = true;
@@ -81,7 +87,10 @@ export class FestivalComidaJaponesaPage implements OnInit, OnDestroy, AfterViewI
     private suggestionsService : SuggestionsService,
     private navCtrl : NavController,
     private router : Router,
-    private placesService : PlacesService
+    private placesService : PlacesService,
+    private overlayService : OverlayService,
+    private translate : TranslateService,
+    private platform : Platform
   ) { }
 
   async ngOnInit() {
@@ -238,8 +247,8 @@ export class FestivalComidaJaponesaPage implements OnInit, OnDestroy, AfterViewI
             // Verifica se a propriedade e o array de festivais existem
             if (place.festival_info?.festivals) {
 
-              return place.festival_info.festivals.some((festival: any) => {
-                return festival.food_type === FestivalFoodTypeEnum.COMIDA_JAPONESA;
+              return place.festival_info.festivals.some((festival: IFestivalFood) => {
+                return festival.food_type?.value === FestivalFoodTypeEnum.COMIDA_JAPONESA;
               });
             }
             return false; // Se não houver festivais, exclui o place
@@ -260,6 +269,55 @@ export class FestivalComidaJaponesaPage implements OnInit, OnDestroy, AfterViewI
 
   public async scrollToTop() {
     this.japaneseFoodContent.scrollToTop(600);
+  }
+
+  public async redirectToWhatsapp(place: IPlace): Promise<HTMLIonAlertElement> {
+    const alert = await this.overlayService.fireAlert({
+      mode: 'ios',
+      cssClass: 'anfitrion-alert',
+      subHeader: 'WhatsApp',
+      message: `${this.translate.instant('SHARED.I_WILL_REDIRECT_YOU')} <b>${place.name}${this.currentLanguage.value === 'en' ? "'s WhatsApp," : ","}</b> ${this.translate.instant('SHARED.OK_QUESTION')}`,
+      buttons: [
+        {
+          role: 'cancel',
+          text: `${this.translate.instant('SHARED.CANCEL')}`,
+          handler: () => {
+
+          }
+        },
+        {
+          role: 'confirm',
+          text: `${this.translate.instant('SHARED.GO_TO_WHATS')}`,
+          handler: () => {
+            this.goToWhatsApp(place);
+          }
+        }
+      ]
+    })
+
+    await alert.present();
+
+    return alert;
+  }
+
+  public goToWhatsApp(place: IPlace): void {
+    let whats: undefined | IPhone = place.phones.find(phone => phone.type === PhoneTypesEnum.WHATSAPP);
+    let mensagem: string = this.translate.instant('MESSAGES.WELCOME_WHATSAPP');
+    let mensagemCodificada = encodeURIComponent(mensagem);
+
+    if (this.platform.is('desktop')) {
+      this.openExternalUrl(`https://wa.me/55${whats?.ddd}${whats?.number}?text=${mensagemCodificada}`, '_blank');
+    }
+
+    if (this.platform.is('mobileweb') || this.platform.is('mobile')) {
+      this.openExternalUrl(`https://wa.me/55${whats?.ddd}${whats?.number}?text=${mensagemCodificada}`, '_self');
+    }
+  }
+
+  public openExternalUrl(url: string, target: string = '_system'): void {
+    if (typeof window !== 'undefined') {
+      window.open(url, target);
+    }
   }
 
   public ngOnDestroy(): void {
