@@ -38,7 +38,7 @@
     </div>
 
     <div class="estabelecimento-content">
-      <ion-grid [fixed]="true">
+      <ion-grid [fixed]="true" class="no-pad-bottom">
         <ion-row>
           <ion-col size="12">
             <ion-text mode="ios" class="txt-center">
@@ -128,7 +128,7 @@
 
           <!-- EXPERTISE (SÓ APARECE SE FOR RESTAURANTE )-->
           <ng-container *ngIf="establishment.mainType.value === PlaceTypeCityEnum.RESTAURANTE">
-            <ion-col size="12" class="mg-top-32">
+            <ion-col size="12">
               <ion-text mode="ios">
                 <hr class="anfitrion-divider">
               </ion-text>
@@ -149,65 +149,102 @@
             </ion-col>
           </ng-container>
 
-          <!-- SÓ SE HOUVER RODIZIO DE COMIDA/FESTIVAL -->
-          <ng-container *ngIf="true">
-            <ion-col size="12">
-              <div class="japa-card">
-                <div class="japa-card-content">
-                  <div class="title">
-                    <ion-text mode="ios">
-                      <p class="color-gray-6 font-baloo fs-18">Festival de <b>comida japonesa</b></p>
-                    </ion-text>
-                  </div>
-
-                  <ul>
-                    <li>
-                      <p class="color-gray-mid fs-12">{{ 'FESTIVAL_PAGE.BY_PERSON' | translate }}</p><span></span><p class="color-green fs-16 font-w-bold">{{ 100 | currency: 'BRL' }}</p>
-                    </li>
-                    <li>
-                      <p class="color-gray-mid fs-12">{{ 'FESTIVAL_PAGE.CHILD_UNTIL' | translate: { year: 2 } }}</p><span></span><p class="color-gray-mid fs-14 font-w-bold txt-lowercase">{{ 'FESTIVAL_PAGE.FREE' | translate }}</p>
-                    </li>
-                    <li>
-                      <p class="color-gray-mid fs-12">{{ 'FESTIVAL_PAGE.CHILD_BETWEEN' | translate: { startYear: 2, endYear: 5 } }}</p><span></span><p class="color-gray-mid fs-14 font-w-bold txt-lowercase">{{ 'FESTIVAL_PAGE.HALF_PRICE' | translate }}</p>
-                    </li>
-                    <li>
-                      <p class="color-gray-mid fs-12">{{ 'FESTIVAL_PAGE.CHILD_ABOVE' | translate: { year: 5 } }}</p><span></span><p class="color-gray-mid fs-14 font-w-bold txt-lowercase">{{ 'FESTIVAL_PAGE.FULL_PRICE' | translate }}</p>
-                    </li>
-                    <li>
-                      <p class="color-gray-mid fs-12">{{ 'FESTIVAL_PAGE.BARIATRIC' | translate }}</p><span></span><p class="color-gray-mid fs-14 font-w-bold txt-lowercase">15% off</p>
-                    </li>
-                  </ul>
-
-                  <div class="button-list">
-                    <ion-list mode="ios" lines="none">
-                      <ion-item
-                      (click)="redirectToWhatsapp()"
-                      [title]="('SHARED.BOOKING.0' | translate) + ' ' + ('SHARED.BOOKING.1' | translate)"
-                      mode="ios"
-                      lines="none"
-                      [button]="true"
-                      class="reserve"
-                      [detailIcon]="'logo-whatsapp'">
-                        <span class="mg-right-5 font-w-bold">{{ 'SHARED.BOOKING.0' | translate }}</span> {{ 'SHARED.BOOKING.1' | translate }}
-                      </ion-item>
-                    </ion-list>
-                  </div>
-                </div>
-
-                <ion-text mode="ios" class="color-gray-mid txt-right mg-top-8 d-block">
-                  <p class="fs-10">{{ 'SHARED.LAST_UPDATE' | translate }}</p>
-                  <p class="fs-12">5 de outubro de 2145</p>
-                </ion-text>
-              </div>
-            </ion-col>
-          </ng-container>
-
           <ion-col size="12">
             <ion-text mode="ios">
               <hr class="anfitrion-divider">
             </ion-text>
           </ion-col>
+        </ion-row>
+      </ion-grid>
 
+      <div class="estabelecimento-swiper-wrapper">
+        <swiper-container
+        [attr.centered-slides]="false"
+        speed="5000"
+        [init]="true"
+        class="full-width swiper-w-relative-pagination"
+        #establishmentSwiper
+        free-mode="true"
+        [autoHeight]="false"
+        slides-offset-before="16"
+        slides-offset-after="16"
+        initial-slide="0"
+        [slides-per-view]="1.3"
+        [attr.space-between]="16"
+        [breakpoints]="{
+          '320' : {
+            slidesPerView: 1.3
+          },
+          '445' : {
+            slidesPerView: 1.7
+          },
+          '700' : {
+            slidesPerView: 2.3
+          },
+          '800' : {
+            slidesPerView: 2.6
+          }
+        }">
+          <ng-container *ngIf="establishment.festival_info && establishment.festival_info.festivals && establishment.festival_info.festivals.length > 0">
+            <swiper-slide
+            *ngFor="let festival of establishment.festival_info.festivals; let i = index"
+            class="unlock-shadow-from-swiper auto-width">
+            <div class="japa-card">
+              <div class="japa-card-content">
+                <div class="title">
+                  <ion-text mode="ios">
+                    <p class="color-gray-6 font-baloo fs-18">Festival de <b>{{ festival.food_type?.text[currentLanguage.value] }}</b></p>
+                  </ion-text>
+                </div>
+
+                <ul>
+                  <li *ngFor="let rule of festival.rules">
+                    <ng-container>
+                      <p class="color-gray-mid fs-12">
+                        {{ rule.consumer_festival_type?.text[currentLanguage.value] }} {{ rule.operator?.text[currentLanguage.value] }} {{ rule.condition_start }} <ng-container *ngIf="rule.condition_start">{{ 'FESTIVAL_PAGE.YEARS' | translate }}</ng-container> <ng-container *ngIf="rule.operator.value === BenefitOperatorsEnum.ENTRE"><span class="mg-left-5">{{ 'FESTIVAL_PAGE.AND' | translate }} {{ rule.condition_end }} {{ 'FESTIVAL_PAGE.YEARS' | translate }}</span></ng-container></p>
+                        <span class="separator"></span>
+                      <p class="color-green fs-16 font-w-bold" *ngIf="rule.price && rule.price !== 0">{{ rule.price | currency }}</p>
+                      <p class="color-gray-mid fs-14 font-w-bold txt-lowercase" *ngIf="!rule.price || rule.price === 0"><ng-container *ngIf="rule.discount && rule.discount !== 0">{{ rule.discount }}%</ng-container> {{ rule.benefit_type?.text[currentLanguage.value] }}</p>
+                    </ng-container>
+                  </li>
+                </ul>
+
+                <div class="button-list">
+                  <ion-list mode="ios" lines="none">
+                    <ion-item
+                    (click)="redirectToWhatsapp()"
+                    [title]="('SHARED.BOOKING.0' | translate) + ' ' + ('SHARED.BOOKING.1' | translate)"
+                    mode="ios"
+                    lines="none"
+                    [button]="true"
+                    class="reserve"
+                    [detailIcon]="'logo-whatsapp'">
+                      <span class="mg-right-5 font-w-bold">{{ 'SHARED.BOOKING.0' | translate }}</span> {{ 'SHARED.BOOKING.1' | translate }}
+                    </ion-item>
+                  </ion-list>
+                </div>
+              </div>
+
+              <ion-text mode="ios" class="color-gray-mid txt-right mg-top-8 d-block">
+                <p class="fs-10">{{ 'SHARED.LAST_UPDATE' | translate }}</p>
+                <p class="fs-12">5 de outubro de 2145</p>
+              </ion-text>
+            </div>
+            </swiper-slide>
+          </ng-container>
+
+          <ng-container *ngIf="!establishment">
+            <swiper-slide
+            *ngFor="let establishment of [1,2,3,4,5,6]; let i = index"
+            class="unlock-shadow-from-swiper auto-width">
+              <ion-skeleton-text [animated]="true" class="like-cards"></ion-skeleton-text>
+            </swiper-slide>
+          </ng-container>
+        </swiper-container>
+      </div>
+
+      <ion-grid [fixed]="true" class="no-pad-top">
+        <ion-row>
           <!-- TICKETS ALIMENTAÇÃO -->
           <ng-container *ngIf="establishment.mainType.value === PlaceTypeCityEnum.EMPORIO || establishment.mainType.value === PlaceTypeCityEnum.MERCADO">
             <ion-col size="12">

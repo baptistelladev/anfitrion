@@ -22,6 +22,7 @@ import { EstablishmentsService } from 'src/app/core/services/firebase/establishm
 import { CollectionsEnum } from 'src/app/shared/enums/Collection';
 import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
 import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
+import { BenefitOperatorsEnum } from 'src/app/shared/enums/BenefitOperators';
 
 
 @Component({
@@ -30,6 +31,9 @@ import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
   styleUrls: ['./estabelecimento.page.scss'],
 })
 export class EstabelecimentoPage implements OnInit, OnDestroy {
+
+
+  public BenefitOperatorsEnum = BenefitOperatorsEnum;
 
   @ViewChild('establishmentContent') establishmentContent: IonContent;
 

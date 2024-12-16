@@ -3,17 +3,16 @@ import { IFestivalFoodType } from "./IFestivalFoodType"
 
 export interface IFestivalFood {
   food_type?: IFestivalFoodType,
+  last_update?: string,
   rules?: [
     {
-      type?: string,
-      operator?: string,
-      condition?: {
-        start?: string
-        end?: string
-      },
-      benefit_type?: string,
-      price?: number
+      benefit_type: any,
+      condition_end: number,
+      condition_start: number,
+      consumer_festival_type: any,
+      discount: number,
+      operator: any,
+      price: number
     }
-  ],
-  last_update?: string
+  ]
 }

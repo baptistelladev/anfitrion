@@ -192,6 +192,7 @@
     "SUGGESTIONS" : "Sugestões",
     "SUGGESTION" : "Sugestão",
     "PLACES" : "Lugares",
+    "PLACE" : "Lugar",
     "RESTAURANTS" : "Restaurantes",
     "BARS" : "Bares",
     "COFFEE_SHOPS" : "Cafeterias",
@@ -379,6 +380,8 @@
     "BUTTON" : ["Voltar","para tela principal"]
   },
   "FESTIVAL_PAGE" : {
+    "YEARS" : "anos",
+    "AND" : "e",
     "BY_PERSON" : "Por pessoa",
     "CHILD_UNTIL" : "Criança até {{ year }} anos",
     "CHILD_BETWEEN" : "Criança entre {{ startYear }} anos e {{ endYear }} anos",

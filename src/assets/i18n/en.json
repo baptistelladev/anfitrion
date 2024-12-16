@@ -177,7 +177,7 @@
     "NO_RESULT_KIOSKS" : "No kiosks for now",
     "NO_RESULT_ESTABLISHMENTS" : "No establishments for now",
     "NO_RESULT_PARKINGS" : "No parking for now",
-    "SPECIALTY" : "Cooking",
+    "SPECIALTY" : "Couzines",
     "NUMBER" : "Number",
     "NO_OPEN" : "Doesn't open",
     "COMING_SOON" : "Coming soon",
@@ -192,6 +192,7 @@
     "SUGGESTIONS" : "Suggestions",
     "SUGGESTION" : "Suggestion",
     "PLACES" : "Places",
+    "PLACE" : "Place",
     "RESTAURANTS": "Restaurants",
     "BARS": "Bars",
     "COFFEE_SHOPS": "Coffee Shops",
@@ -385,6 +386,8 @@
     "BUTTON": ["Back", "to main screen"]
   },
   "FESTIVAL_PAGE": {
+    "YEARS" : "years",
+    "AND" : "and",
     "BY_PERSON": "Per person",
     "CHILD_UNTIL": "Child up to {{ year }} years",
     "CHILD_BETWEEN": "Child between {{ startYear }} and {{ endYear }} years",
