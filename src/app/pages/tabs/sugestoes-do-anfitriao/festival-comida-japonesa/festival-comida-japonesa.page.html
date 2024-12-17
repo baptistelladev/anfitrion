@@ -80,7 +80,7 @@ mode="ios">
           </ion-text>
         </ion-col>
 
-        <ion-col size="12">
+        <ion-col size="12" *ngIf="places && places.length > 0">
           <div class="view-n-filter-wrapper">
             <div class="looking-for-wrapper">
 
@@ -116,7 +116,7 @@ mode="ios">
           </div>
         </ion-col>
 
-        <ion-col size="12" class="no-pad-bottom no-pad-top" *ngIf="activeFilter">
+        <ion-col size="12" class="no-pad-bottom no-pad-top" *ngIf="activeFilter && places && places.length > 0">
           <ion-text mode="ios" class="line-height-18">
             <p class="fs-14 color-gray-text">{{ 'SHARED.LOOKING_FOR' | translate }}: <span class="fs-14 color-green font-w-semibold txt-lowercase">{{ activeFilter.text[currentLanguage.value] }}</span></p>
           </ion-text>
@@ -125,7 +125,7 @@ mode="ios">
     </ion-grid>
 
      <!-- SLIDE -->
-     <div class="festival-comida-japonesa-swiper-wrapper">
+     <div class="festival-comida-japonesa-swiper-wrapper" [ngClass]="{'no-padding': places && places.length === 0}">
       <swiper-container
       [attr.centered-slides]="false"
       speed="5000"
