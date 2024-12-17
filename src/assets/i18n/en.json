@@ -388,18 +388,11 @@
   "FESTIVAL_PAGE": {
     "YEARS" : "years",
     "AND" : "and",
-    "BY_PERSON": "Per person",
-    "CHILD_UNTIL": "Child up to {{ year }} years",
-    "CHILD_BETWEEN": "Child between {{ startYear }} and {{ endYear }} years",
-    "CHILD_ABOVE": "Child above {{ year }} years",
-    "BARIATRIC": "Bariatrics",
-    "FREE": "Free",
-    "FULL_PRICE": "Full price",
-    "HALF_PRICE": "Half price",
     "WE_ARE_TALKING" : "Since we are talking about",
     "WE_ARE_TALKING_DESC" : [
       "Each restaurant has its own promotions and exclusive prices. Some even differentiate prices for lunch, dinner, weekends, etc. Here at Anfitrion, we make sure to break everything down for you, so you don't have to waste time scrolling through social media.",
       "If you want to check out the promotions, click/tap the (see details) button. And, of course, if you’d like to take a peek at the restaurant’s Instagram, feel free! What matters is that we’ve already done the heavy lifting: we’ve gathered everything in one place, just for you, with care."
-    ]
+    ],
+    "FESTIVAL" : "festival"
   }
 }
