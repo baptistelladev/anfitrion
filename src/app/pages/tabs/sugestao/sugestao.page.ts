@@ -21,9 +21,9 @@ import { PlacesService } from 'src/app/core/services/firebase/places.service';
 import { ISuggestion } from 'src/app/shared/models/ISuggestion';
 import { ActivatedRoute } from '@angular/router';
 import { SuggestionsEnum } from 'src/app/shared/enums/Suggestions';
-import { IFIrebaseFilter } from 'src/app/shared/models/IFirebaseFilter';
 import { FilterEnum } from 'src/app/shared/enums/FilterEnum';
 import { MOCK_FILTERS } from 'src/app/shared/mocks/MockFilters';
+import { IFirebaseFilter } from 'src/app/shared/models/IFirebaseFilter';
 
 @Component({
   selector: 'anfitrion-sugestao',
@@ -251,7 +251,7 @@ export class SugestaoPage implements OnInit, OnDestroy {
     this.selectedFilter = value;
   }
 
-  public getPlaces(filters: IFIrebaseFilter[] = []) {
+  public getPlaces(filters: IFirebaseFilter[] = []) {
     this.establishments$ = this.placesService
       .getCollection(
         CollectionsEnum.PLACES,

@@ -23,10 +23,10 @@ import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 import { IFilter } from 'src/app/shared/models/IFilter';
 import { MOCK_FILTERS } from 'src/app/shared/mocks/MockFilters';
 import { FilterEnum } from 'src/app/shared/enums/FilterEnum';
-import { IFIrebaseFilter } from 'src/app/shared/models/IFirebaseFilter';
 import { IPlace } from 'src/app/shared/models/IPlace';
 import { CollectionsEnum } from 'src/app/shared/enums/Collection';
 import Swiper from 'swiper';
+import { IFirebaseFilter } from 'src/app/shared/models/IFirebaseFilter';
 
 @Component({
   selector: 'anfitrion-lugar-na-praia',
@@ -44,7 +44,7 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy, AfterViewInit {
   public showBeachMap: boolean = false;
   public beachPngPrint: any;
 
-  public filter: IFIrebaseFilter[];
+  public filter: IFirebaseFilter[];
 
   public selectedFilter: string;
   public activeFilter: any;
@@ -285,7 +285,7 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy, AfterViewInit {
     this.defineActiveFilter(e.detail.value);
   }
 
-  public getPlaces(filters: IFIrebaseFilter[] = []) {
+  public getPlaces(filters: IFirebaseFilter[] = []) {
     if (this.currentCityAsParam && this.placeType && this.currentLocationAsParam) {
       this.places$ = this.placesService
       .getCollection(

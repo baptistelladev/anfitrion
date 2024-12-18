@@ -1,6 +1,6 @@
 import { WhereFilterOp } from "firebase/firestore";
 
-export interface IFIrebaseFilter {
+export interface IFirebaseFilter {
   field: string;
   operator: WhereFilterOp;
   value: any;
