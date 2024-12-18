@@ -140,7 +140,7 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
   }
 
   public defineTitleFromPage(establishment_name: string): void {
-    this.title.setTitle(`${establishment_name} na Rua Gastronômica de Santos`);
+    this.title.setTitle(`${establishment_name}`);
   }
 
   public back(): void {
