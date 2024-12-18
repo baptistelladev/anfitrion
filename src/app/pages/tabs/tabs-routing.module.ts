@@ -18,8 +18,12 @@ const routes: Routes = [
         loadChildren: () => import('./ajude-nosso-projeto/ajude-nosso-projeto.module').then( m => m.AjudeNossoProjetoPageModule)
       },
       {
-        path: 'estabelecimento/:name',
+        path: 'estabelecimento-na-cidade/:name',
         loadChildren: () => import('./estabelecimento/estabelecimento.module').then( m => m.EstabelecimentoPageModule)
+      },
+      {
+        path: 'estabelecimento-na-praia/:name',
+        loadChildren: () => import('./estabelecimento-praia/estabelecimento-praia.module').then( m => m.EstabelecimentoPraiaPageModule)
       },
       {
         path: 'menu',
@@ -88,16 +92,12 @@ const routes: Routes = [
       {
         path: 'cidades',
         loadChildren: () => import('./cidades/cidades.module').then( m => m.CidadesPageModule)
+      },
+      {
+        path: 'termos-e-condicoes-de-uso',
+        loadChildren: () => import('./termos-e-condicoes-de-uso/termos-e-condicoes-de-uso.module').then( m => m.TermosECondicoesDeUsoPageModule)
       }
     ]
-  },
-  {
-    path: 'termos-e-condicoes-de-uso',
-    loadChildren: () => import('./termos-e-condicoes-de-uso/termos-e-condicoes-de-uso.module').then( m => m.TermosECondicoesDeUsoPageModule)
-  },
-  {
-    path: 'lugar-na-praia',
-    loadChildren: () => import('./features-praia/lugar-na-praia/lugar-na-praia.module').then( m => m.LugarNaPraiaPageModule)
   }
 ];
 

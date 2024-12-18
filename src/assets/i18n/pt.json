@@ -335,6 +335,11 @@
     "IS_VERIFIED" : {
       "TITLE" : "Verificado",
       "TEXT" : "é um ótimo anfitrião pois além de manter os dados atualizados também colabora com este projeto financeiramente para que você economize tempo."
+    },
+    "DELIVERY_ON_THE_SAND" : {
+      "TEXT" : ["Entrega","na areia"],
+      "DONT" : "Não entrega na areia",
+      "ASK_AND_RECEIVE" : "Peça e receba na faixa de areia, sem sair do lugar"
     }
   },
   "PETFRIENDLY" : {

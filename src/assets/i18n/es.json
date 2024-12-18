@@ -343,6 +343,11 @@
     "IS_VERIFIED": {
       "TITLE": "Verificado",
       "TEXT" : "es un gran anfitrión porque, además de mantener los datos actualizados, también colabora financieramente con este proyecto para que puedas ahorrar tiempo."
+    },
+    "DELIVERY_ON_THE_SAND": {
+      "TEXT": ["Entrega", "en la arena"],
+      "DONT": "No entrega en la arena",
+      "ASK_AND_RECEIVE": "Pide y recibe en la arena, sin moverte de tu lugar"
     }
   },
   "PETFRIENDLY": {

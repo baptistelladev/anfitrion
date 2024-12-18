@@ -341,6 +341,11 @@
     "IS_VERIFIED": {
       "TITLE": "Verified",
       "TEXT" : "is a great host because, in addition to keeping the data updated, it also collaborates financially with this project so you can save time."
+    },
+    "DELIVERY_ON_THE_SAND": {
+      "TEXT": ["Delivery", "on the sand"],
+      "DONT": "Does not deliver on the sand",
+      "ASK_AND_RECEIVE": "Order and receive on the sand, without leaving your spot"
     }
   },
   "PETFRIENDLY": {

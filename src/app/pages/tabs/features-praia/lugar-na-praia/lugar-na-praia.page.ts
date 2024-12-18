@@ -308,6 +308,15 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy, AfterViewInit {
     this.swiper?.slideTo(index, 800);
   }
 
+  public seePlace(place: IPlace, e: any): void {
+    if (place.isBuilding) {
+      e.preventDefault();
+    } else {
+      this.navCtrl.navigateForward(['/logado/estabelecimento-na-praia/' + place.value]);
+      this.store.dispatch(AppStore.setCurrentEstablishment({ establishment: place } ))
+    }
+  }
+
   public ngOnDestroy(): void {
     this.currentLanguageSubscription.unsubscribe();
     this.userSubscription.unsubscribe();
