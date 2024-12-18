@@ -146,9 +146,18 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy, AfterViewInit {
 
         this.getPlaces(this.filter);
         break;
+
+      case FilterEnum.DELIVERY_ON_THE_SAND:
+        this.filter.push(
+          { field: 'origin.value', operator: '==', value: this.currentCityAsParam?.value },
+          { field: 'mainType.value', operator: '==', value: this.placeType },
+          { field: 'work_place', operator: 'array-contains-any', value: [this.currentLocationAsParam] },
+          { field: 'delivery_sand.make_delivery', operator: '==', value: true }
+        )
+
+        this.getPlaces(this.filter);
+        break;
     }
-
-
 
     console.log(this.filter);
 
