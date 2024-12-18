@@ -40,6 +40,9 @@ export function createTranslateLoader(http: HttpClient) {
 import localePt from '@angular/common/locales/pt';
 registerLocaleData(localePt, 'pt-BR');
 
+import { passiveSupport } from 'passive-events-support/src/utils'
+passiveSupport({/*...*/})
+
 @NgModule({
   declarations: [],
   imports: [
