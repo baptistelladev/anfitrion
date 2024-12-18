@@ -234,7 +234,7 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
     if (place.isBuilding) {
       e.preventDefault();
     } else {
-      this.navCtrl.navigateForward(['/logado/estabelecimento/' + place.value]);
+      this.navCtrl.navigateForward(['/logado/estabelecimento-na-cidade/' + place.value]);
       this.store.dispatch(AppStore.setCurrentEstablishment({ establishment: place } ))
     }
   }

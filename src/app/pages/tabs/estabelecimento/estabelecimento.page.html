@@ -116,7 +116,7 @@
             <ion-item
             lines="none"
             mode="ios"
-            class="simulate-bootstrap-alert success mg-top-16 line-height-18">
+            class="simulate-bootstrap-alert success mg-top-16 line-height-18 mg-bottom-10">
               <ion-icon src="./../../../../assets/icon/verified-check.svg" class="verified" slot="start"></ion-icon>
 
               <ion-text mode="ios" class="color-bootstrap-success">
@@ -128,12 +128,6 @@
 
           <!-- EXPERTISE (SÓ APARECE SE FOR RESTAURANTE )-->
           <ng-container *ngIf="establishment.mainType.value === PlaceTypeCityEnum.RESTAURANTE">
-            <ion-col size="12">
-              <ion-text mode="ios">
-                <hr class="anfitrion-divider">
-              </ion-text>
-            </ion-col>
-
             <ion-col size="12">
               <ion-item mode="ios" lines="none" class="establishment-item">
                 <ion-icon name="restaurant-outline" slot="start"></ion-icon>

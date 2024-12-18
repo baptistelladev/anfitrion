@@ -165,7 +165,7 @@ class="ion-content-w-linear-bg"
 
         <ng-container *ngIf="places && places.length > 0">
           <ion-col size="12" size-sm="6" size-lg="4" *ngFor="let place of places">
-            <div class="kiosks-wrapper">
+            <div class="kiosks-wrapper" (click)="seePlace(place, $event)">
               <div class="beach-kiosk-container">
 
                 <ion-icon src="./../../../../assets/icon/verified-check.svg" class="verified" *ngIf="place.isPremium"></ion-icon>

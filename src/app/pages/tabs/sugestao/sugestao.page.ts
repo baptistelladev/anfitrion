@@ -342,7 +342,7 @@ export class SugestaoPage implements OnInit, OnDestroy {
     if (establishment.isBuilding) {
       e.preventDefault();
     } else {
-      this.navCtrl.navigateForward(['/logado/estabelecimento/' + establishment.value]);
+      this.navCtrl.navigateForward(['/logado/estabelecimento-na-cidade/' + establishment.value]);
       this.store.dispatch(AppStore.setCurrentEstablishment({ establishment: establishment } ))
     }
   }
@@ -354,7 +354,7 @@ export class SugestaoPage implements OnInit, OnDestroy {
       this.showSpecificList = false;
 
       setTimeout(() => {
-        this.navCtrl.navigateForward(['/estabelecimento/' + establishment.value]);
+        this.navCtrl.navigateForward(['/estabelecimento-na-cidade/' + establishment.value]);
         this.store.dispatch(AppStore.setCurrentEstablishment({ establishment: establishment } ))
       }, 100);
     }

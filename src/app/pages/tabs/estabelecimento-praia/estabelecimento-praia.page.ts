@@ -24,13 +24,14 @@ import { AnalyticsService } from 'src/app/core/services/firebase/analytics.servi
 import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 import { BenefitOperatorsEnum } from 'src/app/shared/enums/BenefitOperators';
 
-
 @Component({
-  selector: 'anfitrion-estabelecimento',
-  templateUrl: './estabelecimento.page.html',
-  styleUrls: ['./estabelecimento.page.scss'],
+  selector: 'anfitrion-estabelecimento-praia',
+  templateUrl: './estabelecimento-praia.page.html',
+  styleUrls: ['./estabelecimento-praia.page.scss'],
 })
-export class EstabelecimentoPage implements OnInit, OnDestroy {
+export class EstabelecimentoPraiaPage implements OnInit, OnDestroy {
+
+  public showBeachMap: boolean = false;
 
   public BenefitOperatorsEnum = BenefitOperatorsEnum;
 
@@ -140,7 +141,7 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
   }
 
   public defineTitleFromPage(establishment_name: string): void {
-    this.title.setTitle(`${establishment_name} na Rua Gastronômica de Santos`);
+    this.title.setTitle(`${establishment_name}`);
   }
 
   public back(): void {
@@ -317,7 +318,12 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
     }
   }
 
+  public async toggleModalMap(show: boolean) {
+    this.showBeachMap = show;
+  }
+
   ngOnDestroy(): void {
     this.establishmentSubscription.unsubscribe();
   }
+
 }
