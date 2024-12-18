@@ -181,7 +181,7 @@ class="ion-content-w-linear-bg"
 
                   <ion-text mode="ios" class="line-height-16">
                     <p class="color-gray-text fs-15 font-baloo name"><b>{{ place.name }}</b></p>
-                    <p class="color-gray-mid fs-12">{{ place.beachInfo?.text }} &#x2022; {{ place.mainBeach }}</p>
+                    <p class="color-gray-mid fs-12">{{ place.beachInfo?.text[currentLanguage.value] }} <ng-container *ngIf="place.mainBeach">&#x2022; {{ place.mainBeach }}</ng-container></p>
 
                     <ion-chip
                     *ngIf="place.delivery_sand"

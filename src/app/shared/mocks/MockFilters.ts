@@ -51,5 +51,14 @@ export const MOCK_FILTERS: IFilter[] = [
       es: 'Área de niños'
     },
     dontShowIn: [PlaceTypeCityEnum.ADEGA, PlaceTypeCityEnum.DOCERIA, PlaceTypeCityEnum.CAFETERIA, PlaceTypeCityEnum.EMPORIO, PlaceTypeCityEnum.MERCADO, PlaceTypeCityEnum.TABACARIA, PlaceTypeBeachEnum.QUIOSQUE, SuggestionsEnum.FESTIVAL_COMIDA_JAPONESA]
+  },
+  {
+    value: FilterEnum.DELIVERY_ON_THE_SAND,
+    text: {
+      pt: 'Entrega na areia',
+      en: 'Delivery on the sand',
+      es: 'Entrega en la arena'
+    },
+    dontShowIn: [PlaceTypeCityEnum.ADEGA, PlaceTypeCityEnum.DOCERIA, PlaceTypeCityEnum.CAFETERIA, PlaceTypeCityEnum.EMPORIO, PlaceTypeCityEnum.MERCADO, PlaceTypeCityEnum.TABACARIA, SuggestionsEnum.FESTIVAL_COMIDA_JAPONESA]
   }
 ]
