@@ -111,7 +111,7 @@ class="ion-content-w-linear-bg">
                   </ng-container>
 
                   <ng-container *ngIf="places && places.length > 0">
-                    <ng-container *ngFor="let place of FEATURES.places">
+                    <ng-container *ngFor="let place of FEATURES.places; ; trackBy: trackByFeature">
                       <ion-col
                       size="auto"
                       *ngIf="place.show">

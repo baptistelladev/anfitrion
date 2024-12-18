@@ -17,7 +17,6 @@ import { PlacesService } from 'src/app/core/services/firebase/places.service';
 import Swiper from 'swiper';
 import { ICity } from 'src/app/shared/models/ICity';
 import { MOCK_FILTERS } from 'src/app/shared/mocks/MockFilters';
-import { IFIrebaseFilter } from 'src/app/shared/models/IFirebaseFilter';
 import { IFilter } from 'src/app/shared/models/IFilter';
 import { FilterEnum } from 'src/app/shared/enums/FilterEnum';
 import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
@@ -26,6 +25,7 @@ import { SuggestionsEnum } from 'src/app/shared/enums/Suggestions';
 import { LocationEnum } from 'src/app/shared/enums/Location';
 import { IUSer } from 'src/app/shared/models/IUser';
 import * as UserStore from './../../../../shared/store/user.state';
+import { IFirebaseFilter } from 'src/app/shared/models/IFirebaseFilter';
 
 @Component({
   selector: 'anfitrion-lugar-na-cidade',
@@ -207,7 +207,7 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
     })
   }
 
-  public getPlaces(filters: IFIrebaseFilter[] = []) {
+  public getPlaces(filters: IFirebaseFilter[] = []) {
     if (this.currentCityAsParam && this.placeType && this.currentLocationAsParam) {
       this.places$ = this.placesService
       .getCollection(

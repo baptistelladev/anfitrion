@@ -17,7 +17,6 @@ import { MOCK_FILTERS } from 'src/app/shared/mocks/MockFilters';
 import { FilterEnum } from 'src/app/shared/enums/FilterEnum';
 import { IPlace } from 'src/app/shared/models/IPlace';
 import { PlacesService } from 'src/app/core/services/firebase/places.service';
-import { IFIrebaseFilter } from 'src/app/shared/models/IFirebaseFilter';
 import { IFilter } from 'src/app/shared/models/IFilter';
 import { ICity } from 'src/app/shared/models/ICity';
 import { IFestivalFood } from 'src/app/shared/models/IFestivalFood';
@@ -28,6 +27,7 @@ import { OverlayService } from 'src/app/shared/services/overlay.service';
 import { TranslateService } from '@ngx-translate/core';
 import { IPhone } from 'src/app/shared/models/IPhone';
 import { PhoneTypesEnum } from 'src/app/shared/enums/PhoneTypes';
+import { IFirebaseFilter } from 'src/app/shared/models/IFirebaseFilter';
 
 @Component({
   selector: 'anfitrion-festival-comida-japonesa',
@@ -231,7 +231,7 @@ export class FestivalComidaJaponesaPage implements OnInit, OnDestroy, AfterViewI
     return this.MOCK_FILTERS
   }
 
-  public getPlaces(filters: IFIrebaseFilter[] = []) {
+  public getPlaces(filters: IFirebaseFilter[] = []) {
     this.places$ = this.placesService
       .getCollection(
         CollectionsEnum.PLACES,

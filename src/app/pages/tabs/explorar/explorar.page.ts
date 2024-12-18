@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription, take } from 'rxjs';
 import { ILang } from 'src/app/shared/models/ILang';
@@ -93,7 +93,9 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     private placesService : PlacesService,
     private peopleService : PeopleService,
     private translate : TranslateService,
-    private analyticsService : AnalyticsService
+    private analyticsService : AnalyticsService,
+    private cdr: ChangeDetectorRef,
+    private zone: NgZone
   ) { }
 
   ngOnInit() {
@@ -112,7 +114,8 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
-  public async getPlacesFromCity() {
+  public getPlacesFromCity() {
+
 
     this.lookingForPlaces = true;
 
@@ -126,8 +129,10 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     );
 
     this.placesSubscription = this.places$
-    .subscribe( async (places: IPlace[]) => {
+    .subscribe( (places: IPlace[]) => {
       this.places = places;
+
+      this.cdr.detectChanges();
 
       let compressedInformation = this.places.reduce((acc: any, place) => {
         const key = place.mainType.value.toUpperCase();
@@ -140,75 +145,6 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
       })
 
       this.lookingForPlaces = false;
-    })
-  }
-
-
-  public async getPeopleFromBeach() {
-
-    this.lookingForPlaces = true;
-
-    this.people$ = this.peopleService
-    .getCollection(
-      CollectionsEnum.PEOPLE,
-      [
-        { field: 'origin.value', operator: '==', value: this.currentCity.value },
-        { field: 'work_place', operator: 'array-contains-any', value: [this.selectedSegment] }
-      ]
-    );
-
-    this.peopleSubscription = this.people$
-    .subscribe( async (people: any[]) => {
-      this.people = people;
-
-      console.log(this.people);
-
-
-      let compressedInformation = this.people.reduce((acc: any, place) => {
-        const key = place.mainType.value.toUpperCase();
-        acc[key] = (acc[key] || 0) + 1;
-        return acc;
-      }, {});
-
-      this.FEATURES.people.forEach((feature: any) => {
-        feature.atLeastOneLength = compressedInformation[feature.value] ? compressedInformation[feature.value] : 0
-      })
-
-      this.lookingForPlaces = false;
-    })
-  }
-
-  public async getPeopleFromCity() {
-
-    this.lookingForPeople = true;
-
-    this.people$ = this.peopleService
-    .getCollection(
-      CollectionsEnum.PEOPLE,
-      [
-        { field: 'origin.value', operator: '==', value: this.currentCity.value },
-        { field: 'work_place', operator: 'array-contains-any', value: [this.selectedSegment] }
-      ]
-    );
-
-    this.peopleSubscription = this.people$
-    .subscribe( async (people: any[]) => {
-      this.people = people;
-
-      console.log(this.people);
-
-
-      let compressedInformation = this.people.reduce((acc: any, place) => {
-        const key = place.mainType.value.toUpperCase();
-        acc[key] = (acc[key] || 0) + 1;
-        return acc;
-      }, {});
-
-      this.FEATURES.people.forEach((feature: any) => {
-        feature.atLeastOneLength = compressedInformation[feature.value] ? compressedInformation[feature.value] : 0
-      })
-
-      this.lookingForPeople = false;
     })
   }
 
@@ -228,6 +164,8 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     .subscribe( async (places: IPlace[]) => {
       this.places = places;
 
+      this.cdr.detectChanges();
+
       let compressedInformation = this.places.reduce((acc: any, place) => {
         const key = place.mainType.value.toUpperCase();
 
@@ -237,12 +175,18 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
 
       this.FEATURES.places.forEach((feature: any) => {
         feature.atLeastOneLength = compressedInformation[feature.value] ? compressedInformation[feature.value] : 0
-
-        console.log(feature.atLeastOneLength);
       })
 
-      this.lookingForPlaces = false
+      this.lookingForPlaces = false;
+
+      console.log(this.lookingForPlaces, places);
+
+
     })
+  }
+
+  public trackByFeature(index: number, feature: any): string {
+    return feature.value// Assumindo que "id" é um identificador único para o lugar
   }
 
   public selectInitialSegment(segmentValue: string) {

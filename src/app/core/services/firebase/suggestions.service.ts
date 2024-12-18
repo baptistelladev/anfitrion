@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { collection, query, where, getDocs, QueryConstraint, getDoc, CollectionReference, WhereFilterOp, doc, DocumentReference, orderBy } from 'firebase/firestore';
 import { from, Observable } from 'rxjs';
-import { IFIrebaseFilter } from 'src/app/shared/models/IFirebaseFilter';
+import { IFirebaseFilter } from 'src/app/shared/models/IFirebaseFilter';
 import { ISuggestion } from 'src/app/shared/models/ISuggestion';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class SuggestionsService {
 
   public getSuggestions(
     collectionName: string,
-    filters: IFIrebaseFilter[] = [],
+    filters: IFirebaseFilter[] = [],
     orderByField: string = '',
     orderDirection: 'asc' | 'desc' = 'asc'
   ): Observable<any[]> {

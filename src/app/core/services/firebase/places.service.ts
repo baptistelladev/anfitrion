@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { collectionData, Firestore } from '@angular/fire/firestore';
-import { collection, CollectionReference, doc, getDocs, orderBy, query, QueryConstraint, updateDoc, where } from 'firebase/firestore';
+import { collection, CollectionReference, doc, getDocs, onSnapshot, orderBy, query, QueryConstraint, updateDoc, where } from 'firebase/firestore';
 import { from, Observable } from 'rxjs';
-import { IFIrebaseFilter } from 'src/app/shared/models/IFirebaseFilter';
+import { IFirebaseFilter } from 'src/app/shared/models/IFirebaseFilter';
 import { IPlace } from 'src/app/shared/models/IPlace';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class PlacesService {
 
   public getCollection(
     collectionName: string,
-    filters: IFIrebaseFilter[] = [],
+    filters: IFirebaseFilter[] = [],
     orderByField: string = '',
     orderDirection: 'asc' | 'desc' = 'asc'
   ): Observable<IPlace[]> {
@@ -41,9 +41,29 @@ export class PlacesService {
     const q = query(colRef, ...queryConstraints);
 
     // Converte a `Promise` resultante do `getDocs` em um `Observable`
-    return from(getDocs(q).then(querySnapshot =>
-      querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })) as IPlace[]
-    ));
+    return new Observable<any[]>(observer => {
+      // Adiciona o listener de snapshot para a consulta
+      const unsubscribe = onSnapshot(
+        q,
+        querySnapshot => {
+          // Mapeia os dados dos documentos
+          const data = querySnapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data()
+          })) as IPlace[];
+
+          // Emite os dados atualizados para o Observable
+          observer.next(data);
+        },
+        error => {
+          // Emite erro, caso algo falhe
+          observer.error(error);
+        }
+      );
+
+      // Cleanup: remove o listener quando o Observable for cancelado
+      return () => unsubscribe();
+    });
   }
 
   public async getCollectionFilteredBy(collectionName: string, field: string): Promise<IPlace[]> {
