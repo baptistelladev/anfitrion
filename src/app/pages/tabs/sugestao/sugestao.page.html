@@ -208,6 +208,7 @@ mode="ios">
                     {{ establishment.mainType.text[currentLanguage.value] }}
                   </p>
                   <h2 class="color-gray-text font-baloo name"><b>{{ establishment.name }}</b></h2>
+                  <p class="subname color-gray-text">{{ establishment.sub_name }}</p>
                   <p class="number color-gray-text">n&ordm; {{ establishment.adress.number }}</p>
                 </ion-text>
               </ion-card-content>
@@ -471,7 +472,7 @@ mode="md">
                   <p class="color-gray-text txt-uppercase type font-w-thin type">
                     {{ establishment.mainType.text[currentLanguage.value] }}
                   </p>
-                  <h2 class="color-gray-text font-baloo name fs-20"><b>{{ establishment.name }}</b></h2>
+                  <h2 class="color-gray-text font-baloo name fs-20"><b>{{ establishment.name }} {{ establishment.sub_name }}</b></h2>
                   <p class="number color-gray-text">n&ordm; {{ establishment.adress.number }}</p>
                 </ion-text>
               </ion-item>

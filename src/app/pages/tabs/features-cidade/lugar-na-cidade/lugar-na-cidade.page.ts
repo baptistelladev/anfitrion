@@ -322,7 +322,10 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnDestroy(): void {
-    this.placesSubscription.unsubscribe();
+    if (this.placesSubscription) {
+      this.placesSubscription.unsubscribe();
+    }
+
     this.currentLanguageSubscription.unsubscribe();
     this.canAccessEightenContentSubscription.unsubscribe();
     this.userSubscription.unsubscribe();

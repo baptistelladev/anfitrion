@@ -187,12 +187,12 @@ mode="ios">
                       <p class="color-gray-text txt-uppercase type font-w-thin type fs-9">
                         {{ place.mainType.text[currentLanguage.value] }}
                       </p>
-                      <h2 class="color-gray-text font-baloo name fs-16"><b>{{ place.name }}</b></h2>
+                      <h2 class="color-gray-text font-baloo name fs-16"><b>{{ place.name }} {{ place.sub_name }}</b></h2>
                     </ion-text>
                   </div>
                 </div>
 
-                <ul>
+                <ul class="rules">
                   <li *ngFor="let rule of place.festival_info.festivals[0].rules">
                     <ng-container>
                       <p class="color-gray-mid fs-12">
@@ -203,6 +203,16 @@ mode="ios">
                     </ng-container>
                   </li>
                 </ul>
+
+                <div class="included" *ngIf="place.festival_info.festivals[0].courtesies && place.festival_info.festivals[0].courtesies.length > 0">
+                  <ion-chip class="as-badge gray-text fs-10 mg-bottom-5">{{ 'FESTIVAL_PAGE.INCLUDED' | translate }}</ion-chip>
+
+                  <ion-text mode="ios" class="color-gray-text">
+                    <p class="fs-14 mg-top-5 txt-lowercase">
+                      <ng-container *ngFor="let courtesy of place.festival_info.festivals[0].courtesies; let isFirst = first"><span [ngClass]="{'mg-left-5': !isFirst}"><span class="color-gray-mid">&#x2022;</span> {{ courtesy.number }} {{ courtesy.courtesy.text[currentLanguage.value] }}</span></ng-container>
+                    </p>
+                  </ion-text>
+                </div>
 
                 <div class="button-list">
                   <ion-list mode="ios" lines="none">
@@ -294,7 +304,7 @@ mode="ios">
       </ion-col>
 
       <ion-col size="12" size-md="6">
-        <ion-text mode="ios">
+        <ion-text mode="ios" class="line-height-22">
           <p class="font-baloo fs-20 color-gray-text font-w-bold" *ngIf="currentSuggestion">
             {{ 'FESTIVAL_PAGE.WE_ARE_TALKING' | translate }} {{ currentSuggestion.name.text[currentLanguage.value] }}
           </p>

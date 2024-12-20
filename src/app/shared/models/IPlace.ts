@@ -11,6 +11,7 @@ import { IFestivalFood } from "./IFestivalFood"
 export interface IPlace {
   id?: string,
   name: string,
+  sub_name: string,
   value: string,
   adress: {
     number: string,

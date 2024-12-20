@@ -113,6 +113,10 @@ ion-text.proportional-text {
     padding: 0;
     transition: all 200ms ease;
 
+    .included {
+      padding: 0 16px 16px 16px;
+    }
+
     .info-wrapper {
       @include flexbox(center, flex-start, row);
       padding: 16px;
@@ -173,7 +177,7 @@ ion-text.proportional-text {
     }
 
 
-    ul {
+    ul.rules {
       padding: 0 16px 16px 16px;
       margin: 0;
       list-style: none;
