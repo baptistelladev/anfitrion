@@ -1,8 +1,6 @@
 @import './../../../../../assets/scss/utils/mixins.scss';
 
 ion-content {
-  --background: linear-gradient(to top, var(--gray-ed) 15%, var(--white));
-
   section {
     &.festival-comida-japonesa-hero {
       width: 100%;
