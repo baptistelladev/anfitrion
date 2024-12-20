@@ -263,8 +263,9 @@
     "MADE_W_LOVE" : ["made with","at"],
     "TABS" : {
       "EXPLORE" : "Explore",
-      "SUGGESTIONS" : "Suggestions",
-      "MENU" : "Menu"
+      "SUGGESTIONS" : "Tips",
+      "MENU" : "Menu",
+      "GUIDE" : "Guide"
     },
     "CHANGE_LANG" : "Change language",
     "SEGMENT_VIEW": {

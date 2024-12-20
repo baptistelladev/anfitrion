@@ -45,6 +45,42 @@ export const appInitialState: IAppState = {
     value: ''
   },
   currentPlace: {
+    beachInfo: {
+      value: '',
+      city: '',
+      text: null,
+      popularName: '',
+      located: {
+        from: {
+          value: '',
+          text: ''
+        },
+        operator: {
+          text: '',
+          value: ''
+        },
+        to: {
+          value: '',
+          text: ''
+        }
+      },
+      in: null,
+      location: {
+        lat: 0,
+        lng: 0
+      },
+      kmlCoordinates: []
+    },
+    mainBeach: '',
+    delivery_sand: {
+      make_delivery: false,
+      delivery_is_free: false
+    },
+    festival_info: {
+      has_any_festival_type: false,
+      show_field: false,
+      festivals: []
+    },
     last_update: '',
     work_place: [],
     created_at: '',
@@ -197,6 +233,7 @@ export const appInitialState: IAppState = {
   },
   currentSuggestion: {
     id: '',
+    icon: '',
     hashtag: {
       pt: '',
       en: '',

@@ -260,8 +260,9 @@
     "MADE_W_LOVE" : ["feito com","na"],
     "TABS" : {
       "EXPLORE" : "Explorar",
-      "SUGGESTIONS" : "Sugestões",
-      "MENU" : "Menu"
+      "SUGGESTIONS" : "Dicas",
+      "MENU" : "Menu",
+      "GUIDE" : "Guia"
     },
     "CHANGE_LANG" : "Trocar idioma",
     "SEGMENT_VIEW" : {

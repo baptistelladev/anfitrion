@@ -19,5 +19,19 @@ ion-tabs {
   ion-segment {
     max-width: 500px;
     margin: 0 auto;
+
+    ion-segment-button {
+      min-width: 0;
+      --padding-start: 10px;
+      --padding-end: 10px;
+
+      &:first-child {
+        --padding-start: 0;
+      }
+
+      &:last-child {
+        --padding-end: 0;
+      }
+    }
   }
 }

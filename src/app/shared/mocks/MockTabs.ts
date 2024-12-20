@@ -33,3 +33,17 @@ export const MOCK_TABS: ITab[] = [
     }
   }
 ]
+
+/*
+,
+  {
+    page: 'sobre-a-cidade',
+    icon: 'map',
+    value: 'sobre-a-cidade',
+    text: {
+      pt: 'Guia',
+      en: 'Guide',
+      es: 'Ciudad'
+    }
+  },
+*/

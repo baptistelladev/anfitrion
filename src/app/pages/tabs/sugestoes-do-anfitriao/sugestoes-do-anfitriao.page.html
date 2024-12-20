@@ -63,6 +63,8 @@ class="ion-content-w-linear-bg">
                   class="ion-bg-transparent tip-item"
                   lines="none"
                   mode="ios">
+                    <ion-icon [name]="suggestion.icon + '-outline'" class="color-gray-mid"></ion-icon>
+
                     <ion-text mode="ios">
                       <p class="color-gray-c fs-14">{{ suggestion.name.title[currentLanguage.value] }}</p>
                       <p class="description fs-18 color-linear font-w-bold">{{ suggestion.name.text[currentLanguage.value] }}</p>
@@ -96,7 +98,7 @@ class="ion-content-w-linear-bg">
                     mode="ios"
                     class="txt-uppercase as-badge tourist">
                       {{ 'SHARED.TOURISTS' | translate  }}
-                    </ion-chip>x'
+                    </ion-chip>
                   </div>
                 </div>
               </div>
@@ -114,6 +116,8 @@ class="ion-content-w-linear-bg">
               class="ion-bg-transparent tip-item"
               lines="none"
               mode="ios">
+                <ion-icon [name]="suggestionsBaixadaSantista[0].icon + '-outline'" class="color-gray-mid"></ion-icon>
+
                 <ion-text mode="ios">
                   <p class="color-gray-c fs-14">{{ suggestionsBaixadaSantista[0].name.title[currentLanguage.value] }}</p>
                   <p class="description fs-18 color-linear font-w-bold">{{ suggestionsBaixadaSantista[0].name.text[currentLanguage.value] }}</p>
@@ -229,6 +233,9 @@ class="ion-content-w-linear-bg">
             <div class="card-content">
               <div class="card-desc">
                 <ion-item mode="ios" lines="none" class="ion-bg-transparent" [button]="true">
+
+                  <ion-icon [name]="suggestion.icon" class="color-gray-light"></ion-icon>
+
                   <ion-text mode="ios" class="font-w-thin">
                     <ng-container *ngIf="currentLanguage.value !== 'en'">
                       <p class="color-gray-text fs-14">{{ suggestion.name.title[currentLanguage.value] }}</p>

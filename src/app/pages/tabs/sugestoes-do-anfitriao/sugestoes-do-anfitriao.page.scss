@@ -84,6 +84,11 @@ ion-content {
     border-radius: 8px;
     margin: 0 auto;
 
+    ion-icon {
+      margin-right: 12px;
+      --ionicon-stroke-width: 20px;
+    }
+
     .tip-item {
       --min-height: 130px;
       height: 130px;
@@ -151,6 +156,11 @@ ion-content {
   transition: all 200ms ease;
   border-radius: 12px;
   margin: 16px;
+
+  ion-icon {
+    --ionicon-stroke-width: 20px;
+    margin-right: 10px;
+  }
 
   &:hover {
     cursor: pointer;
