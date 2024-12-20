@@ -13,5 +13,6 @@ export interface ISuggestion {
   location?: {
     lat: number,
     lng: number
-  }
+  },
+  icon: string
 }

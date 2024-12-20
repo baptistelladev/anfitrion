@@ -14,13 +14,16 @@ class="ion-no-border">
       [value]="tab.page"
       [title]="
       tab?.value === 'explorar' ? ('COMPONENTS.TABS.EXPLORE' | translate) :
-      tab?.value === 'menu' ? ('COMPONENTS.TABS.MENU' | translate) : ('COMPONENTS.TABS.SUGGESTIONS' | translate)
+      tab?.value === 'menu' ? ('COMPONENTS.TABS.MENU' | translate) :
+      tab?.value === 'sobre-a-cidade' ? ('COMPONENTS.TABS.CITY' | translate) :
+      ('COMPONENTS.TABS.SUGGESTIONS' | translate)
       ">
         <ion-icon [name]="tab.icon + '-outline'"></ion-icon>
 
         <ng-container *ngIf="tab?.value === 'explorar'">{{ 'COMPONENTS.TABS.EXPLORE' | translate }}</ng-container>
         <ng-container *ngIf="tab?.value === 'sugestoes-do-anfitriao'">{{ 'COMPONENTS.TABS.SUGGESTIONS' | translate }}</ng-container>
         <ng-container *ngIf="tab?.value === 'menu'">{{ 'COMPONENTS.TABS.MENU' | translate }}</ng-container>
+        <ng-container *ngIf="tab?.value === 'sobre-a-cidade'">{{ 'COMPONENTS.TABS.GUIDE' | translate }}</ng-container>
       </ion-segment-button>
     </ion-segment>
   </ion-tab-bar>
