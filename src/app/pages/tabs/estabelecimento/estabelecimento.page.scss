@@ -13,7 +13,18 @@ ion-content {
 
         ion-text {
           h1 {
-            margin: 8px 0;
+            margin: 8px 0 0 0;
+
+            &.spaced {
+              margin: 8px 0;
+            }
+          }
+
+          p {
+            &.subname {
+              margin-top: -3px;
+              margin-bottom: 8px;
+            }
           }
         }
 
@@ -214,6 +225,10 @@ ion-button.copy-btn {
           min-width: 20px;
         }
       }
+    }
+
+    .included {
+      padding: 0 16px 16px 16px;
     }
 
     .button-list {

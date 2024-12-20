@@ -43,7 +43,8 @@
           <ion-col size="12">
             <ion-text mode="ios" class="txt-center">
               <p class="fs-10 txt-uppercase color-gray-6">{{ establishment.mainType.text[currentLanguage.value] }}</p>
-              <h1 class="color-gray-text font-baloo fs-32 nome"><b>{{ establishment.name }}</b></h1>
+              <h1 class="color-gray-text font-baloo fs-32 nome" [ngClass]="{'spaced': !establishment.sub_name}"><b>{{ establishment.name }}</b></h1>
+              <p class="fs-12 color-gray-text subname" *ngIf="establishment.sub_name">{{  establishment.sub_name }}</p>
             </ion-text>
 
             <div class="go-with-waze">
@@ -176,6 +177,16 @@
                     </ng-container>
                   </li>
                 </ul>
+
+                <div class="included" *ngIf="establishment.festival_info.festivals[0].courtesies && establishment.festival_info.festivals[0].courtesies.length > 0">
+                  <ion-chip class="as-badge gray-text fs-10 mg-bottom-5">{{ 'FESTIVAL_PAGE.INCLUDED' | translate }}</ion-chip>
+
+                  <ion-text mode="ios" class="color-gray-text">
+                    <p class="fs-14 mg-top-5 txt-lowercase">
+                      <ng-container *ngFor="let courtesy of establishment.festival_info.festivals[0].courtesies; let isFirst = first"><span [ngClass]="{'mg-left-5': !isFirst}"><span class="color-gray-mid">&#x2022;</span> {{ courtesy.number }} {{ courtesy.courtesy.text[currentLanguage.value] }}</span></ng-container>
+                    </p>
+                  </ion-text>
+                </div>
 
                 <div class="button-list">
                   <ion-list mode="ios" lines="none">

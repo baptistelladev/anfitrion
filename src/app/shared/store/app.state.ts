@@ -53,6 +53,7 @@ export const appInitialState: IAppState = {
     isPremium: false,
     id: '',
     name: '',
+    sub_name: '',
     value: '',
     adress: {
       number: '',

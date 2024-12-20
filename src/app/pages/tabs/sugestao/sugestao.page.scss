@@ -337,7 +337,12 @@ ion-card {
           }
 
           &.number {
-            margin: 5px 0 0 0;
+            margin: 7px 0 0 0;
+          }
+
+          &.subname {
+            font-size: 12px;
+            margin-top: -3px
           }
         }
 

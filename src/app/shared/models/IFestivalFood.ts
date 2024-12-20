@@ -1,3 +1,4 @@
+import { ICourtesy } from "./ICourtesy"
 import { IFestivalFoodType } from "./IFestivalFoodType"
 
 
@@ -14,5 +15,10 @@ export interface IFestivalFood {
       operator: any,
       price: number
     }
-  ]
+  ],
+  has_courtesy?: boolean
+  courtesies?: {
+    number: number,
+    courtesy: ICourtesy
+  }[]
 }
