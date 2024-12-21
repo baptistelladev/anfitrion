@@ -232,6 +232,13 @@ export const appInitialState: IAppState = {
     }
   },
   currentSuggestion: {
+    specific_place: {
+      pt: '',
+      en: '',
+      es: ''
+    },
+    indication: [],
+    filter: [],
     id: '',
     icon: '',
     hashtag: {
@@ -256,9 +263,13 @@ export const appInitialState: IAppState = {
     updated_at: '',
     route: '',
     address: {
-      pt: '',
-      en: '',
-      es: ''
+      type: {
+        pt: '',
+        en: '',
+        es: ''
+      },
+      street: '',
+      neighborhood: ''
     }
   },
   hasConnection: true

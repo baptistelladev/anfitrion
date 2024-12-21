@@ -14,6 +14,8 @@ import { OverlayService } from 'src/app/shared/services/overlay.service';
 import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
 import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 import { ICity } from 'src/app/shared/models/ICity';
+import { ProfileTypeEnum } from 'src/app/shared/enums/ProfileType';
+import { FeaturesEnum } from 'src/app/shared/enums/Features';
 
 @Component({
   selector: 'anfitrion-sugestoes-do-anfitriao',
@@ -50,6 +52,9 @@ export class SugestoesDoAnfitriaoPage implements OnInit, OnDestroy {
   public currentCity: ICity;
   public currentCity$: Observable<ICity>;
   public currentCitySubscription: Subscription;
+
+  public FeaturesEnum = FeaturesEnum;
+  public ProfileType = ProfileTypeEnum;
 
   constructor(
     private store : Store,

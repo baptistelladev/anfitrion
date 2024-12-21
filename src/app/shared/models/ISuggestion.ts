@@ -1,6 +1,9 @@
+import { IProfileType } from "./IProfileType"
+
 export interface ISuggestion {
-  id?: string,
+  id: string,
   hashtag: any,
+  filter: string[],
   name: {
     text: any,
     title: any
@@ -9,10 +12,16 @@ export interface ISuggestion {
   created_at: string,
   updated_at: string,
   route: string,
-  address: any,
+  address: {
+    type: any,
+    street: string,
+    neighborhood: string
+  },
   location?: {
     lat: number,
     lng: number
   },
-  icon: string
+  icon: string,
+  specific_place: any,
+  indication: IProfileType[]
 }
