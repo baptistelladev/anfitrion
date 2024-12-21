@@ -66,7 +66,19 @@ mode="ios">
           class="txt-left color-gray-text full-width icon-title-text without-icon d-block"
           mode="ios">
             <p class="fs-14 font-w-thin">
-              {{ currentSuggestion.address[currentLanguage.value] }}  {{ currentCity.from[currentLanguage.value] }} {{ currentCity.name }}
+              <ng-container *ngIf="currentSuggestion.address.street && !currentSuggestion.specific_place.pt">
+                <ng-container *ngIf="currentLanguage.value !== 'en'">
+                  {{ currentSuggestion.address.type[currentLanguage.value] }} {{ currentSuggestion.address.street }}
+                </ng-container>
+
+                <ng-container *ngIf="currentLanguage.value === 'en'">
+                  {{ currentSuggestion.address.street }} {{ currentSuggestion.address.type[currentLanguage.value] }}
+                </ng-container>
+              </ng-container>
+
+              <ng-container *ngIf="!currentSuggestion.address.street && currentSuggestion.specific_place.pt">
+                {{ currentSuggestion.specific_place[currentLanguage.value] }}
+              </ng-container>
             </p>
           </ion-text>
         </ion-col>

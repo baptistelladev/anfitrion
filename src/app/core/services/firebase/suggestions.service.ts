@@ -54,7 +54,7 @@ export class SuggestionsService {
       if (!querySnapshot.empty) {
         const docSnap = querySnapshot.docs[0]; // Pega o primeiro documento encontrado
         const data = docSnap.data() as ISuggestion; // Cast para IShortEstablishment
-        return { id: docSnap.id, ...data }; // Retorna o documento com o ID
+        return { ...data }; // Retorna o documento com o ID
       } else {
         return null;
     }

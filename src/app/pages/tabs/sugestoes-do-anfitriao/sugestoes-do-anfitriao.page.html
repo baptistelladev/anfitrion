@@ -60,44 +60,41 @@ class="ion-content-w-linear-bg">
                   <ion-item
                   (click)="seeSuggestion(suggestion)"
                   [button]="true"
+                  [detail]="false"
                   class="ion-bg-transparent tip-item"
                   lines="none"
                   mode="ios">
                     <ion-icon [name]="suggestion.icon + '-outline'" class="color-gray-mid"></ion-icon>
 
                     <ion-text mode="ios">
-                      <p class="color-gray-c fs-14">{{ suggestion.name.title[currentLanguage.value] }}</p>
-                      <p class="description fs-18 color-linear font-w-bold">{{ suggestion.name.text[currentLanguage.value] }}</p>
+                      <ng-container *ngIf="currentLanguage.value !== 'en'">
+                        <p class="color-gray-c fs-14">{{ suggestion.name.title[currentLanguage.value] }}</p>
+                        <p class="description fs-18 color-linear font-w-bold">{{ suggestion.name.text[currentLanguage.value] }}</p>
+                      </ng-container>
+                      <ng-container *ngIf="currentLanguage.value === 'en'">
+                        <p class="description fs-18 color-linear font-w-bold">{{ suggestion.name.text[currentLanguage.value] }}</p>
+                        <p class="color-gray-c fs-14">{{ suggestion.name.title[currentLanguage.value] }}</p>
+                      </ng-container>
                     </ion-text>
                   </ion-item>
                 </div>
 
                 <div class="indication">
-                  <ion-text size="12" class="txt-left">
-                    <p class="color-gray-mid fs-12 mg-right-5">
-                      {{ suggestion.hashtag[currentLanguage.value] }} &#x2022;
-                    </p>
-                  </ion-text>
 
                   <div class="two-chips-side-by-side">
                     <ion-chip
-                    *ngIf="suggestionsBaixadaSantista[0].hashtag[currentLanguage.value]"
+                    *ngIf="suggestion.hashtag.value"
                     mode="ios"
                     class="txt-uppercase as-badge gray">
-                      {{ suggestionsBaixadaSantista[0].hashtag[currentLanguage.value] }}
+                      {{ suggestion.hashtag?.text?.[currentLanguage.value] }}
                     </ion-chip>
 
                     <ion-chip
-                    [ngClass]="'tourist'"
+                    *ngFor="let indication of suggestion.indication"
+                    [ngClass]="indication?.value === ProfileType.MORADOR ? 'resident' : 'tourist'"
                     mode="ios"
-                    class="txt-uppercase as-badge resident">
-                      {{ 'SHARED.RESIDENTS' | translate }}
-                    </ion-chip>
-
-                    <ion-chip
-                    mode="ios"
-                    class="txt-uppercase as-badge tourist">
-                      {{ 'SHARED.TOURISTS' | translate  }}
+                    class="txt-uppercase as-badge">
+                      {{ indication.pluralText?.[currentLanguage.value] }}
                     </ion-chip>
                   </div>
                 </div>
@@ -111,6 +108,7 @@ class="ion-content-w-linear-bg">
           <div class="anf-baixada-wrapper">
             <div class="anf-baixada-container">
               <ion-item
+              [detail]="false"
               (click)="seeSuggestion(suggestionsBaixadaSantista[0])"
               [button]="true"
               class="ion-bg-transparent tip-item"
@@ -119,8 +117,14 @@ class="ion-content-w-linear-bg">
                 <ion-icon [name]="suggestionsBaixadaSantista[0].icon + '-outline'" class="color-gray-mid"></ion-icon>
 
                 <ion-text mode="ios">
-                  <p class="color-gray-c fs-14">{{ suggestionsBaixadaSantista[0].name.title[currentLanguage.value] }}</p>
-                  <p class="description fs-18 color-linear font-w-bold">{{ suggestionsBaixadaSantista[0].name.text[currentLanguage.value] }}</p>
+                  <ng-container *ngIf="currentLanguage.value !== 'en'">
+                    <p class="color-gray-c fs-14">{{ suggestionsBaixadaSantista[0].name.title[currentLanguage.value] }}</p>
+                    <p class="description fs-18 color-linear font-w-bold">{{ suggestionsBaixadaSantista[0].name.text[currentLanguage.value] }}</p>
+                  </ng-container>
+                  <ng-container *ngIf="currentLanguage.value === 'en'">
+                    <p class="description fs-18 color-linear font-w-bold">{{ suggestionsBaixadaSantista[0].name.text[currentLanguage.value] }}</p>
+                    <p class="color-gray-c fs-14">{{ suggestionsBaixadaSantista[0].name.title[currentLanguage.value] }}</p>
+                  </ng-container>
                 </ion-text>
               </ion-item>
             </div>
@@ -128,23 +132,18 @@ class="ion-content-w-linear-bg">
             <div class="indication">
               <div class="two-chips-side-by-side">
                 <ion-chip
-                *ngIf="suggestionsBaixadaSantista[0].hashtag[currentLanguage.value]"
+                *ngIf="suggestionsBaixadaSantista[0].hashtag.value"
                 mode="ios"
                 class="txt-uppercase as-badge gray">
-                  {{ suggestionsBaixadaSantista[0].hashtag[currentLanguage.value] }}
+                  {{ suggestionsBaixadaSantista[0].hashtag?.text?.[currentLanguage.value] }}
                 </ion-chip>
 
                 <ion-chip
-                [ngClass]="'tourist'"
+                *ngFor="let indication of suggestionsBaixadaSantista[0].indication"
+                [ngClass]="indication?.value === ProfileType.MORADOR ? 'resident' : 'tourist'"
                 mode="ios"
-                class="txt-uppercase as-badge resident">
-                  {{ 'SHARED.RESIDENTS' | translate }}
-                </ion-chip>
-
-                <ion-chip
-                mode="ios"
-                class="txt-uppercase as-badge tourist">
-                  {{ 'SHARED.TOURISTS' | translate  }}
+                class="txt-uppercase as-badge">
+                  {{ indication.pluralText?.[currentLanguage.value] }}
                 </ion-chip>
               </div>
             </div>
@@ -162,7 +161,7 @@ class="ion-content-w-linear-bg">
               <p class="color-white fs-20 font-baloo">
                 {{ 'SUGGESTIONS_PAGE.IN_BAIXADA' | translate }} <span><b>Baixada Santista</b></span>
               </p>
-              <p class="color-white fs-14 mg-top-16" *ngIf="suggestionsBaixadaSantista && suggestionsBaixadaSantista.length === 0">{{ 'SUGGESTIONS_PAGE.NO_RESULT' | translate }}.</p>
+              <p class="color-white fs-14 mg-top-16 font-w-thin" *ngIf="suggestionsBaixadaSantista && suggestionsBaixadaSantista.length === 0">{{ 'SUGGESTIONS_PAGE.NO_RESULT' | translate }}.</p>
             </ion-text>
           </ion-col>
         </ion-row>
@@ -175,9 +174,17 @@ class="ion-content-w-linear-bg">
   [ngClass]="{ 'has-content': suggestionsBaixadaSantista && suggestionsBaixadaSantista.length > 0 }">
     <ion-grid [fixed]="true">
       <ion-row>
+        <ion-col size="12" *ngIf="suggestionsBaixadaSantista && suggestionsBaixadaSantista.length > 0">
+          <ion-text mode="ios">
+            <p class="fs-14 color-gray-text font-w-thin mg-top-5">
+              {{ 'SUGGESTIONS_PAGE.SEE_IN_BAIXADA_SANTISTA' | translate }}.
+            </p>
+          </ion-text>
+        </ion-col>
+
         <ng-container *ngIf="suggestionsBaixadaSantista && suggestionsBaixadaSantista.length > 0">
           <ion-col size="6">
-            <div class="controls-wrapper">
+            <div class="controls-wrapper" *ngIf="suggestionsBaixadaSantista && suggestionsBaixadaSantista.length > 1">
               <ion-button
               [disabled]="hideLeftControl || (suggestionsBaixadaSantista && suggestionsBaixadaSantista.length === 1)"
               (click)="slideToPrev()"
@@ -223,6 +230,7 @@ class="ion-content-w-linear-bg">
                 <p class="fs-14 color-gray-text font-w-thin mg-top-5">
                   {{ 'SUGGESTIONS_PAGE.SEE_IN_SELECTED_CITY' | translate: { city: currentCity.in[currentLanguage.value] + ' ' + currentCity.name } }}.
                 </p>
+                <p class="color-gray-text fs-14 mg-top-16 font-w-thin" *ngIf="suggestionsBaixadaSantista && suggestionsBaixadaSantista.length === 0">{{ 'SUGGESTIONS_PAGE.NO_RESULT' | translate }}.</p>
               </ion-text>
             </p>
           </ion-text>
@@ -232,9 +240,9 @@ class="ion-content-w-linear-bg">
           <div class="city-card-wrapper" mode="ios" (click)="seeSelectedCitySuggestion(suggestion)">
             <div class="card-content">
               <div class="card-desc">
-                <ion-item mode="ios" lines="none" class="ion-bg-transparent" [button]="true">
+                <ion-item mode="ios" lines="none" class="ion-bg-transparent" [button]="true" [detail]="false">
 
-                  <ion-icon [name]="suggestion.icon" class="color-gray-light"></ion-icon>
+                  <!-- <ion-icon [name]="suggestion.icon" class="color-gray-light"></ion-icon> -->
 
                   <ion-text mode="ios" class="font-w-thin">
                     <ng-container *ngIf="currentLanguage.value !== 'en'">
@@ -253,23 +261,18 @@ class="ion-content-w-linear-bg">
             <div class="indication">
               <div class="two-chips-side-by-side">
                 <ion-chip
+                *ngIf="suggestion.hashtag.value"
                 mode="ios"
                 class="txt-uppercase as-badge gray">
-                  {{ suggestion.hashtag[currentLanguage.value] }}
+                  {{ suggestion.hashtag?.text?.[currentLanguage.value] }}
                 </ion-chip>
 
                 <ion-chip
-                [ngClass]="'resident'"
+                *ngFor="let indication of suggestion.indication"
+                [ngClass]="indication?.value === ProfileType.MORADOR ? 'resident' : 'tourist'"
                 mode="ios"
                 class="txt-uppercase as-badge">
-                  {{ 'SHARED.RESIDENTS' | translate }}
-                </ion-chip>
-
-                <ion-chip
-                [ngClass]="'tourist'"
-                mode="ios"
-                class="txt-uppercase as-badge tourist">
-                  {{ 'SHARED.TOURISTS' | translate  }}
+                  {{ indication.pluralText?.[currentLanguage.value] }}
                 </ion-chip>
               </div>
             </div>
