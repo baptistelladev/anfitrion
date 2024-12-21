@@ -230,7 +230,7 @@ class="ion-content-w-linear-bg">
                 <p class="fs-14 color-gray-text font-w-thin mg-top-5">
                   {{ 'SUGGESTIONS_PAGE.SEE_IN_SELECTED_CITY' | translate: { city: currentCity.in[currentLanguage.value] + ' ' + currentCity.name } }}.
                 </p>
-                <p class="color-gray-text fs-14 mg-top-16 font-w-thin" *ngIf="suggestionsBaixadaSantista && suggestionsBaixadaSantista.length === 0">{{ 'SUGGESTIONS_PAGE.NO_RESULT' | translate }}.</p>
+                <p class="color-gray-text fs-14 mg-top-16 font-w-thin" *ngIf="suggestionsSelectedCity && suggestionsSelectedCity.length === 0">{{ 'SUGGESTIONS_PAGE.NO_RESULT' | translate }}.</p>
               </ion-text>
             </p>
           </ion-text>
