@@ -221,7 +221,7 @@ class="ion-content-w-linear-bg">
     <ion-grid [fixed]="true">
       <ion-row>
         <ion-col size="12">
-          <ion-text mode="ios" class="line-height-18">
+          <ion-text mode="ios" class="line-height-18 d-block mg-bottom-8">
             <p class="color-gray-text fs-14">
               <ion-text mode="ios">
                 <p class="font-baloo fs-20 color-gray-text font-w-normal">
@@ -236,48 +236,56 @@ class="ion-content-w-linear-bg">
           </ion-text>
         </ion-col>
 
-        <ion-col size="12" size-md="6" size-lg="4" *ngFor="let suggestion of suggestionsSelectedCity">
-          <div class="city-card-wrapper" mode="ios" (click)="seeSelectedCitySuggestion(suggestion)">
-            <div class="card-content">
-              <div class="card-desc">
-                <ion-item mode="ios" lines="none" class="ion-bg-transparent" [button]="true" [detail]="false">
+        <ng-container *ngIf="suggestionsSelectedCity && suggestionsSelectedCity.length > 0">
+          <ion-col size="12" size-md="6" size-lg="4" *ngFor="let suggestion of suggestionsSelectedCity">
+            <div class="city-card-wrapper" mode="ios" (click)="seeSelectedCitySuggestion(suggestion)">
+              <div class="card-content">
+                <div class="card-desc">
+                  <ion-item mode="ios" lines="none" class="ion-bg-transparent" [button]="true" [detail]="false">
 
-                  <!-- <ion-icon [name]="suggestion.icon" class="color-gray-light"></ion-icon> -->
+                    <!-- <ion-icon [name]="suggestion.icon" class="color-gray-light"></ion-icon> -->
 
-                  <ion-text mode="ios" class="font-w-thin">
-                    <ng-container *ngIf="currentLanguage.value !== 'en'">
-                      <p class="color-gray-text fs-14">{{ suggestion.name.title[currentLanguage.value] }}</p>
-                      <p class="fs-18 color-gray-text">{{ suggestion.name.text[currentLanguage.value] }}</p>
-                    </ng-container>
-                    <ng-container *ngIf="currentLanguage.value === 'en'">
-                      <p class="fs-18 color-gray-text">{{ suggestion.name.text[currentLanguage.value] }}</p>
-                      <p class="color-gray-text fs-14">{{ suggestion.name.title[currentLanguage.value] }}</p>
-                    </ng-container>
-                  </ion-text>
-                </ion-item>
+                    <ion-text mode="ios" class="font-w-thin">
+                      <ng-container *ngIf="currentLanguage.value !== 'en'">
+                        <p class="color-gray-text fs-14">{{ suggestion.name.title[currentLanguage.value] }}</p>
+                        <p class="fs-18 color-gray-text">{{ suggestion.name.text[currentLanguage.value] }}</p>
+                      </ng-container>
+                      <ng-container *ngIf="currentLanguage.value === 'en'">
+                        <p class="fs-18 color-gray-text">{{ suggestion.name.text[currentLanguage.value] }}</p>
+                        <p class="color-gray-text fs-14">{{ suggestion.name.title[currentLanguage.value] }}</p>
+                      </ng-container>
+                    </ion-text>
+                  </ion-item>
+                </div>
+              </div>
+
+              <div class="indication">
+                <div class="two-chips-side-by-side">
+                  <ion-chip
+                  *ngIf="suggestion.hashtag.value"
+                  mode="ios"
+                  class="txt-uppercase as-badge gray">
+                    {{ suggestion.hashtag?.text?.[currentLanguage.value] }}
+                  </ion-chip>
+
+                  <ion-chip
+                  *ngFor="let indication of suggestion.indication"
+                  [ngClass]="indication?.value === ProfileType.MORADOR ? 'resident' : 'tourist'"
+                  mode="ios"
+                  class="txt-uppercase as-badge">
+                    {{ indication.pluralText?.[currentLanguage.value] }}
+                  </ion-chip>
+                </div>
               </div>
             </div>
+          </ion-col>
+        </ng-container>
 
-            <div class="indication">
-              <div class="two-chips-side-by-side">
-                <ion-chip
-                *ngIf="suggestion.hashtag.value"
-                mode="ios"
-                class="txt-uppercase as-badge gray">
-                  {{ suggestion.hashtag?.text?.[currentLanguage.value] }}
-                </ion-chip>
-
-                <ion-chip
-                *ngFor="let indication of suggestion.indication"
-                [ngClass]="indication?.value === ProfileType.MORADOR ? 'resident' : 'tourist'"
-                mode="ios"
-                class="txt-uppercase as-badge">
-                  {{ indication.pluralText?.[currentLanguage.value] }}
-                </ion-chip>
-              </div>
-            </div>
-          </div>
-        </ion-col>
+        <ng-container *ngIf="!suggestionsSelectedCity">
+          <ion-col size="12" size-md="6" size-lg="4" *ngFor="let suggestion of [1, 2, 3, 4, 5]">
+            <ion-skeleton-text [animated]="true" class="like-city-card"></ion-skeleton-text>
+          </ion-col>
+        </ng-container>
       </ion-row>
     </ion-grid>
 
