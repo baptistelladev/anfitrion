@@ -155,7 +155,7 @@ ion-content {
   padding: 16px;
   transition: all 200ms ease;
   border-radius: 12px;
-  margin: 16px;
+  margin: 0;
 
   ion-icon {
     --ionicon-stroke-width: 20px;
@@ -192,5 +192,14 @@ ion-content {
     align-items: center;
     margin-top: 10px;
     flex-wrap: wrap;
+  }
+}
+
+ion-skeleton-text {
+  &.like-city-card {
+    border-radius: 12px;
+    height: 101px;
+    margin: 0;
+    width: 100%;
   }
 }

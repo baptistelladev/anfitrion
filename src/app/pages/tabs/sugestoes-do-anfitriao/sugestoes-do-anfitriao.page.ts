@@ -98,9 +98,13 @@ export class SugestoesDoAnfitriaoPage implements OnInit, OnDestroy {
 
     this.suggestionsBaixadaSantistaSubscription = this.suggestionsBaixadaSantista$
     .subscribe({
-      next: (suggestions: any) => {
+      next: async (suggestions: any) => {
         this.suggestionsBaixadaSantista = suggestions;
         this.baixadaSantistaSwiper = this.baixadaSantistaSwiperRef?.nativeElement.swiper;
+
+        if (this.suggestionsBaixadaSantista) {
+          await loading.dismiss();
+        }
       },
       error: () => {
 

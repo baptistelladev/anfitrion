@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
-import { collection, query, where, getDocs, QueryConstraint, getDoc, CollectionReference, WhereFilterOp, doc, DocumentReference, orderBy } from 'firebase/firestore';
+import { collection, query, where, getDocs, QueryConstraint, getDoc, CollectionReference, WhereFilterOp, doc, DocumentReference, orderBy, onSnapshot } from 'firebase/firestore';
 import { from, Observable } from 'rxjs';
 import { IFirebaseFilter } from 'src/app/shared/models/IFirebaseFilter';
 import { ISuggestion } from 'src/app/shared/models/ISuggestion';
@@ -14,36 +14,42 @@ export class SuggestionsService {
     public firestore : Firestore
   ) { }
 
+  /**
+   * @description Responsável por recuperar as todas as sugestões.
+   * @param collectionName obrigatório do tipo string - nome da coleção no firebase.
+   * @param filters obrigatório do tipo IFirebaseFilter[] - representa uma lista com filtros do firebase.
+   * @returns um Observable que representa a lista do tipo ISuggestion.
+   */
   public getSuggestions(
     collectionName: string,
-    filters: IFirebaseFilter[] = [],
-    orderByField: string = '',
-    orderDirection: 'asc' | 'desc' = 'asc'
-  ): Observable<any[]> {
-    // Cria a referência da coleção
+    filters: IFirebaseFilter[] = []
+  ): Observable<ISuggestion[]> {
     const colRef = collection(this.firestore, collectionName) as CollectionReference;
 
-    // Constrói a lista de restrições da consulta
     const queryConstraints: QueryConstraint[] = filters.map(filter =>
       where(filter.field, filter.operator, filter.value)
     );
 
-    if (orderByField) {
-      // Verifica se a consulta já possui um orderBy
-      const hasOrderBy = queryConstraints.some(constraint => constraint instanceof QueryConstraint && constraint.type === 'orderBy');
-
-      if (!hasOrderBy) {
-        queryConstraints.push(orderBy(orderByField, orderDirection));
-      }
-    }
-
-    // Cria a consulta com todos os filtros
     const q = query(colRef, ...queryConstraints);
 
-    // Converte a `Promise` resultante do `getDocs` em um `Observable`
-    return from(getDocs(q).then(querySnapshot =>
-      querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
-    ));
+    return new Observable<ISuggestion[]>(observer => {
+      const unsubscribe = onSnapshot(
+        q,
+        querySnapshot => {
+          const data = querySnapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data()
+          })) as ISuggestion[];
+
+          observer.next(data);
+        },
+        error => {
+          observer.error(error);
+        }
+      );
+
+      return () => unsubscribe();
+    });
   }
 
   public async getSuggestionsFilteredByValue(collectionName: string, value: string): Promise<ISuggestion | null> {
