@@ -10,8 +10,8 @@ ion-content {
       @include flexbox(flex-start, flex-start, column);
 
       .city-wrapper {
-        @include flexbox(center, flex-end, row);
-        margin: 6px 0 0 0;
+        @include flexbox(center, flex-start, row);
+        margin: 0 0 10px 0;
 
         ion-item {
           --min-height: 0;
