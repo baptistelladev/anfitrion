@@ -67,20 +67,23 @@
           </ion-col>
 
           <ion-col size="12">
-            <div class="buttons-wrapper" (click)="itIsntPremium()">
+            <div class="buttons-wrapper">
               <ion-grid>
                 <ion-row>
-                  <ion-col size="12" class="txt-center">
-                    <ion-button
-                    [disabled]="!establishment.isPremium"
-                    (click)="redirectToWhatsapp()"
-                    mode="md"
-                    shape="round"
-                    [title]="('SHARED.CALL_WHATSAPP.0' | translate) + ' ' + ('SHARED.CALL_WHATSAPP.1' | translate)"
-                    fill="solid"
-                    class="anfitrion-main-solid linkt-btn">
-                      <ion-icon name="logo-whatsapp" class="mg-right-5"></ion-icon>{{ 'SHARED.CALL_WHATSAPP.0' | translate }} <b class="mg-left-5">{{ 'SHARED.CALL_WHATSAPP.1' | translate }}</b>
-                    </ion-button>
+                  <ion-col size="12" class="txt-center" *ngFor="let phone of establishment.phones"  (click)="itIsntPremium()">
+                    <ng-container>
+                      <ion-button
+                      *ngIf="phone.type === PhoneTypesEnum.WHATSAPP && phone.number"
+                      [disabled]="!establishment.isPremium"
+                      (click)="redirectToWhatsapp()"
+                      mode="md"
+                      shape="round"
+                      [title]="('SHARED.CALL_WHATSAPP.0' | translate) + ' ' + ('SHARED.CALL_WHATSAPP.1' | translate)"
+                      fill="solid"
+                      class="anfitrion-main-solid linkt-btn">
+                        <ion-icon name="logo-whatsapp" class="mg-right-5"></ion-icon>{{ 'SHARED.CALL_WHATSAPP.0' | translate }} <b class="mg-left-5">{{ 'SHARED.CALL_WHATSAPP.1' | translate }}</b>
+                      </ion-button>
+                    </ng-container>
                   </ion-col>
 
                   <!--
@@ -96,9 +99,12 @@
                   </ion-col>
                   -->
 
-                  <ion-col size="12" class="txt-center">
+                  <ion-col
+                  size="12"
+                  class="txt-center"
+                  *ngFor="let network of establishment.networks">
                     <ion-button
-                    [disabled]="!establishment.isPremium"
+                    *ngIf="network.value"
                     (click)="redirectToInstagram()"
                     mode="md"
                     shape="round"
@@ -111,6 +117,14 @@
                 </ion-row>
               </ion-grid>
             </div>
+          </ion-col>
+
+          <ion-col size="12" class="txt-center no-pad-top" *ngIf="!hasWhatsApp(establishment)">
+            <ion-text mode="ios" class="color-gray-mid fs-12">
+              <p class="mg-bottom-8">
+                {{ 'ESTABLISHMENT_PAGE.HASNT_WHATS' | translate: { establishment: establishment.name} }}
+              </p>
+            </ion-text>
           </ion-col>
 
           <ion-col size="12" *ngIf="establishment.isPremium">

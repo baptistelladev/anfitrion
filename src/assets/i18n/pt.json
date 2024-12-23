@@ -323,6 +323,7 @@
     "EMAIL_INVALID" : "e-mail inválido"
   },
   "ESTABLISHMENT_PAGE" : {
+    "HASNT_WHATS" : "{{ establishment }} não possui atendimento via WhatsApp traduza assim",
     "HEADER_TITLE" : ["sobre o","estabelecimento"],
     "TICKETS" : {
       "TEXT" : "Além das formas tradicionais de pagamento, aceitam",
