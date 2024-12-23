@@ -37,11 +37,21 @@ class="ion-content-w-linear-bg">
       <div class="fixed-segments">
         <div class="segments-container">
           <div class="segments">
-            <ion-text mode="ios">
-              <p class="fs-12 color-gray-mid mg-bottom-8 pad-left">
-                <b>{{ 'EXPLORE_PAGE.WHERE.0' | translate }}</b> {{ 'EXPLORE_PAGE.WHERE.1' | translate }}
-              </p>
-            </ion-text>
+            <div class="city-wrapper">
+              <ion-item
+              (click)="openCityModal()"
+              [button]="true"
+              [detail]="false"
+              mode="ios"
+              class="ion-bg-transparent ion-no-padding"
+              lines="none">
+                <ion-text
+                class="line-height-12"
+                mode="ios">
+                  <p class="fs-20 color-white font-baloo font-w-bold city-name">{{ currentCity.name }} <ion-chip mode="ios" class="simulate-btn">{{ 'SHARED.CHANGE' | translate }}</ion-chip></p>
+                </ion-text>
+              </ion-item>
+            </div>
 
             <ion-segment
             [(ngModel)]="selectedSegment"
@@ -67,30 +77,6 @@ class="ion-content-w-linear-bg">
       <div class="features-segment">
         <ion-grid [fixed]="true">
           <ion-row>
-            <ion-col size="12" class="no-pad-sides txt-right">
-              <ion-text mode="ios">
-                <p class="fs-12 color-gray-mid">
-                  {{ 'EXPLORE_PAGE.YOU_ARE_IN' | translate }}
-                </p>
-              </ion-text>
-
-              <div class="city-wrapper">
-                <ion-item
-                (click)="openCityModal()"
-                [button]="true"
-                [detail]="false"
-                mode="ios"
-                class="ion-bg-transparent ion-no-padding"
-                lines="none">
-                  <ion-text
-                  class="line-height-12"
-                  mode="ios">
-                    <p class="fs-20 color-gray-text font-baloo font-w-bold city-name">{{ currentCity.name }} <ion-chip mode="ios" class="simulate-btn">{{ 'SHARED.CHANGE' | translate }}</ion-chip></p>
-                  </ion-text>
-                </ion-item>
-              </div>
-            </ion-col>
-
             <!-- MOSTRAR PESSOAS [SOON] [attr.size-lg]="selectedSegment === LocationEnum.PRAIA ? 6 : 12" -->
             <ion-col size="12" class="no-padding mg-bottom-16">
               <ion-grid class="no-padding">

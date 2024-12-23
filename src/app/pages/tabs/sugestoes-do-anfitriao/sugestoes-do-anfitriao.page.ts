@@ -1,21 +1,21 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { IonContent, LoadingController, NavController, Platform } from '@ionic/angular';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { IonContent, NavController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-import { ILang } from 'src/app/shared/models/ILang';
-import * as AppStore from './../../../shared/store/app.state';
-import Swiper from 'swiper';
-import { Title } from '@angular/platform-browser';
+import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
 import { SuggestionsService } from 'src/app/core/services/firebase/suggestions.service';
+import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 import { CollectionsEnum } from 'src/app/shared/enums/Collection';
+import { FeaturesEnum } from 'src/app/shared/enums/Features';
+import { ProfileTypeEnum } from 'src/app/shared/enums/ProfileType';
 import { SuggestionsEnum } from 'src/app/shared/enums/Suggestions';
+import { ICity } from 'src/app/shared/models/ICity';
+import { ILang } from 'src/app/shared/models/ILang';
 import { ISuggestion } from 'src/app/shared/models/ISuggestion';
 import { OverlayService } from 'src/app/shared/services/overlay.service';
-import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
-import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
-import { ICity } from 'src/app/shared/models/ICity';
-import { ProfileTypeEnum } from 'src/app/shared/enums/ProfileType';
-import { FeaturesEnum } from 'src/app/shared/enums/Features';
+import Swiper from 'swiper';
+import * as AppStore from './../../../shared/store/app.state';
 
 @Component({
   selector: 'anfitrion-sugestoes-do-anfitriao',
@@ -55,6 +55,7 @@ export class SugestoesDoAnfitriaoPage implements OnInit, OnDestroy {
 
   public FeaturesEnum = FeaturesEnum;
   public ProfileType = ProfileTypeEnum;
+
 
   constructor(
     private store : Store,

@@ -80,8 +80,12 @@ const routes: Routes = [
             loadChildren: () => import('./sugestoes-do-anfitriao/sugestoes-do-anfitriao.module').then( m => m.SugestoesDoAnfitriaoPageModule)
           },
           {
-            path: 'festival-comida-japonesa',
+            path: 'festival-de-comida-japonesa',
             loadChildren: () => import('./sugestoes-do-anfitriao/festival-comida-japonesa/festival-comida-japonesa.module').then( m => m.FestivalComidaJaponesaPageModule)
+          },
+          {
+            path: 'rua-gastronomica-de-santos',
+            loadChildren: () => import('./sugestoes-do-anfitriao/rua-gastronomica-de-santos/rua-gastronomica-de-santos.module').then( m => m.RuaGastronomicaDeSantosPageModule)
           },
           {
             path: ':suggestion',
