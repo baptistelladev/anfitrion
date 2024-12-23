@@ -329,6 +329,7 @@
     "EMAIL_INVALID" : "invalid email"
   },
   "ESTABLISHMENT_PAGE": {
+    "HASNT_WHATS" : "{{ establishment }} does not provide contact via WhatsApp",
     "HEADER_TITLE": ["about the", "establishment"],
     "TICKETS": {
       "TEXT": "In addition to traditional payment methods, they accept",

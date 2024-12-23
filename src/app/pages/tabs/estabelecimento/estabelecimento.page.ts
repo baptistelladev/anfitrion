@@ -59,6 +59,8 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
 
   public establishmentNameFromUrl: string | null;
 
+  public PhoneTypesEnum = PhoneTypesEnum;
+
   constructor(
     private navCtrl : NavController,
     private renderer : Renderer2,
@@ -117,6 +119,7 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
           this.establishment = establishment;
           this.defineTitleFromPage(this.establishment.name);
           this.showBackButton = true;
+          this.hasWhatsApp(establishment);
         } else {
           // A STRING PRECISA EXISTIR, PARA DEPOIS SER PROCURADA COMO VALUE.
           if (this.establishmentNameFromUrl) {
@@ -127,6 +130,7 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
             .then((establishmentFromService: IPlace | null) => {
               if (establishmentFromService) {
                 this.establishment = establishmentFromService;
+                this.hasWhatsApp(establishment);
                 this.defineTitleFromPage(this.establishment.name);
               }
             })
@@ -315,6 +319,12 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
     } else {
       return undefined
     }
+  }
+
+  public hasWhatsApp(establishent: IPlace): boolean {
+    return establishent.phones?.some((phone: IPhone) => {
+      return phone.type === PhoneTypesEnum.WHATSAPP
+    });
   }
 
   ngOnDestroy(): void {
