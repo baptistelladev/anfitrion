@@ -233,12 +233,10 @@ export class FestivalComidaJaponesaPage implements OnInit, OnDestroy, AfterViewI
 
   public getPlaces(filters: IFirebaseFilter[] = []) {
     this.places$ = this.placesService
-      .getCollection(
+      .getPlacesCollection(
         CollectionsEnum.PLACES,
         filters
       );
-
-
 
       this.placesSubscription = this.places$
       .pipe(

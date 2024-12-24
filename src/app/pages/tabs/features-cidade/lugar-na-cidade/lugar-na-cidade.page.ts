@@ -210,7 +210,7 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
   public getPlaces(filters: IFirebaseFilter[] = []) {
     if (this.currentCityAsParam && this.placeType && this.currentLocationAsParam) {
       this.places$ = this.placesService
-      .getCollection(
+      .getPlacesCollection(
         CollectionsEnum.PLACES,
         filters
       );

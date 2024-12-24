@@ -120,7 +120,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     this.lookingForPlaces = true;
 
     this.places$ = this.placesService
-    .getCollection(
+    .getPlacesCollection(
       CollectionsEnum.PLACES,
       [
         { field: 'origin.value', operator: '==', value: this.currentCity.value },
@@ -152,7 +152,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     this.lookingForPlaces = true;
 
     this.places$ = this.placesService
-    .getCollection(
+    .getPlacesCollection(
       CollectionsEnum.PLACES,
       [
         { field: 'origin.value', operator: '==', value: this.currentCity.value },
