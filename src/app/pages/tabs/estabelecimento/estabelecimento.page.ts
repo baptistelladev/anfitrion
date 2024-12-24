@@ -18,11 +18,11 @@ import { PhoneTypesEnum } from 'src/app/shared/enums/PhoneTypes';
 import { NetworksEnum } from 'src/app/shared/enums/Networks';
 import { PlaceTypeCityEnum } from 'src/app/shared/enums/PlaceType';
 import { ActivatedRoute } from '@angular/router';
-import { EstablishmentsService } from 'src/app/core/services/firebase/establishments.service';
 import { CollectionsEnum } from 'src/app/shared/enums/Collection';
 import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
 import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 import { BenefitOperatorsEnum } from 'src/app/shared/enums/BenefitOperators';
+import { PlacesService } from 'src/app/core/services/firebase/places.service';
 
 
 @Component({
@@ -70,9 +70,9 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
     private translate : TranslateService,
     private title : Title,
     private route: ActivatedRoute,
-    private establishmentService : EstablishmentsService,
     private analyticsService : AnalyticsService,
-    private platform : Platform
+    private platform : Platform,
+    private placesService : PlacesService
   ) { }
 
   async ngOnInit() {
@@ -125,7 +125,7 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
           if (this.establishmentNameFromUrl) {
             this.showBackButton = false;
 
-            this.establishmentService
+            this.placesService
             .getDocumentByValue(CollectionsEnum.PLACES, 'value', this.establishmentNameFromUrl)
             .then((establishmentFromService: IPlace | null) => {
               if (establishmentFromService) {
@@ -134,7 +134,7 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
                 this.defineTitleFromPage(this.establishment.name);
               }
             })
-            .catch((res) => {
+            .catch((res: any) => {
 
             })
           }

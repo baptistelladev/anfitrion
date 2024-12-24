@@ -14,7 +14,7 @@ export class PlacesService {
     private firestore : Firestore
   ) { }
 
-  public getCollection(
+  public getPlacesCollection(
     collectionName: string,
     filters: IFirebaseFilter[] = [],
     orderByField: string = '',

@@ -50,7 +50,7 @@ export class SearchModalComponent  implements OnInit, AfterViewInit {
   public isTyping(e: any) {
     let textTransformed: string = this.transformString(e.detail.value);
 
-    this.placesService.getCollection(CollectionsEnum.PLACES, [
+    this.placesService.getPlacesCollection(CollectionsEnum.PLACES, [
       { field: 'value', operator: '==', value: textTransformed }
     ]).subscribe({
       next: (places: IPlace[]) => {

@@ -7,8 +7,6 @@ import { TranslateService } from '@ngx-translate/core';
 import * as moment from 'moment';
 import { map, Observable, Subscription, take } from 'rxjs';
 import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
-import { EstablishmentsService } from 'src/app/core/services/firebase/establishments.service';
-import { ParkingsService } from 'src/app/core/services/firebase/parkings.service';
 import { PlacesService } from 'src/app/core/services/firebase/places.service';
 import { SuggestionsService } from 'src/app/core/services/firebase/suggestions.service';
 import { UtilsService } from 'src/app/core/services/utils.service';
@@ -225,11 +223,7 @@ export class RuaGastronomicaDeSantosPage implements OnInit, OnDestroy {
     private navCtrl : NavController,
     private translate : TranslateService,
     private store : Store,
-    private establishmentsService : EstablishmentsService,
-    private utilsService : UtilsService,
-    private popoverCtrl : PopoverController,
     private analyticsService : AnalyticsService,
-    private parkingsService : ParkingsService,
     private placesService : PlacesService,
     private route : ActivatedRoute,
     private suggestionsService : SuggestionsService
@@ -240,7 +234,6 @@ export class RuaGastronomicaDeSantosPage implements OnInit, OnDestroy {
     this.initialFilter(FilterEnum.ALL);
     this.defineActiveFilter(FilterEnum.ALL);
     this.getCurrentLanguageFromNGRX();
-    this.getParkings();
   }
 
   ionViewWillEnter(): void {
@@ -253,7 +246,7 @@ export class RuaGastronomicaDeSantosPage implements OnInit, OnDestroy {
 
   public getPlaces(filters: IFirebaseFilter[] = []) {
     this.establishments$ = this.placesService
-      .getCollection(
+      .getPlacesCollection(
         CollectionsEnum.PLACES,
         filters
       );
@@ -309,15 +302,6 @@ export class RuaGastronomicaDeSantosPage implements OnInit, OnDestroy {
             break;
         }
       }
-    })
-  }
-
-  public getParkings() {
-    this.parkings$ = this.parkingsService.getCollection(CollectionsEnum.SHORT_PARKINGS);
-
-    this.parkingsSubscription = this.parkings$
-    .subscribe((parkings: IParking[]) => {
-      this.short_parkings = parkings;
     })
   }
 

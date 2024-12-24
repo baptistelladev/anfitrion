@@ -1,6 +1,10 @@
 
 @import './../../../../assets/scss/utils/mixins.scss';
 
+ion-header {
+  border-bottom: 1px solid var(--black);
+}
+
 ion-content {
   section {
     &.explorar {
@@ -10,12 +14,12 @@ ion-content {
       @include flexbox(flex-start, flex-start, column);
 
       .city-wrapper {
-        @include flexbox(center, flex-start, row);
-        margin: 0 0 10px 0;
+        @include flexbox(flex-start, flex-start, row);
+        margin: 0;
 
         ion-item {
           --min-height: 0;
-          --padding-start: 26px;
+          --padding-start: 0;
           --padding-end: 0;
           --inner-padding-end: 0;
 
@@ -32,25 +36,9 @@ ion-content {
       .explorar-header-wrapper {
         width: 100%;
         height: auto;
-        min-height: 125px;
-        padding: 0 16px;
+        min-height: 164px;
+        padding: 0;
         position: relative;
-
-        .fixed-header {
-          position: absolute;
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: auto;
-
-          .header-container {
-            @include flexbox(flex-start, space-between, row);
-
-            .header-buttons {
-              @include flexbox(flex-start, flex-start, row);
-            }
-          }
-        }
 
         .fixed-segments {
           width: 100%;
@@ -58,6 +46,7 @@ ion-content {
           left: 0;
           bottom: -33px;
           z-index: 10;
+          border-top: 1px solid var(--gray-3);
 
           .segments-container {
             max-width: 370px;

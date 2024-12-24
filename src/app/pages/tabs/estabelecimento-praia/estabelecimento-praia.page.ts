@@ -1,16 +1,13 @@
-import { MOCK_PLACE_CITY_TYPE } from '../../../shared/mocks/MockPlaceCityType';
-import { AfterContentInit, Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { AlertController, IonContent, NavController, Platform } from '@ionic/angular';
 import { Clipboard } from '@angular/cdk/clipboard';
 import * as moment from 'moment';
-import { getElement } from 'ionicons/dist/types/stencil-public-runtime';
 import { ISocialNetwork } from 'src/app/shared/models/INetwork';
 import { Store } from '@ngrx/store';
 import { IPlace } from 'src/app/shared/models/IPlace';
 import { map, Observable, Subscription, take } from 'rxjs';
 import * as AppStore from './../../../shared/store/app.state';
 import { ILang } from 'src/app/shared/models/ILang';
-import { ITime } from 'src/app/shared/models/ITime';
 import { TranslateService } from '@ngx-translate/core';
 import { Title } from '@angular/platform-browser';
 import { IPhone } from 'src/app/shared/models/IPhone';
@@ -18,11 +15,11 @@ import { PhoneTypesEnum } from 'src/app/shared/enums/PhoneTypes';
 import { NetworksEnum } from 'src/app/shared/enums/Networks';
 import { PlaceTypeCityEnum } from 'src/app/shared/enums/PlaceType';
 import { ActivatedRoute } from '@angular/router';
-import { EstablishmentsService } from 'src/app/core/services/firebase/establishments.service';
 import { CollectionsEnum } from 'src/app/shared/enums/Collection';
 import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
 import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
 import { BenefitOperatorsEnum } from 'src/app/shared/enums/BenefitOperators';
+import { PlacesService } from 'src/app/core/services/firebase/places.service';
 
 @Component({
   selector: 'anfitrion-estabelecimento-praia',
@@ -69,9 +66,9 @@ export class EstabelecimentoPraiaPage implements OnInit, OnDestroy {
     private translate : TranslateService,
     private title : Title,
     private route: ActivatedRoute,
-    private establishmentService : EstablishmentsService,
     private analyticsService : AnalyticsService,
-    private platform : Platform
+    private platform : Platform,
+    private placesService : PlacesService
   ) { }
 
   async ngOnInit() {
@@ -123,7 +120,7 @@ export class EstabelecimentoPraiaPage implements OnInit, OnDestroy {
           if (this.establishmentNameFromUrl) {
             this.showBackButton = false;
 
-            this.establishmentService
+            this.placesService
             .getDocumentByValue(CollectionsEnum.PLACES, 'value', this.establishmentNameFromUrl)
             .then((establishmentFromService: IPlace | null) => {
               if (establishmentFromService) {
@@ -131,7 +128,7 @@ export class EstabelecimentoPraiaPage implements OnInit, OnDestroy {
                 this.defineTitleFromPage(this.establishment.name);
               }
             })
-            .catch((res) => {
+            .catch((res: any) => {
 
             })
           }
