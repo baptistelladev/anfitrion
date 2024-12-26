@@ -326,6 +326,10 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
     this.swiper?.slideTo(index, 800);
   }
 
+  public trackPlaceById(place: any): void {
+    return place.id;
+  }
+
   ngOnDestroy(): void {
     if (this.placesSubscription) {
       this.placesSubscription.unsubscribe();

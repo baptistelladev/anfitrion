@@ -119,7 +119,6 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy, AfterViewInit {
 
     this.filter = [];
 
-    // PRECISAMOS DEFINIR UMA PRAIA SE EXISTIR
     if (this.selectedBeach && this.selectedBeach.value !== 'ALL') {
       this.filter.push({ field: 'beachInfo.value', operator: '==', value: this.selectedBeach.value });
     }
@@ -158,8 +157,6 @@ export class LugarNaPraiaPage implements OnInit, OnDestroy, AfterViewInit {
         this.getPlaces(this.filter);
         break;
     }
-
-    console.log(this.filter);
 
     return true
   }
