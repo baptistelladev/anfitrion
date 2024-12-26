@@ -318,6 +318,7 @@ export class EstabelecimentoPraiaPage implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.establishmentSubscription.unsubscribe();
+    this.currentLanguageSubscription.unsubscribe();
   }
 
 }
