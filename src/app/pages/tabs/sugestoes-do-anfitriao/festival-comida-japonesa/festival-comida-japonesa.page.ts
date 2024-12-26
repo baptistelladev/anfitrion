@@ -95,8 +95,8 @@ export class FestivalComidaJaponesaPage implements OnInit, OnDestroy, AfterViewI
 
   async ngOnInit() {
     this.getCurrentCityFromNGRX();
-    this.getCurrentSuggestionFromNGRX();
     this.getCurrentLanguageFromNGRX();
+    this.getCurrentSuggestionFromNGRX();
   }
 
   public ngAfterViewInit(): void {
@@ -109,8 +109,6 @@ export class FestivalComidaJaponesaPage implements OnInit, OnDestroy, AfterViewI
     this.currentCitySubscription = this.currentCity$
     .subscribe((city: ICity) => {
       this.currentCity = city;
-        console.log(this.currentCity);
-
     })
   }
 
@@ -154,31 +152,23 @@ export class FestivalComidaJaponesaPage implements OnInit, OnDestroy, AfterViewI
    * Então "desmembramo" a url e pegamos o último "pedaço".
    */
   public getSuggestionFromUrl() {
-    let urlSplited: string[] = this.router.url.split('/');
-    this.lastPathFromUrl = urlSplited[urlSplited.length - 1];
+    this.title.setTitle('Festival de Comida Japonesa');
 
-    if (this.lastPathFromUrl) {
-      this.title.setTitle('Festival de Comida Japonesa');
+    this.suggestionsService
+    .getSuggestionsCollection(CollectionsEnum.SUGGESTIONS_BAIXADA_SANTISTA, [
+      { field: 'value', operator: '==', value: SuggestionsEnum.FESTIVAL_DE_COMIDA_JAPONESA }
+    ])
+    .subscribe({
+      next: async (suggestion: any[]) => {
+        if (suggestion) {
+          this.currentSuggestion = suggestion[0];
 
-      this.suggestionsService
-      .getSuggestionsCollection(CollectionsEnum.SUGGESTIONS_BAIXADA_SANTISTA, [
-        { field: 'value', operator: '==', value: SuggestionsEnum.FESTIVAL_COMIDA_JAPONESA }
-      ])
-      .pipe((take(1)))
-      .subscribe({
-        next: async (suggestion: any[]) => {
-          if (suggestion) {
-            this.currentSuggestion = suggestion[0];
-
-            await this.setFilters();
-            await this.initialFilter(FilterEnum.ALL);
-            await this.defineActiveFilter(FilterEnum.ALL);
-          }
+          await this.setFilters();
+          await this.initialFilter(FilterEnum.ALL);
+          await this.defineActiveFilter(FilterEnum.ALL);
         }
-      })
-    } else {
-      this.navCtrl.navigateBack(['/logado/sugestoes-do-anfitriao'])
-    }
+      }
+    })
   }
 
   public back(): void {
@@ -255,8 +245,6 @@ export class FestivalComidaJaponesaPage implements OnInit, OnDestroy, AfterViewI
       )
       .subscribe((places: IPlace[]) => {
         this.places = places;
-        console.log(this.places);
-
       })
   }
 
@@ -321,7 +309,8 @@ export class FestivalComidaJaponesaPage implements OnInit, OnDestroy, AfterViewI
   public ngOnDestroy(): void {
     this.currentLanguageSubscription.unsubscribe();
     this.currentSuggestionSubscription.unsubscribe();
-    //this.placesSubscription.unsubscribe();
+    this.currentCitySubscription.unsubscribe();
+    this.placesSubscription.unsubscribe();
   }
 
 }
