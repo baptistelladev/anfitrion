@@ -71,7 +71,6 @@ export class AuthService {
       await sendPasswordResetEmail(this.afAuth, email);
       return true;
     } catch (error) {
-      console.log(error);
       const errorMessage = this.getFirebaseErrorMessage(error);
       throw errorMessage;
     }
@@ -79,14 +78,10 @@ export class AuthService {
 
   public async confirmNewPassword(obbCode: string, newPassword: string): Promise<any> {
     try {
-      // 3. Confirme a redefinição de senha com o código e a nova senha
       const auth = this.afAuth;
       await confirmPasswordReset(auth, obbCode, newPassword);
-
-      console.log("Senha redefinida com sucesso!");
-      // Aqui você pode redirecionar o usuário para a página de login ou para a tela principal
     } catch (error: any) {
-      console.error("Erro ao redefinir a senha:", error.message);
+      return error
     }
   }
 

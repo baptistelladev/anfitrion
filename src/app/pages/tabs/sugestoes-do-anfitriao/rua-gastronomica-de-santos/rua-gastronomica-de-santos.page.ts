@@ -444,6 +444,10 @@ export class RuaGastronomicaDeSantosPage implements OnInit, OnDestroy {
     this.showBeachMap = show;
   }
 
+  public trackPlaceById(place: any): void {
+    return place.id
+  }
+
   public ngOnDestroy(): void {
     this.currentLanguageSubscription.unsubscribe();
     this.establishmentsSubscription.unsubscribe();

@@ -175,15 +175,11 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
       })
 
       this.lookingForPlaces = false;
-
-      console.log(this.lookingForPlaces, places);
-
-
     })
   }
 
   public trackByFeature(index: number, feature: any): string {
-    return feature.value// Assumindo que "id" é um identificador único para o lugar
+    return feature.value;
   }
 
   public selectInitialSegment(segmentValue: string) {

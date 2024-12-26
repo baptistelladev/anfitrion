@@ -156,7 +156,7 @@ class="ion-content-w-linear-bg"
     }">
       <ng-container *ngIf="places && places.length > 0">
         <swiper-slide
-        *ngFor="let place of places; let i = index"
+        *ngFor="let place of places; let i = index; trackBy: trackPlaceById"
         class="unlock-shadow-from-swiper auto-width">
           <ion-card
           [ngClass]="{ 'coming-soon': place.isBuilding }"

@@ -192,7 +192,7 @@ mode="ios">
       }">
         <ng-container *ngIf="short_establishments && short_establishments.length > 0">
           <swiper-slide
-          *ngFor="let establishment of short_establishments; let i = index"
+          *ngFor="let establishment of short_establishments; let i = index; trackBy: trackPlaceById"
           class="unlock-shadow-from-swiper auto-width">
             <ion-card
             [ngClass]="{ 'coming-soon': establishment.isBuilding }"
@@ -452,7 +452,7 @@ mode="md">
 
             <ion-col
             size="12"
-            *ngFor="let establishment of selectedInfo?.list">
+            *ngFor="let establishment of selectedInfo?.list; ; trackBy: trackPlaceById">
               <ion-item
               [ngClass]="{ 'coming-soon': establishment.isBuilding }"
               (click)="seeEstablishmentFromModal(establishment, $event)"

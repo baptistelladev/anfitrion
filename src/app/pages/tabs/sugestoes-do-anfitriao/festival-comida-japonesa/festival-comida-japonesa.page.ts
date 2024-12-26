@@ -306,6 +306,10 @@ export class FestivalComidaJaponesaPage implements OnInit, OnDestroy, AfterViewI
     }
   }
 
+  public trackPlaceById(place: any) {
+    return place.id;
+  }
+
   public ngOnDestroy(): void {
     this.currentLanguageSubscription.unsubscribe();
     this.currentSuggestionSubscription.unsubscribe();
