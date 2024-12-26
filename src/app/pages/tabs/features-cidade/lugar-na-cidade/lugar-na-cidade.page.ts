@@ -102,13 +102,13 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
     private analyticsService : AnalyticsService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.getUserFromNGRX();
     this.getCurrentLanguageFromNGRX();
     this.getRouter();
-    this.setFilters();
-    this.initialFilter(FilterEnum.ALL);
-    this.defineActiveFilter(FilterEnum.ALL);
+    await this.setFilters();
+    await this.initialFilter(FilterEnum.ALL);
+    await this.defineActiveFilter(FilterEnum.ALL);
   }
 
   ionViewWillEnter(): void {
@@ -140,18 +140,21 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
     })
   }
 
-  public setFilters(): void {
+  public async setFilters(): Promise<IFilter[]> {
     this.MOCK_FILTERS = MOCK_FILTERS.filter((filter: IFilter) => {
-      return !filter.dontShowIn.includes(this.placeType)
+      return !filter.dontShowIn.includes(this.placeTypeOBJ?.value)
     })
+
+    return this.MOCK_FILTERS;
   }
 
   public navToExplore(): void {
     this.navCtrl.navigateBack(['/logado/explorar'])
   }
 
-  public initialFilter(value: string) {
+  public async initialFilter(value: string): Promise<string> {
     this.selectedFilter = value;
+    return this.selectedFilter
   }
 
   public imageHasLoaded() {
@@ -255,7 +258,7 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
     this.defineActiveFilter(e.detail.value);
   }
 
-  public defineActiveFilter(value: string) {
+  public async defineActiveFilter(value: string): Promise<boolean> {
     this.places = null;
     let filterFound: IFilter | undefined = this.MOCK_FILTERS.find((filter: any) => {
       return filter.value === value;
@@ -310,6 +313,8 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
         ]);
         break;
     }
+
+    return true;
   }
 
   public listenForSwiperForControl(ev: any): void {
