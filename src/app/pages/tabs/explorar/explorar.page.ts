@@ -178,7 +178,7 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     })
   }
 
-  public trackByFeature(index: number, feature: any): string {
+  public trackByFeature(feature: any): any {
     return feature.value;
   }
 
