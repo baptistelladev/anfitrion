@@ -24,7 +24,16 @@ export class UsersService {
     private auth: Auth
   ) { }
 
-  public async getUserByUID(collectionName: string, userCred: any): Promise<boolean> {
+  /**
+   * @description Responsável por obter usuário pelo ID único.
+   * @param collectionName obrigatório do tipo string - nome da coleção no firebase.
+   * @param userCred credenciais geradas ao logar com o usuário.
+   * @returns uma promessa do tipo boolean.
+   */
+  public async getUserByUID(
+    collectionName: string,
+    userCred: any
+  ): Promise<boolean> {
     const docRef = doc(this.firestore, collectionName, userCred.uid);
     let user: IUSer | null = null;
 
@@ -40,11 +49,15 @@ export class UsersService {
         return false;
       }
     } catch (error) {
-      console.error("Erro ao obter o documento:", error);
       return false
     }
   }
 
+  /**
+   * @description Responsável disparar as informações do usuário via ngrx para refletir no app inteiro.
+   * @param user obrigatório do tipo IUser - representa as informações do usuário.
+   * @returns uma promessa do tipo void.
+   */
   private dispatchUser(user: IUSer): Promise<void> {
     return new Promise((resolve) => {
       this.store.dispatch(UserStore.setUser({ user }));
@@ -52,6 +65,11 @@ export class UsersService {
     });
   }
 
+  /**
+   * @description Responsável disparar as informações DE EMAIL do usuário via ngrx para refletir no app inteiro.
+   * @param user obrigatório do tipo IUser - representa as informações do usuário.
+   * @returns uma promessa do tipo void.
+   */
   private dispatchUserEmail(email: string): Promise<void> {
     return new Promise((resolve) => {
       this.store.dispatch(UserStore.setUserEmail({ email: email }));
@@ -59,6 +77,11 @@ export class UsersService {
     });
   }
 
+  /**
+   * @description Responsável por disparar via ngrx se o usuário é maior de 18 anos e pode acessar conteúdo +18.
+   * @param user obrigatório do tipo IUser - representa as informações do usuário.
+   * @returns uma promessa do tipo void.
+   */
   private dispatchEighteenAccess(user: IUSer): Promise<void> {
     return new Promise((resolve) => {
       if (user.birthDate && moment(user.birthDate, 'YYYY-MM-DD').isSameOrBefore(this.eightenYearsLimitDate)) {
@@ -71,6 +94,11 @@ export class UsersService {
     });
   }
 
+  /**
+   * @description Responsável por atualizar as informações de usuário MAS SOMENTE AS PRINCIPAIS DO PERFIL.
+   * @param userJustMainInfo obrigatório do tipo string - nome da coleção no firebase.
+   * @returns uma promessa do tipo boolean.
+   */
   private dispatchUpdateUserJustMainInfo(userJustMainInfo: any): Promise<void> {
     return new Promise((resolve) => {
       this.store.dispatch(UserStore.updateUserJustMainInfo({ userJustMainInfo: userJustMainInfo }));
@@ -78,6 +106,11 @@ export class UsersService {
     });
   }
 
+  /**
+   * @description Responsável por atualizar as informações de usuário MAS SOMENTE O E-MAIL.
+   * @param userJustMainInfo obrigatório do tipo string - nome da coleção no firebase.
+   * @returns uma promessa do tipo boolean.
+   */
   public async updateUserEmail(newEmail: string, currentPassword: string, userId: string): Promise<boolean> {
     const user = this.auth.currentUser;
 
@@ -88,17 +121,20 @@ export class UsersService {
     const credential = EmailAuthProvider.credential(user.email || '', currentPassword);
 
     try {
-      // Reautentica o usuário
       await reauthenticateWithCredential(user, credential);
-
-      // Envia o email de verificação para o novo endereço
       await verifyBeforeUpdateEmail(user, newEmail);
       return true;
     } catch (error) {
-      throw error; // Lança o erro para ser tratado pelo chamador
+      throw error;
     }
   }
 
+  /**
+   * @description Responsável por atualizar os dados do usuário.
+   * @param docId obrigatório do tipo string - id da conta do usuário.
+   * @param userInfo obrigatório do tipo any - dados do usuário.
+   * @returns uma promessa do tipo void.
+   */
   public async updateUserInfo(docId: string, userInfo: any): Promise<void> {
     try {
       const docRef = doc(this.firestore, CollectionsEnum.USERS, docId);
@@ -114,10 +150,8 @@ export class UsersService {
         }
 
         await this.dispatchUpdateUserJustMainInfo(userJustMainInfo);
-
       }
     } catch (error) {
-      console.error('Erro ao atualizar documento:', error);
       throw error;
     }
   }

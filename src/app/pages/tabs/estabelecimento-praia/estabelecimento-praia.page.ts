@@ -122,14 +122,11 @@ export class EstabelecimentoPraiaPage implements OnInit, OnDestroy {
 
             this.placesService
             .getDocumentByValue(CollectionsEnum.PLACES, 'value', this.establishmentNameFromUrl)
-            .then((establishmentFromService: IPlace | null) => {
+            .subscribe((establishmentFromService: IPlace | null) => {
               if (establishmentFromService) {
                 this.establishment = establishmentFromService;
                 this.defineTitleFromPage(this.establishment.name);
               }
-            })
-            .catch((res: any) => {
-
             })
           }
         }

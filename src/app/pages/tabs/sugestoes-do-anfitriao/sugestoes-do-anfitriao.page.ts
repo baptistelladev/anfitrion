@@ -93,7 +93,7 @@ export class SugestoesDoAnfitriaoPage implements OnInit, OnDestroy {
     await loading.present();
 
     this.suggestionsBaixadaSantista$ = this.suggestionsService
-    .getSuggestions(CollectionsEnum.SUGGESTIONS_BAIXADA_SANTISTA, [
+    .getSuggestionsCollection(CollectionsEnum.SUGGESTIONS_BAIXADA_SANTISTA, [
       { field: "filter", operator: "array-contains", value: SuggestionsEnum.BAIXADA_SANTISTA },
     ])
 
@@ -118,7 +118,7 @@ export class SugestoesDoAnfitriaoPage implements OnInit, OnDestroy {
 
   public async getSelectedCitySuggestions(cityValue: string) {
     this.suggestionsSelectedCity$ = this.suggestionsService
-    .getSuggestions(CollectionsEnum.SUGGESTIONS_BAIXADA_SANTISTA, [
+    .getSuggestionsCollection(CollectionsEnum.SUGGESTIONS_BAIXADA_SANTISTA, [
       { field: "filter", operator: "array-contains", value: cityValue },
     ])
 
