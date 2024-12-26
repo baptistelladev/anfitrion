@@ -106,9 +106,6 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
     this.getUserFromNGRX();
     this.getCurrentLanguageFromNGRX();
     this.getRouter();
-    await this.setFilters();
-    await this.initialFilter(FilterEnum.ALL);
-    await this.defineActiveFilter(FilterEnum.ALL);
   }
 
   ionViewWillEnter(): void {
@@ -174,7 +171,7 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
     })
   }
 
-  public getRouter(): void {
+  public getRouter() {
     this.route.queryParams
     .pipe(
       take(1),
@@ -200,16 +197,16 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
       };
       return updatedParams;
     }))
-    .subscribe((res: any) => {
+    .subscribe(async (res: any) => {
       this.placeType = res.place_type;
 
       this.placeTypeOBJ = this.MOCK_CITY_FEATURES.places.find((placeType: any) => {
         return placeType.value === this.placeType;
       })
 
-      console.log(this.placeTypeOBJ);
-
-
+      await this.setFilters();
+      await this.initialFilter(FilterEnum.ALL);
+      await this.defineActiveFilter(FilterEnum.ALL);
     })
   }
 
