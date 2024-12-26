@@ -248,9 +248,7 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
 
   public goToInsta(): void {
     let insta: undefined | ISocialNetwork = this.establishment.networks.find(network => network.value === NetworksEnum.INSTAGRAM);
-    if (insta) {
-      this.navToAppOrSite(insta);
-    }
+    if (insta) { this.navToAppOrSite(insta); }
   }
 
   public openExternalUrl(url: string, target: string = '_system'): void {
@@ -278,10 +276,8 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
       buttons: [
         {
           text: `${this.translate.instant('SHARED.CANCEL')}`,
-          role: '',
-          handler: () => {
-
-          }
+          role: 'cancel',
+          handler: () => {}
         },
         {
           text: `${this.translate.instant('SHARED.GO_TO_INSTA')}`,
@@ -332,8 +328,7 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.establishmentSubscription) {
-      this.establishmentSubscription.unsubscribe();
-    }
+    if (this.establishmentSubscription) { this.establishmentSubscription.unsubscribe(); }
+    this.currentLanguageSubscription.unsubscribe();
   }
 }
