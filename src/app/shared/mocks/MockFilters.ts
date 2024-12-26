@@ -25,9 +25,10 @@ export const MOCK_FILTERS: IFilter[] = [
       PlaceTypeCityEnum.EMPORIO,
       PlaceTypeCityEnum.MERCADO,
       PlaceTypeCityEnum.TABACARIA,
+      PlaceTypeCityEnum.CHURRASCARIA,
       PlaceTypeBeachEnum.QUIOSQUE,
       PlaceTypeBeachEnum.CARRINHO,
-      SuggestionsEnum.FESTIVAL_DE_COMIDA_JAPONESA
+      SuggestionsEnum.FESTIVAL_DE_COMIDA_JAPONESA,
     ]
   },
   {
@@ -56,6 +57,7 @@ export const MOCK_FILTERS: IFilter[] = [
       PlaceTypeCityEnum.PIZZARIA,
       PlaceTypeCityEnum.SORVETERIA,
       PlaceTypeCityEnum.TABACARIA,
+      PlaceTypeCityEnum.CHURRASCARIA,
       PlaceTypeBeachEnum.QUIOSQUE,
       PlaceTypeBeachEnum.CARRINHO,
       SuggestionsEnum.FESTIVAL_DE_COMIDA_JAPONESA
@@ -78,6 +80,7 @@ export const MOCK_FILTERS: IFilter[] = [
       PlaceTypeCityEnum.PIZZARIA,
       PlaceTypeCityEnum.SORVETERIA,
       PlaceTypeCityEnum.TABACARIA,
+      PlaceTypeCityEnum.CHURRASCARIA,
       PlaceTypeBeachEnum.QUIOSQUE,
       PlaceTypeBeachEnum.CARRINHO,
       SuggestionsEnum.FESTIVAL_DE_COMIDA_JAPONESA
@@ -103,6 +106,7 @@ export const MOCK_FILTERS: IFilter[] = [
       PlaceTypeCityEnum.PIZZARIA,
       PlaceTypeCityEnum.SORVETERIA,
       PlaceTypeCityEnum.TABACARIA,
+      PlaceTypeCityEnum.CHURRASCARIA,
       SuggestionsEnum.FESTIVAL_DE_COMIDA_JAPONESA,
       SuggestionsEnum.RUA_GASTRONOMICA_DE_SANTOS
     ]
