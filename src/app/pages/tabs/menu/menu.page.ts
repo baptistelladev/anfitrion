@@ -26,7 +26,7 @@ export class MenuPage implements OnInit, OnDestroy {
     {
       text: {
         pt: 'Conta',
-        en: 'Account',  // Alterado para refletir o significado correto
+        en: 'Account',
         es: 'Cuenta'
       },
       icon: 'id-card',
