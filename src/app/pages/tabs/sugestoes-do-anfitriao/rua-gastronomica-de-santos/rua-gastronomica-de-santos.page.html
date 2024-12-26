@@ -134,9 +134,9 @@ mode="ios">
           </div>
         </ion-col>
 
-        <ion-col size="12" class="no-pad-bottom no-pad-top">
+        <ion-col size="12" class="no-pad-bottom no-pad-top" *ngIf="activeFilter">
           <ion-text mode="ios" class="line-height-18">
-            <p class="fs-14 color-gray-text">{{ 'SHARED.LOOKING_FOR' | translate }}: <span class="fs-14 color-green font-w-semibold txt-lowercase">{{ activeFilter.text[currentLanguage.value] }}</span></p>
+            <p class="fs-14 color-gray-text">{{ 'SHARED.LOOKING_FOR' | translate }}: <span class="fs-14 color-green font-w-semibold txt-lowercase">{{ activeFilter.text?.[currentLanguage.value] }}</span></p>
           </ion-text>
         </ion-col>
       </ion-row>
@@ -204,12 +204,8 @@ mode="ios">
               <ion-card-content class="txt-center" mode="ios">
                 <div class="logo-wrapper mg-bottom-12">
                   <div class="logo-container"
-                  [ngClass]="{'has-image': !isLoadingLogo, 'logo-needs-gray-2' : establishment.value === 'galeteria-santista'}">
-                    <ion-spinner name="lines-sharp-small" *ngIf="isLoadingLogo"></ion-spinner>
-
+                  [ngClass]="{'logo-needs-gray-2' : establishment.value === 'galeteria-santista'}">
                     <ion-img
-                    *ngIf="!isLoadingLogo"
-                    (ionImgDidLoad)="imageHasLoaded()"
                     [src]="'./../../../../assets/images/establishments/' + establishment.value + (establishment.value === 'bistro-14' || establishment.value === 'galeteria-santista' || establishment.value === 'guadalupe' || establishment.value === 'vixe' || establishment.value === 'vila-tolentino' ? '.png' : '.jpg')">
                     </ion-img>
                   </div>
@@ -469,12 +465,8 @@ mode="md">
 
                 <div class="logo-wrapper">
                   <div class="logo-container"
-                    [ngClass]="{'has-image': !isLoadingLogo, 'logo-needs-gray-2' : establishment.value === 'galeteria-santista'}">
-                      <ion-spinner name="lines-sharp-small" *ngIf="isLoadingLogo"></ion-spinner>
-
+                    [ngClass]="{'logo-needs-gray-2' : establishment.value === 'galeteria-santista'}">
                       <ion-img
-                      *ngIf="!isLoadingLogo"
-                      (ionImgDidLoad)="imageHasLoaded()"
                       [src]="'./../../../../assets/images/establishments/' + establishment.value + (establishment.value === 'bistro-14' || establishment.value === 'galeteria-santista' || establishment.value === 'guadalupe' || establishment.value === 'vixe' || establishment.value === 'vila-tolentino' ? '.png' : '.jpg')">
                       </ion-img>
                     </div>

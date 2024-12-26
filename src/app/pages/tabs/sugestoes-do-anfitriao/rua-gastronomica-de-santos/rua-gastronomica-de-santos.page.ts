@@ -197,12 +197,6 @@ export class RuaGastronomicaDeSantosPage implements OnInit, OnDestroy {
   public establishments$: Observable<IPlace[]>;
   public establishmentsSubscription: Subscription;
 
-  public short_parkings: IParking[];
-  public parkings$: Observable<IParking[]>;
-  public parkingsSubscription: Subscription;
-
-  public isLoadingLogo: boolean;
-
   public filterButtons: any[] = [
     {
       value: 'as-asc-desc',
@@ -277,30 +271,12 @@ export class RuaGastronomicaDeSantosPage implements OnInit, OnDestroy {
       })
   }
 
-  public getSuggestionFromUrl() {
-    this.route.paramMap
-    .pipe(take(1))
-    .subscribe({
-      next: async (paramsAsMap: any) => {
-        this.paramAsUrl = paramsAsMap.params['suggestion'];
-
-        switch (paramsAsMap.params['suggestion']) {
-          case 'rua-gastronomica-de-santos':
-            this.title.setTitle('Rua Gastronômica de santos');
-
-            this.suggestionsService
-            .getSuggestionsFilteredByValue(CollectionsEnum.SUGGESTIONS_BAIXADA_SANTISTA, SuggestionsEnum.RUA_GASTRONOMICA_DE_SANTOS)
-            .then((suggestion: ISuggestion | null) => {
-              if (suggestion) {
-                this.currentSuggestion = suggestion;
-              }
-            })
-            break;
-
-          default:
-            this.navCtrl.navigateBack(['/logado/sugestoes-do-anfitriao'])
-            break;
-        }
+  public getSuggestionDirectFromService() {
+    this.suggestionsService
+    .getSuggestionsFilteredByValue(CollectionsEnum.SUGGESTIONS_BAIXADA_SANTISTA, SuggestionsEnum.RUA_GASTRONOMICA_DE_SANTOS)
+    .then((suggestion: ISuggestion | null) => {
+      if (suggestion) {
+        this.currentSuggestion = suggestion;
       }
     })
   }
@@ -363,10 +339,6 @@ export class RuaGastronomicaDeSantosPage implements OnInit, OnDestroy {
 
   public slideToPrev(): void {
     this.swiper?.slidePrev(800);
-  }
-
-  public imageHasLoaded() {
-    this.isLoadingLogo = false;
   }
 
   public filterByCharacteristic(e: any): void {
@@ -437,14 +409,6 @@ export class RuaGastronomicaDeSantosPage implements OnInit, OnDestroy {
     this.showSpecificList = false;
   }
 
-  public callParking(parking: any, e: any) {
-    if (parking.phone.ddd && parking.phone.number) {
-      window.location.href = `tel:55${parking.phone.ddd}${parking.phone.number}`;
-    } else {
-      e.preventDefault();
-    }
-  }
-
   public back(): void {
     this.navCtrl.navigateBack(['/logado/sugestoes-do-anfitriao'])
   }
@@ -458,7 +422,7 @@ export class RuaGastronomicaDeSantosPage implements OnInit, OnDestroy {
         this.currentSuggestion = suggestion;
         this.paramAsUrl = this.currentSuggestion.route;
       } else {
-        this.getSuggestionFromUrl();
+        this.getSuggestionDirectFromService();
       }
     })
   }
@@ -470,7 +434,6 @@ export class RuaGastronomicaDeSantosPage implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     this.currentLanguageSubscription.unsubscribe();
     this.establishmentsSubscription.unsubscribe();
-    this.parkingsSubscription.unsubscribe();
     this.currentSuggestionSubscription.unsubscribe();
   }
 

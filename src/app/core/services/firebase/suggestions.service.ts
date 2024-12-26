@@ -20,7 +20,7 @@ export class SuggestionsService {
    * @param filters obrigatório do tipo IFirebaseFilter[] - representa uma lista com filtros do firebase.
    * @returns um Observable que representa a lista do tipo ISuggestion.
    */
-  public getSuggestions(
+  public getSuggestionsCollection(
     collectionName: string,
     filters: IFirebaseFilter[] = []
   ): Observable<ISuggestion[]> {
@@ -58,14 +58,14 @@ export class SuggestionsService {
       const querySnapshot = await getDocs(q);
 
       if (!querySnapshot.empty) {
-        const docSnap = querySnapshot.docs[0]; // Pega o primeiro documento encontrado
-        const data = docSnap.data() as ISuggestion; // Cast para IShortEstablishment
-        return { ...data }; // Retorna o documento com o ID
+        const docSnap = querySnapshot.docs[0];
+        const data = docSnap.data() as ISuggestion;
+        return { ...data };
       } else {
         return null;
     }
     } catch (error) {
-      return null; // Retorna null em caso de erro
+      return null;
     }
   }
 }

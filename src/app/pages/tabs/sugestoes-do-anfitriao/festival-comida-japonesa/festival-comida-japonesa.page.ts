@@ -161,7 +161,7 @@ export class FestivalComidaJaponesaPage implements OnInit, OnDestroy, AfterViewI
       this.title.setTitle('Festival de Comida Japonesa');
 
       this.suggestionsService
-      .getSuggestions(CollectionsEnum.SUGGESTIONS_BAIXADA_SANTISTA, [
+      .getSuggestionsCollection(CollectionsEnum.SUGGESTIONS_BAIXADA_SANTISTA, [
         { field: 'value', operator: '==', value: SuggestionsEnum.FESTIVAL_COMIDA_JAPONESA }
       ])
       .pipe((take(1)))

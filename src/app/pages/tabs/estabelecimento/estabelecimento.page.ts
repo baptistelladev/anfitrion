@@ -1,16 +1,13 @@
-import { MOCK_PLACE_CITY_TYPE } from '../../../shared/mocks/MockPlaceCityType';
-import { AfterContentInit, Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { AlertController, IonContent, NavController, Platform } from '@ionic/angular';
 import { Clipboard } from '@angular/cdk/clipboard';
 import * as moment from 'moment';
-import { getElement } from 'ionicons/dist/types/stencil-public-runtime';
 import { ISocialNetwork } from 'src/app/shared/models/INetwork';
 import { Store } from '@ngrx/store';
 import { IPlace } from 'src/app/shared/models/IPlace';
 import { map, Observable, Subscription, take } from 'rxjs';
 import * as AppStore from './../../../shared/store/app.state';
 import { ILang } from 'src/app/shared/models/ILang';
-import { ITime } from 'src/app/shared/models/ITime';
 import { TranslateService } from '@ngx-translate/core';
 import { Title } from '@angular/platform-browser';
 import { IPhone } from 'src/app/shared/models/IPhone';
@@ -117,9 +114,9 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
       next: (establishment: IPlace) => {
         if (establishment.value) {
           this.establishment = establishment;
-          this.defineTitleFromPage(this.establishment.name);
           this.showBackButton = true;
           this.hasWhatsApp(establishment);
+          this.defineTitleFromPage(this.establishment.name);
         } else {
           // A STRING PRECISA EXISTIR, PARA DEPOIS SER PROCURADA COMO VALUE.
           if (this.establishmentNameFromUrl) {
@@ -127,15 +124,22 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
 
             this.placesService
             .getDocumentByValue(CollectionsEnum.PLACES, 'value', this.establishmentNameFromUrl)
-            .then((establishmentFromService: IPlace | null) => {
+            .pipe(map( (place: IPlace | null) => {
+              if (place?.id) {
+                return {
+                  ...place,
+                  working_time: [...place.working_time].sort((a, b) => a.day_number - b.day_number)
+                }
+              } else {
+                return null
+              }
+            }))
+            .subscribe((establishmentFromService: IPlace | null) => {
               if (establishmentFromService) {
                 this.establishment = establishmentFromService;
                 this.hasWhatsApp(establishment);
                 this.defineTitleFromPage(this.establishment.name);
               }
-            })
-            .catch((res: any) => {
-
             })
           }
         }
@@ -328,6 +332,8 @@ export class EstabelecimentoPage implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.establishmentSubscription.unsubscribe();
+    if (this.establishmentSubscription) {
+      this.establishmentSubscription.unsubscribe();
+    }
   }
 }
