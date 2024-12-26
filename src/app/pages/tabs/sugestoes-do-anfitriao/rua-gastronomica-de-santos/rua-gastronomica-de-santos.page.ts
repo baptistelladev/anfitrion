@@ -22,6 +22,7 @@ import { IPlace } from 'src/app/shared/models/IPlace';
 import { ISuggestion } from 'src/app/shared/models/ISuggestion';
 import Swiper from 'swiper';
 import * as AppStore from './../../../../shared/store/app.state';
+import { IFilter } from 'src/app/shared/models/IFilter';
 
 @Component({
   selector: 'anfitrion-rua-gastronomica-de-santos',
@@ -181,7 +182,7 @@ export class RuaGastronomicaDeSantosPage implements OnInit, OnDestroy {
   public selectedFilter: string;
   public activeFilter: any;
 
-  public filters: any[] = MOCK_FILTERS;
+  public filters: any[];
 
   public showSpecificList: boolean = false;
 
@@ -211,6 +212,8 @@ export class RuaGastronomicaDeSantosPage implements OnInit, OnDestroy {
 
   public alreadyGetPlacesFirstTime: boolean = false;
 
+  public SuggestionsEnum = SuggestionsEnum;
+
   constructor(
     private alertCtrl : AlertController,
     private title : Title,
@@ -223,19 +226,29 @@ export class RuaGastronomicaDeSantosPage implements OnInit, OnDestroy {
     private suggestionsService : SuggestionsService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.getCurrentSuggestionFromNGRX();
-    this.initialFilter(FilterEnum.ALL);
-    this.defineActiveFilter(FilterEnum.ALL);
     this.getCurrentLanguageFromNGRX();
+    await this.setFilters();
+    await this.initialFilter(FilterEnum.ALL);
+    await this.defineActiveFilter(FilterEnum.ALL);
   }
 
   ionViewWillEnter(): void {
     this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
   }
 
-  public initialFilter(value: string) {
+  public async setFilters(): Promise<IFilter[]> {
+    this.filters = MOCK_FILTERS.filter((filterOption: IFilter) => {
+      return !filterOption.dontShowIn.includes(SuggestionsEnum.RUA_GASTRONOMICA_DE_SANTOS)
+    })
+
+    return this.filters;
+  }
+
+  public async initialFilter(value: string): Promise<string> {
     this.selectedFilter = value;
+    return this.selectedFilter;
   }
 
   public getPlaces(filters: IFirebaseFilter[] = []) {
@@ -345,7 +358,7 @@ export class RuaGastronomicaDeSantosPage implements OnInit, OnDestroy {
     this.defineActiveFilter(e.detail.value);
   }
 
-  public defineActiveFilter(value: string) {
+  public async defineActiveFilter(value: string): Promise<boolean> {
     this.short_establishments = null;
 
     let filterFound = this.filters.find((filter: any) => {
@@ -392,7 +405,7 @@ export class RuaGastronomicaDeSantosPage implements OnInit, OnDestroy {
         break;
     }
 
-
+    return true
   }
 
   public seeSpecficList(show: boolean, info: any): void {
