@@ -92,7 +92,8 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     private placesService : PlacesService,
     private translate : TranslateService,
     private analyticsService : AnalyticsService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private ngZone : NgZone
   ) { }
 
   ngOnInit() {
@@ -129,8 +130,6 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     .subscribe( (places: IPlace[]) => {
       this.places = places;
 
-      this.cdr.detectChanges();
-
       let compressedInformation = this.places.reduce((acc: any, place) => {
         const key = place.mainType.value.toUpperCase();
         acc[key] = (acc[key] || 0) + 1;
@@ -142,6 +141,12 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
       })
 
       this.lookingForPlaces = false;
+
+      console.log(this.places);
+
+
+      this.cdr.detectChanges();
+
     })
   }
 
@@ -161,8 +166,6 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
     .subscribe( async (places: IPlace[]) => {
       this.places = places;
 
-      this.cdr.detectChanges();
-
       let compressedInformation = this.places.reduce((acc: any, place) => {
         const key = place.mainType.value.toUpperCase();
 
@@ -175,6 +178,8 @@ export class ExplorarPage implements OnInit, AfterViewInit, OnDestroy {
       })
 
       this.lookingForPlaces = false;
+
+      this.cdr.detectChanges();
     })
   }
 

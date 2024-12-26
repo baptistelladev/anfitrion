@@ -277,9 +277,14 @@ ion-button {
     transition: all 200ms ease;
     --transition: all 200ms ease;
     margin: 0;
+    --background-hover: var(--transparent);
+    --background-focused: var(--transparent);
+    --background-activated: var(--transparent);
 
-    &:hover {
-      transform: scale(1.2) rotate(-15deg);
+    @media (hover: hover) {
+      &:hover {
+        transform: scale(1.2) rotate(-15deg);
+      }
     }
   }
 }
@@ -713,6 +718,8 @@ ion-chip.as-badge {
   ion-chip.as-badge:not(:last-child) {
     margin: 0 5px 0 0;
   }
+}
 
-
+.ion-icon-thiness {
+  --ionicon-stroke-width: 25px;
 }

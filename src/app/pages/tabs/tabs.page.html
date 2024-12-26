@@ -18,7 +18,7 @@ class="ion-no-border">
       tab?.value === 'sobre-a-cidade' ? ('COMPONENTS.TABS.CITY' | translate) :
       ('COMPONENTS.TABS.SUGGESTIONS' | translate)
       ">
-        <ion-icon [name]="tab.icon + '-outline'"></ion-icon>
+        <ion-icon [name]="tab.icon + '-outline'" class="ion-icon-thiness"></ion-icon>
 
         <ng-container *ngIf="tab?.value === 'explorar'">{{ 'COMPONENTS.TABS.EXPLORE' | translate }}</ng-container>
         <ng-container *ngIf="tab?.value === 'sugestoes-do-anfitriao'">{{ 'COMPONENTS.TABS.SUGGESTIONS' | translate }}</ng-container>
