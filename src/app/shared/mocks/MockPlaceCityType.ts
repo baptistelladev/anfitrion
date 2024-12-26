@@ -81,5 +81,13 @@ export const MOCK_PLACE_CITY_TYPE: IPlaceType[] = [
       es: 'Emporio'
     },
     value: 'EMPORIO'
+  },
+  {
+    text: {
+      pt: "Churrascaria",
+      en: "Steakhouse",
+      es: "Parrillada"
+    },
+    value: "CHURRASCARIA"
   }
 ]
