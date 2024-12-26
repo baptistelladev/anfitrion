@@ -142,7 +142,7 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
 
   public async setFilters(): Promise<IFilter[]> {
     this.MOCK_FILTERS = MOCK_FILTERS.filter((filter: IFilter) => {
-      return !filter.dontShowIn.includes(this.placeTypeOBJ?.value)
+      return !filter.dontShowIn.includes(this.placeTypeOBJ.value)
     })
 
     return this.MOCK_FILTERS;
