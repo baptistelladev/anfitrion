@@ -140,6 +140,7 @@ class="ion-content-w-linear-bg">
                             <ion-text
                               mode="ios">
                               <ion-icon [name]="place.icon + '-outline'" *ngIf="!place.loadIconsFromAssets"></ion-icon>
+                              <ion-img *ngIf="place.loadIconsFromAssets" [src]="'./../../../../assets/icon/' + place.icon + '.png'" class="icon-w-src" [ngClass]="place.icon"></ion-img>
                               <p class="fs-12 mg-top-5 color-gray-text">{{ place.text[currentLanguage.value] }}</p>
                             </ion-text>
                           </ion-item>

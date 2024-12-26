@@ -149,12 +149,12 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
   }
 
   public navToExplore(): void {
-    this.navCtrl.navigateBack(['/logado/explorar'])
+    this.navCtrl.navigateBack(['/logado/explorar']);
   }
 
   public async initialFilter(value: string): Promise<string> {
     this.selectedFilter = value;
-    return this.selectedFilter
+    return this.selectedFilter;
   }
 
   public imageHasLoaded() {
@@ -162,7 +162,7 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
   }
 
   public back(): void {
-    this.navCtrl.back()
+    this.navCtrl.back();
   }
 
   public getCurrentLanguageFromNGRX(): void {
@@ -204,8 +204,11 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
       this.placeType = res.place_type;
 
       this.placeTypeOBJ = this.MOCK_CITY_FEATURES.places.find((placeType: any) => {
-        return placeType.value === this.placeType
+        return placeType.value === this.placeType;
       })
+
+      console.log(this.placeTypeOBJ);
+
 
     })
   }
@@ -238,7 +241,7 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
       e.preventDefault();
     } else {
       this.navCtrl.navigateForward(['/logado/estabelecimento-na-cidade/' + place.value]);
-      this.store.dispatch(AppStore.setCurrentEstablishment({ establishment: place } ))
+      this.store.dispatch(AppStore.setCurrentEstablishment({ establishment: place } ));
     }
   }
 
@@ -340,5 +343,4 @@ export class LugarNaCidadePage implements OnInit, OnDestroy, AfterViewInit {
     this.userSubscription.unsubscribe();
     this.places = null;
   }
-
 }

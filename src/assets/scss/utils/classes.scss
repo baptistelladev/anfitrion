@@ -154,3 +154,14 @@
   align-items: center;
   justify-content: center;
 }
+
+.icon-w-src {
+  width: 27px;
+  height: 27px;
+  margin-bottom: 2px;
+
+  &.cupcake { margin-bottom: 11px; }
+  &.steak { margin-bottom: 8px; }
+}
+
+.h-28 { height: 28px; }
