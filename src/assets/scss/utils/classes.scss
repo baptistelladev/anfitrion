@@ -164,4 +164,10 @@
   &.steak { margin-bottom: 8px; }
 }
 
-.h-28 { height: 28px; }
+.h-28 {
+  height: 28px;
+
+  &::part(image) {
+    width: auto;
+  }
+}

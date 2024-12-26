@@ -116,7 +116,7 @@ class="ion-content-w-linear-bg">
                   </ng-container>
 
                   <ng-container *ngIf="places && places.length > 0">
-                    <ng-container *ngFor="let place of FEATURES.places; trackBy: trackByFeature">
+                    <ng-container *ngFor="let place of FEATURES.places">
                       <ion-col
                       size="auto"
                       *ngIf="place.show">
@@ -139,7 +139,7 @@ class="ion-content-w-linear-bg">
                           lines="none">
                             <ion-text
                               mode="ios">
-                              <ion-icon [name]="place.icon + '-outline'" *ngIf="!place.loadIconsFromAssets"></ion-icon>
+                              <ion-icon [name]="place.icon + '-outline'" *ngIf="!place.loadIconsFromAssets" class="ion-icon-thiness"></ion-icon>
                               <ion-img *ngIf="place.loadIconsFromAssets" [src]="'./../../../../assets/icon/' + place.icon + '.png'" class="icon-w-src" [ngClass]="place.icon"></ion-img>
                               <p class="fs-12 mg-top-5 color-gray-text">{{ place.text[currentLanguage.value] }}</p>
                             </ion-text>
