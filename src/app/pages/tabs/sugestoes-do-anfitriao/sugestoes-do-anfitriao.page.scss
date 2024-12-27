@@ -203,3 +203,59 @@ ion-skeleton-text {
     width: 100%;
   }
 }
+
+.profile-type-card {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  position: relative;
+  background: linear-gradient(to bottom, var(--transparent), var(--bootstrap-tourist-light-bg) 100%);
+
+  &.is-not-selected {
+    filter: grayscale(1) contrast(1);
+    opacity: .5;
+    pointer-events: none;
+  }
+
+  ng-lottie {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &.tourists {
+    margin-bottom: 28px;
+
+    ng-lottie {
+      display: block;
+      width: 250px;
+      bottom: -80px;
+    }
+
+    &.is-selected {
+      background: linear-gradient(to bottom, var(--transparent), var(--bootstrap-tourist-light-bg) 100%);
+    }
+  }
+
+  &.residents {
+    ng-lottie {
+      display: block;
+      width: 225px;
+      bottom: -86px;
+    }
+
+    &.is-selected {
+      background: linear-gradient(to bottom, var(--transparent), var(--bootstrap-resident-light-bg) 100%);
+    }
+  }
+
+  &.is-selected {
+    ng-lottie {
+      filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, .1));
+    }
+  }
+
+  .simulate-space {
+    margin-bottom: 66px
+  }
+}

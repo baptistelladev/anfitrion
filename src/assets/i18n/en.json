@@ -49,7 +49,11 @@
     "DESCRIPTION" : ["This section was created", "to save time for locals and tourists", ". We created sections based on what people search for most in the city"],
     "NO_RESULT" : "We don't have any suggestions yet",
     "SEE_IN_SELECTED_CITY": "Check out what we've prepared for the people who are {{ city }}",
-    "SEE_IN_BAIXADA_SANTISTA": "No matter which city you are in, the suggestions above are for the entire Baixada Santista"
+    "SEE_IN_BAIXADA_SANTISTA": "No matter which city you are in, the suggestions above are for the entire Baixada Santista",
+    "ORANGE_TAG" : ["orange","tag"],
+    "BLUE_TAG" : ["blue","tag"],
+    "TOURIST_MESSAGE" : "we recommend it for those passing through the Baixada Santista",
+    "RESIDENT_MESSAGE" : "we recommend it for those living in a city in the region"
   },
   "EXPLORE_PAGE" : {
     "PAGE_TITLE": "Explore",

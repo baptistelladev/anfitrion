@@ -69,10 +69,10 @@ class="ion-content-w-linear-bg">
                     <ion-text mode="ios">
                       <ng-container *ngIf="currentLanguage.value !== 'en'">
                         <p class="color-gray-c fs-14">{{ suggestion.name.title[currentLanguage.value] }}</p>
-                        <p class="description fs-18 color-linear font-w-bold">{{ suggestion.name.text[currentLanguage.value] }}</p>
+                        <p class="description fs-18 color-white font-w-bold">{{ suggestion.name.text[currentLanguage.value] }}</p>
                       </ng-container>
                       <ng-container *ngIf="currentLanguage.value === 'en'">
-                        <p class="description fs-18 color-linear font-w-bold">{{ suggestion.name.text[currentLanguage.value] }}</p>
+                        <p class="description fs-18 color-white font-w-bold">{{ suggestion.name.text[currentLanguage.value] }}</p>
                         <p class="color-gray-c fs-14">{{ suggestion.name.title[currentLanguage.value] }}</p>
                       </ng-container>
                     </ion-text>
@@ -119,10 +119,10 @@ class="ion-content-w-linear-bg">
                 <ion-text mode="ios">
                   <ng-container *ngIf="currentLanguage.value !== 'en'">
                     <p class="color-gray-c fs-14">{{ suggestionsBaixadaSantista[0].name.title[currentLanguage.value] }}</p>
-                    <p class="description fs-18 color-linear font-w-bold">{{ suggestionsBaixadaSantista[0].name.text[currentLanguage.value] }}</p>
+                    <p class="description fs-18 color-white font-w-bold">{{ suggestionsBaixadaSantista[0].name.text[currentLanguage.value] }}</p>
                   </ng-container>
                   <ng-container *ngIf="currentLanguage.value === 'en'">
-                    <p class="description fs-18 color-linear font-w-bold">{{ suggestionsBaixadaSantista[0].name.text[currentLanguage.value] }}</p>
+                    <p class="description fs-18 color-white font-w-bold">{{ suggestionsBaixadaSantista[0].name.text[currentLanguage.value] }}</p>
                     <p class="color-gray-c fs-14">{{ suggestionsBaixadaSantista[0].name.title[currentLanguage.value] }}</p>
                   </ng-container>
                 </ion-text>
@@ -286,6 +286,68 @@ class="ion-content-w-linear-bg">
             <ion-skeleton-text [animated]="true" class="like-city-card"></ion-skeleton-text>
           </ion-col>
         </ng-container>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <ion-col size="12" size-md="6" class="txt-center mg-bottom-32">
+          <div
+          [ngClass]="user && user.userType === ProfileType.TURISTA ? 'is-selected' : 'is-not-selected'"
+          class="profile-type-card tourists">
+            <div class="residents-animation">
+              <ng-lottie [options]="touristOptions" (animationCreated)="touristAnimationCreated($event)" #animationTourist/>
+            </div>
+
+            <ion-grid>
+              <ion-row>
+                <ion-col size="12" class="txt-center">
+                  <ion-chip
+                  mode="ios"
+                  class="txt-uppercase as-badge tourist">
+                    {{ 'SHARED.TOURIST' | translate }}
+                  </ion-chip>
+
+                  <ion-text mode="ios" class="font-w-thin line-height-22">
+                    <p class="color-bootstrap-tourist font-baloo fs-20 font-w-normal mg-top-16">{{ 'SUGGESTIONS_PAGE.BLUE_TAG.0' | translate }} <b>{{ 'SUGGESTIONS_PAGE.BLUE_TAG.1' | translate }}</b></p>
+                    <p class="fs-14 mg-top-5">{{ 'SUGGESTIONS_PAGE.TOURIST_MESSAGE' | translate }}.</p>
+                  </ion-text>
+
+                  <div class="simulate-space"></div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </ion-col>
+
+        <ion-col size="12" size-md="6" class="txt-center mg-bottom-32">
+          <div
+          class="profile-type-card residents"
+          [ngClass]="user && user.userType === ProfileType.MORADOR ? 'is-selected' : 'is-not-selected'">
+            <div class="residents-animation">
+              <ng-lottie [options]="residentOptions" (animationCreated)="residentsAnimationCreated($event)" />
+            </div>
+
+            <ion-grid>
+              <ion-row>
+                <ion-col size="12">
+                  <ion-chip
+                  mode="ios"
+                  class="txt-uppercase as-badge resident">
+                    {{ 'SHARED.RESIDENT' | translate }}
+                  </ion-chip>
+
+                  <ion-text mode="ios" class="font-w-thin line-height-22">
+                    <p class="color-bootstrap-resident font-baloo fs-20 font-w-normal mg-top-16">{{ 'SUGGESTIONS_PAGE.ORANGE_TAG.0' | translate }} <b>{{ 'SUGGESTIONS_PAGE.ORANGE_TAG.1' | translate }}</b></p>
+                    <p class="fs-14 mg-top-5">{{ 'SUGGESTIONS_PAGE.RESIDENT_MESSAGE' | translate }}.</p>
+                  </ion-text>
+
+                  <div class="simulate-space"></div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </ion-col>
       </ion-row>
     </ion-grid>
 
