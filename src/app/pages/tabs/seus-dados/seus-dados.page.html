@@ -296,7 +296,7 @@ class="ion-content-w-linear-bg">
 
             <div class="mg-top-8">
               <ion-chip
-              [ngClass]="personalDataForm.get('type')?.value === UserTypeEnum.MORADOR ? 'tourist' : 'resident'"
+              [ngClass]="personalDataForm.get('type')?.value === UserTypeEnum.MORADOR ? 'resident' : 'tourist'"
               mode="ios"
               class="txt-uppercase as-badge">
                 {{personalDataForm.get('type')?.value === UserTypeEnum.MORADOR ? ('SHARED.RESIDENT' | translate) : ('SHARED.TOURIST' | translate) }}

@@ -49,7 +49,11 @@
     "DESCRIPTION" : ["Essa sessão foi criada","para poupar o tempo de moradores e turistas",". Nós criamos sessões com base no que as pessoas mais procuram na cidade"],
     "NO_RESULT" : "Não temos nenhuma sugestão ainda",
     "SEE_IN_SELECTED_CITY" : "Confira o que separamos para as pessoas que estão {{ city }}",
-    "SEE_IN_BAIXADA_SANTISTA": "Não importa em qual cidade você esteja, as sugestões acima são para a região inteira da Baixada Santista"
+    "SEE_IN_BAIXADA_SANTISTA": "Não importa em qual cidade você esteja, as sugestões acima são para a região inteira da Baixada Santista",
+    "ORANGE_TAG" : ["etiqueta","laranja"],
+    "BLUE_TAG" : ["etiqueta","azul"],
+    "TOURIST_MESSAGE" : "indicamos para quem está de passagem na Baixada Santista",
+    "RESIDENT_MESSAGE" : "indicamos para quem mora em alguma cidade da região"
   },
   "EXPLORE_PAGE" : {
     "PAGE_TITLE" : "Explorar",

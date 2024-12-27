@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnChanges, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { IonContent, NavController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
@@ -16,6 +16,11 @@ import { ISuggestion } from 'src/app/shared/models/ISuggestion';
 import { OverlayService } from 'src/app/shared/services/overlay.service';
 import Swiper from 'swiper';
 import * as AppStore from './../../../shared/store/app.state';
+import { AnimationOptions } from 'ngx-lottie';
+import { AnimationItem } from 'lottie-web';
+import { TranslateService } from '@ngx-translate/core';
+import { IUSer } from 'src/app/shared/models/IUser';
+import * as UserStore from './../../../shared/store/user.state';
 
 @Component({
   selector: 'anfitrion-sugestoes-do-anfitriao',
@@ -23,6 +28,21 @@ import * as AppStore from './../../../shared/store/app.state';
   styleUrls: ['./sugestoes-do-anfitriao.page.scss'],
 })
 export class SugestoesDoAnfitriaoPage implements OnInit, OnDestroy {
+
+  @ViewChild('animationTourist') animationTourist: AnimationItem;
+  @ViewChild('animationResident') animationResident: AnimationItem;
+
+  public touristOptions: AnimationOptions = {
+    path: './../../../assets/movie/anfitrion-tourists.json',
+    autoplay: true,
+    loop: true
+  };
+
+  public residentOptions: AnimationOptions = {
+    path: './../../../assets/movie/anfitrion-residents.json',
+    autoplay: true,
+    loop: true
+  };
 
   public hideRightControl: boolean = false;
   public hideLeftControl: boolean = true;
@@ -53,9 +73,12 @@ export class SugestoesDoAnfitriaoPage implements OnInit, OnDestroy {
   public currentCity$: Observable<ICity>;
   public currentCitySubscription: Subscription;
 
+  public user: IUSer;
+  public user$: Observable<IUSer>;
+  public userSubscription: Subscription;
+
   public FeaturesEnum = FeaturesEnum;
   public ProfileType = ProfileTypeEnum;
-
 
   constructor(
     private store : Store,
@@ -63,18 +86,37 @@ export class SugestoesDoAnfitriaoPage implements OnInit, OnDestroy {
     private title : Title,
     private suggestionsService : SuggestionsService,
     private overlayService : OverlayService,
-    private analyticsService : AnalyticsService
+    private analyticsService : AnalyticsService,
+    private translate : TranslateService
   ) { }
 
   ngOnInit() {
     this.getCurrentLanguageFromNGRX();
     this.getBaixadaSantistaSuggestions();
     this.getCurrentCityFromNGRX();
+    this.getUserFromNGRX();
   }
 
   ionViewWillEnter(): void {
     this.title.setTitle('Sugestões do anfitrião');
     this.analyticsService.tagViewInit(AnalyticsEventnameEnum.PAGE_VIEW);
+  }
+
+  public getUserFromNGRX(): void {
+    this.user$ = this.store.select(UserStore.selectUser);
+
+    this.userSubscription = this.user$
+    .subscribe((user: IUSer) => {
+      this.user = user;
+    })
+  }
+
+  public touristAnimationCreated(animationItem: AnimationItem): void {
+    animationItem.setSpeed(0.8)
+  }
+
+  public residentsAnimationCreated(animationItem: AnimationItem): void {
+    animationItem.setSpeed(0.8)
   }
 
   public seeSuggestion(suggestion: ISuggestion) {
