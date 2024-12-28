@@ -53,7 +53,8 @@
     "ORANGE_TAG" : ["etiqueta","naranja"],
     "BLUE_TAG" : ["etiqueta","azul"],
     "TOURIST_MESSAGE" : "lo recomendamos para quienes están de paso por la Baixada Santista",
-    "RESIDENT_MESSAGE" : "indicamos para quem está de passagem na Baixada Santista"
+    "RESIDENT_MESSAGE" : "indicamos para quem está de passagem na Baixada Santista",
+    "ACCORD_TO_PROFILE" : "Sugerencias de acuerdo con tu perfil"
   },
   "EXPLORE_PAGE" : {
     "PAGE_TITLE": "Explorar",
@@ -241,7 +242,8 @@
     "TOURISTS" : "Turistas",
     "RESIDENTS" : "Residentes",
     "BOOKING" : ["Hacer una reserva", "ahora"],
-    "LAST_UPDATE" : "última actualización"
+    "LAST_UPDATE" : "última actualización",
+    "FOR_YOU" : ["Para","usted"]
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nuestro propósito aquí es ayudarte a ahorrar tu bien más precioso:","el tiempo"],

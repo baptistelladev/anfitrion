@@ -69,6 +69,10 @@ export class SugestoesDoAnfitriaoPage implements OnInit, OnDestroy {
   public suggestionsSelectedCity$: Observable<ISuggestion[]>
   public suggestionsSelectedCitySubscription: Subscription;
 
+  public suggestionSelectedForUserProfileType: ISuggestion[];
+  public suggestionSelectedForUserProfileType$: Observable<ISuggestion[]>
+  public suggestionSelectedForUserProfileTypeSubscription: Subscription;
+
   public currentCity: ICity;
   public currentCity$: Observable<ICity>;
   public currentCitySubscription: Subscription;
@@ -185,6 +189,26 @@ export class SugestoesDoAnfitriaoPage implements OnInit, OnDestroy {
     .subscribe((city: ICity) => {
       this.currentCity = city;
       this.getSelectedCitySuggestions(this.currentCity.value);
+    })
+  }
+
+  public async getUserProfileTypeSuggestions() {
+    this.suggestionSelectedForUserProfileType$ = this.suggestionsService
+    .getSuggestionsCollection(CollectionsEnum.SUGGESTIONS_BAIXADA_SANTISTA, [
+      { field: "filter", operator: "array-contains", value: SuggestionsEnum.BAIXADA_SANTISTA },
+    ])
+
+    this.suggestionSelectedForUserProfileTypeSubscription = this.suggestionSelectedForUserProfileType$
+    .subscribe({
+      next: async (suggestions: any) => {
+        this.suggestionSelectedForUserProfileType = suggestions;
+      },
+      error: () => {
+
+      },
+      complete: async () => {
+
+      }
     })
   }
 
