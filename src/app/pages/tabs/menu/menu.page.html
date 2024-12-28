@@ -40,10 +40,10 @@
                   <div class="chips">
                     <ion-chip
                     *ngIf="user.userType"
-                    [ngClass]="user.userType === UserTypeEnum.MORADOR ? 'resident' : 'tourist'"
+                    [ngClass]="user.userType.value === UserTypeEnum.MORADOR ? 'resident' : 'tourist'"
                     mode="ios"
                     class="txt-uppercase as-badge">
-                      {{ user.userType === UserTypeEnum.MORADOR ? ('SHARED.RESIDENT' | translate) : ('SHARED.TOURIST' | translate) }}
+                      {{ user.userType.text[currentLanguage.value] }}
                     </ion-chip>
 
                     <ion-chip

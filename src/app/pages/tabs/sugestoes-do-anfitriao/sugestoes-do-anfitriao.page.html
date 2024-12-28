@@ -310,8 +310,7 @@ class="ion-content-w-linear-bg">
           [ngClass]="user.userType === ProfileType.MORADOR ? 'resident' : 'tourist'"
           mode="ios"
           class="txt-uppercase as-badge">
-            <ng-container *ngIf="user.userType === ProfileType.MORADOR">{{ 'SHARED.RESIDENT' | translate }}</ng-container>
-            <ng-container *ngIf="user.userType === ProfileType.TURISTA">{{ 'SHARED.TOURIST' | translate }}</ng-container>
+            {{ user.userType.text[currentLanguage.value] }}
           </ion-chip>
 
         </ion-col>
