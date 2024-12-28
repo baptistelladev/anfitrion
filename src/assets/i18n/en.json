@@ -53,7 +53,8 @@
     "ORANGE_TAG" : ["orange","tag"],
     "BLUE_TAG" : ["blue","tag"],
     "TOURIST_MESSAGE" : "we recommend it for those passing through the Baixada Santista",
-    "RESIDENT_MESSAGE" : "we recommend it for those living in a city in the region"
+    "RESIDENT_MESSAGE" : "we recommend it for those living in a city in the region",
+    "ACCORD_TO_PROFILE" : "Suggestions based on your profile"
   },
   "EXPLORE_PAGE" : {
     "PAGE_TITLE": "Explore",
@@ -240,7 +241,8 @@
     "TOURISTS" : "Tourists",
     "RESIDENTS" : "Residents",
     "BOOKING" : ["Book", "now"],
-    "LAST_UPDATE" : "last update"
+    "LAST_UPDATE" : "last update",
+    "FOR_YOU" : ["For","you"]
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Our purpose here is to help you save your most precious asset: ","time"],

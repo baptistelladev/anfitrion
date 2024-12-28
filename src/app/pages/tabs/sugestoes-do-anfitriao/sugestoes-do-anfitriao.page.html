@@ -291,6 +291,35 @@ class="ion-content-w-linear-bg">
 
     <ion-grid [fixed]="true">
       <ion-row>
+        <ion-col size="12">
+          <hr class="anfitrion-divider mg-bottom-16">
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-text mode="ios" class="d-block mg-bottom-5">
+            <p class="font-baloo fs-20 color-gray-text font-w-normal">
+              {{ 'SHARED.FOR_YOU.0' | translate }} <b [ngClass]="user.userType === ProfileType.MORADOR ? 'color-bootstrap-resident' : 'color-bootstrap-tourist'">{{ 'SHARED.FOR_YOU.1' | translate }}</b> <span class="font-default txt-lowercase fs-12 color-gray-mid font-w-normal mg-left-5" *ngIf="suggestionSelectedForUserProfileType && suggestionSelectedForUserProfileType.length > 0">({{ suggestionSelectedForUserProfileType.length }})</span>
+            </p>
+            <p class="fs-14 color-gray-text font-w-thin">
+              {{ 'SUGGESTIONS_PAGE.ACCORD_TO_PROFILE' | translate }}.
+            </p>
+            <p class="color-gray-text fs-14 mg-top-16 font-w-thin" *ngIf="suggestionsSelectedCity && suggestionsSelectedCity.length === 0">{{ 'SUGGESTIONS_PAGE.NO_RESULT' | translate }}.</p>
+          </ion-text>
+
+          <ion-chip
+          [ngClass]="user.userType === ProfileType.MORADOR ? 'resident' : 'tourist'"
+          mode="ios"
+          class="txt-uppercase as-badge">
+            <ng-container *ngIf="user.userType === ProfileType.MORADOR">{{ 'SHARED.RESIDENT' | translate }}</ng-container>
+            <ng-container *ngIf="user.userType === ProfileType.TURISTA">{{ 'SHARED.TOURIST' | translate }}</ng-container>
+          </ion-chip>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid [fixed]="true">
+      <ion-row>
         <ion-col size="12" size-md="6" class="txt-center mg-bottom-32">
           <div
           [ngClass]="user && user.userType === ProfileType.TURISTA ? 'is-selected' : 'is-not-selected'"

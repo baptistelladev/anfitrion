@@ -1,10 +1,6 @@
 
 @import './../../../../assets/scss/utils/mixins.scss';
 
-ion-header {
-  border-bottom: 1px solid var(--black);
-}
-
 ion-content {
   section {
     &.explorar {
@@ -36,7 +32,7 @@ ion-content {
       .explorar-header-wrapper {
         width: 100%;
         height: auto;
-        min-height: 164px;
+        height: 164px;
         padding: 0;
         position: relative;
 
@@ -44,9 +40,10 @@ ion-content {
           width: 100%;
           position: absolute;
           left: 0;
-          bottom: -33px;
+          bottom: -32px;
           z-index: 10;
           border-top: 1px solid var(--gray-3);
+          box-shadow: 0 -1px 0 #000;
 
           .segments-container {
             max-width: 370px;
@@ -171,4 +168,39 @@ ion-item.description {
   width: 103px;
   border-radius: 16px;
   margin: 0;
+}
+
+.city-hall-wrapper {
+  @include flexbox(center, center, column);
+
+  &.is-selected {
+    .city-hall-container {
+      background: linear-gradient(.351turn,#769834 43.71%,#547D0E 58.8%);
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+      opacity: 1;
+    }
+  }
+
+  .city-hall-container {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    padding: 1px;
+    margin: 0 0 8px 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    opacity: .5;
+
+    .city-hall-frame {
+      width: 100%;
+      height: 100%;
+      border-radius: 100%;
+      background: var(--white);
+      padding: 10px;
+
+      ion-img {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
 }

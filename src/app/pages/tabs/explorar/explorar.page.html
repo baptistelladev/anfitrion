@@ -251,50 +251,50 @@ class="ion-content-w-linear-bg">
       </div>
     </anfitrion-adsense>
 
-  <ion-grid [fixed]="true">
-    <ion-row>
-      <!-- QUANDO HOUVER PRAIA -->
-      <ion-col size="12" *ngIf="currentCity?.hasBeach && selectedSegment === LocationEnum.PRAIA">
-        <ion-text mode="ios">
-          <p class="font-baloo fs-20 color-gray-text font-w-bold">
-            {{ 'SHARED.BEACHES' | translate }} <span class="font-w-normal">{{ currentCity.in[currentLanguage.value] }} {{ currentCity.name }}</span>
-          </p>
-          <p class="fs-14 color-gray-text font-w-thin line-height-18">
-            {{ 'EXPLORE_PAGE.NUMBER_OF_BEACHES' | translate: { length: MOCK_BEACHES.length } }}: <span *ngFor="let beach of MOCK_BEACHES.slice(1); let i = index; let isLast = last">{{ beach.text[currentLanguage.value] }}<ng-container *ngIf="!isLast">, </ng-container></span>.
-          </p>
-        </ion-text>
+    <ion-grid [fixed]="true">
+      <ion-row>
+        <!-- QUANDO HOUVER PRAIA -->
+        <ion-col size="12" *ngIf="currentCity?.hasBeach && selectedSegment === LocationEnum.PRAIA">
+          <ion-text mode="ios">
+            <p class="font-baloo fs-20 color-gray-text font-w-bold">
+              {{ 'SHARED.BEACHES' | translate }} <span class="font-w-normal">{{ currentCity.in[currentLanguage.value] }} {{ currentCity.name }}</span>
+            </p>
+            <p class="fs-14 color-gray-text font-w-thin line-height-18">
+              {{ 'EXPLORE_PAGE.NUMBER_OF_BEACHES' | translate: { length: MOCK_BEACHES.length } }}: <span *ngFor="let beach of MOCK_BEACHES.slice(1); let i = index; let isLast = last">{{ beach.text[currentLanguage.value] }}<ng-container *ngIf="!isLast">, </ng-container></span>.
+            </p>
+          </ion-text>
 
-        <hr class="anfitrion-divider mg-top-32">
-      </ion-col>
+          <hr class="anfitrion-divider mg-top-32">
+        </ion-col>
 
-      <ion-col size="12">
-        <div class="scroll-to-top full-width">
-          <ion-button
-          mode="md"
-          (click)="scrollToTop()"
-          shape="round"
-          [title]="('SHARED.BACK_TO_TOP.0' | translate) + ' ' + ('SHARED.BACK_TO_TOP.1' | translate)"
-          fill="solid"
-          class="anfitrion-main-solid mg-bottom-16 mg-top-16 fs-12">
-            {{ 'SHARED.BACK_TO_TOP.0' | translate }} <b class="mg-left-5">{{ 'SHARED.BACK_TO_TOP.1' | translate }}</b> <ion-icon name="chevron-up-outline" class="mg-left-5"></ion-icon>
-          </ion-button>
-        </div>
-      </ion-col>
+        <ion-col size="12">
+          <div class="scroll-to-top full-width">
+            <ion-button
+            mode="md"
+            (click)="scrollToTop()"
+            shape="round"
+            [title]="('SHARED.BACK_TO_TOP.0' | translate) + ' ' + ('SHARED.BACK_TO_TOP.1' | translate)"
+            fill="solid"
+            class="anfitrion-main-solid mg-bottom-16 mg-top-16 fs-12">
+              {{ 'SHARED.BACK_TO_TOP.0' | translate }} <b class="mg-left-5">{{ 'SHARED.BACK_TO_TOP.1' | translate }}</b> <ion-icon name="chevron-up-outline" class="mg-left-5"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-col>
 
-      <ion-col size="12">
-        <anfitrion-made-w-love [centered]="true"></anfitrion-made-w-love>
-      </ion-col>
+        <ion-col size="12">
+          <anfitrion-made-w-love [centered]="true"></anfitrion-made-w-love>
+        </ion-col>
 
-      <ion-col size="12" class="no-pad-top">
-        <anfitrion-social-networks [centered]="true"></anfitrion-social-networks>
-      </ion-col>
+        <ion-col size="12" class="no-pad-top">
+          <anfitrion-social-networks [centered]="true"></anfitrion-social-networks>
+        </ion-col>
 
-      <ion-col size="12" class="mg-bottom-16">
-        <div class="copy-n-lang-wrapper">
-          <anfitrion-copyright></anfitrion-copyright>
-          <anfitrion-language-button-small [currentLanguage]="currentLanguage"></anfitrion-language-button-small>
-        </div>
-      </ion-col>
+        <ion-col size="12" class="mg-bottom-16">
+          <div class="copy-n-lang-wrapper">
+            <anfitrion-copyright></anfitrion-copyright>
+            <anfitrion-language-button-small [currentLanguage]="currentLanguage"></anfitrion-language-button-small>
+          </div>
+        </ion-col>
       </ion-row>
     </ion-grid>
   </section>

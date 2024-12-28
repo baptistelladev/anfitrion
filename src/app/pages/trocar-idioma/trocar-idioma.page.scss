@@ -18,6 +18,21 @@ ion-content {
         @include flexbox(center, center, column);
         max-width: 320px;
         margin: 0 auto;
+
+        .anfitrion-select-wrapper {
+          ion-item {
+            --background: var(--white);
+            --border-width: 0;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+            transition: all 200ms ease;
+
+            @media (hover: hover) {
+              &:hover {
+                box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+              }
+            }
+          }
+        }
       }
     }
   }
