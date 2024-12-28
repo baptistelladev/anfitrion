@@ -243,7 +243,8 @@
     "RESIDENTS" : "Residentes",
     "BOOKING" : ["Hacer una reserva", "ahora"],
     "LAST_UPDATE" : "última actualización",
-    "FOR_YOU" : ["Para","usted"]
+    "FOR_YOU" : ["Para","usted"],
+    "COMPLETE_PROFILE" : "Completar perfil"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nuestro propósito aquí es ayudarte a ahorrar tu bien más precioso:","el tiempo"],

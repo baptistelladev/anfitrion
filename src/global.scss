@@ -358,6 +358,8 @@ ion-item {
     &.warning {
       --background: var(--bootstrap-warning-light-bg);
       border: 1px solid var(--bootstrap-warning-border);
+
+      a { color: var(--botstrap-warning); }
     }
 
     &.success {
@@ -372,6 +374,16 @@ ion-item {
 
     ion-icon {
       font-size: 32px;
+    }
+
+    a {
+      @include flexbox(center, flex-start, row);
+      font-weight: bold;
+
+      ion-icon {
+        font-size: 16px;
+        margin: 0 0 0 5px;
+      }
     }
   }
 }
