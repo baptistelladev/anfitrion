@@ -6,7 +6,7 @@ export interface IUSer {
   email?: string,
   lastName?: string,
   birthDate?: string,
-  userType?: string,
+  userType?: any,
   sex?: string,
   readAndAcceptedTerms: boolean
 }

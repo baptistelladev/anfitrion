@@ -3,17 +3,17 @@ import { IUserType } from "../models/IUSerType";
 export const MOCK_USER_TYPES: IUserType[] = [
   {
     text: {
-      pt: "Sou morador",
-      en: "I am a resident",
-      es: "Soy residente"
+      pt: "Morador",
+      en: "Resident",
+      es: "Residente"
     },
     value: "MORADOR"
   },
   {
     text: {
-      pt: "Sou turista",
-      en: "I am a tourist",
-      es: "Soy turista"
+      pt: "Turista",
+      en: "Tourist",
+      es: "Turista"
     },
     value: "TURISTA"
   }

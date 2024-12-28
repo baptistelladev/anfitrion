@@ -173,7 +173,7 @@ export class SeusDadosPage implements OnInit, OnDestroy {
     this.personalDataForm.patchValue({
       name: user.firstName,
       secondName: user.lastName,
-      type: user.userType,
+      type: user.userType.value,
       sex: user.sex
     })
 
@@ -244,7 +244,7 @@ export class SeusDadosPage implements OnInit, OnDestroy {
         firstName: this.personalDataForm.value.name,
         lastName: this.personalDataForm.value.secondName,
         birthDate: moment(this.personalDataForm.value.birthDateAsDate).format('YYYY-MM-DD'),
-        userType: this.personalDataForm.value.type,
+        userType: this.MOCK_USER_TYPES.find(( userType: IUserType ) => { return userType.value === this.personalDataForm.value.type }),
         sex: this.personalDataForm.value.sex
       }
 
