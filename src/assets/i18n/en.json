@@ -242,7 +242,8 @@
     "RESIDENTS" : "Residents",
     "BOOKING" : ["Book", "now"],
     "LAST_UPDATE" : "last update",
-    "FOR_YOU" : ["For","you"]
+    "FOR_YOU" : ["For","you"],
+    "COMPLETE_PROFILE" : "Complete profile"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Our purpose here is to help you save your most precious asset: ","time"],

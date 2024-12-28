@@ -242,7 +242,8 @@
     "RESIDENTS" : "Moradores",
     "BOOKING" : ["Fazer reserva","agora"],
     "LAST_UPDATE" : "ultima atualização",
-    "FOR_YOU" : ["Para","você"]
+    "FOR_YOU" : ["Para","você"],
+    "COMPLETE_PROFILE" : "Completar perfil"
   },
   "INICIO_PAGE" : {
     "PARAGRAPH_ONE" : ["Nosso próposito aqui é fazer com que voê economize o seu bem mais precioso:","o tempo"],
