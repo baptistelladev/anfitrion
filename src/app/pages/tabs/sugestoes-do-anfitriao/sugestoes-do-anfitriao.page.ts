@@ -29,9 +29,6 @@ import * as UserStore from './../../../shared/store/user.state';
 })
 export class SugestoesDoAnfitriaoPage implements OnInit, OnDestroy {
 
-  @ViewChild('animationTourist') animationTourist: AnimationItem;
-  @ViewChild('animationResident') animationResident: AnimationItem;
-
   public touristOptions: AnimationOptions = {
     path: './../../../assets/movie/anfitrion-tourists.json',
     autoplay: true,
@@ -120,7 +117,9 @@ export class SugestoesDoAnfitriaoPage implements OnInit, OnDestroy {
   }
 
   public residentsAnimationCreated(animationItem: AnimationItem): void {
-    animationItem.setSpeed(0.8)
+    animationItem.setSpeed(0.8);
+    console.log(animationItem);
+
   }
 
   public seeSuggestion(suggestion: ISuggestion) {
