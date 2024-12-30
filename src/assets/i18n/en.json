@@ -26,7 +26,7 @@
   "YOUR_PERFIL_PAGE": {
     "YOUR_INFO": "These are your personal information",
     "INCOMPLETE": "Incomplete profile",
-    "PERFIL_ADVISE": "these data are not mandatory, but in the future, we will recommend content based on your age",
+    "PERFIL_ADVISE": "some data is not mandatory, but in the future, we will suggest content based on your age",
     "ALERT_ADVISE": {
       "TITLE": "Profile updated",
       "TEXT": "We have updated your personal information"
