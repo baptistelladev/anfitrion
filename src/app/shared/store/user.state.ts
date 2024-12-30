@@ -16,7 +16,10 @@ export const userInitialState: IUserState = {
     birthDate: '',
     userType: '',
     sex: '',
-    readAndAcceptedTerms: false
+    readAndAcceptedTerms: false,
+    premiumInfo: {
+      isPremium: false
+    }
   },
   canAccessEighteenContent: true
 }

@@ -49,7 +49,8 @@
                     <ion-chip
                     mode="ios"
                     class="txt-uppercase as-badge">
-                      {{ 'SHARED.FREE_ACCOUNT' | translate }}
+                      <ng-container *ngIf="!user.premiumInfo.isPremium">{{ 'SHARED.FREE_ACCOUNT' | translate }}</ng-container>
+                      <ng-container *ngIf="user.premiumInfo.isPremium">{{ 'SHARED.PREMIUM_ACCOUNT' | translate }}</ng-container>
                     </ion-chip>
                   </div>
                 </ion-col>

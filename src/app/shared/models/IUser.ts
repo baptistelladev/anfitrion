@@ -8,5 +8,8 @@ export interface IUSer {
   birthDate?: string,
   userType?: any,
   sex?: string,
-  readAndAcceptedTerms: boolean
+  readAndAcceptedTerms: boolean,
+  premiumInfo: {
+    isPremium: boolean
+  }
 }

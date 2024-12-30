@@ -241,7 +241,10 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
 
     let userInfo: IUSer = {
       firstName: this.formCreateAccGroup.value.name,
-      readAndAcceptedTerms: this.formCreateAccGroup.value.terms
+      readAndAcceptedTerms: this.formCreateAccGroup.value.terms,
+      premiumInfo: {
+        isPremium: false
+      }
     }
 
     await this.authService.createUserWithEmailAndPassword(this.formCreateAccGroup.value.email, this.formCreateAccGroup.value.password, userInfo)
