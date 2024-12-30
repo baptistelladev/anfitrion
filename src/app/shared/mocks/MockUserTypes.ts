@@ -17,5 +17,4 @@ export const MOCK_USER_TYPES: IUserType[] = [
     },
     value: "TURISTA"
   }
-
 ]

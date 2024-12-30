@@ -340,7 +340,7 @@ class="ion-content-w-linear-bg">
           [ngClass]="user && user.userType.value === ProfileType.TURISTA ? 'is-selected' : 'is-not-selected'"
           class="profile-type-card tourists">
             <div class="residents-animation">
-              <ng-lottie [options]="touristOptions" (animationCreated)="touristAnimationCreated($event)" #animationTourist/>
+              <ng-lottie [options]="touristOptions" (animationCreated)="touristAnimationCreated($event)"/>
             </div>
 
             <ion-grid>

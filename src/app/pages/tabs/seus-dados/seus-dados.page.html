@@ -294,7 +294,7 @@ class="ion-content-w-linear-bg">
               </ion-text>
             </div>
 
-            <div class="mg-top-8">
+            <div class="mg-top-8" *ngIf="personalDataForm.get('type')?.value === UserTypeEnum.MORADOR || personalDataForm.get('type')?.value === UserTypeEnum.TURISTA">
               <ion-chip
               [ngClass]="personalDataForm.get('type')?.value === UserTypeEnum.MORADOR ? 'resident' : 'tourist'"
               mode="ios"
