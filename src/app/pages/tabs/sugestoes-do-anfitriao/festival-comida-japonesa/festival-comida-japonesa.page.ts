@@ -129,6 +129,14 @@ export class FestivalComidaJaponesaPage implements OnInit, OnDestroy, AfterViewI
     this.swiper?.slideTo(index, 800);
   }
 
+  public slideToNext(): void {
+    this.swiper?.slideNext(800);
+  }
+
+  public slideToPrev(): void {
+    this.swiper?.slidePrev(800);
+  }
+
   public async getCurrentSuggestionFromNGRX() {
     this.currentSuggestion$ = this.store.select(AppStore.selectCurrentSuggestion);
 
