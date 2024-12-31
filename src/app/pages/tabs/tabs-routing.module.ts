@@ -10,7 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'explorar',
+        redirectTo: 'sugestoes-do-anfitriao',
         pathMatch: 'full'
       },
       {

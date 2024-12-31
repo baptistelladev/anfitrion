@@ -3,16 +3,6 @@ import { ITab } from "../models/ITab";
 
 export const MOCK_TABS: ITab[] = [
   {
-    page: 'explorar',
-    icon: 'search',
-    value: 'explorar',
-    text: {
-      pt: 'Explorar',
-      en: 'Explore',
-      es: 'Explorar'
-    }
-  },
-  {
     page: 'sugestoes-do-anfitriao',
     icon: 'bulb',
     value: 'sugestoes-do-anfitriao',
@@ -20,6 +10,16 @@ export const MOCK_TABS: ITab[] = [
       pt: 'Sugestões',
       en: 'Suggestions',
       es: 'Sugerencias'
+    }
+  },
+  {
+    page: 'explorar',
+    icon: 'search',
+    value: 'explorar',
+    text: {
+      pt: 'Explorar',
+      en: 'Explore',
+      es: 'Explorar'
     }
   },
   {
