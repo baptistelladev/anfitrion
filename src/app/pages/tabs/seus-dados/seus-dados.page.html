@@ -38,14 +38,19 @@ class="ion-content-w-linear-bg">
       <ion-grid [fixed]="true">
         <ion-row>
           <ion-col size="12">
+            <ion-chip
+            mode="ios"
+            class="txt-uppercase as-badge">
+              <ng-container *ngIf="!personalDataForm.get('name')?.value">Conta gratuíta</ng-container>
+              <ng-container *ngIf="personalDataForm.get('name')?.value">Conta premium</ng-container>
+            </ion-chip>
+
             <ion-text mode="ios" class="line-height-22">
-              <p class="fs-18 color-gray-6 font-baloo"><b>{{ user.firstName }}</b>,</p>
+              <h1 class="fs-24 font-baloo color-gray-text mg-top-5">
+                Olá <b>{{ user.firstName }}</b>
+              </h1>
               <p class="fs-14 color-gray-text font-w-thin">{{ 'YOUR_PERFIL_PAGE.YOUR_INFO' | translate }}.</p>
             </ion-text>
-          </ion-col>
-
-          <ion-col size="12">
-            <hr class="anfitrion-divider">
           </ion-col>
 
           <ion-col size="12">
