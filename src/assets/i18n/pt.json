@@ -103,7 +103,7 @@
     "LABEL_NEW_EMAIL" : "Seu novo e-mail",
     "PLACEHOLDER_NEW_EMAIL" : "Insira seu novo e-mail",
     "LABEL_BS_RELATIONSHIP" : "Qual é a sua relação com a Baixada Santista",
-    "PLACEHOLDER_BS_RELATIONSHIP" : "Selecionar tipo",
+    "PLACEHOLDER_BS_RELATIONSHIP" : "Tipo de usuário",
     "LABEL_SEX" : "Sexo",
     "PLACEHOLDER_SEX" : "Selecionar sexo"
   },

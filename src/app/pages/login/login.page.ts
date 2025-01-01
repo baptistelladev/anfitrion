@@ -1,3 +1,5 @@
+import { MOCK_USER_TYPES } from './../../shared/mocks/MockUserTypes';
+import { UserTypeEnum } from './../../shared/enums/UserType';
 import { BackButtonService } from './../../core/core/back-button.service';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Store } from '@ngrx/store';
@@ -21,6 +23,7 @@ import { StorageService } from 'src/app/core/services/storage.service';
 import { ACCEPTED_TERMS_AND_CONDITIONS } from 'src/app/shared/consts/keys';
 import { AnalyticsService } from 'src/app/core/services/firebase/analytics.service';
 import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
+import { IUserType } from 'src/app/shared/models/IUSerType';
 
 @Component({
   selector: 'anfitrion-login',
@@ -28,6 +31,23 @@ import { AnalyticsEventnameEnum } from 'src/app/shared/enums/Analytics';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
+
+  public interfaceOptions: any = {
+    showBackdrop: true,
+    backdropDismiss: true,
+    cssClass: 'select-alert',
+    mode: 'ios',
+    keyboardClose: true,
+    id: 'select-user-type',
+    size: 'auto',
+    dismissOnSelect: true,
+    side: 'bottom',
+    alignment: '',
+    arrow: true,
+  }
+
+  public UserTypeEnum = UserTypeEnum;
+  public MOCK_USER_TYPES: IUserType[] = MOCK_USER_TYPES;
 
   @ViewChild('passwordInput') passwordInput : IonInput;
   @ViewChild('emailInput') emailInput : IonInput;
@@ -105,6 +125,10 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
         await this.alertCookies()
       }
     })
+  }
+
+  public relationshipChanged(): void {
+    console.log(this.formCreateAccGroup.value.type);
   }
 
   public ngAfterViewInit(): void {
@@ -335,6 +359,7 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
 
   public initCreateAccForm(): void {
     this.formCreateAccGroup = this.formBuilder.group({
+      type: [null, [ Validators.required ]],
       name: [ '', [ Validators.required, Validators.minLength(3) ] ],
       email: [ '', [ Validators.required, Validators.email ] ],
       password: [ '', [ Validators.required, Validators.minLength(8) ] ],
