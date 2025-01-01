@@ -1,3 +1,6 @@
+@import './../../../../assets/scss/utils/mixins.scss';
+
+
 section {
   &.seus-dados {
     width: 100%;
@@ -9,5 +12,14 @@ section {
       width: 100%;
       height: auto;
     }
+  }
+}
+
+.chips {
+  @include flexbox(flex-start, flex-start, row);
+  margin: 6px 0 0 0;
+
+  ion-chip {
+    margin: 0 5px 0 0;
   }
 }

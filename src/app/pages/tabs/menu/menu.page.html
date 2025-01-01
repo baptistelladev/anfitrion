@@ -32,25 +32,27 @@
           <div class="menu-container">
             <ion-grid [fixed]="true" class="no-pad-top">
               <ion-row>
-                <ion-col class="no-pad-top" size="12" *ngIf="user.sex && user.lastName && user.birthDate && user.userType">
-                  <ion-text mode="ios" class="line-height-24 txt-center">
-                    <p class="fs-14 color-gray-text font-w-thin fs-20">{{ user.firstName }} {{ user.lastName }}</p>
+                <ion-col size="12">
+                  <ion-text mode="ios" class="line-height-22">
+                    <h1 class="fs-24 font-baloo color-gray-text mg-top-5 side-by-side">
+                      <b>{{ user.firstName }}</b> <ng-container *ngIf="user.lastName"><span class="mg-left-5">{{ user.lastName }}</span></ng-container>  <ion-icon src="./../../../../assets/icon/verified-check.svg" class="verified mg-left-5" *ngIf="user.premiumInfo.isPremium"></ion-icon>
+                    </h1>
                   </ion-text>
 
                   <div class="chips">
+                    <ion-chip
+                    mode="ios"
+                    class="txt-uppercase as-badge" [ngClass]="{'premium': user.premiumInfo.isPremium}">
+                      <ng-container *ngIf="!user.premiumInfo?.isPremium">Conta gratuíta</ng-container>
+                      <ng-container *ngIf="user.premiumInfo?.isPremium">Conta premium</ng-container>
+                    </ion-chip>
+
                     <ion-chip
                     *ngIf="user.userType"
                     [ngClass]="user.userType.value === UserTypeEnum.MORADOR ? 'resident' : 'tourist'"
                     mode="ios"
                     class="txt-uppercase as-badge">
                       {{ user.userType.text[currentLanguage.value] }}
-                    </ion-chip>
-
-                    <ion-chip
-                    mode="ios"
-                    class="txt-uppercase as-badge">
-                      <ng-container *ngIf="!user.premiumInfo.isPremium">{{ 'SHARED.FREE_ACCOUNT' | translate }}</ng-container>
-                      <ng-container *ngIf="user.premiumInfo.isPremium">{{ 'SHARED.PREMIUM_ACCOUNT' | translate }}</ng-container>
                     </ion-chip>
                   </div>
                 </ion-col>

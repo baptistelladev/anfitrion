@@ -38,17 +38,32 @@ class="ion-content-w-linear-bg">
       <ion-grid [fixed]="true">
         <ion-row>
           <ion-col size="12">
-            <ion-chip
-            mode="ios"
-            class="txt-uppercase as-badge">
-              <ng-container *ngIf="!personalDataForm.get('name')?.value">Conta gratuíta</ng-container>
-              <ng-container *ngIf="personalDataForm.get('name')?.value">Conta premium</ng-container>
-            </ion-chip>
-
             <ion-text mode="ios" class="line-height-22">
-              <h1 class="fs-24 font-baloo color-gray-text mg-top-5">
-                Olá <b>{{ user.firstName }}</b>
+              <h1 class="fs-24 font-baloo color-gray-text mg-top-5 side-by-side">
+                <b>{{ user.firstName }}</b> <ng-container *ngIf="user.lastName"><span class="mg-left-5">{{ user.lastName }}</span></ng-container>  <ion-icon src="./../../../../assets/icon/verified-check.svg" class="verified mg-left-5" *ngIf="user.premiumInfo.isPremium"></ion-icon>
               </h1>
+            </ion-text>
+
+            <div class="chips">
+              <ion-chip
+              mode="ios"
+              class="txt-uppercase as-badge" [ngClass]="{'premium': user.premiumInfo.isPremium}">
+                <ng-container *ngIf="!user.premiumInfo?.isPremium">Conta gratuíta</ng-container>
+                <ng-container *ngIf="user.premiumInfo?.isPremium">Conta premium</ng-container>
+              </ion-chip>
+
+              <ion-chip
+              *ngIf="user.userType"
+              [ngClass]="user.userType.value === UserTypeEnum.MORADOR ? 'resident' : 'tourist'"
+              mode="ios"
+              class="txt-uppercase as-badge">
+                {{ user.userType.text[currentLanguage.value] }}
+              </ion-chip>
+            </div>
+          </ion-col>
+
+          <ion-col>
+            <ion-text mode="ios" class="line-height-22">
               <p class="fs-14 color-gray-text font-w-thin">{{ 'YOUR_PERFIL_PAGE.YOUR_INFO' | translate }}.</p>
             </ion-text>
           </ion-col>
