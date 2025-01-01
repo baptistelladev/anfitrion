@@ -28,7 +28,7 @@ export class BemVindoABaixadaSantistaPage implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-      this.navCtrl.navigateRoot(['/logado/explorar']);
+      this.navCtrl.navigateRoot(['/logado/sugestoes-do-anfitriao']);
     }, 3000);
   }
 
