@@ -268,8 +268,14 @@ export class LoginPage implements OnInit, OnDestroy, AfterViewInit {
       readAndAcceptedTerms: this.formCreateAccGroup.value.terms,
       premiumInfo: {
         isPremium: false
-      }
+      },
+      userType: this.MOCK_USER_TYPES.find((userType: IUserType) => {
+        return userType.value === this.formCreateAccGroup.value.type
+      })
     }
+
+    console.log('creating', userInfo);
+
 
     await this.authService.createUserWithEmailAndPassword(this.formCreateAccGroup.value.email, this.formCreateAccGroup.value.password, userInfo)
     .then(async () => {
