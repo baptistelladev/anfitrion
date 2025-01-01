@@ -73,11 +73,11 @@ ion-content {
 }
 
 .chips {
-  @include flexbox(flex-start, center, row);
+  @include flexbox(flex-start, flex-start, row);
   margin: 6px 0 0 0;
 
   ion-chip {
-    margin: 0 4px;
+    margin: 0 5px 0 0;
   }
 }
 

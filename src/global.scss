@@ -700,6 +700,11 @@ ion-chip.as-badge {
     --background: var(--gray-text);
     color: var(--white);
   }
+
+  &.premium {
+    --background: linear-gradient(.351turn,#769834 43.71%,#547D0E 58.8%);
+    --color: var(--white);
+  }
 }
 
 .view-n-filter-wrapper {
@@ -734,4 +739,8 @@ ion-chip.as-badge {
 
 .ion-icon-thiness {
   --ionicon-stroke-width: 25px;
+}
+
+.side-by-side {
+  @include flexbox(center, flex-start, row);
 }
